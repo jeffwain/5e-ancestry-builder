@@ -70,8 +70,11 @@ export function TraitCard({ trait }) {
       title={disabled ? reason : undefined}
     >
       <div className={styles.header}>
-        <h4 className={styles.name}>{trait.name}</h4>
-        <span className={`${styles.cost} ${displayCost === 0 ? styles.free : ''}`}>
+        <h4 className={`flex1 ${styles.name}`}>{trait.name}</h4>
+        {trait.required && (
+          <div className={`pill uppercase ${styles.requiredBadge}`}>Required</div>
+        )}
+        <span className={`pill uppercase ${styles.cost} ${displayCost === 0 ? styles.free : ''}`}>
           {displayCost === 0 ? 'Free' : typeof displayCost === 'string' ? `${displayCost} pts` : `${displayCost} pts`}
         </span>
       </div>
@@ -117,10 +120,6 @@ export function TraitCard({ trait }) {
         <div className={styles.disabledReason}>
           {reason}
         </div>
-      )}
-      
-      {trait.required && (
-        <div className={styles.requiredBadge}>Required</div>
       )}
       
       {trait.sizeRequirement && (
