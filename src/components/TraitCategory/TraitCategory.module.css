@@ -1,0 +1,156 @@
+.category {
+  background: var(--color-parchment-100);
+  border: 1px solid var(--color-parchment-300);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.coreAttribute {
+  border-color: var(--color-accent);
+  border-width: 2px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-parchment-200);
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.header:hover {
+  background: var(--color-parchment-300);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-ink-900);
+  margin: 0;
+}
+
+.badge {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.badge.heritage {
+  background: var(--color-heritage-bg);
+  color: var(--color-heritage);
+  border: 1px solid var(--color-heritage);
+}
+
+.badge.culture {
+  background: var(--color-culture-bg);
+  color: var(--color-culture);
+  border: 1px solid var(--color-culture);
+}
+
+.badge.core {
+  background: var(--color-accent);
+  color: white;
+}
+
+.requiredBadge {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  background: var(--color-warning);
+  color: white;
+}
+
+.requiredIndicator {
+  color: var(--color-warning);
+  font-size: var(--text-sm);
+}
+
+.chevron {
+  font-size: var(--text-sm);
+  color: var(--color-ink-500);
+  transition: transform var(--transition-fast);
+}
+
+.chevron.expanded {
+  transform: rotate(180deg);
+}
+
+.description {
+  padding: var(--space-2) var(--space-4);
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-ink-600);
+  font-style: italic;
+  background: var(--color-parchment-100);
+  border-bottom: 1px solid var(--color-parchment-200);
+}
+
+.traitList {
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Heritage Group styles */
+.heritageGroup {
+  background: var(--color-parchment-50);
+  border: 1px solid var(--color-heritage);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.groupHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: linear-gradient(135deg, var(--color-heritage) 0%, var(--color-heritage-dark) 100%);
+  border: none;
+  cursor: pointer;
+}
+
+.groupHeader:hover {
+  background: linear-gradient(135deg, var(--color-heritage-light) 0%, var(--color-heritage) 100%);
+}
+
+.groupName {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-parchment-50);
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.groupHeader .chevron {
+  color: var(--color-parchment-200);
+}
+
+.groupContent {
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: var(--color-parchment-100);
+}

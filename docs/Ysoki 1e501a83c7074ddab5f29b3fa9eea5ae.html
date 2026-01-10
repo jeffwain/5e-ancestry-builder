@@ -1,0 +1,687 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Ysoki</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1e501a83-c707-4dda-b5f2-9b3fa9eea5ae" class="page serif"><header><div class="page-header-icon undefined"><span class="icon">🐀</span></div><h1 class="page-title">Ysoki</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Descriptors</th><td>Rodent/marsupial-like species</td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Type</th><td><span class="selected-value select-value-color-brown">Uncommon ancestry</span></td></tr></tbody></table></header><div class="page-body"><nav id="11bddbcc-068f-8007-a789-c3b6efd8bf66" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#11bddbcc-068f-80bb-ac44-ebde484eca61">Description</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e037d447-2b45-4969-981a-7ed6b6511c6e">Archetypes</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#83c3cae5-8e31-4803-b7c8-30490069ac4e">Kangaroofolk (Osphrani 🦘)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b64dcf17-a62e-4fc7-91c4-b9b98cffbdc2">Ratfolk (Ysoki) 🐀🐁</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c65b1206-7431-4af3-9988-f3ceb05a091f">Rabbitfolk (Harengon 🐇)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#11daa35a-f110-4a3d-badc-36993dc417a6">Squirrelfolk (Kercpa 🐿️)</a></div></nav><h2 id="11bddbcc-068f-80bb-ac44-ebde484eca61" class="">Description</h2><p id="5cab3f42-da99-46d6-b489-d691daa7f2d3" class=""><strong>Ysoki </strong>is the collective name for a number of rodent and marsupial-like mammalian species. They are generally small mammalian species, most commonly resembling rats, mice, hare, and squirrels.</p><h2 id="e037d447-2b45-4969-981a-7ed6b6511c6e" class="">Archetypes</h2><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Kangaroofolk (Osphrani 🦘)</summary><div class="indented"><p id="315d931e-0f6a-47b6-b24e-8f42cebc0b55" class="">You stand between 3 and 8 feet tall and weigh between 40 and 200 pounds. Osphrani mature at 12 and can live up to 60 years.</p><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2a00405c-c667-4be6-918f-6cf3c3da18a2"><div style="font-size:1.5em"><span class="icon">📐</span></div><div style="width:100%">You are a <strong>Medium</strong> or <strong>Small</strong> sized creature.</div></figure></div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="896196cf-fe4a-49b0-9e2b-82c774d104f2"><div style="font-size:1.5em"><span class="icon">🐈‍⬛</span></div><div style="width:100%"><strong>Strong Kick (2).</strong> Your strong legs and tail allow you to make damaging unarmed strikes as light weapons while balancing on your tail. When you hit with it, a strike deals 1d6 + Strength modifier bludgeoning damage. The target of your attack must make a Strength saving throw (DC 10 + your Strength bonus) or be pushed back 5 feet.</div></figure><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="42144f0a-2913-4746-bf9f-35eb1a9de8c9"><div style="font-size:1.5em"><span class="icon">🦣</span></div><div style="width:100%"><strong>Leap (2).</strong> Your long jump is 20 feet and your high jump is 10 feet, with or without a running start.</div></figure></div><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a5441de1-21a2-429e-bdc7-1aa3a5a9e5cf"><div style="font-size:1.5em"><span class="icon">💨</span></div><div style="width:100%"><strong>Quick (2).</strong> Your base walking speed is 35 feet.</div></figure></div><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f193cf0e-e4c7-4668-a6fe-d1a349d426a0"><div style="font-size:1.5em"><span class="icon">🐈‍⬛</span></div><div style="width:100%"><strong>Agile Fall (3).</strong> When you fall 100 feet or less and aren&#x27;t incapacitated, you can make a DC 10 Dexterity (Acrobatics) check when you land. If you succeed, you take no falling damage and land on your feet.</div></figure></div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="503786cc-b7b1-4880-89cb-08bf51e2b60d"><div style="font-size:1.5em"><span class="icon">🦘</span></div><div style="width:100%"><strong>Pouch (1).</strong> All osphrani have a pouch on their belly can either carry one item weighing up to their Strength score, or can serve as a component pouch. You cannot use this feature if your belly is covered or otherwise inaccessible, however most armouries supply armour that accommodates this feature. You have advantage on Dexterity (Sleight of Hand) checks you make to conceal an object in your pouch.</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f103cc52-66a9-4157-bb3a-bf39752c5e9e"><div style="font-size:1.5em"><span class="icon">🦘</span></div><div style="width:100%"><strong>Bounding (4).</strong> As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.<p id="27ba7a8a-113e-4b9e-be59-7619473c99f3" class="">Additionally, the efficiency of movement your bounding provides means you can move twice the normal time (up to 16 hours) each day before being subject to the <br/>effects of a forced march.<br/></p></div></figure><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e0d95807-a66e-4d48-afa5-6121747bc2ad"><div style="font-size:1.5em"><span class="icon">🌱</span></div><div style="width:100%"><strong>Skill Proficiency, Nature (2).</strong> You have proficiency in the Nature skill.</div></figure></div><p id="11bddbcc-068f-80aa-b785-ffd87ffda9c9" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Ratfolk (Ysoki) 🐀🐁</summary><div class="indented"><p id="127ddbcc-068f-8066-a581-e75a6a44d834" class="">Ysoki are skilled scouts and agriculturalists. They average between 3 to 4 1/4 feet tall and can weigh up to 60 pounds. They rarely live longer than 40-50 years and so their lives are characterized by constant searching </p><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2a00405c-c667-4be6-918f-6cf3c3da18a2"><div style="font-size:1.5em"><span class="icon">📐</span></div><div style="width:100%">You are a <strong>Medium</strong> or <strong>Small</strong> sized creature.</div></figure></div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="127ddbcc-068f-80a7-8496-eb69fc5566cf"><div style="font-size:1.5em"><span class="icon">🐀</span></div><div style="width:100%"><p id="543f2550-062e-4892-87fc-eaca9c602d36" class=""><strong>Squeeze. </strong>You can squeeze into any space that can be traversed by a creature one size category smaller than you.</p></div></figure><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="db67ebad-5cf7-4dbe-9af4-029fa2058b35"><div style="font-size:1.5em"><span class="icon">🔦</span></div><div style="width:100%"><strong>Darkvision (3).</strong> You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only in a monochromatic shade, usually gray.</div></figure></div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="127ddbcc-068f-81d7-9fa0-daa9c962d187"><div style="font-size:1.5em"><span class="icon">🎨</span></div><div style="width:100%"><strong>Gifted Artisan (2).</strong> You gain proficiency with the artisan&#x27;s tools of your choice, and add an additional 1d4 to all ability checks rolled using these tools.</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="127ddbcc-068f-81c6-9f98-d9dfaeeed5fe"><div style="font-size:1.5em"><span class="icon">🐈‍⬛</span></div><div style="width:100%"><strong>Tooth and Nail (1).</strong> Your strong bite allow you to make damaging unarmed strikes as natural, light weapons. When you hit with it, a strike deals 1d6 + Strength modifier slashing damage.</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="127ddbcc-068f-8037-9ebf-c2928de17544"><div style="font-size:1.5em"><span class="icon">🐀</span></div><div style="width:100%"><p id="44f56bf2-785f-4cc3-b0df-2c9230efe07f" class=""><strong>Gnaw.</strong> With enough time, your teeth can chew through almost anything. Your teeth deal double damage against objects like doors or ropes that are made of wood, fiber, or other natural materials.</p></div></figure><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f6d0cba1-a2bb-4996-9666-30c284e788c5"><div style="font-size:1.5em"><span class="icon">💪</span></div><div style="width:100%"><strong>Toxin Resilience (2).</strong> You have advantage on saving throws you make to avoid or end the <a href="https://www.notion.so/Poisoned-7ad6fe71c5e84e05af7cbf3e0e757a09?pvs=21">poisoned</a> or <a href="https://www.notion.so/Diseased-b408f4b85e664883b879cf91ca6b4e48?pvs=21">diseased</a> conditions on yourself.</div></figure></div><p id="127ddbcc-068f-806c-a000-c00a8145883a" class=""><em>Choose from…</em></p><p id="127ddbcc-068f-801e-a858-f7a27f0ea68a" class=""><strong>Spotter</strong></p><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7b165929-1a3b-4ee8-b7aa-36c12535964e"><div style="font-size:1.5em"><span class="icon">🐕</span></div><div style="width:100%"><strong>Hunter&#x27;s Senses (7).</strong> Thanks to your keen sense of smell, you have advantage on Wisdom (Perception), Wisdom (Survival), and Intelligence (Investigation) checks that involve smell. As an action you can focus your sense of smell and gain <a href="https://www.notion.so/307a2eb40d4b407d9406a88690822099?pvs=21">blindsight</a> (30 ft.) until the end of your next turn.</div></figure></div><p id="127ddbcc-068f-80dd-9c3a-d9e9ef186b2d" class=""><strong>Scavenger</strong></p><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bbe0f78a-6f20-4b1c-a11c-1bdeab48795a"><div style="font-size:1.5em"><span class="icon">🐕</span></div><div style="width:100%"><strong>Keen Smell (3).</strong> Thanks to your keen sense of smell, you have advantage on Wisdom (Perception), Wisdom (Survival), and Intelligence (Investigation) checks that involve smell.</div></figure></div><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="99c825f0-cce7-4ad6-b6bb-113f70709642"><div style="font-size:1.5em"><span class="icon">🏃‍♂️</span></div><div style="width:100%"><strong>Trap Master (1). </strong>You have a preternatural ability to avoid traps and have advantage on Dexterity or Strength saves against triggered traps.</div></figure></div><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f7c28823-fce9-4bee-a8a8-29b6045ad211"><div style="font-size:1.5em"><span class="icon">💪</span></div><div style="width:100%"><strong>Poison Resistance (3).</strong> You are resistant to poison damage.</div></figure></div><p id="127ddbcc-068f-8073-a3f8-d9914543f14f" class=""><strong>Rural</strong></p><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bbe0f78a-6f20-4b1c-a11c-1bdeab48795a"><div style="font-size:1.5em"><span class="icon">🐕</span></div><div style="width:100%"><strong>Keen Smell (3).</strong> Thanks to your keen sense of smell, you have advantage on Wisdom (Perception), Wisdom (Survival), and Intelligence (Investigation) checks that involve smell.</div></figure></div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="127ddbcc-068f-800c-a697-e29b044e9d31"><div style="font-size:1.5em"><span class="icon">🐀</span></div><div style="width:100%"><p id="88d477dc-80f3-4dd7-bc8a-9681a2cb50d9" class=""><strong>Skilled Agriculturalist (2).</strong> You have proficiency on Nature (Wisdom) checks, proficiency with the sickle, and advantage on any checks made to farm, forage, or harvest.</p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="127ddbcc-068f-8196-aa7f-f12bf4505fa3"><div style="font-size:1.5em"><span class="icon">👋</span></div><div style="width:100%"><strong>Cute (2). </strong>You have half-proficiency in Persuasion and Deception checks. The first time you interact with strangers in an unfamiliar land, culture, or region, add 1d4 to the first Persuasion, Deception, or Performance check you make against them. This trait does not work on groups if at least one person in the group knows you.</div></figure><p id="127ddbcc-068f-80f9-82fa-e61726f2bea3" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Rabbitfolk (Harengon 🐇)</summary><div class="indented"><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6425560f-7247-4a07-8fe7-1db877762d35"><div style="font-size:1.5em"><span class="icon">📐</span></div><div style="width:100%">You are a <strong>Small</strong> sized creature.</div></figure></div><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="42144f0a-2913-4746-bf9f-35eb1a9de8c9"><div style="font-size:1.5em"><span class="icon">🦣</span></div><div style="width:100%"><strong>Leap (2).</strong> Your long jump is 20 feet and your high jump is 10 feet, with or without a running start.</div></figure></div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="127ddbcc-068f-805a-b967-c68a9a65de9f"><div style="font-size:1.5em"><span class="icon">🐿️</span></div><div style="width:100%"><p id="f0065ae8-0f3b-42d6-a9d0-477b5ee92ed2" class=""><strong>Keen Hearing (3).</strong> You have advantage on Wisdom (Perception) checks that rely on hearing sounds.</p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="127ddbcc-068f-80d8-8195-ccf67c4ace72"><div style="font-size:1.5em"><span class="icon">🐿️</span></div><div style="width:100%"><p id="7cc600f2-6f0f-4571-aa29-5fb14d45d464" class=""><strong>Twitchy (3).</strong> You can add 1d4 to your initiative rolls, and while being unconscious from sleeping, you lose your advantage on Wisdom (Perception) checks that rely on hearing sounds within 60 feet instead automatically failing them.</p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="127ddbcc-068f-8022-84f8-c4f060a09e77"><div style="font-size:1.5em"><span class="icon">🦘</span></div><div style="width:100%"><strong>Bounding (4).</strong> As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.<p id="0cdc7449-7122-4bb8-ac33-7b8000568de7" class="">Additionally, the efficiency of movement your bounding provides means you can move twice the normal time (up to 16 hours) each day before being subject to the <br/>effects of a forced march.<br/></p></div></figure><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29b58c84-a2a1-4169-a6d7-56fa6e961e92"><div style="font-size:1.5em"><span class="icon">👀</span></div><div style="width:100%"><strong>Skill Proficiency, Perception (2).</strong> You have proficiency in the Perception skill.</div></figure></div></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Squirrelfolk (Kercpa 🐿️)</summary><div class="indented"><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6425560f-7247-4a07-8fe7-1db877762d35"><div style="font-size:1.5em"><span class="icon">📐</span></div><div style="width:100%">You are a <strong>Small</strong> sized creature.</div></figure></div><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="db67ebad-5cf7-4dbe-9af4-029fa2058b35"><div style="font-size:1.5em"><span class="icon">🔦</span></div><div style="width:100%"><strong>Darkvision (3).</strong> You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only in a monochromatic shade, usually gray.</div></figure></div><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="923dfc93-6850-40c1-b666-53a69e23ac75"><div style="font-size:1.5em"><span class="icon">📐</span></div><div style="width:100%"><strong>Nimble (2).</strong> You can move through the space of any creature that is of a size larger than yours.</div></figure></div><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8142b661-d74d-49dd-b0f2-be38f35e223b"><div style="font-size:1.5em"><span class="icon">📐</span></div><div style="width:100%"><strong>Small Stealth (2). </strong>You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you.</div></figure></div><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="438edaa8-719d-4fb1-96c2-0ee6a0213951"><div style="font-size:1.5em"><span class="icon">🐈‍⬛</span></div><div style="width:100%"><strong>Tooth and Nail (1).</strong> Your strong bite and claws allow you to make damaging unarmed strikes as natural, light weapons. When you hit with it, a strike deals:<ul id="71000c8b-7207-4144-80ab-80bdf09b7f0c" class="bulleted-list"><li style="list-style-type:disc"><strong>Bite.</strong> 1d6 + Strength modifier slashing damage</li></ul><ul id="8d53711a-9429-47b2-b110-11200d51ac36" class="bulleted-list"><li style="list-style-type:disc"><strong>Claws. </strong>1d6 + Strength modifier slashing damage</li></ul></div></figure></div><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5e23a7db-08a3-43a5-bf4b-32e4e12f1d51"><div style="font-size:1.5em"><span class="icon">🦣</span></div><div style="width:100%"><strong>Climb Speed (2).</strong> You have a climbing speed of 30 feet.</div></figure></div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="127ddbcc-068f-80ac-a563-c68cb2d578f0"><div style="font-size:1.5em"><span class="icon">🐿️</span></div><div style="width:100%"><p id="8c044814-3348-4a59-b2aa-b6b070dd9b7b" class=""><strong>Forager (1).</strong> During a long rest in an abundant environment, you can spend 1 hour gathering enough food to sustain you and 1d4 other creatures for a day.</p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="127ddbcc-068f-81eb-9f13-ce2c0c872629"><div style="font-size:1.5em"><span class="icon">🐾</span></div><div style="width:100%"><strong>Traversal (2).</strong> You can move across difficult terrain without expending extra movement if you are using your walking or climbing speed.</div></figure><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29b58c84-a2a1-4169-a6d7-56fa6e961e92"><div style="font-size:1.5em"><span class="icon">👀</span></div><div style="width:100%"><strong>Skill Proficiency, Perception (2).</strong> You have proficiency in the Perception skill.</div></figure></div><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="73a78a84-eb76-4583-9b34-85280dfc9b8e"><div style="font-size:1.5em"><span class="icon">📐</span></div><div style="width:100%"><strong>Fury of the Small (1). </strong>When you damage a creature larger than you with an attack or a spell, you can cause the attack or spell to deal extra damage equal to your level. You regain use of this trait after a short rest.</div></figure></div><p id="127ddbcc-068f-803e-a0cc-d1e53b189c15" class="">
+</p></div></details></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

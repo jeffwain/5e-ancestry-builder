@@ -1,0 +1,702 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Species and ancestries</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3d774d7c-7df3-4052-8d33-d4cab6bb046d" class="page serif"><header><div class="page-header-icon undefined"><span class="icon">🧬</span></div><h1 class="page-title">Species and ancestries</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="bfe51d5b-fc5e-4fdd-87e3-80e2426bc7f2"><div style="font-size:1.5em"><span class="icon">🧙‍♂️</span></div><div style="width:100%"><em><strong>This is a work in progress.</strong></em><em> Still working on some ideas, so feel free to chime in with notes or questions.</em></div></figure><p id="6db8a408-67d4-4c38-a664-b85656c97d49" class="">
+</p><nav id="c486e0ed-6ae9-4e93-8b29-5b74cb0bd032" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#25fcf693-f0b2-496b-babc-236d8671b22e">Common ancestries</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#20b6aa90-8d99-43ff-8457-8dfb72539eea">Rare ancestries</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#341a95af-2416-4612-9a99-4a7f86d04198">Versatile ancestries</a></div></nav><h1 id="25fcf693-f0b2-496b-babc-236d8671b22e" class="">Common ancestries</h1><hr id="106cb3ec-db14-44a9-9187-cfd4d1c1505a"/><p id="945665a7-e513-427a-8e21-0c048b3f114c" class="">Common ancestries are collectively known as “kith.”</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a405fe24-5aba-4584-8b3d-ee68d567521e"><div style="font-size:1.5em"><span class="icon">🌅</span></div><div style="width:100%"><strong>Human</strong><p id="ec43543b-e3f4-49a8-9122-fcf8202ae62f" class="">The most common sentient creatures in Eora are humans, who have created cultures and settlements in all environments across the world and planes beyond. Humans are resilient and creative, and have made their homes across the world in every biome.</p><p id="4034f6b1-652f-4b98-9239-a5c4ee061b67" class=""><a href="https://www.notion.so/Humans-873e5832070244358a821027a745e0e1?pvs=21"><em>Read more about humans</em></a><em> </em>👉🏿</p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="280a9b07-25c6-4d94-a1fe-3ba7b1f83303"><div style="font-size:1.5em"><span class="icon">🏞️</span></div><div style="width:100%"><strong>Dwarf</strong><p id="9f76d2ff-711b-4118-802c-4807625e4499" class="">They are called “smallfolk” or “dwarves” by other kith, but are known to their own kind as “Dwarrow”. Dwarves think of themselves as the original race of Eora, and believe the world is there to serve, provide, and be cared for. Dwarves love craft of all kinds. They are famous for their feats of engineering, constructing elaborate natural cities of living wood, carving huge tunnels underground, massive fortifications into mountains, or even lifting entire cities into the sky, all with great respect and care for the surroundings they inhabit.</p><p id="f7caef50-5945-41a7-91f3-68c8f4cad09e" class=""><em><a href="https://www.notion.so/Dwarves-40e0f6f8751348c8a4f0cc3a87753e5a?pvs=21">Read more about dwarves</a></em><em> 👉🏾</em></p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="cd831998-e10b-4a69-8fa0-d912ff393418"><div style="font-size:1.5em"><span class="icon">🌄</span></div><div style="width:100%"><strong>Half-giant</strong><p id="6642756e-0822-48e0-aaca-0145251f64d2" class="">They are called “half-giants” by most creatures smaller than them, but call themselves goliaths or wodekin. Originally descended of giants, many have strange connections to the world from their primordial ancestries.</p><p id="23205330-34fa-418d-bb29-64e0b7705405" class=""><a href="https://www.notion.so/Half-giants-f2f99104273e4cf98162fc08c81f4b42?pvs=21"><em>Read more about goliaths</em></a> 👉🏽</p></div></figure><p id="f30e8efa-be03-4a23-82e0-adcd9c78d9ec" class="">
+</p><p id="3e8b5f54-49e7-4750-95a5-0080d42b29a1" class="">
+</p><h1 id="20b6aa90-8d99-43ff-8457-8dfb72539eea" class="">Rare ancestries</h1><hr id="8bd1903a-ed99-49f4-8c6f-63e276750b91"/><p id="7e922782-df78-4026-b89a-1587516d4cde" class="">These species are less common on Eora. They may have been created through magic, displaced or migrated from other worlds or planes, or slowly evolved through magical means or from different Godlike parents, and developed cultures of their own over time.<br/><br/></p><p id="47ef9d94-a85a-4f8e-9717-3811b3d0405b" class=""><em><strong>Ancestral fey species</strong></em></p><p id="ad4fc80d-71a7-4066-b4a9-7a0df3c4369f" class="">While they do not share all of the same traits of their ancestors, these species originated in the feywilds.</p><table id="7973c6f1-ff7f-4214-a3be-cce488de2535" class="simple-table"><thead class="simple-table-header"><tr id="67254933-4fd9-46d5-93b9-ad45200eb483"><th id="Y:C|" class="simple-table-header-color simple-table-header"><strong>Ancestry name</strong></th><th id="{hbs" class="simple-table-header-color simple-table-header" style="width:195px"><strong>Descriptor</strong></th><th id="[Vc^" class="simple-table-header-color simple-table-header" style="width:334px"><strong>Types</strong></th></tr></thead><tbody><tr id="bb481d5e-4116-4ed9-8a47-bea4892b7657"><td id="Y:C|" class=""><a href="https://www.notion.so/Elves-e15c26beb7b845edbb5a5ec39cc3a0d6?pvs=21"><span class="icon">🌲</span>Elves</a> </td><td id="{hbs" class="" style="width:195px">Elven</td><td id="[Vc^" class="" style="width:334px">An isolationist hive mind species connected to the forests of the world.</td></tr><tr id="ecad8151-fd53-431b-98d3-5c19023d83b5"><td id="Y:C|" class=""><a href="https://www.notion.so/Gnomes-00a6d8270ff04dc9b991c30f4ba60ce7?pvs=21"><span class="icon">🪂</span>Gnomes</a> </td><td id="{hbs" class="" style="width:195px">Gnomish</td><td id="[Vc^" class="" style="width:334px">A small species that must keep experiencing new things and learning or fade to the Bleaching.</td></tr></tbody></table><p id="f97d4f2b-ab4f-43d8-9716-887c4dfaa4e6" class=""><em><strong>Monstrous species</strong></em></p><table id="3fe9e29c-41d4-44d0-9266-903710822eae" class="simple-table"><thead class="simple-table-header"><tr id="ca07f473-ccab-47c0-ac6a-7f27cbad9ed9"><th id="Y:C|" class="simple-table-header-color simple-table-header"><strong>Ancestry name</strong></th><th id="{hbs" class="simple-table-header-color simple-table-header" style="width:195px"><strong>Descriptor</strong></th><th id="[Vc^" class="simple-table-header-color simple-table-header" style="width:334px"><strong>Types</strong></th></tr></thead><tbody><tr id="9d2e4632-dbbb-4a38-9277-cb5a2400b082"><td id="Y:C|" class=""><a href="https://www.notion.so/Dragonborn-3703a1af083d40cba634e17c9417f6fc?pvs=21"><span class="icon">🐉</span>Dragonborn</a> </td><td id="{hbs" class="" style="width:195px">Dragon descended</td><td id="[Vc^" class="" style="width:334px">(Non-playable) Descended of dragons, most dragonborn are at best hostile toward kith when encountered.</td></tr><tr id="aa20ac0e-8004-4559-830a-0a1afc26c49f"><td id="Y:C|" class=""><a href="https://www.notion.so/Goblin-ade731c6a91c4c789fae1140e1589250?pvs=21"><span class="icon">👽</span>Goblin</a> </td><td id="{hbs" class="" style="width:195px">Goblinoid</td><td id="[Vc^" class="" style="width:334px">An alien species of scavenging predator that grows in spawning pools and evolves at older ages.</td></tr><tr id="bf06b42c-38fd-4177-b29e-1333fbcd2186"><td id="Y:C|" class=""><a href="https://www.notion.so/Myconid-755e02995bde425498372fef7c8210bc?pvs=21"><span class="icon">🍄</span>Myconid</a> </td><td id="{hbs" class="" style="width:195px">Mushroom</td><td id="[Vc^" class="" style="width:334px">Fungal communal species that live in the deep places of the earth.</td></tr><tr id="fb80b82b-f232-4c4b-986c-60d25186acf9"><td id="Y:C|" class=""><a href="https://www.notion.so/Returned-7e3d434e9a604c1abecc29f1b8c19536?pvs=21"><span class="icon">👻</span>Returned</a> </td><td id="{hbs" class="" style="width:195px">Ghost</td><td id="[Vc^" class="" style="width:334px">A soul returned to Terra that has taken a physical form.</td></tr><tr id="699c1c44-3154-47cd-b9f3-35cb339f8e06"><td id="Y:C|" class=""><a href="https://www.notion.so/Yuan-ti-a77227110f5e450dbba40306e488b1bc?pvs=21"><span class="icon">🐍</span>Yuan-ti</a> </td><td id="{hbs" class="" style="width:195px">Snake-like</td><td id="[Vc^" class="" style="width:334px">(Non-playable) A half-snake species descended from naga that live in the deep places of the earth.</td></tr></tbody></table><p id="b18a9cbb-51da-4ebf-a378-8734031714b1" class=""><strong><em>Awoken</em></strong></p><p id="215cc57d-1526-41e9-9e8d-20ceffbd7acc" class="">Each of the following below is considered a single ancestry, though many refer to them by their appearance. A small Mrrshan that looks like a lynx will often be called “lionkin” or “catfolk,” and an Iruxi that looks like a gila will likely be called “lizardkin” or “lizardfolk.” Many of these species have become so commonplace that they have established their own civilizations.</p><table id="06ce8738-3666-4da7-88fb-84f09bdd9fb3" class="simple-table"><thead class="simple-table-header"><tr id="016a3612-bdb6-4cb2-9102-d9b0b8cae739"><th id="Y:C|" class="simple-table-header-color simple-table-header"><strong>Ancestry name</strong></th><th id="{hbs" class="simple-table-header-color simple-table-header" style="width:195px"><strong>Descriptor</strong></th><th id="[Vc^" class="simple-table-header-color simple-table-header" style="width:334px"><strong>Types</strong></th></tr></thead><tbody><tr id="a767543e-24ff-49b6-a796-52b3673bc5eb"><td id="Y:C|" class=""><a href="https://www.notion.so/Aven-77100064c0ba43b28552e1bbe384d57e?pvs=21"><span class="icon">🦉</span>Aven</a> </td><td id="{hbs" class="" style="width:195px">Birdlike</td><td id="[Vc^" class="" style="width:334px">A bird-like humanoid.</td></tr><tr id="94bcdbee-d38c-4a27-9b71-fc4c3b2f3c56"><td id="Y:C|" class=""><a href="https://www.notion.so/Grung-e3e068d78f524fba9bf78a2790d36ba2?pvs=21"><span class="icon">🐸</span>Grung</a> </td><td id="{hbs" class="" style="width:195px">Amphibious</td><td id="[Vc^" class="" style="width:334px">A generally frog or toad-like amphibious humanoid.</td></tr><tr id="72d68cf5-e2c8-4102-be8e-9cc8085a34d0"><td id="Y:C|" class=""><a href="https://www.notion.so/Iruxi-d5a52f1e4b584904966d59056efc8a20?pvs=21"><span class="icon">🐊</span>Iruxi</a> </td><td id="{hbs" class="" style="width:195px">Reptilian</td><td id="[Vc^" class="" style="width:334px">Most commonly lizard-like, or reptilian humanoid.</td></tr><tr id="0a0871dd-7be8-44d5-a5c9-a970b4a34afd"><td id="Y:C|" class=""><a href="https://www.notion.so/Khenra-830278e8ef94438badb2244743dc776b?pvs=21"><span class="icon">🐩</span>Khenra</a> </td><td id="{hbs" class="" style="width:195px">Canine</td><td id="[Vc^" class="" style="width:334px">A canine-like humanoid resembling wild dogs, foxes, or jackals.</td></tr><tr id="e94506d9-cbc4-4433-8af7-f5cef4c4912b"><td id="Y:C|" class=""><a href="https://www.notion.so/Mrrshan-bb1c1edf9d2849ecbdfb74ac18d0514e?pvs=21"><span class="icon">🐈‍⬛</span>Mrrshan</a> </td><td id="{hbs" class="" style="width:195px">Feline</td><td id="[Vc^" class="" style="width:334px">Both small and large feline humanoids.</td></tr><tr id="5fffbe23-2cab-4536-aea6-f2da52c24127"><td id="Y:C|" class=""><a href="https://www.notion.so/Muul-0fda5ea4290c4fc5854a221ff0b294e8?pvs=21"><span class="icon">🐘</span>Muul</a> </td><td id="{hbs" class="" style="width:195px">Large mammalian</td><td id="[Vc^" class="" style="width:334px">Originated as a slur, these humanoids usually have the form of large mammals like bulls, elephants, gorillas, or hippos.</td></tr><tr id="fa955d72-4730-4d67-b26b-7e5e134cd338"><td id="Y:C|" class=""><a href="https://www.notion.so/Ysoki-1e501a83c7074ddab5f29b3fa9eea5ae?pvs=21"><span class="icon">🐀</span>Ysoki</a> </td><td id="{hbs" class="" style="width:195px">Small mammalian</td><td id="[Vc^" class="" style="width:334px">Rodents and marsupials</td></tr></tbody></table><p id="6d82098b-5b82-403e-b848-d888b7f7bf22" class="">
+</p><h1 id="341a95af-2416-4612-9a99-4a7f86d04198" class="">Versatile ancestries</h1><hr id="d7444001-4ea1-46bc-a659-2edbbd96c422"/><p id="f8278c77-cf0b-453f-8c0d-7bb0d88c0a97" class="">Humanoids influenced by the planes, gods, or magic often take on unnatural traits and appearances based on their influence. One may find a human with webbed hands, a goliath whose eyes glow red at night, or a dwarf with copper hair. There are also those with even more fully unnatural appearances such as a dwarf with the eyes, tongue, and skin of a frog, a half giant with red skin and flames for hair, or a human with horns, vestigial wings, and a scorpion tail. Non-kith occasionally take on these influences, but it seems to be exceedingly rare.</p><p id="151ddbcc-068f-80c4-9281-c095eba16007" class="">If you want to build a character with partial stats of a godlike, pick an archetype, then swap out <strong>up to 8 points</strong> of traits out of that archetype.</p><p id="b3f231fc-c8f9-4311-83a2-a03ced306927" class="">
+</p><p id="c374b36c-700f-4753-9352-cf16eda6810a" class=""><em><strong>🔮 Godlike</strong></em></p><p id="5a089f7f-6085-4932-9e4d-c2fdd59bfe66" class="">Generally human, dwarven, or half-giants that have been blessed, cursed, or influenced by magic at birth, through magical means, or otherwise created through magic. All godlike share two commonalities: they manifest physical features from their magical heritage, and their eyes are all unnatural in some way.</p><table id="785a641a-d9a2-432b-87a6-bf311d53eac6" class="simple-table"><thead class="simple-table-header"><tr id="258370a1-1039-4db0-b6f1-669607b25758"><th id="Y:C|" class="simple-table-header-color simple-table-header"><strong>Ancestry name</strong></th><th id="{hbs" class="simple-table-header-color simple-table-header" style="width:195px"><strong>Descriptor</strong></th><th id="[Vc^" class="simple-table-header-color simple-table-header" style="width:334px"><strong>Description</strong></th></tr></thead><tbody><tr id="7c090852-89ea-472d-bc81-6e8d07e9c3ca"><td id="Y:C|" class=""><a href="https://www.notion.so/Undine-894ace4d80a24cef8ea18ef4342dd65a?pvs=21"><span class="icon">🐟</span>Undine</a> </td><td id="{hbs" class="" style="width:195px">Water/Marine</td><td id="[Vc^" class="" style="width:334px">Marine godlike most often have features resembling creatures of the ocean and/or elemental water influences.</td></tr><tr id="87f158bc-af69-4167-92bb-5a523ec8e3cc"><td id="Y:C|" class=""><a href="https://www.notion.so/Oread-1bf758b7ea3a40a89fa2e75ea46c387d?pvs=21"><span class="icon">🍂</span>Oread</a>  </td><td id="{hbs" class="" style="width:195px">Plant/Animal</td><td id="[Vc^" class="" style="width:334px">Nature godlike bear mammalian animal features, plantlike growths, or earthen visages.</td></tr><tr id="59bc127e-8e62-40e6-90f2-8de0c20fa3a0"><td id="Y:C|" class=""><a href="https://www.notion.so/Talos-b688867c582242aea58fdf4df1732eca?pvs=21"><span class="icon">⛰️</span>Talos</a>  </td><td id="{hbs" class="" style="width:195px">Stone/Metal/Crystal</td><td id="[Vc^" class="" style="width:334px">Earthen, stony, crystalline, and metallic, these godlike are manifestations of Eora itself.</td></tr><tr id="acd9d949-76d3-443e-a278-cd1c512284f0"><td id="Y:C|" class=""><a href="https://www.notion.so/Asir-c7f000aed887458682db17e59a970d1d?pvs=21"><span class="icon">🌬️</span>Asir</a>  </td><td id="{hbs" class="" style="width:195px">Air/Flying/Celestial</td><td id="[Vc^" class="" style="width:334px">Blessed or otherwise descended from celestials, slyph godlike manifest with features of air, the heavens, or flying creatures.</td></tr><tr id="142ddbcc-068f-80cf-8ac0-f383b16616a0"><td id="Y:C|" class=""><a href="https://www.notion.so/Ifriti-13fddbcc068f801a8d87e4acf0ba9733?pvs=21"><span class="icon">❤️‍🔥</span>Ifriti</a> </td><td id="{hbs" class="" style="width:195px">Fire/Ash/Magma</td><td id="[Vc^" class="" style="width:334px">Born of fire with fiery dispositions to match, these godlike glow with everburning flame.</td></tr><tr id="d542052f-7202-46aa-9985-015ee0533055"><td id="Y:C|" class=""><a href="https://www.notion.so/Tiefling-763f33a2f2fa4af2b4b8536efac8bee5?pvs=21"><span class="icon">😈</span>Tiefling</a> </td><td id="{hbs" class="" style="width:195px">Abyssal/Demonic/Shadow</td><td id="[Vc^" class="" style="width:334px">Cursed or otherwise descended from shadow, demons, or devils, often killed at birth out of fear or prejudice.</td></tr></tbody></table><p id="8d2d2c02-3679-4f1e-ae78-854bb73b1aa7" class=""><em><a href="https://www.notion.so/Godlike-6f332549d5744fffb03f06f10b71fbf2?pvs=21">Read more about godlike appearances.</a></em><em> </em>👉</p><p id="13fddbcc-068f-8074-973e-ff3121e885fb" class="">
+</p><p id="751fc1cb-5674-4f7c-959e-843db0bfdbbb" class="">
+</p><p id="3c765cb0-5006-44fb-83cf-abcb2462ba5f" class=""><strong><em>🧚‍♀️Fey</em></strong></p><p id="47a3c31a-6c2f-4740-a8f8-325bebf937b0" class="">The chaotic magic of the feywilds tends to affect creatures’ moods, motivations, desires, or dreams more than their physical appearance. Creatures living there tend to have strong emotions, limited inhibitions, and a more mischievous self-absorbed personality than individuals on Terra, as the magic of the feywilds strongly influences characters’ emotions. Physically, the influence of fey magic manifests quickly, affecting creatures living there after about 10 years (fey time).</p><p id="74cfa600-65eb-4556-b090-c142a17f1164" class=""><a href="https://www.notion.so/Fey-7be713ac9c464b15aa6caade7b0c9211?pvs=21"><em>Fey influences have traits from the “fey” ancestry.</em></a><em> </em>👉</p><p id="d73048c9-d3de-48b5-aec1-ef8dad987439" class="">
+</p><p id="24dd1f2c-aca3-46f0-87b2-9a52b9648f33" class=""><strong><em>🍄 Shadowborn</em></strong></p><p id="606f5f37-50d2-4254-99d3-f5854ad42a27" class="">The shadowy magic of the fade affects all creatures that encounter it after some time. Much like the magic of the feywilds, the omnipresent magic of the shadowfell infuses creatures born there with shadow and illusion magic.</p><p id="fcd952df-554f-48fa-be21-c43c15132b72" class=""><a href="https://www.notion.so/Fetchling-0d37415a912b4f9c8322ac97d26c59d0?pvs=21"><em>Shadowfell influences have traits from the “shadowborn” ancestry.</em></a><em> </em>👉</p><p id="96f35e77-5100-4961-9b05-25ce3e35ce71" class="">
+</p><p id="4347c176-142a-4cf6-9fd9-1ab695d7de8e" class="">
+</p><p id="bdc6ca07-b7fb-4ae3-bc80-5bedf4644b61" class="">
+</p><p id="445e753b-7633-4395-84f1-4b027b78393b" class="">
+</p><p id="cb7cd762-cce4-430a-87c6-94a7815a238b" class="">
+</p><p id="d6fb7d2c-30cb-4bf7-95c5-b8d2dc74013e" class="">
+</p><p id="d652bba5-7752-4d12-a452-1927a3dcaef1" class="">
+</p><p id="7479563e-0f0f-4a96-91b7-9418c88cca33" class="">
+</p><hr id="d68eab91-4515-4be1-a154-56536b5eaaf3"/><p id="337bd45a-b047-402a-b8c7-35dfbaf96993" class="">
+</p><figure id="6f332549-d574-4fff-b03f-06f10b71fbf2" class="link-to-page"><a href="https://www.notion.so/Godlike-6f332549d5744fffb03f06f10b71fbf2?pvs=21"><span class="icon">🔮</span>Godlike</a></figure><figure id="2eca9aa6-d705-458a-8a84-f2a64c23779e" class="link-to-page"><a href="https://www.notion.so/Ancestry-DBs-2eca9aa6d705458a8a84f2a64c23779e?pvs=21"><img class="icon" src="https://www.notion.so/icons/database_lightgray.svg"/>Ancestry DBs</a></figure><p id="190f210b-8d46-41c4-88e4-4b61dd9224c9" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

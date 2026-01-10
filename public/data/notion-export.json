@@ -1,0 +1,323 @@
+{
+  "exportDate": "2023-05-01T12:00:00.000Z",
+  "ancestries": [
+    {
+      "id": "sample-ancestry-1",
+      "properties": {
+        "Name": {
+          "title": [
+            {
+              "plain_text": "Sample Ancestry"
+            }
+          ]
+        },
+        "Description": {
+          "rich_text": [
+            {
+              "plain_text": "This is a sample ancestry exported from Notion."
+            }
+          ]
+        },
+        "Icon": {
+          "rich_text": [
+            {
+              "plain_text": "🧬"
+            }
+          ]
+        },
+        "IsCustom": {
+          "checkbox": false
+        },
+        "BaseTraits": {
+          "relation": [
+            {
+              "id": "sample-trait-1"
+            },
+            {
+              "id": "sample-trait-2"
+            }
+          ]
+        },
+        "Archetypes": {
+          "relation": [
+            {
+              "id": "sample-archetype-1"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "archetypes": [
+    {
+      "id": "sample-archetype-1",
+      "properties": {
+        "Name": {
+          "title": [
+            {
+              "plain_text": "Sample Archetype"
+            }
+          ]
+        },
+        "Description": {
+          "rich_text": [
+            {
+              "plain_text": "This is a sample archetype exported from Notion."
+            }
+          ]
+        },
+        "Icon": {
+          "rich_text": [
+            {
+              "plain_text": "🧙"
+            }
+          ]
+        },
+        "Ancestry": {
+          "relation": [
+            {
+              "id": "sample-ancestry-1"
+            }
+          ]
+        },
+        "Traits": {
+          "relation": [
+            {
+              "id": "sample-trait-3"
+            }
+          ]
+        },
+        "Image": {
+          "files": []
+        }
+      }
+    }
+  ],
+  "traits": [
+    {
+      "id": "sample-trait-1",
+      "properties": {
+        "Name": {
+          "title": [
+            {
+              "plain_text": "Darkvision"
+            }
+          ]
+        },
+        "Description": {
+          "rich_text": [
+            {
+              "plain_text": "You can see in dim light within 60 feet of you as if it were bright light."
+            }
+          ]
+        },
+        "Cost": {
+          "number": 3
+        },
+        "Type": {
+          "select": {
+            "name": "ancestry"
+          }
+        },
+        "Category": {
+          "select": {
+            "name": "senses"
+          }
+        },
+        "Required": {
+          "checkbox": false
+        },
+        "AvailableInPointBuy": {
+          "checkbox": true
+        },
+        "SpellReferences": {
+          "relation": []
+        }
+      }
+    },
+    {
+      "id": "sample-trait-2",
+      "properties": {
+        "Name": {
+          "title": [
+            {
+              "plain_text": "Natural Armor"
+            }
+          ]
+        },
+        "Description": {
+          "rich_text": [
+            {
+              "plain_text": "Your AC is 13 + your Dexterity modifier."
+            }
+          ]
+        },
+        "Cost": {
+          "number": 2
+        },
+        "Type": {
+          "select": {
+            "name": "ancestry"
+          }
+        },
+        "Category": {
+          "select": {
+            "name": "defense"
+          }
+        },
+        "Required": {
+          "checkbox": false
+        },
+        "AvailableInPointBuy": {
+          "checkbox": true
+        },
+        "SpellReferences": {
+          "relation": []
+        }
+      }
+    },
+    {
+      "id": "sample-trait-3",
+      "properties": {
+        "Name": {
+          "title": [
+            {
+              "plain_text": "Innate Spellcasting"
+            }
+          ]
+        },
+        "Description": {
+          "rich_text": [
+            {
+              "plain_text": "You know the Detect Magic spell and can cast it once per long rest."
+            }
+          ]
+        },
+        "Cost": {
+          "number": 3
+        },
+        "Type": {
+          "select": {
+            "name": "ancestry"
+          }
+        },
+        "Category": {
+          "select": {
+            "name": "magic"
+          }
+        },
+        "Required": {
+          "checkbox": false
+        },
+        "AvailableInPointBuy": {
+          "checkbox": true
+        },
+        "SpellReferences": {
+          "relation": [
+            {
+              "id": "sample-spell-1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "sample-trait-4",
+      "properties": {
+        "Name": {
+          "title": [
+            {
+              "plain_text": "Cultural Heritage"
+            }
+          ]
+        },
+        "Description": {
+          "rich_text": [
+            {
+              "plain_text": "You gain proficiency in one skill of your choice that is appropriate to your cultural background."
+            }
+          ]
+        },
+        "Cost": {
+          "number": 2
+        },
+        "Type": {
+          "select": {
+            "name": "culture"
+          }
+        },
+        "Category": {
+          "select": {
+            "name": "skills"
+          }
+        },
+        "Required": {
+          "checkbox": false
+        },
+        "AvailableInPointBuy": {
+          "checkbox": true
+        },
+        "SpellReferences": {
+          "relation": []
+        }
+      }
+    }
+  ],
+  "spells": [
+    {
+      "id": "sample-spell-1",
+      "properties": {
+        "Name": {
+          "title": [
+            {
+              "plain_text": "Detect Magic"
+            }
+          ]
+        },
+        "Description": {
+          "rich_text": [
+            {
+              "plain_text": "You sense the presence of magic within 30 feet of you."
+            }
+          ]
+        },
+        "Level": {
+          "number": 1
+        },
+        "School": {
+          "select": {
+            "name": "Divination"
+          }
+        },
+        "CastingTime": {
+          "rich_text": [
+            {
+              "plain_text": "1 action"
+            }
+          ]
+        },
+        "Range": {
+          "rich_text": [
+            {
+              "plain_text": "Self"
+            }
+          ]
+        },
+        "Components": {
+          "rich_text": [
+            {
+              "plain_text": "V, S"
+            }
+          ]
+        },
+        "Duration": {
+          "rich_text": [
+            {
+              "plain_text": "Concentration, up to 10 minutes"
+            }
+          ]
+        }
+      }
+    }
+  ]
+} 

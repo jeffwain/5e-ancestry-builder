@@ -1,0 +1,380 @@
+import React, { useState, useEffect, useContext } from 'react';
+import { useNotionTraits } from '../hooks/useNotionTraits';
+import { CharacterContext } from '../context/CharacterContext';
+
+// Main Point-Buy UI Component
+const PointBuySystem = () => {
+  const { traits, categories, loading, error } = useNotionTraits();
+  const { character, dispatch } = useCharacter();
+  
+  const [selectedAncestries, setSelectedAncestries] = useState([]);
+  const [selectedCultures, setSelectedCultures] = useState([]);
+  const [pointsSpent, setPointsSpent] = useState(0);
+  const [remainingPoints, setRemainingPoints] = useState(16);
+  
+  // Calculate points and validate selections whenever traits change
+  useEffect(() => {
+    if (character) {
+      const ancestryTraits = character.selectedTraits.filter(trait => trait.type === 'ancestry');
+      const cultureTraits = character.selectedTraits.filter(trait => trait.type === 'culture');
+      
+      setSelectedAncestries(ancestryTraits);
+      setSelectedCultures(cultureTraits);
+      
+      const totalPointsSpent = character.selectedTraits.reduce((sum, trait) => sum + trait.cost, 0);
+      setPointsSpent(totalPointsSpent);
+      setRemainingPoints(16 - totalPointsSpent);
+    }
+  }, [character]);
+  
+  // Handle trait selection
+  const handleSelectTrait = (trait) => {
+    // Check if we can add this trait
+    if (trait.type === 'ancestry' && selectedAncestries.length >= 2) {
+      alert('You can only select up to 2 ancestries.');
+      return;
+    }
+    
+    if (trait.type === 'culture' && selectedCultures.length >= 2) {
+      alert('You can only select up to 2 cultures.');
+      return;
+    }
+    
+    if (trait.cost > remainingPoints) {
+      alert(`Not enough points remaining to select this trait (Cost: ${trait.cost}, Remaining: ${remainingPoints}).`);
+      return;
+    }
+    
+    // Check for required traits
+    if (trait.requiredTraits && trait.requiredTraits.length > 0) {
+      const missingRequiredTraits = trait.requiredTraits.filter(
+        requiredId => !character.selectedTraits.some(t => t.id === requiredId)
+      );
+      
+      if (missingRequiredTraits.length > 0) {
+        const missingTraits = traits.filter(t => missingRequiredTraits.includes(t.id));
+        alert(`This trait requires: ${missingTraits.map(t => t.name).join(', ')}`);
+        return;
+      }
+    }
+    
+    // All checks passed, dispatch selection action
+    dispatch({ type: 'ADD_TRAIT', payload: trait });
+  };
+  
+  // Handle trait deselection
+  const handleDeselectTrait = (trait) => {
+    // Check if this is a required trait for any selected ancestry
+    const isRequired = selectedAncestries.some(ancestry => 
+      ancestry.requiredTraits && ancestry.requiredTraits.includes(trait.id)
+    );
+    
+    if (isRequired) {
+      alert('Cannot remove a required trait. Deselect the ancestry first.');
+      return;
+    }
+    
+    // Check if removing this would leave no culture traits
+    if (trait.type === 'culture' && selectedCultures.length === 1) {
+      alert('You must have at least one culture trait selected.');
+      return;
+    }
+    
+    // All checks passed, dispatch deselection action
+    dispatch({ type: 'REMOVE_TRAIT', payload: trait.id });
+  };
+  
+  // Render loading state
+  if (loading) return <div className="p-4">Loading traits...</div>;
+  
+  // Render error state
+  if (error) return <div className="p-4 text-red-500">Error: {error}</div>;
+  
+  return (
+    <div className="p-4">
+      <PointsDisplay 
+        total={16} 
+        spent={pointsSpent} 
+        remaining={remainingPoints} 
+      />
+      
+      <CategorySelection 
+        ancestryCount={selectedAncestries.length}
+        cultureCount={selectedCultures.length}
+      />
+      
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Ancestry Traits Section */}
+        <div className="border rounded p-4">
+          <h2 className="text-xl font-semibold mb-4">Ancestry Traits</h2>
+          
+          {categories
+            .filter(category => category.type === 'ancestry')
+            .map(category => (
+              <TraitCategory 
+                key={category.id}
+                category={category}
+                traits={traits.filter(t => t.categoryId === category.id)}
+                selectedTraits={character.selectedTraits}
+                remainingPoints={remainingPoints}
+                onSelectTrait={handleSelectTrait}
+                onDeselectTrait={handleDeselectTrait}
+              />
+            ))}
+        </div>
+        
+        {/* Culture Traits Section */}
+        <div className="border rounded p-4">
+          <h2 className="text-xl font-semibold mb-4">Culture Traits</h2>
+          
+          {categories
+            .filter(category => category.type === 'culture')
+            .map(category => (
+              <TraitCategory 
+                key={category.id}
+                category={category}
+                traits={traits.filter(t => t.categoryId === category.id)}
+                selectedTraits={character.selectedTraits}
+                remainingPoints={remainingPoints}
+                onSelectTrait={handleSelectTrait}
+                onDeselectTrait={handleDeselectTrait}
+              />
+            ))}
+        </div>
+      </div>
+      
+      <SelectedTraitsSummary 
+        selectedTraits={character.selectedTraits}
+        onDeselectTrait={handleDeselectTrait}
+      />
+    </div>
+  );
+};
+
+// Points Display Component
+const PointsDisplay = ({ total, spent, remaining }) => {
+  return (
+    <div className="mb-4 p-3 bg-gray-100 rounded-lg flex justify-between items-center">
+      <div>
+        <span className="font-bold">Total Points:</span> {total}
+      </div>
+      <div>
+        <span className="font-bold">Spent:</span> {spent}
+      </div>
+      <div className={`font-bold ${remaining < 0 ? 'text-red-600' : remaining < 3 ? 'text-yellow-600' : 'text-green-600'}`}>
+        <span>Remaining:</span> {remaining}
+      </div>
+    </div>
+  );
+};
+
+// Category Selection Counter
+const CategorySelection = ({ ancestryCount, cultureCount }) => {
+  return (
+    <div className="grid grid-cols-2 gap-4 mb-6">
+      <div className={`p-3 rounded-lg ${ancestryCount >= 2 ? 'bg-yellow-100' : 'bg-gray-100'}`}>
+        <h3 className="font-semibold">Ancestries Selected:</h3>
+        <div className="text-lg">
+          {ancestryCount} / 2 <span className="text-sm text-gray-500">(maximum)</span>
+        </div>
+      </div>
+      <div className={`p-3 rounded-lg ${cultureCount === 0 ? 'bg-red-100' : cultureCount >= 2 ? 'bg-yellow-100' : 'bg-gray-100'}`}>
+        <h3 className="font-semibold">Cultures Selected:</h3>
+        <div className="text-lg">
+          {cultureCount} / 2 <span className="text-sm text-gray-500">(at least 1 required)</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Trait Category Component
+const TraitCategory = ({ 
+  category, 
+  traits, 
+  selectedTraits, 
+  remainingPoints,
+  onSelectTrait, 
+  onDeselectTrait 
+}) => {
+  const [isExpanded, setIsExpanded] = useState(true);
+  
+  if (traits.length === 0) return null;
+  
+  return (
+    <div className="mb-4">
+      <div 
+        className="flex justify-between items-center cursor-pointer bg-gray-200 p-2 rounded"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        <h3 className="font-semibold">{category.name}</h3>
+        <span>{isExpanded ? '▼' : '►'}</span>
+      </div>
+      
+      {isExpanded && (
+        <div className="ml-2 mt-2 space-y-3">
+          {traits.map(trait => {
+            const isSelected = selectedTraits.some(t => t.id === trait.id);
+            const isDisabled = !isSelected && (
+              trait.cost > remainingPoints || 
+              (trait.type === 'ancestry' && selectedTraits.filter(t => t.type === 'ancestry').length >= 2) ||
+              (trait.type === 'culture' && selectedTraits.filter(t => t.type === 'culture').length >= 2)
+            );
+            const isRequired = trait.isRequired || false;
+            
+            return (
+              <TraitCard
+                key={trait.id}
+                trait={trait}
+                isSelected={isSelected}
+                isDisabled={isDisabled}
+                isRequired={isRequired}
+                onSelect={() => onSelectTrait(trait)}
+                onDeselect={() => onDeselectTrait(trait)}
+              />
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Trait Card Component
+const TraitCard = ({ 
+  trait, 
+  isSelected, 
+  isDisabled, 
+  isRequired,
+  onSelect, 
+  onDeselect 
+}) => {
+  return (
+    <div 
+      className={`border rounded p-3 ${
+        isSelected 
+          ? 'bg-green-50 border-green-300' 
+          : isDisabled 
+            ? 'bg-gray-100 opacity-60' 
+            : 'bg-white hover:bg-gray-50'
+      } ${isRequired ? 'border-l-4 border-l-yellow-400' : ''}`}
+    >
+      <div className="flex justify-between items-start">
+        <div className="flex items-center">
+          <h4 className="font-medium">
+            {trait.name} 
+            <span className="ml-1 text-sm font-normal text-gray-500">
+              ({trait.cost} point{trait.cost !== 1 ? 's' : ''})
+            </span>
+          </h4>
+          {isRequired && (
+            <span className="ml-2 text-xs bg-yellow-200 text-yellow-800 px-1 py-0.5 rounded">
+              Required
+            </span>
+          )}
+        </div>
+        
+        <div>
+          {isSelected ? (
+            <button
+              onClick={onDeselect}
+              disabled={isRequired}
+              className={`text-sm px-2 py-1 rounded ${
+                isRequired 
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
+                  : 'bg-red-50 text-red-600 hover:bg-red-100'
+              }`}
+            >
+              Remove
+            </button>
+          ) : (
+            <button
+              onClick={onSelect}
+              disabled={isDisabled}
+              className={`text-sm px-2 py-1 rounded ${
+                isDisabled 
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
+                  : 'bg-blue-50 text-blue-600 hover:bg-blue-100'
+              }`}
+            >
+              Select
+            </button>
+          )}
+        </div>
+      </div>
+      
+      <div className="mt-1 text-sm text-gray-600">
+        {trait.description}
+      </div>
+    </div>
+  );
+};
+
+// Selected Traits Summary
+const SelectedTraitsSummary = ({ selectedTraits, onDeselectTrait }) => {
+  if (selectedTraits.length === 0) {
+    return null;
+  }
+  
+  const ancestryTraits = selectedTraits.filter(t => t.type === 'ancestry');
+  const cultureTraits = selectedTraits.filter(t => t.type === 'culture');
+  
+  return (
+    <div className="mt-8 border-t pt-4">
+      <h2 className="text-xl font-semibold mb-4">Selected Traits Summary</h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h3 className="font-medium mb-2">Ancestry Traits ({ancestryTraits.length}/2):</h3>
+          {ancestryTraits.length > 0 ? (
+            <ul className="ml-4 list-disc">
+              {ancestryTraits.map(trait => (
+                <li key={trait.id} className="mb-1">
+                  <span className="font-medium">{trait.name}</span> ({trait.cost} pts)
+                  <button
+                    onClick={() => onDeselectTrait(trait)}
+                    className="ml-2 text-xs text-red-500 hover:text-red-700"
+                  >
+                    ✕
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-sm text-gray-500 italic">No ancestry traits selected</p>
+          )}
+        </div>
+        
+        <div>
+          <h3 className="font-medium mb-2">Culture Traits ({cultureTraits.length}/2):</h3>
+          {cultureTraits.length > 0 ? (
+            <ul className="ml-4 list-disc">
+              {cultureTraits.map(trait => (
+                <li key={trait.id} className="mb-1">
+                  <span className="font-medium">{trait.name}</span> ({trait.cost} pts)
+                  <button
+                    onClick={() => onDeselectTrait(trait)}
+                    className="ml-2 text-xs text-red-500 hover:text-red-700"
+                    disabled={cultureTraits.length === 1}
+                  >
+                    ✕
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-sm text-red-500 italic">At least one culture trait required!</p>
+          )}
+        </div>
+      </div>
+      
+      <div className="mt-4 p-3 bg-gray-100 rounded-lg">
+        <p className="font-medium">
+          Total Points Spent: {selectedTraits.reduce((sum, trait) => sum + trait.cost, 0)} / 16
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default PointBuySystem;
