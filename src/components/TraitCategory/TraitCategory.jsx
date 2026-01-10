@@ -12,8 +12,13 @@ export function TraitCategory({ category, categoryId, type, showBadge = true }) 
   // Get the required trait if there is one
   const requiredTrait = category.traits?.find(t => t.required);
 
+  const categoryClass = [
+    styles.category,
+    type && styles[type]
+  ].filter(Boolean).join(' ');
+
   return (
-    <div className={styles.category}>
+    <div className={categoryClass}>
       <button 
         className={styles.header}
         onClick={toggleExpand}

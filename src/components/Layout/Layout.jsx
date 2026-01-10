@@ -46,10 +46,7 @@ export function Layout({
       <main className={styles.main}>
         {/* Core Attributes Section */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            <span className={styles.sectionIcon}>⚙️</span>
-            Core Attributes
-          </h2>
+          <h2 className={styles.sectionTitle}>Core Attributes</h2>
           <p className={styles.sectionDesc}>
             Choose your size (required), and optionally enhance your speed or darkvision.
           </p>
@@ -67,7 +64,6 @@ export function Layout({
         {/* Heritage Section */}
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>
-            <span className={styles.sectionIcon}>🧬</span>
             Heritage Traits
             <span className={styles.sectionLimit}>(max 2 categories)</span>
           </h2>
@@ -89,7 +85,6 @@ export function Layout({
         {/* Culture Section */}
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>
-            <span className={styles.sectionIcon}>📚</span>
             Culture Traits
             <span className={styles.sectionLimit}>(min 1, max 2 categories)</span>
           </h2>
