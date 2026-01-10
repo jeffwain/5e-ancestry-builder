@@ -120,732 +120,738 @@
     }
   },
   "heritage": {
-    "planar": {
-      "elemental": {
-        "name": "Elemental",
-        "description": "You have the blood of an elemental, such as a genie, in your ancestry.",
-        "requiredTrait": "elemental-attunement",
-        "traits": [
-          {
-            "id": "elemental-attunement",
-            "name": "Elemental Attunement",
-            "description": "If you have elemental ancestry, you must take this trait. Choose one element type below.",
-            "points": 0,
-            "required": true,
-            "requiresOption": true,
-            "options": [
-              {"id": "air", "name": "Air", "points": 2, "description": "Resistance to lightning or thunder damage. Darkvision tinged white. Speak Primordial (Auran)."},
-              {"id": "earth", "name": "Earth", "points": 2, "description": "Know stone forming, manipulate earth, or blade ward cantrip (as bonus action PB/long rest). Speak Primordial (Terran)."},
-              {"id": "fire", "name": "Fire", "points": 3, "description": "Resistance to fire damage. Darkvision in red. Speak Primordial (Ignan)."},
-              {"id": "nature", "name": "Nature", "points": 2, "description": "Resistance to acid or poison damage. Darkvision brown/green. Speak Primordial (Giant)."},
-              {"id": "water", "name": "Water", "points": 2, "description": "Resistance to cold damage. Darkvision blue. Speak Primordial (Aquan)."}
-            ]
-          },
-          {
-            "id": "unending-breath",
-            "name": "Unending Breath",
-            "description": "You can hold your breath indefinitely while you're not incapacitated.",
-            "points": 1,
-            "requires": ["elemental-attunement"]
-          },
-          {
-            "id": "elemental-cantrip",
-            "name": "Elemental Cantrip",
-            "description": "You know one cantrip associated with your elemental attunement.",
-            "points": 2,
-            "requires": ["elemental-attunement"]
-          },
-          {
-            "id": "elemental-strike",
-            "name": "Elemental Strike",
-            "description": "When you damage a creature with an attack, you can cause the attack to deal extra damage of your elemental type. Usable Proficiency Bonus times per long rest.",
-            "points": 3,
-            "requires": ["elemental-attunement"]
-          },
-          {
-            "id": "elemental-magic",
-            "name": "Elemental Magic",
-            "description": "Starting at 3rd level, cast one 1st-level spell of your element. At 5th level, cast one 2nd-level spell.",
-            "points": 7,
-            "requires": ["elemental-attunement"]
-          }
-        ]
-      },
-      "fey": {
-        "name": "Fey",
-        "description": "You have the blood of a fey in your ancestry, such as through elvish or gnomish heritage.",
-        "traits": [
-          {
-            "id": "fey-creature",
-            "name": "Fey",
-            "description": "You are a fey creature.",
-            "points": 1
-          },
-          {
-            "id": "trance",
-            "name": "Trance",
-            "description": "You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours of trance-like meditation. After each trance, gain two weapon or tool proficiencies until your next rest.",
-            "points": 2
-          },
-          {
-            "id": "charm-resistance",
-            "name": "Charm Resistance",
-            "description": "You have advantage on saving throws to avoid or end the charmed condition.",
-            "points": 2
-          },
-          {
-            "id": "fey-cantrip",
-            "name": "Fey Cantrip",
-            "description": "You know dancing lights, druidcraft, friends, minor illusion, or vicious mockery.",
-            "points": 2
-          },
-          {
-            "id": "fey-magic",
-            "name": "Fey Magic",
-            "description": "Starting at 3rd level, cast one spell: animal friendship, cause fear, charm person, color spray, enlarge/reduce, faerie fire, hideous laughter, or sleep.",
-            "points": 2
-          },
-          {
-            "id": "greater-fey-magic",
-            "name": "Greater Fey Magic",
-            "description": "Starting at 5th level, cast one spell: alter self, crown of madness, disorient, invisibility, mischief, or suggestion.",
-            "points": 4,
-            "requires": ["fey-magic"]
-          },
-          {
-            "id": "fey-step",
-            "name": "Fey Step",
-            "description": "As a bonus action, teleport up to 30 feet to an unoccupied space you can see. Usable Proficiency Bonus times per long rest.",
-            "points": 6
-          },
-          {
-            "id": "fey-step-improvement",
-            "name": "Fey Step Improvement",
-            "description": "Starting at 3rd level, your Fey Step gains a seasonal effect (Autumn, Winter, Spring, or Summer) that can be changed after a long rest.",
-            "points": 2,
-            "requires": ["fey-step"]
-          },
-          {
-            "id": "magic-resistance",
-            "name": "Magic Resistance",
-            "description": "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic.",
-            "points": 6
-          },
-          {
-            "id": "shapechanger",
-            "name": "Shapechanger",
-            "description": "As an action, change your appearance, voice, height, weight, and size between Medium and Small. Lasts until you revert or die.",
-            "points": 7
-          },
-          {
-            "id": "greater-magic-resistance",
-            "name": "Greater Magic Resistance",
-            "description": "You have advantage on all saving throws against magic.",
-            "points": 9
-          }
-        ]
-      },
-      "planetouched": {
-        "name": "Planetouched",
-        "description": "There is an immortal being in your ancestry, such as a celestial or fiend.",
-        "requiredTrait": "planar-attunement",
-        "traits": [
-          {
-            "id": "planar-attunement",
-            "name": "Planar Attunement",
-            "description": "If you have planetouched ancestry, you must take this trait. Choose one attunement below.",
-            "points": 0,
-            "required": true,
-            "requiresOption": true,
-            "options": [
-              {"id": "celestial", "name": "Celestial", "points": 2, "description": "Spellcasting from cleric list. Choose resistance: Radiant or Necrotic (+1 pt)."},
-              {"id": "fiend", "name": "Fiend", "points": 2, "description": "Spellcasting from warlock list. Choose resistance: Cold, Fire (+1 pt), or Lightning."}
-            ]
-          },
-          {
-            "id": "planar-cantrip",
-            "name": "Planar Cantrip",
-            "description": "You know one cantrip from the spell list matching your planar attunement.",
-            "points": 2,
-            "requires": ["planar-attunement"]
-          },
-          {
-            "id": "planar-magic",
-            "name": "Planar Magic",
-            "description": "Starting at 3rd level, cast one 1st-level spell from your attunement's spell list.",
-            "points": 2,
-            "requires": ["planar-attunement"]
-          },
-          {
-            "id": "greater-planar-magic",
-            "name": "Greater Planar Magic",
-            "description": "Starting at 5th level, cast one 2nd-level spell from your attunement's spell list.",
-            "points": 4,
-            "requires": ["planar-magic"]
-          },
-          {
-            "id": "planar-power",
-            "name": "Planar Power",
-            "description": "Damage matching your attunement ignores resistances. Immunity becomes resistance instead.",
-            "points": 2,
-            "requires": ["planar-attunement"]
-          },
-          {
-            "id": "plane-strike",
-            "name": "Plane Strike",
-            "description": "When you damage a creature with an attack, deal extra damage of your attunement type equal to 1d4 × Proficiency Bonus. Usable PB times per long rest.",
-            "points": 3,
-            "requires": ["planar-attunement"]
-          },
-          {
-            "id": "celestial-revelation",
-            "name": "Celestial Revelation",
-            "description": "At 3rd level, use reaction to transform for 1 minute: Necrotic Shroud (frighten), Radiant Consumption (blind), or Radiant Wings (fly). Once per long rest.",
-            "points": 3,
-            "requires": ["planar-attunement"]
-          }
-        ]
-      },
-      "shadowborn": {
-        "name": "Shadowborn",
-        "description": "A creature from the Shadowfell or dark places is in your ancestry.",
-        "traits": [
-          {
-            "id": "brave",
-            "name": "Brave",
-            "description": "You have advantage on saving throws to avoid or end the frightened condition.",
-            "points": 2
-          },
-          {
-            "id": "shadow-cantrip",
-            "name": "Shadow Cantrip",
-            "description": "You know chill touch, deathworking, minor illusion, or primal savagery.",
-            "points": 2
-          },
-          {
-            "id": "shadow-magic",
-            "name": "Shadow Magic",
-            "description": "At 3rd level, cast one 1st-level illusion or necromancy spell.",
-            "points": 2
-          },
-          {
-            "id": "necrotic-resistance",
-            "name": "Necrotic Resistance",
-            "description": "You have resistance to necrotic damage.",
-            "points": 3
-          },
-          {
-            "id": "greater-shadow-magic",
-            "name": "Greater Shadow Magic",
-            "description": "At 5th level, cast one 2nd-level illusion or necromancy spell.",
-            "points": 4,
-            "requires": ["shadow-magic"]
-          },
-          {
-            "id": "close-to-death",
-            "name": "Close to Death",
-            "description": "You have advantage on death saving throws.",
-            "points": 4
-          },
-          {
-            "id": "shadow-camouflage",
-            "name": "Camouflage",
-            "description": "Advantage on Stealth checks and can hide when only lightly obscured. Usable PB times per long rest.",
-            "points": 4
-          },
-          {
-            "id": "shifting",
-            "name": "Shifting",
-            "description": "As bonus action, assume bestial form for 1 minute gaining temp HP. Choose: Beasthide (+AC), Swiftstride (+speed), or Wildhunt (advantage on Wisdom). PB uses per long rest.",
-            "points": 7
-          },
-          {
-            "id": "step-of-darkness",
-            "name": "Step of Darkness",
-            "description": "Teleport up to 30 feet. At 3rd level, gain resistance to all damage until start of next turn. PB uses per long rest.",
-            "points": 8
-          }
-        ]
-      }
+    "elemental": {
+      "name": "Elemental",
+      "label": "Planar Ancestry",
+      "description": "You have the blood of an elemental, such as a genie, in your ancestry.",
+      "requiredTrait": "elemental-attunement",
+      "traits": [
+        {
+          "id": "elemental-attunement",
+          "name": "Elemental Attunement",
+          "description": "If you have elemental ancestry, you must take this trait. Choose one element type below.",
+          "points": 0,
+          "required": true,
+          "requiresOption": true,
+          "options": [
+            {"id": "air", "name": "Air", "points": 2, "description": "Resistance to lightning or thunder damage. Darkvision tinged white. Speak Primordial (Auran)."},
+            {"id": "earth", "name": "Earth", "points": 2, "description": "Know stone forming, manipulate earth, or blade ward cantrip (as bonus action PB/long rest). Speak Primordial (Terran)."},
+            {"id": "fire", "name": "Fire", "points": 3, "description": "Resistance to fire damage. Darkvision in red. Speak Primordial (Ignan)."},
+            {"id": "nature", "name": "Nature", "points": 2, "description": "Resistance to acid or poison damage. Darkvision brown/green. Speak Primordial (Giant)."},
+            {"id": "water", "name": "Water", "points": 2, "description": "Resistance to cold damage. Darkvision blue. Speak Primordial (Aquan)."}
+          ]
+        },
+        {
+          "id": "unending-breath",
+          "name": "Unending Breath",
+          "description": "You can hold your breath indefinitely while you're not incapacitated.",
+          "points": 1,
+          "requires": ["elemental-attunement"]
+        },
+        {
+          "id": "elemental-cantrip",
+          "name": "Elemental Cantrip",
+          "description": "You know one cantrip associated with your elemental attunement.",
+          "points": 2,
+          "requires": ["elemental-attunement"]
+        },
+        {
+          "id": "elemental-strike",
+          "name": "Elemental Strike",
+          "description": "When you damage a creature with an attack, you can cause the attack to deal extra damage of your elemental type. Usable Proficiency Bonus times per long rest.",
+          "points": 3,
+          "requires": ["elemental-attunement"]
+        },
+        {
+          "id": "elemental-magic",
+          "name": "Elemental Magic",
+          "description": "Starting at 3rd level, cast one 1st-level spell of your element. At 5th level, cast one 2nd-level spell.",
+          "points": 7,
+          "requires": ["elemental-attunement"]
+        }
+      ]
     },
-    "bestial": {
-      "aquatic": {
-        "name": "Aquatic",
-        "description": "You are descended from an aquatic creature such as a sea elf or triton.",
-        "traits": [
-          {
-            "id": "bite-pincers",
-            "name": "Bite or Pincers",
-            "description": "Your toothy maw or pincers are natural light weapons dealing 1d6 + Strength slashing damage.",
-            "points": 1
-          },
-          {
-            "id": "emissary-sea",
-            "name": "Emissary of the Sea",
-            "description": "You can communicate simple ideas to any Beast, Elemental, or Monstrosity with a swimming speed.",
-            "points": 1
-          },
-          {
-            "id": "amphibious",
-            "name": "Amphibious",
-            "description": "You can breathe both air and water.",
-            "points": 2
-          },
-          {
-            "id": "aquatic-resistance",
-            "name": "Aquatic Resistance",
-            "description": "You have resistance to acid or cold damage.",
-            "points": 2
-          },
-          {
-            "id": "aquatic-cantrip",
-            "name": "Aquatic Cantrip",
-            "description": "You know shape water or acid splash.",
-            "points": 2
-          },
-          {
-            "id": "swim-speed",
-            "name": "Swim Speed",
-            "description": "You have a swim speed of 30 feet provided you are not wearing medium or heavy armor.",
-            "points": 2,
-            "armorRestriction": "no-medium-heavy"
-          },
-          {
-            "id": "defensive-feature",
-            "name": "Defensive Feature",
-            "description": "When grappled, deal 1d4 × PB damage (poison, piercing spines, or another type).",
-            "points": 4
-          },
-          {
-            "id": "carapace",
-            "name": "Carapace / Shell",
-            "description": "Base AC of 17 (Dex doesn't apply). Can't wear armor but shields work. AC becomes 18 at level 12.",
-            "points": 5
-          }
-        ]
-      },
-      "flying": {
-        "name": "Flying",
-        "description": "You have the blood of a flying creature like an aarakocra in your ancestry.",
-        "traits": [
-          {
-            "id": "beak-claw",
-            "name": "Beak and Claw",
-            "description": "Your beak or talons are natural light weapons dealing 1d6 + Strength damage.",
-            "points": 1
-          },
-          {
-            "id": "flying-cantrip",
-            "name": "Flying Cantrip",
-            "description": "You know gust or message.",
-            "points": 2
-          },
-          {
-            "id": "keen-sight",
-            "name": "Keen Sight",
-            "description": "Advantage on Perception, Survival, and Investigation checks that rely on sight.",
-            "points": 6
-          },
-          {
-            "id": "glide",
-            "name": "Glide",
-            "description": "When falling, use Reaction to glide (no fall damage, move 2ft horizontal per 1ft descent). Advantage on Jump checks.",
-            "points": 3,
-            "excludes": ["limited-flight", "wings"]
-          },
-          {
-            "id": "limited-flight",
-            "name": "Limited Flight",
-            "description": "At 1st level, bonus action to fly your walking speed for one turn. At 5th level, fly for 10 minutes. PB uses per long rest.",
-            "points": 5,
-            "excludes": ["glide", "wings"]
-          },
-          {
-            "id": "wings",
-            "name": "Wings",
-            "description": "You have a flying speed equal to your walking speed. Cannot wear medium or heavy armor.",
-            "points": 9,
-            "excludes": ["glide", "limited-flight"],
-            "armorRestriction": "no-medium-heavy"
-          }
-        ]
-      },
-      "mammalian": {
-        "name": "Mammalian",
-        "description": "A mammalian creature is in your ancestry, such as a tabaxi or loxodon.",
-        "traits": [
-          {
-            "id": "tooth-nail",
-            "name": "Tooth and Nail",
-            "description": "Your natural weapons (bite, claws, hooves, horns) are light weapons dealing 1d6 + Strength damage.",
-            "points": 1
-          },
-          {
-            "id": "traversal",
-            "name": "Traversal",
-            "description": "Move across difficult terrain without extra movement cost when using walking speed on ground.",
-            "points": 1
-          },
-          {
-            "id": "climb-speed",
-            "name": "Climb Speed",
-            "description": "You have a climbing speed of 30 feet.",
-            "points": 2
-          },
-          {
-            "id": "leap",
-            "name": "Leap",
-            "description": "Your long jump is 20 feet and high jump is 10 feet, with or without a running start.",
-            "points": 2
-          },
-          {
-            "id": "roar",
-            "name": "Roar",
-            "description": "As bonus action, creatures within 10ft that hear you must save or be frightened until end of next turn. PB uses per long rest.",
-            "points": 2
-          },
-          {
-            "id": "agile-fall",
-            "name": "Agile Fall",
-            "description": "When falling 100ft or less, DC 10 Acrobatics to take no damage and land on feet.",
-            "points": 3
-          },
-          {
-            "id": "prehensile-appendage",
-            "name": "Prehensile Appendage",
-            "description": "Your tail or trunk can hold an extra light weapon.",
-            "points": 3
-          },
-          {
-            "id": "prehensile-trunk",
-            "name": "Prehensile Trunk",
-            "description": "Your trunk acts as a snorkel and can lift 5 × Strength score pounds.",
-            "points": 2
-          },
-          {
-            "id": "keen-smell",
-            "name": "Keen Smell",
-            "description": "Advantage on Perception, Survival, and Investigation checks that involve smell.",
-            "points": 3
-          },
-          {
-            "id": "hunters-senses",
-            "name": "Hunter's Senses",
-            "description": "As an action, gain blindsight (30 ft.) until end of next turn.",
-            "points": 4,
-            "requires": ["keen-smell"]
-          },
-          {
-            "id": "burrow",
-            "name": "Burrow",
-            "description": "Bonus action to gain 10ft burrow speed for one turn. At 5th level, burrow speed is 20ft.",
-            "points": 5
-          },
-          {
-            "id": "swiftness",
-            "name": "Swiftness",
-            "description": "Double your speed for one turn in combat. Can't use again until you move 0 feet on a turn.",
-            "points": 5
-          },
-          {
-            "id": "pack-tactics",
-            "name": "Pack Tactics",
-            "description": "Advantage on attack rolls if an ally is within 5 feet of the target and not incapacitated.",
-            "points": 8
-          }
-        ]
-      },
-      "reptilian": {
-        "name": "Reptilian",
-        "description": "You are descended from reptilian creature such as a lizardfolk or tortle.",
-        "traits": [
-          {
-            "id": "hold-breath",
-            "name": "Hold Breath",
-            "description": "You can hold your breath for up to 1 hour.",
-            "points": 1
-          },
-          {
-            "id": "tooth-tail",
-            "name": "Tooth and Tail",
-            "description": "Your bite, fangs, or tail are natural light weapons dealing 1d6 + Strength damage.",
-            "points": 1
-          },
-          {
-            "id": "shell-defense",
-            "name": "Shell Defense",
-            "description": "As action, withdraw into shell for +4 AC, advantage on Str/Con saves, but prone, speed 0, disadvantage on Dex saves.",
-            "points": 1
-          },
-          {
-            "id": "hungry-jaws",
-            "name": "Hungry Jaws",
-            "description": "Bonus action bite attack that grants temp HP equal to PB on hit. PB uses per long rest.",
-            "points": 3
-          },
-          {
-            "id": "natural-armor",
-            "name": "Natural Armor",
-            "description": "Your AC is 13 + Dexterity modifier. Shields work as normal.",
-            "points": 3
-          },
-          {
-            "id": "reptilian-camouflage",
-            "name": "Camouflage",
-            "description": "Advantage on Stealth checks and can hide when only lightly obscured. PB uses per long rest.",
-            "points": 4
-          },
-          {
-            "id": "regeneration",
-            "name": "Regeneration",
-            "description": "As bonus action, spend a hit die to heal. PB uses per long rest.",
-            "points": 4
-          },
-          {
-            "id": "chromatophore",
-            "name": "Chromatophore",
-            "description": "As bonus action, turn invisible until start of next turn (ends if you attack or force a save). PB uses per long rest.",
-            "points": 6
-          }
-        ]
-      }
+    "fey": {
+      "name": "Fey",
+      "label": "Planar Ancestry",
+      "description": "You have the blood of a fey in your ancestry, such as through elvish or gnomish heritage.",
+      "traits": [
+        {
+          "id": "fey-creature",
+          "name": "Fey",
+          "description": "You are a fey creature.",
+          "points": 1
+        },
+        {
+          "id": "trance",
+          "name": "Trance",
+          "description": "You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours of trance-like meditation. After each trance, gain two weapon or tool proficiencies until your next rest.",
+          "points": 2
+        },
+        {
+          "id": "charm-resistance",
+          "name": "Charm Resistance",
+          "description": "You have advantage on saving throws to avoid or end the charmed condition.",
+          "points": 2
+        },
+        {
+          "id": "fey-cantrip",
+          "name": "Fey Cantrip",
+          "description": "You know dancing lights, druidcraft, friends, minor illusion, or vicious mockery.",
+          "points": 2
+        },
+        {
+          "id": "fey-magic",
+          "name": "Fey Magic",
+          "description": "Starting at 3rd level, cast one spell: animal friendship, cause fear, charm person, color spray, enlarge/reduce, faerie fire, hideous laughter, or sleep.",
+          "points": 2
+        },
+        {
+          "id": "greater-fey-magic",
+          "name": "Greater Fey Magic",
+          "description": "Starting at 5th level, cast one spell: alter self, crown of madness, disorient, invisibility, mischief, or suggestion.",
+          "points": 4,
+          "requires": ["fey-magic"]
+        },
+        {
+          "id": "fey-step",
+          "name": "Fey Step",
+          "description": "As a bonus action, teleport up to 30 feet to an unoccupied space you can see. Usable Proficiency Bonus times per long rest.",
+          "points": 6
+        },
+        {
+          "id": "fey-step-improvement",
+          "name": "Fey Step Improvement",
+          "description": "Starting at 3rd level, your Fey Step gains a seasonal effect (Autumn, Winter, Spring, or Summer) that can be changed after a long rest.",
+          "points": 2,
+          "requires": ["fey-step"]
+        },
+        {
+          "id": "magic-resistance",
+          "name": "Magic Resistance",
+          "description": "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic.",
+          "points": 6
+        },
+        {
+          "id": "shapechanger",
+          "name": "Shapechanger",
+          "description": "As an action, change your appearance, voice, height, weight, and size between Medium and Small. Lasts until you revert or die.",
+          "points": 7
+        },
+        {
+          "id": "greater-magic-resistance",
+          "name": "Greater Magic Resistance",
+          "description": "You have advantage on all saving throws against magic.",
+          "points": 9
+        }
+      ]
     },
-    "other": {
-      "construct": {
-        "name": "Construct",
-        "description": "You have a constructed nature, partially mechanical or wholly unique.",
-        "traits": [
-          {
-            "id": "toxin-resilience",
-            "name": "Toxin Resilience",
-            "description": "Advantage on saves to avoid or end poisoned or diseased conditions.",
-            "points": 2
-          },
-          {
-            "id": "vigilant-rest",
-            "name": "Vigilant Rest",
-            "description": "During long rest, spend 6 hours inactive but conscious and aware.",
-            "points": 2
-          },
-          {
-            "id": "construct-natural-armor",
-            "name": "Natural Armor",
-            "description": "Your AC is 13 + Dexterity modifier. Shields work as normal.",
-            "points": 3
-          },
-          {
-            "id": "poison-resistance",
-            "name": "Poison Resistance",
-            "description": "You are resistant to poison damage.",
-            "points": 3
-          },
-          {
-            "id": "constructed-form",
-            "name": "Constructed Form",
-            "description": "You are a Construct. Don't need to eat, drink, or breathe. Immune to disease, advantage vs paralyzed, magic can't put you to sleep.",
-            "points": 4
-          },
-          {
-            "id": "built-for-success",
-            "name": "Built for Success",
-            "description": "Add d4 to one attack roll, ability check, or saving throw after seeing the roll. PB uses per long rest.",
-            "points": 4
-          },
-          {
-            "id": "healing-machine",
-            "name": "Healing Machine",
-            "description": "Mending lets you spend a Hit Die to heal. Healing spells that normally don't affect constructs work on you.",
-            "points": 4
-          },
-          {
-            "id": "integrated-protection",
-            "name": "Integrated Protection",
-            "description": "+1 bonus to AC. Armor takes 1 hour to don/doff and is integrated into your body.",
-            "points": 6
-          }
-        ]
-      },
-      "draconic": {
-        "name": "Draconic",
-        "description": "You are descended from a dragon. Only available for dragonborn species.",
-        "requiredTrait": "draconic-ancestry",
-        "traits": [
-          {
-            "id": "draconic-ancestry",
-            "name": "Draconic Ancestry",
-            "description": "If you have draconic ancestry, you must take this trait. Choose one damage type below.",
-            "points": 0,
-            "required": true,
-            "requiresOption": true,
-            "options": [
-              {"id": "acid", "name": "Acid", "points": 0},
-              {"id": "cold", "name": "Cold", "points": 0},
-              {"id": "force", "name": "Force", "points": 0},
-              {"id": "lightning", "name": "Lightning", "points": 0},
-              {"id": "radiant", "name": "Radiant", "points": 0},
-              {"id": "thunder", "name": "Thunder", "points": 0},
-              {"id": "fire", "name": "Fire", "points": 1},
-              {"id": "necrotic", "name": "Necrotic", "points": 1},
-              {"id": "poison", "name": "Poison", "points": 1},
-              {"id": "psychic", "name": "Psychic", "points": 1}
-            ]
-          },
-          {
-            "id": "draconic-cantrip",
-            "name": "Draconic Cantrip",
-            "description": "You know one cantrip from the sorcerer spell list.",
-            "points": 2,
-            "requires": ["draconic-ancestry"]
-          },
-          {
-            "id": "draconic-resistance",
-            "name": "Draconic Resistance",
-            "description": "You have resistance to your ancestry's damage type.",
-            "points": 2,
-            "requires": ["draconic-ancestry"]
-          },
-          {
-            "id": "draconic-warding",
-            "name": "Draconic Warding",
-            "description": "At 5th level, as action become immune to your ancestry's damage type for 1 minute. Once per long rest.",
-            "points": 4,
-            "requires": ["draconic-resistance"]
-          },
-          {
-            "id": "draconic-presence",
-            "name": "Draconic Presence",
-            "description": "Advantage on Intimidation checks.",
-            "points": 4,
-            "requires": ["draconic-ancestry"]
-          },
-          {
-            "id": "draconic-cry",
-            "name": "Draconic Cry",
-            "description": "Bonus action cry gives you and allies advantage on attacks against enemies within 10ft who heard you. PB uses per long rest.",
-            "points": 5,
-            "requires": ["draconic-ancestry"]
-          },
-          {
-            "id": "breath-weapon",
-            "name": "Breath Weapon",
-            "description": "Replace one attack with 15-foot cone, Dex save for 1d10 damage (scales to 4d10). PB uses per long rest.",
-            "points": 6,
-            "requires": ["draconic-ancestry"]
-          }
-        ]
-      },
-      "psionic": {
-        "name": "Psionic",
-        "description": "You have an innate knack for psionics.",
-        "traits": [
-          {
-            "id": "psionic-cantrip",
-            "name": "Psionic Cantrip",
-            "description": "You know encode thoughts, mage hand (invisible, no components), message, mind sliver, or thaumaturgy.",
-            "points": 2
-          },
-          {
-            "id": "psionic-force-resistance",
-            "name": "Force Resistance",
-            "description": "You have resistance to force damage.",
-            "points": 2
-          },
-          {
-            "id": "psionic-psychic-resistance",
-            "name": "Psychic Resistance",
-            "description": "You have resistance to psychic damage.",
-            "points": 3
-          },
-          {
-            "id": "psionic-magic",
-            "name": "Psionic Magic",
-            "description": "At 3rd level, cast one 1st-level spell: bane, catapult, floating disk, hellish rebuke, jump, magnify gravity, shield, unseen servant, or wrathful smite.",
-            "points": 2
-          },
-          {
-            "id": "greater-psionic-magic",
-            "name": "Greater Psionic Magic",
-            "description": "At 5th level, cast one 2nd-level spell: detect thoughts, kinetic jaunt, levitate, mind spike, mind whip, or phantasmal force.",
-            "points": 4,
-            "requires": ["psionic-magic"]
-          },
-          {
-            "id": "psychic-defense",
-            "name": "Psychic Defense",
-            "description": "Advantage on saves to avoid or end charmed or frightened conditions.",
-            "points": 2
-          },
-          {
-            "id": "telepathy",
-            "name": "Telepathy",
-            "description": "Speak telepathically to any creature within 30 feet if you share a language. One creature at a time.",
-            "points": 5
-          }
-        ]
-      },
-      "stout": {
-        "name": "Stout",
-        "description": "You are exceptionally sturdy, descended from hardy ancestors.",
-        "traits": [
-          {
-            "id": "hardy",
-            "name": "Hardy",
-            "description": "Acclimated to one extreme climate: extreme cold, extreme heat, high altitudes, or deep waters.",
-            "points": 1
-          },
-          {
-            "id": "stout-toxin-resilience",
-            "name": "Toxin Resilience",
-            "description": "Advantage on saves to avoid or end poisoned or diseased conditions.",
-            "points": 2
-          },
-          {
-            "id": "stout-poison-resistance",
-            "name": "Poison Resistance",
-            "description": "You are resistant to poison damage.",
-            "points": 3
-          },
-          {
-            "id": "stout-natural-armor",
-            "name": "Natural Armor",
-            "description": "Your AC is 12 + Constitution modifier. Shields work as normal.",
-            "points": 3
-          },
-          {
-            "id": "relentless",
-            "name": "Relentless",
-            "description": "When reduced to 0 HP but not killed, drop to 1 HP instead. Once per long rest.",
-            "points": 4,
-            "excludes": ["toughness", "durable"]
-          },
-          {
-            "id": "toughness",
-            "name": "Toughness",
-            "description": "HP maximum increases by 1 per level.",
-            "points": 5,
-            "excludes": ["relentless", "durable"]
-          },
-          {
-            "id": "durable",
-            "name": "Durable",
-            "description": "Reaction to reduce damage by 1d12 + Con modifier. PB uses per long rest.",
-            "points": 7,
-            "excludes": ["relentless", "toughness"]
-          },
-          {
-            "id": "strong",
-            "name": "Strong",
-            "description": "Advantage on Strength checks and Strength saves.",
-            "points": 5
-          },
-          {
-            "id": "endurance",
-            "name": "Endurance",
-            "description": "Human only. Avoid gaining exhaustion if you have none. Resets on long rest.",
-            "points": 6
-          }
-        ]
-      }
+    "planetouched": {
+      "name": "Planetouched",
+      "label": "Planar Ancestry",
+      "description": "There is an immortal being in your ancestry, such as a celestial or fiend.",
+      "requiredTrait": "planar-attunement",
+      "traits": [
+        {
+          "id": "planar-attunement",
+          "name": "Planar Attunement",
+          "description": "If you have planetouched ancestry, you must take this trait. Choose one attunement below.",
+          "points": 0,
+          "required": true,
+          "requiresOption": true,
+          "options": [
+            {"id": "celestial", "name": "Celestial", "points": 2, "description": "Spellcasting from cleric list. Choose resistance: Radiant or Necrotic (+1 pt)."},
+            {"id": "fiend", "name": "Fiend", "points": 2, "description": "Spellcasting from warlock list. Choose resistance: Cold, Fire (+1 pt), or Lightning."}
+          ]
+        },
+        {
+          "id": "planar-cantrip",
+          "name": "Planar Cantrip",
+          "description": "You know one cantrip from the spell list matching your planar attunement.",
+          "points": 2,
+          "requires": ["planar-attunement"]
+        },
+        {
+          "id": "planar-magic",
+          "name": "Planar Magic",
+          "description": "Starting at 3rd level, cast one 1st-level spell from your attunement's spell list.",
+          "points": 2,
+          "requires": ["planar-attunement"]
+        },
+        {
+          "id": "greater-planar-magic",
+          "name": "Greater Planar Magic",
+          "description": "Starting at 5th level, cast one 2nd-level spell from your attunement's spell list.",
+          "points": 4,
+          "requires": ["planar-magic"]
+        },
+        {
+          "id": "planar-power",
+          "name": "Planar Power",
+          "description": "Damage matching your attunement ignores resistances. Immunity becomes resistance instead.",
+          "points": 2,
+          "requires": ["planar-attunement"]
+        },
+        {
+          "id": "plane-strike",
+          "name": "Plane Strike",
+          "description": "When you damage a creature with an attack, deal extra damage of your attunement type equal to 1d4 × Proficiency Bonus. Usable PB times per long rest.",
+          "points": 3,
+          "requires": ["planar-attunement"]
+        },
+        {
+          "id": "celestial-revelation",
+          "name": "Celestial Revelation",
+          "description": "At 3rd level, use reaction to transform for 1 minute: Necrotic Shroud (frighten), Radiant Consumption (blind), or Radiant Wings (fly). Once per long rest.",
+          "points": 3,
+          "requires": ["planar-attunement"]
+        }
+      ]
+    },
+    "shadowborn": {
+      "name": "Shadowborn",
+      "label": "Planar Ancestry",
+      "description": "A creature from the Shadowfell or dark places is in your ancestry.",
+      "traits": [
+        {
+          "id": "brave",
+          "name": "Brave",
+          "description": "You have advantage on saving throws to avoid or end the frightened condition.",
+          "points": 2
+        },
+        {
+          "id": "shadow-cantrip",
+          "name": "Shadow Cantrip",
+          "description": "You know chill touch, deathworking, minor illusion, or primal savagery.",
+          "points": 2
+        },
+        {
+          "id": "shadow-magic",
+          "name": "Shadow Magic",
+          "description": "At 3rd level, cast one 1st-level illusion or necromancy spell.",
+          "points": 2
+        },
+        {
+          "id": "necrotic-resistance",
+          "name": "Necrotic Resistance",
+          "description": "You have resistance to necrotic damage.",
+          "points": 3
+        },
+        {
+          "id": "greater-shadow-magic",
+          "name": "Greater Shadow Magic",
+          "description": "At 5th level, cast one 2nd-level illusion or necromancy spell.",
+          "points": 4,
+          "requires": ["shadow-magic"]
+        },
+        {
+          "id": "close-to-death",
+          "name": "Close to Death",
+          "description": "You have advantage on death saving throws.",
+          "points": 4
+        },
+        {
+          "id": "shadow-camouflage",
+          "name": "Camouflage",
+          "description": "Advantage on Stealth checks and can hide when only lightly obscured. Usable PB times per long rest.",
+          "points": 4
+        },
+        {
+          "id": "shifting",
+          "name": "Shifting",
+          "description": "As bonus action, assume bestial form for 1 minute gaining temp HP. Choose: Beasthide (+AC), Swiftstride (+speed), or Wildhunt (advantage on Wisdom). PB uses per long rest.",
+          "points": 7
+        },
+        {
+          "id": "step-of-darkness",
+          "name": "Step of Darkness",
+          "description": "Teleport up to 30 feet. At 3rd level, gain resistance to all damage until start of next turn. PB uses per long rest.",
+          "points": 8
+        }
+      ]
+    },
+    "aquatic": {
+      "name": "Aquatic",
+      "label": "Bestial Ancestry",
+      "description": "You are descended from an aquatic creature such as a sea elf or triton.",
+      "traits": [
+        {
+          "id": "bite-pincers",
+          "name": "Bite or Pincers",
+          "description": "Your toothy maw or pincers are natural light weapons dealing 1d6 + Strength slashing damage.",
+          "points": 1
+        },
+        {
+          "id": "emissary-sea",
+          "name": "Emissary of the Sea",
+          "description": "You can communicate simple ideas to any Beast, Elemental, or Monstrosity with a swimming speed.",
+          "points": 1
+        },
+        {
+          "id": "amphibious",
+          "name": "Amphibious",
+          "description": "You can breathe both air and water.",
+          "points": 2
+        },
+        {
+          "id": "aquatic-resistance",
+          "name": "Aquatic Resistance",
+          "description": "You have resistance to acid or cold damage.",
+          "points": 2
+        },
+        {
+          "id": "aquatic-cantrip",
+          "name": "Aquatic Cantrip",
+          "description": "You know shape water or acid splash.",
+          "points": 2
+        },
+        {
+          "id": "swim-speed",
+          "name": "Swim Speed",
+          "description": "You have a swim speed of 30 feet provided you are not wearing medium or heavy armor.",
+          "points": 2,
+          "armorRestriction": "no-medium-heavy"
+        },
+        {
+          "id": "defensive-feature",
+          "name": "Defensive Feature",
+          "description": "When grappled, deal 1d4 × PB damage (poison, piercing spines, or another type).",
+          "points": 4
+        },
+        {
+          "id": "carapace",
+          "name": "Carapace / Shell",
+          "description": "Base AC of 17 (Dex doesn't apply). Can't wear armor but shields work. AC becomes 18 at level 12.",
+          "points": 5
+        }
+      ]
+    },
+    "flying": {
+      "name": "Flying",
+      "label": "Bestial Ancestry",
+      "description": "You have the blood of a flying creature like an aarakocra in your ancestry.",
+      "traits": [
+        {
+          "id": "beak-claw",
+          "name": "Beak and Claw",
+          "description": "Your beak or talons are natural light weapons dealing 1d6 + Strength damage.",
+          "points": 1
+        },
+        {
+          "id": "flying-cantrip",
+          "name": "Flying Cantrip",
+          "description": "You know gust or message.",
+          "points": 2
+        },
+        {
+          "id": "keen-sight",
+          "name": "Keen Sight",
+          "description": "Advantage on Perception, Survival, and Investigation checks that rely on sight.",
+          "points": 6
+        },
+        {
+          "id": "glide",
+          "name": "Glide",
+          "description": "When falling, use Reaction to glide (no fall damage, move 2ft horizontal per 1ft descent). Advantage on Jump checks.",
+          "points": 3,
+          "excludes": ["limited-flight", "wings"]
+        },
+        {
+          "id": "limited-flight",
+          "name": "Limited Flight",
+          "description": "At 1st level, bonus action to fly your walking speed for one turn. At 5th level, fly for 10 minutes. PB uses per long rest.",
+          "points": 5,
+          "excludes": ["glide", "wings"]
+        },
+        {
+          "id": "wings",
+          "name": "Wings",
+          "description": "You have a flying speed equal to your walking speed. Cannot wear medium or heavy armor.",
+          "points": 9,
+          "excludes": ["glide", "limited-flight"],
+          "armorRestriction": "no-medium-heavy"
+        }
+      ]
+    },
+    "mammalian": {
+      "name": "Mammalian",
+      "label": "Bestial Ancestry",
+      "description": "A mammalian creature is in your ancestry, such as a tabaxi or loxodon.",
+      "traits": [
+        {
+          "id": "tooth-nail",
+          "name": "Tooth and Nail",
+          "description": "Your natural weapons (bite, claws, hooves, horns) are light weapons dealing 1d6 + Strength damage.",
+          "points": 1
+        },
+        {
+          "id": "traversal",
+          "name": "Traversal",
+          "description": "Move across difficult terrain without extra movement cost when using walking speed on ground.",
+          "points": 1
+        },
+        {
+          "id": "climb-speed",
+          "name": "Climb Speed",
+          "description": "You have a climbing speed of 30 feet.",
+          "points": 2
+        },
+        {
+          "id": "leap",
+          "name": "Leap",
+          "description": "Your long jump is 20 feet and high jump is 10 feet, with or without a running start.",
+          "points": 2
+        },
+        {
+          "id": "roar",
+          "name": "Roar",
+          "description": "As bonus action, creatures within 10ft that hear you must save or be frightened until end of next turn. PB uses per long rest.",
+          "points": 2
+        },
+        {
+          "id": "agile-fall",
+          "name": "Agile Fall",
+          "description": "When falling 100ft or less, DC 10 Acrobatics to take no damage and land on feet.",
+          "points": 3
+        },
+        {
+          "id": "prehensile-appendage",
+          "name": "Prehensile Appendage",
+          "description": "Your tail or trunk can hold an extra light weapon.",
+          "points": 3
+        },
+        {
+          "id": "prehensile-trunk",
+          "name": "Prehensile Trunk",
+          "description": "Your trunk acts as a snorkel and can lift 5 × Strength score pounds.",
+          "points": 2
+        },
+        {
+          "id": "keen-smell",
+          "name": "Keen Smell",
+          "description": "Advantage on Perception, Survival, and Investigation checks that involve smell.",
+          "points": 3
+        },
+        {
+          "id": "hunters-senses",
+          "name": "Hunter's Senses",
+          "description": "As an action, gain blindsight (30 ft.) until end of next turn.",
+          "points": 4,
+          "requires": ["keen-smell"]
+        },
+        {
+          "id": "burrow",
+          "name": "Burrow",
+          "description": "Bonus action to gain 10ft burrow speed for one turn. At 5th level, burrow speed is 20ft.",
+          "points": 5
+        },
+        {
+          "id": "swiftness",
+          "name": "Swiftness",
+          "description": "Double your speed for one turn in combat. Can't use again until you move 0 feet on a turn.",
+          "points": 5
+        },
+        {
+          "id": "pack-tactics",
+          "name": "Pack Tactics",
+          "description": "Advantage on attack rolls if an ally is within 5 feet of the target and not incapacitated.",
+          "points": 8
+        }
+      ]
+    },
+    "reptilian": {
+      "name": "Reptilian",
+      "label": "Bestial Ancestry",
+      "description": "You are descended from reptilian creature such as a lizardfolk or tortle.",
+      "traits": [
+        {
+          "id": "hold-breath",
+          "name": "Hold Breath",
+          "description": "You can hold your breath for up to 1 hour.",
+          "points": 1
+        },
+        {
+          "id": "tooth-tail",
+          "name": "Tooth and Tail",
+          "description": "Your bite, fangs, or tail are natural light weapons dealing 1d6 + Strength damage.",
+          "points": 1
+        },
+        {
+          "id": "shell-defense",
+          "name": "Shell Defense",
+          "description": "As action, withdraw into shell for +4 AC, advantage on Str/Con saves, but prone, speed 0, disadvantage on Dex saves.",
+          "points": 1
+        },
+        {
+          "id": "hungry-jaws",
+          "name": "Hungry Jaws",
+          "description": "Bonus action bite attack that grants temp HP equal to PB on hit. PB uses per long rest.",
+          "points": 3
+        },
+        {
+          "id": "natural-armor",
+          "name": "Natural Armor",
+          "description": "Your AC is 13 + Dexterity modifier. Shields work as normal.",
+          "points": 3
+        },
+        {
+          "id": "reptilian-camouflage",
+          "name": "Camouflage",
+          "description": "Advantage on Stealth checks and can hide when only lightly obscured. PB uses per long rest.",
+          "points": 4
+        },
+        {
+          "id": "regeneration",
+          "name": "Regeneration",
+          "description": "As bonus action, spend a hit die to heal. PB uses per long rest.",
+          "points": 4
+        },
+        {
+          "id": "chromatophore",
+          "name": "Chromatophore",
+          "description": "As bonus action, turn invisible until start of next turn (ends if you attack or force a save). PB uses per long rest.",
+          "points": 6
+        }
+      ]
+    },
+    "construct": {
+      "name": "Construct",
+      "label": "Other Ancestry",
+      "description": "You have a constructed nature, partially mechanical or wholly unique.",
+      "traits": [
+        {
+          "id": "toxin-resilience",
+          "name": "Toxin Resilience",
+          "description": "Advantage on saves to avoid or end poisoned or diseased conditions.",
+          "points": 2
+        },
+        {
+          "id": "vigilant-rest",
+          "name": "Vigilant Rest",
+          "description": "During long rest, spend 6 hours inactive but conscious and aware.",
+          "points": 2
+        },
+        {
+          "id": "construct-natural-armor",
+          "name": "Natural Armor",
+          "description": "Your AC is 13 + Dexterity modifier. Shields work as normal.",
+          "points": 3
+        },
+        {
+          "id": "poison-resistance",
+          "name": "Poison Resistance",
+          "description": "You are resistant to poison damage.",
+          "points": 3
+        },
+        {
+          "id": "constructed-form",
+          "name": "Constructed Form",
+          "description": "You are a Construct. Don't need to eat, drink, or breathe. Immune to disease, advantage vs paralyzed, magic can't put you to sleep.",
+          "points": 4
+        },
+        {
+          "id": "built-for-success",
+          "name": "Built for Success",
+          "description": "Add d4 to one attack roll, ability check, or saving throw after seeing the roll. PB uses per long rest.",
+          "points": 4
+        },
+        {
+          "id": "healing-machine",
+          "name": "Healing Machine",
+          "description": "Mending lets you spend a Hit Die to heal. Healing spells that normally don't affect constructs work on you.",
+          "points": 4
+        },
+        {
+          "id": "integrated-protection",
+          "name": "Integrated Protection",
+          "description": "+1 bonus to AC. Armor takes 1 hour to don/doff and is integrated into your body.",
+          "points": 6
+        }
+      ]
+    },
+    "draconic": {
+      "name": "Draconic",
+      "label": "Other Ancestry",
+      "description": "You are descended from a dragon. Only available for dragonborn species.",
+      "requiredTrait": "draconic-ancestry",
+      "traits": [
+        {
+          "id": "draconic-ancestry",
+          "name": "Draconic Ancestry",
+          "description": "If you have draconic ancestry, you must take this trait. Choose one damage type below.",
+          "points": 0,
+          "required": true,
+          "requiresOption": true,
+          "options": [
+            {"id": "acid", "name": "Acid", "points": 0},
+            {"id": "cold", "name": "Cold", "points": 0},
+            {"id": "force", "name": "Force", "points": 0},
+            {"id": "lightning", "name": "Lightning", "points": 0},
+            {"id": "radiant", "name": "Radiant", "points": 0},
+            {"id": "thunder", "name": "Thunder", "points": 0},
+            {"id": "fire", "name": "Fire", "points": 1},
+            {"id": "necrotic", "name": "Necrotic", "points": 1},
+            {"id": "poison", "name": "Poison", "points": 1},
+            {"id": "psychic", "name": "Psychic", "points": 1}
+          ]
+        },
+        {
+          "id": "draconic-cantrip",
+          "name": "Draconic Cantrip",
+          "description": "You know one cantrip from the sorcerer spell list.",
+          "points": 2,
+          "requires": ["draconic-ancestry"]
+        },
+        {
+          "id": "draconic-resistance",
+          "name": "Draconic Resistance",
+          "description": "You have resistance to your ancestry's damage type.",
+          "points": 2,
+          "requires": ["draconic-ancestry"]
+        },
+        {
+          "id": "draconic-warding",
+          "name": "Draconic Warding",
+          "description": "At 5th level, as action become immune to your ancestry's damage type for 1 minute. Once per long rest.",
+          "points": 4,
+          "requires": ["draconic-resistance"]
+        },
+        {
+          "id": "draconic-presence",
+          "name": "Draconic Presence",
+          "description": "Advantage on Intimidation checks.",
+          "points": 4,
+          "requires": ["draconic-ancestry"]
+        },
+        {
+          "id": "draconic-cry",
+          "name": "Draconic Cry",
+          "description": "Bonus action cry gives you and allies advantage on attacks against enemies within 10ft who heard you. PB uses per long rest.",
+          "points": 5,
+          "requires": ["draconic-ancestry"]
+        },
+        {
+          "id": "breath-weapon",
+          "name": "Breath Weapon",
+          "description": "Replace one attack with 15-foot cone, Dex save for 1d10 damage (scales to 4d10). PB uses per long rest.",
+          "points": 6,
+          "requires": ["draconic-ancestry"]
+        }
+      ]
+    },
+    "psionic": {
+      "name": "Psionic",
+      "label": "Other Ancestry",
+      "description": "You have an innate knack for psionics.",
+      "traits": [
+        {
+          "id": "psionic-cantrip",
+          "name": "Psionic Cantrip",
+          "description": "You know encode thoughts, mage hand (invisible, no components), message, mind sliver, or thaumaturgy.",
+          "points": 2
+        },
+        {
+          "id": "psionic-force-resistance",
+          "name": "Force Resistance",
+          "description": "You have resistance to force damage.",
+          "points": 2
+        },
+        {
+          "id": "psionic-psychic-resistance",
+          "name": "Psychic Resistance",
+          "description": "You have resistance to psychic damage.",
+          "points": 3
+        },
+        {
+          "id": "psionic-magic",
+          "name": "Psionic Magic",
+          "description": "At 3rd level, cast one 1st-level spell: bane, catapult, floating disk, hellish rebuke, jump, magnify gravity, shield, unseen servant, or wrathful smite.",
+          "points": 2
+        },
+        {
+          "id": "greater-psionic-magic",
+          "name": "Greater Psionic Magic",
+          "description": "At 5th level, cast one 2nd-level spell: detect thoughts, kinetic jaunt, levitate, mind spike, mind whip, or phantasmal force.",
+          "points": 4,
+          "requires": ["psionic-magic"]
+        },
+        {
+          "id": "psychic-defense",
+          "name": "Psychic Defense",
+          "description": "Advantage on saves to avoid or end charmed or frightened conditions.",
+          "points": 2
+        },
+        {
+          "id": "telepathy",
+          "name": "Telepathy",
+          "description": "Speak telepathically to any creature within 30 feet if you share a language. One creature at a time.",
+          "points": 5
+        }
+      ]
+    },
+    "stout": {
+      "name": "Stout",
+      "label": "Other Ancestry",
+      "description": "You are exceptionally sturdy, descended from hardy ancestors.",
+      "traits": [
+        {
+          "id": "hardy",
+          "name": "Hardy",
+          "description": "Acclimated to one extreme climate: extreme cold, extreme heat, high altitudes, or deep waters.",
+          "points": 1
+        },
+        {
+          "id": "stout-toxin-resilience",
+          "name": "Toxin Resilience",
+          "description": "Advantage on saves to avoid or end poisoned or diseased conditions.",
+          "points": 2
+        },
+        {
+          "id": "stout-poison-resistance",
+          "name": "Poison Resistance",
+          "description": "You are resistant to poison damage.",
+          "points": 3
+        },
+        {
+          "id": "stout-natural-armor",
+          "name": "Natural Armor",
+          "description": "Your AC is 12 + Constitution modifier. Shields work as normal.",
+          "points": 3
+        },
+        {
+          "id": "relentless",
+          "name": "Relentless",
+          "description": "When reduced to 0 HP but not killed, drop to 1 HP instead. Once per long rest.",
+          "points": 4,
+          "excludes": ["toughness", "durable"]
+        },
+        {
+          "id": "toughness",
+          "name": "Toughness",
+          "description": "HP maximum increases by 1 per level.",
+          "points": 5,
+          "excludes": ["relentless", "durable"]
+        },
+        {
+          "id": "durable",
+          "name": "Durable",
+          "description": "Reaction to reduce damage by 1d12 + Con modifier. PB uses per long rest.",
+          "points": 7,
+          "excludes": ["relentless", "toughness"]
+        },
+        {
+          "id": "strong",
+          "name": "Strong",
+          "description": "Advantage on Strength checks and Strength saves.",
+          "points": 5
+        },
+        {
+          "id": "endurance",
+          "name": "Endurance",
+          "description": "Human only. Avoid gaining exhaustion if you have none. Resets on long rest.",
+          "points": 6
+        }
+      ]
     }
   },
   "culture": {

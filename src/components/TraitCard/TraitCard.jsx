@@ -64,6 +64,12 @@ export function TraitCard({ trait, compact = false }) {
     compact && styles.compact
   ].filter(Boolean).join(' ');
 
+  const getPointsLabel = (points) => {
+    if (points === 0) return 'Free';
+    if (points === 1) return '1 pt';
+    return `${points} pts`;
+  };
+
   // Compact view - just show name, selected option, and cost
   if (compact) {
     return (
@@ -83,7 +89,7 @@ export function TraitCard({ trait, compact = false }) {
             )}
           </h4>
           <span className={`pill uppercase ${styles.cost} ${displayCost === 0 ? styles.free : ''}`}>
-            {displayCost === 0 ? 'Free' : typeof displayCost === 'string' ? `${displayCost} pts` : `${displayCost} pts`}
+            {getPointsLabel(displayCost)}
           </span>
         </div>
         <div className={styles.indicator}>✓</div>
@@ -108,7 +114,7 @@ export function TraitCard({ trait, compact = false }) {
           <div className={`pill uppercase ${styles.requiredBadge}`}>Required</div>
         )}
         <span className={`pill uppercase ${styles.cost} ${displayCost === 0 ? styles.free : ''}`}>
-          {displayCost === 0 ? 'Free' : typeof displayCost === 'string' ? `${displayCost} pts` : `${displayCost} pts`}
+          {getPointsLabel(displayCost)}
         </span>
       </div>
       
@@ -138,7 +144,7 @@ export function TraitCard({ trait, compact = false }) {
                   <span className={styles.optionName}>{option.name}</span>
                   {option.points !== undefined && (
                     <span className={`pill uppercase ${styles.optionCost}`}>
-                      {option.points === 0 ? 'Free' : `${option.points} pts`}
+                      {getPointsLabel(option.points)}
                     </span>
                   )}
                 </span>

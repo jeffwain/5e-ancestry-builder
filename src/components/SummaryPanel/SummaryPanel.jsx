@@ -48,6 +48,12 @@ export function SummaryPanel({ isOpen, onClose }) {
     }
   };
 
+  const getPointsLabel = (points) => {
+    if (points === 0) return 'Free';
+    if (points === 1) return '1 pt';
+    return `${points} pts`;
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -108,7 +114,7 @@ export function SummaryPanel({ isOpen, onClose }) {
                       <li key={trait.id} className={styles.traitItem}>
                         <span className={styles.traitName}>{trait.name}</span>
                         <span className={`${styles.traitCost} ${trait.points === 0 ? styles.free : ''}`}>
-                          {trait.points === 0 ? 'Free' : `${trait.points} pts`}
+                          {getPointsLabel(trait.points)}
                         </span>
                       </li>
                     ))}
@@ -129,7 +135,7 @@ export function SummaryPanel({ isOpen, onClose }) {
                           )}
                         </div>
                         <span className={`${styles.traitCost} ${trait.points === 0 ? styles.free : ''}`}>
-                          {trait.points === 0 ? 'Free' : `${trait.points} pts`}
+                          {getPointsLabel(trait.points)}
                         </span>
                       </li>
                     ))}
@@ -150,7 +156,7 @@ export function SummaryPanel({ isOpen, onClose }) {
                           )}
                         </div>
                         <span className={`${styles.traitCost} ${trait.points === 0 ? styles.free : ''}`}>
-                          {trait.points === 0 ? 'Free' : `${trait.points} pts`}
+                          {getPointsLabel(trait.points)}
                         </span>
                       </li>
                     ))}

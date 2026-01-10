@@ -7,7 +7,7 @@ import { SummaryPanel } from './components/SummaryPanel';
 function AppContent() {
   const { 
     coreAttributes,
-    heritageGroups, 
+    heritageCategories, 
     cultureCategories, 
     prebuiltAncestries,
     allTraits,
@@ -65,7 +65,7 @@ function AppContent() {
     <>
       <Layout 
         coreAttributes={coreAttributes}
-        heritageGroups={heritageGroups}
+        heritageCategories={heritageCategories}
         cultureCategories={cultureCategories}
         prebuiltAncestries={prebuiltAncestries}
         allTraits={allTraits}
