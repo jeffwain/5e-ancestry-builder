@@ -12,14 +12,17 @@ export function Layout({
   allTraits,
   onShowSummary 
 }) {
-  // Section-level expansion state (undefined = let children manage their own state)
-  const [coreExpanded, setCoreExpanded] = useState(undefined);
-  const [heritageExpanded, setHeritageExpanded] = useState(undefined);
-  const [cultureExpanded, setCultureExpanded] = useState(undefined);
+  // Expansion signals: { expanded: boolean, version: number }
+  // Version increments on each click, children respond to version changes
+  const [coreSignal, setCoreSignal] = useState({ expanded: true, version: 0 });
+  const [heritageSignal, setHeritageSignal] = useState({ expanded: true, version: 0 });
+  const [cultureSignal, setCultureSignal] = useState({ expanded: true, version: 0 });
 
-  const toggleSection = (setter, currentValue) => {
-    // If undefined (mixed state), collapse all. Otherwise toggle.
-    setter(currentValue === undefined ? false : !currentValue);
+  const toggleSection = (signal, setSignal) => {
+    setSignal({
+      expanded: !signal.expanded,
+      version: signal.version + 1
+    });
   };
 
   return (
@@ -53,12 +56,13 @@ export function Layout({
         <section className={styles.section}>
           <h2 
             className={`${styles.sectionTitle} ${styles.clickable}`}
-            onClick={() => toggleSection(setCoreExpanded, coreExpanded)}
+            onClick={() => toggleSection(coreSignal, setCoreSignal)}
             role="button"
             tabIndex={0}
-            onKeyDown={(e) => e.key === 'Enter' && toggleSection(setCoreExpanded, coreExpanded)}
+            onKeyDown={(e) => e.key === 'Enter' && toggleSection(coreSignal, setCoreSignal)}
           >
             Core Attributes
+            <span className={`${styles.sectionChevron} ${coreSignal.expanded ? styles.expanded : ''}`}>▼</span>
           </h2>
           <p className={styles.sectionDesc}>
             Choose your size (required), and optionally enhance your speed or darkvision.
@@ -69,7 +73,7 @@ export function Layout({
                 key={attrId}
                 attribute={attr}
                 attributeId={attrId}
-                forceExpanded={coreExpanded}
+                expandSignal={coreSignal}
               />
             ))}
           </div>
@@ -79,13 +83,14 @@ export function Layout({
         <section className={styles.section}>
           <h2 
             className={`${styles.sectionTitle} ${styles.clickable}`}
-            onClick={() => toggleSection(setHeritageExpanded, heritageExpanded)}
+            onClick={() => toggleSection(heritageSignal, setHeritageSignal)}
             role="button"
             tabIndex={0}
-            onKeyDown={(e) => e.key === 'Enter' && toggleSection(setHeritageExpanded, heritageExpanded)}
+            onKeyDown={(e) => e.key === 'Enter' && toggleSection(heritageSignal, setHeritageSignal)}
           >
             Heritage Traits
             <span className={styles.sectionLimit}>(max 2 categories)</span>
+            <span className={`${styles.sectionChevron} ${heritageSignal.expanded ? styles.expanded : ''}`}>▼</span>
           </h2>
           <p className={styles.sectionDesc}>
             Choose traits from up to 2 ancestry categories representing your physical heritage.
@@ -97,7 +102,7 @@ export function Layout({
                 category={category}
                 categoryId={catId}
                 type="heritage"
-                forceExpanded={heritageExpanded}
+                expandSignal={heritageSignal}
               />
             ))}
           </div>
@@ -107,13 +112,14 @@ export function Layout({
         <section className={styles.section}>
           <h2 
             className={`${styles.sectionTitle} ${styles.clickable}`}
-            onClick={() => toggleSection(setCultureExpanded, cultureExpanded)}
+            onClick={() => toggleSection(cultureSignal, setCultureSignal)}
             role="button"
             tabIndex={0}
-            onKeyDown={(e) => e.key === 'Enter' && toggleSection(setCultureExpanded, cultureExpanded)}
+            onKeyDown={(e) => e.key === 'Enter' && toggleSection(cultureSignal, setCultureSignal)}
           >
             Culture Traits
             <span className={styles.sectionLimit}>(min 1, max 2 categories)</span>
+            <span className={`${styles.sectionChevron} ${cultureSignal.expanded ? styles.expanded : ''}`}>▼</span>
           </h2>
           <p className={styles.sectionDesc}>
             Choose traits from 1-2 cultures representing your upbringing and training.
@@ -125,7 +131,7 @@ export function Layout({
                 category={category}
                 categoryId={catId}
                 type="culture"
-                forceExpanded={cultureExpanded}
+                expandSignal={cultureSignal}
               />
             ))}
           </div>

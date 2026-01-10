@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { TraitCard } from '../TraitCard';
 import { useCharacter } from '../../contexts/CharacterContext';
 import styles from './TraitCategory.module.css';
@@ -7,25 +7,24 @@ export function TraitCategory({
   category, 
   categoryId, 
   type, 
-  showBadge = true,
-  forceExpanded // External control: true = expanded, false = collapsed, undefined = use local state
+  showPill = true,
+  expandSignal // { expanded: boolean, version: number } - triggers batch expand/collapse
 }) {
-  const [localExpanded, setLocalExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(true);
   const { selectedTraitIds } = useCharacter();
+  const lastSignalVersion = useRef(expandSignal?.version ?? 0);
 
-  // Use external control if provided, otherwise use local state
-  const isExpanded = forceExpanded !== undefined ? forceExpanded : localExpanded;
+  // Respond to parent expand/collapse signal (only when version changes)
+  useEffect(() => {
+    if (expandSignal && expandSignal.version !== lastSignalVersion.current) {
+      setIsExpanded(expandSignal.expanded);
+      lastSignalVersion.current = expandSignal.version;
+    }
+  }, [expandSignal]);
 
   const toggleExpand = () => {
-    setLocalExpanded(!localExpanded);
+    setIsExpanded(!isExpanded);
   };
-
-  // Sync local state when forceExpanded changes
-  useEffect(() => {
-    if (forceExpanded !== undefined) {
-      setLocalExpanded(forceExpanded);
-    }
-  }, [forceExpanded]);
 
   // Get the required trait if there is one
   const requiredTrait = category.traits?.find(t => t.required);
@@ -35,7 +34,7 @@ export function TraitCategory({
   const hasSelectedTraits = selectedTraits.length > 0;
 
   // Use category.label if available (e.g. "Planar Ancestry"), otherwise fall back to type
-  const badgeText = category.label || type;
+  const pillText = category.label || type;
 
   const categoryClass = [
     styles.category,
@@ -52,14 +51,9 @@ export function TraitCategory({
       >
         <div className={styles.headerContent}>
           <h3 className={styles.name}>{category.name}</h3>
-          {showBadge && badgeText && (
-            <span className={`${styles.badge} ${styles[type]}`}>
-              {badgeText}
-            </span>
-          )}
-          {requiredTrait && (
-            <span className={styles.requiredIndicator} title={`${requiredTrait.name} is required`}>
-              ★
+          {showPill && pillText && (
+            <span className={`${styles.pill} ${styles[type]}`}>
+              {pillText}
             </span>
           )}
           {!isExpanded && hasSelectedTraits && (
@@ -113,39 +107,49 @@ export function TraitCategory({
   );
 }
 
-// Core attributes section (size, speed, darkvision)
+// Core attributes section (size, speed, darkvision, sizeTraits)
 export function CoreAttributeSection({ 
   attribute, 
   attributeId,
-  forceExpanded // External control
+  expandSignal // { expanded: boolean, version: number } - triggers batch expand/collapse
 }) {
-  const [localExpanded, setLocalExpanded] = useState(true);
-  const { selectedTraitIds } = useCharacter();
+  const [isExpanded, setIsExpanded] = useState(true);
+  const { selectedTraitIds, selectedSize } = useCharacter();
+  const lastSignalVersion = useRef(expandSignal?.version ?? 0);
 
-  const isExpanded = forceExpanded !== undefined ? forceExpanded : localExpanded;
-
-  // Sync local state when forceExpanded changes
+  // Respond to parent expand/collapse signal (only when version changes)
   useEffect(() => {
-    if (forceExpanded !== undefined) {
-      setLocalExpanded(forceExpanded);
+    if (expandSignal && expandSignal.version !== lastSignalVersion.current) {
+      setIsExpanded(expandSignal.expanded);
+      lastSignalVersion.current = expandSignal.version;
     }
-  }, [forceExpanded]);
+  }, [expandSignal]);
 
   // Get selected traits from this attribute
   const selectedTraits = attribute.traits?.filter(t => selectedTraitIds.includes(t.id)) || [];
   const hasSelectedTraits = selectedTraits.length > 0;
 
+  // For sizeTraits section, check if trait's sizeRequirement matches selected size
+  const isSizeTraitsSection = attributeId === 'sizeTraits';
+  const shouldShowCompact = (trait) => {
+    // Only apply compact logic to sizeTraits section when a size is selected
+    if (isSizeTraitsSection && selectedSize && trait.sizeRequirement) {
+      return trait.sizeRequirement !== selectedSize;
+    }
+    return false;
+  };
+
   return (
     <div className={`${styles.category} ${styles.coreAttribute} ${!isExpanded ? styles.collapsed : ''}`}>
       <button 
         className={styles.header}
-        onClick={() => setLocalExpanded(!localExpanded)}
+        onClick={() => setIsExpanded(!isExpanded)}
         aria-expanded={isExpanded}
       >
         <div className={styles.headerContent}>
           <h3 className={styles.name}>{attribute.name}</h3>
           {attribute.required && (
-            <span className={styles.requiredBadge}>Required</span>
+            <span className={styles.requiredPill}>Required</span>
           )}
           {!isExpanded && hasSelectedTraits && (
             <span className={styles.selectedCount}>{selectedTraits.length} selected</span>
@@ -189,7 +193,8 @@ export function CoreAttributeSection({
                 type: 'core',
                 categoryId: attributeId,
                 categoryName: attribute.name
-              }} 
+              }}
+              compact={shouldShowCompact(trait)}
             />
           ))}
         </div>

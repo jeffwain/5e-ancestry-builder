@@ -16,8 +16,15 @@ function AppContent() {
     error 
   } = useTraitData();
   
-  const { setDefaults, selectedTraits } = useCharacter();
+  const { setDefaults, setAllTraits, selectedTraits } = useCharacter();
   const [showSummary, setShowSummary] = useState(false);
+
+  // Set all traits for lookup when data loads
+  useEffect(() => {
+    if (allTraits && Object.keys(allTraits).length > 0) {
+      setAllTraits(allTraits);
+    }
+  }, [allTraits, setAllTraits]);
 
   // Auto-select default traits when data loads
   useEffect(() => {

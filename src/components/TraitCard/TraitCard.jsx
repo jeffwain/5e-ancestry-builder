@@ -85,7 +85,7 @@ export function TraitCard({ trait, compact = false }) {
           <h4 className={`flex1 ${styles.name}`}>
             {trait.name}
             {selectedOptionName && (
-              <span className={styles.selectedOptionBadge}>{selectedOptionName}</span>
+              <span className={styles.selectedOptionPill}>{selectedOptionName}</span>
             )}
           </h4>
           <span className={`pill uppercase ${styles.cost} ${displayCost === 0 ? styles.free : ''}`}>
@@ -111,7 +111,7 @@ export function TraitCard({ trait, compact = false }) {
       <div className={styles.header}>
         <h4 className={`flex1 ${styles.name}`}>{trait.name}</h4>
         {trait.required && (
-          <div className={`pill uppercase ${styles.requiredBadge}`}>Required</div>
+          <div className={`pill uppercase ${styles.requiredPill}`}>Required</div>
         )}
         <span className={`pill uppercase ${styles.cost} ${displayCost === 0 ? styles.free : ''}`}>
           {getPointsLabel(displayCost)}
@@ -164,13 +164,13 @@ export function TraitCard({ trait, compact = false }) {
       )}
       
       {trait.sizeRequirement && (
-        <div className={styles.sizeBadge}>
+        <div className={styles.sizePill}>
           {trait.sizeRequirement} only
         </div>
       )}
       
       {trait.armorRestriction && (
-        <div className={styles.restrictionBadge}>
+        <div className={styles.restrictionPill}>
           No medium/heavy armor
         </div>
       )}

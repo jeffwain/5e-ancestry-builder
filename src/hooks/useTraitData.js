@@ -109,9 +109,9 @@ export function useTraitData() {
       const conflicting = trait.excludes.find(id => selectedTraitIds.includes(id));
       if (conflicting) {
         const conflictingTrait = allTraits[conflicting];
-        return { 
-          canSelect: false, 
-          reason: `Conflicts with ${conflictingTrait?.name || conflicting}` 
+        return {
+          canSelect: false,
+          reason: `Conflicts with ${conflictingTrait?.name || conflicting}`
         };
       }
     }
@@ -121,9 +121,9 @@ export function useTraitData() {
       const missing = trait.requires.filter(id => !selectedTraitIds.includes(id));
       if (missing.length > 0) {
         const missingNames = missing.map(id => allTraits[id]?.name || id).join(', ');
-        return { 
-          canSelect: false, 
-          reason: `Requires: ${missingNames}` 
+        return {
+          canSelect: false,
+          reason: `Requires ${missingNames}`
         };
       }
     }
@@ -132,9 +132,9 @@ export function useTraitData() {
     if (trait.sizeRequirement) {
       const requiredSizeId = `size-${trait.sizeRequirement}`;
       if (!selectedTraitIds.includes(requiredSizeId)) {
-        return { 
-          canSelect: false, 
-          reason: `Requires ${trait.sizeRequirement} size` 
+        return {
+          canSelect: false,
+          reason: `Requires ${trait.sizeRequirement} size`
         };
       }
     }
@@ -161,7 +161,7 @@ export function useTraitData() {
     if (!data?.prebuiltAncestries) return null;
     const prebuilt = data.prebuiltAncestries.find(p => p.id === ancestryId);
     if (!prebuilt) return null;
-    
+
     return {
       ...prebuilt,
       traits: prebuilt.traitIds
@@ -179,13 +179,13 @@ export function useTraitData() {
     allTraits,
     allTraitsArray,
     defaultTraits,
-    
+
     // Helpers
     canSelectTrait,
     getExcludedBy,
     getRequiredBy,
     getPrebuiltWithTraits,
-    
+
     // Status
     loading,
     error
