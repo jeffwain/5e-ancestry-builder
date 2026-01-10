@@ -1,7 +1,7 @@
 import { useCharacter } from '../../contexts/CharacterContext';
 import styles from './TraitCard.module.css';
 
-export function TraitCard({ trait }) {
+export function TraitCard({ trait, compact = false }) {
   const { 
     toggleTrait, 
     isTraitSelected, 
@@ -50,13 +50,46 @@ export function TraitCard({ trait }) {
     }
   }
 
+  // Get selected option name for compact view
+  const selectedOptionName = hasOptions && selectedOptionId 
+    ? trait.options.find(o => o.id === selectedOptionId)?.name 
+    : null;
+
   const cardClass = [
     styles.card,
     selected && styles.selected,
     disabled && styles.disabled,
     trait.required && styles.required,
-    hasOptions && styles.hasOptions
+    hasOptions && styles.hasOptions,
+    compact && styles.compact
   ].filter(Boolean).join(' ');
+
+  // Compact view - just show name, selected option, and cost
+  if (compact) {
+    return (
+      <div
+        className={cardClass}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        role="checkbox"
+        aria-checked={selected}
+        tabIndex={0}
+      >
+        <div className={styles.header}>
+          <h4 className={`flex1 ${styles.name}`}>
+            {trait.name}
+            {selectedOptionName && (
+              <span className={styles.selectedOptionBadge}>{selectedOptionName}</span>
+            )}
+          </h4>
+          <span className={`pill uppercase ${styles.cost} ${displayCost === 0 ? styles.free : ''}`}>
+            {displayCost === 0 ? 'Free' : typeof displayCost === 'string' ? `${displayCost} pts` : `${displayCost} pts`}
+          </span>
+        </div>
+        <div className={styles.indicator}>✓</div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -100,17 +133,19 @@ export function TraitCard({ trait }) {
                 onChange={() => {}}
                 className={styles.optionRadio}
               />
-              <span className={styles.optionContent}>
-                <span className={styles.optionName}>{option.name}</span>
-                {option.points !== undefined && (
-                  <span className={styles.optionCost}>
-                    {option.points === 0 ? 'Free' : `${option.points} pts`}
-                  </span>
+              <span className={styles.optionContentContainer}>
+                <span className={styles.optionContent}>
+                  <span className={styles.optionName}>{option.name}</span>
+                  {option.points !== undefined && (
+                    <span className={`pill uppercase ${styles.optionCost}`}>
+                      {option.points === 0 ? 'Free' : `${option.points} pts`}
+                    </span>
+                  )}
+                </span>
+                {option.description && (
+                  <span className={styles.optionDesc}>{option.description}</span>
                 )}
               </span>
-              {option.description && (
-                <span className={styles.optionDesc}>{option.description}</span>
-              )}
             </label>
           ))}
         </div>

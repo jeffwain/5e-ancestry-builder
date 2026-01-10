@@ -3,6 +3,12 @@
   border: 2px solid var(--color-heritage);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  /* Prevent break inside for masonry */
+  break-inside: avoid;
+}
+
+.category.collapsed {
+  /* Shrink when collapsed */
 }
 
 .coreAttribute {
@@ -29,6 +35,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  flex-wrap: wrap;
 }
 
 .name {
@@ -83,10 +90,22 @@
   font-size: var(--text-base);
 }
 
+/* Selected count badge shown when collapsed */
+.selectedCount {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--color-parchment-100);
+}
+
 .chevron {
   font-size: var(--text-base);
   color: var(--color-parchment-200);
   transition: transform var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .chevron.expanded {
@@ -110,12 +129,27 @@
   gap: var(--space-2);
 }
 
+/* Selected traits shown when collapsed */
+.selectedTraits {
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-parchment-50);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
 /* Heritage Group styles - subdued container for ancestry categories */
 .heritageGroup {
   background: var(--color-parchment-100);
   border: 1px solid var(--color-parchment-400);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  /* Prevent break inside for masonry */
+  break-inside: avoid;
+}
+
+.heritageGroup.collapsed {
+  /* Shrink when collapsed */
 }
 
 .groupHeader {
@@ -132,6 +166,22 @@
 
 .groupHeader:hover {
   background: var(--color-parchment-300);
+}
+
+.groupHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.groupSelectedCount {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  background: var(--color-heritage);
+  color: white;
 }
 
 .groupName {
@@ -156,6 +206,30 @@
   background: var(--color-parchment-50);
 }
 
+/* Collapsed group content - show selected traits summary */
+.groupCollapsedContent {
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-parchment-50);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.collapsedCategory {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.collapsedCategoryName {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-heritage);
+}
+
 /* Culture category styling - use culture colors */
 .category.culture {
   border-color: var(--color-culture);
@@ -167,4 +241,17 @@
 
 .category.culture .header:hover {
   background: linear-gradient(135deg, var(--color-culture-light) 0%, var(--color-culture) 100%);
+}
+
+.category.culture .selectedCount {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Core attribute styling */
+.coreAttribute .header {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-ink-700) 100%);
+}
+
+.coreAttribute .header:hover {
+  background: linear-gradient(135deg, var(--color-accent-light, var(--color-accent)) 0%, var(--color-accent) 100%);
 }

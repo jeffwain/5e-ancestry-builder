@@ -95,6 +95,22 @@
   margin: 0 0 var(--space-2);
 }
 
+.sectionTitle.clickable {
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--transition-fast);
+}
+
+.sectionTitle.clickable:hover {
+  color: var(--color-heritage);
+}
+
+.sectionTitle.clickable:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
 .sectionLimit {
   font-family: var(--font-ui);
   font-size: var(--text-sm);
@@ -110,22 +126,31 @@
   max-width: 700px;
 }
 
+/* Core attributes - single row */
 .coreGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-4);
 }
 
+/* Heritage grid - masonry-style with CSS columns */
 .heritageGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
+  column-count: 2;
+  column-gap: var(--space-4);
 }
 
+.heritageGrid > * {
+  margin-bottom: var(--space-4);
+}
+
+/* Culture grid - masonry-style with CSS columns */
 .cultureGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--space-4);
+  column-count: 2;
+  column-gap: var(--space-4);
+}
+
+.cultureGrid > * {
+  margin-bottom: var(--space-4);
 }
 
 /* ── Footer ─────────────────────────────── */
@@ -166,8 +191,9 @@
 }
 
 @media (max-width: 900px) {
-  .heritageGrid {
-    grid-template-columns: 1fr;
+  .heritageGrid,
+  .cultureGrid {
+    column-count: 1;
   }
 }
 
@@ -189,8 +215,7 @@
     padding: var(--space-4);
   }
 
-  .coreGrid,
-  .cultureGrid {
+  .coreGrid {
     grid-template-columns: 1fr;
   }
 }
