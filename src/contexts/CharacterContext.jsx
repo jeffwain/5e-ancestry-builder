@@ -4,7 +4,8 @@ import { createContext, useContext, useReducer, useMemo, useCallback } from 'rea
 const initialState = {
   selectedTraits: [],      // Array of full trait objects
   selectedOptions: {},     // Map of trait ID -> selected option ID (for traits with choices)
-  loadedPrebuilt: null     // Track which prebuilt was loaded
+  loadedPrebuilt: null,    // Track which prebuilt was loaded
+  allTraits: {}            // Trait lookup map for getting names
 };
 
 // Action types
@@ -14,6 +15,7 @@ const ActionTypes = {
   SET_TRAIT_OPTION: 'SET_TRAIT_OPTION',
   LOAD_PREBUILT: 'LOAD_PREBUILT',
   SET_DEFAULTS: 'SET_DEFAULTS',
+  SET_ALL_TRAITS: 'SET_ALL_TRAITS',
   RESET: 'RESET'
 };
 
@@ -91,8 +93,15 @@ function characterReducer(state, action) {
       };
     }
 
+    case ActionTypes.SET_ALL_TRAITS: {
+      return {
+        ...state,
+        allTraits: action.payload
+      };
+    }
+
     case ActionTypes.RESET: {
-      return initialState;
+      return { ...initialState, allTraits: state.allTraits };
     }
 
     default:
@@ -284,13 +293,17 @@ export function CharacterProvider({ children }) {
       }
     }
 
-    // Check requires
+    // Check requires - show actual trait names
     if (trait.requires?.length > 0) {
       const missing = trait.requires.filter(id => !selectedTraitIds.includes(id));
       if (missing.length > 0) {
+        const missingNames = missing.map(id => {
+          const t = state.allTraits[id];
+          return t?.name || id;
+        }).join(', ');
         return { 
           canSelect: false, 
-          reason: `Requires prerequisite traits` 
+          reason: `Requires ${missingNames}` 
         };
       }
     }
@@ -306,7 +319,7 @@ export function CharacterProvider({ children }) {
     }
 
     return { canSelect: true, reason: null };
-  }, [selectedTraitIds, selectedSize, state.selectedTraits]);
+  }, [selectedTraitIds, selectedSize, state.selectedTraits, state.allTraits]);
 
   // Actions
   const selectTrait = useCallback((trait) => {
@@ -345,6 +358,10 @@ export function CharacterProvider({ children }) {
 
   const setDefaults = useCallback((defaultTraits) => {
     dispatch({ type: ActionTypes.SET_DEFAULTS, payload: defaultTraits });
+  }, []);
+
+  const setAllTraits = useCallback((allTraits) => {
+    dispatch({ type: ActionTypes.SET_ALL_TRAITS, payload: allTraits });
   }, []);
 
   // Export character as JSON
@@ -395,6 +412,7 @@ export function CharacterProvider({ children }) {
     setTraitOption,
     loadPrebuilt,
     setDefaults,
+    setAllTraits,
     reset,
     
     // Helpers

@@ -68,7 +68,7 @@ export function SummaryPanel({ isOpen, onClose }) {
 
         <div className={styles.content}>
           {loadedPrebuilt && (
-            <div className={styles.prebuiltBadge}>
+            <div className={styles.prebuiltPill}>
               Based on: {loadedPrebuilt}
             </div>
           )}

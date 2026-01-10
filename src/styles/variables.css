@@ -19,7 +19,7 @@
   --leading-normal: 1.3125;
   --leading-relaxed: 1.5;
   /* ── Colors: Parchment & Ink ────────────── */
-  --color-parchment-50: #fdfcf9;
+  --color-parchment-50: rgba(251, 250, 247, 0.75);
   --color-parchment-100: #f9f6ef;
   --color-parchment-200: #f0ead8;
   --color-parchment-300: #e4dbc0;
@@ -29,12 +29,15 @@
   --color-ink-700: #3d3730;
   --color-ink-600: #4d4540;
   --color-ink-500: #635850;
+  --color-ink-400: #796d63;
   /* ── Accent Colors ─────────────────────── */
   --color-heritage: #8b4513;
   /* Saddle brown - earthy, ancestral */
   --color-heritage-light: #a0522d;
   --color-heritage-dark: #6b3410;
   --color-heritage-bg: rgba(139, 69, 19, 0.08);
+  --color-card-bg-hover: rgba(255, 255, 255, 0.75);
+  --color-card-bg-selected: rgba(255, 255, 255, 0.95);
   --color-culture: #2e5a4c;
   /* Deep forest green - learned, social */
   --color-culture-light: #3d7a65;
