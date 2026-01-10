@@ -1,1 +1,1 @@
-export { TraitCategory, HeritageGroup, CoreAttributeSection } from './TraitCategory';
+export { TraitCategory, CoreAttributeSection } from './TraitCategory';

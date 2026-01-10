@@ -34,6 +34,9 @@ export function TraitCategory({
   const selectedTraits = category.traits?.filter(t => selectedTraitIds.includes(t.id)) || [];
   const hasSelectedTraits = selectedTraits.length > 0;
 
+  // Use category.label if available (e.g. "Planar Ancestry"), otherwise fall back to type
+  const badgeText = category.label || type;
+
   const categoryClass = [
     styles.category,
     type && styles[type],
@@ -49,9 +52,9 @@ export function TraitCategory({
       >
         <div className={styles.headerContent}>
           <h3 className={styles.name}>{category.name}</h3>
-          {showBadge && type && (
+          {showBadge && badgeText && (
             <span className={`${styles.badge} ${styles[type]}`}>
-              {type}
+              {badgeText}
             </span>
           )}
           {requiredTrait && (
@@ -104,93 +107,6 @@ export function TraitCategory({
               }} 
             />
           ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-// Sub-category for heritage groups (planar, bestial, other)
-export function HeritageGroup({ 
-  groupId, 
-  groupName, 
-  categories,
-  forceExpanded // External control
-}) {
-  const [localExpanded, setLocalExpanded] = useState(true);
-  const { selectedTraitIds } = useCharacter();
-
-  const isExpanded = forceExpanded !== undefined ? forceExpanded : localExpanded;
-
-  // Sync local state when forceExpanded changes
-  useEffect(() => {
-    if (forceExpanded !== undefined) {
-      setLocalExpanded(forceExpanded);
-    }
-  }, [forceExpanded]);
-
-  // Count selected traits across all categories in this group
-  const selectedCount = Object.values(categories).reduce((count, category) => {
-    const selected = category.traits?.filter(t => selectedTraitIds.includes(t.id)) || [];
-    return count + selected.length;
-  }, 0);
-
-  return (
-    <div className={`${styles.heritageGroup} ${!isExpanded ? styles.collapsed : ''}`}>
-      <button 
-        className={styles.groupHeader}
-        onClick={() => setLocalExpanded(!localExpanded)}
-        aria-expanded={isExpanded}
-      >
-        <h2 className={styles.groupName}>{groupName}</h2>
-        <div className={styles.groupHeaderRight}>
-          {!isExpanded && selectedCount > 0 && (
-            <span className={styles.groupSelectedCount}>{selectedCount} selected</span>
-          )}
-          <span className={`${styles.chevron} ${isExpanded ? styles.expanded : ''}`}>
-            ▼
-          </span>
-        </div>
-      </button>
-
-      {isExpanded && (
-        <div className={styles.groupContent}>
-          {Object.entries(categories).map(([catId, category]) => (
-            <TraitCategory 
-              key={catId}
-              category={category}
-              categoryId={catId}
-              type="heritage"
-              showBadge={true}
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Show selected traits summary when group is collapsed */}
-      {!isExpanded && selectedCount > 0 && (
-        <div className={styles.groupCollapsedContent}>
-          {Object.entries(categories).map(([catId, category]) => {
-            const selected = category.traits?.filter(t => selectedTraitIds.includes(t.id)) || [];
-            if (selected.length === 0) return null;
-            return (
-              <div key={catId} className={styles.collapsedCategory}>
-                <span className={styles.collapsedCategoryName}>{category.name}</span>
-                {selected.map(trait => (
-                  <TraitCard 
-                    key={trait.id} 
-                    trait={{
-                      ...trait,
-                      type: 'heritage',
-                      categoryId: catId,
-                      categoryName: category.name
-                    }}
-                    compact
-                  />
-                ))}
-              </div>
-            );
-          })}
         </div>
       )}
     </div>

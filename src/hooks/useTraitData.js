@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 
 /**
  * Hook to load and organize trait data from the JSON file
- * Handles the new nested structure with core attributes, heritage, and culture
+ * Handles core attributes, heritage categories (flat), and culture categories
  */
 export function useTraitData() {
   const [data, setData] = useState(null);
@@ -34,8 +34,8 @@ export function useTraitData() {
     return data.coreAttributes;
   }, [data]);
 
-  // Heritage categories organized by group (planar, bestial, other)
-  const heritageGroups = useMemo(() => {
+  // Heritage categories (flat structure with label field)
+  const heritageCategories = useMemo(() => {
     if (!data?.heritage) return {};
     return data.heritage;
   }, [data]);
@@ -52,7 +52,7 @@ export function useTraitData() {
     const traitMap = {};
 
     // Helper to add traits with metadata
-    const addTraits = (traits, categoryId, categoryName, type, group = null) => {
+    const addTraits = (traits, categoryId, categoryName, type, label = null) => {
       if (!traits) return;
       for (const trait of traits) {
         traitMap[trait.id] = {
@@ -60,7 +60,7 @@ export function useTraitData() {
           categoryId,
           categoryName,
           type,
-          group
+          label // e.g. "Planar Ancestry", "Bestial Ancestry"
         };
       }
     };
@@ -72,12 +72,10 @@ export function useTraitData() {
       }
     }
 
-    // Heritage (nested: group -> category -> traits)
+    // Heritage (flat: category -> traits, with label field)
     if (data.heritage) {
-      for (const [groupId, group] of Object.entries(data.heritage)) {
-        for (const [catId, category] of Object.entries(group)) {
-          addTraits(category.traits, catId, category.name, 'heritage', groupId);
-        }
+      for (const [catId, category] of Object.entries(data.heritage)) {
+        addTraits(category.traits, catId, category.name, 'heritage', category.label);
       }
     }
 
@@ -175,7 +173,7 @@ export function useTraitData() {
   return {
     // Data
     coreAttributes,
-    heritageGroups,
+    heritageCategories,
     cultureCategories,
     prebuiltAncestries: data?.prebuiltAncestries || [],
     allTraits,

@@ -1,18 +1,12 @@
 import { useState } from 'react';
 import { PointBudget } from '../PointBudget';
 import { PrebuiltSelector } from '../PrebuiltSelector';
-import { TraitCategory, HeritageGroup, CoreAttributeSection } from '../TraitCategory';
+import { TraitCategory, CoreAttributeSection } from '../TraitCategory';
 import styles from './Layout.module.css';
-
-const HERITAGE_GROUP_NAMES = {
-  planar: 'Planar Ancestries',
-  bestial: 'Bestial Ancestries',
-  other: 'Other Ancestries'
-};
 
 export function Layout({ 
   coreAttributes,
-  heritageGroups, 
+  heritageCategories, 
   cultureCategories, 
   prebuiltAncestries,
   allTraits,
@@ -81,7 +75,7 @@ export function Layout({
           </div>
         </section>
 
-        {/* Heritage Section */}
+        {/* Heritage Section - flat like culture */}
         <section className={styles.section}>
           <h2 
             className={`${styles.sectionTitle} ${styles.clickable}`}
@@ -97,12 +91,12 @@ export function Layout({
             Choose traits from up to 2 ancestry categories representing your physical heritage.
           </p>
           <div className={styles.heritageGrid}>
-            {heritageGroups && Object.entries(heritageGroups).map(([groupId, categories]) => (
-              <HeritageGroup
-                key={groupId}
-                groupId={groupId}
-                groupName={HERITAGE_GROUP_NAMES[groupId] || groupId}
-                categories={categories}
+            {heritageCategories && Object.entries(heritageCategories).map(([catId, category]) => (
+              <TraitCategory
+                key={catId}
+                category={category}
+                categoryId={catId}
+                type="heritage"
                 forceExpanded={heritageExpanded}
               />
             ))}
