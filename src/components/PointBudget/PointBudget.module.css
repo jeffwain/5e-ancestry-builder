@@ -1,0 +1,121 @@
+.budget {
+  background: var(--color-parchment-50);
+  border: 1px solid var(--color-parchment-300);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.pointsDisplay {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+  justify-content: center;
+}
+
+.spent {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--color-heritage);
+  line-height: 1;
+}
+
+.spent.over {
+  color: var(--color-error);
+}
+
+.divider {
+  font-size: var(--text-2xl);
+  color: var(--color-ink-500);
+}
+
+.total {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--color-ink-700);
+}
+
+.label {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-ink-500);
+  margin-left: var(--space-2);
+}
+
+.progressContainer {
+  height: 8px;
+  background: var(--color-parchment-300);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-heritage) 0%, var(--color-heritage-light) 100%);
+  border-radius: 4px;
+  transition: width var(--transition-base);
+}
+
+.progressBar.over {
+  background: linear-gradient(90deg, var(--color-error) 0%, #b22222 100%);
+}
+
+.counts {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-8);
+}
+
+.count {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.countValue {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-ink-800);
+}
+
+.countLabel {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-500);
+}
+
+.warnings {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-parchment-300);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.warning {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-warning);
+  background: var(--color-warning-bg);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+}
+
+.warningIcon {
+  flex-shrink: 0;
+}

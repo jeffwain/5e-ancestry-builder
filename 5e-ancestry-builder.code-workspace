@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../5etools"
+		},
+		{
+			"path": "../5etools-utils"
+		}
+	],
+  "settings": {}
+}

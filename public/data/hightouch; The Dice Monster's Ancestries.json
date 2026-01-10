@@ -1,0 +1,3879 @@
+{
+  "$schema": "https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew-fast/homebrew.json",
+  "_meta": {
+    "sources": [
+      {
+        "json": "DM-Ancestries",
+        "abbreviation": "DMM",
+        "full": "The Dice Monster's Ancestries",
+        "authors": [
+          "hightouch"
+        ],
+        "convertedBy": [
+          "hightouch"
+        ],
+        "version": "0.3",
+        "color": "09EDBC"
+      }
+    ],
+    "dateAdded": 1647295221,
+    "dateLastModified": 1733169901,
+    "_dateLastModifiedHash": "7b8b2dd24f",
+    "status": "ready",
+    "edition": "classic"
+  },
+  "race": [
+    {
+      "name": "Human",
+      "source": "DM-Ancestries",
+			"size": [
+				"S",
+				"M"
+			],
+			"sizeEntry": {
+				"type": "item",
+				"name": "Size:",
+				"entries": [
+					"Medium (about 4-7 feet tall) or Small (about 3-4 feet tall), chosen when you select this species"
+				]
+			},
+      "speed": {
+        "walk": 30
+      },
+      "entries": [
+        {
+          "name": "Endurance",
+          "entries": [
+            "If you have no Exhaustion, you can use this trait to avoid gaining a level of Exhaustion. You regain the use of this trait on a long rest. {@note 6}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Creativity",
+          "entries": [
+            "When making an ability check, attack roll, or saving throw, you can gain advantage on the roll. You can choose to do this after the roll has been made but before the result is declared. You can use this trait a number of times equal to your Proficiency Bonus - 1 per long rest. {@note 6}"
+          ],
+          "type": "entries"
+        }
+      ],
+      "languageProficiencies": [
+        {
+          "common": true,
+          "anyStandard": 1
+        }
+      ]
+    },
+    {
+      "name": "Dwarf",
+      "source": "DM-Ancestries",
+      "size": [
+        "M",
+        "S"
+      ],
+      "speed": {
+        "walk": 30
+      },
+			"edition": "one",
+      "toolProficiencies": [
+        {
+          "any": 1
+        }
+      ],
+      "entries": [
+        {
+          "name": "Artisan's Lore",
+          "entries": [
+            "Whenever you make an Intelligence (History) check related to the origin or history of an item related to an artisan tool with which you are proficient, you are considered proficient in the History skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tool Proficiency",
+          "entries": [
+            "You gain proficiency with the artisan's tools of your choice. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Skilled Artistry",
+          "entries": [
+            "The time it takes to craft something using an artisan's tool with which you are proficient is halved. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ],
+      "hasFluff": true,
+      "fluff": {
+        "entries": [
+          "Ever since the arrival of goblins on Eora, the dwarves been locked in constant struggle with them."
+        ]
+      }
+    },
+    {
+      "name": "Half-Giant",
+      "source": "DM-Ancestries",
+			"edition": "one",
+      "size": [
+        "M"
+      ],
+			"sizeEntry": {
+				"type": "item",
+				"name": "Size:",
+				"entries": [
+					"Medium (about 6-8 feet tall)"
+				]
+			},
+      "speed": {
+        "walk": 30
+      },
+      "entries": [
+        {
+          "name": "Powerful Build",
+          "entries": [
+            "You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift."
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Goblin",
+      "source": "DM-Ancestries",
+      "size": [
+        "S"
+      ],
+      "sizeEntry": {
+        "type": "item",
+        "name": "Size:",
+        "entries": [
+          "Small (about 3-4 feet tall)"
+        ]
+      },
+      "speed": {
+        "walk": 30
+      },
+      "traitTags": [
+        "Natural Weapon"
+      ],
+      "age": {
+        "mature": 5,
+        "max": 20
+      },
+      "toolProficiencies": [
+        {
+          "any": 1
+        }
+      ],
+      "darkvision": 60,
+      "entries": [
+        {
+          "name": "Darkvision",
+          "entries": [
+            "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade of gray. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Biter",
+          "entries": [
+            "You have a mouthful of sharp teeth that allow you to make damaging unarmed strikes as a natural weapon. When you hit with it, the strike deals 1d6 + Strength modifier slashing damage. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Combat Awareness",
+          "entries": [
+            "If you are surprised in battle, enemies do not have advantage against you in the surprise round. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Out of Sight",
+          "entries": [
+            "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Artisan",
+          "entries": [
+            "You gain proficiency with the artisan's tools of your choice. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Ambush",
+          "entries": [
+            "If you hit a creature with an attack roll, the creature takes an extra 2d6 damage if it hasn't taken a turn yet in the current combat. {@note 5}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Nimble Escape",
+          "entries": [
+            "You can take the {@action Disengage} or {@action Hide} action as a bonus action on each of your turns. {@note 7}"
+          ],
+          "type": "entries"
+        }
+      ],
+      "hasFluff": true,
+      "fluff": {
+        "entries": [
+          "Goblinoids are an alien species and while are not kith are similar in body plan and structure. The multiple forms of goblinoid are life stages of a single species that reproduces hermaphroditically with larvae. These spawning pools are considered vile to most kith, mostly due to the smell, but more practically as a source of disease and vermin. While not all goblinoids are evil, their societies and cultures are significantly more chaotic, violent, and competitive than kith. While goblinoids do *rarely* join other societies, they will live on the fringes of settlements or in completely separate societies of their own.",
+          "Their fast metabolisms make goblins eating machines stricken with almost constant hunger; fortunately, goblins can subsist on almost anything organic, including other humanoids. This hunger subsides as they evolve. Combined with their tendency to scavenge and lay waste to local food sources causes most societies to view them as pests, outcasts, or annoyances at best. In rare occasions, befriending goblins has often led to great technological innovations and strategic military alliances.",
+          "Many kith call them \"biters.\" Some consider goblins the \"teeth in the night\" that break into isolated farmhouses and steal babies, or devour entire cows in the field leaving bloody bones and scraps."
+        ]
+      }
+    },
+    {
+      "name": "Returned",
+      "source": "DM-Ancestries",
+      "size": [
+        "M",
+        "S"
+      ],
+			"creatureTypes": [
+				"construct"
+			],
+      "speed": {
+        "walk": 30
+      },
+      "entries": [
+        {
+          "name": "Constructed Form",
+          "entries": [
+            "You are a Construct. You don't need to eat, drink, or breathe, and magic can't put you to sleep. You are immune to disease and have advantage on saving throws against being {@condition paralyzed}. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Vigilant Rest",
+          "entries": [
+            "When you take a long rest, you can spend at least six hours in an inactive, motionless state, rather than sleeping. In this state, you appear inert, but it doesn't render you unconscious, and you can see and hear as normal. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Undine",
+      "source": "DM-Ancestries",
+      "size": [
+        "M",
+        "S"
+      ],
+      "speed": {
+        "swim": 30
+      },
+      "entries": [
+        {
+          "name": "Swim Speed",
+          "entries": [
+            "You have a swim speed of 30 feet. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Amphibious",
+          "entries": [
+            "You can breathe both air and water. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Oread",
+      "source": "DM-Ancestries",
+      "size": [
+        "M",
+        "S"
+      ],
+      "darkvision": 60,
+      "languageProficiencies": [
+        {
+          "primordial": true
+        }
+      ],
+      "entries": [
+        {
+          "name": "Darkvision",
+          "entries": [
+            "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in monochromatic shades of brown or green. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Wildtongue",
+          "entries": [
+            "You speak primordial (giant). {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Speech of Beast and Leaf",
+          "entries": [
+            "You have the ability to communicate in a limited manner with Beasts, Plants, and vegetation. They can understand the meaning of your words, though you have no special ability to understand them in return. You have advantage on all Charisma checks you make to influence them. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Traversal",
+          "entries": [
+            "You can move across difficult terrain caused by Plant creatures and vegetation without spending extra movement. {@note 0}"
+          ],
+          "type": "entries"
+        }
+      ],
+      "hasFluff": true,
+      "fluff": {
+        "entries": [
+          "Nature godlike are manifestations of nature. Most have plantlike growths such as mossy or flowering vines for hair, barklike skin, or saplike blood. Some bear mammalian animal features such as horns or antlers, long cervine-like ears, tails, fur, or hooved legs. Their eyes, as with other godlike, feature solid glowing irises and/or pupils - in variants of green, blue, yellow and brown.",
+          {
+            "type": "list",
+            "name": "Sources of their power",
+            "items": [
+              "Dryads, hags, archfey and other creatures from the feywilds",
+              "Demigods or powerful nature-aligned creatures"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Osphrani (Kangaroofolk)",
+      "source": "DM-Ancestries",
+      "size": [
+        "M",
+        "S"
+      ],
+			"sizeEntry": {
+				"type": "item",
+				"name": "Size:",
+				"entries": [
+					"Medium (about 4-8 feet tall) or Small (about 3-4 feet tall), chosen when you select this species"
+				]
+			},
+      "speed": {
+        "walk": 35
+      },
+			"age": {
+				"mature": 12,
+				"max": 60
+			},
+      "skillProficiencies": [
+        {
+          "nature": true
+        }
+      ],
+			"traitTags": [
+				"Natural Weapon"
+			],
+      "entries": [
+        {
+          "type": "entries",
+          "name": "Description",
+          "entries": [
+            "You stand between 3 and 8 feet tall and weigh between 40 and 200 pounds. Osphrani mature at 12 and can live up to 60 years."
+          ]
+        },
+        {
+          "name": "Strong Kick",
+          "entries": [
+            "Your strong legs and tail allow you to make damaging unarmed strikes as light weapons while balancing on your tail. When you hit with it, a strike deals 1d6 + Strength modifier bludgeoning damage. The target of your attack must make a Strength saving throw (DC 10 + your Strength bonus) or be pushed back 5 feet. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Leap",
+          "entries": [
+            "Your long jump is 20 feet and your high jump is 10 feet, with or without a running start. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Quick",
+          "entries": [
+            "Your base walking speed is 35 feet. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Agile Fall",
+          "entries": [
+            "When you fall 100 feet or less and aren't {@condition incapacitated}, you can make a DC 10 Dexterity ({@skill Acrobatics}) check when you land. If you succeed, you take no falling damage and land on your feet. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Pouch",
+          "entries": [
+            "All osphrani have a pouch on their belly can either carry one item weighing up to their Strength score, or can serve as a component pouch. You cannot use this feature if your belly is covered or otherwise inaccessible, however most armouries supply armour that accommodates this feature. You have advantage on Dexterity ({@skill Sleight of Hand}) checks you make to conceal an object in your pouch. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Bounding",
+          "entries": [
+            "As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
+            "Additionally, the efficiency of movement your bounding provides means you can move twice the normal time (up to 16 hours) each day before being subject to the effects of a forced march. {@note 4}"
+          ],
+          "type": "entries"
+        }
+      ],
+      "hasFluff": true,
+      "fluff": {
+        "entries": [
+          "Ysoki is the collective name for a number of rodent and marsupial-like mammalian species. They are generally small mammalian species, most commonly resembling rats, mice, hare, and squirrels."
+        ]
+      }
+    },
+    {
+      "name": "Ysoki (Ratfolk)",
+      "source": "DM-Ancestries",
+      "size": [
+        "M",
+        "S"
+      ],
+			"sizeEntry": {
+				"type": "item",
+				"name": "Size:",
+				"entries": [
+					"Medium (4-5 feet tall) or Small (about 3-4 feet tall), chosen when you select this species"
+				]
+			},
+			"age": {
+				"mature": 4,
+				"max": 50
+			},
+      "darkvision": 60,
+      "toolProficiencies": [
+        {
+          "any": 1
+        }
+      ],
+      "traitTags": [
+        "Natural Weapon"
+      ],
+      "entries": [
+        {
+          "name": "Squeeze",
+          "entries": [
+            "You can squeeze into any space that can be traversed by a creature one size category smaller than you. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Darkvision",
+          "entries": [
+            "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade, usually gray. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Gifted Artisan",
+          "entries": [
+            "You gain proficiency with the artisan's tools of your choice, and add an additional 1d4 to all ability checks rolled using these tools. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tooth and Nail",
+          "entries": [
+            "Your strong bite allow you to make damaging unarmed strikes as natural, light weapons. When you hit with it, a strike deals 1d6 + Strength modifier slashing damage. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Gnaw",
+          "entries": [
+            "With enough time, your teeth can chew through almost anything. Your teeth deal double damage against objects like doors or ropes that are made of wood, fiber, or other natural materials. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Toxin Resilience",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition poisoned} or {@condition diseased} conditions on yourself. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Squeakspeak",
+          "entries": [
+            "You can talk with rats, mice, and other rodents. This communication is high-pitched and out of the hearing range for most humanoids. {@note 0}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Harengon (Rabbitfolk)",
+      "source": "DM-Ancestries",
+      "size": [
+        "S"
+      ],
+			"age": {
+				"mature": 2,
+				"max": 20
+			},
+      "skillProficiencies": [
+        {
+          "perception": true
+        }
+      ],
+      "entries": [
+        {
+          "name": "Leap",
+          "entries": [
+            "Your long jump is 20 feet and your high jump is 10 feet, with or without a running start. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Keen Hearing",
+          "entries": [
+            "You have advantage on Wisdom ({@skill Perception}) checks that rely on hearing sounds. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Twitchy",
+          "entries": [
+            "You can add {@dice 1d4} to your initiative rolls, and while being unconscious from sleeping, you lose your advantage on Wisdom ({@skill Perception}) checks that rely on hearing sounds within 60 feet instead automatically failing them. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Skill Proficiency",
+          "entries": [
+            "You have proficiency in the Acrobatics skill. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Iruxi",
+      "source": "DM-Ancestries",
+      "size": [
+        "M", 
+        "S"
+      ],
+      "sizeEntry": {
+        "type": "item",
+        "name": "Size:",
+        "entries": [
+          "Medium (about 4-7 feet tall) or Small (about 3-4 feet tall)."
+        ]
+      },
+      "speed": {
+        "walk": 30
+      },
+      "entries": [
+        {
+          "name": "Tooth and Tail",
+          "entries": [
+            "You have one or more features that allow you to make damaging unarmed strikes as a natural, light weapon."
+          ],
+          "type": "entries"
+        }
+      ],
+      "languageProficiencies": [
+        {
+          "common": true
+        }
+      ],
+      "traitTags": [
+        "Natural Weapon"
+      ]
+    },
+    {
+      "name": "Kcerpa (Squirrelfolk)",
+      "source": "DM-Ancestries",
+      "size": [
+        "S"
+      ],
+			"age": {
+				"mature": 2,
+				"max": 20
+			},
+      "speed": {
+        "walk": 30,
+        "climb": 30
+      },
+      "traitTags": [
+        "Natural Weapon"
+      ],
+      "entries": [
+        {
+          "name": "Nimble",
+          "entries": [
+            "You can move through the space of any creature that is of a size larger than yours. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Small Stealth",
+          "entries": [
+            "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tooth and Nail",
+          "entries": [
+            "Your strong bite and claws allow you to make damaging unarmed strikes as natural, light weapons. When you hit with it, a strike deals:",
+            {
+              "type": "list",
+              "items": [
+                "{@bold Bite:} 1d6 + Strength modifier slashing damage",
+                "{@bold Claws:} 1d4 + Strength modifier slashing damage"
+              ]
+            },
+            "{@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Climb Speed",
+          "entries": [
+            "You have a climbing speed of 30 feet. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Forager",
+          "entries": [
+            "During a long rest in an abundant environment, you can spend 1 hour gathering enough food to sustain you and {@dice 1d4} other creatures for a day. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Traversal",
+          "entries": [
+            "You can move across difficult terrain without expending extra movement if you are using your walking or climbing speed. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Fury of the Small",
+          "entries": [
+            "When you damage a creature larger than you with an attack or a spell, you can cause the attack or spell to deal extra damage equal to your level. You regain use of this trait after a short rest. {@note 1}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Mrrshan",
+      "source": "DM-Ancestries",
+      "size": [
+        "M",
+        "S"
+      ],
+      "darkvision": 60,
+      "traitTags": [
+        "Natural Weapon"
+      ],
+      "entries": [
+        {
+          "name": "Darkvision",
+          "entries": [
+            "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade, usually gray. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tooth and Nail",
+          "entries": [
+            "Your strong bite and claws allow you to make damaging unarmed strikes as natural, light weapons. When you hit with it, a strike deals: {@note 1}",
+            {
+              "type": "list",
+              "items": [
+                "{@bold Bite:} 1d4 + Strength modifier slashing damage",
+                "{@bold Claws:} 1d6 + Strength modifier slashing damage"
+              ]
+            }
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Agile Fall",
+          "entries": [
+            "When you fall 100 feet or less and aren't {@condition incapacitated}, you can make a DC 10 Dexterity ({@skill Acrobatics}) check when you land. If you succeed, you take no falling damage and land on your feet. {@note 3}"
+          ],
+          "type": "entries"
+        }
+      ],
+      "hasFluff": true,
+      "fluff": {
+        "entries": [
+          "Mrrshan are a species with feline-like traits and qualities. They commonly resemble large cats of the world, but their patterns and body structures vary as much as any other humanoid.",
+          "Curious and gregarious wanderers, mrrshan have features of felines and humanoids in both appearance and temperament. They enjoy learning new things, collecting new tales and trinkets, and ensuring their loved ones are safe and happy. They view themselves as chosen guardians of natural places in the world and are often recklessly brave, even in the face of overwhelming opposition.",
+          "Mrrshan are outgoing, active humanoids who delight in discovery, whether of hidden ruins or a comfortable place to nap. They are exceptionally social, both within their tight-knit communities and with other creatures they meet. Remarkably brave, mrrshan see themselves as guardians of the world against forces that would assail it, and they believe that strong communities, breadth of experience, and continual self-improvement aid them in this fight.",
+          "They have fast reflexes and are even able to twist themselves in the air while falling to land on their feet. As quick as these reflexes are, mrrshani tempers are quicker, shifting from effusive glee to aggrieved fury in an instant."
+        ]
+      }
+    },
+    {
+      "name": "Khenra",
+      "source": "DM-Ancestries",
+      "size": [
+        "M",
+        "S"
+      ],
+      "speed": {
+        "walk": 35
+      },
+      "entries": [
+        {
+          "name": "Quick",
+          "entries": [
+            "Your base walking speed is 35 feet. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Vigilant",
+          "entries": [
+            "You have advantage on perception checks. Instead of being unaware of your surroundings while you are unconscious from being asleep, you have disadvantage on Perception (Wisdom) checks instead. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Pack Tactics",
+          "entries": [
+            "You have advantage on an attack roll against a creature if at least one of your allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}. {@note 8}"
+          ],
+          "type": "entries"
+        }
+      ],
+      "hasFluff": true,
+      "fluff": {
+        "entries": [
+          "The khenra are typically tall and lean, with graceful bodies and heads that strongly resemble jackals, wild dogs, or foxes. Their snouts are long and sharp, and their ears rise straight above their heads. Their bodies are covered in sleek hair that tends to match their homelands. Despite their sharp teeth, they consider biting to be an uncouth and unworthy combat tactic.",
+          "Nearly every khenra is born a fraternal or identical twin, and a pair of khenra twins forms an extremely close emotional bond unknown to most others. The death of one twin in training or the trials causes a tremendous shock to the survivor, who typically grows more aggressive and foolhardy in battle. The rare khenra who are born without twins are believed to have killed their siblings in the womb, and are thus viewed as natural-born initiates, sure to achieve a glorified death in the trials."
+        ]
+      }
+    },
+    {
+      "name": "Talos",
+      "source": "DM-Ancestries",
+      "size": [
+        "M",
+        "S"
+      ],
+      "languageProficiencies": [
+        {
+          "terran": true
+        }
+      ],
+      "hasFluff": true,
+      "entries": [
+        {
+          "type": "entries",
+          "name": "Primordial",
+          "entries": [
+            "You speak primordial (terran)."
+          ]
+        }
+      ],
+      "fluff": {
+        "entries": [
+          "Talos are as variant as stone, crystals, and metals that fill the planes, but they always have a physical manifestation of that form in their person. Their skin or hair is often a specific type of stone, metal, or gemstone with physical features made, seeming to be made, or partially made of that material.",
+          "Their eyes are always a solid color similar in coloration to their form and never have pupils. A talos with marble skin may have bright white eyes while one with sapphire teeth and nails may have matching sapphire eyes.",
+          "Talos godlike all have strange mercurial blood that sometimes differs in shade.",
+          {
+            "type": "entries",
+            "name": "Sources of their power",
+            "entries": [
+              "The elemental plane of earth",
+              "Demigods or powerful earth-aligned creatures"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Gnome",
+      "source": "DM-Ancestries",
+      "size": [
+        "S"
+      ],
+      "sizeEntry": {
+        "type": "item",
+        "name": "Size:",
+        "entries": [
+          "Small (about 3 feet tall)"
+        ]
+      },
+      "speed": {
+        "walk": 30
+      },
+      "age": {
+        "mature": 18,
+        "max": 400
+      },
+      "entries": [
+        {
+          "name": "Magic Resistance",
+          "entries": [
+            "All gnomish characters have either Magic Resistance Greater Magic Resistance."
+          ],
+          "type": "entries"
+        }
+      ],
+      "hasFluff": true,
+      "fluff": {
+        "entries": [
+          "Long ago, early gnome ancestors emigrated from the First World, realm of the fey. While it's unclear why the first gnomes wandered to Eora, this ancestry manifests in modern gnomes as bizarre reasoning, eccentricity, obsessive tendencies, and what some see as naivete. These qualities are further reflected in their physical characteristics, such as spindly limbs, brightly colored hair, and childlike and extremely expressive facial features that further reflect their otherworldly origins.",
+          "Always hungry for new experiences, gnomes constantly wander both mentally and physically, attempting to stave off a terrible ailment that threatens all of their people. This affliction—the Bleaching—strikes gnomes who fail to dream, innovate, and take in new experiences, in the gnomes' absence of crucial magical essence from the First World.",
+          "Gnomes latch onto a source of localized magic where they live, typically primal magic, as befits their fey lineage, but this isn't enough to avoid the Bleaching unless they supplement this magic with new experiences. The Bleaching slowly drains the color—literally—from gnomes, and it plunges those affected into states of deep depression that eventually claim their lives. Very few gnomes survive this scourge, becoming deeply morose and wise survivors known as bleachlings.",
+          {
+            "type": "entries",
+            "name": "Description",
+            "entries": [
+              "Most gnomes stand just over 3 feet in height and weigh little more than a human child. They exhibit a wide range of natural skin, hair, and eye colors. For gnomes that haven't begun the Bleaching, nearly any hair and eye color other than white is possible, with vibrant colors most frequent, while skin tones span a slightly narrower spectrum and tend toward earthy tones and pinkish hues, though occasionally green, black, or pale blue. Gnomes' large eyes and dense facial muscles allow them to be particularly expressive in their emotions."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "Society",
+            "entries": [
+              "While most gnomes adopt some of the cultural practices of the region in which they live, they tend to pick and choose, adjusting their communities to fit their own fey logic. This often leads to majority gnome communities eventually consisting almost entirely of gnomes, as other people, bewildered by gnomish political decisions, choose to move elsewhere. Gnomes have little culture that they would consider entirely their own. No gnome kingdoms or nations exist on the surface of Eora, and gnomes wouldn't know what to do with such a state if they had one."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "subrace": [
+    {
+      "name": "Plains",
+      "source": "DM-Ancestries",
+      "raceName": "Human",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Expert",
+          "entries": [
+            "You gain expertise in one skill of your choice that you have proficiency in, other than Perception. It takes you half as much time to learn a new language, or train and become proficient in a tool, weapon, or armor. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Socializer",
+          "entries": [
+            "The first time you interact with strangers in an unfamiliar land, culture, or region, add {@dice 1d4} to the first {@skill Persuasion}, {@skill Deception}, or {@skill Performance} check you make against them. This trait does not work on groups if at least one person in the group knows you. {@note 0}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Arctic",
+      "source": "DM-Ancestries",
+      "raceName": "Human",
+      "raceSource": "DM-Ancestries",
+      "skillProficiencies": [
+        {
+          "survival": true
+        }
+      ],
+      "resist": [
+        {
+          "cold": true
+        }
+      ],
+      "entries": [
+        {
+          "name": "Aquatic Resistance",
+          "entries": [
+            "You have resistance to cold damage. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Traversal",
+          "entries": [
+            "You can move across snowy or icy difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor. You have advantage against being knocked {@condition prone} by icy conditions, including those created by spells. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Survival Training",
+          "entries": [
+            "You have proficiency in the {@skill Survival} skill. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Coastal",
+      "source": "DM-Ancestries", 
+      "raceName": "Human",
+      "raceSource": "DM-Ancestries",
+			"toolProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"carpenter's tools",
+							"navigator's tools",
+							"vehicles (water)"
+						]
+					}
+				}
+			],
+      "speed": {
+        "swim": 30
+      },
+      "entries": [
+        {
+          "name": "Swim Speed",
+          "entries": [
+            "You have a swim speed of 30 feet provided you are not wearing medium or heavy armor. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Weather Worn",
+          "entries": [
+            "You do not suffer disadvantage on {@skill Perception} checks due to heavy precipitation and wind, or areas lightly obscured by mist, light fog, or water conditions. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tool Proficiency",
+          "entries": [
+            "You gain proficiency with one tool of your choice: {@item carpenter's tools}, {@item navigator's tools}, or vehicles (water). {@note 1}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Deep",
+      "source": "DM-Ancestries",
+      "raceName": "Human", 
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Brave",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition frightened} condition on yourself. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Toxin Resilience",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition poisoned} or {@condition diseased} conditions on yourself. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Desert",
+      "source": "DM-Ancestries",
+      "raceName": "Human",
+      "raceSource": "DM-Ancestries",
+      "skillProficiencies": [
+        {
+          "survival": true
+        }
+      ],
+      "entries": [
+        {
+          "name": "Hardy",
+          "entries": [
+            "You are acclimated to extreme climates and do not suffer the effects of extreme heat above 100 degrees Fahrenheit. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Survivalist",
+          "entries": [
+            "You only need to consume half as much food and drink as a normal person. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Traversal",
+          "entries": [
+            "You can move across {@variantrule difficult terrain} from sand or other desert terrain without expending extra movement if you are using your walking speed and are on the ground or floor. Your walking speed on sand increases by 10 feet. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Survival Training",
+          "entries": [
+            "You have proficiency in the {@skill Survival} skill. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Mountain",
+      "source": "DM-Ancestries",
+      "raceName": "Human",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "climb": 25
+      },
+      "entries": [
+        {
+          "name": "Traversal",
+          "entries": [
+            "You can move across rocky or mountainous {@variantrule difficult terrain} without expending extra movement if you are using your walking or climbing speed. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Powerful Build",
+          "entries": [
+            "You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Hardy",
+          "entries": [
+            "You are acclimated to extreme climates and do not suffer the effects of high altitudes above 10,000 ft. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Climber",
+          "entries": [
+            "You have a climbing speed of 25 feet. You have advantage on ability checks made to climb, avoid falling while climbing, and helping others while climbing. {@note 1}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Swamp",
+      "source": "DM-Ancestries",
+      "raceName": "Human",
+      "raceSource": "DM-Ancestries",
+			"skillProficiencies": [
+				{
+					"survival": true
+				}
+			],
+      "entries": [
+        {
+          "name": "Traversal",
+          "entries": [
+            "You can move across swampy or muddy {@variantrule difficult terrain} without expending extra movement if you are using your walking speed and are on the ground or floor. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Toxin Resilience",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition poisoned} or {@condition diseased} conditions on yourself. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Survival Training",
+          "entries": [
+            "You have proficiency in the {@skill Survival} skill. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+
+    {
+      "name": "Stonebreaker",
+      "source": "DM-Ancestries",
+      "raceName": "Dwarf",
+      "raceSource": "DM-Ancestries",
+      "skillProficiencies": [
+        {
+          "any": 1
+        }
+      ],
+      "toolProficiencies": [
+        {
+          "choose": {
+            "from": [
+              "smith's tools",
+              "brewer's supplies",
+              "mason's tools",
+              "jeweler's tools",
+              "potter's tools"
+            ]
+          }
+        }
+      ],
+      "weaponProficiencies": [
+				{
+					"choose": {
+						"fromFilter": "type=martial weapon|miscellaneous=mundane",
+						"count": 3
+					}
+				},
+				{
+					"choose": {
+						"fromFilter": "type=simple weapon|miscellaneous=mundane",
+						"count": 3
+					}
+				}
+			],
+      "entries": [
+        {
+          "name": "Strong",
+          "entries": [
+            "You have advantage on Strength-based ability checks and Strength saving throws. {@note 5}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Stout Build",
+          "entries": [
+            "If you would be slowed by heavy armor you can move as normal. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tool Proficiency",
+          "entries": [
+            "You gain proficiency with the artisan's tools of your choice. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Quick Learner",
+          "entries": [
+            "You gain one skill proficiency of your choice and one tool proficiency of your choice. Additionally, it takes you half as much time to learn a new language, or train and become proficient in a tool, weapon, armor, or skill. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Combat Training",
+          "entries": [
+            "You gain proficiency in 3 simple weapons of your choice. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Martial Training",
+          "entries": [
+            "You gain proficiency in 3 martial weapons of your choice."
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Skyrider",
+      "source": "DM-Ancestries",
+      "raceName": "Dwarf",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Note",
+          "entries": [
+            "❌This lineage needs traits to be defined.❌"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Steppemaster",
+      "source": "DM-Ancestries",
+      "raceName": "Dwarf",
+      "raceSource": "DM-Ancestries",
+      "toolProficiencies": [
+        {
+          "choose": {
+            "from": [
+              "musical instrument",
+              "gaming set",
+              "cook's utensils",
+              "herbalism kit"
+            ]
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Nimble",
+          "entries": [
+            "You can move through the space of any creature that is of a size larger than yours. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Artisan's Lore",
+          "entries": [
+            "Whenever you make an Intelligence ({@skill History}) check related to the origin or history of an item related to an artisan tool with which you are proficient, you are considered proficient with expertise in the History skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Small Stealth",
+          "entries": [
+            "You can attempt to {@action Hide} even when you are obscured only by a creature that is at least one size larger than you. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Skilled Artistry",
+          "entries": [
+            "The time it takes to craft something using an artisan's tool with which you are proficient is halved. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Empathic",
+          "entries": [
+            "You have advantage on Wisdom ({@skill Insight}) checks made to discern the emotions of others. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tool Proficiency",
+          "entries": [
+            "You gain proficiency with one type of gaming set, musical instrument of your choice, a {@item cook's utensils}, or {@item herbalism kit}. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Lucky",
+          "entries": [
+            "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll. {@note 4}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Vineguard",
+      "source": "DM-Ancestries",
+      "raceName": "Dwarf",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Nimble Escape",
+          "entries": [
+            "You can take the {@action Disengage} or {@action Hide} action as a bonus action on each of your turns. {@note 7}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Note",
+          "entries": [
+            "❌This lineage needs 6 points of traits to be defined.❌"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Lightbringer",
+      "source": "DM-Ancestries",
+      "raceName": "Dwarf",
+      "raceSource": "DM-Ancestries",
+			"resist": [
+				"poison"
+			],
+      "entries": [
+        {
+          "name": "Toxin Resilience",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition poisoned} or {@condition diseased} conditions on yourself. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Poison Resistance",
+          "entries": [
+            "You are resistant to poison damage. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Artisan's Lore",
+          "entries": [
+            "Whenever you make an Intelligence ({@skill History}) check related to the origin or history of an item related to an artisan tool with which you are proficient, you are considered proficient with expertise in the History skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Skilled Artistry",
+          "entries": [
+            "The time it takes to craft something using an artisan's tool with which you are proficient is halved. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Psychic Resistance",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition charmed} or {@condition frightened} conditions on yourself. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Traversal",
+          "entries": [
+            "You can move across {@variantrule difficult terrain} without expending extra movement if you are using your walking speed and are on the ground or floor. {@note 1}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Wavetamer",
+      "source": "DM-Ancestries",
+      "raceName": "Dwarf",
+      "raceSource": "DM-Ancestries",
+      "toolProficiencies": [
+        {
+          "choose": {
+            "from": [
+              "carpenter's tools",
+              "navigator's tools",
+              "vehicles (water)"
+            ]
+          }
+        }
+      ],
+      "speed": {
+        "swim": 30
+      },
+      "entries": [
+        {
+          "name": "Finesse Training",
+          "entries": [
+            "Your training allows you to add the finesse property to a weapon you carry in your main hand, as long as it does not have the heavy or two-handed properties. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tool Proficiency",
+          "entries": [
+            "You gain proficiency with one tool of your choice: {@item carpenter's tools|XPHB}, {@item navigator's tools|XPHB}, or vehicles (water). {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Mariner's Lore",
+          "entries": [
+            "Whenever you make an Intelligence ({@skill History}) or Intelligence ({@skill Religion}) check related to the sea, its creatures and cultures, or water vehicles, you are considered proficient with expertise in the History or Religion skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Swim Speed",
+          "entries": [
+            "You have a swim speed of 30 feet. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Frostbeard",
+      "source": "DM-Ancestries",
+      "raceName": "Dwarf",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Note",
+          "entries": [
+            "❌This lineage needs traits to be defined.❌"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Ashbearer",
+      "source": "DM-Ancestries",
+      "raceName": "Dwarf",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Note",
+          "entries": [
+            "❌This lineage needs traits to be defined.❌"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Muckmolder",
+      "source": "DM-Ancestries",
+      "raceName": "Dwarf",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Note",
+          "entries": [
+            "❌This lineage needs traits to be defined.❌"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+  
+    {
+      "name": "Frost",
+      "source": "DM-Ancestries",
+      "raceName": "Half-Giant",
+      "raceSource": "DM-Ancestries",
+			"resist": [
+				{
+					"choose": {
+						"from": [
+							"acid",
+							"cold"
+						]
+					}
+				}
+			],
+      "skillProficiencies": [
+        {
+          "choose": {
+            "from": [
+              "animal handling",
+              "medicine",
+              "nature",
+              "perception",
+              "stealth",
+              "survival"
+            ],
+            "count": 1
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Durable",
+          "entries": [
+            "When you take damage, you can use your reaction to roll {@dice 1d12} + your Constitution modifier and reduce the damage by that total. This trait can be used a number of times equal to your Proficiency Bonus per long rest."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Water",
+          "entries": [
+            "You gain resistance to acid or cold damage. If you have {@sense darkvision} you see in shades of blue. You speak primordial (aquan)."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Elemental Strike",
+          "entries": [
+            "When you damage a creature with an attack, you can cause the attack to deal an extra {@dice 1d4} + your Proficiency Bonus lightning damage and the target has disadvantage to maintain Concentration on a spell. This trait can be used a number of times equal to your Proficiency Bonus per long rest."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Skill Proficiency",
+          "entries": [
+            "You have proficiency in one of the following skills of your choice: Animal Handling, Medicine, Nature, Perception, Stealth, or Survival."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Traversal",
+          "entries": [
+            "You can move across {@variantrule difficult terrain} without expending extra movement if you are using your walking speed and are on the ground or floor."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Acclimatization",
+          "entries": [
+            "You are acclimated to extreme climates and do not suffer the effects of extreme cold below 0 degrees Fahrenheit."
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+
+    {
+      "name": "Ghost",
+      "source": "DM-Ancestries",
+      "raceName": "Returned",
+      "raceSource": "DM-Ancestries",
+			"creatureTypes": [
+				"undead"
+			],
+      "resist": [
+        "necrotic"
+      ],
+      "entries": [
+        {
+          "name": "Telepathy",
+          "entries": [
+            "You can speak telepathically to any creature within 30 feet of you. The creature understands you only if the two of you share a language. You can speak telepathically in this way to one creature at a time. {@note 5}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Strange Presence",
+          "entries": [
+            "You know the {@spell thaumaturgy} cantrip. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Resistance",
+          "entries": [
+            "You are resistant to necrotic damage. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Traversal",
+          "entries": [
+            "You can move across difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor. {@note 1}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Poltergeist",
+      "source": "DM-Ancestries",
+      "raceName": "Returned",
+      "raceSource": "DM-Ancestries",
+			"creatureTypes": [
+				"undead"
+			],
+      "additionalSpells": [
+        {
+          "known": {
+            "1": [
+              {
+                "choose": {
+                  "from": [
+                    "sword burst|TCE#c",
+                    "thunderous distortion|VSS#c",
+                    "spark of life|VSS#c"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Shifting Form",
+          "entries": [
+            "When another creature grapples you or starts its turn {@condition grappled||grappling} you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4 \u00d7 your Proficiency Bonus of either piercing or poison damage. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Strange Magic",
+          "entries": [
+            "You know the {@spell sword burst|TCE}, {@spell thunderous distortion|VSS}, or {@spell spark of life|VSS} cantrip. You can also cast this spell-like ability as a bonus action once per short rest using no components. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Improviser",
+          "entries": [
+            "You are proficient with improvised weapons, and improvised weapons you use deal 1d6 + Dexterity or Strength modifier damage rather than the damage they normally deal. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Traversal",
+          "entries": [
+            "You can move across difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor. {@note 1}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Wildmorph",
+      "source": "DM-Ancestries",
+      "raceName": "Returned",
+      "raceSource": "DM-Ancestries",
+			"creatureTypes": [
+				"construct"
+			],
+      "entries": [
+        {
+          "name": "Hardened Form",
+          "entries": [
+            "Due to the objects that make up your body, you are ill-suited to wearing armor. Your form provides ample protection, however; it gives you a base AC of 17 (your Dexterity modifier doesn't affect this number). You gain no benefit from wearing armor, but if you are using a shield, you can apply the shield's bonus as normal. At level 12, the base AC of your shell increases to 18 due to your combat experience. {@note 5}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Strange Presence",
+          "entries": [
+            "You know the {@spell encode thoughts|GGR} cantrip which acts the primary way that you speak as you don't have any ability to create speech-like sound. You also know the {@spell mending} cantrip. You can also use the mending cantrip on your own form to regain 1d4 + your proficiency bonus hit points. You can use this ability a number of times per day equal to your Proficiency Bonus, regaining all charges after a long rest. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Note",
+          "entries": [
+            "❌This lineage needs traits to be defined.❌"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Harrower",
+      "source": "DM-Ancestries",
+      "raceName": "Returned",
+      "raceSource": "DM-Ancestries",
+			"creatureTypes": [
+				"construct"
+			],
+      "entries": [
+        {
+          "name": "Cantrip",
+          "entries": [
+            "You know the {@spell stinging insects|spellsthatdontsuck} cantrip. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Natural Magic",
+          "entries": [
+            "Starting at 5th level, you can cast the {@spell summon swarm|KT-CLL} spell. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Shifting Form",
+          "entries": [
+            "When another creature grapples you or starts its turn {@condition grappled||grappling} you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4 \u00d7 your Proficiency Bonus of either piercing or poison damage. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Natural Armor",
+          "entries": [
+            "You can calculate your AC as 13 + your Dexterity modifier. A shield's benefits apply as normal while you use your natural armor. {@note 3}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Plasmoid",
+      "source": "DM-Ancestries",
+      "raceName": "Returned",
+      "raceSource": "DM-Ancestries",
+			"creatureTypes": [
+				"ooze"
+			],
+      "resist": [
+        {
+          "poison": true
+        }
+      ],
+			"additionalSpells": [
+				{
+					"known": {
+						"1": [
+              {
+                "choose": {
+                  "from": [
+                    "poison spray#c",
+                    "acid burst|DiceMonstersMiscellany#c",
+                    "poison fang|spellsthatdontsuck#c"
+                  ]
+                }
+              }
+						]
+					}
+				}
+			],
+      "entries": [
+        {
+          "name": "Constructed Form",
+          "entries": [
+            "You are a Construct and an Ooze. You don't need to eat, drink, or breathe, and magic can't put you to sleep. You are immune to disease and have advantage on saving throws against being {@condition paralyzed}."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Shape Self",
+          "entries": [
+            "As an action, you can reshape your body to give yourself a head, one or two arms, one or two legs, and makeshift hands and feet, or you can revert to a limbless blob. While you have a humanlike shape, you can wear clothing and armor made for a Humanoid of your size.",
+            "As a bonus action, you can extrude a pseudopod that is up to 6 inches wide and 10 feet long or reabsorb it into your body. As part of the same bonus action, you can use this pseudopod to manipulate an object, open or close a door or container, or pick up or set down a Tiny object. The pseudopod contains no sensory organs and can't attack, activate magic items, or lift more than 10 pounds."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Amorphous",
+          "entries": [
+            "You have advantage on ability checks you make to initiate or escape a grapple."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Hold Breath",
+          "entries": [
+            "You can hold your breath for up to 1 hour at a time."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Toxin Resilience",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition poisoned} or {@condition diseased} conditions on yourself."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Muck Walker",
+          "entries": [
+            "You ignore {@variantrule difficult terrain} caused by mud, muck, or similar terrain."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Poison Resistance",
+          "entries": [
+            "You are resistant to poison damage."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Cantrip",
+          "entries": [
+            "You know the {@spell acid burst|DiceMonstersMiscellany}, {@spell poison fang|spellsthatdontsuck}, or {@spell poison spray} cantrip."
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Mourntouched",
+      "source": "DM-Ancestries",
+      "raceName": "Returned",
+      "raceSource": "DM-Ancestries",
+			"creatureTypes": [
+				"undead"
+			],
+      "skillProficiencies": [
+        {
+          "any": 1
+        }
+      ],
+      "entries": [
+        {
+          "name": "I've Seen Worse",
+          "entries": [
+            "You have advantage on saving throws against being {@condition frightened}."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Magic Resistance",
+          "entries": [
+            "You have advantage on saving throws against spells and other magical effects."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Sixth Sense",
+          "entries": [
+            "You have {@sense blindsight} within a radius of 5 feet, allowing you to sense your immediate surroundings without relying on sight. This blindsight ignores full cover."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Unexplained Ability",
+          "entries": [
+            "You gain proficiency in a skill of your choice. You didn't have this skill before the Mourning. You can't explain where it came from."
+          ],
+          "type": "entries"
+        }
+      ],
+      "hasFluff": true,
+      "fluff": {
+        "entries": [
+          "Some say that the dead-gray mist began in Metrol, initially flowing out of the royal palaces of Vermishard. Others swear that the disaster began in the Cannith stronghold Making. All that is known is that the mist swiftly spread across the kingdom, transforming the lands and creatures caught within it. Over a million people died in the Mourning, including nearly all of the inhabitants of central Cyre.",
+          {
+            "type": "entries",
+            "name": "Lone Survivors",
+            "entries": [
+              "While the most prominent members of this race are those who escaped the Day of Mourning in the Eberron campaign setting, these traits and tables can be used for any character that has survived any magical cataclysm in any world."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "Fuzzy Memories",
+            "entries": [
+              "Most Mountoucheds' memories of the event are as hazy as the destroying mists. No definitive explanation can be found for why they were spared, but the superstitious say that these people are cursed, and that anyone touched by the Mourning is now an agent of darkness."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "Changed Forever",
+            "entries": [
+              "While only a few thousand exist, many Mourntouched find it near impossible to return to a 'normal' life again. Plenty have turned to adventuring after superstitious refugees and distrusting foreigners have refused them admittance to typical society."
+            ]
+          },
+          {
+            "type": "table",
+            "caption": "Mourning Mutations",
+            "colLabels": [
+              "d12",
+              "Mutation"
+            ],
+            "colStyles": [
+              "col-2 text-center",
+              "col-10"
+            ],
+            "rows": [
+              [
+                "1",
+                "Your irises have turned jet black or stark white."
+              ],
+              [
+                "2",
+                "Your veins are silver and glow faintly under the light of a full moon."
+              ],
+              [
+                "3",
+                "You cannot grow hair."
+              ],
+              [
+                "4",
+                "You were weak, elderly, and on your deathbed when disaster struck. When you awoke, you were young and sprightly, and the people around you had been turned to glass."
+              ],
+              [
+                "5",
+                "Your eyes have turned to amber gemstones, with swirling veins of golden light within."
+              ],
+              [
+                "6",
+                "Your skin is translucent and light blue."
+              ],
+              [
+                "7",
+                "You appear completely identical to your previous form, but others feel strange and uncomfortable around you anyways. A detect magic spell reveals an aura of illusion magic about you."
+              ],
+              [
+                "8",
+                "You appear to be of a different race now."
+              ],
+              [
+                "9",
+                "You've grown small wings on your back. They are not large enough for flight. You may choose their appearance, such as feathery, scaly, or bat-like."
+              ],
+              [
+                "10",
+                "Your ears have grown elf-like points."
+              ],
+              [
+                "11",
+                "You have grown or shrunk 2 or more feet. You may need to change your size from Medium to Small, or vice versa."
+              ],
+              [
+                "12",
+                "You've developed small antlers or horns."
+              ]
+            ]
+          }
+        ]
+      }
+    },
+
+    {
+      "name": "Elemental",
+      "source": "DM-Ancestries",
+      "raceName": "Undine",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "swim": 30
+      },
+      "entries": [
+        {
+          "name": "Elemental Attunement",
+          "entries": [
+            "You gain resistance to acid or cold damage. If you have darkvision you see in shades of blue. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Cantrip",
+          "entries": [
+            "You know one cantrip of your choice from: {@spell acid splash}, {@spell shape water}, {@spell frostbite}, {@spell ray of frost}, {@spell waterspout}. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Elemental Magic",
+          "entries": [
+            "Starting at 3rd level, you can cast {@spell fog cloud}. Starting at 5th level, you can cast {@spell water walk} or {@spell become water}. {@note 7}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Emissary of the Sea",
+          "entries": [
+            "You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed. They can understand the meaning of your words, though you have no special ability to understand them in return. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Amphibious",
+          "entries": [
+            "You can breathe both air and water. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Swim Speed",
+          "entries": [
+            "You have a swim speed of 30 feet. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Surface",
+      "source": "DM-Ancestries",
+      "raceName": "Undine",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "swim": 30
+      },
+      "skillProficiencies": [
+        {
+          "choose": {
+            "from": [
+              "acrobatics",
+              "athletics",
+              "perception",
+              "nature",
+              "sleight of hand",
+              "survival"
+            ],
+            "count": 1
+          }
+        }
+      ],
+      "toolProficiencies": [
+        {
+          "choose": {
+            "from": [
+              "carpenter's tools",
+              "navigator's tools",
+              "vehicles (water)"
+            ],
+            "count": 1
+          }
+        }
+      ],
+      "weaponProficiencies": [
+        {
+          "choose": {
+            "fromFilter": "type=martial weapon|miscellaneous=mundane",
+            "count": 3
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Swim Speed",
+          "entries": [
+            "You have a swim speed of 30 feet. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Amphibious",
+          "entries": [
+            "You can breathe both air and water. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tool Proficiency",
+          "entries": [
+            "You gain proficiency with one tool of your choice: {@item carpenter's tools|XPHB}, {@item navigator's tools|XPHB}, or vehicles (water). {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Mariner's Lore",
+          "entries": [
+            "Whenever you make an Intelligence ({@skill History}) or Intelligence ({@skill Religion}) check related to the sea or water vehicles, you are considered proficient with expertise in the History or Religion skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Sea Legs",
+          "entries": [
+            "You have advantage on Dexterity ({@skill Acrobatics}) checks, and checks to be knocked prone when standing atop a vehicle. {@note 6}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Deep",
+      "source": "DM-Ancestries",
+      "raceName": "Undine",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "swim": 30
+      },
+      "darkvision": 60,
+      "additionalSpells": [
+        {
+          "known": {
+            "3": [
+              "fog cloud#c"
+            ],
+            "5": [
+              "water walk#c"
+            ]
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Darkvision",
+          "entries": [
+            "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade, usually gray. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Emissary of the Sea",
+          "entries": [
+            "You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed. They can understand the meaning of your words, though you have no special ability to understand them in return. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Elemental Magic",
+          "entries": [
+            "Starting at 3rd level, you can cast {@spell fog cloud} with this trait. Then starting at 5th level, you can cast {@spell water walk}. These spells do not require a material component, and can be cast once per long rest, or by using any spell slots you have of the appropriate level. {@note 7}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Endurance",
+          "entries": [
+            "You are acclimated to extreme climates and do not suffer the effects of deep waters below 100 ft. {@note 1}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Extreme",
+      "source": "DM-Ancestries",
+      "raceName": "Undine",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "swim": 30
+      },
+      "darkvision": 60,
+      "additionalSpells": [
+        {
+          "known": {
+            "1": [
+              "dancing lights#c"
+            ],
+            "3": [
+              "absorb elements#c"
+            ]
+          }
+        }
+      ],
+      "skillProficiencies": [
+        {
+          "perception": true
+        }
+      ],
+      "entries": [
+        {
+          "name": "Darkvision",
+          "entries": [
+            "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade, usually gray. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Emissary of the Sea",
+          "entries": [
+            "You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed. They can understand the meaning of your words, though you have no special ability to understand them in return. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Endurance",
+          "entries": [
+            "You are acclimated to extreme climates and do not suffer the effects of deep waters below 100 ft. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Cantrip",
+          "entries": [
+            "You know the {@spell dancing lights} cantrip. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Natural Magic",
+          "entries": [
+            "Starting at 3rd level, you can cast {@spell aldricor's elemental rebuke|TheArenaGuy|elemental rebuke} with this trait. This spell does not require a material component, and can be cast once per long rest, or by using any spell slots you have of the appropriate level. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Skill Proficiency",
+          "entries": [
+            "You have proficiency in {@skill Perception}. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Fish",
+      "source": "DM-Ancestries",
+      "raceName": "Undine",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "swim": 30
+      },
+      "resist": [
+        "cold"
+      ],
+      "entries": [
+        {
+          "name": "Bite",
+          "entries": [
+            "You can use your toothy maw to make unarmed strikes as a light weapon. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Aquatic Resistance",
+          "entries": [
+            "You have resistance to cold damage. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Emissary of the Sea",
+          "entries": [
+            "You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed. They can understand the meaning of your words, though you have no special ability to understand them in return. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Defensive Feature",
+          "entries": [
+            "When another creature grapples you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal damage equal to {@damage 1d4} \u00d7 your Proficiency Bonus of the damage type chosen. {@note 4}",
+            {
+              "type": "list",
+              "items": [
+                "{@bold Poisonous.} Poison damage",
+                "{@bold Spines.} Piercing damage"
+              ]
+            }
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Natural Armor",
+          "entries": [
+            "You have thick skin. Your AC is 12 + your Constitution modifier. A shield's benefits apply as normal while you use your natural armor. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Weather Worn",
+          "entries": [
+            "You do not suffer disadvantage on perception checks due to heavy precipitation and wind, or areas lightly obscured by mist, light fog, silty, or choppy water. {@note 0}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Crustacean",
+      "source": "DM-Ancestries",
+      "raceName": "Undine",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "swim": 30
+      },
+      "skillProficiencies": [
+        {
+          "choose": {
+            "from": [
+              "animal handling",
+              "medicine",
+              "nature",
+              "perception",
+              "stealth",
+              "survival"
+            ],
+            "count": 1
+          }
+        }
+      ],
+      "resist": [
+        {
+          "choose": {
+            "from": [
+              "acid",
+              "cold"
+            ],
+            "count": 1
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Chitinous Pincers",
+          "entries": [
+            "You can use your clawed hand to make unarmed strikes as a light weapon. When you hit with it, the strike deals 1d6 + your Strength modifier slashing damage. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Acclimatization",
+          "entries": [
+            "You are acclimated to extreme climates and do not suffer the effects of extreme cold below 0 degrees Fahrenheit. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Carapace",
+          "entries": [
+            "Due to your chitinous exoskeleton and the shape of your body, you are ill-suited to wearing armor. Your form provides ample protection, however; it gives you a base AC of 17 (your Dexterity modifier doesn't affect this number). You gain no benefit from wearing armor, but if you are using a shield, you can apply the shield's bonus as normal. At level 12, the base AC of your shell increases to 18 due to your combat experience. {@note 5}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Emissary of the Sea",
+          "entries": [
+            "You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed. They can understand the meaning of your words, though you have no special ability to understand them in return. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Aquatic Resistance",
+          "entries": [
+            "You have resistance to one of the following damage types: acid or cold. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Iceborn",
+      "source": "DM-Ancestries",
+      "raceName": "Undine",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "swim": 30
+      },
+      "languageProficiencies": [
+        {
+          "primordial": true
+        }
+      ],
+      "entries": [
+        {
+          "name": "Ice Skate",
+          "entries": [
+            "You can walk across the surface of water as if it were solid ground, your footsteps temporarily freezing it, with the ice melting the instant your foot moves. Walking across difficult terrain caused by ice or snow costs you no extra movement. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Amphibious",
+          "entries": [
+            "You can breathe both air and water. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Water",
+          "entries": [
+            "You gain resistance to acid or cold damage. If you have darkvision you see in shades of blue. You speak primordial (aquan). {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Cantrip",
+          "entries": [
+            "You know one cantrip of your choice associated with your elemental attunement: {@spell black ice|spellsthatdontsuck}, {@spell ice weapon|KT-CLL}, {@spell frostbite|XGE}, {@spell ray of frost}. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Elemental Magic",
+          "entries": [
+            "Starting at 3rd level, you can cast one spell associated with your elemental attunement: {@spell arctic breath|KT-CLL}, {@spell frost shuriken|spellsthatdontsuck}, {@spell ice arrow|KT-CLL}, {@spell entomb|KT-CLL}.",
+            "Then starting at 5th level, you can cast one spell associated with your elemental attunement: {@spell Rime's binding ice|FTD|binding ice}, {@spell cold snap|spellsthatdontsuck}. These spells do not require a material component, and can be cast once per long rest, or by using any spell slots you have of the appropriate level. {@note 7}"
+          ],
+          "type": "entries"
+        }
+      ],
+      "hasFluff": true,
+      "fluff": {
+        "type": "entries",
+        "entries": [
+          "Arising from the Frostfell - the permafrost-coated border of the Planes of Air and Water - born to air and water genasi parents, or altered in the womb by exposure to the power of djinn and marids, an ice genasi results from the metaphysical combination of their two elements: the stillness of open air meeting the destructive power of roiling waters. They can freeze the water and air around them, launch deadly icicles from their hands, and chill their enemies to the bone.",
+          "Iceborn generally have skin with mortal hues overlaid with the blues, purples, and whites of a frozen corpse. They have spiky hair resembling cascading stalagmites and stalactites made of pure ice, and eyes whose color cycles through the soft iridescence of an aurora in a wintry night sky. They are often covered in a thin layer of frost that billows off as powder snow when they move, and are almost disconcertingly cold to the touch, as if they produce no body heat."
+        ]
+      }
+    },
+    {
+      "name": "Poisonborn",
+      "source": "DM-Ancestries",
+      "raceName": "Undine",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "walk": 30,
+        "swim": 30
+      },
+      "resist": [
+        "poison"
+      ],
+      "additionalSpells": [
+        {
+          "known": {
+            "1": [
+              "poison spray#c"
+            ],
+            "3": [
+              {
+                "choose": {
+                  "from": [
+                    "ray of sickness#c",
+                    "nauseating poison|KT-CLL#c",
+                    "sleep#c"
+                  ],
+                  "count": 1
+                }
+              }
+            ],
+            "5": [
+              "stinking cloud#c"
+            ]
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Brew the Toxin",
+          "entries": [
+            "You know the {@spell poison spray} cantrip. Starting at 3rd level, you can cast either the {@spell ray of sickness}, {@spell nauseating poison|KT-CLL}, or {@spell sleep} spell with this trait (you choose the spell you can cast with this trait when you reach 3rd level), without requiring a material component. Starting at 5th level, you can cast the {@spell stinking cloud} spell with this trait, without requiring a material component. Once you cast the chosen spell or stinking cloud with this trait, you can't cast that spell with this trait again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Darkvision",
+          "entries": [
+            "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Poison Resilience",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition poisoned} condition on yourself. You also have resistance to poison damage."
+          ],
+          "type": "entries"
+        }
+      ],
+      "hasFluff": true,
+      "fluff": {
+        "type": "entries",
+        "entries": [
+          "Poison genasi bear the metaphysical connection of Fire and Water, the burn of fire with the flow of water to create a substance that scorches through veins and organs. Born to genasi of those elements or to mortals through the ambient magic of efreeti and marids, poison genasi bodies act as cauldrons in which virulent toxins are brewed and expelled.",
+          "A poison genasi's skin generally has a strong, vivid coloration, with distinctive stripes or splotches of dark or other bright hues. Their hair often has a mortal coloration, though it may also be a bright, translucent, striated, or ombre hue of a distinct color to their skin. Their eyes are usually darkly colored, either in mortal tones or a deep black that makes the pupil nearly indistinguishable from the iris."
+        ]
+      }
+    },
+
+    {
+      "name": "Sandsoul",
+      "source": "DM-Ancestries",
+      "raceName": "Oread",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "walk": 35
+      },
+      "resist": [
+        "poison"
+      ],
+      "entries": [
+        {
+          "name": "Poison Resistance",
+          "entries": [
+            "You have resistance to poison damage. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Quick",
+          "entries": [
+            "Your base walking speed is 35 feet. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Survivalist",
+          "entries": [
+            "You only need to consume half as much food and drink as a normal person. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Relentless",
+          "entries": [
+            "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can't use this feature again until you finish a long rest. {@note 4}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Rootwhisper",
+      "source": "DM-Ancestries",
+      "raceName": "Oread",
+      "raceSource": "DM-Ancestries",
+      "resist": [
+        "poison"
+      ],
+      "entries": [
+        {
+          "name": "Poison Resistance",
+          "entries": [
+            "You have resistance to poison damage. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Speech of Beast and Leaf",
+          "entries": [
+            "You have the ability to communicate in a limited manner with Beasts, Plants, and vegetation. They can understand the meaning of your words, though you have no special ability to understand them in return. You have advantage on all Charisma checks you make to influence them. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Keen Senses",
+          "entries": [
+            "You have advantage on Wisdom ({@skill Perception}) checks that rely on hearing or sight. {@note 6}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Old Growth",
+      "source": "DM-Ancestries",
+      "raceName": "Oread",
+      "raceSource": "DM-Ancestries",
+      "resist": [
+        "poison"
+      ],
+      "entries": [
+        {
+          "name": "Speech of Beast and Leaf",
+          "entries": [
+            "You have the ability to communicate in a limited manner with Beasts, Plants, and vegetation. They can understand the meaning of your words, though you have no special ability to understand them in return. You have advantage on all Charisma checks you make to influence them. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Cantrip",
+          "entries": [
+            "You know the {@spell druidcraft} or {@spell shillelagh} cantrip. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Elemental Magic",
+          "entries": [
+            "Starting at 3rd level, you can choose one spell {@spell ensnaring strike}, {@spell entangle}, {@spell grasping roots|KT-CLL}, or {@spell bramble binding|KT-CLL}, that you can cast with this trait.",
+            "Then starting at 5th level, you can cast {@spell sprout tree|KT-CLL} or {@spell lashing vine|spellsthatdontsuck}. These spells do not require a material component, and can be cast once per long rest, or by using any spell slots you have of the appropriate level. {@note 7}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Mycelial",
+      "source": "DM-Ancestries",
+      "raceName": "Oread",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Spore Strike",
+          "entries": [
+            "When you damage a creature with an attack, you can cause the attack to deal an extra poison or acid damage equal to your Proficiency Bonus, and give Disadvantage to the next ability check or saving throw the target makes until the start of your next turn. This trait can be used a number of times equal to your Proficiency Bonus per long rest. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Charm Resistance",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition charmed} condition on yourself. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Cantrip",
+          "entries": [
+            "You know the {@spell message}, {@spell preservation|KT-CLL}, {@spell decaying touch|KT-CLL}, or {@spell corpselight|DMM} cantrip. If you choose mage hand, the hand is invisible and doesn't require components when you cast it with this trait. {@note 2}"
+            
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Spore Network",
+          "entries": [
+            "At 3rd level, you can cast one spell from the following list {@spell cause fear|XGE}, {@spell charm person}, {@spell psychadelics|VSS}, or {@spell find in nature|spellsthatdontsuck}, without requiring a material component. This spell can be cast once per long rest, or by using any spell slots you have of the appropriate level."
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Florid",
+      "source": "DM-Ancestries",
+      "raceName": "Oread",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Cantrip",
+          "entries": [
+            "You know one cantrip of your choice associated with your elemental attunement: {@spell infestation}, {@spell druidcraft}, {@spell thought wisp}, or {@spell thorn whip}. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Elemental Magic",
+          "entries": [
+            "Starting at 3rd level, you can cast one spell associated with your elemental attunement: {@spell hail of thorns}, {@spell magic fruit|spellsthatdontsuck}, or {@spell calm emotions}.",
+            "Then starting at 5th level, you can cast one spell associated with your elemental attunement: {@spell plant growth}, {@spell petal storm}, {@spell spike growth}, or {@spell wither and bloom}. These spells do not require a material component, and can be cast once per long rest, or by using any spell slots you have of the appropriate level. {@note 7}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Speech of Beast and Leaf",
+          "entries": [
+            "You have the ability to communicate in a limited manner with Beasts, Plants, and vegetation. They can understand the meaning of your words, though you have no special ability to understand them in return. You have advantage on all Charisma checks you make to influence them. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Spore Ward",
+          "entries": [
+            "You can't be put to sleep against your will, and you have advantage on saving throws you make to resist or end the {@condition poisoned} condition on yourself. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+
+
+    {
+      "name": "Spotter",
+      "source": "DM-Ancestries",
+      "raceName": "Ysoki (Ratfolk)",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "type": "entries",
+          "name": "Hunter's Senses",
+          "entries": [
+            "Thanks to your keen sense of smell, you have advantage on Wisdom ({@skill Perception}), Wisdom ({@skill Survival}), and Intelligence ({@skill Investigation}) checks that involve smell. As an action you can focus your sense of smell and gain blindsight (30 ft.) until the end of your next turn. {@note 7}"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Scavenger",
+      "source": "DM-Ancestries",
+      "raceName": "Ysoki (Ratfolk)",
+      "raceSource": "DM-Ancestries",
+      "resist": [
+        "poison"
+      ],
+      "entries": [
+        {
+          "entries": [
+            {
+              "type": "entries",
+              "name": "Keen Smell",
+              "entries": [
+                "Thanks to your keen sense of smell, you have advantage on Wisdom ({@skill Perception}), Wisdom ({@skill Survival}), and Intelligence ({@skill Investigation}) checks that involve smell. {@note 3}"
+              ]
+            },
+            {
+              "type": "entries",
+              "name": "Trap Master",
+              "entries": [
+                "You have a preternatural ability to avoid traps and have advantage on Dexterity or Strength saves against triggered traps. {@note 1}"
+              ]
+            },
+            {
+              "type": "entries",
+              "name": "Poison Resistance",
+              "entries": [
+                "You are resistant to poison damage. {@note 3}"
+              ]
+            }
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Rural",
+      "source": "DM-Ancestries",
+      "raceName": "Ysoki (Ratfolk)",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "entries": [
+            {
+              "type": "entries",
+              "name": "Keen Smell",
+              "entries": [
+                "Thanks to your keen sense of smell, you have advantage on Wisdom ({@skill Perception}), Wisdom ({@skill Survival}), and Intelligence ({@skill Investigation}) checks that involve smell. {@note 3}"
+              ]
+            },
+            {
+              "type": "entries",
+              "name": "Skilled Agriculturalist",
+              "entries": [
+                "You have proficiency on Nature (Wisdom) checks, proficiency with the {@item sickle|phb}, and advantage on any checks made to farm, forage, or harvest. {@note 2}"
+              ]
+            },
+            {
+              "type": "entries",
+              "name": "Cute",
+              "entries": [
+                "You have half-proficiency in {@skill Persuasion} and {@skill Deception} checks. The first time you interact with strangers in an unfamiliar land, culture, or region, add {@dice 1d4} to the first {@skill Persuasion}, {@skill Deception}, or {@skill Performance} check you make against them. This trait does not work on groups if at least one person in the group knows you. {@note 2}"
+              ]
+            }
+          ],
+        "type": "entries"
+        }
+      ]
+    },
+
+    {
+      "name": "Hare",
+      "source": "DM-Ancestries",
+      "raceName": "Harengon (Rabbitfolk)",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "walk": 35
+      },
+      "entries": [
+        {
+          "name": "Quick",
+          "entries": [
+            "Your base walking speed is 35 feet. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Bounding",
+          "entries": [
+            "As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
+            "Additionally, the efficiency of movement your bounding provides means you can move twice the normal time (up to 16 hours) each day before being subject to the effects of a forced march. {@note 4}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Rabbit",
+      "source": "DM-Ancestries",
+      "raceName": "Harengon (Rabbitfolk)",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Lucky",
+          "entries": [
+            "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Socializer",
+          "entries": [
+            "The first time you interact with strangers in an unfamiliar land, culture, or region, add {@dice 1d4} to the first Charisma (Persuasion or Deception) check you make against them. This trait does not work on groups if at least one person in the group knows you. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Strong Kick",
+          "entries": [
+            "You have one or more features that allow you to make damaging unarmed strikes as a natural, light weapon. When you hit with it, the strike deals {@damage 1d6} + Strength modifier bludgeoning damage. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Traversal",
+          "entries": [
+            "You can move across difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor. {@note 1}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+
+    {
+      "name": "Tabaxi",
+      "source": "DM-Ancestries",
+      "raceName": "Mrrshan",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Climb Speed",
+          "entries": [
+            "You have a climbing speed equal to your walking speed. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Leap",
+          "entries": [
+            "Your long jump is 20 feet and your high jump is 10 feet, with or without a running start. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Combat Awareness",
+          "entries": [
+            "If you are surprised in battle, enemies do not have advantage against you in the surprise round. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Cat's Talent",
+          "entries": [
+            "You have proficiency with the {@skill Perception} and {@skill Stealth} skills. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Adrenaline Rush",
+          "entries": [
+            "You can take the {@action Dash} action as a bonus action. You can use this trait a number of times equal to your Proficiency Bonus per long rest. Whenever you use this trait, gain a number of temporary hit points equal to your Proficiency Bonus. {@note 3}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Panthera",
+      "source": "DM-Ancestries",
+      "raceName": "Mrrshan",
+      "raceSource": "DM-Ancestries",
+      "skillProficiencies": [
+        {
+          "choose": {
+            "from": [
+              "athletics",
+              "intimidation",
+              "perception",
+              "survival"
+            ],
+            "count": 1
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Roar",
+          "entries": [
+            "As a bonus action, you can let out an especially menacing roar. Creatures of your choice within 10 feet of you that can hear you must succeed on a Wisdom saving throw or become {@condition frightened} of you until the end of your next turn. The DC of the save equals 8 + your Proficiency Bonus + your Constitution modifier. You can use this trait a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a long rest. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Swiftness",
+          "entries": [
+            "When you move on your turn in combat, you can double your speed until the end of the turn. Once you use this trait, you can't use it again until you move 0 feet on one of your turns. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Combat Climber",
+          "entries": [
+            "Your techniques allow you to fight as you climb. You can Climb with a hand occupied. You must still use another hand and both legs to Climb. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Hunter's Instincts",
+          "entries": [
+            "You have proficiency in one of the following skills of your choice: Athletics, Intimidation, Perception, or Survival. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Brave",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition frightened} condition on yourself. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+
+    {
+      "name": "Twin-Bonded",
+      "source": "DM-Ancestries",
+      "raceName": "Khenra",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Lucky",
+          "entries": [
+            "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll. {@note 4}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Twin-Severed",
+      "source": "DM-Ancestries",
+      "raceName": "Khenra",
+      "raceSource": "DM-Ancestries",
+      "additionalSpells": [
+        {
+          "known": {
+            "1": [
+              {
+                "choose": {
+                  "from": [
+                    "bad blood|KT-CLL#c",
+                    "crippling agony|KT-CLL#c",
+                    "cause fear|XGE#c",
+                    "false life#c"
+                  ],
+                  "count": 1
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Brave",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition frightened} condition on yourself. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Shadow Magic",
+          "entries": [
+            "Beginning at 3rd level, you can cast one 1st-level spell of your choice from the illusion or necromancy schools of magic. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+
+    {
+      "name": "Stoneborn",
+      "source": "DM-Ancestries",
+      "raceName": "Talos",
+      "raceSource": "DM-Ancestries",
+      "additionalSpells": [
+        {
+          "known": {
+            "1": [
+              "stone forming|KT-CLL#c",
+              "manipulate earth|spellsthatdontsuck#c"
+            ],
+            "3": [
+              "absorb elements|spellsthatdontsuck#1",
+              "earth tremor|spellsthatdontsuck#1",
+              "expeditious retreat|spellsthatdontsuck#1",
+              "longstrider|spellsthatdontsuck#1",
+              "shield of faith|spellsthatdontsuck#1"
+            ],
+            "5": [
+              "dust devil|spellsthatdontsuck#2",
+              "earthbind|spellsthatdontsuck#2",
+              "earthen grasp|spellsthatdontsuck#2",
+              "heat metal|spellsthatdontsuck#2"
+            ]
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Elemental Attunement, Earth",
+          "entries": [
+            "You know the {@spell stone forming|KT-CLL} or {@spell manipulate earth|spellsthatdontsuck} cantrip. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Unending Breath",
+          "entries": [
+            "You can hold your breath indefinitely while you're not {@condition incapacitated}. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Elemental Strike, Earth",
+          "entries": [
+            "When you damage a creature with an attack, you can cause a target no more than one size larger than you to make your choice of a Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check to avoid being knocked {@condition prone}. This trait can be used a number of times equal to your Proficiency Bonus per long rest. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Elemental Magic, Earth",
+          "entries": [
+            "Starting at 3rd level, you can cast one spell associated with your elemental attunement: {@spell absorb elements}, {@spell earth tremor}, {@spell expeditious retreat}, {@spell longstrider}, {@spell shield of faith} (self only).",
+            "Then starting at 5th level, you can cast one spell associated with your elemental attunement: {@spell dust devil}, {@spell earthbind}, {@spell earthen grasp}, {@spell heat metal}. {@note 7}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Natural Armor",
+          "entries": [
+            "You have thick skin. Your AC is 12 + your Constitution modifier. A shield's benefits apply as normal while you use your natural armor. {@note 3}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Ironborn",
+      "source": "DM-Ancestries",
+      "raceName": "Talos",
+      "raceSource": "DM-Ancestries",
+      "languageProficiencies": [
+        {
+          "terran": true
+        }
+      ],
+      "toolProficiencies": [
+        {
+          "smith's tools": true
+        }
+      ],
+      "additionalSpells": [
+        {
+          "known": {
+            "1": [
+              "blade ward|KT-CLL#c"
+            ]
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Elemental Attunement, Metal",
+          "entries": [
+            "You know the {@spell blade ward} cantrip and can cast it normally or as a bonus action a number of times equal to your Proficiency Bonus, replenishing on a long rest. If you have darkvision you see in shades of a color of your choice. You speak primordial (terran). {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Metal Skin",
+          "entries": [
+            "You can use your metal heritage to defend yourself. As a bonus action, you can enhance the metal in your body by turning your skin into metal: this process heals 1hp per level and provides you with resistance to all damage till the beginning of your next turn. A long rest is required to regain this power. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Toxin Resilience",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition poisoned} or {@condition diseased} conditions on yourself. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Combat Climber",
+          "entries": [
+            "Your techniques allow you to fight as you climb. You can Climb with a hand occupied. You must still use another hand and both legs to Climb. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tool Proficiency",
+          "entries": [
+            "You gain proficiency with {@item smith's tools}. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Charge",
+          "entries": [
+            "Immediately after you use the {@action Dash} action on your turn and move at least 20 feet, you can make one unarmed strike melee attack as a bonus action, or you can ram a target and attempt to knock it {@condition prone}. The DC for this Strength saving throw is equal to 8 + your Strength modifier + your Proficiency Bonus. {@note 3}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Goldenblood",
+      "source": "DM-Ancestries",
+      "raceName": "Talos",
+      "raceSource": "DM-Ancestries",
+      "toolProficiencies": [
+        {
+          "smith's tools": true
+        }
+      ],
+      "traitTags": [
+        "Natural Weapon"
+      ],
+      "additionalSpells": [
+        {
+          "known": {
+            "1": [
+              "blade ward|KT-CLL#c"
+            ],
+            "5": [
+              "liquid armor|VSS#2"
+            ]
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Golden Bulwark",
+          "entries": [
+            "Your form lets you shrug off damage. You know the {@spell blade ward} cantrip and can cast it normally or as a bonus action a number of times equal to your Proficiency Bonus, replenishing on a long rest. It takes only somatic components.",
+            "Starting at 5th level, you may cast {@spell liquid armor|VSS} once per day on a creature other than yourself, replenishing on a long rest. {@note 5}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Metallic Appendage",
+          "entries": [
+            "You form part of your body into a weapon-like appendage able to make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals {@damage 1d6} + Strength modifier damage. You pick whether the damage is slashing, piercing, or bludgeoning based on the form you create. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Metal Skin",
+          "entries": [
+            "You can use your metal heritage to defend yourself. As a bonus action, you can enhance the metal in your body by turning your skin into metal: this process grants you temporary HP equal to your Constitution modifier + 1 per level for the next 10 minutes, and provides you with resistance to all damage till the beginning of your next turn. A long rest is required to regain this power. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Toxin Resilience",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition poisoned} or {@condition diseased} conditions on yourself. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Combat Climber",
+          "entries": [
+            "Your techniques allow you to fight as you climb. You can Climb with a hand occupied. You must still use another hand and both legs to Climb. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tool Proficiency",
+          "entries": [
+            "You gain proficiency with {@item smith's tools}. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Charge",
+          "entries": [
+            "Immediately after you use the {@action Dash} action on your turn and move at least 20 feet, you can make one unarmed strike melee attack as a bonus action, or you can ram a target and attempt to knock it {@condition prone}. The DC for this Strength saving throw is equal to 8 + your Strength modifier + your Proficiency Bonus. {@note 3}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Orchid",
+      "source": "DM-Ancestries",
+      "raceName": "Talos",
+      "raceSource": "DM-Ancestries",
+      "additionalSpells": [
+        {
+          "known": {
+            "3": [
+              "color spray|spellsthatdontsuck#1",
+              "chromatic orb|spellsthatdontsuck#1"
+            ]
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Natural Armor",
+          "entries": [
+            "You can calculate your AC as 13 + your Dexterity modifier. A shield's benefits apply as normal while you use your natural armor. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Chromatic Magic",
+          "entries": [
+            "You can cast {@spell color spray}. You can also cast {@spell chromatic orb} in the element matching your attunement as a melee spell attack. Beginning at 3rd level you can use this trait a number of times equal to your Proficiency Bonus per long rest to cast either of these spells, or cast them normally using spell slots. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Constructed Form",
+          "entries": [
+            "You are a Construct. You don't need to eat, drink, or breathe, and magic can't put you to sleep. You are immune to disease and have advantage on saving throws against being {@condition paralyzed}. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Psionic Resistance, Psychic",
+          "entries": [
+            "You have resistance to psychic damage. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Empathic",
+          "entries": [
+            "You have advantage on Wisdom ({@skill Insight}) checks made to discern the emotions of others. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Serenity",
+          "entries": [
+            "You have advantage on saving throws to avoid or end the {@condition charmed} or {@condition frightened} conditions on yourself, and to resist the effects of madness. {@note 4}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Duster",
+      "source": "DM-Ancestries",
+      "raceName": "Talos",
+      "raceSource": "DM-Ancestries",
+      "darkvision": 60,
+      "resist": [
+        {
+          "necrotic": true
+        }
+      ],
+      "entries": [
+        {
+          "name": "Necrotic Resistance",
+          "entries": [
+            "You have resistance to necrotic damage. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Darkvision",
+          "entries": [
+            "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade of the type of ooze you are associated with. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Touch of Decay",
+          "entries": [
+            "You know the {@spell chill touch} or {@spell decaying touch|KT-CLL} cantrip. Starting at 3rd level, you can cast the {@spell inflict wounds} or {@spell grip of the dead|KT-CLL} spell with this trait. Starting at 5th level, you can cast the {@spell wrack|GHLoE} or {@spell dust cyclone|spellsthatdontsuck} spell with this trait, without requiring a material component. If you cast dust cyclone with this trait, you can choose for it to deal necrotic damage, instead of bludgeoning, for the duration. Once you cast a spell with this trait, you can't cast that spell with this trait again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level. {@note 9}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Unending Breath",
+          "entries": [
+            "You can hold your breath indefinitely while you're not incapacitated. {@note 1}"
+          ],
+          "type": "entries"
+        }
+      ],
+      "hasFluff": true,
+      "fluff": {
+        "entries": [
+          "Dust genasi, sometimes called sand or even salt genasi, have a connection to the elements of Earth and Air. Their magic manifests as a combination of their elements' physical properties: thick clouds of silica particles that flow through the air at the genasi's command, and seem to absorb moisture and possibly even life force from those they touch, grinding away at whatever it touches until it decays into dust. For this reason, many cultures that are aware of the existence of dust genasi fear their touch, either not knowing that the genasi has full control of their deadly magic or fearing how the genasi might use it.",
+          "Dust genasi almost always appear emaciated and malnourished, as though their magic is eating them from the inside. While their skin, eyes, and hair can have any mortal hue, they appear desaturated of color, perhaps even having a yellow, tan, or gray caste. Their hair is thin and wispy, almost constantly being whipped about by a phantom cyclone. When a creature sees a dust genasi from their peripheral vision, the genasi's skin and flesh may appear to blow away as particles similar in appearance to their cloud, appearing to leave only animate bone, though looking directly at the genasi or looking away proves this to have been only a trick of the mind."
+        ]
+      }
+    },
+    {
+      "name": "Metal",
+      "source": "DM-Ancestries",
+      "raceName": "Talos",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Heart of the Forge",
+          "entries": [
+            "You know the {@spell green-flame blade|TCOE} cantrip. Starting at 3rd level, you can cast the {@spell searing smite} spell with this trait. Starting at 5th level, you can cast the {@spell heat metal} spell with this trait, without requiring a material component. Once you cast searing smite or heat metal with this trait, you can't cast that spell with this trait again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level.",
+            "Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race). {@note 9}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Metallic Skin",
+          "entries": [
+            "You gain a +1 bonus to Armor Class. {@note 7}"
+          ],
+          "type": "entries"
+        }
+      ],
+      "hasFluff": true,
+      "fluff": {
+        "entries": [
+          "A metal genasi's magic comes from the metaphysical combination of Earth and Fire, the purifying properties of fire augmenting the enduring properties of earth. Unlike most other types of genasi, metal genasi can't summon or shape their mixed element quite so much as channel their magic through it, oft excelling in the use of metal implements. Many feel most at home near a blacksmith's forge or with a metal weapon in their hands, leading the vast majority of metal genasi to enter a vocation of smithing or warfare.",
+          "It's common for those unfamiliar with metal genasi to initially mistake them for azers or constructs; a metal genasi's skin and hair are almost always glistening metallic tones, such as iron, steel, gold, or bronze, though any type of metal is possible. More often than not, their skin is of a type of metal, and their hair and nails an alloy of that metal, though both their skin and hair are nearly as flexible as any other mortal's. Metal genasi irises, though, burn with an intensity reminiscent of a forge's flame, generally in reds, greens, blues, oranges, or yellows, or even white hot."
+        ]
+      }
+    },
+    {
+      "name": "Oozeborn",
+      "source": "DM-Ancestries",
+      "raceName": "Talos",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "walk": 30,
+        "swim": 30
+      },
+      "darkvision": 60,
+      "entries": [
+        {
+          "name": "Swim Speed",
+          "entries": [
+            "You have a swim speed of 30 feet provided you are not wearing medium or heavy armor. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Darkvision",
+          "entries": [
+            "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade of the type of ooze you are associated with. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Acid Resistance",
+          "entries": [
+            "You have resistance to acid damage. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Play with Mud",
+          "entries": [
+            "You know the {@spell acid splash} cantrip. Starting at 3rd level, you can cast the {@spell grease} spell with this trait, without requiring a material component. Starting at 5th level, you can cast the {@spell Melf's acid arrow} spell, without requiring a material component. Once you cast grease or Melf's acid arrow with this trait, you can't cast that spell with this trait again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level.",
+            "Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race). {@note 7}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Slippery Skin",
+          "entries": [
+            "You have advantage on any ability check or saving throw you make to avoid or end the {@condition grappled} or {@condition restrained} condition on yourself. {@note 5}"
+          ],
+          "type": "entries"
+        }
+      ],
+      "hasFluff": true,
+      "fluff": {
+        "entries": [
+          "The Swamp of Oblivion is a colloquial name given to the Paraelemental Plane of Ooze, where the Planes of Earth and Water meet to form an enormous bog of acidic mud and slime that eats away at the planar borders almost as quickly as they can renew themselves. Whether born in the Swamp or to an earth and water genasi parental pair, or imbued by dao and marid magics in the womb, ooze genasi wield the physical mixture of their two elemental connections: skin coated in slippery muck, as well as the ability to summon and manipulate the corrosive substances that pervade the Swamp of Oblivion.",
+          "Usually, an ooze genasi's skin has mortal tones, though it secretes a layer of slime or moist mud that varies in thickness based on stress and causes their skin to appear oily with a green or brown tint. It is common for a community to mistake an ooze genasi with a mud coating as a separate type of genasi, referring to them as mud genasi. No matter which coating an ooze genasi's skin has, their hair appears in mortal or brackish hues, and easily becomes greasy if it isn't washed with incredible frequency. Similarly, their eyes are often a muddy brown or oily green."
+        ]
+      }
+    },
+
+    {
+      "name": "Badlands",
+      "source": "DM-Ancestries",
+      "raceName": "Iruxi",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "walk": 30,
+        "climb": 30
+      },
+      "darkvision": 60,
+      "entries": [
+        {
+          "name": "Darkvision",
+          "entries": [
+            "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade, usually gray. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Strong Bite",
+          "entries": [
+            "Your toothy maw can make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals {@damage 1d6} + Strength modifier slashing damage. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Defensive Feature, Spines",
+          "entries": [
+            "When another creature {@condition grappled||grapples} you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal piercing damage equal to {@damage 1d4} × your Proficiency Bonus. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Climb Speed",
+          "entries": [
+            "You have a climbing speed of 30 feet. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Leap",
+          "entries": [
+            "Your long jump is 20 feet and your high jump is 10 feet, with or without a running start. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Acclimatization",
+          "entries": [
+            "You are acclimated to extreme climates and do not suffer the effects of extreme heat above 100 degrees Fahrenheit. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Hold Breath",
+          "entries": [
+            "You can hold your breath for up to 1 hour at a time. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Survivalist",
+          "entries": [
+            "You only need to consume half as much food and drink as a normal person. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Skilled Tracker",
+          "entries": [
+            "Whenever you make a Wisdom ({@skill Survival}) check to track creatures, you have advantage on that check. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Swamp",
+      "source": "DM-Ancestries",
+      "raceName": "Iruxi",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "walk": 30,
+        "swim": 30
+      },
+      "darkvision": 60,
+      "skillProficiencies": [
+        {
+          "intimidation": true
+        }
+      ],
+      "entries": [
+        {
+          "name": "Hold Breath",
+          "entries": [
+            "You can hold your breath for up to 1 hour at a time. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Darkvision",
+          "entries": [
+            "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade, usually gray. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Natural Weapons",
+          "entries": [
+            "Your toothy maw and/or strong tail allow you to make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals:",
+            {
+              "type": "list",
+              "items": [
+                "{@bold Bite.} {@damage 1d6} + Strength modifier slashing damage",
+                "{@bold Tail.} {@damage 1d6} + Strength modifier bludgeoning damage"
+              ]
+            },
+            "{@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Hungry Jaws",
+          "entries": [
+            "As a bonus action, you can make a special attack with your bite. If the attack hits, it deals normal damage, and you gain temporary hit points (minimum of 1) equal to your Proficiency Bonus. This trait can be used a number of times equal to your Proficiency Bonus per long rest. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Natural Armor",
+          "entries": [
+            "You can calculate your AC as 13 + your Dexterity modifier. A shield's benefits apply as normal while you use your natural armor. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Weather Worn",
+          "entries": [
+            "You do not suffer disadvantage on Wisdom ({@skill Perception}) checks due to heavy precipitation and wind, or areas lightly obscured by mist, light fog, or water conditions. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Swim Speed",
+          "entries": [
+            "You have a swim speed of 30 feet provided you are not wearing medium or heavy armor. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Skill Proficiency",
+          "entries": [
+            "You have proficiency in {@skill Intimidation}. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Jungle",
+      "source": "DM-Ancestries",
+      "raceName": "Iruxi",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "walk": 30,
+        "climb": 30
+      },
+      "darkvision": 60,
+      "skillProficiencies": [
+        {
+          "stealth": true
+        }
+      ],
+      "entries": [
+        {
+          "name": "Darkvision",
+          "entries": [
+            "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Chromatophore",
+          "entries": [
+            "As a bonus action, you can turn invisible until the start of your next turn. This effect ends early if you make an attack roll or force a creature to make a saving throw. You can use this trait a number of times equal to your Proficiency Bonus per long rest. {@note 6}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tongue",
+          "entries": [
+            "Your tongue can make damaging unarmed strikes as a light weapon with a reach of 10 feet. When you hit with it, the strike deals {@damage 1d6} + Strength modifier bludgeoning damage. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Climb Speed",
+          "entries": [
+            "You have a climbing speed of 30 feet. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Skill Proficiency",
+          "entries": [
+            "You have proficiency in {@skill Stealth}. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Desert",
+      "source": "DM-Ancestries",
+      "raceName": "Iruxi",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "walk": 35
+      },
+      "darkvision": 60,
+      "skillProficiencies": [
+        {
+          "intimidation": true
+        }
+      ],
+      "entries": [
+        {
+          "name": "Quick",
+          "entries": [
+            "Your base walking speed is 35 feet. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Darkvision",
+          "entries": [
+            "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade, usually gray. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Acclimatization",
+          "entries": [
+            "You are acclimated to extreme climates and do not suffer the effects of extreme heat above 100 degrees Fahrenheit. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tooth and Tail",
+          "entries": [
+            "Your toothy maw can make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals {@damage 1d6} + Strength modifier slashing damage. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Natural Armor",
+          "entries": [
+            "You can calculate your AC as 13 + your Dexterity modifier. A shield's benefits apply as normal while you use your natural armor. {@note 3}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Burrow",
+          "entries": [
+            "At 1st level, you can use your bonus action to gain a burrow speed of 10 feet for one turn. At 5th level, your burrow speed increases to 20 feet. {@note 5}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Forest",
+      "source": "DM-Ancestries",
+      "raceName": "Iruxi",
+      "raceSource": "DM-Ancestries",
+      "resist": [
+        "poison"
+      ],
+      "skillProficiencies": [
+        {
+          "choose": {
+            "from": [
+              "animal handling",
+              "medicine",
+              "nature",
+              "perception",
+              "stealth",
+              "survival"
+            ],
+            "count": 1
+          }
+        }
+      ],
+      "entries": [
+        {
+          "name": "Tooth and Tail",
+          "entries": [
+            "Your toothy maw and/or strong tail allow you to make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals: {@note 1}",
+            {
+              "type": "list",
+              "items": [
+                "{@bold Bite.} {@damage 1d6} + Strength modifier slashing damage",
+                "{@bold Fangs.} {@damage 1d6} + Strength modifier piercing damage",
+                "{@bold Tail.} {@damage 1d6} + Strength modifier bludgeoning damage"
+              ]
+            }
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Regeneration",
+          "entries": [
+            "As a bonus action, you can heal wounds you have taken. You may spend a hit die to regain that much health a number of times equal to your Proficiency Bonus per long rest. {@note 4}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Beast Tracker",
+          "entries": [
+            "Whenever you make a Wisdom ({@skill Survival}) check to track beasts, you are considered proficient in the Survival skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Toxin Resilience",
+          "entries": [
+            "You have advantage on saving throws you make to avoid or end the {@condition poisoned} or {@condition diseased} conditions on yourself. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Poison Resistance",
+          "entries": [
+            "You are resistant to poison damage. {@note 3}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Shelled",
+      "source": "DM-Ancestries",
+      "raceName": "Iruxi",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "walk": 30,
+        "swim": 30
+      },
+      "traitTags": [
+        "Natural Armor"
+      ],
+      "entries": [
+        {
+          "name": "Bite",
+          "entries": [
+            "You can use your toothy maw to make unarmed strikes as a light weapon. When you hit with them, the strike deals {@damage 1d6} + your Strength modifier slashing damage. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Shell",
+          "entries": [
+            "Due to your shell and the shape of your body, you are ill-suited to wearing armor. Your body provides ample protection, however; it gives you a base AC of 17 (your Dexterity modifier doesn't affect this number). You gain no benefit from wearing armor, but if you are using a shield, you can apply the shield's bonus as normal. At level 12, the base AC of your shell increases to 18 due to your combat experience. {@note 5}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Swim Speed",
+          "entries": [
+            "You have a swim speed of 30 feet provided you are not wearing medium or heavy armor. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Durable",
+          "entries": [
+            "When you take damage, you can use your reaction to roll {@damage 1d12} + your Constitution modifier and reduce the damage by that total. This trait can be used a number of times equal to your Proficiency Bonus per long rest. {@note 7}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Inventor",
+      "source": "DM-Ancestries",
+      "raceName": "Gnome",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Magic Resistance",
+          "entries": [
+            "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic. {@note 6}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tinkerer",
+          "entries": [
+            "You know the Mending and {@spell Prestidigitation} cantrips. In addition, you can spend 10 minutes casting Prestidigitation to create a Tiny clockwork device (AC 5, 1 HP), such as a toy, fire starter, or music box. When you create the device, you determine its function by choosing one effect from Prestidigitation; the device produces that effect whenever you or another creature takes a Bonus Action to activate it with a touch. If the chosen effect has options within it, you choose one of those options for the device when you create it. For example, if you choose the spell's ignite-extinguish effect, you determine whether the device ignites or extinguishes fire; the device doesn't do both. You can have three such devices in existence at a time, and each falls apart 8 hours after its creation or when you dismantle it with a touch as a Utilize action. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Artisan's Lore",
+          "entries": [
+            "Whenever you make an Intelligence ({@skill History}) check related to the origin or history of an item related to an artisan tool with which you are proficient, you are considered proficient in the History skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Tool Proficiency",
+          "entries": [
+            "You gain proficiency with the artisan's tools of your choice. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Skilled Artistry",
+          "entries": [
+            "The time it takes to craft something using an artisan's tool with which you are proficient is halved. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Traveler",
+      "source": "DM-Ancestries",
+      "raceName": "Gnome",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Greater Magic Resistance",
+          "entries": [
+            "You have advantage on all saving throws against magic. {@note 9}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Socializer",
+          "entries": [
+            "The first time you interact with strangers in an unfamiliar land, culture, or region, add {@dice 1d4} to the first {@skill Persuasion}, {@skill Deception}, or {@skill Performance} check you make against them. This trait does not work on groups if at least one person in the group knows you. {@note 0}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Cantrip",
+          "entries": [
+            "You know the {@spell dancing lights}, {@spell druidcraft}, {@spell friends}, {@spell minor illusion}, or {@spell vicious mockery} cantrip. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Fey Magic",
+          "entries": [
+            "Starting at 3rd level, you can cast one spell from the following list: {@spell animal friendship}, {@spell cause fear}, {@spell charm person}, {@spell disguise self}, {@spell enlarge/reduce}, {@spell faerie fire}, {@spell tasha's hideous laughter|phb|hideous laughter}, {@spell sleep}. {@note 2}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Discoverer",
+      "source": "DM-Ancestries",
+      "raceName": "Gnome",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Greater Magic Resistance",
+          "entries": [
+            "You have advantage on all saving throws against magic. {@note 9}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Beast Tracker",
+          "entries": [
+            "Whenever you make a Wisdom ({@skill Survival}) check to track beasts, you are considered proficient in the Survival skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Speech of Beast and Leaf",
+          "entries": [
+            "You have the ability to communicate in a limited manner with Beasts, Plants, and vegetation. They can understand the meaning of your words, though you have no special ability to understand them in return. You have advantage on all Charisma checks you make to influence them. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Out of Sight",
+          "entries": [
+            "You can attempt to hide even when you are only lightly obscured by foliage, rocky terrain, heavy rain, falling snow, mist, and other natural phenomena, and have advantage on these Dexterity checks. {@note 1}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Seafarer",
+      "source": "DM-Ancestries",
+      "raceName": "Gnome",
+      "raceSource": "DM-Ancestries",
+      "speed": {
+        "swim": 30
+      },
+      "entries": [
+        {
+          "name": "Greater Magic Resistance",
+          "entries": [
+            "You have advantage on all saving throws against magic. {@note 9}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Swim Speed",
+          "entries": [
+            "You have a swim speed of 30 feet provided you are not wearing medium or heavy armor. {@note 2}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Fishermen's Tales",
+          "entries": [
+            "Whenever you make an Wisdom ({@skill Insight}) or Wisdom ({@skill Survival}) check related to the sea or other bodies of water, you are considered proficient in the Insight or Survival skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus. {@note 1}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Weather Worn",
+          "entries": [
+            "You do not suffer disadvantage on perception checks due to heavy precipitation and wind, or areas lightly obscured by mist, light fog, or water conditions. {@note 1}"
+          ],
+          "type": "entries"
+        }
+      ]
+    },
+    {
+      "name": "Deep Traveler",
+      "source": "DM-Ancestries",
+      "raceName": "Gnome",
+      "raceSource": "DM-Ancestries",
+      "entries": [
+        {
+          "name": "Greater Magic Resistance",
+          "entries": [
+            "You have advantage on all saving throws against magic. {@note 9}"
+          ],
+          "type": "entries"
+        },
+        {
+          "name": "Telepathy",
+          "entries": [
+            "You can speak telepathically to any creature within 30 feet of you. The creature understands you only if the two of you share a language. You can speak telepathically in this way to one creature at a time. {@note 5}"
+          ],
+          "type": "entries"
+        }
+      ]
+    }
+  ]
+}
