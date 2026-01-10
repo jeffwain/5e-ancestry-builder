@@ -129,16 +129,16 @@
           {
             "id": "elemental-attunement",
             "name": "Elemental Attunement",
-            "description": "If you have elemental ancestry, you must take this trait. Choose your element type.",
-            "points": 2,
+            "description": "If you have elemental ancestry, you must take this trait. Choose one element type below.",
+            "points": 0,
             "required": true,
-            "hasOptions": true,
+            "requiresOption": true,
             "options": [
-              {"id": "air", "name": "Air", "description": "Resistance to lightning or thunder. Darkvision tinged white. Speak Primordial (Auran)."},
-              {"id": "earth", "name": "Earth", "description": "Know stone forming, manipulate earth, or blade ward cantrip. Speak Primordial (Terran)."},
-              {"id": "fire", "name": "Fire", "description": "Resistance to fire damage. Darkvision in red. Speak Primordial (Ignan).", "pointsOverride": 3},
-              {"id": "nature", "name": "Nature", "description": "Resistance to acid or poison. Darkvision in brown/green. Speak Primordial (Giant)."},
-              {"id": "water", "name": "Water", "description": "Resistance to cold damage. Darkvision in blue. Speak Primordial (Aquan)."}
+              {"id": "air", "name": "Air", "points": 2, "description": "Resistance to lightning or thunder damage. Darkvision tinged white. Speak Primordial (Auran)."},
+              {"id": "earth", "name": "Earth", "points": 2, "description": "Know stone forming, manipulate earth, or blade ward cantrip (as bonus action PB/long rest). Speak Primordial (Terran)."},
+              {"id": "fire", "name": "Fire", "points": 3, "description": "Resistance to fire damage. Darkvision in red. Speak Primordial (Ignan)."},
+              {"id": "nature", "name": "Nature", "points": 2, "description": "Resistance to acid or poison damage. Darkvision brown/green. Speak Primordial (Giant)."},
+              {"id": "water", "name": "Water", "points": 2, "description": "Resistance to cold damage. Darkvision blue. Speak Primordial (Aquan)."}
             ]
           },
           {
@@ -253,13 +253,13 @@
           {
             "id": "planar-attunement",
             "name": "Planar Attunement",
-            "description": "If you have planetouched ancestry, you must take this trait. Choose Celestial or Fiend.",
-            "points": 2,
+            "description": "If you have planetouched ancestry, you must take this trait. Choose one attunement below.",
+            "points": 0,
             "required": true,
-            "hasOptions": true,
+            "requiresOption": true,
             "options": [
-              {"id": "celestial", "name": "Celestial", "description": "Spellcasting from cleric list. Resist Radiant (2) or Necrotic (3).", "resistOptions": [{"name": "Radiant", "points": 2}, {"name": "Necrotic", "points": 3}]},
-              {"id": "fiend", "name": "Fiend", "description": "Spellcasting from warlock list. Resist Cold (2), Fire (3), or Lightning (2).", "resistOptions": [{"name": "Cold", "points": 2}, {"name": "Fire", "points": 3}, {"name": "Lightning", "points": 2}]}
+              {"id": "celestial", "name": "Celestial", "points": 2, "description": "Spellcasting from cleric list. Choose resistance: Radiant or Necrotic (+1 pt)."},
+              {"id": "fiend", "name": "Fiend", "points": 2, "description": "Spellcasting from warlock list. Choose resistance: Cold, Fire (+1 pt), or Lightning."}
             ]
           },
           {
@@ -673,10 +673,10 @@
           {
             "id": "draconic-ancestry",
             "name": "Draconic Ancestry",
-            "description": "If you have draconic ancestry, you must take this trait. Choose your damage type.",
+            "description": "If you have draconic ancestry, you must take this trait. Choose one damage type below.",
             "points": 0,
             "required": true,
-            "hasOptions": true,
+            "requiresOption": true,
             "options": [
               {"id": "acid", "name": "Acid", "points": 0},
               {"id": "cold", "name": "Cold", "points": 0},
