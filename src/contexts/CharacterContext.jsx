@@ -101,11 +101,31 @@ function characterReducer(state, action) {
 }
 
 // Generate warnings based on current state (soft validation)
-function generateWarnings(selectedTraits) {
+function generateWarnings(selectedTraits, selectedOptions) {
   const warnings = [];
   
-  // Calculate totals
-  const pointsSpent = selectedTraits.reduce((sum, t) => sum + (t.points || 0), 0);
+  // Check for traits that require options but don't have one selected
+  const traitsNeedingOptions = selectedTraits.filter(t => t.requiresOption && !selectedOptions[t.id]);
+  for (const trait of traitsNeedingOptions) {
+    warnings.push({
+      type: 'missing-option',
+      severity: 'error',
+      message: `${trait.name}: Select a sub-option`
+    });
+  }
+  
+  // Calculate totals (including option points)
+  const pointsSpent = selectedTraits.reduce((sum, trait) => {
+    if (trait.requiresOption && trait.options) {
+      const selectedOptionId = selectedOptions[trait.id];
+      if (selectedOptionId) {
+        const option = trait.options.find(o => o.id === selectedOptionId);
+        return sum + (option?.points || 0);
+      }
+      return sum; // No points until option selected
+    }
+    return sum + (trait.points || 0);
+  }, 0);
   
   // Count heritage categories (unique categoryIds where type is 'heritage')
   const heritageCategories = new Set(
@@ -181,11 +201,27 @@ const CharacterContext = createContext(null);
 export function CharacterProvider({ children }) {
   const [state, dispatch] = useReducer(characterReducer, initialState);
 
-  // Computed values
-  const pointsSpent = useMemo(() => 
-    state.selectedTraits.reduce((sum, t) => sum + (t.points || 0), 0),
-    [state.selectedTraits]
-  );
+  // Computed values - includes points from selected options
+  const pointsSpent = useMemo(() => {
+    return state.selectedTraits.reduce((sum, trait) => {
+      // Base trait points
+      let traitPoints = trait.points || 0;
+      
+      // If trait has a selected option, add option points instead of (or in addition to) base
+      if (trait.requiresOption && trait.options) {
+        const selectedOptionId = state.selectedOptions[trait.id];
+        if (selectedOptionId) {
+          const selectedOption = trait.options.find(o => o.id === selectedOptionId);
+          if (selectedOption) {
+            // For requiresOption traits, option points replace base points
+            traitPoints = selectedOption.points || 0;
+          }
+        }
+      }
+      
+      return sum + traitPoints;
+    }, 0);
+  }, [state.selectedTraits, state.selectedOptions]);
 
   const selectedTraitIds = useMemo(() => 
     state.selectedTraits.map(t => t.id),
@@ -213,8 +249,8 @@ export function CharacterProvider({ children }) {
   }, [state.selectedTraits]);
 
   const warnings = useMemo(() => 
-    generateWarnings(state.selectedTraits),
-    [state.selectedTraits]
+    generateWarnings(state.selectedTraits, state.selectedOptions),
+    [state.selectedTraits, state.selectedOptions]
   );
 
   // Get selected size
