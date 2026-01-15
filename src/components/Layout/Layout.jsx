@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useCharacter } from '../../contexts/CharacterContext';
 import { PointBudget } from '../PointBudget';
 import { PrebuiltSelector } from '../PrebuiltSelector';
 import { TraitCategory, CoreAttributeSection } from '../TraitCategory';
@@ -12,6 +13,8 @@ export function Layout({
   allTraits,
   onShowSummary 
 }) {
+  const { pointsSpent } = useCharacter();
+  const atBudget = pointsSpent >= 16;
   // Expansion signals: { expanded: boolean, version: number }
   // Version increments on each click, children respond to version changes
   const [coreSignal, setCoreSignal] = useState({ expanded: true, version: 0 });
@@ -51,7 +54,7 @@ export function Layout({
         <PointBudget />
       </aside>
 
-      <main className="main">
+      <main className={`main ${atBudget ? 'at-budget' : ''}`}>
         {/* Core Attributes Section */}
         <section className="section">
           <h2 
