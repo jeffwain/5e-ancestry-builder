@@ -3,15 +3,16 @@
    =========================================== */
 :root {
   /* ── Typography ─────────────────────────── */
-  --font-display: 'Cinzel', 'Palatino Linotype', 'Book Antiqua', serif;
-  --font-body: 'Crimson Text', 'Georgia', 'Times New Roman', serif;
+  --font-display: 'Pirata One', 'Palatino Linotype', serif;
+  --font-heading: 'Cormorant', 'Palatino Linotype', serif;
+  --font-body: 'Cardo', 'Palatino Linotype', 'Georgia', serif;
   --font-ui: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
   --font-mono: 'Fira Code', 'Consolas', monospace;
-  --text-xs: 0.875rem;
+  --text-xs: 0.8125rem;
   /* Min readable size */
   --text-sm: 1rem;
-  --text-base: 1.125rem;
-  --text-lg: 1.25rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
   --text-xl: 1.375rem;
   --text-2xl: 1.5rem;
   --text-3xl: 2rem;
@@ -46,7 +47,7 @@
   --color-accent: #8b6914;
   /* Antique gold */
   --color-accent-light: #b8922a;
-  --color-accent-dark: #5c4610;
+  --color-accent-dark: #745812;
   /* ── Semantic Colors ───────────────────── */
   --color-warning: #b8860b;
   /* Dark goldenrod */
@@ -87,4 +88,60 @@
   --max-width: 1200px;
   --sidebar-width: 320px;
   --header-height: 64px;
+  /* ── Pill Colors ──────────────────────── */
+  --pill-bg-default: rgba(228, 219, 192, 1);
+  --pill-text-default: rgba(77, 69, 64, 1);
+  --pill-bg-restricted: rgba(190, 40, 53, 0.16);
+  --pill-text-restricted: rgba(133, 28, 37, 1);
+  --pill-bg-required: rgba(184, 134, 11, 0.16);
+  --pill-text-required: rgba(133, 102, 28, 1);
+  --pill-bg-free: rgba(46, 90, 76, 0.16);
+  --pill-text-free: rgba(30, 58, 50, 1);
+  --pill-bg-cost: rgba(139, 105, 20, 1);
+  --pill-text-cost: rgba(250, 250, 250, 1);
+  --pill-bg-size: rgba(212, 201, 168, 1);
+  --pill-text-size: rgba(77, 69, 64, 1);
+  /* Gold */
+  --color-gold-94: rgba(240, 240, 225, 1);
+  --color-gold-89: rgba(226, 208, 168, 1);
+  --color-gold-75: rgba(192, 173, 129, 1);
+  --color-gold-62: rgba(159, 146, 117, 1);
+  --color-gold-56: rgb(127, 110, 69);
+  --color-gold-45: rgb(115, 99, 63);
+  /* Red */
+  /* TODO, hightouch: Automate color generation */
+  --color-red: rgba(116, 27, 43, 1);
+  --color-red-100: rgba(255, 0, 0, 1);
+  --color-red-60: rgba(154, 42, 48, 1);
+  --color-red-45: rgba(116, 27, 43, 1);
+  --color-red-31: rgba(80, 0, 0, 1);
+  --color-red-27: rgba(68, 25, 26, 1);
+  /* Orange */
+  --color-orange: rgba(179, 99, 25, 1);
+  --color-orange-100: rgba(255, 100, 0, 1);
+  --color-orange-97: rgba(248, 117, 88, 1);
+  --color-orange-70: rgba(179, 99, 25, 1);
+  --color-orange-55: rgba(170, 78, 20, 1);
+  --color-orange-40: rgba(101, 56, 14, 1);
+  /* Yellow */
+  --color-yellow: rgba(255, 182, 42, 1);
+  --color-yellow-100: rgba(255, 182, 42, 1);
+  /* Green */
+  --color-green: rgba(55, 109, 71, 1);
+  --color-green-68: rgba(114, 173, 17, 1);
+  --color-green-65: rgba(59, 165, 93, 1);
+  --color-green-43: rgba(55, 109, 71, 1);
+  --color-green-29: rgba(27, 75, 41, 1);
+  --color-green-21: rgba(19, 53, 29, 1);
+  /* Blue */
+  --color-blue: rgba(31, 76, 145, 1);
+  --color-blue-70: rgba(36, 124, 178, 1);
+  --color-blue-57: rgba(31, 76, 145, 1);
+  --color-blue-33: rgba(18, 44, 84, 1);
+  /* Blue-green */
+  --color-blue-green: rgba(2, 90, 128, 1);
+  --color-blue-green-50: rgba(2, 90, 128, 1);
+  --color-blue-green-43: rgba(2, 90, 128, 1);
+  --color-blue-green-30: rgba(1, 54, 77, 1);
+  --color-blue-green-21: rgba(1, 36, 49, 1);
 }

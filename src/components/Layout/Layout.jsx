@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { PointBudget } from '../PointBudget';
 import { PrebuiltSelector } from '../PrebuiltSelector';
 import { TraitCategory, CoreAttributeSection } from '../TraitCategory';
-import styles from './Layout.module.css';
+import './Layout.css';
 
 export function Layout({ 
   coreAttributes,
@@ -26,48 +26,48 @@ export function Layout({
   };
 
   return (
-    <div className={styles.layout}>
-      <header className={styles.header}>
-        <div className={styles.headerContent}>
-          <h1 className={styles.title}>Ancestry Builder</h1>
-          <p className={styles.subtitle}>Create your custom 5e ancestry with 16 points</p>
+    <div className="layout">
+      <header className="header flexrow">
+        <div className="header-content  flex1">
+          <h1 className="title">Custom Ancestry Builder</h1>
+        </div>
+        <div class="header-actions flexrow flexshrink">
+          <PrebuiltSelector 
+            prebuiltAncestries={prebuiltAncestries}
+            allTraits={allTraits}
+          />
+          <button 
+            className="btn btn-primary summary-btn"
+            onClick={onShowSummary}
+          >
+            View Summary
+          </button>
         </div>
       </header>
-
-      <div className={styles.toolbar}>
-        <PrebuiltSelector 
-          prebuiltAncestries={prebuiltAncestries}
-          allTraits={allTraits}
-        />
-        <button 
-          className={`btn btn-primary ${styles.summaryBtn}`}
-          onClick={onShowSummary}
-        >
-          View Summary
-        </button>
+      <div className="toolbar">
       </div>
 
-      <aside className={styles.sidebar}>
+      <aside className="sidebar">
         <PointBudget />
       </aside>
 
-      <main className={styles.main}>
+      <main className="main">
         {/* Core Attributes Section */}
-        <section className={styles.section}>
+        <section className="section">
           <h2 
-            className={`${styles.sectionTitle} ${styles.clickable}`}
+            className="section-title clickable"
             onClick={() => toggleSection(coreSignal, setCoreSignal)}
             role="button"
             tabIndex={0}
             onKeyDown={(e) => e.key === 'Enter' && toggleSection(coreSignal, setCoreSignal)}
           >
             Core Attributes
-            <span className={`${styles.sectionChevron} ${coreSignal.expanded ? styles.expanded : ''}`}>▼</span>
+            <span className={`section-chevron ${coreSignal.expanded ? 'expanded' : ''}`}>▼</span>
           </h2>
-          <p className={styles.sectionDesc}>
+          <p className="section-desc">
             Choose your size (required), and optionally enhance your speed or darkvision.
           </p>
-          <div className={styles.coreGrid}>
+          <div className="core-grid">
             {coreAttributes && Object.entries(coreAttributes).map(([attrId, attr]) => (
               <CoreAttributeSection 
                 key={attrId}
@@ -80,22 +80,22 @@ export function Layout({
         </section>
 
         {/* Heritage Section - flat like culture */}
-        <section className={styles.section}>
+        <section className="section">
           <h2 
-            className={`${styles.sectionTitle} ${styles.clickable}`}
+            className="section-title clickable"
             onClick={() => toggleSection(heritageSignal, setHeritageSignal)}
             role="button"
             tabIndex={0}
             onKeyDown={(e) => e.key === 'Enter' && toggleSection(heritageSignal, setHeritageSignal)}
           >
             Heritage Traits
-            <span className={styles.sectionLimit}>(max 2 categories)</span>
-            <span className={`${styles.sectionChevron} ${heritageSignal.expanded ? styles.expanded : ''}`}>▼</span>
+            <span className="section-limit">(max 2 categories)</span>
+            <span className={`section-chevron ${heritageSignal.expanded ? 'expanded' : ''}`}>▼</span>
           </h2>
-          <p className={styles.sectionDesc}>
+          <p className="section-desc">
             Choose traits from up to 2 ancestry categories representing your physical heritage.
           </p>
-          <div className={styles.heritageGrid}>
+          <div className="heritage-grid">
             {heritageCategories && Object.entries(heritageCategories).map(([catId, category]) => (
               <TraitCategory
                 key={catId}
@@ -109,22 +109,22 @@ export function Layout({
         </section>
 
         {/* Culture Section */}
-        <section className={styles.section}>
+        <section className="section">
           <h2 
-            className={`${styles.sectionTitle} ${styles.clickable}`}
+            className="section-title clickable"
             onClick={() => toggleSection(cultureSignal, setCultureSignal)}
             role="button"
             tabIndex={0}
             onKeyDown={(e) => e.key === 'Enter' && toggleSection(cultureSignal, setCultureSignal)}
           >
             Culture Traits
-            <span className={styles.sectionLimit}>(min 1, max 2 categories)</span>
-            <span className={`${styles.sectionChevron} ${cultureSignal.expanded ? styles.expanded : ''}`}>▼</span>
+            <span className="section-limit">(min 1, max 2 categories)</span>
+            <span className={`section-chevron ${cultureSignal.expanded ? 'expanded' : ''}`}>▼</span>
           </h2>
-          <p className={styles.sectionDesc}>
+          <p className="section-desc">
             Choose traits from 1-2 cultures representing your upbringing and training.
           </p>
-          <div className={styles.cultureGrid}>
+          <div className="culture-grid">
             {cultureCategories && Object.entries(cultureCategories).map(([catId, category]) => (
               <TraitCategory
                 key={catId}
@@ -138,7 +138,7 @@ export function Layout({
         </section>
       </main>
 
-      <footer className={styles.footer}>
+      <footer className="footer">
         <p>5e Ancestry Builder — Point-buy character ancestry system</p>
       </footer>
     </div>

@@ -1093,6 +1093,12 @@
           ]
         },
         {
+          "id": "out-of-sight",
+          "name": "Out of Sight",
+          "description": "Hide when lightly obscured by natural phenomena, advantage on those Stealth checks.",
+          "points": 1
+        },
+        {
           "id": "streetwise-cantrip",
           "name": "Cantrip",
           "description": "Learn one bard cantrip.",
@@ -1115,12 +1121,6 @@
           "name": "Merge with Shadows",
           "description": "At 3rd level, cast pass without trace as spell-like ability.",
           "points": 4
-        },
-        {
-          "id": "out-of-sight",
-          "name": "Out of Sight",
-          "description": "Hide when lightly obscured by natural phenomena, advantage on those Stealth checks.",
-          "points": 1
         },
         {
           "id": "thiefs-intuition",

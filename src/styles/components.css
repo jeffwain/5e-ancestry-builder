@@ -1,0 +1,86 @@
+/* ===========================================
+   Shared Component Styles
+   =========================================== */
+/* ── Pills - shared across components ────── */
+.pill {
+  display: flex;
+  flex: 0 1 fit-content;
+  padding: 0.0625rem 0.375rem 0.125rem;
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.03rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  background: var(--pill-bg-default);
+  color: var(--pill-text-default);
+  width: fit-content;
+}
+
+.pill.cost {
+  background: oklch(from var(--pill-bg-cost) l c h / 0.16);
+  color: oklch(from var(--pill-bg-cost) calc(l * 0.88) c h);
+  flex-shrink: 0;
+}
+
+.pill.cost:is(.selected) {
+  background: var(--pill-bg-cost);
+  color: var(--pill-text-cost);
+  flex-shrink: 0;
+}
+
+.pill.cost.free {
+  background: var(--pill-bg-free);
+  color: var(--pill-text-free);
+}
+
+.pill.required {
+  background: var(--pill-bg-required);
+  color: var(--pill-text-required);
+}
+
+.pill.size {
+  margin-top: var(--space-2);
+  margin-right: var(--space-1);
+  padding: 0.125rem var(--space-2);
+  background: var(--pill-bg-size);
+  color: var(--pill-text-size);
+}
+
+.pill.restriction {
+  margin-top: var(--space-2);
+  margin-right: var(--space-1);
+  background: var(--pill-bg-restricted);
+  color: var(--pill-text-restricted);
+}
+
+.pill.requirement {
+  margin-top: var(--space-2);
+  margin-right: var(--space-1);
+  background: var(--pill-bg-required);
+  color: var(--pill-text-required);
+}
+
+.pill.option-cost {
+  background: var(--pill-bg-default);
+  color: var(--pill-text-default);
+}
+
+.pill.selected-option {
+  font-weight: 500;
+  background: var(--pill-bg-free);
+  color: var(--pill-text-free);
+  border: 0.0625rem solid var(--pill-text-free);
+}
+
+/* Pill variations in context */
+.card-trait.selected .pill.cost {
+  background: var(--pill-bg-cost);
+  color: var(--pill-text-cost);
+}
+
+.option.selected .pill.option-cost {
+  background: var(--pill-bg-cost);
+  color: var(--pill-text-cost);
+}
