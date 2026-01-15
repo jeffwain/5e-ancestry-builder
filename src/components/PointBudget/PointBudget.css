@@ -1,3 +1,5 @@
+/* PointBudget component styles */
+
 .budget {
   background: var(--color-parchment-50);
   border: 1px solid var(--color-parchment-300);
@@ -5,20 +7,20 @@
   padding: var(--space-5);
 }
 
-.main {
+.budget .main {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
 }
 
-.pointsDisplay {
+.budget .points-display {
   display: flex;
   align-items: baseline;
   gap: var(--space-1);
   justify-content: center;
 }
 
-.spent {
+.budget .spent {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
   font-weight: 700;
@@ -26,68 +28,68 @@
   line-height: 1;
 }
 
-.spent.over {
+.budget .spent.over {
   color: var(--color-error);
 }
 
-.divider {
+.budget .divider {
   font-size: var(--text-2xl);
   color: var(--color-ink-500);
 }
 
-.total {
+.budget .total {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: 600;
   color: var(--color-ink-700);
 }
 
-.label {
+.budget .label {
   font-family: var(--font-ui);
   font-size: var(--text-sm);
   color: var(--color-ink-500);
   margin-left: var(--space-2);
 }
 
-.progressContainer {
+.budget .progress-container {
   height: 8px;
   background: var(--color-parchment-300);
   border-radius: 4px;
   overflow: hidden;
 }
 
-.progressBar {
+.budget .progress-bar {
   height: 100%;
   background: linear-gradient(90deg, var(--color-heritage) 0%, var(--color-heritage-light) 100%);
   border-radius: 4px;
   transition: width var(--transition-base);
 }
 
-.progressBar.over {
+.budget .progress-bar.over {
   background: linear-gradient(90deg, var(--color-error) 0%, #b22222 100%);
 }
 
-.counts {
+.budget .counts {
   display: flex;
   justify-content: center;
   gap: var(--space-8);
 }
 
-.count {
+.budget .count {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-1);
 }
 
-.countValue {
+.budget .count-value {
   font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--color-ink-800);
 }
 
-.countLabel {
+.budget .count-label {
   font-family: var(--font-ui);
   font-size: var(--text-xs);
   text-transform: uppercase;
@@ -95,7 +97,7 @@
   color: var(--color-ink-500);
 }
 
-.warnings {
+.budget .warnings {
   margin-top: var(--space-4);
   padding-top: var(--space-4);
   border-top: 1px solid var(--color-parchment-300);
@@ -104,7 +106,7 @@
   gap: var(--space-2);
 }
 
-.warning {
+.budget .warning {
   display: flex;
   align-items: flex-start;
   gap: var(--space-2);
@@ -116,6 +118,6 @@
   border-radius: var(--radius-sm);
 }
 
-.warningIcon {
+.budget .warning-icon {
   flex-shrink: 0;
 }

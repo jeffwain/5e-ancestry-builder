@@ -1,5 +1,5 @@
 import { useCharacter } from '../../contexts/CharacterContext';
-import styles from './PointBudget.module.css';
+import './PointBudget.css';
 
 export function PointBudget() {
   const { pointsSpent, remainingPoints, heritageCount, cultureCount, warnings } = useCharacter();
@@ -8,41 +8,41 @@ export function PointBudget() {
   const percentage = Math.min((pointsSpent / 16) * 100, 100);
 
   return (
-    <div className={styles.budget}>
-      <div className={styles.main}>
-        <div className={styles.pointsDisplay}>
-          <span className={`${styles.spent} ${isOverBudget ? styles.over : ''}`}>
+    <div className="budget">
+      <div className="main">
+        <div className="points-display">
+          <span className={`spent ${isOverBudget ? 'over' : ''}`}>
             {pointsSpent}
           </span>
-          <span className={styles.divider}>/</span>
-          <span className={styles.total}>16</span>
-          <span className={styles.label}>points</span>
+          <span className="divider">/</span>
+          <span className="total">16</span>
+          <span className="label">points</span>
         </div>
         
-        <div className={styles.progressContainer}>
+        <div className="progress-container">
           <div 
-            className={`${styles.progressBar} ${isOverBudget ? styles.over : ''}`}
+            className={`progress-bar ${isOverBudget ? 'over' : ''}`}
             style={{ width: `${percentage}%` }}
           />
         </div>
 
-        <div className={styles.counts}>
-          <div className={styles.count}>
-            <span className={styles.countValue}>{heritageCount}</span>
-            <span className={styles.countLabel}>Heritage</span>
+        <div className="counts">
+          <div className="count">
+            <span className="count-value">{heritageCount}</span>
+            <span className="count-label">Heritage</span>
           </div>
-          <div className={styles.count}>
-            <span className={styles.countValue}>{cultureCount}</span>
-            <span className={styles.countLabel}>Culture</span>
+          <div className="count">
+            <span className="count-value">{cultureCount}</span>
+            <span className="count-label">Culture</span>
           </div>
         </div>
       </div>
 
       {warnings.length > 0 && (
-        <div className={styles.warnings}>
+        <div className="warnings">
           {warnings.map((warning, index) => (
-            <div key={index} className={styles.warning}>
-              <span className={styles.warningIcon}>⚠</span>
+            <div key={index} className="warning">
+              <span className="warning-icon">⚠</span>
               {warning.message}
             </div>
           ))}

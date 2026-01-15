@@ -1,5 +1,5 @@
 import { useCharacter } from '../../contexts/CharacterContext';
-import styles from './PrebuiltSelector.module.css';
+import './PrebuiltSelector.css';
 
 export function PrebuiltSelector({ prebuiltAncestries, allTraits }) {
   const { loadPrebuilt, reset, loadedPrebuilt } = useCharacter();
@@ -23,14 +23,14 @@ export function PrebuiltSelector({ prebuiltAncestries, allTraits }) {
   };
 
   return (
-    <div className={styles.selector}>
-      <label className={styles.label} htmlFor="prebuilt-select">
+    <div className="selector-prebuilt flexrow">
+      <label className="label" htmlFor="prebuilt-select">
         Start from a template
       </label>
-      <div className={styles.selectWrapper}>
+      <div className="select-wrapper">
         <select 
           id="prebuilt-select"
-          className={styles.select}
+          className="select"
           onChange={handleSelect}
           value={loadedPrebuilt || ''}
         >
@@ -43,7 +43,7 @@ export function PrebuiltSelector({ prebuiltAncestries, allTraits }) {
         </select>
       </div>
       {loadedPrebuilt && (
-        <p className={styles.hint}>
+        <p className="hint">
           Customize by adding or removing traits below
         </p>
       )}

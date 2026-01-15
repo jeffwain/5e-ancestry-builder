@@ -1,5 +1,5 @@
 import { useCharacter } from '../../contexts/CharacterContext';
-import styles from './SummaryPanel.module.css';
+import './SummaryPanel.css';
 
 export function SummaryPanel({ isOpen, onClose }) {
   const { 
@@ -57,45 +57,45 @@ export function SummaryPanel({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.panel} onClick={e => e.stopPropagation()}>
-        <header className={styles.header}>
-          <h2 className={styles.title}>Character Summary</h2>
-          <button className={styles.closeBtn} onClick={onClose} aria-label="Close">
+    <div className="panel-summary-overlay" onClick={onClose}>
+      <div className="panel-summary" onClick={e => e.stopPropagation()}>
+        <header className="header">
+          <h2 className="title">Character Summary</h2>
+          <button className="close-btn" onClick={onClose} aria-label="Close">
             ✕
           </button>
         </header>
 
-        <div className={styles.content}>
+        <div className="content">
           {loadedPrebuilt && (
-            <div className={styles.prebuiltPill}>
+            <div className="prebuilt-pill">
               Based on: {loadedPrebuilt}
             </div>
           )}
 
-          <div className={styles.stats}>
-            <div className={styles.stat}>
-              <span className={styles.statValue}>{pointsSpent}</span>
-              <span className={styles.statLabel}>Points</span>
+          <div className="stats">
+            <div className="stat">
+              <span className="stat-value">{pointsSpent}</span>
+              <span className="stat-label">Points</span>
             </div>
-            <div className={styles.stat}>
-              <span className={styles.statValue}>{selectedSize || '—'}</span>
-              <span className={styles.statLabel}>Size</span>
+            <div className="stat">
+              <span className="stat-value">{selectedSize || '—'}</span>
+              <span className="stat-label">Size</span>
             </div>
-            <div className={styles.stat}>
-              <span className={styles.statValue}>{heritageCount}</span>
-              <span className={styles.statLabel}>Heritage</span>
+            <div className="stat">
+              <span className="stat-value">{heritageCount}</span>
+              <span className="stat-label">Heritage</span>
             </div>
-            <div className={styles.stat}>
-              <span className={styles.statValue}>{cultureCount}</span>
-              <span className={styles.statLabel}>Culture</span>
+            <div className="stat">
+              <span className="stat-value">{cultureCount}</span>
+              <span className="stat-label">Culture</span>
             </div>
           </div>
 
           {warnings.length > 0 && (
-            <div className={styles.warnings}>
+            <div className="warnings">
               {warnings.map((warning, i) => (
-                <div key={i} className={`${styles.warning} ${styles[warning.severity]}`}>
+                <div key={i} className={`warning ${warning.severity}`}>
                   {warning.severity === 'warning' ? '⚠' : 'ℹ'} {warning.message}
                 </div>
               ))}
@@ -103,17 +103,17 @@ export function SummaryPanel({ isOpen, onClose }) {
           )}
 
           {selectedTraits.length === 0 ? (
-            <p className={styles.empty}>No traits selected yet.</p>
+            <p className="empty">No traits selected yet.</p>
           ) : (
-            <div className={styles.traitLists}>
+            <div className="trait-lists">
               {coreTraits.length > 0 && (
-                <div className={styles.traitSection}>
-                  <h3 className={styles.sectionTitle}>Core Attributes</h3>
-                  <ul className={styles.traitList}>
+                <div className="trait-section">
+                  <h3 className="section-title">Core Attributes</h3>
+                  <ul className="trait-list">
                     {coreTraits.map(trait => (
-                      <li key={trait.id} className={styles.traitItem}>
-                        <span className={styles.traitName}>{trait.name}</span>
-                        <span className={`${styles.traitCost} ${trait.points === 0 ? styles.free : ''}`}>
+                      <li key={trait.id} className="trait-item">
+                        <span className="trait-name">{trait.name}</span>
+                        <span className={`trait-cost ${trait.points === 0 ? 'free' : ''}`}>
                           {getPointsLabel(trait.points)}
                         </span>
                       </li>
@@ -123,18 +123,18 @@ export function SummaryPanel({ isOpen, onClose }) {
               )}
 
               {heritageTraits.length > 0 && (
-                <div className={styles.traitSection}>
-                  <h3 className={styles.sectionTitle}>Heritage Traits</h3>
-                  <ul className={styles.traitList}>
+                <div className="trait-section">
+                  <h3 className="section-title">Heritage Traits</h3>
+                  <ul className="trait-list">
                     {heritageTraits.map(trait => (
-                      <li key={trait.id} className={styles.traitItem}>
-                        <div className={styles.traitInfo}>
-                          <span className={styles.traitName}>{trait.name}</span>
+                      <li key={trait.id} className="trait-item">
+                        <div className="trait-info">
+                          <span className="trait-name">{trait.name}</span>
                           {trait.categoryName && (
-                            <span className={styles.traitCategory}>{trait.categoryName}</span>
+                            <span className="trait-category">{trait.categoryName}</span>
                           )}
                         </div>
-                        <span className={`${styles.traitCost} ${trait.points === 0 ? styles.free : ''}`}>
+                        <span className={`trait-cost ${trait.points === 0 ? 'free' : ''}`}>
                           {getPointsLabel(trait.points)}
                         </span>
                       </li>
@@ -144,18 +144,18 @@ export function SummaryPanel({ isOpen, onClose }) {
               )}
 
               {cultureTraits.length > 0 && (
-                <div className={styles.traitSection}>
-                  <h3 className={styles.sectionTitle}>Culture Traits</h3>
-                  <ul className={styles.traitList}>
+                <div className="trait-section">
+                  <h3 className="section-title">Culture Traits</h3>
+                  <ul className="trait-list">
                     {cultureTraits.map(trait => (
-                      <li key={trait.id} className={styles.traitItem}>
-                        <div className={styles.traitInfo}>
-                          <span className={styles.traitName}>{trait.name}</span>
+                      <li key={trait.id} className="trait-item">
+                        <div className="trait-info">
+                          <span className="trait-name">{trait.name}</span>
                           {trait.categoryName && (
-                            <span className={styles.traitCategory}>{trait.categoryName}</span>
+                            <span className="trait-category">{trait.categoryName}</span>
                           )}
                         </div>
-                        <span className={`${styles.traitCost} ${trait.points === 0 ? styles.free : ''}`}>
+                        <span className={`trait-cost ${trait.points === 0 ? 'free' : ''}`}>
                           {getPointsLabel(trait.points)}
                         </span>
                       </li>
@@ -167,11 +167,11 @@ export function SummaryPanel({ isOpen, onClose }) {
           )}
         </div>
 
-        <footer className={styles.footer}>
+        <footer className="footer">
           <button className="btn btn-secondary" onClick={handleReset}>
             Reset
           </button>
-          <div className={styles.exportBtns}>
+          <div className="export-btns">
             <button className="btn btn-secondary" onClick={handleCopy}>
               Copy JSON
             </button>

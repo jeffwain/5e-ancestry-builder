@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { TraitCard } from '../TraitCard';
 import { useCharacter } from '../../contexts/CharacterContext';
-import styles from './TraitCategory.module.css';
+import './TraitCategory.css';
 
 export function TraitCategory({ 
   category, 
@@ -37,41 +37,41 @@ export function TraitCategory({
   const pillText = category.label || type;
 
   const categoryClass = [
-    styles.category,
-    type && styles[type],
-    !isExpanded && styles.collapsed
+    'category-trait',
+    type,
+    !isExpanded && 'collapsed'
   ].filter(Boolean).join(' ');
 
   return (
     <div className={categoryClass}>
       <button 
-        className={styles.header}
+        className="header"
         onClick={toggleExpand}
         aria-expanded={isExpanded}
       >
-        <div className={styles.headerContent}>
-          <h3 className={styles.name}>{category.name}</h3>
+        <div className="header-content">
+          <h3 className="name">{category.name}</h3>
           {showPill && pillText && (
-            <span className={`${styles.pill} ${styles[type]}`}>
+            <span className={`pill ${type}`}>
               {pillText}
             </span>
           )}
           {!isExpanded && hasSelectedTraits && (
-            <span className={styles.selectedCount}>{selectedTraits.length} selected</span>
+            <span className="selected-count">{selectedTraits.length} selected</span>
           )}
         </div>
-        <span className={`${styles.chevron} ${isExpanded ? styles.expanded : ''}`}>
+        <span className={`chevron ${isExpanded ? 'expanded' : ''}`}>
           ▼
         </span>
       </button>
 
       {category.description && isExpanded && (
-        <p className={styles.description}>{category.description}</p>
+        <p className="description">{category.description}</p>
       )}
 
       {/* Show selected traits when collapsed */}
       {!isExpanded && hasSelectedTraits && (
-        <div className={styles.selectedTraits}>
+        <div className="selected-traits">
           {selectedTraits.map(trait => (
             <TraitCard 
               key={trait.id} 
@@ -89,7 +89,7 @@ export function TraitCategory({
 
       {/* Show all traits when expanded */}
       {isExpanded && (
-        <div className={styles.traitList}>
+        <div className="trait-list">
           {category.traits?.map(trait => (
             <TraitCard 
               key={trait.id} 
@@ -139,34 +139,40 @@ export function CoreAttributeSection({
     return false;
   };
 
+  const categoryClass = [
+    'category-trait',
+    'core-attribute',
+    !isExpanded && 'collapsed'
+  ].filter(Boolean).join(' ');
+
   return (
-    <div className={`${styles.category} ${styles.coreAttribute} ${!isExpanded ? styles.collapsed : ''}`}>
+    <div className={categoryClass}>
       <button 
-        className={styles.header}
+        className="header"
         onClick={() => setIsExpanded(!isExpanded)}
         aria-expanded={isExpanded}
       >
-        <div className={styles.headerContent}>
-          <h3 className={styles.name}>{attribute.name}</h3>
+        <div className="header-content">
+          <h3 className="name">{attribute.name}</h3>
           {attribute.required && (
-            <span className={styles.requiredPill}>Required</span>
+            <span className="required-pill">Required</span>
           )}
           {!isExpanded && hasSelectedTraits && (
-            <span className={styles.selectedCount}>{selectedTraits.length} selected</span>
+            <span className="selected-count">{selectedTraits.length} selected</span>
           )}
         </div>
-        <span className={`${styles.chevron} ${isExpanded ? styles.expanded : ''}`}>
+        <span className={`chevron ${isExpanded ? 'expanded' : ''}`}>
           ▼
         </span>
       </button>
 
       {attribute.description && isExpanded && (
-        <p className={styles.description}>{attribute.description}</p>
+        <p className="description">{attribute.description}</p>
       )}
 
       {/* Show selected traits when collapsed */}
       {!isExpanded && hasSelectedTraits && (
-        <div className={styles.selectedTraits}>
+        <div className="selected-traits">
           {selectedTraits.map(trait => (
             <TraitCard 
               key={trait.id} 
@@ -184,7 +190,7 @@ export function CoreAttributeSection({
 
       {/* Show all traits when expanded */}
       {isExpanded && (
-        <div className={styles.traitList}>
+        <div className="trait-list">
           {attribute.traits?.map(trait => (
             <TraitCard 
               key={trait.id} 
