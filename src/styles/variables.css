@@ -131,6 +131,7 @@
   --color-green-68: rgba(114, 173, 17, 1);
   --color-green-65: rgba(59, 165, 93, 1);
   --color-green-43: rgba(55, 109, 71, 1);
+  --color-green-38: rgba(49, 95, 63, 1);
   --color-green-29: rgba(27, 75, 41, 1);
   --color-green-21: rgba(19, 53, 29, 1);
   /* Blue */
@@ -141,7 +142,7 @@
   /* Blue-green */
   --color-blue-green: rgba(2, 90, 128, 1);
   --color-blue-green-50: rgba(2, 90, 128, 1);
-  --color-blue-green-43: rgba(2, 90, 128, 1);
+  --color-blue-green-40: rgb(2, 84, 119);
   --color-blue-green-30: rgba(1, 54, 77, 1);
   --color-blue-green-21: rgba(1, 36, 49, 1);
 }

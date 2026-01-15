@@ -18,14 +18,9 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--space-3) var(--space-4);
-  background: linear-gradient(135deg, var(--color-heritage) 0%, var(--color-heritage-dark) 100%);
   border: none;
   cursor: pointer;
   transition: background var(--transition-fast);
-}
-
-.category-trait > .header:hover {
-  background: linear-gradient(135deg, var(--color-heritage-light) 0%, var(--color-heritage) 100%);
 }
 
 .category-trait > .header .header-content {
@@ -210,15 +205,15 @@
 
 /* Culture category styling - use culture colors */
 .category-trait.culture {
-  border-color: var(--color-culture);
+  border-color: var(--color-green-43);
 }
 
 .category-trait.culture > .header {
-  background: linear-gradient(135deg, var(--color-culture) 0%, var(--color-culture-dark) 100%);
+  background: linear-gradient(135deg, var(--color-green-43) 0%, var(--color-green-29) 100%);
 }
 
 .category-trait.culture > .header:hover {
-  background: linear-gradient(135deg, var(--color-culture-light) 0%, var(--color-culture) 100%);
+  background: linear-gradient(135deg, var(--color-green-38) 0%, var(--color-green-21) 100%);
 }
 
 .category-trait.culture > .selected-count {
@@ -235,7 +230,7 @@
 }
 
 .category-trait.heritage > .header:hover {
-  background: linear-gradient(135deg, var(--color-accent-light, var(--color-accent)) 0%, var(--color-accent) 100%);
+  background: linear-gradient(135deg, var(--color-red-31) 0%, var(--color-red-27) 100%);
 }
 
 /* Culture category styling - use culture colors */
