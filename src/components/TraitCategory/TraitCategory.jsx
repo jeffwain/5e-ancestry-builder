@@ -188,6 +188,11 @@ export function CoreAttributeSection({
         </div>
       )}
 
+      {/* Show empty state when collapsed with no selections */}
+      {!isExpanded && !hasSelectedTraits && (
+        <div className="empty-state">No traits selected.</div>
+      )}
+
       {/* Show all traits when expanded */}
       {isExpanded && (
         <div className="trait-list">

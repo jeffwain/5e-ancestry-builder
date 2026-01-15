@@ -234,3 +234,9 @@
   bottom: 50%;
   transform: translateY(50%);
 }
+
+.main.at-budget .card-trait:not(.selected):not(:has(.pill.free)) {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
