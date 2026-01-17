@@ -78,7 +78,7 @@
 }
 
 .card-trait.disabled .description {
-  color: var(--color-ink-300);
+  color: var(--color-ink-400);
 }
 
 .card-trait .disabled-reason {
@@ -240,4 +240,21 @@
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+/* ── Highlight flash animation (for scroll-to) ─── */
+@keyframes highlight-flash {
+  0% {
+    box-shadow: 0 0 0 0 var(--color-accent);
+  }
+  25% {
+    box-shadow: 0 0 0 4px var(--color-accent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 var(--color-accent);
+  }
+}
+
+.card-trait.highlight-flash {
+  animation: highlight-flash 1.5s ease-out;
 }

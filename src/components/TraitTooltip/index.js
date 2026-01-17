@@ -1,0 +1,1 @@
+export { TraitTooltip } from './TraitTooltip';

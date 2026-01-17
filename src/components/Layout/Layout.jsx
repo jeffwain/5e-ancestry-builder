@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useCharacter } from '../../contexts/CharacterContext';
-import { PointBudget } from '../PointBudget';
 import { PrebuiltSelector } from '../PrebuiltSelector';
 import { TraitCategory, CoreAttributeSection } from '../TraitCategory';
+import { TraitTooltip } from '../TraitTooltip';
 import './Layout.css';
 
 export function Layout({ 
@@ -13,10 +13,30 @@ export function Layout({
   allTraits,
   onShowSummary 
 }) {
-  const { pointsSpent } = useCharacter();
+  const { 
+    pointsSpent, 
+    selectedTraits, 
+    selectedOptions,
+    warnings 
+  } = useCharacter();
+  
   const atBudget = pointsSpent >= 16;
+  const isOverBudget = pointsSpent > 16;
+  const percentage = Math.min((pointsSpent / 16) * 100, 100);
+  
+  // Track scroll state for sticky bar
+  const [isScrolled, setIsScrolled] = useState(false);
+  const toolbarRef = useRef(null);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 60);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Expansion signals: { expanded: boolean, version: number }
-  // Version increments on each click, children respond to version changes
   const [coreSignal, setCoreSignal] = useState({ expanded: true, version: 0 });
   const [heritageSignal, setHeritageSignal] = useState({ expanded: true, version: 0 });
   const [cultureSignal, setCultureSignal] = useState({ expanded: true, version: 0 });
@@ -28,33 +48,113 @@ export function Layout({
     });
   };
 
+  // Scroll to trait card when pill is clicked
+  const scrollToTrait = useCallback((traitId) => {
+    const traitElement = document.querySelector(`[data-trait-id="${traitId}"]`);
+    if (traitElement) {
+      // Get toolbar height for offset
+      const toolbarHeight = toolbarRef.current?.offsetHeight || 60;
+      const elementTop = traitElement.getBoundingClientRect().top + window.scrollY;
+      
+      window.scrollTo({
+        top: elementTop - toolbarHeight - 16,
+        behavior: 'smooth'
+      });
+      
+      // Add a brief highlight effect
+      traitElement.classList.add('highlight-flash');
+      setTimeout(() => {
+        traitElement.classList.remove('highlight-flash');
+      }, 1500);
+    }
+  }, []);
+
   return (
     <div className="layout">
       <header className="header flexrow">
-        <div className="header-content  flex1">
+        <div className="header-content flex1">
           <h1 className="title">Custom Ancestry Builder</h1>
         </div>
-        <div class="header-actions flexrow flexshrink">
+        <div className="header-actions flexrow flexshrink">
           <PrebuiltSelector 
             prebuiltAncestries={prebuiltAncestries}
             allTraits={allTraits}
           />
-          <button 
-            className="btn btn-primary summary-btn"
-            onClick={onShowSummary}
-          >
-            View Summary
-          </button>
         </div>
       </header>
-      <div className="toolbar">
+      
+      {/* Sticky Toolbar */}
+      <div 
+        ref={toolbarRef}
+        className={`sticky-toolbar ${isScrolled ? 'scrolled' : ''}`}
+      >
+        <div className="toolbar-content">
+          {/* Progress bar above points */}
+          <div className="toolbar-progress">
+            <div 
+              className={`toolbar-progress-bar ${isOverBudget ? 'over' : ''}`}
+              style={{ width: `${percentage}%` }}
+            />
+          </div>
+          
+          <div className="toolbar-row">
+            {/* Points Display */}
+            <div className="toolbar-points">
+              <span className={`points-spent ${isOverBudget ? 'over' : ''}`}>
+                {pointsSpent}
+              </span>
+              <span className="points-divider">/</span>
+              <span className="points-total">16</span>
+              <span className="points-label">pts</span>
+            </div>
+
+            {/* Selected Trait Pills - Individual traits with tooltips */}
+            <div className="toolbar-pills">
+              <span className="pills-label">Selected Traits</span>
+              {selectedTraits.map((trait) => (
+                <TraitTooltip
+                  key={trait.id}
+                  trait={trait}
+                  selectedOptions={selectedOptions}
+                  onClick={() => scrollToTrait(trait.id)}
+                  className="trait-pill-wrapper"
+                >
+                  <span className="pill trait">
+                    {getTraitPillLabel(trait, selectedOptions)}
+                  </span>
+                </TraitTooltip>
+              ))}
+              {selectedTraits.length === 0 && (
+                <span className="no-pills">None selected</span>
+              )}
+            </div>
+
+            {/* Warning Icon + Summary Button */}
+            <div className="toolbar-actions">
+              {warnings.length > 0 && (
+                <div className="warning-indicator">
+                  <span className="warning-icon">⚠</span>
+                  <div className="warning-tooltip">
+                    {warnings.map((warning, index) => (
+                      <div key={index} className="warning-item">
+                        {warning.message}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <button 
+                className="btn btn-primary summary-btn"
+                onClick={onShowSummary}
+              >
+                View Summary
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <aside className="sidebar">
-        <PointBudget />
-      </aside>
-
-      <main className={`main ${atBudget ? 'at-budget' : ''}`}>
+      <main className={`main flexcol ${atBudget ? 'at-budget' : ''}`}>
         {/* Core Attributes Section */}
         <section className="section">
           <h2 
@@ -146,4 +246,16 @@ export function Layout({
       </footer>
     </div>
   );
+}
+
+// Get the display label for a trait pill
+function getTraitPillLabel(trait, selectedOptions) {
+  // For traits with options, show the selected option name if selected
+  if (trait.requiresOption && trait.options && selectedOptions[trait.id]) {
+    const option = trait.options.find(o => o.id === selectedOptions[trait.id]);
+    if (option) {
+      return option.name;
+    }
+  }
+  return trait.name;
 }

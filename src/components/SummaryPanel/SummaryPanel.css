@@ -181,6 +181,14 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.panel-summary .trait-item-wrapper {
+  display: block;
+  cursor: help;
 }
 
 .panel-summary .trait-item {
@@ -190,6 +198,13 @@
   padding: var(--space-2) var(--space-3);
   background: var(--color-parchment-100);
   border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.panel-summary .trait-item-wrapper:hover .trait-item {
+  background: var(--color-parchment-200);
+  border-color: var(--color-parchment-400);
 }
 
 .panel-summary .trait-info {

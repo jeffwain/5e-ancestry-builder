@@ -104,6 +104,7 @@ export function TraitCard({ trait, compact = false }) {
   return (
     <div
       className={cardClass}
+      data-trait-id={trait.id}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="checkbox"

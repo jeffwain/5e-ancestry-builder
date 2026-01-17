@@ -20,7 +20,7 @@
   --leading-normal: 1.3125;
   --leading-relaxed: 1.5;
   /* ── Colors: Parchment & Ink ────────────── */
-  --color-parchment-50: rgba(251, 250, 247, 0.75);
+  --color-parchment-50: rgba(251, 250, 247, 1);
   --color-parchment-100: #f9f6ef;
   --color-parchment-200: #f0ead8;
   --color-parchment-300: #e4dbc0;

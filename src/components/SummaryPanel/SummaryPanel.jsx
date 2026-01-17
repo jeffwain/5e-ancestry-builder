@@ -1,9 +1,11 @@
 import { useCharacter } from '../../contexts/CharacterContext';
+import { TraitTooltip } from '../TraitTooltip';
 import './SummaryPanel.css';
 
 export function SummaryPanel({ isOpen, onClose }) {
   const { 
     selectedTraits, 
+    selectedOptions,
     pointsSpent, 
     heritageCount, 
     cultureCount,
@@ -52,6 +54,19 @@ export function SummaryPanel({ isOpen, onClose }) {
     if (points === 0) return 'Free';
     if (points === 1) return '1 pt';
     return `${points} pts`;
+  };
+
+  // Get display cost considering selected options
+  const getDisplayCost = (trait) => {
+    if (trait.options && trait.requiresOption) {
+      const optionId = selectedOptions[trait.id];
+      if (optionId) {
+        const opt = trait.options.find(o => o.id === optionId);
+        return opt?.points ?? 0;
+      }
+      return 0;
+    }
+    return trait.points ?? 0;
   };
 
   if (!isOpen) return null;
@@ -111,12 +126,19 @@ export function SummaryPanel({ isOpen, onClose }) {
                   <h3 className="section-title">Core Attributes</h3>
                   <ul className="trait-list">
                     {coreTraits.map(trait => (
-                      <li key={trait.id} className="trait-item">
-                        <span className="trait-name">{trait.name}</span>
-                        <span className={`trait-cost ${trait.points === 0 ? 'free' : ''}`}>
-                          {getPointsLabel(trait.points)}
-                        </span>
-                      </li>
+                      <TraitTooltip 
+                        key={trait.id}
+                        trait={trait}
+                        selectedOptions={selectedOptions}
+                        className="trait-item-wrapper"
+                      >
+                        <li className="trait-item">
+                          <span className="trait-name">{trait.name}</span>
+                          <span className={`trait-cost ${getDisplayCost(trait) === 0 ? 'free' : ''}`}>
+                            {getPointsLabel(getDisplayCost(trait))}
+                          </span>
+                        </li>
+                      </TraitTooltip>
                     ))}
                   </ul>
                 </div>
@@ -127,17 +149,24 @@ export function SummaryPanel({ isOpen, onClose }) {
                   <h3 className="section-title">Heritage Traits</h3>
                   <ul className="trait-list">
                     {heritageTraits.map(trait => (
-                      <li key={trait.id} className="trait-item">
-                        <div className="trait-info">
-                          <span className="trait-name">{trait.name}</span>
-                          {trait.categoryName && (
-                            <span className="trait-category">{trait.categoryName}</span>
-                          )}
-                        </div>
-                        <span className={`trait-cost ${trait.points === 0 ? 'free' : ''}`}>
-                          {getPointsLabel(trait.points)}
-                        </span>
-                      </li>
+                      <TraitTooltip 
+                        key={trait.id}
+                        trait={trait}
+                        selectedOptions={selectedOptions}
+                        className="trait-item-wrapper"
+                      >
+                        <li className="trait-item">
+                          <div className="trait-info">
+                            <span className="trait-name">{trait.name}</span>
+                            {trait.categoryName && (
+                              <span className="trait-category">{trait.categoryName}</span>
+                            )}
+                          </div>
+                          <span className={`trait-cost ${getDisplayCost(trait) === 0 ? 'free' : ''}`}>
+                            {getPointsLabel(getDisplayCost(trait))}
+                          </span>
+                        </li>
+                      </TraitTooltip>
                     ))}
                   </ul>
                 </div>
@@ -148,17 +177,24 @@ export function SummaryPanel({ isOpen, onClose }) {
                   <h3 className="section-title">Culture Traits</h3>
                   <ul className="trait-list">
                     {cultureTraits.map(trait => (
-                      <li key={trait.id} className="trait-item">
-                        <div className="trait-info">
-                          <span className="trait-name">{trait.name}</span>
-                          {trait.categoryName && (
-                            <span className="trait-category">{trait.categoryName}</span>
-                          )}
-                        </div>
-                        <span className={`trait-cost ${trait.points === 0 ? 'free' : ''}`}>
-                          {getPointsLabel(trait.points)}
-                        </span>
-                      </li>
+                      <TraitTooltip 
+                        key={trait.id}
+                        trait={trait}
+                        selectedOptions={selectedOptions}
+                        className="trait-item-wrapper"
+                      >
+                        <li className="trait-item">
+                          <div className="trait-info">
+                            <span className="trait-name">{trait.name}</span>
+                            {trait.categoryName && (
+                              <span className="trait-category">{trait.categoryName}</span>
+                            )}
+                          </div>
+                          <span className={`trait-cost ${getDisplayCost(trait) === 0 ? 'free' : ''}`}>
+                            {getPointsLabel(getDisplayCost(trait))}
+                          </span>
+                        </li>
+                      </TraitTooltip>
                     ))}
                   </ul>
                 </div>
