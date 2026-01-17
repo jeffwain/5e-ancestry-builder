@@ -9,13 +9,18 @@
   font-family: var(--font-ui);
   font-size: var(--text-xs);
   font-weight: 500;
+  font-variation-settings: 'wdth' 86;
   text-transform: uppercase;
-  letter-spacing: -0.03rem;
+  letter-spacing: -3%;
   border-radius: var(--radius-sm);
   white-space: nowrap;
   background: var(--pill-bg-default);
   color: var(--pill-text-default);
   width: fit-content;
+}
+
+.pill .points {
+  font-variation-settings: 'wght' 640;
 }
 
 .pill.cost {

@@ -66,8 +66,8 @@ export function TraitCard({ trait, compact = false }) {
 
   const getPointsLabel = (points) => {
     if (points === 0) return 'Free';
-    if (points === 1) return '1 pt';
-    return `${points} pts`;
+    if (points === 1) return <><span className="points">{points}</span>&nbsp;pt</>;
+    return <><span className="points">{points}</span>&nbsp;pts</>;
   };
 
   // Helper for pill classes
@@ -167,11 +167,11 @@ export function TraitCard({ trait, compact = false }) {
         </div>
       )}
       
-      {trait.sizeRequirement && (
+      {/* {trait.sizeRequirement && (
         <span className={pillClass('size')}>
           {trait.sizeRequirement} only
         </span>
-      )}
+      )} */}
       
       {trait.armorRestriction && (
         <span className={pillClass('restriction')}>
