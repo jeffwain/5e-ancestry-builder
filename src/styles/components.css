@@ -47,10 +47,9 @@
 
 /* ── Pills - Status/Meta ────────────────── */
 .pill.required {
-  background: var(--pill-bg-required);
-  color: var(--pill-text-required);
+  background: var(--color-warning);
+  color: white;
 }
-
 .pill.restriction {
   background: var(--pill-bg-restricted);
   color: var(--pill-text-restricted);

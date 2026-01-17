@@ -11,6 +11,7 @@
           "name": "Medium Size",
           "description": "Medium creatures vary widely in height and build, from barely 5 feet to over 8 feet tall.",
           "points": 0,
+          "default": true,
           "excludes": ["size-small"]
         },
         {

@@ -39,13 +39,6 @@
   margin: 0;
 }
 
-/* Category header pill - uses .pill.type.on-dark from components.css */
-
-.category-trait .pill.required {
-  background: var(--color-warning);
-  color: white;
-}
-
 /* Selected count pill - uses .pill.count from components.css */
 
 .category-trait .chevron {

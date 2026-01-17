@@ -45,6 +45,28 @@
   border-left: 0.1875rem solid var(--color-warning);
 }
 
+.card-trait:not(.selected) .pill.required {
+  background: var(--pill-bg-required);
+  color: var(--pill-text-required);
+}
+
+.card-trait:not(.selected):hover .pill.required,
+.card-trait:not(.selected):focus-visible .pill.required,
+.card-trait:not(.selected):active .pill.required {
+  background: var(--color-warning);
+  color: white;
+}
+
+.card-trait:not(.selected) .pill.cost {
+}
+
+.card-trait:not(.selected):hover .pill.cost,
+.card-trait:not(.selected):focus-visible .pill.cost,
+.card-trait:not(.selected):active .pill.cost {
+  background: oklch(from var(--pill-bg-cost) l c h / 0.72);
+  color: white;
+}
+
 /* ── Header ────────────────────────────────── */
 .card-trait .header {
   align-items: center;
