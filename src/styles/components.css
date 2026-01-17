@@ -1,9 +1,11 @@
 /* ===========================================
    Shared Component Styles
    =========================================== */
-/* ── Pills - shared across components ────── */
+
+/* ── Pills - Base ───────────────────────── */
 .pill {
-  display: flex;
+  display: inline-flex;
+  align-items: center;
   flex: 0 1 fit-content;
   padding: 0.0625rem 0.375rem 0.125rem;
   font-family: var(--font-ui);
@@ -11,7 +13,7 @@
   font-weight: 500;
   font-variation-settings: 'wdth' 86;
   text-transform: uppercase;
-  letter-spacing: -3%;
+  /* letter-spacing: -0.03em; */
   border-radius: var(--radius-sm);
   white-space: nowrap;
   background: var(--pill-bg-default);
@@ -23,53 +25,45 @@
   font-variation-settings: 'wght' 640;
 }
 
+/* ── Pills - Cost Variants ──────────────── */
 .pill.cost {
   background: oklch(from var(--pill-bg-cost) l c h / 0.16);
   color: oklch(from var(--pill-bg-cost) calc(l * 0.88) c h);
   flex-shrink: 0;
 }
 
-.pill.cost:is(.selected) {
+.pill.cost.selected,
+.card-trait.selected .pill.cost,
+.option.selected .pill.cost {
   background: var(--pill-bg-cost);
   color: var(--pill-text-cost);
-  flex-shrink: 0;
 }
 
-.pill.cost.free {
+.pill.cost.free,
+.pill.free {
   background: var(--pill-bg-free);
   color: var(--pill-text-free);
 }
 
+/* ── Pills - Status/Meta ────────────────── */
 .pill.required {
   background: var(--pill-bg-required);
   color: var(--pill-text-required);
 }
 
-.pill.size {
-  margin-top: var(--space-2);
-  margin-right: var(--space-1);
-  padding: 0.125rem var(--space-2);
-  background: var(--pill-bg-size);
-  color: var(--pill-text-size);
-}
-
 .pill.restriction {
-  margin-top: var(--space-2);
-  margin-right: var(--space-1);
   background: var(--pill-bg-restricted);
   color: var(--pill-text-restricted);
 }
 
 .pill.requirement {
-  margin-top: var(--space-2);
-  margin-right: var(--space-1);
   background: var(--pill-bg-required);
   color: var(--pill-text-required);
 }
 
-.pill.option-cost {
-  background: var(--pill-bg-default);
-  color: var(--pill-text-default);
+.pill.size {
+  background: var(--pill-bg-size);
+  color: var(--pill-text-size);
 }
 
 .pill.selected-option {
@@ -79,13 +73,94 @@
   border: 0.0625rem solid var(--pill-text-free);
 }
 
-/* Pill variations in context */
-.card-trait.selected .pill.cost {
-  background: var(--pill-bg-cost);
-  color: var(--pill-text-cost);
+/* ── Pills - Type Badges ────────────────── */
+.pill.type {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.option.selected .pill.option-cost {
-  background: var(--pill-bg-cost);
-  color: var(--pill-text-cost);
+.pill.type.heritage {
+  background: var(--color-heritage-bg);
+  color: var(--color-heritage-light);
+}
+
+.pill.type.culture {
+  background: var(--color-culture-bg);
+  color: var(--color-culture-light);
+}
+
+.pill.type.core {
+  background: var(--color-gold-89);
+  color: var(--color-gold-45);
+}
+
+/* Type badges on dark backgrounds (category headers) */
+.pill.type.on-dark {
+  background: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.72);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.24);
+}
+
+/* ── Pills - Trait Pills (toolbar/summary) ─ */
+.pill.trait {
+  text-transform: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.0625rem 0.375rem 0.125rem;
+  background: var(--color-parchment-200);
+  color: var(--color-ink-700);
+  border: 1px solid var(--color-parchment-300);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.pill.trait:hover {
+  background: var(--color-parchment-300);
+  border-color: var(--color-ink-400);
+  color: var(--color-ink-800);
+}
+
+/* ── Pills - Count Badges ───────────────── */
+.pill.count {
+  font-weight: 600;
+  padding: 0.125rem var(--space-2);
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--color-parchment-100);
+}
+
+.pill.count.heritage {
+  background: var(--color-heritage);
+  color: white;
+}
+
+.pill.count.culture {
+  background: var(--color-culture);
+  color: white;
+}
+
+/* ── Pills - Dark Theme (tooltips) ──────── */
+.pill.dark {
+  background: var(--color-gold-56);
+  color: var(--color-parchment-50);
+}
+
+.pill.dark.free {
+  background: var(--color-green-38);
+}
+
+/* ── Pills - Spacing Modifiers ──────────── */
+.pill.spaced {
+  margin-top: var(--space-2);
+  margin-right: var(--space-1);
+}
+
+/* ── Pill Wrapper (for tooltips) ────────── */
+.pill-wrapper {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.pill-wrapper.block {
+  display: block;
 }

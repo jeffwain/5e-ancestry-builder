@@ -157,36 +157,6 @@
   flex-shrink: 0;
 }
 
-.sticky-toolbar .trait-pill-wrapper {
-  cursor: pointer;
-}
-
-.sticky-toolbar .pill.trait {
-  text-transform: none;
-  font-size: 0.875rem;
-  padding: 0.0625rem 0.25rem 0.125rem;
-
-  /* display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.1875rem 0.5rem;
-  font-family: var(--font-ui);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  color: var(--color-ink-700);
-  background: var(--color-parchment-200);
-  border: 1px solid var(--color-parchment-300);
-  border-radius: var(--radius-sm);
-  white-space: nowrap;
-  transition: all var(--transition-fast); */
-}
-
-.sticky-toolbar .pill.trait:hover {
-  background: var(--color-parchment-300);
-  border-color: var(--color-ink-400);
-  color: var(--color-ink-800);
-}
-
 .sticky-toolbar .no-pills {
   font-family: var(--font-ui);
   font-size: var(--text-xs);
@@ -283,22 +253,15 @@
   align-items: center;
   gap: var(--space-2);
   margin: 0 0 var(--space-2);
+  flex: 1;
 }
 
-.layout .section-title.clickable {
-  cursor: pointer;
-  user-select: none;
-  transition: color var(--transition-fast);
-}
 
-.layout .section-title.clickable:hover {
-  color: var(--color-heritage);
-}
-
-.layout .section-title.clickable:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
+.layout .section-header-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: var(--space-1);
 }
 
 .layout .section-limit {
@@ -309,16 +272,6 @@
   margin-left: var(--space-2);
 }
 
-.layout .section-chevron {
-  font-size: var(--text-sm);
-  color: var(--color-ink-400);
-  transition: transform var(--transition-fast);
-  margin-left: var(--space-1);
-}
-
-.layout .section-chevron.expanded {
-  transform: rotate(180deg);
-}
 
 .layout .section-desc {
   font-size: var(--text-base);

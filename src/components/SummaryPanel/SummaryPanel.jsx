@@ -130,11 +130,11 @@ export function SummaryPanel({ isOpen, onClose }) {
                         key={trait.id}
                         trait={trait}
                         selectedOptions={selectedOptions}
-                        className="trait-item-wrapper"
+                        className="pill-wrapper block"
                       >
                         <li className="trait-item">
                           <span className="trait-name">{trait.name}</span>
-                          <span className={`trait-cost ${getDisplayCost(trait) === 0 ? 'free' : ''}`}>
+                          <span className={`pill cost ${getDisplayCost(trait) === 0 ? 'free' : ''}`}>
                             {getPointsLabel(getDisplayCost(trait))}
                           </span>
                         </li>
@@ -153,7 +153,7 @@ export function SummaryPanel({ isOpen, onClose }) {
                         key={trait.id}
                         trait={trait}
                         selectedOptions={selectedOptions}
-                        className="trait-item-wrapper"
+                        className="pill-wrapper block"
                       >
                         <li className="trait-item">
                           <div className="trait-info">
@@ -162,7 +162,7 @@ export function SummaryPanel({ isOpen, onClose }) {
                               <span className="trait-category">{trait.categoryName}</span>
                             )}
                           </div>
-                          <span className={`trait-cost ${getDisplayCost(trait) === 0 ? 'free' : ''}`}>
+                          <span className={`pill cost ${getDisplayCost(trait) === 0 ? 'free' : ''}`}>
                             {getPointsLabel(getDisplayCost(trait))}
                           </span>
                         </li>
@@ -181,7 +181,7 @@ export function SummaryPanel({ isOpen, onClose }) {
                         key={trait.id}
                         trait={trait}
                         selectedOptions={selectedOptions}
-                        className="trait-item-wrapper"
+                        className="pill-wrapper block"
                       >
                         <li className="trait-item">
                           <div className="trait-info">
@@ -190,7 +190,7 @@ export function SummaryPanel({ isOpen, onClose }) {
                               <span className="trait-category">{trait.categoryName}</span>
                             )}
                           </div>
-                          <span className={`trait-cost ${getDisplayCost(trait) === 0 ? 'free' : ''}`}>
+                          <span className={`pill cost ${getDisplayCost(trait) === 0 ? 'free' : ''}`}>
                             {getPointsLabel(getDisplayCost(trait))}
                           </span>
                         </li>

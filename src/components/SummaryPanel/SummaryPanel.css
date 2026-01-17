@@ -186,10 +186,6 @@
   margin: 0;
 }
 
-.panel-summary .trait-item-wrapper {
-  display: block;
-  cursor: help;
-}
 
 .panel-summary .trait-item {
   display: flex;
@@ -202,7 +198,7 @@
   transition: all var(--transition-fast);
 }
 
-.panel-summary .trait-item-wrapper:hover .trait-item {
+.panel-summary .pill-wrapper:hover .trait-item {
   background: var(--color-parchment-200);
   border-color: var(--color-parchment-400);
 }
@@ -227,21 +223,6 @@
   letter-spacing: 0.03em;
 }
 
-.panel-summary .trait-cost {
-  font-family: var(--font-ui);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  color: var(--color-heritage);
-  background: var(--color-heritage-bg);
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-sm);
-  flex-shrink: 0;
-}
-
-.panel-summary .trait-cost.free {
-  color: var(--color-culture);
-  background: var(--color-culture-bg);
-}
 
 .panel-summary .footer {
   display: flex;

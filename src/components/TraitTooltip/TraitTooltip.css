@@ -45,21 +45,6 @@
   color: var(--color-parchment-50);
 }
 
-.trait-tooltip .tooltip-cost {
-  font-family: var(--font-ui);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  padding: 0.125rem 0.5rem;
-  background: var(--color-gold-56);
-  color: var(--color-parchment-50);
-  border-radius: var(--radius-sm);
-  white-space: nowrap;
-}
-
-.trait-tooltip .tooltip-cost.free {
-  background: var(--color-green-38);
-}
-
 .trait-tooltip .tooltip-option {
   font-size: var(--text-sm);
   color: var(--color-parchment-300);
@@ -89,36 +74,7 @@
   border-top: 1px solid var(--color-ink-600);
 }
 
-.trait-tooltip .tooltip-meta:empty {
+.trait-tooltip .tooltip-meta:empty,
+.trait-tooltip .tooltip-meta:not(:has(*)) {
   display: none;
-}
-
-.trait-tooltip .tooltip-category {
-  font-size: var(--text-xs);
-  font-weight: 500;
-  color: var(--color-parchment-400);
-}
-
-.trait-tooltip .tooltip-type {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.0625rem 0.375rem;
-  border-radius: var(--radius-sm);
-}
-
-.trait-tooltip .tooltip-type.heritage {
-  background: var(--color-heritage-bg);
-  color: var(--color-heritage-light);
-}
-
-.trait-tooltip .tooltip-type.culture {
-  background: var(--color-culture-bg);
-  color: var(--color-culture-light);
-}
-
-.trait-tooltip .tooltip-type.core {
-  background: var(--color-gold-89);
-  color: var(--color-gold-45);
 }

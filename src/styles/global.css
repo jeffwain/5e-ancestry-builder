@@ -119,6 +119,10 @@ a:hover {
   border-color: var(--color-ink-700);
 }
 
+.btn-small {
+  padding: var(--space-1) var(--space-2);
+}
+
 /* ── Form Elements ──────────────────────── */
 select {
   font-family: var(--font-ui);
@@ -160,10 +164,6 @@ select:hover {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-radius: var(--radius-sm);
-}
-
-.pill {
-  padding: 0.0625rem 0.5rem;
 }
 
 .visually-hidden {

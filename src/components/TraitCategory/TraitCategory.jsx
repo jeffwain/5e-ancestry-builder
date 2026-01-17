@@ -52,12 +52,12 @@ export function TraitCategory({
         <div className="header-content">
           <h3 className="name">{category.name}</h3>
           {showPill && pillText && (
-            <span className={`pill ${type}`}>
+            <span className={`pill type on-dark ${type}`}>
               {pillText}
             </span>
           )}
           {!isExpanded && hasSelectedTraits && (
-            <span className="selected-count">{selectedTraits.length} selected</span>
+            <span className="pill count">{selectedTraits.length} selected</span>
           )}
         </div>
         <span className={`chevron ${isExpanded ? 'expanded' : ''}`}>
@@ -155,10 +155,10 @@ export function CoreAttributeSection({
         <div className="header-content">
           <h3 className="name">{attribute.name}</h3>
           {attribute.required && (
-            <span className="required-pill">Required</span>
+            <span className="pill required">Required</span>
           )}
           {!isExpanded && hasSelectedTraits && (
-            <span className="selected-count">{selectedTraits.length} selected</span>
+            <span className="pill count">{selectedTraits.length} selected</span>
           )}
         </div>
         <span className={`chevron ${isExpanded ? 'expanded' : ''}`}>

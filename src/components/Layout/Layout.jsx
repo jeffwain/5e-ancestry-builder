@@ -41,11 +41,20 @@ export function Layout({
   const [heritageSignal, setHeritageSignal] = useState({ expanded: true, version: 0 });
   const [cultureSignal, setCultureSignal] = useState({ expanded: true, version: 0 });
 
-  const toggleSection = (signal, setSignal) => {
-    setSignal({
-      expanded: !signal.expanded,
-      version: signal.version + 1
-    });
+  // Expand all categories in a section
+  const expandAll = (setSignal) => {
+    setSignal(prev => ({
+      expanded: true,
+      version: prev.version + 1
+    }));
+  };
+
+  // Collapse all categories in a section
+  const collapseAll = (setSignal) => {
+    setSignal(prev => ({
+      expanded: false,
+      version: prev.version + 1
+    }));
   };
 
   // Scroll to trait card when pill is clicked
@@ -117,7 +126,7 @@ export function Layout({
                   trait={trait}
                   selectedOptions={selectedOptions}
                   onClick={() => scrollToTrait(trait.id)}
-                  className="trait-pill-wrapper"
+                  className="pill-wrapper"
                 >
                   <span className="pill trait">
                     {getTraitPillLabel(trait, selectedOptions)}
@@ -147,7 +156,7 @@ export function Layout({
                 className="btn btn-primary summary-btn"
                 onClick={onShowSummary}
               >
-                View Summary
+                Summary
               </button>
             </div>
           </div>
@@ -157,16 +166,23 @@ export function Layout({
       <main className={`main flexcol ${atBudget ? 'at-budget' : ''}`}>
         {/* Core Attributes Section */}
         <section className="section">
-          <h2 
-            className="section-title clickable"
-            onClick={() => toggleSection(coreSignal, setCoreSignal)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => e.key === 'Enter' && toggleSection(coreSignal, setCoreSignal)}
-          >
-            Core Attributes
-            <span className={`section-chevron ${coreSignal.expanded ? 'expanded' : ''}`}>▼</span>
-          </h2>
+          <div className="section-header flexrow">
+            <h2 className="section-title">Core Attributes</h2>
+            <div className="section-header-controls">
+              <button 
+                className="btn btn-secondary btn-small"
+                onClick={() => expandAll(setCoreSignal)}
+              >
+                Expand all
+              </button>
+              <button 
+                className="btn btn-secondary btn-small"
+                onClick={() => collapseAll(setCoreSignal)}
+              >
+                Collapse all
+              </button>
+            </div>
+          </div>
           <p className="section-desc">
             Choose your size (required), and optionally enhance your speed or darkvision.
           </p>
@@ -182,19 +198,28 @@ export function Layout({
           </div>
         </section>
 
-        {/* Heritage Section - flat like culture */}
+        {/* Heritage Section */}
         <section className="section">
-          <h2 
-            className="section-title clickable"
-            onClick={() => toggleSection(heritageSignal, setHeritageSignal)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => e.key === 'Enter' && toggleSection(heritageSignal, setHeritageSignal)}
-          >
-            Heritage Traits
-            <span className="section-limit">(max 2 categories)</span>
-            <span className={`section-chevron ${heritageSignal.expanded ? 'expanded' : ''}`}>▼</span>
-          </h2>
+          <div className="section-header flexrow">
+            <h2 className="section-title">
+              Heritage Traits
+              <span className="section-limit">(max 2 categories)</span>
+            </h2>
+            <div className="section-header-controls">
+              <button 
+                className="btn btn-secondary btn-small"
+                onClick={() => expandAll(setHeritageSignal)}
+              >
+                Expand all
+              </button>
+              <button 
+                className="btn btn-secondary btn-small"
+                onClick={() => collapseAll(setHeritageSignal)}
+              >
+                Collapse all
+              </button>
+            </div>
+          </div>
           <p className="section-desc">
             Choose traits from up to 2 ancestry categories representing your physical heritage.
           </p>
@@ -213,17 +238,26 @@ export function Layout({
 
         {/* Culture Section */}
         <section className="section">
-          <h2 
-            className="section-title clickable"
-            onClick={() => toggleSection(cultureSignal, setCultureSignal)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => e.key === 'Enter' && toggleSection(cultureSignal, setCultureSignal)}
-          >
-            Culture Traits
-            <span className="section-limit">(min 1, max 2 categories)</span>
-            <span className={`section-chevron ${cultureSignal.expanded ? 'expanded' : ''}`}>▼</span>
-          </h2>
+          <div className="section-header flexrow">
+            <h2 className="section-title">
+              Culture Traits
+              <span className="section-limit">(min 1, max 2 categories)</span>
+            </h2>
+            <div className="section-header-controls">
+              <button 
+                className="btn btn-secondary btn-small"
+                onClick={() => expandAll(setCultureSignal)}
+              >
+                Expand all
+              </button>
+              <button 
+                className="btn btn-secondary btn-small"
+                onClick={() => collapseAll(setCultureSignal)}
+              >
+                Collapse all
+              </button>
+            </div>
+          </div>
           <p className="section-desc">
             Choose traits from 1-2 cultures representing your upbringing and training.
           </p>

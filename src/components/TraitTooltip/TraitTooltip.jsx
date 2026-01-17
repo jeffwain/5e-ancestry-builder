@@ -101,7 +101,7 @@ export function TraitTooltip({
         >
           <div className="tooltip-header">
             <span className="tooltip-name">{trait.name}</span>
-            <span className={`tooltip-cost ${displayCost === 0 ? 'free' : ''}`}>
+            <span className={`pill dark ${displayCost === 0 ? 'free' : ''}`}>
               {displayCost === 0 ? 'Free' : `${displayCost} pt${displayCost !== 1 ? 's' : ''}`}
             </span>
           </div>
@@ -115,16 +115,11 @@ export function TraitTooltip({
           <p className="tooltip-description">{trait.description}</p>
           
           <div className="tooltip-meta">
-            {trait.type && trait.type !== 'core' ? (
-              <span className={`tooltip-type ${trait.type}`}>
+            {trait.type && trait.type !== 'core' && (
+              <span className={`pill type ${trait.type}`}>
                 {trait.categoryName && `${trait.categoryName} `}{trait.type.charAt(0).toUpperCase() + trait.type.slice(1)}
               </span>
-            ) : trait.type === 'core' ? (
-              // TODO: Fill in details for 'core' type
-              <span className="tooltip-type core">
-                {trait.categoryName && `${trait.categoryName} `}
-              </span>
-            ) : null}
+            )}
           </div>
         </div>
       )}
