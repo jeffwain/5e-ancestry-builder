@@ -45,7 +45,7 @@
 }
 
 .sticky-toolbar.scrolled {
-  box-shadow: var(--shadow-md);
+  box-shadow: none
 }
 
 .sticky-toolbar .toolbar-content {
@@ -63,7 +63,7 @@
 
 .sticky-toolbar .toolbar-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-red-60) 0%, var(--color-red-45) 100%);
+  background: linear-gradient(90deg, var(--color-green-65) 0%, var(--color-green-43) 100%);
   transition: width var(--transition-base);
 }
 
@@ -228,7 +228,7 @@
 /* ── Main Content ───────────────────────── */
 .layout .main {
   padding: var(--space-4) var(--space-6);
-  overflow-y: auto;
+  /* Note: no overflow-y here - page scrolls via body, allows sticky headers to work */
 }
 
 .layout .section {
@@ -236,8 +236,28 @@
 }
 
 .layout .section-header {
+  position: sticky;
+  top: 3.5rem;
+  /* Below the sticky toolbar */
+  z-index: 50;
+  background: var(--color-parchment-50);
+  border-bottom: 1px solid transparent;
+  box-shadow: 0 2px 4px -2px transparent;
   gap: var(--space-4);
   margin: 0 0 var(--space-2);
+  padding: var(--space-2) 0;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  /* Extend background to cover scroll gap */
+  margin-left: calc(-1 * var(--space-6));
+  margin-right: calc(-1 * var(--space-6));
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+/* Visual feedback when section header is stuck (requires JS to add .stuck class) */
+.layout .section-header.stuck {
+  border-bottom: 1px solid var(--color-parchment-300);
+  box-shadow: var(--shadow-sm);
 }
 
 .layout .section-title {
@@ -362,6 +382,14 @@
 
   .layout .main {
     padding: var(--space-4);
+  }
+
+  /* Adjust sticky section-header to match reduced main padding */
+  .layout .section-header {
+    margin-left: calc(-1 * var(--space-4));
+    margin-right: calc(-1 * var(--space-4));
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
   }
 
   .layout .core-grid {

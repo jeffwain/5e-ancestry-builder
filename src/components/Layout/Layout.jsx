@@ -24,14 +24,25 @@ export function Layout({
   const isOverBudget = pointsSpent > 16;
   const percentage = Math.min((pointsSpent / 16) * 100, 100);
   
-  // Track scroll state for sticky bar
+  // Track scroll state for sticky bar and section headers
   const [isScrolled, setIsScrolled] = useState(false);
   const toolbarRef = useRef(null);
+  const stickyOffset = 56; // ~3.5rem - where section headers stick
   
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 60);
+      
+      // Check if section headers are stuck - query DOM directly for reliability
+      const headers = document.querySelectorAll('.layout .section-header');
+      headers.forEach((header) => {
+        const rect = header.getBoundingClientRect();
+        // Header is "stuck" when its top is at or very close to the sticky offset
+        const isStuck = rect.top <= stickyOffset + 2;
+        header.classList.toggle('stuck', isStuck);
+      });
     };
+    
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -119,7 +130,7 @@ export function Layout({
 
             {/* Selected Trait Pills - Individual traits with tooltips */}
             <div className="toolbar-pills">
-              <span className="pills-label">Selected Traits</span>
+              <span className="pills-label">Traits</span>
               {selectedTraits.map((trait) => (
                 <TraitTooltip
                   key={trait.id}
