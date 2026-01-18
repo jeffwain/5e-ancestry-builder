@@ -3,6 +3,8 @@
    =========================================== */
 /* ── Pills - Base ───────────────────────── */
 .pill {
+  --pill-bg: var(--color-parchment-200);
+  --pill-text: var(--color-ink-700);
   display: inline-flex;
   align-items: center;
   flex: 0 1 fit-content;
@@ -25,49 +27,49 @@
 
 /* ── Pills - Cost Variants ──────────────── */
 .pill.cost {
-  background: oklch(from var(--pill-bg-cost) l c h / 0.16);
-  color: oklch(from var(--pill-bg-cost) calc(l * 0.88) c h);
+  --pill-bg: oklch(from var(--pill-bg-cost) l c h / 0.16);
+  --pill-text: oklch(from var(--pill-bg-cost) calc(l * 0.88) c h);
   flex-shrink: 0;
 }
 
 .pill.cost.selected,
 .card-trait.selected .pill.cost,
 .option.selected .pill.cost {
-  background: var(--pill-bg-cost);
-  color: var(--pill-text-cost);
+  --pill-bg: var(--pill-bg-cost);
+  --pill-text: var(--pill-text-cost);
 }
 
 .pill.cost.free,
 .pill.free {
-  background: var(--pill-bg-free);
-  color: var(--pill-text-free);
+  --pill-bg: var(--pill-bg-free);
+  --pill-text: var(--pill-text-free);
 }
 
 /* ── Pills - Status/Meta ────────────────── */
 .pill.required {
-  background: var(--color-warning);
-  color: white;
+  --pill-bg: var(--color-warning);
+  --pill-text: white;
 }
 
 .pill.restriction {
-  background: var(--pill-bg-restricted);
-  color: var(--pill-text-restricted);
+  --pill-bg: var(--pill-bg-restricted);
+  --pill-text: var(--pill-text-restricted);
 }
 
 .pill.requirement {
-  background: var(--pill-bg-required);
-  color: var(--pill-text-required);
+  --pill-bg: var(--pill-bg-required);
+  --pill-text: var(--pill-text-required);
 }
 
 .pill.size {
-  background: var(--pill-bg-size);
-  color: var(--pill-text-size);
+  --pill-bg: var(--pill-bg-size);
+  --pill-text: var(--pill-text-size);
 }
 
 .pill.selected-option {
   font-weight: 500;
-  background: var(--pill-bg-free);
-  color: var(--pill-text-free);
+  --pill-bg: var(--pill-bg-free);
+  --pill-text: var(--pill-text-free);
   border: 0.0625rem solid var(--pill-text-free);
 }
 
@@ -78,24 +80,24 @@
 }
 
 .pill.type.heritage {
-  background: var(--color-heritage-bg);
-  color: var(--color-heritage-light);
+  --pill-bg: var(--color-heritage-bg);
+  --pill-text: var(--color-heritage-light);
 }
 
 .pill.type.culture {
-  background: var(--color-culture-bg);
-  color: var(--color-culture-light);
+  --pill-bg: var(--color-culture-bg);
+  --pill-text: var(--color-culture-light);
 }
 
 .pill.type.core {
-  background: var(--color-gold-89);
-  color: var(--color-gold-45);
+  --pill-bg: var(--color-gold-89);
+  --pill-text: var(--color-gold-45);
 }
 
 /* Type badges on dark backgrounds (category headers) */
 .pill.type.on-dark {
-  background: rgba(255, 255, 255, 0.16);
-  color: rgba(255, 255, 255, 0.72);
+  --pill-bg: rgba(255, 255, 255, 0.16);
+  --pill-text: rgba(255, 255, 255, 0.72);
   border: 0.0625rem solid rgba(255, 255, 255, 0.24);
 }
 
@@ -105,45 +107,44 @@
   font-size: 0.875rem;
   font-weight: 500;
   padding: 0.0625rem 0.375rem 0.125rem;
-  background: var(--color-parchment-200);
-  color: var(--color-ink-700);
   border: 1px solid var(--color-parchment-300);
   transition: all var(--transition-fast);
   cursor: pointer;
 }
 
 .pill.trait:hover {
-  background: var(--color-parchment-300);
+  --pill-bg: var(--color-parchment-300);
   border-color: var(--color-ink-400);
-  color: var(--color-ink-800);
+  --pill-text: var(--color-ink-800);
 }
 
 /* ── Pills - Count Badges ───────────────── */
 .pill.count {
   font-weight: 600;
   padding: 0.125rem var(--space-2);
-  background: rgba(255, 255, 255, 0.25);
-  color: var(--color-parchment-100);
+  --pill-bg: rgba(255, 255, 255, 0.25);
+  --pill-text: var(--color-parchment-100);
 }
 
 .pill.count.heritage {
-  background: var(--color-heritage);
-  color: white;
+  --pill-bg: var(--color-heritage);
+  --pill-text: white;
 }
 
 .pill.count.culture {
-  background: var(--color-culture);
-  color: white;
+  --pill-bg: var(--color-culture);
+  --pill-text: white;
 }
 
 /* ── Pills - Dark Theme (tooltips) ──────── */
 .pill.dark {
-  background: var(--color-gold-56);
-  color: var(--color-parchment-50);
+  --pill-bg: var(--color-gold-56);
+  --pill-text: var(--color-parchment-50);
 }
 
 .pill.dark.free {
-  background: var(--color-green-38);
+  --pill-bg: var(--color-green-38);
+  --pill-text: var(--color-parchment-50);
 }
 
 /* ── Pills - Spacing Modifiers ──────────── */
@@ -160,6 +161,16 @@
 
 .pill-wrapper.block {
   display: block;
+}
+
+/* ── Clickable requirement pill ─── */
+.pill.clickable {
+  cursor: pointer;
+}
+
+.pill.clickable:hover {
+  background: oklch(from var(--category-background-light) calc(l * 1) calc(c * 1) h / 0.32);
+  color: var(--color-ink-800);
 }
 
 /* ── Buttons ────────────────────────────── */

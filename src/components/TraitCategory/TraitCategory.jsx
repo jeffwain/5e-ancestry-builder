@@ -56,9 +56,6 @@ export function TraitCategory({
               {pillText}
             </span>
           )}
-          {/* {!isExpanded && hasSelectedTraits && (
-            <span className="pill count">{selectedTraits.length} selected</span>
-          )} */}
         </div>
         <span className={`chevron ${isExpanded ? 'expanded' : ''}`}>
           ▼
@@ -163,9 +160,6 @@ export function CoreAttributeSection({
           <h3 className="name">{attribute.name}</h3>
           {attribute.required && (
             <span className="pill required">Required</span>
-          )}
-          {!isExpanded && hasSelectedTraits && (
-            <span className="pill count">{selectedTraits.length} selected</span>
           )}
         </div>
         <span className={`chevron ${isExpanded ? 'expanded' : ''}`}>

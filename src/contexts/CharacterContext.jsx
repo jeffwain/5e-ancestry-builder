@@ -437,6 +437,7 @@ export function CharacterProvider({ children }) {
     cultureCount: cultureCategories.length,
     selectedSize,
     warnings,
+    allTraits: state.allTraits,
     
     // Actions
     selectTrait,

@@ -81,6 +81,23 @@
   margin: 0;
 }
 
+.category-trait > .header .pill.required {
+  background: oklch(from var(--category-background-light) calc(l * 1.8) calc(c * 1.4) h);
+  color: var(--color-ink-800);
+}
+
+.category-trait > .header .pill.heritage {
+  background: oklch(from var(--category-background-light) calc(l * 1.8) calc(c * 1.4) h);
+  color: var(--color-ink-800);
+}
+
+.category-trait > .header .pill.heritage,
+.category-trait > .header .pill.culture {
+  background: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.8);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.24);
+}
+
 /* Selected count pill - uses .pill.count from components.css */
 .category-trait .chevron {
   font-size: var(--text-base);
@@ -105,7 +122,7 @@
   padding: var(--space-3);
 }
 
-.category-trait.collapsed .trait-category-content:not(:has(.selected-traits)) {
+.category-trait.collapsed .trait-category-content:not(:has(*)) {
   height: 0;
   padding: 0;
   outline: none;

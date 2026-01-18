@@ -1,4 +1,5 @@
 import { useCharacter } from '../../contexts/CharacterContext';
+import { TraitTooltip } from '../TraitTooltip';
 import './TraitCard.css';
 
 export function TraitCard({ trait, compact = false }) {
@@ -8,7 +9,8 @@ export function TraitCard({ trait, compact = false }) {
     canSelectTrait,
     canDeselectTrait,
     selectedOptions, 
-    setTraitOption 
+    setTraitOption,
+    allTraits
   } = useCharacter();
   
   const selected = isTraitSelected(trait.id);
@@ -18,6 +20,11 @@ export function TraitCard({ trait, compact = false }) {
   const locked = selected && !canDeselect; // Can't deselect (required category)
   const hasOptions = trait.options && trait.options.length > 0;
   const selectedOptionId = selectedOptions[trait.id];
+
+  // Generate requirement label (shown always, not just when disabled)
+  const requiresLabel = trait.requires?.length 
+    ? `Requires ${trait.requires.map(id => allTraits[id]?.name || id).join(', ')}`
+    : null;
 
   const handleClick = () => {
     if (disabled) return;
@@ -36,6 +43,22 @@ export function TraitCard({ trait, compact = false }) {
   const handleOptionSelect = (e, optionId) => {
     e.stopPropagation(); // Don't toggle the trait
     setTraitOption(trait.id, optionId);
+  };
+
+  // Scroll to required trait and highlight it
+  const scrollToRequiredTrait = (e) => {
+    e.stopPropagation(); // Don't toggle this trait
+    if (!trait.requires?.length) return;
+    // Find the first required trait that's not selected
+    const targetId = trait.requires[0];
+    const targetEl = document.querySelector(`[data-trait-id="${targetId}"]`);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Trigger highlight animation
+      targetEl.classList.remove('highlight-flash');
+      void targetEl.offsetWidth; // Force reflow
+      targetEl.classList.add('highlight-flash');
+    }
   };
 
   // Calculate display cost
@@ -81,27 +104,28 @@ export function TraitCard({ trait, compact = false }) {
   // Compact view - just show name, selected option, and cost
   if (compact) {
     return (
-      <div
-        className={cardClass}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        role="checkbox"
-        aria-checked={selected}
-        tabIndex={0}
-        title={trait.description}
-      >
-        <div className="header">
-          <h4 className="flex1 name">
-            {trait.name}
-            {selectedOptionName && (
-              <span className={'selected-option'}>{selectedOptionName}</span>
-            )}
+      <TraitTooltip trait={trait} selectedOptions={selectedOptions}>
+        <div
+          className={cardClass}
+          onClick={handleClick}
+          onKeyDown={handleKeyDown}
+          role="checkbox"
+          aria-checked={selected}
+          tabIndex={0}
+        >
+          <div className="header">
+            <h4 className="flex1 name">
+              {trait.name}
+              {selectedOptionName && (
+                <span className={'selected-option'}>{selectedOptionName}</span>
+              )}
           </h4>
           <span className={pillClass('cost', displayCost === 0 && 'free')}>
             {getPointsLabel(displayCost)}
           </span>
         </div>
-      </div>
+        </div>
+      </TraitTooltip>
     );
   }
 
@@ -166,9 +190,12 @@ export function TraitCard({ trait, compact = false }) {
         </div>
       )}
       
-      {disabled && reason && (
-        <div className="pill requirement">
-          {reason}
+      {requiresLabel && (
+        <div 
+          className={`pill requirement ${disabled ? 'unmet' : 'met'} clickable`}
+          onClick={scrollToRequiredTrait}
+        >
+          {requiresLabel}
         </div>
       )}
       

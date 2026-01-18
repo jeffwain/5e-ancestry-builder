@@ -103,7 +103,7 @@
   font-size: 1rem;
   font-weight: 700;
   color: var(--color-ink-900);
-  margin: 0;
+  margin: 0.0625rem 0 0 0;
   /* font-variation-settings: 'opsz' 16; */
   line-height: var(--leading-tight);
 }
@@ -146,10 +146,6 @@
 }
 
 /* ── Options section ───────────────────────── */
-.card-trait.has-options.selected {
-  padding: var(--space-4);
-}
-
 .card-trait.has-options.selected .indicator {
   display: none;
 }
@@ -233,6 +229,7 @@
 
 /* ── Compact mode ──────────────────────────── */
 .card-trait.compact {
+  flex: 1;
   padding: var(--space-2) var(--space-3);
 }
 
@@ -263,7 +260,7 @@
   box-shadow: var(--shadow-sm);
 }
 
-.main.at-budget .card-trait:not(.selected):not(:has(.pill.free)) {
+.main.at-budget .card-trait:not(.selected):not(:has(.core-attribute .pill.free)) {
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
@@ -271,19 +268,25 @@
 
 /* ── Highlight flash animation (for scroll-to) ─── */
 @keyframes highlight-flash {
-  0% {
-    box-shadow: 0 0 0 0 var(--color-accent);
-  }
 
-  25% {
-    box-shadow: 0 0 0 4px var(--color-accent);
-  }
-
+  0%,
   100% {
-    box-shadow: 0 0 0 0 var(--color-accent);
+    box-shadow: var(--shadow-sm), inset 0.1875rem 0 var(--color-heritage);
+  }
+
+  15%,
+  45%,
+  75% {
+    box-shadow: 0 0 0 4px var(--color-accent), inset 0.1875rem 0 var(--color-heritage);
+  }
+
+  30%,
+  60%,
+  90% {
+    box-shadow: var(--shadow-sm), inset 0.1875rem 0 var(--color-heritage);
   }
 }
 
 .card-trait.highlight-flash {
-  animation: highlight-flash 1.5s ease-out;
+  animation: highlight-flash 1.2s ease-out;
 }
