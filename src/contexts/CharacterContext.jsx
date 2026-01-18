@@ -308,18 +308,8 @@ export function CharacterProvider({ children }) {
       }
     }
 
-    // Check size requirement
-    if (trait.sizeRequirement) {
-      if (selectedSize !== trait.sizeRequirement) {
-        return { 
-          canSelect: false, 
-          reason: `Requires ${trait.sizeRequirement} size` 
-        };
-      }
-    }
-
     return { canSelect: true, reason: null };
-  }, [selectedTraitIds, selectedSize, state.selectedTraits, state.allTraits]);
+  }, [selectedTraitIds, state.selectedTraits, state.allTraits]);
 
   // Actions
   const selectTrait = useCallback((trait) => {

@@ -1,7 +1,6 @@
 /* ===========================================
    Shared Component Styles
    =========================================== */
-
 /* ── Pills - Base ───────────────────────── */
 .pill {
   display: inline-flex;
@@ -10,10 +9,10 @@
   padding: 0.0625rem 0.375rem 0.125rem;
   font-family: var(--font-ui);
   font-size: var(--text-xs);
-  font-weight: 500;
-  font-variation-settings: 'wdth' 86;
+  font-weight: 400;
+  font-variation-settings: 'wdth' 5;
   text-transform: uppercase;
-  /* letter-spacing: -0.03em; */
+  letter-spacing: 2%;
   border-radius: var(--radius-sm);
   white-space: nowrap;
   background: var(--pill-bg-default);
@@ -50,6 +49,7 @@
   background: var(--color-warning);
   color: white;
 }
+
 .pill.restriction {
   background: var(--pill-bg-restricted);
   color: var(--pill-text-restricted);
@@ -74,7 +74,6 @@
 
 /* ── Pills - Type Badges ────────────────── */
 .pill.type {
-  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }

@@ -3,10 +3,10 @@
    =========================================== */
 :root {
   /* ── Typography ─────────────────────────── */
-  --font-display: 'Gragedy' 'Lore', 'Modesto Condensed', 'Palatino Linotype', serif;
-  --font-heading: 'Lupino', 'Source Serif 4', 'Vend Sans', 'Lapture', 'Cormorant', 'Palatino Linotype', serif;
-  --font-body: 'Source Sans 3', 'Cardo', 'Palatino Linotype', 'Georgia', serif;
-  --font-ui: 'Source Sans 3', 'HEX Franklin Variable', 'Source Serif 4', 'Vend Sans', 'Trade Gothic Next LT Pro Cn', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'New Spirit', 'Lapture', 'Modesto Condensed', 'Palatino Linotype', serif;
+  --font-heading: 'Lapture', 'Source Serif 4', 'Palatino Linotype', serif;
+  --font-body: 'Source Sans 3', 'Fira Sans', 'Cardo', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --font-ui: 'Trade Gothic Next LT Pro Cn', 'Segoe UI', system-ui, sans-serif;
   --font-mono: 'Fira Code', 'Consolas', monospace;
   --text-xs: 0.8125rem;
   /* Min readable size */

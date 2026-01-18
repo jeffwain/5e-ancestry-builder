@@ -27,7 +27,13 @@
   background-color: var(--color-card-bg-selected);
   outline: 0.0625rem solid var(--color-heritage);
   border-color: var(--color-heritage);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm), inset 0.1875rem 0 var(--color-heritage);
+}
+
+.card-trait.selected:hover,
+.card-trait.selected:focus-visible,
+.card-trait.selected:active {
+  box-shadow: var(--shadow-sm), inset 0.1875rem 0 var(--color-heritage);
 }
 
 .card-trait.disabled {
@@ -41,8 +47,16 @@
   box-shadow: none;
 }
 
-.card-trait.required {
-  border-left: 0.1875rem solid var(--color-warning);
+.card-trait.required:not(:has(.option.selected)) {
+  outline: 0.0625rem solid var(--color-warning);
+  box-shadow: var(--shadow-sm), inset 0.1875rem 0 var(--color-warning);
+}
+
+.card-trait.required:not(:has(.option.selected)):hover,
+.card-trait.required:not(:has(.option.selected)):focus-visible,
+.card-trait.required:not(:has(.option.selected)):active {
+  outline: 0.0625rem solid var(--color-warning);
+  box-shadow: var(--shadow-sm), inset 0.1875rem 0 var(--color-warning);
 }
 
 .card-trait:not(.selected) .pill.required {
@@ -57,8 +71,7 @@
   color: white;
 }
 
-.card-trait:not(.selected) .pill.cost {
-}
+.card-trait:not(.selected) .pill.cost {}
 
 .card-trait:not(.selected):hover .pill.cost,
 .card-trait:not(.selected):focus-visible .pill.cost,
@@ -86,14 +99,18 @@
   line-height: var(--leading-tight);
 }
 
+.card-trait .name .selected-option {
+  color: var(--color-heritage);
+}
+
 .card-trait.disabled .name {
   color: var(--color-ink-300);
 }
 
 /* ── Description ───────────────────────────── */
 .card-trait .description {
-  font-size: var(--text-base);
-  color: black;
+  font-size: 0.9375rem;
+  color: var(--color-ink-800);
   line-height: var(--leading-normal);
   margin: 0;
   padding-right: var(--space-8);
@@ -113,36 +130,10 @@
   color: var(--color-warning);
 }
 
-/* ── Indicator ─────────────────────────────── */
-.card-trait .indicator {
-  position: absolute;
-  bottom: var(--space-3);
-  right: var(--space-3);
-  width: 1.5rem;
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--text-lg);
-  color: var(--color-ink-500);
-  background: var(--color-parchment-200);
-  border-radius: 50%;
-  transition: all var(--transition-fast);
-}
-
-.card-trait:hover:not(.disabled) .indicator {
-  background: var(--color-heritage);
-  color: var(--color-parchment-50);
-}
-
-.card-trait.selected .indicator {
-  background: var(--color-heritage);
-  color: var(--color-parchment-50);
-}
-
-.card-trait.disabled .indicator {
-  background: var(--color-parchment-300);
-  color: var(--color-ink-500);
+.card-trait .pill.requirement,
+.card-trait .pill.restriction {
+  margin-top: var(--space-1);
+  margin-left: -0.25rem;
 }
 
 /* ── Options section ───────────────────────── */
@@ -219,8 +210,8 @@
   display: flex;
   flex: 1;
   font-family: var(--font-heading);
-  font-size: var(--text-lg);
-  font-weight: 600;
+  font-size: var(--text-base);
+  font-weight: 700;
   color: var(--color-ink-800);
 }
 
@@ -258,6 +249,11 @@
   transform: translateY(50%);
 }
 
+.card-trait.compact.selected,
+.card-trait.compact.required:not(:has(.option.selected)) {
+  box-shadow: var(--shadow-sm);
+}
+
 .main.at-budget .card-trait:not(.selected):not(:has(.pill.free)) {
   opacity: 0.5;
   cursor: not-allowed;
@@ -269,9 +265,11 @@
   0% {
     box-shadow: 0 0 0 0 var(--color-accent);
   }
+
   25% {
     box-shadow: 0 0 0 4px var(--color-accent);
   }
+
   100% {
     box-shadow: 0 0 0 0 var(--color-accent);
   }

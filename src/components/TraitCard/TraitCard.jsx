@@ -89,14 +89,13 @@ export function TraitCard({ trait, compact = false }) {
           <h4 className="flex1 name">
             {trait.name}
             {selectedOptionName && (
-              <span className={pillClass('selected-option')}>{selectedOptionName}</span>
+              <span className={'selected-option'}>{selectedOptionName}</span>
             )}
           </h4>
           <span className={pillClass('cost', displayCost === 0 && 'free')}>
             {getPointsLabel(displayCost)}
           </span>
         </div>
-        <div className="indicator"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M530.8 134.1C545.1 144.5 548.3 164.5 537.9 178.8L281.9 530.8C276.4 538.4 267.9 543.1 258.5 543.9C249.1 544.7 240 541.2 233.4 534.6L105.4 406.6C92.9 394.1 92.9 373.8 105.4 361.3C117.9 348.8 138.2 348.8 150.7 361.3L252.2 462.8L486.2 141.1C496.6 126.8 516.6 123.6 530.9 134z"/></svg></div>
       </div>
     );
   }
@@ -154,7 +153,7 @@ export function TraitCard({ trait, compact = false }) {
                   )}
                 </span>
                 {option.description && (
-                  <span className="option-desc">{option.description}</span>
+                  <span className="description">{option.description}</span>
                 )}
               </span>
             </label>
@@ -168,33 +167,11 @@ export function TraitCard({ trait, compact = false }) {
         </div>
       )}
       
-      {/* {trait.sizeRequirement && (
-        <span className={pillClass('size')}>
-          {trait.sizeRequirement} only
-        </span>
-      )} */}
-      
-      {trait.armorRestriction && (
+      {trait.restriction && (
         <span className={pillClass('restriction')}>
-          No medium/heavy armor
+          {trait.restriction.label}
         </span>
       )}
-      
-      <div className="indicator">
-        {selected ? (
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="16" height="16" fill="currentColor">
-            <path d="M530.8 134.1C545.1 144.5 548.3 164.5 537.9 178.8L281.9 530.8C276.4 538.4 267.9 543.1 258.5 543.9C249.1 544.7 240 541.2 233.4 534.6L105.4 406.6C92.9 394.1 92.9 373.8 105.4 361.3C117.9 348.8 138.2 348.8 150.7 361.3L252.2 462.8L486.2 141.1C496.6 126.8 516.6 123.6 530.9 134z"/>
-          </svg>
-        ) : disabled ? (
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="14" height="14" fill="currentColor">
-            <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3l105.4 105.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256l105.3-105.4z"/>
-          </svg>
-        ) : (
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="14" height="14" fill="currentColor">
-            <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32v144H48c-17.7 0-32 14.3-32 32s14.3 32 32 32h144v144c0 17.7 14.3 32 32 32s32-14.3 32-32V288h144c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
-          </svg>
-        )}
-      </div>
     </div>
   );
 }

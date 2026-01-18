@@ -1,7 +1,7 @@
 /* ===========================================
    Global Styles - Base Element Styling
    =========================================== */
-@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Cormorant:ital,wght@700&family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Pirata+One&family=Fira+Sans&family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap');
 
 html {
   font-size: 16px;
@@ -9,6 +9,8 @@ html {
 
 body {
   font-family: var(--font-body);
+  font-weight: 410;
+  /* font-variation-settings: 'opsz' 54; */
   font-size: var(--text-base);
   color: var(--color-ink-800);
   background-color: var(--color-parchment-100);
@@ -37,20 +39,18 @@ h1 {
   font-weight: 900;
   font-family: var(--font-display);
   font-size: var(--text-3xl);
-  text-transform: uppercase;
 }
 
 h2 {
   font-weight: 900;
   font-family: var(--font-heading);
   font-size: var(--text-2xl);
-  text-transform: uppercase;
 }
 
 h3 {
   font-family: var(--font-heading);
   font-size: var(--text-lg);
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 h4 {

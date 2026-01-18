@@ -56,53 +56,54 @@ export function TraitCategory({
               {pillText}
             </span>
           )}
-          {!isExpanded && hasSelectedTraits && (
+          {/* {!isExpanded && hasSelectedTraits && (
             <span className="pill count">{selectedTraits.length} selected</span>
-          )}
+          )} */}
         </div>
         <span className={`chevron ${isExpanded ? 'expanded' : ''}`}>
           ▼
         </span>
       </button>
+      <div className="trait-category-content">
+        {category.description && isExpanded && (
+          <p className="description">{category.description}</p>
+        )}
 
-      {category.description && isExpanded && (
-        <p className="description">{category.description}</p>
-      )}
+        {/* Show selected traits when collapsed */}
+        {!isExpanded && hasSelectedTraits && (
+          <div className="selected-traits">
+            {selectedTraits.map(trait => (
+              <TraitCard 
+                key={trait.id} 
+                trait={{
+                  ...trait,
+                  type: type,
+                  categoryId: categoryId,
+                  categoryName: category.name
+                }}
+                compact
+              />
+            ))}
+          </div>
+        )}
 
-      {/* Show selected traits when collapsed */}
-      {!isExpanded && hasSelectedTraits && (
-        <div className="selected-traits">
-          {selectedTraits.map(trait => (
-            <TraitCard 
-              key={trait.id} 
-              trait={{
-                ...trait,
-                type: type,
-                categoryId: categoryId,
-                categoryName: category.name
-              }}
-              compact
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Show all traits when expanded */}
-      {isExpanded && (
-        <div className="trait-list">
-          {category.traits?.map(trait => (
-            <TraitCard 
-              key={trait.id} 
-              trait={{
-                ...trait,
-                type: type,
-                categoryId: categoryId,
-                categoryName: category.name
-              }} 
-            />
-          ))}
-        </div>
-      )}
+        {/* Show all traits when expanded */}
+        {isExpanded && (
+          <div className="trait-list">
+            {category.traits?.map(trait => (
+              <TraitCard 
+                key={trait.id} 
+                trait={{
+                  ...trait,
+                  type: type,
+                  categoryId: categoryId,
+                  categoryName: category.name
+                }} 
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -165,51 +166,52 @@ export function CoreAttributeSection({
           ▼
         </span>
       </button>
+      <div className="trait-category-content">
+        {attribute.description && isExpanded && (
+          <p className="description">{attribute.description}</p>
+        )}
 
-      {attribute.description && isExpanded && (
-        <p className="description">{attribute.description}</p>
-      )}
+        {/* Show selected traits when collapsed */}
+        {!isExpanded && hasSelectedTraits && (
+          <div className="selected-traits">
+            {selectedTraits.map(trait => (
+              <TraitCard 
+                key={trait.id} 
+                trait={{
+                  ...trait,
+                  type: 'core',
+                  categoryId: attributeId,
+                  categoryName: attribute.name
+                }}
+                compact
+              />
+            ))}
+          </div>
+        )}
 
-      {/* Show selected traits when collapsed */}
-      {!isExpanded && hasSelectedTraits && (
-        <div className="selected-traits">
-          {selectedTraits.map(trait => (
-            <TraitCard 
-              key={trait.id} 
-              trait={{
-                ...trait,
-                type: 'core',
-                categoryId: attributeId,
-                categoryName: attribute.name
-              }}
-              compact
-            />
-          ))}
-        </div>
-      )}
+        {/* Show empty state when collapsed with no selections */}
+        {!isExpanded && !hasSelectedTraits && (
+          <div className="empty-state">No traits selected.</div>
+        )}
 
-      {/* Show empty state when collapsed with no selections */}
-      {!isExpanded && !hasSelectedTraits && (
-        <div className="empty-state">No traits selected.</div>
-      )}
-
-      {/* Show all traits when expanded */}
-      {isExpanded && (
-        <div className="trait-list">
-          {attribute.traits?.map(trait => (
-            <TraitCard 
-              key={trait.id} 
-              trait={{
-                ...trait,
-                type: 'core',
-                categoryId: attributeId,
-                categoryName: attribute.name
-              }}
-              compact={shouldShowCompact(trait)}
-            />
-          ))}
-        </div>
-      )}
+        {/* Show all traits when expanded */}
+        {isExpanded && (
+          <div className="trait-list">
+            {attribute.traits?.map(trait => (
+              <TraitCard 
+                key={trait.id} 
+                trait={{
+                  ...trait,
+                  type: 'core',
+                  categoryId: attributeId,
+                  categoryName: attribute.name
+                }}
+                compact={shouldShowCompact(trait)}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

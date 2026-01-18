@@ -1,7 +1,6 @@
 /* TraitCategory component styles */
 .category-trait {
   background: var(--color-parchment-100);
-  border: 0.125rem solid var(--color-heritage);
   border-radius: var(--radius-lg);
   overflow: hidden;
   /* Prevent break inside for masonry */
@@ -31,16 +30,14 @@
 }
 
 .category-trait > .header .name {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  /* font-size: var(--text-lg);
-  font-weight: 600; */
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
   color: rgba(255, 255, 255, 0.95);
   margin: 0;
 }
 
 /* Selected count pill - uses .pill.count from components.css */
-
 .category-trait .chevron {
   font-size: var(--text-base);
   color: var(--color-parchment-200);
@@ -52,14 +49,27 @@
   transform: rotate(180deg);
 }
 
+.trait-category-content {
+  background: var(--color-parchment-50);
+  border: 0.125rem solid var(--color-heritage);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+}
+
+.trait-category-content > .description {
+  margin-bottom: var(--space-1);
+}
+
 .category-trait > .description {
-  margin: var(--space-3) var(--space-3) 0;
   font-size: var(--text-base);
   color: var(--color-ink-900);
 }
 
 .category-trait .trait-list {
-  padding: var(--space-3);
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
@@ -67,8 +77,6 @@
 
 /* Selected traits shown when collapsed */
 .category-trait .selected-traits {
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-parchment-50);
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
@@ -77,7 +85,6 @@
 .category-trais:has(.empty-state) {}
 
 .category-trait .empty-state {
-  padding: var(--space-2) var(--space-3);
   color: var(--color-ink-400);
   font-style: italic;
   margin-top: 0.375rem;
@@ -116,7 +123,6 @@
 }
 
 /* Group count uses .pill.count.heritage from components.css */
-
 .heritage-group .group-name {
   font-family: var(--font-ui);
   font-size: var(--text-sm);
@@ -161,6 +167,10 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-heritage);
+}
+
+.at-budget .category-trait:not(:has(.selected)) > .header {
+  background: linear-gradient(135deg, var(--color-ink-400) 0%, var(--color-ink-500) 100%);
 }
 
 /* Culture category styling - use culture colors */

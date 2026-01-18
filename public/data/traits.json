@@ -32,42 +32,42 @@
           "name": "Powerful Build",
           "description": "You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.",
           "points": 1,
-          "sizeRequirement": "medium"
+          "requires": ["size-medium"]
         },
         {
           "id": "stout-build",
           "name": "Stout Build",
           "description": "If you would be slowed by heavy armor you can move as normal.",
           "points": 2,
-          "sizeRequirement": "medium"
+          "requires": ["size-medium"]
         },
         {
           "id": "reach",
           "name": "Reach",
           "description": "When you make a melee attack on your turn, your reach for it is 5 feet greater than normal.",
           "points": 5,
-          "sizeRequirement": "medium"
+          "requires": ["size-medium"]
         },
         {
           "id": "fury-of-small",
           "name": "Fury of the Small",
           "description": "When you damage a creature larger than you with an attack or a spell, you can cause the attack or spell to deal extra damage equal to your level. You regain use of this trait after a short rest.",
           "points": 1,
-          "sizeRequirement": "small"
+          "requires": ["size-small"]
         },
         {
           "id": "nimble",
           "name": "Nimble",
           "description": "You can move through the space of any creature that is of a size larger than yours.",
           "points": 2,
-          "sizeRequirement": "small"
+          "requires": ["size-small"]
         },
         {
           "id": "small-stealth",
           "name": "Small Stealth",
           "description": "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you.",
           "points": 2,
-          "sizeRequirement": "small"
+          "requires": ["size-small"]
         }
       ]
     },
@@ -411,7 +411,7 @@
           "name": "Swim Speed",
           "description": "You have a swim speed of 30 feet provided you are not wearing medium or heavy armor.",
           "points": 2,
-          "armorRestriction": "no-medium-heavy"
+          "restriction": { "type": "equipment", "label": "No medium/heavy armor" }
         },
         {
           "id": "defensive-feature",
@@ -470,7 +470,7 @@
           "description": "You have a flying speed equal to your walking speed. Cannot wear medium or heavy armor.",
           "points": 9,
           "excludes": ["glide", "limited-flight"],
-          "armorRestriction": "no-medium-heavy"
+          "restriction": { "type": "equipment", "label": "No medium/heavy armor" }
         }
       ]
     },
@@ -1354,7 +1354,7 @@
           "name": "Swim Speed",
           "description": "You have a swim speed of 30 feet provided you are not wearing medium or heavy armor.",
           "points": 2,
-          "armorRestriction": "no-medium-heavy"
+          "restriction": { "type": "equipment", "label": "No medium/heavy armor" }
         },
         {
           "id": "waterborne-skill-proficiency",

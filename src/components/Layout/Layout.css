@@ -7,9 +7,8 @@
 
 /* ── Header ─────────────────────────────── */
 .layout > .header {
-  background: linear-gradient(135deg, var(--color-ink-800) 0%, var(--color-ink-900) 100%);
+  background: linear-gradient(135deg, var(--color-ink-700) 0%, var(--color-ink-900) 100%);
   padding: var(--space-4) var(--space-8);
-  border-bottom: 3px solid var(--color-accent);
 }
 
 .layout .header-content {
@@ -29,17 +28,9 @@
 .layout .title {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
-  font-weight: 700;
-  color: var(--color-parchment-100);
-  margin: 0;
-  letter-spacing: 0.02em;
-}
-
-.layout .subtitle {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
+  font-weight: 600;
   color: var(--color-parchment-300);
-  margin: var(--space-1) 0 0;
+  margin: 0;
 }
 
 /* ── Sticky Toolbar ─────────────────────── */
@@ -256,7 +247,6 @@
   flex: 1;
 }
 
-
 .layout .section-header-controls {
   display: flex;
   flex-direction: row;
@@ -271,7 +261,6 @@
   color: var(--color-ink-500);
   margin-left: var(--space-2);
 }
-
 
 .layout .section-desc {
   font-size: var(--text-base);
@@ -316,6 +305,7 @@
 
 /* ── Responsive ─────────────────────────── */
 @media (max-width: 1366px) {
+
   .layout .heritage-grid,
   .layout .culture-grid {
     column-count: 2;
@@ -326,7 +316,7 @@
   .sticky-toolbar .toolbar-row {
     flex-wrap: wrap;
   }
-  
+
   .sticky-toolbar .toolbar-pills {
     order: 3;
     flex-basis: 100%;
@@ -334,13 +324,14 @@
     padding-top: var(--space-2);
     border-top: 1px solid var(--color-parchment-300);
   }
-  
+
   .sticky-toolbar.scrolled .toolbar-pills {
     display: none;
   }
 }
 
 @media (max-width: 900px) {
+
   .layout .heritage-grid,
   .layout .culture-grid {
     column-count: 1;
