@@ -74,6 +74,7 @@
     "speed": {
       "name": "Walking Speed",
       "description": "Your base walking speed is 30 feet. You can choose to increase this.",
+      "required": true,
       "traits": [
         {
           "id": "speed-base",

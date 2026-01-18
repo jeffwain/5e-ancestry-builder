@@ -5,14 +5,17 @@ export function TraitCard({ trait, compact = false }) {
   const { 
     toggleTrait, 
     isTraitSelected, 
-    canSelectTrait, 
+    canSelectTrait,
+    canDeselectTrait,
     selectedOptions, 
     setTraitOption 
   } = useCharacter();
   
   const selected = isTraitSelected(trait.id);
   const { canSelect, reason } = canSelectTrait(trait);
+  const { canDeselect, reason: lockedReason } = canDeselectTrait(trait);
   const disabled = !selected && !canSelect;
+  const locked = selected && !canDeselect; // Can't deselect (required category)
   const hasOptions = trait.options && trait.options.length > 0;
   const selectedOptionId = selectedOptions[trait.id];
 
@@ -59,6 +62,7 @@ export function TraitCard({ trait, compact = false }) {
     'card-trait',
     selected && 'selected',
     disabled && 'disabled',
+    locked && 'locked',
     trait.required && 'required',
     hasOptions && 'has-options',
     compact && 'compact'
@@ -84,6 +88,7 @@ export function TraitCard({ trait, compact = false }) {
         role="checkbox"
         aria-checked={selected}
         tabIndex={0}
+        title={trait.description}
       >
         <div className="header">
           <h4 className="flex1 name">
@@ -110,7 +115,7 @@ export function TraitCard({ trait, compact = false }) {
       aria-checked={selected}
       aria-disabled={disabled}
       tabIndex={disabled ? -1 : 0}
-      title={disabled ? reason : undefined}
+      title={disabled ? reason : locked ? lockedReason : undefined}
     >
       <div className="header">
         <h4 className="flex1 name">{trait.name}</h4>

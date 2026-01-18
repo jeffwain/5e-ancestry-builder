@@ -1,7 +1,7 @@
 /* TraitCard component styles */
 .card-trait {
   background: var(--color-parchment-50);
-  border: 0.0625rem solid oklch(from var(--color-heritage) l c h / 0.5);
+  border: 0.0625rem solid oklch(from var(--category-border) l c h / 0.5);
   border-radius: var(--radius-md);
   cursor: pointer;
   display: flex;
@@ -25,26 +25,35 @@
 
 .card-trait.selected {
   background-color: var(--color-card-bg-selected);
-  outline: 0.0625rem solid var(--color-heritage);
-  border-color: var(--color-heritage);
-  box-shadow: var(--shadow-sm), inset 0.1875rem 0 var(--color-heritage);
+  outline: 0.0625rem solid var(--category-border);
+  border-color: var(--category-border);
+  box-shadow: var(--shadow-sm), inset 0.1875rem 0 var(--category-border);
 }
 
 .card-trait.selected:hover,
 .card-trait.selected:focus-visible,
 .card-trait.selected:active {
-  box-shadow: var(--shadow-sm), inset 0.1875rem 0 var(--color-heritage);
+  box-shadow: var(--shadow-sm), inset 0.1875rem 0 var(--category-border);
 }
 
 .card-trait.disabled {
   background: var(--color-parchment-100);
   color: var(--color-ink-500);
-  cursor: not-allowed;
+  cursor: default;
 }
 
 .card-trait.disabled:hover {
   transform: none;
   box-shadow: none;
+}
+
+/* Locked state - selected but can't be deselected (required category) */
+.card-trait.locked {
+  cursor: default;
+}
+
+.card-trait.locked:hover {
+  box-shadow: var(--shadow-sm), inset 0.1875rem 0 var(--category-border);
 }
 
 .card-trait.required:not(:has(.option.selected)) {

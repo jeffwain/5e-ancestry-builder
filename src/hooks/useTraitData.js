@@ -94,6 +94,52 @@ export function useTraitData() {
     return Object.values(allTraits).filter(t => t.default === true);
   }, [allTraits]);
 
+  // Get all required categories (categories with required: true)
+  const requiredCategories = useMemo(() => {
+    if (!data) return [];
+    const required = [];
+    // Check core attributes
+    if (data.coreAttributes) {
+      for (const [catId, category] of Object.entries(data.coreAttributes)) {
+        if (category.required) {
+          required.push({
+            categoryId: catId,
+            categoryName: category.name,
+            type: 'core',
+            traitIds: category.traits?.map(t => t.id) || []
+          });
+        }
+      }
+    }
+    // Check heritage categories
+    if (data.heritage) {
+      for (const [catId, category] of Object.entries(data.heritage)) {
+        if (category.required) {
+          required.push({
+            categoryId: catId,
+            categoryName: category.name,
+            type: 'heritage',
+            traitIds: category.traits?.map(t => t.id) || []
+          });
+        }
+      }
+    }
+    // Check culture categories
+    if (data.culture) {
+      for (const [catId, category] of Object.entries(data.culture)) {
+        if (category.required) {
+          required.push({
+            categoryId: catId,
+            categoryName: category.name,
+            type: 'culture',
+            traitIds: category.traits?.map(t => t.id) || []
+          });
+        }
+      }
+    }
+    return required;
+  }, [data]);
+
   // Get all traits as a flat array (useful for searching)
   const allTraitsArray = useMemo(() => {
     return Object.values(allTraits);
@@ -124,17 +170,6 @@ export function useTraitData() {
         return {
           canSelect: false,
           reason: `Requires ${missingNames}`
-        };
-      }
-    }
-
-    // Check size requirement
-    if (trait.sizeRequirement) {
-      const requiredSizeId = `size-${trait.sizeRequirement}`;
-      if (!selectedTraitIds.includes(requiredSizeId)) {
-        return {
-          canSelect: false,
-          reason: `Requires ${trait.sizeRequirement} size`
         };
       }
     }
@@ -179,6 +214,7 @@ export function useTraitData() {
     allTraits,
     allTraitsArray,
     defaultTraits,
+    requiredCategories,
 
     // Helpers
     canSelectTrait,

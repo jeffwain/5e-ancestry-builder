@@ -5,7 +5,8 @@ const initialState = {
   selectedTraits: [],      // Array of full trait objects
   selectedOptions: {},     // Map of trait ID -> selected option ID (for traits with choices)
   loadedPrebuilt: null,    // Track which prebuilt was loaded
-  allTraits: {}            // Trait lookup map for getting names
+  allTraits: {},           // Trait lookup map for getting names
+  requiredCategories: []   // Categories that require at least one trait selected
 };
 
 // Action types
@@ -16,6 +17,7 @@ const ActionTypes = {
   LOAD_PREBUILT: 'LOAD_PREBUILT',
   SET_DEFAULTS: 'SET_DEFAULTS',
   SET_ALL_TRAITS: 'SET_ALL_TRAITS',
+  SET_REQUIRED_CATEGORIES: 'SET_REQUIRED_CATEGORIES',
   RESET: 'RESET'
 };
 
@@ -100,8 +102,19 @@ function characterReducer(state, action) {
       };
     }
 
+    case ActionTypes.SET_REQUIRED_CATEGORIES: {
+      return {
+        ...state,
+        requiredCategories: action.payload
+      };
+    }
+
     case ActionTypes.RESET: {
-      return { ...initialState, allTraits: state.allTraits };
+      return { 
+        ...initialState, 
+        allTraits: state.allTraits,
+        requiredCategories: state.requiredCategories
+      };
     }
 
     default:
@@ -110,8 +123,22 @@ function characterReducer(state, action) {
 }
 
 // Generate warnings based on current state (soft validation)
-function generateWarnings(selectedTraits, selectedOptions) {
+function generateWarnings(selectedTraits, selectedOptions, requiredCategories) {
   const warnings = [];
+  const selectedTraitIds = selectedTraits.map(t => t.id);
+
+  // Check required categories - must have at least one trait selected
+  for (const reqCat of requiredCategories) {
+    const hasSelection = reqCat.traitIds.some(id => selectedTraitIds.includes(id));
+    if (!hasSelection) {
+      warnings.push({
+        type: 'required-category',
+        severity: 'error',
+        categoryId: reqCat.categoryId,
+        message: `${reqCat.categoryName}: Select one`
+      });
+    }
+  }
   
   // Check for traits that require options but don't have one selected
   const traitsNeedingOptions = selectedTraits.filter(t => t.requiresOption && !selectedOptions[t.id]);
@@ -152,9 +179,6 @@ function generateWarnings(selectedTraits, selectedOptions) {
   );
   const cultureCount = cultureCategories.size;
 
-  // Check if size is selected
-  const hasSize = selectedTraits.some(t => t.id === 'size-medium' || t.id === 'size-small');
-
   // Over 16 points
   if (pointsSpent > 16) {
     warnings.push({
@@ -188,15 +212,6 @@ function generateWarnings(selectedTraits, selectedOptions) {
       type: 'culture-count',
       severity: 'warning',
       message: `You have traits from ${cultureCount} culture categories (2 recommended)`
-    });
-  }
-
-  // No size selected
-  if (!hasSize && selectedTraits.length > 0) {
-    warnings.push({
-      type: 'no-size',
-      severity: 'info',
-      message: 'Select a size (Medium or Small)'
     });
   }
 
@@ -258,8 +273,8 @@ export function CharacterProvider({ children }) {
   }, [state.selectedTraits]);
 
   const warnings = useMemo(() => 
-    generateWarnings(state.selectedTraits, state.selectedOptions),
-    [state.selectedTraits, state.selectedOptions]
+    generateWarnings(state.selectedTraits, state.selectedOptions, state.requiredCategories),
+    [state.selectedTraits, state.selectedOptions, state.requiredCategories]
   );
 
   // Get selected size
@@ -320,13 +335,37 @@ export function CharacterProvider({ children }) {
     dispatch({ type: ActionTypes.DESELECT_TRAIT, payload: traitId });
   }, []);
 
+  // Check if a trait can be deselected (not last in required category)
+  const canDeselectTrait = useCallback((trait) => {
+    // Find if this trait belongs to a required category
+    const reqCat = state.requiredCategories.find(cat => 
+      cat.traitIds.includes(trait.id)
+    );
+    if (!reqCat) return { canDeselect: true, reason: null };
+    // Count how many traits from this required category are currently selected
+    const selectedInCategory = reqCat.traitIds.filter(id => 
+      selectedTraitIds.includes(id)
+    );
+    // Can't deselect if it's the only one selected in a required category
+    if (selectedInCategory.length <= 1) {
+      return { 
+        canDeselect: false, 
+        reason: `${reqCat.categoryName} requires a selection` 
+      };
+    }
+    return { canDeselect: true, reason: null };
+  }, [selectedTraitIds, state.requiredCategories]);
+
   const toggleTrait = useCallback((trait) => {
     if (selectedTraitIds.includes(trait.id)) {
+      // Check if we can deselect
+      const { canDeselect } = canDeselectTrait(trait);
+      if (!canDeselect) return;
       dispatch({ type: ActionTypes.DESELECT_TRAIT, payload: trait.id });
     } else {
       dispatch({ type: ActionTypes.SELECT_TRAIT, payload: trait });
     }
-  }, [selectedTraitIds]);
+  }, [selectedTraitIds, canDeselectTrait]);
 
   const setTraitOption = useCallback((traitId, optionId) => {
     dispatch({ 
@@ -352,6 +391,10 @@ export function CharacterProvider({ children }) {
 
   const setAllTraits = useCallback((allTraits) => {
     dispatch({ type: ActionTypes.SET_ALL_TRAITS, payload: allTraits });
+  }, []);
+
+  const setRequiredCategories = useCallback((requiredCategories) => {
+    dispatch({ type: ActionTypes.SET_REQUIRED_CATEGORIES, payload: requiredCategories });
   }, []);
 
   // Export character as JSON
@@ -403,11 +446,13 @@ export function CharacterProvider({ children }) {
     loadPrebuilt,
     setDefaults,
     setAllTraits,
+    setRequiredCategories,
     reset,
     
     // Helpers
     isTraitSelected,
     canSelectTrait,
+    canDeselectTrait,
     exportAsJson
   };
 

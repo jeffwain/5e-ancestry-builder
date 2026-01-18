@@ -12,19 +12,26 @@ function AppContent() {
     prebuiltAncestries,
     allTraits,
     defaultTraits,
+    requiredCategories,
     loading, 
     error 
   } = useTraitData();
   
-  const { setDefaults, setAllTraits, selectedTraits } = useCharacter();
+  const { setDefaults, setAllTraits, setRequiredCategories, selectedTraits } = useCharacter();
   const [showSummary, setShowSummary] = useState(false);
 
-  // Set all traits for lookup when data loads
+  // Set all traits and required categories when data loads
   useEffect(() => {
     if (allTraits && Object.keys(allTraits).length > 0) {
       setAllTraits(allTraits);
     }
   }, [allTraits, setAllTraits]);
+
+  useEffect(() => {
+    if (requiredCategories?.length > 0) {
+      setRequiredCategories(requiredCategories);
+    }
+  }, [requiredCategories, setRequiredCategories]);
 
   // Auto-select default traits when data loads
   useEffect(() => {

@@ -6,11 +6,10 @@
   display: inline-flex;
   align-items: center;
   flex: 0 1 fit-content;
-  padding: 0.0625rem 0.375rem 0.125rem;
+  padding: 0 0.375rem 0.125rem;
   font-family: var(--font-ui);
   font-size: var(--text-xs);
-  font-weight: 400;
-  font-variation-settings: 'wdth' 5;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 2%;
   border-radius: var(--radius-sm);
@@ -161,4 +160,58 @@
 
 .pill-wrapper.block {
   display: block;
+}
+
+/* ── Buttons ────────────────────────────── */
+.btn {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: 0.4375rem var(--space-4) 0.5625rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.btn-primary {
+  background-color: var(--color-heritage);
+  color: var(--color-parchment-50);
+  border: 1px solid var(--color-heritage-dark);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-heritage-light);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-ink-700);
+  border: 1px solid var(--color-ink-500);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-parchment-200);
+  border-color: var(--color-ink-700);
+}
+
+.btn-small {
+  padding: 0.0625rem var(--space-2) 0.1875rem;
+}
+
+/* ── Form Elements ──────────────────────── */
+select {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-ink-500);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-parchment-50);
+  cursor: pointer;
+}
+
+select:hover {
+  border-color: var(--color-ink-700);
 }

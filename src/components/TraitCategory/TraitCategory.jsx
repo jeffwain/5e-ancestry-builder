@@ -115,7 +115,7 @@ export function CoreAttributeSection({
   expandSignal // { expanded: boolean, version: number } - triggers batch expand/collapse
 }) {
   const [isExpanded, setIsExpanded] = useState(true);
-  const { selectedTraitIds, selectedSize } = useCharacter();
+  const { selectedTraitIds, selectedSize, warnings } = useCharacter();
   const lastSignalVersion = useRef(expandSignal?.version ?? 0);
 
   // Respond to parent expand/collapse signal (only when version changes)
@@ -130,12 +130,17 @@ export function CoreAttributeSection({
   const selectedTraits = attribute.traits?.filter(t => selectedTraitIds.includes(t.id)) || [];
   const hasSelectedTraits = selectedTraits.length > 0;
 
-  // For sizeTraits section, check if trait's sizeRequirement matches selected size
+  // Check if this category has a required warning (nothing selected from required category)
+  const hasRequiredWarning = attribute.required && 
+    warnings.some(w => w.type === 'required-category' && w.categoryId === attributeId);
+
+  // For sizeTraits section, filter traits based on selected size
   const isSizeTraitsSection = attributeId === 'sizeTraits';
   const shouldShowCompact = (trait) => {
     // Only apply compact logic to sizeTraits section when a size is selected
-    if (isSizeTraitsSection && selectedSize && trait.sizeRequirement) {
-      return trait.sizeRequirement !== selectedSize;
+    if (isSizeTraitsSection && selectedSize && trait.requires?.length) {
+      const sizeReq = trait.requires.find(r => r.startsWith('size-'));
+      return sizeReq && sizeReq !== `size-${selectedSize}`;
     }
     return false;
   };
@@ -143,7 +148,8 @@ export function CoreAttributeSection({
   const categoryClass = [
     'category-trait',
     'core-attribute',
-    !isExpanded && 'collapsed'
+    !isExpanded && 'collapsed',
+    hasRequiredWarning && 'missing-required'
   ].filter(Boolean).join(' ');
 
   return (
