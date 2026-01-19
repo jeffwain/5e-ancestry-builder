@@ -6,9 +6,9 @@ import { TraitTooltip } from '../TraitTooltip';
 import './Layout.css';
 
 export function Layout({ 
-  coreAttributes,
-  heritageCategories, 
-  cultureCategories, 
+  coreSection,
+  heritageSection, 
+  cultureSection, 
   prebuiltAncestries,
   allTraits,
   onShowSummary 
@@ -178,7 +178,7 @@ export function Layout({
         {/* Core Attributes Section */}
         <section className="section">
           <div className="section-header flexrow">
-            <h2 className="section-title">Core Attributes</h2>
+            <h2 className="section-title">{coreSection?.name || 'Core Attributes'}</h2>
             <div className="section-header-controls">
               <button 
                 className="btn btn-secondary btn-small"
@@ -194,11 +194,11 @@ export function Layout({
               </button>
             </div>
           </div>
-          <p className="section-desc">
-            Choose your size (required), and optionally enhance your speed or darkvision.
-          </p>
+          {coreSection?.description && (
+            <p className="section-desc">{coreSection.description}</p>
+          )}
           <div className="core-grid">
-            {coreAttributes && Object.entries(coreAttributes).map(([attrId, attr]) => (
+            {coreSection?.categories && Object.entries(coreSection.categories).map(([attrId, attr]) => (
               <CoreAttributeSection 
                 key={attrId}
                 attribute={attr}
@@ -212,10 +212,7 @@ export function Layout({
         {/* Heritage Section */}
         <section className="section">
           <div className="section-header flexrow">
-            <h2 className="section-title">
-              Heritage Traits
-              <span className="section-limit">(max 2 categories)</span>
-            </h2>
+            <h2 className="section-title">{heritageSection?.name || 'Heritage Traits'}</h2>
             <div className="section-header-controls">
               <button 
                 className="btn btn-secondary btn-small"
@@ -231,11 +228,11 @@ export function Layout({
               </button>
             </div>
           </div>
-          <p className="section-desc">
-            Choose traits from up to 2 ancestry categories representing your physical heritage.
-          </p>
+          {heritageSection?.description && (
+            <p className="section-desc">{heritageSection.description}</p>
+          )}
           <div className="heritage-grid">
-            {heritageCategories && Object.entries(heritageCategories).map(([catId, category]) => (
+            {heritageSection?.categories && Object.entries(heritageSection.categories).map(([catId, category]) => (
               <TraitCategory
                 key={catId}
                 category={category}
@@ -250,10 +247,7 @@ export function Layout({
         {/* Culture Section */}
         <section className="section">
           <div className="section-header flexrow">
-            <h2 className="section-title">
-              Culture Traits
-              <span className="section-limit">(min 1, max 2 categories)</span>
-            </h2>
+            <h2 className="section-title">{cultureSection?.name || 'Culture Traits'}</h2>
             <div className="section-header-controls">
               <button 
                 className="btn btn-secondary btn-small"
@@ -269,11 +263,11 @@ export function Layout({
               </button>
             </div>
           </div>
-          <p className="section-desc">
-            Choose traits from 1-2 cultures representing your upbringing and training.
-          </p>
+          {cultureSection?.description && (
+            <p className="section-desc">{cultureSection.description}</p>
+          )}
           <div className="culture-grid">
-            {cultureCategories && Object.entries(cultureCategories).map(([catId, category]) => (
+            {cultureSection?.categories && Object.entries(cultureSection.categories).map(([catId, category]) => (
               <TraitCategory
                 key={catId}
                 category={category}

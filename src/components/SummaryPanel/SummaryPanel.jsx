@@ -1,5 +1,4 @@
 import { useCharacter } from '../../contexts/CharacterContext';
-import { TraitTooltip } from '../TraitTooltip';
 import './SummaryPanel.css';
 
 export function SummaryPanel({ isOpen, onClose }) {
@@ -56,17 +55,34 @@ export function SummaryPanel({ isOpen, onClose }) {
     return `${points} pts`;
   };
 
-  // Get display cost considering selected options
-  const getDisplayCost = (trait) => {
-    if (trait.options && trait.requiresOption) {
-      const optionId = selectedOptions[trait.id];
-      if (optionId) {
-        const opt = trait.options.find(o => o.id === optionId);
-        return opt?.points ?? 0;
+  // For traits with options, resolve to display the selected option as the trait
+  // Returns { name, description, points, categoryName } for display
+  const getDisplayTrait = (trait) => {
+    const hasOptionSelected = (trait.requiresOption || trait.hasOptions) && 
+      trait.options && 
+      selectedOptions[trait.id];
+    
+    if (hasOptionSelected) {
+      const option = trait.options.find(o => o.id === selectedOptions[trait.id]);
+      if (option) {
+        return {
+          id: trait.id,
+          name: option.name,
+          description: option.description || trait.description,
+          points: option.points ?? 0,
+          categoryName: trait.categoryName
+        };
       }
-      return 0;
     }
-    return trait.points ?? 0;
+    
+    // No option selected or not an option trait - return original
+    return {
+      id: trait.id,
+      name: trait.name,
+      description: trait.description,
+      points: trait.points ?? 0,
+      categoryName: trait.categoryName
+    };
   };
 
   if (!isOpen) return null;
@@ -75,7 +91,7 @@ export function SummaryPanel({ isOpen, onClose }) {
     <div className="panel-summary-overlay" onClick={onClose}>
       <div className="panel-summary" onClick={e => e.stopPropagation()}>
         <header className="header">
-          <h2 className="title">Character Summary</h2>
+          <h2 className="title">Ancestry Overview</h2>
           <button className="close-btn" onClick={onClose} aria-label="Close">
             ✕
           </button>
@@ -125,21 +141,22 @@ export function SummaryPanel({ isOpen, onClose }) {
                 <div className="trait-section">
                   <h3 className="section-title">Core Attributes</h3>
                   <ul className="trait-list">
-                    {coreTraits.map(trait => (
-                      <TraitTooltip 
-                        key={trait.id}
-                        trait={trait}
-                        selectedOptions={selectedOptions}
-                        className="pill-wrapper block"
-                      >
-                        <li className="trait-item">
-                          <span className="trait-name">{trait.name}</span>
-                          <span className={`pill cost ${getDisplayCost(trait) === 0 ? 'free' : ''}`}>
-                            {getPointsLabel(getDisplayCost(trait))}
-                          </span>
+                    {coreTraits.map(trait => {
+                      const display = getDisplayTrait(trait);
+                      return (
+                        <li key={trait.id} className="trait-card">
+                          <div className="trait-card-header">
+                            <div className="trait-card-info">
+                              <span className="trait-card-name">{display.name}</span>
+                            </div>
+                            <span className={`pill cost ${display.points === 0 ? 'free' : ''}`}>
+                              {getPointsLabel(display.points)}
+                            </span>
+                          </div>
+                          <p className="trait-card-description">{display.description}</p>
                         </li>
-                      </TraitTooltip>
-                    ))}
+                      );
+                    })}
                   </ul>
                 </div>
               )}
@@ -148,26 +165,25 @@ export function SummaryPanel({ isOpen, onClose }) {
                 <div className="trait-section">
                   <h3 className="section-title">Heritage Traits</h3>
                   <ul className="trait-list">
-                    {heritageTraits.map(trait => (
-                      <TraitTooltip 
-                        key={trait.id}
-                        trait={trait}
-                        selectedOptions={selectedOptions}
-                        className="pill-wrapper block"
-                      >
-                        <li className="trait-item">
-                          <div className="trait-info">
-                            <span className="trait-name">{trait.name}</span>
-                            {trait.categoryName && (
-                              <span className="trait-category">{trait.categoryName}</span>
-                            )}
+                    {heritageTraits.map(trait => {
+                      const display = getDisplayTrait(trait);
+                      return (
+                        <li key={trait.id} className="trait-card">
+                          <div className="trait-card-header">
+                            <div className="trait-card-info">
+                              <span className="trait-card-name">{display.name}</span>
+                              {display.categoryName && (
+                                <span className="trait-card-category">{display.categoryName}</span>
+                              )}
+                            </div>
+                            <span className={`pill cost ${display.points === 0 ? 'free' : ''}`}>
+                              {getPointsLabel(display.points)}
+                            </span>
                           </div>
-                          <span className={`pill cost ${getDisplayCost(trait) === 0 ? 'free' : ''}`}>
-                            {getPointsLabel(getDisplayCost(trait))}
-                          </span>
+                          <p className="trait-card-description">{display.description}</p>
                         </li>
-                      </TraitTooltip>
-                    ))}
+                      );
+                    })}
                   </ul>
                 </div>
               )}
@@ -176,26 +192,25 @@ export function SummaryPanel({ isOpen, onClose }) {
                 <div className="trait-section">
                   <h3 className="section-title">Culture Traits</h3>
                   <ul className="trait-list">
-                    {cultureTraits.map(trait => (
-                      <TraitTooltip 
-                        key={trait.id}
-                        trait={trait}
-                        selectedOptions={selectedOptions}
-                        className="pill-wrapper block"
-                      >
-                        <li className="trait-item">
-                          <div className="trait-info">
-                            <span className="trait-name">{trait.name}</span>
-                            {trait.categoryName && (
-                              <span className="trait-category">{trait.categoryName}</span>
-                            )}
+                    {cultureTraits.map(trait => {
+                      const display = getDisplayTrait(trait);
+                      return (
+                        <li key={trait.id} className="trait-card">
+                          <div className="trait-card-header">
+                            <div className="trait-card-info">
+                              <span className="trait-card-name">{display.name}</span>
+                              {display.categoryName && (
+                                <span className="trait-card-category">{display.categoryName}</span>
+                              )}
+                            </div>
+                            <span className={`pill cost ${display.points === 0 ? 'free' : ''}`}>
+                              {getPointsLabel(display.points)}
+                            </span>
                           </div>
-                          <span className={`pill cost ${getDisplayCost(trait) === 0 ? 'free' : ''}`}>
-                            {getPointsLabel(getDisplayCost(trait))}
-                          </span>
+                          <p className="trait-card-description">{display.description}</p>
                         </li>
-                      </TraitTooltip>
-                    ))}
+                      );
+                    })}
                   </ul>
                 </div>
               )}

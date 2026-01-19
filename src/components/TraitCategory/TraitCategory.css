@@ -12,6 +12,11 @@
   break-inside: avoid;
 }
 
+.at-budget .category-trait:not(:has(.selected)) > .header {
+  --category-background-light: var(--color-ink-300);
+  --category-background-dark: var(--color-ink-400);
+}
+
 /* Culture category styling - use culture colors */
 .category-trait.culture {
   --category-border: var(--color-culture);
@@ -237,8 +242,4 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-heritage);
-}
-
-.at-budget .category-trait:not(:has(.selected)) > .header {
-  background: linear-gradient(135deg, var(--category-background-light) 0%, var(--category-background-dark) 100%);
 }

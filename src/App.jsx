@@ -6,9 +6,9 @@ import { SummaryPanel } from './components/SummaryPanel';
 
 function AppContent() {
   const { 
-    coreAttributes,
-    heritageCategories, 
-    cultureCategories, 
+    coreSection,
+    heritageSection, 
+    cultureSection, 
     prebuiltAncestries,
     allTraits,
     defaultTraits,
@@ -78,9 +78,9 @@ function AppContent() {
   return (
     <>
       <Layout 
-        coreAttributes={coreAttributes}
-        heritageCategories={heritageCategories}
-        cultureCategories={cultureCategories}
+        coreSection={coreSection}
+        heritageSection={heritageSection}
+        cultureSection={cultureSection}
         prebuiltAncestries={prebuiltAncestries}
         allTraits={allTraits}
         onShowSummary={() => setShowSummary(true)}
