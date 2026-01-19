@@ -162,7 +162,6 @@ export function TraitCard({ trait, compact = false }) {
       
       <div className="description">
         <ReactMarkdown>{trait.description}</ReactMarkdown>
-      </div>
       
       {/* Options selection - shown when trait is selected */}
       {hasOptions && selected && (
@@ -213,6 +212,7 @@ export function TraitCard({ trait, compact = false }) {
           {trait.restriction.label}
         </span>
       )}
+      </div>
     </div>
   );
 }

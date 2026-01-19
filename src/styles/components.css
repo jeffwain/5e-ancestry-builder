@@ -215,6 +215,13 @@
 
 /* ── Buttons ────────────────────────────── */
 .btn {
+  --btn-bg: var(--color-heritage);
+  --btn-text: var(--color-parchment-50);
+  --btn-border: none;
+  --btn-icon-color: var(--color-parchment-50);
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: var(--btn-border);
   font-family: var(--font-ui);
   font-size: var(--text-sm);
   font-weight: 500;
@@ -225,12 +232,17 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
+  min-height: 2.25rem;
+}
+
+.btn svg {
+  fill: var(--btn-icon-color);
 }
 
 .btn-primary {
-  background-color: var(--color-heritage);
-  color: var(--color-parchment-50);
-  border: 1px solid var(--color-heritage-dark);
+  --btn-bg: var(--color-heritage);
+  --btn-text: var(--color-parchment-50);
+  --btn-border: 0.0625rem solid var(--color-heritage-dark);
 }
 
 .btn-primary:hover {
@@ -238,18 +250,34 @@
 }
 
 .btn-secondary {
-  background-color: transparent;
-  color: var(--color-ink-700);
-  border: 1px solid var(--color-ink-500);
+  --btn-bg: transparent;
+  --btn-text: var(--color-ink-700);
+  --btn-border: 0.0625rem solid var(--color-ink-500);
+  --btn-icon-color: var(--color-ink-700);
 }
 
-.btn-secondary:hover {
-  background-color: var(--color-parchment-200);
-  border-color: var(--color-ink-700);
+.btn-secondary:hover,
+.btn-secondary:focus-visible,
+.btn-secondary:active {
+  --btn-bg: var(--color-parchment-200);
+  --btn-border: 0.0625rem solid var(--color-ink-700);
 }
 
 .btn-small {
   padding: 0.0625rem var(--space-2) 0.1875rem;
+}
+
+.btn-icon-only {
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  /* width: 2.25rem; */
+}
+
+.btn-icon-only svg {
+  height: 1rem;
+  width: 1rem;
 }
 
 /* ── Form Elements ──────────────────────── */

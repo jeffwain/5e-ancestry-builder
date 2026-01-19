@@ -411,7 +411,7 @@
           {
             "id": "plane-strike",
             "name": "Plane Strike",
-            "summary": "When you damage a creature with an attack, deal extra damage of your attunement type equal to 1d4 × Proficiency Bonus. Usable PB times per long rest.",
+            "summary": "When you damage a creature with an attack, deal extra damage of your attunement type equal to 1d4&nbsp× Proficiency Bonus. Usable PB times per long rest.",
             "description": "When you damage a creature with an attack, you can cause the attack to deal extra damage of your planar attunement type equal to 1d4 per point of your Proficiency Bonus. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
             "points": 3,
             "requires": ["planar-attunement"]
@@ -493,7 +493,7 @@
             "id": "shifting",
             "name": "Shifting",
             "summary": "As bonus action, assume bestial form for 1 minute gaining temp HP. Choose: Beasthide (+AC), Swiftstride (+speed), or Wildhunt (advantage on Wisdom). PB uses per long rest.",
-            "description": "As a bonus action, you can assume a more bestial appearance for 1 minute, until you die, or until you revert to your normal form as a bonus action. You can shift a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. When you shift, you gain temporary hit points equal to 2 × your Proficiency Bonus, and an additional benefit chosen when you select this race:",
+            "description": "As a bonus action, you can assume a more bestial appearance for 1 minute, until you die, or until you revert to your normal form as a bonus action. You can shift a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. When you shift, you gain temporary hit points equal to 2&nbsp× your Proficiency Bonus, and an additional benefit chosen when you select this race:",
             "options": [
               {"id": "beasthide", "name": "Beasthide", "points": 7, "description": "You gain 1d6 additional temporary hit points. While shifted, you have a +1 bonus to your Armor Class."},
               {"id": "swiftstride", "name": "Swiftstride", "points": 7, "description": "While shifted, your walking speed increases by 10 feet. Additionally, you can move up to 10 feet as a reaction when a creature ends its turn within 5 feet of you. This reactive movement doesn't provoke opportunity attacks."},
@@ -566,8 +566,8 @@
           {
             "id": "defensive-feature",
             "name": "Defensive Feature",
-            "summary": "When grappled, deal 1d4 × PB damage (poison, piercing spines, or another type).",
-            "description": "When another creature [grapples]() you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4 × your Proficiency Bonus of the damage type chosen.",
+            "summary": "When grappled, deal 1d4&nbsp× PB damage (poison, piercing spines, or another type).",
+            "description": "When another creature [grapples]() you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4&nbsp× your Proficiency Bonus of the damage type chosen.",
             "options": [
               {"id": "poisonous", "name": "Poisonous", "points": 4, "description": "Poison"},
               {"id": "spines", "name": "Spines", "points": 4, "description": "Piercing"}
@@ -1231,7 +1231,7 @@
           {
             "id": "destructive-spell",
             "name": "Destructive Spell",
-            "summary": "When damaging with a spell, add 1d4 × PB to one target. PB uses per long rest.",
+            "summary": "When damaging with a spell, add 1d4&nbsp× PB to one target. PB uses per long rest.",
             "description": "When you damage a creature with a spell, you can cause the spell to deal extra damage equal to 1d4 per point of your Proficiency Bonus to a single target of the spell. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
             "points": 3
           },
@@ -1252,8 +1252,8 @@
           {
             "id": "skirmisher-cultural-skill",
             "name": "Cultural Skill",
-            "summary": "Choose: Combat Awareness (0) or Trap Master (1).",
-            "description": "Choose one:",
+            "summary": "Choose from the following abilities you gained from your upbringing.",
+            "description": "Choose one of the following abilities you gained from your upbringing.",
             "points": 0,
             "required": true,
             "hasOptions": true,
@@ -1279,15 +1279,15 @@
           {
             "id": "lethal-strike",
             "name": "Lethal Strike",
-            "summary": "Add 1d4 × PB damage to weapon attack. PB uses per long rest.",
+            "summary": "Add 1d4&nbsp× PB damage to weapon attack. PB uses per long rest.",
             "description": "When you damage a creature with a weapon attack, you can cause the attack to deal extra damage equal to 1d4 per point of your Proficiency Bonus. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
             "points": 3
           },
           {
             "id": "skilled-combatant",
             "name": "Skilled Combatant",
-            "summary": "Choose one: Adrenaline Rush, Charge, Ambush, or Nimble Escape.",
-            "description": "Choose one:",
+            "summary": "Choose from the following abilities you gained from your upbringing.",
+            "description": "Choose from the following abilities you gained from your upbringing.",
             "points": 0,
             "requiresOption": true,
             "options": [
@@ -1560,8 +1560,8 @@
             "summary": "Proficiency with crossbows or firearms, ignore loading, no long range disadvantage.",
             "description": "For all weapons of the type you select: gain proficiency with all weapons of that type, ignore the loading property, and firing at long range doesn't impose disadvantage on your attack roll.",
             "options": [
-              {"id": "crossbows", "name": "Crossbows", "points": 4, "description": ""},
-              {"id": "firearms", "name": "Firearms", "points": 4, "description": "This can only be taken if firearms exist in your world."}
+              {"id": "crossbows", "name": "Crossbow Expert", "points": 4, "description": ""},
+              {"id": "firearms", "name": "Firearms Expert", "points": 4, "description": "This can only be taken if firearms exist in your world."}
             ],
             "points": 0,
             "requiresOption": true

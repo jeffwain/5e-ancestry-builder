@@ -59,7 +59,7 @@ h4 {
 }
 
 p {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-2);
 }
 
 p:last-child {
@@ -82,6 +82,18 @@ a {
 
 a:hover {
   color: var(--color-heritage-light);
+}
+
+ul {
+  list-style: disc;
+}
+
+ul li {
+  margin-left: var(--space-4);
+}
+
+ul li::marker {
+  color: var(--category-background-light, var(--color-heritage));
 }
 
 /* ── Utility Classes ────────────────────── */

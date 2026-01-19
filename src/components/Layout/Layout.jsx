@@ -27,6 +27,9 @@ export function Layout({
   // Track scroll state for sticky bar and section headers
   const [isScrolled, setIsScrolled] = useState(false);
   const toolbarRef = useRef(null);
+  const coreSectionRef = useRef(null);
+  const heritageSectionRef = useRef(null);
+  const cultureSectionRef = useRef(null);
   const stickyOffset = 56; // ~3.5rem - where section headers stick
   
   useEffect(() => {
@@ -68,6 +71,26 @@ export function Layout({
     }));
   };
 
+  // View toggle state
+  const [traitsView, setTraitsView] = useState('card');
+
+  const toggleTraitsView = () => {
+    setTraitsView(prev => prev === 'list' ? 'card' : 'list');
+  };
+
+  // Scroll to top of a section
+  const scrollToSectionTop = useCallback((sectionRef) => {
+    if (sectionRef?.current) {
+      const toolbarHeight = toolbarRef.current?.offsetHeight || 60;
+      const elementTop = sectionRef.current.getBoundingClientRect().top + window.scrollY;
+      
+      window.scrollTo({
+        top: elementTop - toolbarHeight - 16,
+        behavior: 'smooth'
+      });
+    }
+  }, []);
+
   // Scroll to trait card when pill is clicked
   const scrollToTrait = useCallback((traitId) => {
     const traitElement = document.querySelector(`[data-trait-id="${traitId}"]`);
@@ -99,7 +122,7 @@ export function Layout({
           <PrebuiltSelector 
             prebuiltAncestries={prebuiltAncestries}
             allTraits={allTraits}
-          />
+          />            
         </div>
       </header>
       
@@ -151,7 +174,7 @@ export function Layout({
 
             {/* Warning Icon + Summary Button */}
             <div className="toolbar-actions">
-              {warnings.length > 0 && (
+              {/* {warnings.length > 0 && (
                 <div className="warning-indicator">
                   <span className="warning-icon">⚠</span>
                   <div className="warning-tooltip">
@@ -162,7 +185,19 @@ export function Layout({
                     ))}
                   </div>
                 </div>
-              )}
+              )} */}
+              <button
+                className="btn btn-secondary btn-icon-only btn-toggle toggle-traits-view"
+                onClick={toggleTraitsView}
+                data-view={traitsView}
+                aria-label={traitsView === 'list' ? 'Switch to list view' : 'Switch to card view'}
+                title={traitsView === 'list' ? 'Switch to list view' : 'Switch to card view'}
+                dangerouslySetInnerHTML={{
+                  __html: traitsView === 'list' 
+                    ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M96 160C96 124.7 124.7 96 160 96L480 96C515.3 96 544 124.7 544 160L544 480C544 515.3 515.3 544 480 544L160 544C124.7 544 96 515.3 96 480L96 160zM160 160L160 224L224 224L224 160L160 160zM480 160L288 160L288 224L480 224L480 160zM160 288L160 352L224 352L224 288L160 288zM480 288L288 288L288 352L480 352L480 288zM160 416L160 480L224 480L224 416L160 416zM480 416L288 416L288 480L480 480L480 416z"/></svg>'
+                    : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M480 160L352 160L352 288L480 288L480 160zM544 288L544 480C544 515.3 515.3 544 480 544L160 544C124.7 544 96 515.3 96 480L96 160C96 124.7 124.7 96 160 96L480 96C515.3 96 544 124.7 544 160L544 288zM160 352L160 480L288 480L288 352L160 352zM288 288L288 160L160 160L160 288L288 288zM352 352L352 480L480 480L480 352L352 352z"/></svg>'
+                }}
+              />
               <button 
                 className="btn btn-primary summary-btn"
                 onClick={onShowSummary}
@@ -174,30 +209,38 @@ export function Layout({
         </div>
       </div>
 
-      <main className={`main flexcol ${atBudget ? 'at-budget' : ''}`}>
+      <main className={`main flexcol ${atBudget ? 'at-budget' : ''} ${traitsView}-view`}>
         {/* Core Attributes Section */}
-        <section className="section">
+        <section ref={coreSectionRef} className="traits-section core-attributes">
           <div className="section-header flexrow">
             <h2 className="section-title">{coreSection?.name || 'Core Attributes'}</h2>
             <div className="section-header-controls">
+              <div class="flexrow flex1">
+                <button 
+                  className="btn btn-secondary btn-small"
+                  onClick={() => expandAll(setCoreSignal)}
+                >
+                  Expand all
+                </button>
+                <button 
+                  className="btn btn-secondary btn-small"
+                  onClick={() => collapseAll(setCoreSignal)}
+                >
+                  Collapse all
+                </button>
+              </div>
               <button 
                 className="btn btn-secondary btn-small"
-                onClick={() => expandAll(setCoreSignal)}
+                onClick={() => scrollToSectionTop(coreSectionRef)}
               >
-                Expand all
-              </button>
-              <button 
-                className="btn btn-secondary btn-small"
-                onClick={() => collapseAll(setCoreSignal)}
-              >
-                Collapse all
+                To top
               </button>
             </div>
           </div>
           {coreSection?.description && (
             <p className="section-desc">{coreSection.description}</p>
           )}
-          <div className="core-grid">
+          <div className="traits-grid">
             {coreSection?.categories && Object.entries(coreSection.categories).map(([attrId, attr]) => (
               <CoreAttributeSection 
                 key={attrId}
@@ -210,28 +253,36 @@ export function Layout({
         </section>
 
         {/* Heritage Section */}
-        <section className="section">
+        <section ref={heritageSectionRef} className="traits-section heritage-traits">
           <div className="section-header flexrow">
             <h2 className="section-title">{heritageSection?.name || 'Heritage Traits'}</h2>
             <div className="section-header-controls">
+              <div class="flexrow flex1">
+                <button 
+                  className="btn btn-secondary btn-small"
+                  onClick={() => expandAll(setHeritageSignal)}
+                >
+                  Expand all
+                </button>
+                <button 
+                  className="btn btn-secondary btn-small"
+                  onClick={() => collapseAll(setHeritageSignal)}
+                >
+                  Collapse all
+                </button>
+              </div>
               <button 
                 className="btn btn-secondary btn-small"
-                onClick={() => expandAll(setHeritageSignal)}
+                onClick={() => scrollToSectionTop(heritageSectionRef)}
               >
-                Expand all
-              </button>
-              <button 
-                className="btn btn-secondary btn-small"
-                onClick={() => collapseAll(setHeritageSignal)}
-              >
-                Collapse all
+                To top
               </button>
             </div>
           </div>
           {heritageSection?.description && (
             <p className="section-desc">{heritageSection.description}</p>
           )}
-          <div className="heritage-grid">
+          <div className="traits-grid">
             {heritageSection?.categories && Object.entries(heritageSection.categories).map(([catId, category]) => (
               <TraitCategory
                 key={catId}
@@ -245,28 +296,36 @@ export function Layout({
         </section>
 
         {/* Culture Section */}
-        <section className="section">
+        <section ref={cultureSectionRef} className="traits-section culture-traits">
           <div className="section-header flexrow">
             <h2 className="section-title">{cultureSection?.name || 'Culture Traits'}</h2>
             <div className="section-header-controls">
+              <div class="flexrow flex1">
+                <button 
+                  className="btn btn-secondary btn-small"
+                  onClick={() => expandAll(setCultureSignal)}
+                >
+                  Expand all
+                </button>
+                <button 
+                  className="btn btn-secondary btn-small"
+                  onClick={() => collapseAll(setCultureSignal)}
+                >
+                  Collapse all
+                </button>
+              </div>
               <button 
                 className="btn btn-secondary btn-small"
-                onClick={() => expandAll(setCultureSignal)}
+                onClick={() => scrollToSectionTop(cultureSectionRef)}
               >
-                Expand all
-              </button>
-              <button 
-                className="btn btn-secondary btn-small"
-                onClick={() => collapseAll(setCultureSignal)}
-              >
-                Collapse all
+                To top
               </button>
             </div>
           </div>
           {cultureSection?.description && (
             <p className="section-desc">{cultureSection.description}</p>
           )}
-          <div className="culture-grid">
+          <div className="traits-grid">
             {cultureSection?.categories && Object.entries(cultureSection.categories).map(([catId, category]) => (
               <TraitCategory
                 key={catId}
