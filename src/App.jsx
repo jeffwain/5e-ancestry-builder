@@ -13,11 +13,12 @@ function AppContent() {
     allTraits,
     defaultTraits,
     requiredCategories,
+    requiredTraits,
     loading, 
     error 
   } = useTraitData();
   
-  const { setDefaults, setAllTraits, setRequiredCategories, selectedTraits } = useCharacter();
+  const { setDefaults, setAllTraits, setRequiredCategories, setRequiredTraits, selectedTraits } = useCharacter();
   const [showSummary, setShowSummary] = useState(false);
 
   // Set all traits and required categories when data loads
@@ -32,6 +33,12 @@ function AppContent() {
       setRequiredCategories(requiredCategories);
     }
   }, [requiredCategories, setRequiredCategories]);
+
+  useEffect(() => {
+    if (requiredTraits && Object.keys(requiredTraits).length > 0) {
+      setRequiredTraits(requiredTraits);
+    }
+  }, [requiredTraits, setRequiredTraits]);
 
   // Auto-select default traits when data loads
   useEffect(() => {

@@ -6,7 +6,7 @@
   --font-display: 'New Spirit', 'Lapture', 'Modesto Condensed', 'Palatino Linotype', serif;
   --font-heading: 'Lapture', 'Source Serif 4', 'Palatino Linotype', serif;
   --font-body: 'Source Sans 3', 'Fira Sans', 'Cardo', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  --font-ui: 'Trade Gothic Next LT Pro Cn', 'Segoe UI', system-ui, sans-serif;
+  --font-ui: 'Trade Gothic Next LT Pro Cn', 'Barlow Condensed', 'Segoe UI', system-ui, sans-serif;
   --font-mono: 'Fira Code', 'Consolas', monospace;
   --text-xs: 0.8125rem;
   /* Min readable size */

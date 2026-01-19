@@ -1,7 +1,8 @@
 /* ===========================================
    Global Styles - Base Element Styling
    =========================================== */
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Pirata+One&family=Fira+Sans&family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap');
+/* TODO: Fix source sans 3 */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Pirata+One&family=Fira+Sans&family=Cardo:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap');
 
 html {
   font-size: 16px;
@@ -58,9 +59,7 @@ h4 {
   font-size: var(--text-base);
 }
 
-p {
-  margin-bottom: var(--space-2);
-}
+p {}
 
 p:last-child {
   margin-bottom: 0;

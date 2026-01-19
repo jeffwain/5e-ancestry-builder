@@ -151,6 +151,43 @@ export function useTraitData() {
     return required;
   }, [data]);
 
+  // Get map of required traits: traitId -> { categoryId, categoryName, type, traitIds }
+  // This tracks categories that have a requiredTrait property
+  const requiredTraits = useMemo(() => {
+    if (!data) return {};
+    const requiredTraitMap = {};
+
+    // Check heritage categories
+    if (data.heritage?.categories) {
+      for (const [catId, category] of Object.entries(data.heritage.categories)) {
+        if (category.requiredTrait) {
+          requiredTraitMap[category.requiredTrait] = {
+            categoryId: catId,
+            categoryName: category.name,
+            type: 'heritage',
+            traitIds: category.traits?.map(t => t.id) || []
+          };
+        }
+      }
+    }
+
+    // Check culture categories
+    if (data.culture?.categories) {
+      for (const [catId, category] of Object.entries(data.culture.categories)) {
+        if (category.requiredTrait) {
+          requiredTraitMap[category.requiredTrait] = {
+            categoryId: catId,
+            categoryName: category.name,
+            type: 'culture',
+            traitIds: category.traits?.map(t => t.id) || []
+          };
+        }
+      }
+    }
+
+    return requiredTraitMap;
+  }, [data]);
+
   // Get all traits as a flat array (useful for searching)
   const allTraitsArray = useMemo(() => {
     return Object.values(allTraits);
@@ -226,6 +263,7 @@ export function useTraitData() {
     allTraitsArray,
     defaultTraits,
     requiredCategories,
+    requiredTraits,
 
     // Helpers
     canSelectTrait,

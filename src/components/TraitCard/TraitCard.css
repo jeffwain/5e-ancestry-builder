@@ -331,16 +331,15 @@
   margin: 0;
 }
 
-.list-view .card-trait .description p {
+.card-trait .description p:not(:last-child) {
   margin-bottom: var(--space-2);
 }
 
-.list-view .card-trait .description > *:last-child {
+/* .list-view .card-trait .description > *:last-child {
   margin-bottom: 0;
-}
-
+} */
 .list-view .card-trait .description .restriction {
-  margin-top: 0;
+  margin-top: var(--space-2);
 }
 
 @media (max-width: 64rem) {

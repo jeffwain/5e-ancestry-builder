@@ -6,7 +6,8 @@ const initialState = {
   selectedOptions: {},     // Map of trait ID -> selected option ID (for traits with choices)
   loadedPrebuilt: null,    // Track which prebuilt was loaded
   allTraits: {},           // Trait lookup map for getting names
-  requiredCategories: []   // Categories that require at least one trait selected
+  requiredCategories: [],  // Categories that require at least one trait selected
+  requiredTraits: {}       // Map of traitId -> category info for traits required by their category
 };
 
 // Action types
@@ -18,6 +19,7 @@ const ActionTypes = {
   SET_DEFAULTS: 'SET_DEFAULTS',
   SET_ALL_TRAITS: 'SET_ALL_TRAITS',
   SET_REQUIRED_CATEGORIES: 'SET_REQUIRED_CATEGORIES',
+  SET_REQUIRED_TRAITS: 'SET_REQUIRED_TRAITS',
   RESET: 'RESET'
 };
 
@@ -109,11 +111,19 @@ function characterReducer(state, action) {
       };
     }
 
+    case ActionTypes.SET_REQUIRED_TRAITS: {
+      return {
+        ...state,
+        requiredTraits: action.payload
+      };
+    }
+
     case ActionTypes.RESET: {
       return { 
         ...initialState, 
         allTraits: state.allTraits,
-        requiredCategories: state.requiredCategories
+        requiredCategories: state.requiredCategories,
+        requiredTraits: state.requiredTraits
       };
     }
 
@@ -329,32 +339,70 @@ export function CharacterProvider({ children }) {
   // Actions
   const selectTrait = useCallback((trait) => {
     dispatch({ type: ActionTypes.SELECT_TRAIT, payload: trait });
-  }, []);
+    
+    // If this trait IS a required trait, nothing more to do
+    if (state.requiredTraits[trait.id]) {
+      return;
+    }
+    
+    // Check if this trait's category has a requiredTrait
+    const categoryId = trait.categoryId;
+    if (categoryId) {
+      // Find if any required trait belongs to this category
+      for (const [requiredTraitId, reqInfo] of Object.entries(state.requiredTraits)) {
+        if (reqInfo.categoryId === categoryId && !selectedTraitIds.includes(requiredTraitId)) {
+          // Auto-select the required trait
+          const requiredTrait = state.allTraits[requiredTraitId];
+          if (requiredTrait) {
+            dispatch({ type: ActionTypes.SELECT_TRAIT, payload: requiredTrait });
+          }
+          break;
+        }
+      }
+    }
+  }, [state.requiredTraits, state.allTraits, selectedTraitIds]);
 
   const deselectTrait = useCallback((traitId) => {
     dispatch({ type: ActionTypes.DESELECT_TRAIT, payload: traitId });
   }, []);
 
-  // Check if a trait can be deselected (not last in required category)
+  // Check if a trait can be deselected (not last in required category, or not required trait with other traits selected)
   const canDeselectTrait = useCallback((trait) => {
+    // Check if this trait is a required trait for its category
+    const reqTraitInfo = state.requiredTraits[trait.id];
+    if (reqTraitInfo) {
+      // This is a required trait - check if other traits from this category are selected
+      const otherTraitsInCategory = reqTraitInfo.traitIds.filter(id => id !== trait.id);
+      const hasOtherSelected = otherTraitsInCategory.some(id => selectedTraitIds.includes(id));
+      if (hasOtherSelected) {
+        // Can't deselect required trait if other traits from the category are selected
+        return {
+          canDeselect: false,
+          reason: `${reqTraitInfo.categoryName} requires this trait when other traits are selected`
+        };
+      }
+    }
+    
     // Find if this trait belongs to a required category
     const reqCat = state.requiredCategories.find(cat => 
       cat.traitIds.includes(trait.id)
     );
-    if (!reqCat) return { canDeselect: true, reason: null };
-    // Count how many traits from this required category are currently selected
-    const selectedInCategory = reqCat.traitIds.filter(id => 
-      selectedTraitIds.includes(id)
-    );
-    // Can't deselect if it's the only one selected in a required category
-    if (selectedInCategory.length <= 1) {
-      return { 
-        canDeselect: false, 
-        reason: `${reqCat.categoryName} requires a selection` 
-      };
+    if (reqCat) {
+      // Count how many traits from this required category are currently selected
+      const selectedInCategory = reqCat.traitIds.filter(id => 
+        selectedTraitIds.includes(id)
+      );
+      // Can't deselect if it's the only one selected in a required category
+      if (selectedInCategory.length <= 1) {
+        return { 
+          canDeselect: false, 
+          reason: `${reqCat.categoryName} requires a selection` 
+        };
+      }
     }
+    
     return { canDeselect: true, reason: null };
-  }, [selectedTraitIds, state.requiredCategories]);
+  }, [selectedTraitIds, state.requiredCategories, state.requiredTraits]);
 
   const toggleTrait = useCallback((trait) => {
     if (selectedTraitIds.includes(trait.id)) {
@@ -363,9 +411,9 @@ export function CharacterProvider({ children }) {
       if (!canDeselect) return;
       dispatch({ type: ActionTypes.DESELECT_TRAIT, payload: trait.id });
     } else {
-      dispatch({ type: ActionTypes.SELECT_TRAIT, payload: trait });
+      selectTrait(trait);
     }
-  }, [selectedTraitIds, canDeselectTrait]);
+  }, [selectedTraitIds, canDeselectTrait, selectTrait]);
 
   const setTraitOption = useCallback((traitId, optionId) => {
     dispatch({ 
@@ -395,6 +443,10 @@ export function CharacterProvider({ children }) {
 
   const setRequiredCategories = useCallback((requiredCategories) => {
     dispatch({ type: ActionTypes.SET_REQUIRED_CATEGORIES, payload: requiredCategories });
+  }, []);
+
+  const setRequiredTraits = useCallback((requiredTraits) => {
+    dispatch({ type: ActionTypes.SET_REQUIRED_TRAITS, payload: requiredTraits });
   }, []);
 
   // Export character as JSON
@@ -438,6 +490,7 @@ export function CharacterProvider({ children }) {
     selectedSize,
     warnings,
     allTraits: state.allTraits,
+    requiredTraits: state.requiredTraits,
     
     // Actions
     selectTrait,
@@ -448,6 +501,7 @@ export function CharacterProvider({ children }) {
     setDefaults,
     setAllTraits,
     setRequiredCategories,
+    setRequiredTraits,
     reset,
     
     // Helpers

@@ -328,10 +328,6 @@
   font-size: var(--text-sm);
 }
 
-.layout > .footer p {
-  margin: 0;
-}
-
 /* ── Responsive ─────────────────────────── */
 @media (max-width: 1366px) {
   .layout .card-view .traits-grid {
