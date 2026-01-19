@@ -362,18 +362,18 @@
             "required": true,
             "requiresOption": true,
             "options": [
-              {"id": "celestial-radiant", "name": "Celestial (Radiant)", "points": 2, "description": "Your innate spellcasting draws from the [cleric]() [spell list](). You are resistant to radiant damage."},
-              {"id": "celestial-necrotic", "name": "Celestial (Necrotic)", "points": 3, "description": "Your innate spellcasting draws from the [cleric]() [spell list](). You are resistant to necrotic damage."},
-              {"id": "fiend-cold", "name": "Fiend (Cold)", "points": 2, "description": "Your innate spellcasting draws from the [warlock]() [spell list](). You are resistant to cold damage."},
-              {"id": "fiend-fire", "name": "Fiend (Fire)", "points": 3, "description": "Your innate spellcasting draws from the [warlock]() [spell list](). You are resistant to fire damage."},
-              {"id": "fiend-lightning", "name": "Fiend (Lightning)", "points": 2, "description": "Your innate spellcasting draws from the [warlock]() [spell list](). You are resistant to lightning damage."}
+              {"id": "celestial-radiant", "name": "Celestial (Radiant)", "points": 2, "description": "Your innate spellcasting draws from the [Cleric]() [spell list](). You are resistant to radiant damage."},
+              {"id": "celestial-necrotic", "name": "Celestial (Necrotic)", "points": 3, "description": "Your innate spellcasting draws from the [Cleric]() [spell list](). You are resistant to necrotic damage."},
+              {"id": "fiend-cold", "name": "Fiend (Cold)", "points": 2, "description": "Your innate spellcasting draws from the [Warlock]() [spell list](). You are resistant to cold damage."},
+              {"id": "fiend-fire", "name": "Fiend (Fire)", "points": 3, "description": "Your innate spellcasting draws from the [Warlock]() [spell list](). You are resistant to fire damage."},
+              {"id": "fiend-lightning", "name": "Fiend (Lightning)", "points": 2, "description": "Your innate spellcasting draws from the [Warlock]() [spell list](). You are resistant to lightning damage."}
             ]
           },
           {
             "id": "planar-cantrip",
             "name": "Planar Cantrip",
             "summary": "You know one cantrip from the spell list matching your planar attunement.",
-            "description": "**Cantrip (2).** You know one cantrip from the spell list matching your planar attunement.",
+            "description": "You know one cantrip from the spell list matching your planar attunement.",
             "points": 2,
             "requires": ["planar-attunement"],
             "grants": ["spellcasting"]
@@ -382,7 +382,7 @@
             "id": "planar-magic",
             "name": "Planar Magic",
             "summary": "Starting at 3rd level, cast one 1st-level spell from your attunement's spell list.",
-            "description": "**Planar Magic (2).** Starting at 3rd level, you may cast one 1st-level spell chosen from the spell list matching your planar attunement.",
+            "description": "Starting at 3rd level, you may cast one 1st-level spell chosen from the spell list matching your planar attunement.",
             "points": 2,
             "requires": ["planar-attunement"],
             "grants": ["spellcasting"]
@@ -391,7 +391,7 @@
             "id": "greater-planar-magic",
             "name": "Greater Planar Magic",
             "summary": "Starting at 5th level, cast one 2nd-level spell from your attunement's spell list.",
-            "description": "**Greater Planar Magic (4).** Starting at 5th level, you may cast one 2nd-level spell chosen from the spell list matching your planar attunement.",
+            "description": "Starting at 5th level, you may cast one 2nd-level spell chosen from the spell list matching your planar attunement.",
             "points": 4,
             "requires": ["planar-magic"],
             "grants": ["spellcasting"]
@@ -400,7 +400,7 @@
             "id": "planar-power",
             "name": "Planar Power",
             "summary": "Damage matching your attunement ignores resistances. Immunity becomes resistance instead.",
-            "description": "**Planar Power (2).** Damage that you deal matching your attunement type ignores resistances. If a creature is immune to that damage type, it is resistant and takes half damage instead.",
+            "description": "Damage that you deal matching your attunement type ignores resistances. If a creature is immune to that damage type, it is resistant and takes half damage instead.",
             "options": [
               {"id": "celestial", "name": "Celestial", "points": 2, "description": "You cause it to regain hit points equal to 1d4 per point of your Proficiency Bonus."},
               {"id": "fiend", "name": "Fiend", "points": 2, "description": "You cause it to gain temporary hit points equal to 1d4 per point of your Proficiency Bonus."}
@@ -412,7 +412,7 @@
             "id": "plane-strike",
             "name": "Plane Strike",
             "summary": "When you damage a creature with an attack, deal extra damage of your attunement type equal to 1d4 × Proficiency Bonus. Usable PB times per long rest.",
-            "description": "**Plane Strike (3).** When you damage a creature with an attack, you can cause the attack to deal extra damage of your planar attunement type equal to 1d4 per point of your Proficiency Bonus. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
+            "description": "When you damage a creature with an attack, you can cause the attack to deal extra damage of your planar attunement type equal to 1d4 per point of your Proficiency Bonus. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
             "points": 3,
             "requires": ["planar-attunement"]
           },
@@ -1211,7 +1211,7 @@
             "id": "mage-cantrip",
             "name": "Cantrip",
             "summary": "Learn one cantrip from the Wizard spell list.",
-            "description": "You learn one cantrip of your choice from the [wizard]() [spell list]().",
+            "description": "You learn one cantrip of your choice from the [Wizard]() [spell list]().",
             "points": 2
           },
           {
@@ -1225,7 +1225,7 @@
             "id": "arcane-infusion",
             "name": "Arcane Infusion",
             "summary": "During long rest, infuse items with wizard cantrips. Maintain up to PB items.",
-            "description": "During a long rest, you can infuse a non-magical item with a cantrip from the [wizard]() [spell list](). You can maintain a number of these items equal to your Proficiency Bonus.",
+            "description": "During a long rest, you can infuse a non-magical item with a cantrip from the [Wizard]() [spell list](). You can maintain a number of these items equal to your Proficiency Bonus.",
             "points": 3
           },
           {

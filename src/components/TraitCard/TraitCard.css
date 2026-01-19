@@ -125,6 +125,20 @@
   padding-right: var(--space-8);
 }
 
+.card-trait .description a {
+  font-style: italic;
+  color: var(--category-background-light);
+}
+
+.card-trait .description a:hover,
+.card-trait .description a:focus-visible,
+.card-trait .description a:active {
+  color: var(--category-background-light-hover);
+  text-decoration: underline;
+  text-decoration-thickness: 0.125rem;
+  text-decoration-color: oklch(from var(--category-background-light) l c h);
+}
+
 .card-trait.disabled .description {
   color: var(--color-ink-400);
 }

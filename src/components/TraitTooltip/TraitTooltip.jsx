@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import './TraitTooltip.css';
 
 /**
@@ -112,7 +113,9 @@ export function TraitTooltip({
             </div>
           )}
           
-          <p className="tooltip-description">{trait.description}</p>
+          <div className="tooltip-description">
+            <ReactMarkdown>{trait.description}</ReactMarkdown>
+          </div>
           
           <div className="tooltip-meta">
             {trait.type && trait.type !== 'core' && (

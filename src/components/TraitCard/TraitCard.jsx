@@ -1,3 +1,4 @@
+import ReactMarkdown from 'react-markdown';
 import { useCharacter } from '../../contexts/CharacterContext';
 import { TraitTooltip } from '../TraitTooltip';
 import './TraitCard.css';
@@ -151,7 +152,9 @@ export function TraitCard({ trait, compact = false }) {
         </span>
       </div>
       
-      <p className="description">{trait.description}</p>
+      <div className="description">
+        <ReactMarkdown>{trait.description}</ReactMarkdown>
+      </div>
       
       {/* Options selection - shown when trait is selected */}
       {hasOptions && selected && (
@@ -182,7 +185,9 @@ export function TraitCard({ trait, compact = false }) {
                   )}
                 </span>
                 {option.description && (
-                  <span className="description">{option.description}</span>
+                  <span className="description">
+                    <ReactMarkdown>{option.description}</ReactMarkdown>
+                  </span>
                 )}
               </span>
             </label>

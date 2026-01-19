@@ -1,3 +1,4 @@
+import ReactMarkdown from 'react-markdown';
 import { useCharacter } from '../../contexts/CharacterContext';
 import './SummaryPanel.css';
 
@@ -153,7 +154,9 @@ export function SummaryPanel({ isOpen, onClose }) {
                               {getPointsLabel(display.points)}
                             </span>
                           </div>
-                          <p className="trait-card-description">{display.description}</p>
+                          <div className="trait-card-description">
+                            <ReactMarkdown>{display.description}</ReactMarkdown>
+                          </div>
                         </li>
                       );
                     })}
@@ -180,7 +183,9 @@ export function SummaryPanel({ isOpen, onClose }) {
                               {getPointsLabel(display.points)}
                             </span>
                           </div>
-                          <p className="trait-card-description">{display.description}</p>
+                          <div className="trait-card-description">
+                            <ReactMarkdown>{display.description}</ReactMarkdown>
+                          </div>
                         </li>
                       );
                     })}
@@ -207,7 +212,9 @@ export function SummaryPanel({ isOpen, onClose }) {
                               {getPointsLabel(display.points)}
                             </span>
                           </div>
-                          <p className="trait-card-description">{display.description}</p>
+                          <div className="trait-card-description">
+                            <ReactMarkdown>{display.description}</ReactMarkdown>
+                          </div>
                         </li>
                       );
                     })}
