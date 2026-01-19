@@ -39,17 +39,20 @@ export function TraitTooltip({
     return trait.points ?? 0;
   };
 
-  // Get selected option name if applicable
-  const getSelectedOptionName = () => {
+  // Get selected option object if applicable
+  const getSelectedOption = () => {
     if (trait.options && selectedOptions[trait.id]) {
-      const opt = trait.options.find(o => o.id === selectedOptions[trait.id]);
-      return opt?.name || null;
+      return trait.options.find(o => o.id === selectedOptions[trait.id]) || null;
     }
     return null;
   };
 
   const displayCost = getDisplayCost();
-  const selectedOptionName = getSelectedOptionName();
+  const selectedOption = getSelectedOption();
+  
+  // For option traits: show option name as title, trait name as source
+  const displayName = selectedOption ? selectedOption.name : trait.name;
+  const sourceTrait = selectedOption ? trait.name : null;
 
   // Position tooltip on show
   useEffect(() => {
@@ -101,20 +104,19 @@ export function TraitTooltip({
           }}
         >
           <div className="tooltip-header">
-            <span className="tooltip-name">{trait.name}</span>
+            <span className="tooltip-name">{displayName}</span>
             <span className={`pill dark ${displayCost === 0 ? 'free' : ''}`}>
               {displayCost === 0 ? 'Free' : `${displayCost} pt${displayCost !== 1 ? 's' : ''}`}
             </span>
           </div>
           
-          {selectedOptionName && (
-            <div className="tooltip-option">
-              <span className="option-label">Selected:</span> {selectedOptionName}
-            </div>
-          )}
+
           
           <div className="tooltip-description">
             <ReactMarkdown>{trait.description}</ReactMarkdown>
+            {selectedOption?.description && (
+              <ReactMarkdown>{selectedOption.description}</ReactMarkdown>
+            )}
           </div>
           
           <div className="tooltip-meta">
@@ -122,6 +124,10 @@ export function TraitTooltip({
               <span className={`pill type ${trait.type}`}>
                 {trait.categoryName && `${trait.categoryName} `}{trait.type.charAt(0).toUpperCase() + trait.type.slice(1)}
               </span>
+            )}
+            
+            {sourceTrait && (
+                <span className="pill type from-source">{sourceTrait}</span>
             )}
           </div>
         </div>

@@ -290,7 +290,7 @@ export function Layout({
 // Get the display label for a trait pill
 function getTraitPillLabel(trait, selectedOptions) {
   // For traits with options, show the selected option name if selected
-  if (trait.requiresOption && trait.options && selectedOptions[trait.id]) {
+  if (trait.options && selectedOptions[trait.id]) {
     const option = trait.options.find(o => o.id === selectedOptions[trait.id]);
     if (option) {
       return option.name;

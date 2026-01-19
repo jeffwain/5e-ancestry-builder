@@ -57,7 +57,7 @@ export function SummaryPanel({ isOpen, onClose }) {
   };
 
   // For traits with options, resolve to display the selected option as the trait
-  // Returns { name, description, points, categoryName } for display
+  // Returns { name, description, optionDescription, sourceTrait, points, categoryName } for display
   const getDisplayTrait = (trait) => {
     const hasOptionSelected = (trait.requiresOption || trait.hasOptions) && 
       trait.options && 
@@ -69,7 +69,9 @@ export function SummaryPanel({ isOpen, onClose }) {
         return {
           id: trait.id,
           name: option.name,
-          description: option.description || trait.description,
+          description: trait.description,
+          optionDescription: option.description || null,
+          sourceTrait: trait.name,
           points: option.points ?? 0,
           categoryName: trait.categoryName
         };
@@ -81,6 +83,8 @@ export function SummaryPanel({ isOpen, onClose }) {
       id: trait.id,
       name: trait.name,
       description: trait.description,
+      optionDescription: null,
+      sourceTrait: null,
       points: trait.points ?? 0,
       categoryName: trait.categoryName
     };
@@ -156,6 +160,12 @@ export function SummaryPanel({ isOpen, onClose }) {
                           </div>
                           <div className="trait-card-description">
                             <ReactMarkdown>{display.description}</ReactMarkdown>
+                            {display.optionDescription && (
+                              <ReactMarkdown>{display.optionDescription}</ReactMarkdown>
+                            )}
+                            {display.sourceTrait && (
+                              <span className="trait-card-source">From: {display.sourceTrait}</span>
+                            )}
                           </div>
                         </li>
                       );
@@ -175,7 +185,9 @@ export function SummaryPanel({ isOpen, onClose }) {
                           <div className="trait-card-header">
                             <div className="trait-card-info">
                               <span className="trait-card-name">{display.name}</span>
-                              {display.categoryName && (
+                              {display.sourceTrait ? (
+                                <span className="trait-card-source">From: {display.sourceTrait}</span>
+                              ) : display.categoryName && (
                                 <span className="trait-card-category">{display.categoryName}</span>
                               )}
                             </div>
@@ -186,6 +198,11 @@ export function SummaryPanel({ isOpen, onClose }) {
                           <div className="trait-card-description">
                             <ReactMarkdown>{display.description}</ReactMarkdown>
                           </div>
+                          {display.optionDescription && (
+                            <div className="trait-card-option-description">
+                              <ReactMarkdown>{display.optionDescription}</ReactMarkdown>
+                            </div>
+                          )}
                         </li>
                       );
                     })}
@@ -204,7 +221,9 @@ export function SummaryPanel({ isOpen, onClose }) {
                           <div className="trait-card-header">
                             <div className="trait-card-info">
                               <span className="trait-card-name">{display.name}</span>
-                              {display.categoryName && (
+                              {display.sourceTrait ? (
+                                <span className="trait-card-source">From: {display.sourceTrait}</span>
+                              ) : display.categoryName && (
                                 <span className="trait-card-category">{display.categoryName}</span>
                               )}
                             </div>
@@ -215,6 +234,11 @@ export function SummaryPanel({ isOpen, onClose }) {
                           <div className="trait-card-description">
                             <ReactMarkdown>{display.description}</ReactMarkdown>
                           </div>
+                          {display.optionDescription && (
+                            <div className="trait-card-option-description">
+                              <ReactMarkdown>{display.optionDescription}</ReactMarkdown>
+                            </div>
+                          )}
                         </li>
                       );
                     })}

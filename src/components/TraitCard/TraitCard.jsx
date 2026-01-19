@@ -77,10 +77,13 @@ export function TraitCard({ trait, compact = false }) {
     }
   }
 
-  // Get selected option name for compact view
-  const selectedOptionName = hasOptions && selectedOptionId 
-    ? trait.options.find(o => o.id === selectedOptionId)?.name 
+  // Get selected option for compact view
+  const selectedOption = hasOptions && selectedOptionId 
+    ? trait.options.find(o => o.id === selectedOptionId) 
     : null;
+  
+  // For compact view: show option name as main label if selected
+  const compactDisplayName = selectedOption ? selectedOption.name : trait.name;
 
   const cardClass = [
     'card-trait',
@@ -102,7 +105,7 @@ export function TraitCard({ trait, compact = false }) {
   const pillClass = (...modifiers) => 
     ['pill', ...modifiers.filter(Boolean)].join(' ');
 
-  // Compact view - just show name, selected option, and cost
+  // Compact view - show option name as primary label if selected
   if (compact) {
     return (
       <TraitTooltip trait={trait} selectedOptions={selectedOptions}>
@@ -115,16 +118,11 @@ export function TraitCard({ trait, compact = false }) {
           tabIndex={0}
         >
           <div className="header">
-            <h4 className="flex1 name">
-              {trait.name}
-              {selectedOptionName && (
-                <span className={'selected-option'}>{selectedOptionName}</span>
-              )}
-          </h4>
-          <span className={pillClass('cost', displayCost === 0 && 'free')}>
-            {getPointsLabel(displayCost)}
-          </span>
-        </div>
+            <h4 className="flex1 name">{compactDisplayName}</h4>
+            <span className={pillClass('cost', displayCost === 0 && 'free')}>
+              {getPointsLabel(displayCost)}
+            </span>
+          </div>
         </div>
       </TraitTooltip>
     );
