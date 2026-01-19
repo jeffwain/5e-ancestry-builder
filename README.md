@@ -1,6 +1,10 @@
 # 5E Ancestry Builder
 
-A custom ancestry builder for the 5th Edition tabletop role-playing game, allowing you to create unique characters using a point-buy system or pre-built ancestries.
+A custom ancestry (species) builder for D&D 5th Edition, allowing you to create unique ancestries using a point-buy system or pre-built templates.
+
+## Disclaimers
+
+This tool was built with the help of generative AI for overall functionality and testing. However, most of the refinement and styling has been done by hand. Without it I wouldn't have been able to build this tool on my own (yes, I've tried twice).
 
 ## Getting Started
 

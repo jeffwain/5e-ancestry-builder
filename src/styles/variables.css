@@ -90,8 +90,8 @@
   --sidebar-width: 320px;
   --header-height: 64px;
   /* ── Pill Colors ──────────────────────── */
-  --pill-bg-default: rgba(228, 219, 192, 1);
-  --pill-text-default: rgba(77, 69, 64, 1);
+  --pill-bg: var(--color-parchment-300);
+  --pill-text: var(--color-ink-700);
   --pill-bg-restricted: rgba(190, 40, 53, 0.16);
   --pill-text-restricted: rgba(133, 28, 37, 1);
   --pill-bg-required: rgba(184, 134, 11, 0.16);

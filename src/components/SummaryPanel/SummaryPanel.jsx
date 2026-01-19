@@ -7,9 +7,7 @@ export function SummaryPanel({ isOpen, onClose }) {
     selectedTraits, 
     selectedOptions,
     pointsSpent, 
-    heritageCount, 
-    cultureCount,
-    selectedSize,
+    ancestryName, 
     warnings,
     loadedPrebuilt,
     reset,
@@ -54,6 +52,10 @@ export function SummaryPanel({ isOpen, onClose }) {
     if (points === 0) return 'Free';
     if (points === 1) return '1 pt';
     return `${points} pts`;
+  };
+
+  const handleNameChange = (e) => {
+    // TODO: updateAncestryName(e.target.value);
   };
 
   // For traits with options, resolve to display the selected option as the trait
@@ -103,29 +105,22 @@ export function SummaryPanel({ isOpen, onClose }) {
         </header>
 
         <div className="content">
-          {loadedPrebuilt && (
-            <div className="prebuilt-pill">
-              Based on: {loadedPrebuilt}
-            </div>
-          )}
+          <div className="header-cards flexrow">
 
-          <div className="stats">
-            <div className="stat">
-              <span className="stat-value">{pointsSpent}</span>
-              <span className="stat-label">Points</span>
+            <div className="header-card card-points">
+              <span className="label">Points</span>
+              <span className="value">{pointsSpent} <span className="value-description">of 16</span></span>
             </div>
-            <div className="stat">
-              <span className="stat-value">{selectedSize || '—'}</span>
-              <span className="stat-label">Size</span>
+            <div className="header-card card-name flex1">
+              <span className="label">Name</span>
+              <input type="text" className="value" value={ancestryName} onChange={handleNameChange} />
             </div>
-            <div className="stat">
-              <span className="stat-value">{heritageCount}</span>
-              <span className="stat-label">Heritage</span>
-            </div>
-            <div className="stat">
-              <span className="stat-value">{cultureCount}</span>
-              <span className="stat-label">Culture</span>
-            </div>
+            {loadedPrebuilt && (
+              <div className="header-card card-prebuilt">
+                <span className="label">Based on</span>
+                <span className="value">{loadedPrebuilt}</span>
+              </div>
+            )}
           </div>
 
           {warnings.length > 0 && (
@@ -264,5 +259,5 @@ export function SummaryPanel({ isOpen, onClose }) {
         </footer>
       </div>
     </div>
-  );
+  );  
 }

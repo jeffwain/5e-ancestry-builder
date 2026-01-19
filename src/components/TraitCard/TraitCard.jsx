@@ -62,8 +62,11 @@ export function TraitCard({ trait, compact = false }) {
     }
   };
 
-  // Calculate display cost
+  // Calculate display cost (0 is valid, undefined/null/'' means no cost to show)
   let displayCost = trait.points;
+  if (trait.points === undefined || trait.points === null || trait.points === '') {
+    displayCost = null;
+  }
   if (hasOptions && trait.requiresOption) {
     if (selectedOptionId) {
       const opt = trait.options.find(o => o.id === selectedOptionId);
@@ -97,13 +100,26 @@ export function TraitCard({ trait, compact = false }) {
 
   const getPointsLabel = (points) => {
     if (points === 0) return 'Free';
+    if (!points || points === '') return null;
     if (points === 1) return <><span className="points">{points}</span>&nbsp;pt</>;
     return <><span className="points">{points}</span>&nbsp;pts</>;
   };
 
-  // Helper for pill classes
-  const pillClass = (...modifiers) => 
-    ['pill', ...modifiers.filter(Boolean)].join(' ');
+  // Render cost pill with appropriate styling
+  const renderCostPill = (cost, className = '') => {
+    // Don't render if cost is undefined/null/empty
+    if (cost === undefined || cost === null || cost === '') return (
+      
+      <span className={`pill pill-icon-only cost ${cost === 0 ? 'free' : ''} ${className}`}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"> /*Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.*/ <path d="M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"/></svg>
+      </span>
+    )
+    return (
+      <span className={`pill cost ${cost === 0 ? 'free' : ''} ${className}`}>
+        {getPointsLabel(cost)}
+      </span>
+    );
+  };
 
   // Compact view - show option name as primary label if selected
   if (compact) {
@@ -119,9 +135,7 @@ export function TraitCard({ trait, compact = false }) {
         >
           <div className="header">
             <h4 className="flex1 name">{compactDisplayName}</h4>
-            <span className={pillClass('cost', displayCost === 0 && 'free')}>
-              {getPointsLabel(displayCost)}
-            </span>
+            {renderCostPill(displayCost)}
           </div>
         </div>
       </TraitTooltip>
@@ -142,12 +156,8 @@ export function TraitCard({ trait, compact = false }) {
     >
       <div className="header">
         <h4 className="flex1 name">{trait.name}</h4>
-        {trait.required && (
-          <span className={pillClass('required')}>Required</span>
-        )}
-        <span className={pillClass('cost', displayCost === 0 && 'free')}>
-          {getPointsLabel(displayCost)}
-        </span>
+        {trait.required && <span className={`pill required`}>Required</span>}
+        {renderCostPill(displayCost)}
       </div>
       
       <div className="description">
@@ -176,11 +186,7 @@ export function TraitCard({ trait, compact = false }) {
               <span className="option-content-container">
                 <span className="option-content">
                   <span className="option-name">{option.name}</span>
-                  {option.points !== undefined && (
-                    <span className={pillClass('option-cost')}>
-                      {getPointsLabel(option.points)}
-                    </span>
-                  )}
+                    {renderCostPill(option.points, 'option-cost')}
                 </span>
                 {option.description && (
                   <span className="description">
@@ -203,7 +209,7 @@ export function TraitCard({ trait, compact = false }) {
       )}
       
       {trait.restriction && (
-        <span className={pillClass('restriction')}>
+        <span className={`pill restriction`}>
           {trait.restriction.label}
         </span>
       )}

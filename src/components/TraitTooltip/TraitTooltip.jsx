@@ -127,7 +127,7 @@ export function TraitTooltip({
             )}
             
             {sourceTrait && (
-                <span className="pill type from-source">{sourceTrait}</span>
+                <span className="pill type from-source">From {sourceTrait}</span>
             )}
           </div>
         </div>

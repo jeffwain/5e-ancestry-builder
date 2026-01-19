@@ -190,11 +190,11 @@
             "required": true,
             "requiresOption": true,
             "options": [
-              {"id": "air", "name": "Air", "points": 2, "description": "Resistance to lightning or thunder damage. Darkvision tinged white. Speak Primordial (Auran)."},
-              {"id": "earth", "name": "Earth", "points": 2, "description": "Know stone forming, manipulate earth, or blade ward cantrip (as bonus action PB/long rest). Speak Primordial (Terran)."},
-              {"id": "fire", "name": "Fire", "points": 3, "description": "Resistance to fire damage. Darkvision in red. Speak Primordial (Ignan)."},
-              {"id": "nature", "name": "Nature", "points": 2, "description": "Resistance to acid or poison damage. Darkvision brown/green. Speak Primordial (Giant)."},
-              {"id": "water", "name": "Water", "points": 2, "description": "Resistance to cold damage. Darkvision blue. Speak Primordial (Aquan)."}
+              {"id": "air", "name": "Air", "points": 2, "description": "You gain resistance to **lightning** or **thunder** damage. If you have Darkvision, your darkvision is tinged with wisps of white. You speak primordial (auran)."},
+              {"id": "earth", "name": "Earth", "points": 2, "description": "You know the [stone forming]() or [manipulate earth]() cantrips, or the [blade ward]() cantrip which can be cast normally or as a bonus action a number of times equal to your Proficiency Bonus per long rest. If you have Darkvision you see in a shade of your choice. You speak primordial (terran)."},
+              {"id": "fire", "name": "Fire", "points": 3, "description": "You gain resistance to **fire** damage. If you have Darkvision you see in shades of red. You speak primordial (ignan)."},
+              {"id": "nature", "name": "Nature", "points": 2, "description": "You gain resistance to **acid** or **poison** damage. If you have Darkvision you see in shades of brown or green. You speak primordial (giant)."},
+              {"id": "water", "name": "Water", "points": 2, "description": "You gain resistance to **cold** damage. If you have Darkvision you see in shades of blue. You speak primordial (aquan)."}
             ]
           },
           {
