@@ -52,8 +52,8 @@ export function Layout({
 
   // Expansion signals: { expanded: boolean, version: number }
   const [coreSignal, setCoreSignal] = useState({ expanded: true, version: 0 });
-  const [heritageSignal, setHeritageSignal] = useState({ expanded: true, version: 0 });
-  const [cultureSignal, setCultureSignal] = useState({ expanded: true, version: 0 });
+  const [heritageSignal, setHeritageSignal] = useState({ expanded: false, version: 0 });
+  const [cultureSignal, setCultureSignal] = useState({ expanded: false, version: 0 });
 
   // Expand all categories in a section
   const expandAll = (setSignal) => {

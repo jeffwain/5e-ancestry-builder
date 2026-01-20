@@ -296,14 +296,10 @@
   max-width: 700px;
 }
 
-.layout .traits-grid {
-  gap: var(--space-4);
-}
-
 /* Core attributes - single row */
 .layout .card-view .traits-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   column-count: 3;
   column-gap: var(--space-4);
 }
@@ -315,6 +311,7 @@
 .layout .list-view .traits-grid {
   display: flex;
   flex-direction: column;
+  gap: var(--space-4);
 }
 
 /* ── Footer ─────────────────────────────── */

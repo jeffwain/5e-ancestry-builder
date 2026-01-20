@@ -128,8 +128,8 @@
 }
 
 .category-trait.collapsed .trait-category-content:not(:has(*)) {
-  height: 0;
-  padding: 0;
+  /* height: 0;
+  padding: 0; */
   outline: none;
   border: none;
 }
@@ -163,83 +163,4 @@
   font-style: italic;
   margin-top: var(--space-2);
   margin-bottom: var(--space-2);
-}
-
-/* Heritage Group styles - subdued container for ancestry categories */
-.heritage-group {
-  background: var(--color-parchment-100);
-  border: 0.0625rem solid var(--color-parchment-400);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  /* Prevent break inside for masonry */
-  break-inside: avoid;
-}
-
-.heritage-group .group-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-2) var(--space-4);
-  background: var(--color-parchment-200);
-  border: none;
-  cursor: pointer;
-  transition: background var(--transition-fast);
-}
-
-.heritage-group .group-header:hover {
-  background: var(--color-parchment-300);
-}
-
-.heritage-group .group-header-right {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-/* Group count uses .pill.count.heritage from components.css */
-.heritage-group .group-name {
-  font-family: var(--font-ui);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-ink-600);
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.heritage-group .group-header .chevron {
-  color: var(--color-ink-500);
-}
-
-.heritage-group .group-content {
-  padding: var(--space-3);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  background: var(--color-parchment-50);
-}
-
-/* Collapsed group content - show selected traits summary */
-.heritage-group .group-collapsed-content {
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-parchment-50);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.heritage-group .collapsed-category {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-}
-
-.heritage-group .collapsed-category-name {
-  font-family: var(--font-ui);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-heritage);
 }

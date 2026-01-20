@@ -10,7 +10,7 @@ export function TraitCategory({
   showPill = true,
   expandSignal // { expanded: boolean, version: number } - triggers batch expand/collapse
 }) {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const { selectedTraitIds } = useCharacter();
   const lastSignalVersion = useRef(expandSignal?.version ?? 0);
 
@@ -62,7 +62,7 @@ export function TraitCategory({
         </span>
       </button>
       <div className="trait-category-content">
-        {category.description && isExpanded && (
+        {category.description &&  (
           <p className="description">{category.description}</p>
         )}
 
