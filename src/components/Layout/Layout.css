@@ -231,6 +231,17 @@
   /* Note: no overflow-y here - page scrolls via body, allows sticky headers to work */
 }
 
+.layout .main.list-view {
+  align-self: center;
+  max-width: 64rem;
+}
+
+.layout .main.list-view .section-header.stuck {
+  background-color: var(--color-parchment-100);
+  background-image: gradient(to right var(--color-parchment-100) 0%, var(--color-parchment-200) 150%);
+  box-shadow: none;
+}
+
 .layout .traits-section {
   margin-bottom: var(--space-8);
 }
@@ -296,10 +307,11 @@
   max-width: 700px;
 }
 
-/* Core attributes - single row */
+/* Masonry-style layout using CSS columns */
 .layout .card-view .traits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  /* Uncomment to use regular grid layout. */
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); */
   column-count: 3;
   column-gap: var(--space-4);
 }
