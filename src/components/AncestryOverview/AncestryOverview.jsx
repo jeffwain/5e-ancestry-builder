@@ -1,0 +1,176 @@
+import { useMemo } from 'react';
+import { useCharacter } from '../../contexts/CharacterContext';
+import { SummaryTraitCard, getDisplayTrait } from '../SummaryTraitCard';
+import './AncestryOverview.css';
+
+// Reusable ancestry overview content - used by both modal and page views
+export function AncestryOverview({
+  onReset,
+  onExport,
+  onCopy,
+  showHeader = true,
+  showFooter = true,
+  className = ''
+}) {
+  const {
+    selectedTraits,
+    selectedOptions,
+    pointsSpent,
+    ancestryName,
+    warnings,
+    loadedPrebuilt,
+    reset,
+    exportAsJson,
+    setAncestryName
+  } = useCharacter();
+
+  window.console.log('AncestryOverview - selectedTraits:', selectedTraits);
+  window.console.log('AncestryOverview - selectedOptions:', selectedOptions);
+
+  // Group selected traits by their type
+  const traitsByType = useMemo(() => {
+    const grouped = {};
+
+    selectedTraits.forEach(trait => {
+      const type = trait.type || 'unknown';
+      if (!grouped[type]) {
+        grouped[type] = {
+          name: type.charAt(0).toUpperCase() + type.slice(1) + ' Traits',
+          traits: []
+        };
+      }
+      grouped[type].traits.push(trait);
+    });
+
+    return Object.values(grouped);
+  }, [selectedTraits]);
+
+  const handleExport = () => {
+    if (onExport) {
+      onExport();
+      return;
+    }
+    const json = exportAsJson();
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `ancestry-${Date.now()}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleCopy = async () => {
+    if (onCopy) {
+      onCopy();
+      return;
+    }
+    const json = exportAsJson();
+    try {
+      await navigator.clipboard.writeText(json);
+      alert('Copied to clipboard!');
+    } catch {
+      alert('Failed to copy to clipboard');
+    }
+  };
+
+  const handleReset = () => {
+    if (onReset) {
+      onReset();
+      return;
+    }
+    if (confirm('Are you sure you want to reset? This will clear all selected traits.')) {
+      reset();
+    }
+  };
+
+  const handleNameChange = (e) => {
+    if (setAncestryName) {
+      setAncestryName(e.target.value);
+    }
+  };
+
+  const containerClass = ['ancestry-overview', className].filter(Boolean).join(' ');
+
+  return (
+    <div className={containerClass}>
+      {showHeader && (
+        <div className="overview-header-cards flexrow">
+          <div className="header-card card-points">
+            <span className="label">Points</span>
+            <span className="value">{pointsSpent} <span className="value-description">of 16</span></span>
+          </div>
+          <div className="header-card card-name flex1">
+            <span className="label">Name</span>
+            <input 
+              type="text" 
+              className="value" 
+              value={ancestryName} 
+              onChange={handleNameChange}
+              placeholder="Custom Ancestry"
+            />
+          </div>
+          {loadedPrebuilt && (
+            <div className="header-card card-prebuilt">
+              <span className="label">Based on</span>
+              <span className="value">{loadedPrebuilt}</span>
+            </div>
+          )}
+        </div>
+      )}
+
+      {warnings.length > 0 && (
+        <div className="overview-warnings">
+          {warnings.map((warning, i) => (
+            <div key={i} className={`warning ${warning.severity}`}>
+              {warning.severity === 'warning' ? '⚠' : 'ℹ'} {warning.message}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {selectedTraits.length === 0 ? (
+        <p className="overview-empty">No traits selected yet.</p>
+      ) : (
+        <div className="overview-trait-lists">
+          {console.log('traitsByType:', traitsByType)}
+          {traitsByType.map((typeGroup) => (
+            <div key={typeGroup.name} className="trait-section">
+              <h3 className="section-title">{typeGroup.name}</h3>
+              <div className="trait-list">
+                {typeGroup.traits.map(trait => {
+                  console.log('Rendering trait:', trait.id, trait.name, 'with options:', selectedOptions);
+                  return (
+                    <SummaryTraitCard
+                      key={trait.id}
+                      trait={getDisplayTrait(trait, selectedOptions)}
+                      showFooter={true}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {showFooter && (
+        <div className="overview-footer">
+          <button className="btn btn-secondary" onClick={handleReset}>
+            Reset
+          </button>
+          <div className="export-btns">
+            <button className="btn btn-secondary" onClick={handleCopy}>
+              Copy JSON
+            </button>
+            <button className="btn btn-primary" onClick={handleExport}>
+              Export JSON
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

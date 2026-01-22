@@ -27,6 +27,26 @@ body {
   flex-direction: column;
 }
 
+/* App structure */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-content {
+  flex: 1;
+}
+
+.app-footer {
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-ink-900);
+  color: var(--color-parchment-400);
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+}
+
 /* ── Typography ─────────────────────────── */
 h1,
 h2,
@@ -58,8 +78,6 @@ h4 {
   font-family: var(--font-heading);
   font-size: var(--text-base);
 }
-
-p {}
 
 p:last-child {
   margin-bottom: 0;

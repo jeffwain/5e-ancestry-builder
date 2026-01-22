@@ -134,6 +134,18 @@
   --pill-text: var(--color-ink-800);
 }
 
+/* Custom traits from prebuilt ancestries - not navigable */
+.pill.trait.custom {
+  cursor: default;
+  border-style: dashed;
+  --pill-bg: var(--color-parchment-100);
+}
+
+.pill.trait.custom:hover {
+  --pill-bg: var(--color-parchment-200);
+  border-color: var(--color-parchment-400);
+}
+
 /* ── Pills - Count Badges ───────────────── */
 .pill.count {
   font-weight: 600;

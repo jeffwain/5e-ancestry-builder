@@ -5,6 +5,7 @@ const initialState = {
   selectedTraits: [],      // Array of full trait objects
   selectedOptions: {},     // Map of trait ID -> selected option ID (for traits with choices)
   loadedPrebuilt: null,    // Track which prebuilt was loaded
+  ancestryName: '',        // Custom ancestry name
   allTraits: {},           // Trait lookup map for getting names
   requiredCategories: [],  // Categories that require at least one trait selected
   requiredTraits: {}       // Map of traitId -> category info for traits required by their category
@@ -20,6 +21,7 @@ const ActionTypes = {
   SET_ALL_TRAITS: 'SET_ALL_TRAITS',
   SET_REQUIRED_CATEGORIES: 'SET_REQUIRED_CATEGORIES',
   SET_REQUIRED_TRAITS: 'SET_REQUIRED_TRAITS',
+  SET_ANCESTRY_NAME: 'SET_ANCESTRY_NAME',
   RESET: 'RESET'
 };
 
@@ -82,7 +84,8 @@ function characterReducer(state, action) {
         ...state,
         selectedTraits: action.payload.traits,
         selectedOptions: action.payload.options || {},
-        loadedPrebuilt: action.payload.id
+        loadedPrebuilt: action.payload.id,
+        ancestryName: action.payload.name || state.ancestryName
       };
     }
 
@@ -115,6 +118,13 @@ function characterReducer(state, action) {
       return {
         ...state,
         requiredTraits: action.payload
+      };
+    }
+
+    case ActionTypes.SET_ANCESTRY_NAME: {
+      return {
+        ...state,
+        ancestryName: action.payload
       };
     }
 
@@ -422,15 +432,19 @@ export function CharacterProvider({ children }) {
     });
   }, []);
 
-  const loadPrebuilt = useCallback((prebuiltId, traits, options = {}) => {
+  const loadPrebuilt = useCallback((prebuiltId, traits, options = {}, name = '') => {
     dispatch({ 
       type: ActionTypes.LOAD_PREBUILT, 
-      payload: { id: prebuiltId, traits, options } 
+      payload: { id: prebuiltId, traits, options, name } 
     });
   }, []);
 
   const reset = useCallback(() => {
     dispatch({ type: ActionTypes.RESET });
+  }, []);
+
+  const setAncestryName = useCallback((name) => {
+    dispatch({ type: ActionTypes.SET_ANCESTRY_NAME, payload: name });
   }, []);
 
   const setDefaults = useCallback((defaultTraits) => {
@@ -478,6 +492,7 @@ export function CharacterProvider({ children }) {
     selectedTraits: state.selectedTraits,
     selectedOptions: state.selectedOptions,
     loadedPrebuilt: state.loadedPrebuilt,
+    ancestryName: state.ancestryName,
     
     // Computed
     pointsSpent,
@@ -502,6 +517,7 @@ export function CharacterProvider({ children }) {
     setAllTraits,
     setRequiredCategories,
     setRequiredTraits,
+    setAncestryName,
     reset,
     
     // Helpers

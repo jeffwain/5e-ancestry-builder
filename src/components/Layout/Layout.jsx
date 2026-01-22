@@ -1,41 +1,52 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useCharacter } from '../../contexts/CharacterContext';
-import { PrebuiltSelector } from '../PrebuiltSelector';
-import { TraitCategory, CoreAttributeSection } from '../TraitCategory';
+import { TraitCategory } from '../TraitCategory';
 import { TraitTooltip } from '../TraitTooltip';
+import { TraitSection } from '../TraitSection';
 import './Layout.css';
 
-export function Layout({ 
-  coreSection,
-  heritageSection, 
-  cultureSection, 
-  prebuiltAncestries,
-  allTraits,
-  onShowSummary 
+export function Layout({
+  sections,
+  onShowSummary
 }) {
-  const { 
-    pointsSpent, 
-    selectedTraits, 
+  const {
+    pointsSpent,
+    selectedTraits,
     selectedOptions,
-    warnings 
+    warnings,
+    allTraits
   } = useCharacter();
-  
+
   const atBudget = pointsSpent >= 16;
   const isOverBudget = pointsSpent > 16;
   const percentage = Math.min((pointsSpent / 16) * 100, 100);
-  
+
   // Track scroll state for sticky bar and section headers
   const [isScrolled, setIsScrolled] = useState(false);
   const toolbarRef = useRef(null);
-  const coreSectionRef = useRef(null);
-  const heritageSectionRef = useRef(null);
-  const cultureSectionRef = useRef(null);
   const stickyOffset = 56; // ~3.5rem - where section headers stick
-  
+
+  // Create refs and signals dynamically for each section
+  const sectionRefs = useRef({});
+  const [sectionSignals, setSectionSignals] = useState({});
+
+  // Initialize signals for each section based on settings
+  useEffect(() => {
+    if (sections.length > 0 && Object.keys(sectionSignals).length === 0) {
+      const initialSignals = {};
+      sections.forEach((section) => {
+        // Use expandCategories setting, default to false if not specified
+        const shouldExpand = section.settings?.expandCategories ?? false;
+        initialSignals[section.id] = { expanded: shouldExpand, version: 0 };
+      });
+      setSectionSignals(initialSignals);
+    }
+  }, [sections, sectionSignals]);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 60);
-      
+
       // Check if section headers are stuck - query DOM directly for reliability
       const headers = document.querySelectorAll('.layout .section-header');
       headers.forEach((header) => {
@@ -45,29 +56,30 @@ export function Layout({
         header.classList.toggle('stuck', isStuck);
       });
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Expansion signals: { expanded: boolean, version: number }
-  const [coreSignal, setCoreSignal] = useState({ expanded: true, version: 0 });
-  const [heritageSignal, setHeritageSignal] = useState({ expanded: false, version: 0 });
-  const [cultureSignal, setCultureSignal] = useState({ expanded: false, version: 0 });
-
   // Expand all categories in a section
-  const expandAll = (setSignal) => {
-    setSignal(prev => ({
-      expanded: true,
-      version: prev.version + 1
+  const expandAll = (sectionId) => {
+    setSectionSignals(prev => ({
+      ...prev,
+      [sectionId]: {
+        expanded: true,
+        version: (prev[sectionId]?.version || 0) + 1
+      }
     }));
   };
 
   // Collapse all categories in a section
-  const collapseAll = (setSignal) => {
-    setSignal(prev => ({
-      expanded: false,
-      version: prev.version + 1
+  const collapseAll = (sectionId) => {
+    setSectionSignals(prev => ({
+      ...prev,
+      [sectionId]: {
+        expanded: false,
+        version: (prev[sectionId]?.version || 0) + 1
+      }
     }));
   };
 
@@ -94,6 +106,7 @@ export function Layout({
   // Scroll to trait card when pill is clicked
   const scrollToTrait = useCallback((traitId) => {
     const traitElement = document.querySelector(`[data-trait-id="${traitId}"]`);
+    
     if (traitElement) {
       // Get toolbar height for offset
       const toolbarHeight = toolbarRef.current?.offsetHeight || 60;
@@ -114,18 +127,6 @@ export function Layout({
 
   return (
     <div className="layout">
-      <header className="header flexrow">
-        <div className="header-content flex1">
-          <h1 className="title">Custom Ancestry Builder</h1>
-        </div>
-        <div className="header-actions flexrow flexshrink">
-          <PrebuiltSelector 
-            prebuiltAncestries={prebuiltAncestries}
-            allTraits={allTraits}
-          />            
-        </div>
-      </header>
-      
       {/* Sticky Toolbar */}
       <div 
         ref={toolbarRef}
@@ -154,19 +155,27 @@ export function Layout({
             {/* Selected Trait Pills - Individual traits with tooltips */}
             <div className="toolbar-pills">
               <span className="pills-label">Traits</span>
-              {selectedTraits.map((trait) => (
-                <TraitTooltip
-                  key={trait.id}
-                  trait={trait}
-                  selectedOptions={selectedOptions}
-                  onClick={() => scrollToTrait(trait.id)}
-                  className="pill-wrapper"
-                >
-                  <span className="pill trait">
-                    {getTraitPillLabel(trait, selectedOptions)}
-                  </span>
-                </TraitTooltip>
-              ))}
+              {selectedTraits.map((trait) => {
+                // Check if trait exists in the main database (can be navigated to)
+                const isInDatabase = !!allTraits[trait.id];
+                const handleClick = isInDatabase 
+                  ? () => scrollToTrait(trait.id) 
+                  : undefined;
+                
+                return (
+                  <TraitTooltip
+                    key={trait.id}
+                    trait={trait}
+                    selectedOptions={selectedOptions}
+                    onClick={handleClick}
+                    className="pill-wrapper"
+                  >
+                    <span className={`pill trait ${!isInDatabase ? 'custom' : ''}`}>
+                      {getTraitPillLabel(trait, selectedOptions)}
+                    </span>
+                  </TraitTooltip>
+                );
+              })}
               {selectedTraits.length === 0 && (
                 <span className="no-pills">None selected</span>
               )}
@@ -210,138 +219,30 @@ export function Layout({
       </div>
 
       <main className={`main flexcol ${atBudget ? 'at-budget' : ''} ${traitsView}-view`}>
-        {/* Core Attributes Section */}
-        <section ref={coreSectionRef} className="traits-section core-attributes">
-          <div className="section-header flexrow">
-            <h2 className="section-title">{coreSection?.name || 'Core Attributes'}</h2>
-            <div className="section-header-controls">
-              <div class="flexrow flex1">
-                <button 
-                  className="btn btn-secondary btn-small"
-                  onClick={() => expandAll(setCoreSignal)}
-                >
-                  Expand all
-                </button>
-                <button 
-                  className="btn btn-secondary btn-small"
-                  onClick={() => collapseAll(setCoreSignal)}
-                >
-                  Collapse all
-                </button>
-              </div>
-              <button 
-                className="btn btn-secondary btn-small"
-                onClick={() => scrollToSectionTop(coreSectionRef)}
-              >
-                To top
-              </button>
-            </div>
-          </div>
-          {coreSection?.description && (
-            <p className="section-desc">{coreSection.description}</p>
-          )}
-          <div className="traits-grid">
-            {coreSection?.categories && Object.entries(coreSection.categories).map(([attrId, attr]) => (
-              <CoreAttributeSection 
-                key={attrId}
-                attribute={attr}
-                attributeId={attrId}
-                expandSignal={coreSignal}
-              />
-            ))}
-          </div>
-        </section>
+        {/* Dynamically render all sections */}
+        {sections.map((section) => {
+          // Create or get ref for this section
+          if (!sectionRefs.current[section.id]) {
+            sectionRefs.current[section.id] = { current: null };
+          }
 
-        {/* Heritage Section */}
-        <section ref={heritageSectionRef} className="traits-section heritage-traits">
-          <div className="section-header flexrow">
-            <h2 className="section-title">{heritageSection?.name || 'Heritage Traits'}</h2>
-            <div className="section-header-controls">
-              <div class="flexrow flex1">
-                <button 
-                  className="btn btn-secondary btn-small"
-                  onClick={() => expandAll(setHeritageSignal)}
-                >
-                  Expand all
-                </button>
-                <button 
-                  className="btn btn-secondary btn-small"
-                  onClick={() => collapseAll(setHeritageSignal)}
-                >
-                  Collapse all
-                </button>
-              </div>
-              <button 
-                className="btn btn-secondary btn-small"
-                onClick={() => scrollToSectionTop(heritageSectionRef)}
-              >
-                To top
-              </button>
-            </div>
-          </div>
-          {heritageSection?.description && (
-            <p className="section-desc">{heritageSection.description}</p>
-          )}
-          <div className="traits-grid">
-            {heritageSection?.categories && Object.entries(heritageSection.categories).map(([catId, category]) => (
-              <TraitCategory
-                key={catId}
-                category={category}
-                categoryId={catId}
-                type="heritage"
-                expandSignal={heritageSignal}
-              />
-            ))}
-          </div>
-        </section>
-
-        {/* Culture Section */}
-        <section ref={cultureSectionRef} className="traits-section culture-traits">
-          <div className="section-header flexrow">
-            <h2 className="section-title">{cultureSection?.name || 'Culture Traits'}</h2>
-            <div className="section-header-controls">
-              <div class="flexrow flex1">
-                <button 
-                  className="btn btn-secondary btn-small"
-                  onClick={() => expandAll(setCultureSignal)}
-                >
-                  Expand all
-                </button>
-                <button 
-                  className="btn btn-secondary btn-small"
-                  onClick={() => collapseAll(setCultureSignal)}
-                >
-                  Collapse all
-                </button>
-              </div>
-              <button 
-                className="btn btn-secondary btn-small"
-                onClick={() => scrollToSectionTop(cultureSectionRef)}
-              >
-                To top
-              </button>
-            </div>
-          </div>
-          {cultureSection?.description && (
-            <p className="section-desc">{cultureSection.description}</p>
-          )}
-          <div className="traits-grid">
-            {cultureSection?.categories && Object.entries(cultureSection.categories).map(([catId, category]) => (
-              <TraitCategory
-                key={catId}
-                category={category}
-                categoryId={catId}
-                type="culture"
-                expandSignal={cultureSignal}
-              />
-            ))}
-          </div>
-        </section>
+          return (
+            <TraitSection
+              key={section.id}
+              sectionRef={(el) => (sectionRefs.current[section.id].current = el)}
+              name={section.name}
+              type={section.id}
+              description={section.description}
+              categories={section.categories}
+              settings={section.settings}
+              expandSignal={sectionSignals[section.id]}
+              expandAll={() => expandAll(section.id)}
+              collapseAll={() => collapseAll(section.id)}
+              scrollToSectionTop={() => scrollToSectionTop(sectionRefs.current[section.id])}
+            />
+          );
+        })}
       </main>
-
-      <footer className="footer">
-        <p>5e Ancestry Builder — Point-buy character ancestry system</p>
-      </footer>
     </div>
   );
 }

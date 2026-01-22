@@ -1,0 +1,77 @@
+/* Ancestries Page */
+.ancestries-page {
+  padding: var(--space-6);
+}
+
+.ancestries-page .ancestries-content {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.ancestries-page .ancestries-header {
+  margin-bottom: var(--space-8);
+}
+
+.ancestries-page .ancestries-header h1 {
+  font-size: var(--text-2xl);
+  color: var(--color-ink-900);
+  margin-bottom: var(--space-2);
+}
+
+.ancestries-page .ancestries-header p {
+  color: var(--color-ink-600);
+  line-height: var(--leading-relaxed);
+  max-width: 700px;
+}
+
+/* Category sections */
+.ancestries-page .ancestry-category {
+  margin-bottom: var(--space-10);
+}
+
+.ancestries-page .category-header {
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-parchment-300);
+}
+
+.ancestries-page .category-header h2 {
+  font-size: var(--text-xl);
+  color: var(--color-heritage);
+  margin-bottom: var(--space-1);
+}
+
+.ancestries-page .category-desc {
+  font-size: var(--text-base);
+  color: var(--color-ink-600);
+}
+
+/* Ancestry grid - single column for readability */
+.ancestries-page .ancestry-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Loading / Error states */
+.ancestries-page .loading-message,
+.ancestries-page .error-message {
+  text-align: center;
+  padding: var(--space-8);
+  color: var(--color-ink-600);
+}
+
+.ancestries-page .error-message {
+  color: var(--color-error);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .ancestries-page {
+    padding: var(--space-4);
+  }
+
+  .ancestries-page .ancestries-header h1 {
+    font-size: var(--text-xl);
+  }
+}

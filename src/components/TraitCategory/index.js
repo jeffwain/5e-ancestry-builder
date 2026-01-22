@@ -1,1 +1,1 @@
-export { TraitCategory, CoreAttributeSection } from './TraitCategory';
+export { TraitCategory } from './TraitCategory';

@@ -28,31 +28,17 @@ export function useTraitData() {
     loadTraits();
   }, []);
 
-  // Core attributes section - has name, description, and categories as direct children
-  const coreSection = useMemo(() => {
-    if (!data?.coreAttributes) return null;
-    const { name, description, ...categories } = data.coreAttributes;
-    return { name, description, categories };
-  }, [data]);
+  // Dynamically build all sections from traitTypes
+  const sections = useMemo(() => {
+    if (!data?.traitTypes) return [];
 
-  // Heritage section - has name, description, and categories under .categories
-  const heritageSection = useMemo(() => {
-    if (!data?.heritage) return null;
-    return {
-      name: data.heritage.name,
-      description: data.heritage.description,
-      categories: data.heritage.categories || {}
-    };
-  }, [data]);
-
-  // Culture section - has name, description, and categories under .categories
-  const cultureSection = useMemo(() => {
-    if (!data?.culture) return null;
-    return {
-      name: data.culture.name,
-      description: data.culture.description,
-      categories: data.culture.categories || {}
-    };
+    return Object.entries(data.traitTypes).map(([typeId, type]) => ({
+      id: typeId,
+      name: type.name,
+      description: type.description,
+      categories: type.categories || {},
+      settings: type.settings || {}
+    }));
   }, [data]);
 
   // Flat map of ALL traits by ID for quick lookup
@@ -74,25 +60,14 @@ export function useTraitData() {
       }
     };
 
-    // Core attributes - categories are direct children (excluding name, description)
-    if (data.coreAttributes) {
-      const { name, description, ...categories } = data.coreAttributes;
-      for (const [catId, category] of Object.entries(categories)) {
-        addTraits(category.traits, catId, category.name, 'core');
-      }
-    }
-
-    // Heritage - categories are under .categories property
-    if (data.heritage?.categories) {
-      for (const [catId, category] of Object.entries(data.heritage.categories)) {
-        addTraits(category.traits, catId, category.name, 'heritage', category.label);
-      }
-    }
-
-    // Culture - categories are under .categories property
-    if (data.culture?.categories) {
-      for (const [catId, category] of Object.entries(data.culture.categories)) {
-        addTraits(category.traits, catId, category.name, 'culture');
+    // Load in all trait types and categories
+    if (data.traitTypes) {
+      for (const [typeId, type] of Object.entries(data.traitTypes)) {
+        if (type.categories) {
+          for (const [catId, category] of Object.entries(type.categories)) {
+            addTraits(category.traits, catId, category.name, type.name, category.label);
+          }
+        }
       }
     }
 
@@ -104,88 +79,46 @@ export function useTraitData() {
     return Object.values(allTraits).filter(t => t.default === true);
   }, [allTraits]);
 
-  // Get all required categories (categories with required: true)
-  const requiredCategories = useMemo(() => {
-    if (!data) return [];
-    const required = [];
-    // Check core attributes - categories are direct children
-    if (data.coreAttributes) {
-      const { name, description, ...categories } = data.coreAttributes;
-      for (const [catId, category] of Object.entries(categories)) {
-        if (category.required) {
-          required.push({
-            categoryId: catId,
-            categoryName: category.name,
-            type: 'core',
-            traitIds: category.traits?.map(t => t.id) || []
-          });
-        }
-      }
-    }
-    // Check heritage categories - under .categories property
-    if (data.heritage?.categories) {
-      for (const [catId, category] of Object.entries(data.heritage.categories)) {
-        if (category.required) {
-          required.push({
-            categoryId: catId,
-            categoryName: category.name,
-            type: 'heritage',
-            traitIds: category.traits?.map(t => t.id) || []
-          });
-        }
-      }
-    }
-    // Check culture categories - under .categories property
-    if (data.culture?.categories) {
-      for (const [catId, category] of Object.entries(data.culture.categories)) {
-        if (category.required) {
-          required.push({
-            categoryId: catId,
-            categoryName: category.name,
-            type: 'culture',
-            traitIds: category.traits?.map(t => t.id) || []
-          });
-        }
-      }
-    }
-    return required;
-  }, [data]);
+  // Get all required categories and required traits
+  const { requiredCategories, requiredTraits } = useMemo(() => {
+    if (!data) return { requiredCategories: [], requiredTraits: [] };
 
-  // Get map of required traits: traitId -> { categoryId, categoryName, type, traitIds }
-  // This tracks categories that have a requiredTrait property
-  const requiredTraits = useMemo(() => {
-    if (!data) return {};
-    const requiredTraitMap = {};
+    const requiredCategories = [];
+    const requiredTraits = [];
 
-    // Check heritage categories
-    if (data.heritage?.categories) {
-      for (const [catId, category] of Object.entries(data.heritage.categories)) {
-        if (category.requiredTrait) {
-          requiredTraitMap[category.requiredTrait] = {
-            categoryId: catId,
-            categoryName: category.name,
-            type: 'heritage',
-            traitIds: category.traits?.map(t => t.id) || []
-          };
+    // Loop through all trait types and categories
+    if (data.traitTypes) {
+      for (const [typeId, type] of Object.entries(data.traitTypes)) {
+        if (type.categories) {
+          for (const [catId, category] of Object.entries(type.categories)) {
+
+            // These are "required" categories that must have at least one trait selected
+            if (category.required) {
+              requiredCategories.push({
+                categoryId: catId,
+                categoryName: category.name,
+                type: typeId,
+                traitIds: category.traits?.map(t => t.id) || []
+              });
+            }
+
+            // These are "required traits" that must be selected within their category
+            // before other traits in the same category can be selected
+            if (category.requiredTrait) {
+              requiredTraits.push({
+                traitId: category.requiredTrait,
+                categoryId: catId,
+                categoryName: category.name,
+                type: typeId,
+                traitIds: category.traits?.map(t => t.id) || []
+              });
+            }
+          }
         }
       }
     }
 
-    // Check culture categories
-    if (data.culture?.categories) {
-      for (const [catId, category] of Object.entries(data.culture.categories)) {
-        if (category.requiredTrait) {
-          requiredTraitMap[category.requiredTrait] = {
-            categoryId: catId,
-            categoryName: category.name,
-            type: 'culture',
-            traitIds: category.traits?.map(t => t.id) || []
-          };
-        }
-      }
-    }
-
-    return requiredTraitMap;
+    return { requiredCategories, requiredTraits };
   }, [data]);
 
   // Get all traits as a flat array (useful for searching)
@@ -254,10 +187,8 @@ export function useTraitData() {
   };
 
   return {
-    // Section data (name, description, categories)
-    coreSection,
-    heritageSection,
-    cultureSection,
+    // Section data - all sections dynamically loaded
+    sections,
     prebuiltAncestries: data?.prebuiltAncestries || [],
     allTraits,
     allTraitsArray,

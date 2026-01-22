@@ -1,4 +1,4 @@
-/* SummaryPanel component styles */
+/* SummaryPanel - Modal wrapper for AncestryOverview */
 .panel-summary-overlay {
   position: fixed;
   inset: 0;
@@ -12,13 +12,8 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .panel-summary {
@@ -38,14 +33,14 @@
     opacity: 0;
     transform: scale(0.95);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
-.panel-summary .header {
+/* Modal Header */
+.panel-summary > .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -81,246 +76,14 @@
   color: var(--color-parchment-100);
 }
 
+/* Modal Content Area */
 .panel-summary .content {
   flex: 1;
   padding: var(--space-6);
   overflow-y: auto;
 }
 
-.panel-summary .prebuilt-pill {
-  font-family: var(--font-ui);
-  font-size: var(--text-sm);
-  color: var(--color-culture);
-  background: var(--color-culture-bg);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
-  margin-bottom: var(--space-4);
-}
-
-.panel-summary .header-cards {
-  gap: var(--space-4);
-}
-
-.panel-summary .header-card {
-  align-items: flex-start;
-  background: var(--color-parchment-200);
-  border-radius: var(--radius-md);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
-  padding: var(--space-4) var(--space-8);
-}
-
-.panel-summary .header-card.card-name {
-  padding: var(--space-4) var(--space-6);
-  position: relative;
-}
-
-.panel-summary .header-card input {
-  background: none;
-  border-radius: var(--radius-md);
-  border: none;
-  color: var(--color-ink-800);
-  font-size: var(--text-xl);
-  padding: 1.5rem var(--space-6) 0;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.panel-summary .header-card input:focus {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 0;
-}
-
-.panel-summary .header-card.card-points .value {
-  margin-right: 0.125rem;
-}
-
-.panel-summary .value {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 600;
-  color: var(--color-heritage);
-}
-
-.panel-summary .value-description {
-  color: var(--color-ink-400);
-  font-size: var(--text-base);
-}
-
-.panel-summary .label {
-  font-family: var(--font-ui);
-  font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-ink-500);
-}
-
-.panel-summary .warnings {
-  margin-bottom: var(--space-4);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.panel-summary .warning {
-  font-family: var(--font-ui);
-  font-size: var(--text-sm);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
-}
-
-.panel-summary .warning.warning {
-  color: var(--color-warning);
-  background: var(--color-warning-bg);
-}
-
-.panel-summary .warning.info {
-  color: var(--color-culture);
-  background: var(--color-culture-bg);
-}
-
-.panel-summary .empty {
-  text-align: center;
-  color: var(--color-ink-500);
-  font-style: italic;
-  padding: var(--space-8) 0;
-}
-
-.panel-summary .trait-lists {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-6);
-}
-
-.panel-summary .trait-section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.panel-summary .section-title {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 600;
-  color: var(--color-ink-800);
-  margin: 0;
-  padding-bottom: var(--space-2);
-  border-bottom: 2px solid var(--color-parchment-400);
-}
-
-.panel-summary .trait-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* Full trait card display */
-.panel-summary .trait-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-4);
-  background: var(--color-parchment-100);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-parchment-300);
-}
-
-.panel-summary .trait-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--space-2);
-}
-
-.panel-summary .trait-card-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.panel-summary .trait-card-name {
-  font-family: var(--font-heading);
-  font-size: var(--text-base);
-  font-weight: 600;
-  color: var(--color-ink-900);
-}
-
-.panel-summary .trait-card-category {
-  font-family: var(--font-ui);
-  font-size: var(--text-xs);
-  color: var(--color-ink-500);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.panel-summary .trait-card-source {
-  font-family: var(--font-ui);
-  font-size: var(--text-xs);
-  color: var(--color-ink-500);
-}
-
-.panel-summary .trait-card-description {
-  font-size: var(--text-sm);
-  color: var(--color-ink-700);
-  line-height: 1.5;
-}
-
-.panel-summary .trait-card-option-description {
-  font-size: var(--text-sm);
-  color: var(--color-ink-700);
-  line-height: 1.5;
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-parchment-200);
-  border-radius: var(--radius-sm);
-  border-left: 2px solid var(--color-accent-500);
-}
-
-/* Legacy styles for backwards compatibility */
-.panel-summary .trait-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-parchment-100);
-  border-radius: var(--radius-sm);
-  border: 1px solid transparent;
-  transition: all var(--transition-fast);
-}
-
-.panel-summary .pill-wrapper:hover .trait-item {
-  background: var(--color-parchment-200);
-  border-color: var(--color-parchment-400);
-}
-
-.panel-summary .trait-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.panel-summary .trait-name {
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  color: var(--color-ink-800);
-}
-
-.panel-summary .trait-category {
-  font-family: var(--font-ui);
-  font-size: var(--text-xs);
-  color: var(--color-ink-500);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
+/* Modal Footer */
 .panel-summary .footer {
   display: flex;
   justify-content: space-between;
@@ -334,4 +97,13 @@
 .panel-summary .export-btns {
   display: flex;
   gap: var(--space-2);
+}
+
+/* AncestryOverview overrides for modal context */
+.panel-summary .ancestry-overview .header-card {
+  margin-bottom: var(--space-4);
+}
+
+.panel-summary .ancestry-overview .summary-trait-card {
+  background: var(--color-parchment-100);
 }

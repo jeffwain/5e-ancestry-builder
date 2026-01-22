@@ -127,6 +127,7 @@ export function TraitCard({ trait, compact = false }) {
       <TraitTooltip trait={trait} selectedOptions={selectedOptions}>
         <div
           className={cardClass}
+          data-trait-id={trait.id}
           onClick={handleClick}
           onKeyDown={handleKeyDown}
           role="checkbox"

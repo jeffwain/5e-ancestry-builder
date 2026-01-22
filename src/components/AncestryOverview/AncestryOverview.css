@@ -1,0 +1,167 @@
+/* AncestryOverview - Reusable ancestry overview content */
+.ancestry-overview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Header Cards */
+.ancestry-overview .overview-header-cards {
+  gap: var(--space-4);
+}
+
+.ancestry-overview .header-card {
+  align-items: flex-start;
+  background: var(--color-parchment-200);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-8);
+}
+
+.ancestry-overview .header-card.card-name {
+  padding: var(--space-4) var(--space-6);
+  position: relative;
+}
+
+.ancestry-overview .header-card input {
+  background: none;
+  border-radius: var(--radius-md);
+  border: none;
+  color: var(--color-ink-800);
+  font-size: var(--text-xl);
+  padding: 1.5rem var(--space-6) 0;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ancestry-overview .header-card input:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 0;
+}
+
+.ancestry-overview .header-card.card-points .value {
+  margin-right: 0.125rem;
+}
+
+.ancestry-overview .value {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-heritage);
+}
+
+.ancestry-overview .value-description {
+  color: var(--color-ink-400);
+  font-size: var(--text-base);
+}
+
+.ancestry-overview .label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-500);
+}
+
+/* Warnings */
+.ancestry-overview .overview-warnings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ancestry-overview .warning {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+}
+
+.ancestry-overview .warning.warning {
+  color: var(--color-warning);
+  background: var(--color-warning-bg);
+}
+
+.ancestry-overview .warning.info {
+  color: var(--color-culture);
+  background: var(--color-culture-bg);
+}
+
+/* Empty State */
+.ancestry-overview .overview-empty {
+  text-align: center;
+  color: var(--color-ink-500);
+  font-style: italic;
+  padding: var(--space-8) 0;
+}
+
+/* Trait Lists */
+.ancestry-overview .overview-trait-lists {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.ancestry-overview .trait-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ancestry-overview .section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-ink-800);
+  margin: 0;
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--color-parchment-400);
+}
+
+.ancestry-overview .trait-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* SummaryTraitCard overrides */
+.ancestry-overview .summary-trait-card {
+  background: var(--color-parchment-100);
+}
+
+/* Footer Actions */
+.ancestry-overview .overview-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-parchment-300);
+}
+
+.ancestry-overview .export-btns {
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .ancestry-overview .overview-header-cards {
+    flex-direction: column;
+  }
+  
+  .ancestry-overview .overview-footer {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .ancestry-overview .export-btns {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

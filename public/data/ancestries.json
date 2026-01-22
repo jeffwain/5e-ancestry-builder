@@ -1,0 +1,186 @@
+{
+  "categories": [
+    {
+      "id": "common",
+      "name": "Common Ancestries",
+      "description": "The most populous humanoid races found throughout the world, adaptable and diverse.",
+      "ancestries": [
+        {
+          "id": "human",
+          "name": "Human",
+          "summary": "Varied and diverse, humans are the most populous humanoid creatures due to their resiliency and creativity.",
+          "description": "Humans are as varied and diverse as the lands they occupy, and are the most populous humanoid creatures in the world due to their resiliency and creativity. All humans gain the following traits, and the traits from the biome in which you were raised or spent the most time.",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "endurance"
+            },
+            {
+              "id": "creativity"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "plains",
+              "name": "Plains",
+              "icon": "🏕️",
+              "description": "Humans who grew up on open plains, prairies, or settled farmlands.",
+              "traits": [
+                {
+                  "id": "quick-learner",
+                  "name": "Expert"
+                },
+                {
+                  "id": "friendly-cultural-skill",
+                  "option": "socializer"
+                }
+              ]
+            },
+            {
+              "id": "arctic",
+              "name": "Arctic",
+              "icon": "🐧",
+              "description": "Humans adapted to frigid climates and icy tundras.",
+              "traits": [
+                {
+                  "id": "elemental-resistance",
+                  "name": "Cold Resistance",
+                  "description": "You have resistance to cold damage."
+                },
+                {
+                  "name": "Arctic Traversal",
+                  "summary": "Move across snowy or icy difficult terrain without expending extra movement.",
+                  "description": "You can move across snowy or icy difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor. You have advantage against being knocked prone by icy conditions, including those created by spells.",
+                  "points": 1
+                },
+                {
+                  "id": "survival-skill-proficiency"
+                }
+              ]
+            },
+            {
+              "id": "coastal",
+              "name": "Coastal",
+              "icon": "🏝️",
+              "description": "Humans who grew up near oceans, seas, or large bodies of water.",
+              "traits": [
+                {
+                  "id": "swim-speed"
+                },
+                {
+                  "id": "weather-worn"
+                },
+                {
+                  "name": "Nautical Tool Proficiency",
+                  "id": "waterborne-tool-proficiency"
+                }
+              ]
+            },
+            {
+              "id": "deep",
+              "name": "Deep",
+              "icon": "🍄",
+              "description": "Humans who have adapted to life in the Underdark or deep cavern systems.",
+              "traits": [
+                {
+                  "id": "brave"
+                },
+                {
+                  "id": "stout-toxin-resilience"
+                }
+              ]
+            },
+            {
+              "id": "desert",
+              "name": "Desert",
+              "icon": "🌵",
+              "description": "Humans adapted to arid climates and scorching deserts.",
+              "traits": [
+                {
+                  "id": "survivalist-cultural-skill",
+                  "option": "acclimatization",
+                  "name": "Hardy (Extreme Heat)",
+                  "summary": "You do not suffer the effects of extreme heat above 100°F.",
+                  "description": "You are acclimated to extreme climates and do not suffer the effects of extreme heat above 100 degrees Fahrenheit.",
+                  "points": 1
+                },
+                {
+                  "id": "survivalist-cultural-skill",
+                  "option": "survivalist",
+                  "summary": "You only need half as much food and drink as normal.",
+                  "points": 1
+                },
+                {
+                  "name": "Desert Traversal",
+                  "summary": "Move across sandy terrain without expending extra movement.",
+                  "description": "You can move across difficult terrain from sand or other desert terrain without expending extra movement if you are using your walking speed and are on the ground or floor. Your walking speed on sand increases by 10 feet.",
+                  "points": 0
+                },
+                {
+                  "id": "survivalist-skill-proficiency",
+                  "name": "Survival Training",
+                  "summary": "You have proficiency in the Survival skill.",
+                  "description": "You have proficiency in the Survival skill."
+                }
+              ]
+            },
+            {
+              "id": "mountain",
+              "name": "Mountain",
+              "icon": "⛰️",
+              "description": "Humans who grew up in mountainous regions at high altitudes.",
+              "traits": [
+                {
+                  "name": "Mountain Traversal",
+                  "summary": "Move across rocky or mountainous difficult terrain without extra movement.",
+                  "description": "You can move across rocky or mountainous difficult terrain without expending extra movement if you are using your walking or climbing speed.",
+                  "points": 1
+                },
+                {
+                  "id": "powerful-build"
+                },
+                {
+                  "name": "Hardy (High Altitudes)",
+                  "summary": "You do not suffer the effects of high altitudes above 10,000 ft.",
+                  "description": "You are acclimated to extreme climates and do not suffer the effects of high altitudes above 10,000 ft.",
+                  "points": 1
+                },
+                {
+                  "id": "climb-speed",
+                  "name": "Climber",
+                  "description": "You have a climbing speed of 25 feet. You have advantage on ability checks made to climb, avoid falling while climbing, and helping others while climbing."
+                }
+              ]
+            },
+            {
+              "id": "swamp",
+              "name": "Swamp",
+              "icon": "🐊",
+              "description": "Humans who grew up in marshlands, swamps, or wetlands.",
+              "traits": [
+                {
+                  "id": "traversal",
+                  "name": "Swamp Traversal",
+                  "summary": "Move across swampy or muddy difficult terrain without extra movement.",
+                  "description": "You can move across swampy or muddy difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor.",
+                  "points": 0
+                },
+                {
+                  "id": "toxin-resilience"
+                },
+                {
+                  "id": "survivalist-skill-proficiency",
+                  "name": "Survival Training",
+                  "summary": "You have proficiency in the Survival skill.",
+                  "description": "You have proficiency in the Survival skill."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

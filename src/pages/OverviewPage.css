@@ -1,0 +1,49 @@
+/* OverviewPage - Full page ancestry overview */
+.overview-page {
+  flex: 1;
+  padding: var(--space-6);
+  background: var(--color-parchment-100);
+}
+
+.overview-page-container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.overview-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--color-parchment-300);
+}
+
+.overview-page-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-ink-800);
+  margin: 0;
+}
+
+/* Override AncestryOverview styles for page context */
+.overview-page .ancestry-overview {
+  background: var(--color-parchment-50);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: 0 2px 8px rgba(26, 22, 16, 0.08);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .overview-page {
+    padding: var(--space-4);
+  }
+  
+  .overview-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+}
