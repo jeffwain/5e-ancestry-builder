@@ -1,35 +1,28 @@
+import { NavLink } from 'react-router-dom';
 import './TabNavigation.css';
 
-// Tab IDs for view switching
-export const TABS = {
-  LANDING: 'landing',
-  ANCESTRIES: 'ancestries',
-  BUILDER: 'builder',
-  OVERVIEW: 'overview'
-};
-
-export function TabNavigation({ activeTab, onTabChange, hasCustomAncestry = false }) {
+export function TabNavigation({ hasCustomAncestry = false }) {
   const tabs = [
-    { id: TABS.LANDING, label: 'Character Creation' },
-    { id: TABS.ANCESTRIES, label: 'Ancestries' },
-    { id: TABS.BUILDER, label: 'Custom Ancestries' },
+    { path: '/', label: 'Character Creation' },
+    { path: '/ancestries', label: 'Ancestries' },
+    { path: '/builder', label: 'Custom Ancestries' },
     // Only show Overview tab if user has customized
-    ...(hasCustomAncestry ? [{ id: TABS.OVERVIEW, label: 'Ancestry Overview' }] : [])
+    ...(hasCustomAncestry ? [{ path: '/overview', label: 'Ancestry Overview' }] : [])
   ];
 
   return (
     <nav className="tab-navigation">
       <div className="tab-list">
         {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            className={`tab-item ${activeTab === tab.id ? 'active' : ''}`}
-            onClick={() => onTabChange(tab.id)}
-            aria-selected={activeTab === tab.id}
+          <NavLink
+            key={tab.path}
+            to={tab.path}
+            className={({ isActive }) => `tab-item ${isActive ? 'active' : ''}`}
+            end={tab.path === '/'}
             role="tab"
           >
             {tab.label}
-          </button>
+          </NavLink>
         ))}
       </div>
     </nav>

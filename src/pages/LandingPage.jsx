@@ -1,7 +1,9 @@
-import { TABS } from '../components/TabNavigation';
+import { useNavigate } from 'react-router-dom';
 import './LandingPage.css';
 
-export function LandingPage({ onNavigate }) {
+export function LandingPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="landing-page">
       <div className="landing-content">
@@ -13,9 +15,9 @@ export function LandingPage({ onNavigate }) {
         <section className="landing-section">
           <h2>What is a Custom Ancestry?</h2>
           <p>
-            The Custom Ancestry system lets you build a character's heritage from the ground up 
-            using a point-buy system. Instead of choosing a pre-defined race with fixed traits, 
-            you allocate points across different ancestral features to create exactly the 
+            The Custom Ancestry system lets you build a character's heritage from the ground up
+            using a point-buy system. Instead of choosing a pre-defined race with fixed traits,
+            you allocate points across different ancestral features to create exactly the
             character you envision.
           </p>
         </section>
@@ -23,7 +25,7 @@ export function LandingPage({ onNavigate }) {
         <section className="landing-section">
           <h2>Building Your Ancestry</h2>
           <p>
-            You have <strong>16 points</strong> to spend on ancestral traits. These are divided 
+            You have <strong>16 points</strong> to spend on ancestral traits. These are divided
             into three categories:
           </p>
           <ul>
@@ -42,19 +44,19 @@ export function LandingPage({ onNavigate }) {
         <section className="landing-section">
           <h2>Getting Started</h2>
           <p>Choose how you'd like to build your character's ancestry:</p>
-          
+
           <div className="landing-actions">
-            <button 
+            <button
               className="btn btn-primary btn-large"
-              onClick={() => onNavigate(TABS.BUILDER)}
+              onClick={() => navigate('/builder')}
             >
               Build Custom Ancestry
               <span className="btn-desc">Start from scratch with full control</span>
             </button>
-            
-            <button 
+
+            <button
               className="btn btn-secondary btn-large"
-              onClick={() => onNavigate(TABS.ANCESTRIES)}
+              onClick={() => navigate('/ancestries')}
             >
               Browse Ancestries
               <span className="btn-desc">View pre-built ancestry options</span>
@@ -65,8 +67,8 @@ export function LandingPage({ onNavigate }) {
         <section className="landing-section">
           <h2>Point Costs</h2>
           <p>
-            Each trait has a point cost based on its power level. Some traits are free (0 points), 
-            while powerful abilities may cost 4-6 points. A few traits have negative costs, 
+            Each trait has a point cost based on its power level. Some traits are free (0 points),
+            while powerful abilities may cost 4-6 points. A few traits have negative costs,
             giving you extra points in exchange for a drawback.
           </p>
           {/* TODO: Add a sample trait cost breakdown table here */}
@@ -82,7 +84,7 @@ export function LandingPage({ onNavigate }) {
             <li>A <strong>Walking Speed</strong> (30 ft. is free)</li>
           </ul>
           <p>
-            Everything else is optional — build lean with just a few defining traits, 
+            Everything else is optional — build lean with just a few defining traits,
             or spend all 16 points on a richly detailed heritage.
           </p>
         </section>

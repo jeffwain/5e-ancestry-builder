@@ -1,10 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import { AncestryOverview } from '../components/AncestryOverview';
-import { TABS } from '../components/TabNavigation';
 import './OverviewPage.css';
 
-export function OverviewPage({ onNavigate }) {
+export function OverviewPage() {
+  const navigate = useNavigate();
+
   const handleEditAncestry = () => {
-    onNavigate(TABS.BUILDER);
+    navigate('/builder');
   };
 
   return (
@@ -16,8 +18,8 @@ export function OverviewPage({ onNavigate }) {
             Edit in Builder
           </button>
         </header>
-        
-        <AncestryOverview 
+
+        <AncestryOverview
           showHeader={true}
           showFooter={true}
         />
