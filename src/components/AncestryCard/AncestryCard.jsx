@@ -188,9 +188,10 @@ function resolveTrait(trait, allTraits) {
 }
 
 // Wrapper for trait display - resolves ID references from allTraits
+// Also passes along any pre-selected option from the ancestry definition
 function TraitDisplay({ trait, allTraits }) {
   const resolvedTrait = resolveTrait(trait, allTraits);
-  
+
   // If we couldn't resolve and there's no name, show error state
   if (!resolvedTrait.name) {
     return (
@@ -202,9 +203,16 @@ function TraitDisplay({ trait, allTraits }) {
     );
   }
 
+  // Build selectedOptions from the trait definition's option field
+  const selectedOptions = {};
+  if (trait.option && trait.id) {
+    selectedOptions[trait.id] = trait.option;
+  }
+
   return (
-    <SummaryTraitCard 
-      trait={resolvedTrait} 
+    <SummaryTraitCard
+      trait={resolvedTrait}
+      selectedOptions={selectedOptions}
       showFooter={false}
       className="compact"
     />

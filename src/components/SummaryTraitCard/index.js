@@ -1,1 +1,1 @@
-export { SummaryTraitCard, getDisplayTrait } from './SummaryTraitCard';
+export { SummaryTraitCard } from './SummaryTraitCard';

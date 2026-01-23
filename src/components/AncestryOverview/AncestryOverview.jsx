@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useCharacter } from '../../contexts/CharacterContext';
-import { SummaryTraitCard, getDisplayTrait } from '../SummaryTraitCard';
+import { SummaryTraitCard } from '../SummaryTraitCard';
 import './AncestryOverview.css';
 
 // Reusable ancestry overview content - used by both modal and page views
@@ -24,8 +24,6 @@ export function AncestryOverview({
     setAncestryName
   } = useCharacter();
 
-  window.console.log('AncestryOverview - selectedTraits:', selectedTraits);
-  window.console.log('AncestryOverview - selectedOptions:', selectedOptions);
 
   // Group selected traits by their type
   const traitsByType = useMemo(() => {
@@ -135,21 +133,18 @@ export function AncestryOverview({
         <p className="overview-empty">No traits selected yet.</p>
       ) : (
         <div className="overview-trait-lists">
-          {console.log('traitsByType:', traitsByType)}
           {traitsByType.map((typeGroup) => (
             <div key={typeGroup.name} className="trait-section">
               <h3 className="section-title">{typeGroup.name}</h3>
               <div className="trait-list">
-                {typeGroup.traits.map(trait => {
-                  console.log('Rendering trait:', trait.id, trait.name, 'with options:', selectedOptions);
-                  return (
-                    <SummaryTraitCard
-                      key={trait.id}
-                      trait={getDisplayTrait(trait, selectedOptions)}
-                      showFooter={true}
-                    />
-                  );
-                })}
+                {typeGroup.traits.map(trait => (
+                  <SummaryTraitCard
+                    key={trait.id}
+                    trait={trait}
+                    selectedOptions={selectedOptions}
+                    showFooter={true}
+                  />
+                ))}
               </div>
             </div>
           ))}
