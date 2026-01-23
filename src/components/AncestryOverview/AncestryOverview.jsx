@@ -21,7 +21,8 @@ export function AncestryOverview({
     loadedPrebuilt,
     reset,
     exportAsJson,
-    setAncestryName
+    setAncestryName,
+    traitTypes
   } = useCharacter();
 
 
@@ -30,18 +31,18 @@ export function AncestryOverview({
     const grouped = {};
 
     selectedTraits.forEach(trait => {
-      const type = trait.type || 'unknown';
-      if (!grouped[type]) {
-        grouped[type] = {
-          name: type.charAt(0).toUpperCase() + type.slice(1) + ' Traits',
+      const typeId = trait.type || 'unknown';
+      if (!grouped[typeId]) {
+        grouped[typeId] = {
+          name: traitTypes[typeId]?.name || "Custom Traits",
           traits: []
         };
       }
-      grouped[type].traits.push(trait);
+      grouped[typeId].traits.push(trait);
     });
 
     return Object.values(grouped);
-  }, [selectedTraits]);
+  }, [selectedTraits, traitTypes]);
 
   const handleExport = () => {
     if (onExport) {

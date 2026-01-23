@@ -65,7 +65,7 @@ export function useTraitData() {
       for (const [typeId, type] of Object.entries(data.traitTypes)) {
         if (type.categories) {
           for (const [catId, category] of Object.entries(type.categories)) {
-            addTraits(category.traits, catId, category.name, type.name, category.label);
+            addTraits(category.traits, catId, category.name, typeId, category.label);
           }
         }
       }

@@ -34,7 +34,8 @@
                 },
                 {
                   "id": "friendly-cultural-skill",
-                  "option": "socializer"
+                  "option": "socializer",
+                  "description": "The first time you interact with strangers in an unfamiliar land, culture, or region, add 1d4 to the first Charisma (Persuasion or Deception) check you make against them. This trait does not work on groups if at least one person in the group knows you."
                 }
               ]
             },
@@ -56,7 +57,7 @@
                   "points": 1
                 },
                 {
-                  "id": "survival-skill-proficiency"
+                  "id": "survivalist-skill-proficiency"
                 }
               ]
             },
@@ -133,6 +134,7 @@
               "description": "Humans who grew up in mountainous regions at high altitudes.",
               "traits": [
                 {
+                  "id": "traversal",
                   "name": "Mountain Traversal",
                   "summary": "Move across rocky or mountainous difficult terrain without extra movement.",
                   "description": "You can move across rocky or mountainous difficult terrain without expending extra movement if you are using your walking or climbing speed.",
@@ -142,6 +144,7 @@
                   "id": "powerful-build"
                 },
                 {
+                  "id": "acclimatization",
                   "name": "Hardy (High Altitudes)",
                   "summary": "You do not suffer the effects of high altitudes above 10,000 ft.",
                   "description": "You are acclimated to extreme climates and do not suffer the effects of high altitudes above 10,000 ft.",

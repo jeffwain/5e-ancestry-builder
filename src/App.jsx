@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { CharacterProvider, useCharacter } from './contexts/CharacterContext';
 import { useTraitData } from './hooks/useTraitData';
@@ -24,6 +24,7 @@ function AppContent() {
     setAllTraits,
     setRequiredCategories,
     setRequiredTraits,
+    setTraitTypes,
     selectedTraits,
     loadPrebuilt
   } = useCharacter();
@@ -33,6 +34,14 @@ function AppContent() {
 
   // Determine if user has customized their ancestry (for showing Overview tab)
   const hasCustomAncestry = selectedTraits.length > 0;
+
+  // Transform sections array into a map for easy lookup by ID
+  const traitTypesMap = useMemo(() => {
+    return sections.reduce((acc, section) => {
+      acc[section.id] = section;
+      return acc;
+    }, {});
+  }, [sections]);
 
   // Set all traits and required categories when data loads
   useEffect(() => {
@@ -45,7 +54,10 @@ function AppContent() {
     if (requiredCategories?.length > 0) {
       setRequiredCategories(requiredCategories);
     }
-  }, [requiredCategories, setRequiredCategories]);
+    if (Object.keys(traitTypesMap).length > 0) {
+      setTraitTypes(traitTypesMap);
+    }
+  }, [requiredCategories, setRequiredCategories, traitTypesMap, setTraitTypes]);
 
   useEffect(() => {
     if (requiredTraits && Object.keys(requiredTraits).length > 0) {

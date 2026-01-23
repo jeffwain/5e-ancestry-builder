@@ -8,7 +8,8 @@ const initialState = {
   ancestryName: '',        // Custom ancestry name
   allTraits: {},           // Trait lookup map for getting names
   requiredCategories: [],  // Categories that require at least one trait selected
-  requiredTraits: {}       // Map of traitId -> category info for traits required by their category
+  requiredTraits: {},      // Map of traitId -> category info for traits required by their category
+  traitTypes: {}           // Metadata for trait types (id -> name mapping)
 };
 
 // Action types
@@ -21,6 +22,7 @@ const ActionTypes = {
   SET_ALL_TRAITS: 'SET_ALL_TRAITS',
   SET_REQUIRED_CATEGORIES: 'SET_REQUIRED_CATEGORIES',
   SET_REQUIRED_TRAITS: 'SET_REQUIRED_TRAITS',
+  SET_TRAIT_TYPES: 'SET_TRAIT_TYPES',
   SET_ANCESTRY_NAME: 'SET_ANCESTRY_NAME',
   RESET: 'RESET'
 };
@@ -80,9 +82,30 @@ function characterReducer(state, action) {
     }
 
     case ActionTypes.LOAD_PREBUILT: {
+      let traits = [...action.payload.traits];
+
+      // Check for missing required categories and add defaults
+      if (state.requiredCategories.length > 0 && Object.keys(state.allTraits).length > 0) {
+        state.requiredCategories.forEach(reqCat => {
+          // Check if any selected trait is in this category
+          const hasTrait = traits.some(t => t.categoryId === reqCat.categoryId);
+          
+          if (!hasTrait) {
+            // Find default trait for this category in allTraits
+            const defaultTrait = Object.values(state.allTraits).find(t => 
+              t.categoryId === reqCat.categoryId && t.default === true
+            );
+            
+            if (defaultTrait) {
+              traits.push(defaultTrait);
+            }
+          }
+        });
+      }
+
       return {
         ...state,
-        selectedTraits: action.payload.traits,
+        selectedTraits: traits,
         selectedOptions: action.payload.options || {},
         loadedPrebuilt: action.payload.id,
         ancestryName: action.payload.name || state.ancestryName
@@ -121,6 +144,13 @@ function characterReducer(state, action) {
       };
     }
 
+    case ActionTypes.SET_TRAIT_TYPES: {
+      return {
+        ...state,
+        traitTypes: action.payload
+      };
+    }
+
     case ActionTypes.SET_ANCESTRY_NAME: {
       return {
         ...state,
@@ -133,7 +163,8 @@ function characterReducer(state, action) {
         ...initialState, 
         allTraits: state.allTraits,
         requiredCategories: state.requiredCategories,
-        requiredTraits: state.requiredTraits
+        requiredTraits: state.requiredTraits,
+        traitTypes: state.traitTypes
       };
     }
 
@@ -462,6 +493,10 @@ export function CharacterProvider({ children }) {
   const setRequiredTraits = useCallback((requiredTraits) => {
     dispatch({ type: ActionTypes.SET_REQUIRED_TRAITS, payload: requiredTraits });
   }, []);
+  
+  const setTraitTypes = useCallback((traitTypes) => {
+    dispatch({ type: ActionTypes.SET_TRAIT_TYPES, payload: traitTypes });
+  }, []);
 
   // Export character as JSON
   const exportAsJson = useCallback(() => {
@@ -506,6 +541,7 @@ export function CharacterProvider({ children }) {
     warnings,
     allTraits: state.allTraits,
     requiredTraits: state.requiredTraits,
+    traitTypes: state.traitTypes,
     
     // Actions
     selectTrait,
@@ -517,6 +553,7 @@ export function CharacterProvider({ children }) {
     setAllTraits,
     setRequiredCategories,
     setRequiredTraits,
+    setTraitTypes,
     setAncestryName,
     reset,
     
