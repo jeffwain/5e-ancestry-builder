@@ -1065,7 +1065,7 @@
               "summary": "Avoid gaining exhaustion if you have none. Resets on long rest.",
               "description": "Your body is naturally able to travel great distances and endure great hardships. If you have no Exhaustion you can use this trait to avoid gaining a level of Exhaustion, regaining its use on a long rest.",
               "points": 6,
-              "restriction": "Human only"
+              "restriction": {"type": "creature-type", "label": "Human only"}
             }
           ]
         }
