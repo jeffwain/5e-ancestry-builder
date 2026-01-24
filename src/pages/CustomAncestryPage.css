@@ -1,0 +1,77 @@
+/* Custom Ancestry Page - reuses CharacterCreationPage patterns */
+.custom-ancestry-page {
+  padding: var(--space-8) var(--space-6);
+}
+
+.custom-ancestry-page .ancestry-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.custom-ancestry-page .ancestry-header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.custom-ancestry-page .ancestry-header h1 {
+  font-size: var(--text-3xl);
+  color: var(--color-ink-900);
+}
+
+/* Step sections - same as CharacterCreationPage */
+.custom-ancestry-page .ancestry-step {
+  margin-bottom: var(--space-4);
+}
+
+.custom-ancestry-page .ancestry-step details {
+  background: var(--color-paper);
+  border: 1px solid var(--color-ink-200);
+  border-radius: var(--radius-lg);
+}
+
+.custom-ancestry-page .ancestry-step summary {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  padding: var(--space-4) var(--space-5);
+  cursor: pointer;
+}
+
+.custom-ancestry-page .step-content {
+  padding: 0 var(--space-5) var(--space-5);
+  border-top: 1px solid var(--color-ink-100);
+}
+
+.custom-ancestry-page .step-content ul {
+  padding-left: var(--space-6);
+}
+
+/* Callout box */
+.custom-ancestry-page .callout {
+  background: var(--color-heritage-bg);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin: var(--space-4) 0;
+}
+
+/* Action buttons */
+.custom-ancestry-page .ancestry-actions {
+  margin-top: var(--space-4);
+}
+
+/* Link button */
+.custom-ancestry-page .btn-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--color-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .custom-ancestry-page {
+    padding: var(--space-6) var(--space-4);
+  }
+}

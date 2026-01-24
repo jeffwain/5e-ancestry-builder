@@ -18,7 +18,7 @@ export function AncestryOverview({
     pointsSpent,
     ancestryName,
     warnings,
-    loadedPrebuilt,
+    loadedPrebuiltName,
     reset,
     exportAsJson,
     setAncestryName,
@@ -102,19 +102,20 @@ export function AncestryOverview({
             <span className="value">{pointsSpent} <span className="value-description">of 16</span></span>
           </div>
           <div className="header-card card-name flex1">
-            <span className="label">Name</span>
+            <label htmlFor="ancestry-name" className="label">Name</label>
             <input 
               type="text" 
+              id="ancestry-name"
               className="value" 
               value={ancestryName} 
               onChange={handleNameChange}
               placeholder="Custom Ancestry"
             />
           </div>
-          {loadedPrebuilt && (
+          {loadedPrebuiltName && ancestryName !== loadedPrebuiltName && (
             <div className="header-card card-prebuilt">
               <span className="label">Based on</span>
-              <span className="value">{loadedPrebuilt}</span>
+              <span className="value">{loadedPrebuiltName}</span>
             </div>
           )}
         </div>

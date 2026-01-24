@@ -4,8 +4,9 @@ import './TabNavigation.css';
 export function TabNavigation({ hasCustomAncestry = false }) {
   const tabs = [
     { path: '/', label: 'Character Creation' },
+    { path: '/customancestry', label: 'Create an Ancestry' },
     { path: '/ancestries', label: 'Ancestries' },
-    { path: '/builder', label: 'Custom Ancestries' },
+    { path: '/builder', label: 'Ancestry Builder' },
     // Only show Overview tab if user has customized
     ...(hasCustomAncestry ? [{ path: '/overview', label: 'Ancestry Overview' }] : [])
   ];

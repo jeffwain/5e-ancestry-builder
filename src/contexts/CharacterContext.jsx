@@ -1,10 +1,12 @@
 import { createContext, useContext, useReducer, useMemo, useCallback } from 'react';
+import { createAncestryExport } from '../utils/ancestrySchema';
 
 // Initial state
 const initialState = {
   selectedTraits: [],      // Array of full trait objects
   selectedOptions: {},     // Map of trait ID -> selected option ID (for traits with choices)
   loadedPrebuilt: null,    // Track which prebuilt was loaded
+  loadedPrebuiltName: '',  // Original name of the loaded prebuilt (for "Based on" display)
   ancestryName: '',        // Custom ancestry name
   allTraits: {},           // Trait lookup map for getting names
   requiredCategories: [],  // Categories that require at least one trait selected
@@ -108,6 +110,7 @@ function characterReducer(state, action) {
         selectedTraits: traits,
         selectedOptions: action.payload.options || {},
         loadedPrebuilt: action.payload.id,
+        loadedPrebuiltName: action.payload.name || '',
         ancestryName: action.payload.name || state.ancestryName
       };
     }
@@ -174,7 +177,7 @@ function characterReducer(state, action) {
 }
 
 // Generate warnings based on current state (soft validation)
-function generateWarnings(selectedTraits, selectedOptions, requiredCategories) {
+function generateWarnings(selectedTraits, selectedOptions, requiredCategories, traitTypes) {
   const warnings = [];
   const selectedTraitIds = selectedTraits.map(t => t.id);
 
@@ -190,7 +193,7 @@ function generateWarnings(selectedTraits, selectedOptions, requiredCategories) {
       });
     }
   }
-  
+
   // Check for traits that require options but don't have one selected
   const traitsNeedingOptions = selectedTraits.filter(t => t.requiresOption && !selectedOptions[t.id]);
   for (const trait of traitsNeedingOptions) {
@@ -200,7 +203,7 @@ function generateWarnings(selectedTraits, selectedOptions, requiredCategories) {
       message: `${trait.name}: Select a sub-option`
     });
   }
-  
+
   // Calculate totals (including option points)
   const pointsSpent = selectedTraits.reduce((sum, trait) => {
     if (trait.requiresOption && trait.options) {
@@ -213,22 +216,6 @@ function generateWarnings(selectedTraits, selectedOptions, requiredCategories) {
     }
     return sum + (trait.points || 0);
   }, 0);
-  
-  // Count heritage categories (unique categoryIds where type is 'heritage')
-  const heritageCategories = new Set(
-    selectedTraits
-      .filter(t => t.type === 'heritage')
-      .map(t => t.categoryId)
-  );
-  const heritageCount = heritageCategories.size;
-  
-  // Count culture categories
-  const cultureCategories = new Set(
-    selectedTraits
-      .filter(t => t.type === 'culture')
-      .map(t => t.categoryId)
-  );
-  const cultureCount = cultureCategories.size;
 
   // Over 16 points
   if (pointsSpent > 16) {
@@ -239,31 +226,36 @@ function generateWarnings(selectedTraits, selectedOptions, requiredCategories) {
     });
   }
 
-  // More than 2 heritage categories
-  if (heritageCount > 2) {
-    warnings.push({
-      type: 'heritage-count',
-      severity: 'warning',
-      message: `You have traits from ${heritageCount} heritage categories (2 recommended)`
-    });
-  }
+  // Check trait type category limits based on settings
+  for (const [typeId, typeData] of Object.entries(traitTypes)) {
+    const settings = typeData.settings || {};
+    const { maximum, minimum } = settings;
 
-  // No culture traits
-  if (cultureCount === 0 && selectedTraits.length > 0) {
-    warnings.push({
-      type: 'no-culture',
-      severity: 'info',
-      message: 'Consider selecting at least 1 culture trait'
-    });
-  }
+    // Count unique categories selected for this trait type
+    const categoriesForType = new Set(
+      selectedTraits
+        .filter(t => t.type === typeId)
+        .map(t => t.categoryId)
+    );
+    const categoryCount = categoriesForType.size;
 
-  // More than 2 culture categories
-  if (cultureCount > 2) {
-    warnings.push({
-      type: 'culture-count',
-      severity: 'warning',
-      message: `You have traits from ${cultureCount} culture categories (2 recommended)`
-    });
+    // Check minimum (only if there are traits selected at all)
+    if (minimum !== undefined && selectedTraits.length > 0 && categoryCount < minimum) {
+      warnings.push({
+        type: `${typeId}-minimum`,
+        severity: 'info',
+        message: `Consider selecting at least ${minimum} ${typeData.name?.toLowerCase() || typeId} ${minimum === 1 ? 'category' : 'categories'}`
+      });
+    }
+
+    // Check maximum
+    if (maximum !== undefined && categoryCount > maximum) {
+      warnings.push({
+        type: `${typeId}-maximum`,
+        severity: 'warning',
+        message: `You have traits from ${categoryCount} ${typeData.name?.toLowerCase() || typeId} categories (${maximum} recommended)`
+      });
+    }
   }
 
   return warnings;
@@ -303,29 +295,27 @@ export function CharacterProvider({ children }) {
     [state.selectedTraits]
   );
 
-  // Count unique heritage categories
-  const heritageCategories = useMemo(() => {
-    const cats = new Set(
-      state.selectedTraits
-        .filter(t => t.type === 'heritage')
-        .map(t => t.categoryId)
-    );
-    return Array.from(cats);
-  }, [state.selectedTraits]);
+  // Count unique categories per trait type (dynamic based on traitTypes)
+  const categoriesByType = useMemo(() => {
+    const result = {};
+    for (const typeId of Object.keys(state.traitTypes)) {
+      const cats = new Set(
+        state.selectedTraits
+          .filter(t => t.type === typeId)
+          .map(t => t.categoryId)
+      );
+      result[typeId] = Array.from(cats);
+    }
+    return result;
+  }, [state.selectedTraits, state.traitTypes]);
 
-  // Count unique culture categories
-  const cultureCategories = useMemo(() => {
-    const cats = new Set(
-      state.selectedTraits
-        .filter(t => t.type === 'culture')
-        .map(t => t.categoryId)
-    );
-    return Array.from(cats);
-  }, [state.selectedTraits]);
+  // Legacy computed values for backwards compatibility
+  const heritageCategories = categoriesByType.heritage || [];
+  const cultureCategories = categoriesByType.culture || [];
 
-  const warnings = useMemo(() => 
-    generateWarnings(state.selectedTraits, state.selectedOptions, state.requiredCategories),
-    [state.selectedTraits, state.selectedOptions, state.requiredCategories]
+  const warnings = useMemo(() =>
+    generateWarnings(state.selectedTraits, state.selectedOptions, state.requiredCategories, state.traitTypes),
+    [state.selectedTraits, state.selectedOptions, state.requiredCategories, state.traitTypes]
   );
 
   // Get selected size
@@ -500,39 +490,30 @@ export function CharacterProvider({ children }) {
 
   // Export character as JSON
   const exportAsJson = useCallback(() => {
-    const exportData = {
-      traits: state.selectedTraits.map(t => ({
-        id: t.id,
-        name: t.name,
-        type: t.type,
-        categoryId: t.categoryId,
-        points: t.points,
-        selectedOption: state.selectedOptions[t.id] || null
-      })),
-      summary: {
-        pointsSpent,
-        heritageCategories,
-        cultureCategories,
-        selectedSize,
-        loadedPrebuilt: state.loadedPrebuilt
-      },
-      warnings: warnings.map(w => w.message),
-      exportDate: new Date().toISOString()
-    };
+    const exportData = createAncestryExport({
+      selectedTraits: state.selectedTraits,
+      selectedOptions: state.selectedOptions,
+      ancestryName: state.ancestryName,
+      pointsSpent,
+      selectedSize
+    });
     return JSON.stringify(exportData, null, 2);
-  }, [state, pointsSpent, heritageCategories, cultureCategories, selectedSize, warnings]);
+  }, [state.selectedTraits, state.selectedOptions, state.ancestryName, pointsSpent, selectedSize]);
 
   const value = {
     // State
     selectedTraits: state.selectedTraits,
     selectedOptions: state.selectedOptions,
     loadedPrebuilt: state.loadedPrebuilt,
+    loadedPrebuiltName: state.loadedPrebuiltName,
     ancestryName: state.ancestryName,
     
     // Computed
     pointsSpent,
     remainingPoints: 16 - pointsSpent,
     selectedTraitIds,
+    categoriesByType,
+    // Legacy values for backwards compatibility
     heritageCategories,
     cultureCategories,
     heritageCount: heritageCategories.length,

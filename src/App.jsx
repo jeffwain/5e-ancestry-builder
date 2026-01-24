@@ -5,7 +5,7 @@ import { useTraitData } from './hooks/useTraitData';
 import { TabNavigation } from './components/TabNavigation';
 import { Layout } from './components/Layout';
 import { SummaryPanel } from './components/SummaryPanel';
-import { LandingPage, AncestriesPage, OverviewPage } from './pages';
+import { CharacterCreationPage, CustomAncestryPage, AncestriesPage, OverviewPage } from './pages';
 
 function AppContent() {
   const {
@@ -129,7 +129,8 @@ function AppContent() {
 
       <main className="app-content">
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<CharacterCreationPage />} />
+          <Route path="/customancestry" element={<CustomAncestryPage />} />
           <Route
             path="/ancestries"
             element={

@@ -180,6 +180,11 @@
     "heritage": {
       "name": "Heritage Traits",
       "description": "You can choose up to 2 ancestries from the following options to make up your heritage. The traits you choose represent the physical characteristics and skills of your character.",
+      "required": true,
+      "settings": {
+        "expandCategories": false,
+        "maximum": 2
+      },
       "categories": {
         "elemental": {
           "name": "Elemental",
@@ -1074,6 +1079,12 @@
     "culture": {
       "name": "Culture Traits",
       "description": "You may choose traits from up to 2 cultures from the following options to make up your heritage. You must take at least one cultural trait that costs one or more (1+) heritage points.",
+      "required": true,
+      "settings": {
+        "expandCategories": false,
+        "maximum": 2,
+        "minimum": 1
+      },
       "categories": {
         "artisan": {
           "name": "Artisan",

@@ -1,0 +1,143 @@
+/* Character Creation Page */
+.character-creation-page {
+  padding: var(--space-8) var(--space-6);
+}
+
+.character-creation-page .creation-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.character-creation-page .creation-header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.character-creation-page .creation-header h1 {
+  font-size: var(--text-3xl);
+  color: var(--color-ink-900);
+  margin-bottom: var(--space-2);
+}
+
+/* Step sections with details/summary */
+.character-creation-page .creation-step {
+  margin-bottom: var(--space-4);
+}
+
+.character-creation-page .creation-step details {
+  background: var(--color-paper);
+  border: 1px solid var(--color-ink-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.character-creation-page .creation-step summary {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-ink-800);
+  padding: var(--space-4) var(--space-5);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  transition: background-color 0.15s ease;
+}
+
+.character-creation-page .creation-step summary::-webkit-details-marker {
+  display: none;
+}
+
+.character-creation-page .creation-step summary::before {
+  content: '';
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.character-creation-page .creation-step details[open] summary::before {
+  transform: rotate(45deg);
+}
+
+.character-creation-page .creation-step summary:hover {
+  background: var(--color-ink-50);
+}
+
+.character-creation-page .step-content {
+  padding: 0 var(--space-5) var(--space-5);
+  border-top: 1px solid var(--color-ink-100);
+}
+
+.character-creation-page .step-content p {
+  color: var(--color-ink-700);
+  line-height: var(--leading-relaxed);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.character-creation-page .step-content p:first-child {
+  margin-top: var(--space-4);
+}
+
+.character-creation-page .step-content ul {
+  margin: var(--space-3) 0;
+  padding-left: var(--space-6);
+}
+
+.character-creation-page .step-content li {
+  margin-bottom: var(--space-2);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-700);
+}
+
+.character-creation-page .step-content h4 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-ink-800);
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-2);
+}
+
+.character-creation-page .step-content strong {
+  color: var(--color-ink-800);
+}
+
+.character-creation-page .step-content em {
+  font-style: italic;
+}
+
+/* Ancestry action buttons */
+.character-creation-page .ancestry-actions {
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.character-creation-page .ancestry-actions .btn {
+  min-width: 200px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .character-creation-page {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .character-creation-page .creation-header h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .character-creation-page .creation-step summary {
+    font-size: var(--text-base);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .character-creation-page .step-content {
+    padding: 0 var(--space-4) var(--space-4);
+  }
+}
