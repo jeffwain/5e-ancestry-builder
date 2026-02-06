@@ -27,20 +27,12 @@
   margin: 0;
 }
 
-/* Override AncestryOverview styles for page context */
-.overview-page .ancestry-overview {
-  background: var(--color-parchment-50);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-  box-shadow: 0 2px 8px rgba(26, 22, 16, 0.08);
-}
-
 /* Responsive */
 @media (max-width: 768px) {
   .overview-page {
     padding: var(--space-4);
   }
-  
+
   .overview-page-header {
     flex-direction: column;
     align-items: flex-start;

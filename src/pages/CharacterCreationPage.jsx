@@ -11,7 +11,7 @@ export function CharacterCreationPage() {
           <h1>Creating a Character</h1>
         </header>
 
-        <section className="creation-step">
+        <section className="creation-step card card-large">
           <details open>
             <summary>1. Think of a character idea</summary>
             <div className="step-content">
@@ -32,7 +32,7 @@ export function CharacterCreationPage() {
           </details>
         </section>
 
-        <section className="creation-step">
+        <section className="creation-step card card-large">
           <details open>
             <summary>2. Choose your class</summary>
             <div className="step-content">
@@ -44,7 +44,7 @@ export function CharacterCreationPage() {
           </details>
         </section>
 
-        <section className="creation-step">
+        <section className="creation-step card card-large">
           <details open>
             <summary>3. Think of a background</summary>
             <div className="step-content">
@@ -64,7 +64,7 @@ export function CharacterCreationPage() {
           </details>
         </section>
 
-        <section className="creation-step">
+        <section className="creation-step card card-large">
           <details open>
             <summary>4. Determine your ancestry</summary>
             <div className="step-content">
@@ -109,7 +109,7 @@ export function CharacterCreationPage() {
           </details>
         </section>
 
-        <section className="creation-step">
+        <section className="creation-step card card-large">
           <details open>
             <summary>5. Determine your ability scores</summary>
             <div className="step-content">
@@ -132,7 +132,7 @@ export function CharacterCreationPage() {
           </details>
         </section>
 
-        <section className="creation-step">
+        <section className="creation-step card card-large">
           <details open>
             <summary>6. Choose skill proficiencies</summary>
             <div className="step-content">
@@ -144,7 +144,7 @@ export function CharacterCreationPage() {
           </details>
         </section>
 
-        <section className="creation-step">
+        <section className="creation-step card card-large">
           <details open>
             <summary>7. Choose a tool proficiency</summary>
             <div className="step-content">
@@ -156,7 +156,7 @@ export function CharacterCreationPage() {
           </details>
         </section>
 
-        <section className="creation-step">
+        <section className="creation-step card card-large">
           <details open>
             <summary>8. Choose languages you speak</summary>
             <div className="step-content">
@@ -173,7 +173,7 @@ export function CharacterCreationPage() {
           </details>
         </section>
 
-        <section className="creation-step">
+        <section className="creation-step card card-large">
           <details open>
             <summary>9. Take a starting feat</summary>
             <div className="step-content">

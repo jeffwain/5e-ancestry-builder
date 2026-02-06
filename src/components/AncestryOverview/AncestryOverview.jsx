@@ -91,7 +91,7 @@ export function AncestryOverview({
     }
   };
 
-  const containerClass = ['ancestry-overview', className].filter(Boolean).join(' ');
+  const containerClass = ['ancestry-overview card card-large', className].filter(Boolean).join(' ');
 
   return (
     <div className={containerClass}>

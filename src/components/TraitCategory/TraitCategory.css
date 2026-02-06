@@ -128,8 +128,8 @@
 }
 
 .category-trait.collapsed .trait-category-content:not(:has(*)) {
-  /* height: 0;
-  padding: 0; */
+  height: 0;
+  padding: 0;
   outline: none;
   border: none;
 }
