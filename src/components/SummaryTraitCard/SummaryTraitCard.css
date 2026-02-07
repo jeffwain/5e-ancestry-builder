@@ -1,9 +1,10 @@
 /* Summary Trait Card - reusable trait display for summaries */
 .summary-trait-card {
-  padding: var(--space-3);
-  background: var(--color-parchment-50);
-  border: 1px solid var(--color-parchment-300);
-  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+}
+
+.summary-trait-card * {
+  display: inline;
 }
 
 .summary-trait-card + .summary-trait-card {
@@ -19,13 +20,12 @@
 }
 
 .summary-trait-name {
-  font-weight: 600;
   color: var(--color-ink-800);
-  font-size: var(--text-base);
+  font-weight: 600;
+  margin-right: var(--space-1);
 }
 
 .summary-trait-description {
-  font-size: var(--text-sm);
   color: var(--color-ink-600);
   line-height: var(--leading-normal);
 }
@@ -63,10 +63,9 @@
 }
 
 /* Compact variant for lists */
-.summary-trait-card.compact {
+/* .summary-trait-card.compact {
   padding: var(--space-2);
-}
-
+} */
 .summary-trait-card.compact .summary-trait-name {
   font-size: var(--text-sm);
 }

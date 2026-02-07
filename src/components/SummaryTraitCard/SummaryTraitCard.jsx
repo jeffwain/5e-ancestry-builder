@@ -66,6 +66,7 @@ export function SummaryTraitCard({
   trait,
   selectedOptions = {},
   showFooter = true,
+  showDetails = true,
   className = ''
 }) {
   // Transform trait for display
@@ -93,41 +94,55 @@ export function SummaryTraitCard({
 
   return (
     <div className={`summary-trait-card ${className}`}>
-      <div className="summary-trait-header">
-        <span className="summary-trait-name">{name}</span>
-        {pointsLabel && (
-          <span className={`pill cost ${points === 0 ? 'free' : ''}`}>
-            {pointsLabel}
-          </span>
+
+      {showDetails === true ? (
+        <>
+        <div className="summary-trait-header">
+          <span className="summary-trait-name">{name}</span>
+          {pointsLabel && (
+            <span className={`pill cost ${points === 0 ? 'free' : ''}`}>
+              {pointsLabel}
+            </span>
+          )}
+        </div>
+
+        {/* Show summary if available, otherwise full description */}
+        <div className="summary-trait-description">
+          <ReactMarkdown>{summary || description}</ReactMarkdown>
+        </div>
+        {/* Option description if this is an option-based trait */}
+        {optionDescription && (
+          <div className="summary-trait-option">
+            <ReactMarkdown>{optionDescription}</ReactMarkdown>
+          </div>
+        )}      
+        
+        {/* Footer metadata - toggleable */}
+        {showFooter && (sourceTrait || categoryName || restriction) && (
+          <div className="summary-trait-footer">
+            {restriction && (
+              <span className="pill restriction">{restriction}</span>
+            )}
+            {sourceTrait && (
+              <span className="summary-trait-source">From: {sourceTrait}</span>
+            )}
+            {categoryName && !sourceTrait && (
+              <span className="summary-trait-category">{categoryName}</span>
+            )}
+          </div>
         )}
-      </div>
-
-      {/* Show summary if available, otherwise full description */}
-      <div className="summary-trait-description">
-        <ReactMarkdown>{summary || description}</ReactMarkdown>
-      </div>
-
-      {/* Option description if this is an option-based trait */}
-      {optionDescription && (
-        <div className="summary-trait-option">
-          <ReactMarkdown>{optionDescription}</ReactMarkdown>
-        </div>
+        </>
+      ) : (
+        <>
+          <span className="summary-trait-name">{name}.</span>
+          <span className="summary-trait-description">
+            <ReactMarkdown>{summary || description}</ReactMarkdown>
+          </span>
+        </>
       )}
 
-      {/* Footer metadata - toggleable */}
-      {showFooter && (sourceTrait || categoryName || restriction) && (
-        <div className="summary-trait-footer">
-          {restriction && (
-            <span className="pill restriction">{restriction}</span>
-          )}
-          {sourceTrait && (
-            <span className="summary-trait-source">From: {sourceTrait}</span>
-          )}
-          {categoryName && !sourceTrait && (
-            <span className="summary-trait-category">{categoryName}</span>
-          )}
-        </div>
-      )}
+
+
     </div>
   );
 }

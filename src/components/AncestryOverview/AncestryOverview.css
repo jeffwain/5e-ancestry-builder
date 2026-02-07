@@ -133,6 +133,9 @@
 /* SummaryTraitCard overrides */
 .ancestry-overview .summary-trait-card {
   background: var(--color-parchment-100);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-parchment-300);
 }
 
 /* Footer Actions */
@@ -154,12 +157,12 @@
   .ancestry-overview .overview-header-cards {
     flex-direction: column;
   }
-  
+
   .ancestry-overview .overview-footer {
     flex-direction: column;
     gap: var(--space-3);
   }
-  
+
   .ancestry-overview .export-btns {
     width: 100%;
     justify-content: flex-end;
