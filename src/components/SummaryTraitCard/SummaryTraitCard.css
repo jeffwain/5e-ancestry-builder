@@ -1,11 +1,5 @@
 /* Summary Trait Card - reusable trait display for summaries */
-.summary-trait-card {
-  font-size: var(--text-sm);
-}
-
-.summary-trait-card * {
-  display: inline;
-}
+.summary-trait-card {}
 
 .summary-trait-card + .summary-trait-card {
   margin-top: var(--space-2);
@@ -62,14 +56,6 @@
   font-style: italic;
 }
 
-/* Compact variant for lists */
-/* .summary-trait-card.compact {
-  padding: var(--space-2);
-} */
-.summary-trait-card.compact .summary-trait-name {
-  font-size: var(--text-sm);
-}
-
 .summary-trait-card.compact .summary-trait-description {
   font-size: var(--text-xs);
 }
@@ -77,4 +63,12 @@
 /* For trait cards in darker containers (archetypes) */
 .summary-trait-card.on-light {
   background: white;
+}
+
+.simple-trait-card {
+  font-size: var(--text-sm);
+}
+
+.simple-trait-card * {
+  display: inline;
 }

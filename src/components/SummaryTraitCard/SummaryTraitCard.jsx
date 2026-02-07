@@ -65,6 +65,7 @@ function getDisplayTrait(trait, selectedOptions = {}) {
 export function SummaryTraitCard({
   trait,
   selectedOptions = {},
+  compact = false,
   showFooter = true,
   showDetails = true,
   className = ''
@@ -93,7 +94,7 @@ export function SummaryTraitCard({
   const pointsLabel = getPointsLabel(points);
 
   return (
-    <div className={`summary-trait-card ${className}`}>
+    <div className={`${compact ? 'simple-trait-card' : 'summary-trait-card'} ${className}`}>
 
       {showDetails === true ? (
         <>
@@ -107,9 +108,11 @@ export function SummaryTraitCard({
         </div>
 
         {/* Show summary if available, otherwise full description */}
-        <div className="summary-trait-description">
-          <ReactMarkdown>{summary || description}</ReactMarkdown>
-        </div>
+        {(summary || description) && (
+          <div className="summary-trait-description">
+            <ReactMarkdown>{summary || description}</ReactMarkdown>
+          </div>
+        )}
         {/* Option description if this is an option-based trait */}
         {optionDescription && (
           <div className="summary-trait-option">
@@ -127,7 +130,7 @@ export function SummaryTraitCard({
               <span className="summary-trait-source">From: {sourceTrait}</span>
             )}
             {categoryName && !sourceTrait && (
-              <span className="summary-trait-category">{categoryName}</span>
+              <span className="pill">{categoryName}</span>
             )}
           </div>
         )}
@@ -135,9 +138,11 @@ export function SummaryTraitCard({
       ) : (
         <>
           <span className="summary-trait-name">{name}.</span>
-          <span className="summary-trait-description">
-            <ReactMarkdown>{summary || description}</ReactMarkdown>
-          </span>
+          {(summary || description) && (
+            <span className="summary-trait-description">
+              <ReactMarkdown>{summary || description}</ReactMarkdown>
+            </span>
+          )}
         </>
       )}
 

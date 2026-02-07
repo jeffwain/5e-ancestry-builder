@@ -1,0 +1,866 @@
+[
+  {
+    "id": "artisan-s-lore",
+    "name": "Artisan's Lore",
+    "summary": "Whenever you make an Intelligence (History) check related to the origin or history of an item related to an artisan tool with which you are profici...",
+    "description": "Whenever you make an Intelligence (History) check related to the origin or history of an item related to an artisan tool with which you are proficient, you are considered proficient in the History skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus.",
+    "points": 0,
+    "_ancestry": "Dwarf"
+  },
+  {
+    "id": "biter",
+    "name": "Biter",
+    "summary": "You have a mouthful of sharp teeth that allow you to make damaging unarmed strikes as a natural weapon.",
+    "description": "You have a mouthful of sharp teeth that allow you to make damaging unarmed strikes as a natural weapon. When you hit with it, the strike deals 1d6 + Strength modifier slashing damage.",
+    "points": 1,
+    "_ancestry": "Goblin"
+  },
+  {
+    "id": "combat-awareness",
+    "name": "Combat Awareness",
+    "summary": "If you are surprised in battle, enemies do not have advantage against you in the surprise round.",
+    "description": "If you are surprised in battle, enemies do not have advantage against you in the surprise round.",
+    "points": 0,
+    "_ancestry": "Goblin"
+  },
+  {
+    "id": "artisan",
+    "name": "Artisan",
+    "summary": "You gain proficiency with the artisan's tools of your choice.",
+    "description": "You gain proficiency with the artisan's tools of your choice.",
+    "points": 1,
+    "_ancestry": "Goblin"
+  },
+  {
+    "id": "ambush",
+    "name": "Ambush",
+    "summary": "If you hit a creature with an attack roll, the creature takes an extra 2d6 damage if it hasn't taken a turn yet in the current combat.",
+    "description": "If you hit a creature with an attack roll, the creature takes an extra 2d6 damage if it hasn't taken a turn yet in the current combat.",
+    "points": 5,
+    "_ancestry": "Goblin"
+  },
+  {
+    "id": "nimble-escape",
+    "name": "Nimble Escape",
+    "summary": "You can take the Disengage or Hide action as a bonus action on each of your turns.",
+    "description": "You can take the Disengage or Hide action as a bonus action on each of your turns.",
+    "points": 7,
+    "_ancestry": "Goblin"
+  },
+  {
+    "id": "wildtongue",
+    "name": "Wildtongue",
+    "summary": "You speak primordial (giant).",
+    "description": "You speak primordial (giant).",
+    "points": 0,
+    "_ancestry": "Oread"
+  },
+  {
+    "id": "strong-kick",
+    "name": "Strong Kick",
+    "summary": "Your strong legs and tail allow you to make damaging unarmed strikes as light weapons while balancing on your tail.",
+    "description": "Your strong legs and tail allow you to make damaging unarmed strikes as light weapons while balancing on your tail. When you hit with it, a strike deals 1d6 + Strength modifier bludgeoning damage. The target of your attack must make a Strength saving throw (DC 10 + your Strength bonus) or be pushed back 5 feet.",
+    "points": 2,
+    "_ancestry": "Osphrani (Kangaroofolk)"
+  },
+  {
+    "id": "quick",
+    "name": "Quick",
+    "summary": "Your base walking speed is 35 feet.",
+    "description": "Your base walking speed is 35 feet.",
+    "points": 2,
+    "_ancestry": "Osphrani (Kangaroofolk)"
+  },
+  {
+    "id": "pouch",
+    "name": "Pouch",
+    "summary": "All osphrani have a pouch on their belly can either carry one item weighing up to their Strength score, or can serve as a component pouch.",
+    "description": "All osphrani have a pouch on their belly can either carry one item weighing up to their Strength score, or can serve as a component pouch. You cannot use this feature if your belly is covered or otherwise inaccessible, however most armouries supply armour that accommodates this feature. You have advantage on Dexterity (Sleight of Hand) checks you make to conceal an object in your pouch.",
+    "points": 1,
+    "_ancestry": "Osphrani (Kangaroofolk)"
+  },
+  {
+    "id": "bounding",
+    "name": "Bounding",
+    "summary": "As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks.",
+    "description": "As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. Additionally, the efficiency of movement your bounding provides means you can move twice the normal time (up to 16 hours) each day before being subject to the effects of a forced march.",
+    "points": 4,
+    "_ancestry": "Osphrani (Kangaroofolk)"
+  },
+  {
+    "id": "squeeze",
+    "name": "Squeeze",
+    "summary": "You can squeeze into any space that can be traversed by a creature one size category smaller than you.",
+    "description": "You can squeeze into any space that can be traversed by a creature one size category smaller than you.",
+    "points": 1,
+    "_ancestry": "Ysoki (Ratfolk)"
+  },
+  {
+    "id": "gnaw",
+    "name": "Gnaw",
+    "summary": "With enough time, your teeth can chew through almost anything.",
+    "description": "With enough time, your teeth can chew through almost anything. Your teeth deal double damage against objects like doors or ropes that are made of wood, fiber, or other natural materials.",
+    "points": 0,
+    "_ancestry": "Ysoki (Ratfolk)"
+  },
+  {
+    "id": "squeakspeak",
+    "name": "Squeakspeak",
+    "summary": "You can talk with rats, mice, and other rodents.",
+    "description": "You can talk with rats, mice, and other rodents. This communication is high-pitched and out of the hearing range for most humanoids.",
+    "points": 0,
+    "_ancestry": "Ysoki (Ratfolk)"
+  },
+  {
+    "id": "keen-hearing",
+    "name": "Keen Hearing",
+    "summary": "You have advantage on Wisdom (Perception) checks that rely on hearing sounds.",
+    "description": "You have advantage on Wisdom (Perception) checks that rely on hearing sounds.",
+    "points": 3,
+    "_ancestry": "Harengon (Rabbitfolk)"
+  },
+  {
+    "id": "twitchy",
+    "name": "Twitchy",
+    "summary": "You can add 1d4 to your initiative rolls, and while being unconscious from sleeping, you lose your advantage on Wisdom (Perception) checks that rel...",
+    "description": "You can add 1d4 to your initiative rolls, and while being unconscious from sleeping, you lose your advantage on Wisdom (Perception) checks that rely on hearing sounds within 60 feet instead automatically failing them.",
+    "points": 3,
+    "_ancestry": "Harengon (Rabbitfolk)"
+  },
+  {
+    "id": "forager",
+    "name": "Forager",
+    "summary": "During a long rest in an abundant environment, you can spend 1 hour gathering enough food to sustain you and 1d4 other creatures for a day.",
+    "description": "During a long rest in an abundant environment, you can spend 1 hour gathering enough food to sustain you and 1d4 other creatures for a day.",
+    "points": 1,
+    "_ancestry": "Kcerpa (Squirrelfolk)"
+  },
+  {
+    "id": "vigilant",
+    "name": "Vigilant",
+    "summary": "You have advantage on perception checks.",
+    "description": "You have advantage on perception checks. Instead of being unaware of your surroundings while you are unconscious from being asleep, you have disadvantage on Perception (Wisdom) checks instead.",
+    "points": 2,
+    "_ancestry": "Khenra"
+  },
+  {
+    "id": "primordial",
+    "name": "Primordial",
+    "summary": "You speak primordial (terran).",
+    "description": "You speak primordial (terran).",
+    "points": 0,
+    "_ancestry": "Talos"
+  },
+  {
+    "id": "horns",
+    "name": "Horns",
+    "summary": "Your horns allow you to make damaging unarmed strikes as natural, light weapons.",
+    "description": "Your horns allow you to make damaging unarmed strikes as natural, light weapons. When you hit, a strike deals 1d6 + Strength modifier piercing damage.",
+    "points": 1,
+    "_ancestry": "Auran (Minotaur)"
+  },
+  {
+    "id": "imposing-presence",
+    "name": "Imposing Presence",
+    "summary": "You have proficiency in one of the following skills of your choice: Intimidation or Persuasion.",
+    "description": "You have proficiency in one of the following skills of your choice: Intimidation or Persuasion.",
+    "points": 2,
+    "_ancestry": "Auran (Minotaur)"
+  },
+  {
+    "id": "goring-charge",
+    "name": "Goring Charge",
+    "summary": "Immediately after you take the Dash action on your turn and move 15 feet in a straight line, you can make a special attack with your horns as part ...",
+    "description": "Immediately after you take the Dash action on your turn and move 15 feet in a straight line, you can make a special attack with your horns as part of the same action. If the attack hits, the target takes bonus piercing damage based on your level: 2d6 at 1st level, 3d6 at 5th level, 4d6 at 11th level, and 5d6 at 17th level. The target takes an additional 1d6 bonus damage if you dashed at least 30 feet in a straight line before making the attack. The target must also make a Strength saving throw (DC 8 + your Strength modifier + your proficiency bonus). If they fail, they are shoved up to 15 feet and knocked [prone](). Creatures that are at least two sizes larger than you automatically succeed on this saving throw.",
+    "points": 2,
+    "_ancestry": "Auran (Minotaur)"
+  },
+  {
+    "id": "deep-slumber",
+    "name": "Deep Slumber",
+    "summary": "When you take a long rest, you can choose to enter a deep sleep to reduce your exhaustion by 2 instead of 1, but if you are awoken during this slee...",
+    "description": "When you take a long rest, you can choose to enter a deep sleep to reduce your exhaustion by 2 instead of 1, but if you are awoken during this sleep, you are [dazed]() for 1d4 rounds.",
+    "points": 1,
+    "_ancestry": "Bearkin (Bear)"
+  },
+  {
+    "id": "toughness",
+    "name": "Toughness",
+    "summary": "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.",
+    "description": "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.",
+    "points": 5,
+    "_ancestry": "Bearkin (Bear)"
+  },
+  {
+    "id": "giff-resilience",
+    "name": "Giff Resilience",
+    "summary": "Giff are resilient, yet have poor hearing.",
+    "description": "Giff are resilient, yet have poor hearing. They are resistant to thunder damage, and have advantage on saves against being [deafened]().",
+    "points": 2,
+    "_ancestry": "Giff (Hippo)"
+  },
+  {
+    "id": "perfect-memory",
+    "name": "Perfect Memory",
+    "summary": "You have advantage on History checks and can perfectly recall any person you've seen, place you've visited, and item of note that you've studied fo...",
+    "description": "You have advantage on History checks and can perfectly recall any person you've seen, place you've visited, and item of note that you've studied for over a minute.",
+    "points": 4,
+    "_ancestry": "Loxodon (Elephant)"
+  },
+  {
+    "id": "fire",
+    "name": "Fire",
+    "summary": "You gain resistance to fire damage.",
+    "description": "You gain resistance to fire damage. If you have darkvision you see in shades of red. You speak primordial (ignan).",
+    "points": 3,
+    "_ancestry": "Ifriti (Flameborn)"
+  },
+  {
+    "id": "born-of-fire",
+    "name": "Born of Fire",
+    "summary": "You can convert any spell or melee attack you make that does magical damage to fire damage.",
+    "description": "You can convert any spell or melee attack you make that does magical damage to fire damage. You can do this a number of times per day equal to your proficiency bonus, recharging on a long rest.",
+    "points": 2,
+    "_ancestry": "Ifriti (Flameborn) > Fire"
+  },
+  {
+    "id": "flamewalker",
+    "name": "Flamewalker",
+    "summary": "You can walk across and through flame as if it were solid ground.",
+    "description": "You can walk across and through flame as if it were solid ground. You can walk through nonmagical fire without taking damage.",
+    "points": 2,
+    "_ancestry": "Ifriti (Flameborn) > Fire"
+  },
+  {
+    "id": "molten-core",
+    "name": "Molten Core",
+    "summary": "If a spell you cast with this trait deals a damage type other than fire, you can choose for it to deal fire damage instead when you cast it with th...",
+    "description": "If a spell you cast with this trait deals a damage type other than fire, you can choose for it to deal fire damage instead when you cast it with this trait. If a spell or ability you use deals fire damage, you can choose for it to deal bludgeoning damage instead.",
+    "points": 4,
+    "_ancestry": "Ifriti (Flameborn) > Magma"
+  },
+  {
+    "id": "volcanic-being",
+    "name": "Volcanic Being",
+    "summary": "You are immune to any fire damage caused by being near or in contact with non-magical magma or molten rock.",
+    "description": "You are immune to any fire damage caused by being near or in contact with non-magical magma or molten rock.",
+    "points": 0,
+    "_ancestry": "Ifriti (Flameborn) > Magma"
+  },
+  {
+    "id": "burning-cloud",
+    "name": "Burning Cloud",
+    "summary": "When a creature succeeds on an Intelligence (Investigation) check it makes against a [minor illusion]() or [disguise self]() you cast with this tra...",
+    "description": "When a creature succeeds on an Intelligence (Investigation) check it makes against a [minor illusion]() or [disguise self]() you cast with this trait, it takes fire damage equal to your proficiency bonus.",
+    "points": 2,
+    "_ancestry": "Ifriti (Flameborn) > Steam"
+  },
+  {
+    "id": "heat-distortion",
+    "name": "Heat Distortion",
+    "summary": "While you're moving, each other creature has disadvantage on any Wisdom check it makes to discern visual details about you.",
+    "description": "While you're moving, each other creature has disadvantage on any Wisdom check it makes to discern visual details about you.",
+    "points": 0,
+    "_ancestry": "Ifriti (Flameborn) > Steam"
+  },
+  {
+    "id": "bamboozler",
+    "name": "Bamboozler",
+    "summary": "You do something bizarre or unexpected that distracts your opponent.",
+    "description": "You do something bizarre or unexpected that distracts your opponent. Once per day as a bonus action, you can distract an enemy within 10 feet of you. Add your proficiency bonus to all attack rolls made against the target by creatures that can see and hear you until the start of your next turn. This ability resets at dawn.",
+    "points": 1,
+    "_ancestry": "Asir (Windborn) > Empath"
+  },
+  {
+    "id": "empathic",
+    "name": "Empathic",
+    "summary": "You have advantage on Wisdom (Insight) checks made to discern the emotions of others.",
+    "description": "You have advantage on Wisdom (Insight) checks made to discern the emotions of others.",
+    "points": 1,
+    "_ancestry": "Asir (Windborn) > Empath"
+  },
+  {
+    "id": "limited-flight",
+    "name": "Limited Flight",
+    "summary": "When you fall at least 10 feet and aren't [incapacitated](), you can use your Reaction to safely glide downward, taking no damage from the fall.",
+    "description": "When you fall at least 10 feet and aren't [incapacitated](), you can use your Reaction to safely glide downward, taking no damage from the fall. In addition, when you take the Jump action, you can flap your wings to gain advantage on that action's ability check. At 1st level, you can use your bonus action to gain a flying speed equal to your walking speed for one turn, after which time you fall to the ground. At 5th level, this ability increases to a flying speed equal to your walking speed for ten minutes. This ability is tiring, and can be used a number of times equal to your proficiency bonus per long rest. To use this ability, you can't be wearing medium or heavy armor.",
+    "points": 5,
+    "_ancestry": "Asir (Windborn) > Empath"
+  },
+  {
+    "id": "lightning-resistance",
+    "name": "Lightning Resistance",
+    "summary": "You have resistance to lightning damage.",
+    "description": "You have resistance to lightning damage.",
+    "points": 2,
+    "_ancestry": "Asir (Windborn) > Lightningborn"
+  },
+  {
+    "id": "static-touch",
+    "name": "Static Touch",
+    "summary": "The first time during each of your turns you hit a creature with melee attack, that creature has disadvantage on opportunity attacks it makes again...",
+    "description": "The first time during each of your turns you hit a creature with melee attack, that creature has disadvantage on opportunity attacks it makes against you until the start of your next turn.",
+    "points": 2,
+    "_ancestry": "Asir (Windborn) > Lightningborn"
+  },
+  {
+    "id": "echolocation",
+    "name": "Echolocation",
+    "summary": "As a bonus action on your turn, you can emit a pulse of sound that is inaudible to another creature without an echolocation trait.",
+    "description": "As a bonus action on your turn, you can emit a pulse of sound that is inaudible to another creature without an echolocation trait. Until the end of your next turn, you have blindsight out to a range of 30 feet while you aren't [deafened](). You can use this trait a number of times equal to your proficiency bonus, regaining all expended uses when you finish a long rest.",
+    "points": 4,
+    "_ancestry": "Asir (Windborn) > Thundercaller"
+  },
+  {
+    "id": "silent-walk",
+    "name": "Silent Walk",
+    "summary": "When you use your walking speed, you can choose for your steps to make no noise.",
+    "description": "When you use your walking speed, you can choose for your steps to make no noise. If you're wearing armor that would normally impose disadvantage on Dexterity (Stealth) checks, you can ignore that source of disadvantage.",
+    "points": 2,
+    "_ancestry": "Asir (Windborn) > Thundercaller"
+  },
+  {
+    "id": "thunder-resistance",
+    "name": "Thunder Resistance",
+    "summary": "You have resistance to thunder damage.",
+    "description": "You have resistance to thunder damage.",
+    "points": 2,
+    "_ancestry": "Asir (Windborn) > Thundercaller"
+  },
+  {
+    "id": "dance-in-the-clouds",
+    "name": "Dance in the Clouds",
+    "summary": "You can cast the [fog cloud]() spell with this trait.",
+    "description": "You can cast the [fog cloud]() spell with this trait. Starting at 3rd level, you can cast the [misty step]() spell with this trait. Starting at 5th level, you can cast the [gaseous form]() spell on yourself with this trait, without requiring a material component. Once you cast [fog cloud](), [misty step](), or [gaseous form]() with this trait, you can't cast that spell with this trait again until you finish a long rest. You can also cast any of those spells using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells (choose when you select this race).",
+    "points": 7,
+    "_ancestry": "Asir (Windborn) > Vapor"
+  },
+  {
+    "id": "ethereal-body",
+    "name": "Ethereal Body",
+    "summary": "When you are hit by an attack that deals a damage type other than psychic or thunder or take damage due to falling, you can use your reaction to mo...",
+    "description": "When you are hit by an attack that deals a damage type other than psychic or thunder or take damage due to falling, you can use your reaction to momentarily turn yourself and anything you're wearing or carrying into mist, causing you to take only half damage from the attack or fall. You can use this trait a number of times equal to your proficiency bonus, regaining all expended uses when you finish a long rest.",
+    "points": 4,
+    "_ancestry": "Asir (Windborn) > Vapor"
+  },
+  {
+    "id": "mistvision",
+    "name": "Mistvision",
+    "summary": "Within 60 feet of you, you can see through lightly obscured areas as if they weren't obscured at all, and through heavily obscured areas as if they...",
+    "description": "Within 60 feet of you, you can see through lightly obscured areas as if they weren't obscured at all, and through heavily obscured areas as if they were only lightly obscured. You can't discern color in heavily obscured areas, only shades of gray.",
+    "points": 3,
+    "_ancestry": "Asir (Windborn) > Vapor"
+  },
+  {
+    "id": "wings",
+    "name": "Wings",
+    "summary": "You have a flying speed equal to your walking speed.",
+    "description": "You have a flying speed equal to your walking speed. When you take the Jump Action, you can flap your wings to gain Advantage on that Action's Ability Check. To use this ability, you can't be wearing medium or heavy armor.",
+    "points": 9,
+    "_ancestry": "Aven (Birdfolk) > Flying"
+  },
+  {
+    "id": "beast-tracker",
+    "name": "Beast Tracker",
+    "summary": "Whenever you make a Wisdom (Survival) check to track beasts, you are considered proficient in the Survival skill and add double your Proficiency Bo...",
+    "description": "Whenever you make a Wisdom (Survival) check to track beasts, you are considered proficient in the Survival skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus.",
+    "points": 1,
+    "_ancestry": "Aven (Birdfolk) > Flying"
+  },
+  {
+    "id": "acclimatization",
+    "name": "Acclimatization",
+    "summary": "You are acclimated to extreme climates and do not suffer the effects of extreme cold below 0 degrees Fahrenheit.",
+    "description": "You are acclimated to extreme climates and do not suffer the effects of extreme cold below 0 degrees Fahrenheit.",
+    "points": 0,
+    "_ancestry": "Aven (Birdfolk) > Arctic"
+  },
+  {
+    "id": "insulation",
+    "name": "Insulation",
+    "summary": "You gain resistance to cold damage.",
+    "description": "You gain resistance to cold damage.",
+    "points": 2,
+    "_ancestry": "Aven (Birdfolk) > Arctic"
+  },
+  {
+    "id": "glide",
+    "name": "Glide",
+    "summary": "When you fall at least 10 feet and aren't [incapacitated](), you can use your Reaction to safely glide downward, taking no damage from the fall.",
+    "description": "When you fall at least 10 feet and aren't [incapacitated](), you can use your Reaction to safely glide downward, taking no damage from the fall. You can move up to 2 feet horizontally for every 1 foot you descend. In addition, when you take the Jump Action, you can flap your wings to gain Advantage on that Action's Ability Check. To use this ability, you can't be wearing medium or heavy armor.",
+    "points": 3,
+    "_ancestry": "Aven (Birdfolk) > Arctic"
+  },
+  {
+    "id": "fey-ancestry",
+    "name": "Fey Ancestry",
+    "summary": "You can speak, read, and write Sylvan.",
+    "description": "You can speak, read, and write Sylvan. In addition to Humanoid you are considered a Fey creature.",
+    "points": 1,
+    "_ancestry": "Auran (Minotaur) > Wildhorn"
+  },
+  {
+    "id": "monstrous-ancestry",
+    "name": "Monstrous Ancestry",
+    "summary": "You can speak, read, and write Abyssal.",
+    "description": "You can speak, read, and write Abyssal. In addition to Humanoid you are considered a Fiend.",
+    "points": 1,
+    "_ancestry": "Auran (Minotaur) > Abyssal Brood"
+  },
+  {
+    "id": "rider-on-the-waves",
+    "name": "Rider on the Waves",
+    "summary": "You gain proficiency with navigator's tools and vehicles (water).",
+    "description": "You gain proficiency with navigator's tools and vehicles (water).",
+    "points": 2,
+    "_ancestry": "Auran (Minotaur) > Seafarer"
+  },
+  {
+    "id": "labyrinth-sense",
+    "name": "Labyrinth Sense",
+    "summary": "You always know which direction is north, and you have advantage on any Wisdom (Survival) check you make to navigate or track.",
+    "description": "You always know which direction is north, and you have advantage on any Wisdom (Survival) check you make to navigate or track. Additionally, you cannot become lost on any path you have previously traveled.",
+    "points": 1,
+    "_ancestry": "Auran (Minotaur) > Labyrinth-Born"
+  },
+  {
+    "id": "crystal-luminescence",
+    "name": "Crystal Luminescence",
+    "summary": "You're adapted to the sunless regions of dense jungle forests and deep caves, with soft flesh lacking pigment and unusually clear crystalline horns.",
+    "description": "You're adapted to the sunless regions of dense jungle forests and deep caves, with soft flesh lacking pigment and unusually clear crystalline horns. You can use a bonus action to make your horn glow with bioluminescent color, casting bright light in a 20-foot emanation (and dim light for the next 20 feet). This light can be any color. The most common colors are blue, purple, or white light. The light shuts off when you take this bonus action again or fall [unconscious]().",
+    "points": 2,
+    "_ancestry": "Kashrishi (Rhino) > Trogloshi"
+  },
+  {
+    "id": "expert",
+    "name": "Expert",
+    "summary": "You gain expertise in one skill of your choice that you have proficiency in, other than Perception.",
+    "description": "You gain expertise in one skill of your choice that you have proficiency in, other than Perception. It takes you half as much time to learn a new language, or train and become proficient in a tool, weapon, or armor.",
+    "points": 4,
+    "_ancestry": "Human > Plains"
+  },
+  {
+    "id": "socializer",
+    "name": "Socializer",
+    "summary": "The first time you interact with strangers in an unfamiliar land, culture, or region, add 1d4 to the first Persuasion, Deception, or Performance ch...",
+    "description": "The first time you interact with strangers in an unfamiliar land, culture, or region, add 1d4 to the first Persuasion, Deception, or Performance check you make against them. This trait does not work on groups if at least one person in the group knows you.",
+    "points": 0,
+    "_ancestry": "Human > Plains"
+  },
+  {
+    "id": "survival-training",
+    "name": "Survival Training",
+    "summary": "You have proficiency in the Survival skill.",
+    "description": "You have proficiency in the Survival skill.",
+    "points": 2,
+    "_ancestry": "Human > Arctic"
+  },
+  {
+    "id": "survivalist",
+    "name": "Survivalist",
+    "summary": "You only need to consume half as much food and drink as a normal person.",
+    "description": "You only need to consume half as much food and drink as a normal person.",
+    "points": 1,
+    "_ancestry": "Human > Desert"
+  },
+  {
+    "id": "climber",
+    "name": "Climber",
+    "summary": "You have a climbing speed of 25 feet.",
+    "description": "You have a climbing speed of 25 feet. You have advantage on ability checks made to climb, avoid falling while climbing, and helping others while climbing.",
+    "points": 1,
+    "_ancestry": "Human > Mountain"
+  },
+  {
+    "id": "combat-training",
+    "name": "Combat Training",
+    "summary": "You gain proficiency in 3 simple weapons of your choice.",
+    "description": "You gain proficiency in 3 simple weapons of your choice.",
+    "points": 2,
+    "_ancestry": "Dwarf > Stonebreaker"
+  },
+  {
+    "id": "note",
+    "name": "Note",
+    "summary": "❌This lineage needs traits to be defined.❌.",
+    "description": "❌This lineage needs traits to be defined.❌",
+    "points": 0,
+    "_ancestry": "Dwarf > Skyrider"
+  },
+  {
+    "id": "psychic-resistance",
+    "name": "Psychic Resistance",
+    "summary": "You have advantage on saving throws you make to avoid or end the [charmed]() or [frightened]() conditions on yourself.",
+    "description": "You have advantage on saving throws you make to avoid or end the [charmed]() or [frightened]() conditions on yourself.",
+    "points": 2,
+    "_ancestry": "Dwarf > Lightbringer"
+  },
+  {
+    "id": "mariner-s-lore",
+    "name": "Mariner's Lore",
+    "summary": "Whenever you make an Intelligence (History) or Intelligence (Religion) check related to the sea, its creatures and cultures, or water vehicles, you...",
+    "description": "Whenever you make an Intelligence (History) or Intelligence (Religion) check related to the sea, its creatures and cultures, or water vehicles, you are considered proficient with expertise in the History or Religion skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus.",
+    "points": 0,
+    "_ancestry": "Dwarf > Wavetamer"
+  },
+  {
+    "id": "durable",
+    "name": "Durable",
+    "summary": "When you take damage, you can use your reaction to roll 1d12 + your Constitution modifier and reduce the damage by that total.",
+    "description": "When you take damage, you can use your reaction to roll 1d12 + your Constitution modifier and reduce the damage by that total. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
+    "points": 0,
+    "_ancestry": "Half-Giant > Frost"
+  },
+  {
+    "id": "water",
+    "name": "Water",
+    "summary": "You gain resistance to acid or cold damage.",
+    "description": "You gain resistance to acid or cold damage. If you have darkvision you see in shades of blue. You speak primordial (aquan).",
+    "points": 0,
+    "_ancestry": "Half-Giant > Frost"
+  },
+  {
+    "id": "strange-presence",
+    "name": "Strange Presence",
+    "summary": "You know the [thaumaturgy]() cantrip.",
+    "description": "You know the [thaumaturgy]() cantrip.",
+    "points": 2,
+    "_ancestry": "Returned > Ghost"
+  },
+  {
+    "id": "resistance",
+    "name": "Resistance",
+    "summary": "You are resistant to necrotic damage.",
+    "description": "You are resistant to necrotic damage.",
+    "points": 2,
+    "_ancestry": "Returned > Ghost"
+  },
+  {
+    "id": "shifting-form",
+    "name": "Shifting Form",
+    "summary": "When another creature grapples you or starts its turn [grappled]() you, you can choose to use defensive features on your body to damage it.",
+    "description": "When another creature grapples you or starts its turn [grappled]() you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4 × your Proficiency Bonus of either piercing or poison damage.",
+    "points": 4,
+    "_ancestry": "Returned > Poltergeist"
+  },
+  {
+    "id": "strange-magic",
+    "name": "Strange Magic",
+    "summary": "You know the [sword burst](), [thunderous distortion](), or [spark of life]() cantrip.",
+    "description": "You know the [sword burst](), [thunderous distortion](), or [spark of life]() cantrip. You can also cast this spell-like ability as a bonus action once per short rest using no components.",
+    "points": 4,
+    "_ancestry": "Returned > Poltergeist"
+  },
+  {
+    "id": "improviser",
+    "name": "Improviser",
+    "summary": "You are proficient with improvised weapons, and improvised weapons you use deal 1d6 + Dexterity or Strength modifier damage rather than the damage ...",
+    "description": "You are proficient with improvised weapons, and improvised weapons you use deal 1d6 + Dexterity or Strength modifier damage rather than the damage they normally deal.",
+    "points": 1,
+    "_ancestry": "Returned > Poltergeist"
+  },
+  {
+    "id": "hardened-form",
+    "name": "Hardened Form",
+    "summary": "Due to the objects that make up your body, you are ill-suited to wearing armor.",
+    "description": "Due to the objects that make up your body, you are ill-suited to wearing armor. Your form provides ample protection, however; it gives you a base AC of 17 (your Dexterity modifier doesn't affect this number). You gain no benefit from wearing armor, but if you are using a shield, you can apply the shield's bonus as normal. At level 12, the base AC of your shell increases to 18 due to your combat experience.",
+    "points": 5,
+    "_ancestry": "Returned > Wildmorph"
+  },
+  {
+    "id": "shape-self",
+    "name": "Shape Self",
+    "summary": "As an action, you can reshape your body to give yourself a head, one or two arms, one or two legs, and makeshift hands and feet, or you can revert ...",
+    "description": "As an action, you can reshape your body to give yourself a head, one or two arms, one or two legs, and makeshift hands and feet, or you can revert to a limbless blob. While you have a humanlike shape, you can wear clothing and armor made for a Humanoid of your size. As a bonus action, you can extrude a pseudopod that is up to 6 inches wide and 10 feet long or reabsorb it into your body. As part of the same bonus action, you can use this pseudopod to manipulate an object, open or close a door or container, or pick up or set down a Tiny object. The pseudopod contains no sensory organs and can't attack, activate magic items, or lift more than 10 pounds.",
+    "points": 0,
+    "_ancestry": "Returned > Plasmoid"
+  },
+  {
+    "id": "amorphous",
+    "name": "Amorphous",
+    "summary": "You have advantage on ability checks you make to initiate or escape a grapple.",
+    "description": "You have advantage on ability checks you make to initiate or escape a grapple.",
+    "points": 0,
+    "_ancestry": "Returned > Plasmoid"
+  },
+  {
+    "id": "muck-walker",
+    "name": "Muck Walker",
+    "summary": "You ignore difficult terrain caused by mud, muck, or similar terrain.",
+    "description": "You ignore difficult terrain caused by mud, muck, or similar terrain.",
+    "points": 0,
+    "_ancestry": "Returned > Plasmoid"
+  },
+  {
+    "id": "i-ve-seen-worse",
+    "name": "I've Seen Worse",
+    "summary": "You have advantage on saving throws against being [frightened]().",
+    "description": "You have advantage on saving throws against being [frightened]().",
+    "points": 0,
+    "_ancestry": "Returned > Mourntouched"
+  },
+  {
+    "id": "sixth-sense",
+    "name": "Sixth Sense",
+    "summary": "You have blindsight within a radius of 5 feet, allowing you to sense your immediate surroundings without relying on sight.",
+    "description": "You have blindsight within a radius of 5 feet, allowing you to sense your immediate surroundings without relying on sight. This blindsight ignores full cover.",
+    "points": 0,
+    "_ancestry": "Returned > Mourntouched"
+  },
+  {
+    "id": "unexplained-ability",
+    "name": "Unexplained Ability",
+    "summary": "You gain proficiency in a skill of your choice.",
+    "description": "You gain proficiency in a skill of your choice. You didn't have this skill before the Mourning. You can't explain where it came from.",
+    "points": 0,
+    "_ancestry": "Returned > Mourntouched"
+  },
+  {
+    "id": "bite",
+    "name": "Bite",
+    "summary": "You can use your toothy maw to make unarmed strikes as a light weapon.",
+    "description": "You can use your toothy maw to make unarmed strikes as a light weapon. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage.",
+    "points": 1,
+    "_ancestry": "Undine > Fish"
+  },
+  {
+    "id": "chitinous-pincers",
+    "name": "Chitinous Pincers",
+    "summary": "You can use your clawed hand to make unarmed strikes as a light weapon.",
+    "description": "You can use your clawed hand to make unarmed strikes as a light weapon. When you hit with it, the strike deals 1d6 + your Strength modifier slashing damage.",
+    "points": 1,
+    "_ancestry": "Undine > Crustacean"
+  },
+  {
+    "id": "carapace",
+    "name": "Carapace",
+    "summary": "Due to your chitinous exoskeleton and the shape of your body, you are ill-suited to wearing armor.",
+    "description": "Due to your chitinous exoskeleton and the shape of your body, you are ill-suited to wearing armor. Your form provides ample protection, however; it gives you a base AC of 17 (your Dexterity modifier doesn't affect this number). You gain no benefit from wearing armor, but if you are using a shield, you can apply the shield's bonus as normal. At level 12, the base AC of your shell increases to 18 due to your combat experience.",
+    "points": 5,
+    "_ancestry": "Undine > Crustacean"
+  },
+  {
+    "id": "ice-skate",
+    "name": "Ice Skate",
+    "summary": "You can walk across the surface of water as if it were solid ground, your footsteps temporarily freezing it, with the ice melting the instant your ...",
+    "description": "You can walk across the surface of water as if it were solid ground, your footsteps temporarily freezing it, with the ice melting the instant your foot moves. Walking across difficult terrain caused by ice or snow costs you no extra movement.",
+    "points": 3,
+    "_ancestry": "Undine > Iceborn"
+  },
+  {
+    "id": "brew-the-toxin",
+    "name": "Brew the Toxin",
+    "summary": "You know the [poison spray]() cantrip.",
+    "description": "You know the [poison spray]() cantrip. Starting at 3rd level, you can cast either the [ray of sickness](), [nauseating poison](), or [sleep]() spell with this trait (you choose the spell you can cast with this trait when you reach 3rd level), without requiring a material component. Starting at 5th level, you can cast the [stinking cloud]() spell with this trait, without requiring a material component. Once you cast the chosen spell or stinking cloud with this trait, you can't cast that spell with this trait again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level.",
+    "points": 0,
+    "_ancestry": "Undine > Poisonborn"
+  },
+  {
+    "id": "poison-resilience",
+    "name": "Poison Resilience",
+    "summary": "You have advantage on saving throws you make to avoid or end the [poisoned]() condition on yourself.",
+    "description": "You have advantage on saving throws you make to avoid or end the [poisoned]() condition on yourself. You also have resistance to poison damage.",
+    "points": 0,
+    "_ancestry": "Undine > Poisonborn"
+  },
+  {
+    "id": "relentless",
+    "name": "Relentless",
+    "summary": "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead.",
+    "description": "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can't use this feature again until you finish a long rest.",
+    "points": 4,
+    "_ancestry": "Oread > Sandsoul"
+  },
+  {
+    "id": "spore-strike",
+    "name": "Spore Strike",
+    "summary": "When you damage a creature with an attack, you can cause the attack to deal an extra poison or acid damage equal to your Proficiency Bonus, and giv...",
+    "description": "When you damage a creature with an attack, you can cause the attack to deal an extra poison or acid damage equal to your Proficiency Bonus, and give Disadvantage to the next ability check or saving throw the target makes until the start of your next turn. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
+    "points": 3,
+    "_ancestry": "Oread > Mycelial"
+  },
+  {
+    "id": "spore-network",
+    "name": "Spore Network",
+    "summary": "At 3rd level, you can cast one spell from the following list [cause fear](), [charm person](), [psychadelics](), or [find in nature](), without req...",
+    "description": "At 3rd level, you can cast one spell from the following list [cause fear](), [charm person](), [psychadelics](), or [find in nature](), without requiring a material component. This spell can be cast once per long rest, or by using any spell slots you have of the appropriate level.",
+    "points": 0,
+    "_ancestry": "Oread > Mycelial"
+  },
+  {
+    "id": "spore-ward",
+    "name": "Spore Ward",
+    "summary": "You can't be put to sleep against your will, and you have advantage on saving throws you make to resist or end the [poisoned]() condition on yourself.",
+    "description": "You can't be put to sleep against your will, and you have advantage on saving throws you make to resist or end the [poisoned]() condition on yourself.",
+    "points": 2,
+    "_ancestry": "Oread > Florid"
+  },
+  {
+    "id": "cat-s-talent",
+    "name": "Cat's Talent",
+    "summary": "You have proficiency with the Perception and Stealth skills.",
+    "description": "You have proficiency with the Perception and Stealth skills.",
+    "points": 2,
+    "_ancestry": "Mrrshan > Tabaxi"
+  },
+  {
+    "id": "adrenaline-rush",
+    "name": "Adrenaline Rush",
+    "summary": "You can take the Dash action as a bonus action.",
+    "description": "You can take the Dash action as a bonus action. You can use this trait a number of times equal to your Proficiency Bonus per long rest. Whenever you use this trait, gain a number of temporary hit points equal to your Proficiency Bonus.",
+    "points": 3,
+    "_ancestry": "Mrrshan > Tabaxi"
+  },
+  {
+    "id": "combat-climber",
+    "name": "Combat Climber",
+    "summary": "Your techniques allow you to fight as you climb.",
+    "description": "Your techniques allow you to fight as you climb. You can Climb with a hand occupied. You must still use another hand and both legs to Climb.",
+    "points": 0,
+    "_ancestry": "Mrrshan > Panthera"
+  },
+  {
+    "id": "hunter-s-instincts",
+    "name": "Hunter's Instincts",
+    "summary": "You have proficiency in one of the following skills of your choice: Athletics, Intimidation, Perception, or Survival.",
+    "description": "You have proficiency in one of the following skills of your choice: Athletics, Intimidation, Perception, or Survival.",
+    "points": 2,
+    "_ancestry": "Mrrshan > Panthera"
+  },
+  {
+    "id": "metal-skin",
+    "name": "Metal Skin",
+    "summary": "You can use your metal heritage to defend yourself.",
+    "description": "You can use your metal heritage to defend yourself. As a bonus action, you can enhance the metal in your body by turning your skin into metal: this process heals 1hp per level and provides you with resistance to all damage till the beginning of your next turn. A long rest is required to regain this power.",
+    "points": 1,
+    "_ancestry": "Talos > Ironborn"
+  },
+  {
+    "id": "charge",
+    "name": "Charge",
+    "summary": "Immediately after you use the Dash action on your turn and move at least 20 feet, you can make one unarmed strike melee attack as a bonus action, o...",
+    "description": "Immediately after you use the Dash action on your turn and move at least 20 feet, you can make one unarmed strike melee attack as a bonus action, or you can ram a target and attempt to knock it [prone](). The DC for this Strength saving throw is equal to 8 + your Strength modifier + your Proficiency Bonus.",
+    "points": 3,
+    "_ancestry": "Talos > Ironborn"
+  },
+  {
+    "id": "golden-bulwark",
+    "name": "Golden Bulwark",
+    "summary": "Your form lets you shrug off damage.",
+    "description": "Your form lets you shrug off damage. You know the [blade ward]() cantrip and can cast it normally or as a bonus action a number of times equal to your Proficiency Bonus, replenishing on a long rest. It takes only somatic components. Starting at 5th level, you may cast [liquid armor]() once per day on a creature other than yourself, replenishing on a long rest.",
+    "points": 5,
+    "_ancestry": "Talos > Goldenblood"
+  },
+  {
+    "id": "metallic-appendage",
+    "name": "Metallic Appendage",
+    "summary": "You form part of your body into a weapon-like appendage able to make damaging unarmed strikes as a light weapon.",
+    "description": "You form part of your body into a weapon-like appendage able to make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals 1d6 + Strength modifier damage. You pick whether the damage is slashing, piercing, or bludgeoning based on the form you create.",
+    "points": 1,
+    "_ancestry": "Talos > Goldenblood"
+  },
+  {
+    "id": "chromatic-magic",
+    "name": "Chromatic Magic",
+    "summary": "You can cast [color spray]().",
+    "description": "You can cast [color spray](). You can also cast [chromatic orb]() in the element matching your attunement as a melee spell attack. Beginning at 3rd level you can use this trait a number of times equal to your Proficiency Bonus per long rest to cast either of these spells, or cast them normally using spell slots.",
+    "points": 4,
+    "_ancestry": "Talos > Orchid"
+  },
+  {
+    "id": "touch-of-decay",
+    "name": "Touch of Decay",
+    "summary": "You know the [chill touch]() or [decaying touch]() cantrip.",
+    "description": "You know the [chill touch]() or [decaying touch]() cantrip. Starting at 3rd level, you can cast the [inflict wounds]() or [grip of the dead]() spell with this trait. Starting at 5th level, you can cast the [wrack]() or [dust cyclone]() spell with this trait, without requiring a material component. If you cast dust cyclone with this trait, you can choose for it to deal necrotic damage, instead of bludgeoning, for the duration. Once you cast a spell with this trait, you can't cast that spell with this trait again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level.",
+    "points": 9,
+    "_ancestry": "Talos > Duster"
+  },
+  {
+    "id": "heart-of-the-forge",
+    "name": "Heart of the Forge",
+    "summary": "You know the [green-flame blade]() cantrip.",
+    "description": "You know the [green-flame blade]() cantrip. Starting at 3rd level, you can cast the [searing smite]() spell with this trait. Starting at 5th level, you can cast the [heat metal]() spell with this trait, without requiring a material component. Once you cast searing smite or heat metal with this trait, you can't cast that spell with this trait again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).",
+    "points": 9,
+    "_ancestry": "Talos > Metal"
+  },
+  {
+    "id": "metallic-skin",
+    "name": "Metallic Skin",
+    "summary": "You gain a +1 bonus to Armor Class.",
+    "description": "You gain a +1 bonus to Armor Class.",
+    "points": 7,
+    "_ancestry": "Talos > Metal"
+  },
+  {
+    "id": "acid-resistance",
+    "name": "Acid Resistance",
+    "summary": "You have resistance to acid damage.",
+    "description": "You have resistance to acid damage.",
+    "points": 2,
+    "_ancestry": "Talos > Oozeborn"
+  },
+  {
+    "id": "play-with-mud",
+    "name": "Play with Mud",
+    "summary": "You know the [acid splash]() cantrip.",
+    "description": "You know the [acid splash]() cantrip. Starting at 3rd level, you can cast the [grease]() spell with this trait, without requiring a material component. Starting at 5th level, you can cast the [Melf's acid arrow]() spell, without requiring a material component. Once you cast grease or Melf's acid arrow with this trait, you can't cast that spell with this trait again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).",
+    "points": 7,
+    "_ancestry": "Talos > Oozeborn"
+  },
+  {
+    "id": "slippery-skin",
+    "name": "Slippery Skin",
+    "summary": "You have advantage on any ability check or saving throw you make to avoid or end the [grappled]() or [restrained]() condition on yourself.",
+    "description": "You have advantage on any ability check or saving throw you make to avoid or end the [grappled]() or [restrained]() condition on yourself.",
+    "points": 5,
+    "_ancestry": "Talos > Oozeborn"
+  },
+  {
+    "id": "strong-bite",
+    "name": "Strong Bite",
+    "summary": "Your toothy maw can make damaging unarmed strikes as a light weapon.",
+    "description": "Your toothy maw can make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals 1d6 + Strength modifier slashing damage.",
+    "points": 1,
+    "_ancestry": "Iruxi (Lizardfolk) > Badlands"
+  },
+  {
+    "id": "natural-weapons",
+    "name": "Natural Weapons",
+    "summary": "Your toothy maw and/or strong tail allow you to make damaging unarmed strikes as a light weapon.",
+    "description": "Your toothy maw and/or strong tail allow you to make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals:\n- **Bite.** 1d6 + Strength modifier slashing damage\n- **Tail.** 1d6 + Strength modifier bludgeoning damage",
+    "points": 1,
+    "_ancestry": "Iruxi (Lizardfolk) > Swamp"
+  },
+  {
+    "id": "tongue",
+    "name": "Tongue",
+    "summary": "Your tongue can make damaging unarmed strikes as a light weapon with a reach of 10 feet.",
+    "description": "Your tongue can make damaging unarmed strikes as a light weapon with a reach of 10 feet. When you hit with it, the strike deals 1d6 + Strength modifier bludgeoning damage.",
+    "points": 3,
+    "_ancestry": "Iruxi (Lizardfolk) > Jungle"
+  },
+  {
+    "id": "shell",
+    "name": "Shell",
+    "summary": "Due to your shell and the shape of your body, you are ill-suited to wearing armor.",
+    "description": "Due to your shell and the shape of your body, you are ill-suited to wearing armor. Your body provides ample protection, however; it gives you a base AC of 17 (your Dexterity modifier doesn't affect this number). You gain no benefit from wearing armor, but if you are using a shield, you can apply the shield's bonus as normal. At level 12, the base AC of your shell increases to 18 due to your combat experience.",
+    "points": 5,
+    "_ancestry": "Iruxi (Lizardfolk) > Shelled"
+  },
+  {
+    "id": "tinkerer",
+    "name": "Tinkerer",
+    "summary": "You know the Mending and [Prestidigitation]() cantrips.",
+    "description": "You know the Mending and [Prestidigitation]() cantrips. In addition, you can spend 10 minutes casting Prestidigitation to create a Tiny clockwork device (AC 5, 1 HP), such as a toy, fire starter, or music box. When you create the device, you determine its function by choosing one effect from Prestidigitation; the device produces that effect whenever you or another creature takes a Bonus Action to activate it with a touch. If the chosen effect has options within it, you choose one of those options for the device when you create it. For example, if you choose the spell's ignite-extinguish effect, you determine whether the device ignites or extinguishes fire; the device doesn't do both. You can have three such devices in existence at a time, and each falls apart 8 hours after its creation or when you dismantle it with a touch as a Utilize action.",
+    "points": 0,
+    "_ancestry": "Gnome > Inventor"
+  },
+  {
+    "id": "fishermen-s-tales",
+    "name": "Fishermen's Tales",
+    "summary": "Whenever you make an Wisdom (Insight) or Wisdom (Survival) check related to the sea or other bodies of water, you are considered proficient in the ...",
+    "description": "Whenever you make an Wisdom (Insight) or Wisdom (Survival) check related to the sea or other bodies of water, you are considered proficient in the Insight or Survival skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus.",
+    "points": 1,
+    "_ancestry": "Gnome > Seafarer"
+  }
+]

@@ -1,0 +1,2610 @@
+{
+  "categories": [
+    {
+      "id": "common",
+      "name": "Common Ancestries",
+      "description": "The most populous humanoid races found throughout the world, adaptable and diverse.",
+      "ancestries": [
+        {
+          "id": "human",
+          "name": "Human",
+          "summary": "Varied and diverse, humans are the most populous humanoid creatures due to their resiliency and creativity.",
+          "description": "Humans are as varied and diverse as the lands they occupy, and are the most populous humanoid creatures in the world due to their resiliency and creativity. All humans gain the following traits, and the traits from the biome in which you were raised or spent the most time.",
+          "traits": [
+            {
+              "id": "size-small"
+            },
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "endurance"
+            },
+            {
+              "id": "creativity"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "plains",
+              "name": "Plains",
+              "traits": [
+                {
+                  "id": "expert"
+                },
+                {
+                  "id": "socializer"
+                }
+              ]
+            },
+            {
+              "id": "arctic",
+              "name": "Arctic",
+              "traits": [
+                {
+                  "id": "aquatic-resistance",
+                  "description": "You have resistance to cold damage.",
+                  "summary": "You have resistance to cold damage."
+                },
+                {
+                  "id": "traversal",
+                  "description": "You can move across snowy or icy difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor. You have advantage against being knocked [prone]() by icy conditions, including those created by spells.",
+                  "summary": "You can move across snowy or icy difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor."
+                },
+                {
+                  "id": "survival-training"
+                }
+              ]
+            },
+            {
+              "id": "coastal",
+              "name": "Coastal",
+              "traits": [
+                {
+                  "id": "swim-speed"
+                },
+                {
+                  "id": "weather-worn",
+                  "description": "You do not suffer disadvantage on Perception checks due to heavy precipitation and wind, or areas lightly obscured by mist, light fog, or water conditions.",
+                  "summary": "You do not suffer disadvantage on Perception checks due to heavy precipitation and wind, or areas lightly obscured by mist, light fog, or water con...",
+                  "points": 0
+                },
+                {
+                  "id": "artisan-tool-proficiency",
+                  "description": "You gain proficiency with one tool of your choice: carpenter's tools, navigator's tools, or vehicles (water).",
+                  "summary": "You gain proficiency with one tool of your choice: carpenter's tools, navigator's tools, or vehicles (water)."
+                }
+              ]
+            },
+            {
+              "id": "deep",
+              "name": "Deep",
+              "traits": [
+                {
+                  "id": "brave",
+                  "summary": "You have advantage on saving throws you make to avoid or end the [frightened]() condition on yourself."
+                },
+                {
+                  "id": "toxin-resilience",
+                  "summary": "You have advantage on saving throws you make to avoid or end the [poisoned]() or [diseased]() conditions on yourself."
+                }
+              ]
+            },
+            {
+              "id": "desert",
+              "name": "Desert",
+              "traits": [
+                {
+                  "id": "hardy",
+                  "description": "You are acclimated to extreme climates and do not suffer the effects of extreme heat above 100 degrees Fahrenheit.",
+                  "summary": "You are acclimated to extreme climates and do not suffer the effects of extreme heat above 100 degrees Fahrenheit."
+                },
+                {
+                  "id": "survivalist"
+                },
+                {
+                  "id": "traversal",
+                  "description": "You can move across difficult terrain from sand or other desert terrain without expending extra movement if you are using your walking speed and are on the ground or floor. Your walking speed on sand increases by 10 feet.",
+                  "summary": "You can move across difficult terrain from sand or other desert terrain without expending extra movement if you are using your walking speed and ar...",
+                  "points": 0
+                },
+                {
+                  "id": "survival-training"
+                }
+              ]
+            },
+            {
+              "id": "mountain",
+              "name": "Mountain",
+              "traits": [
+                {
+                  "id": "traversal",
+                  "description": "You can move across rocky or mountainous difficult terrain without expending extra movement if you are using your walking or climbing speed.",
+                  "summary": "You can move across rocky or mountainous difficult terrain without expending extra movement if you are using your walking or climbing speed."
+                },
+                {
+                  "id": "powerful-build"
+                },
+                {
+                  "id": "hardy",
+                  "description": "You are acclimated to extreme climates and do not suffer the effects of high altitudes above 10,000 ft.",
+                  "summary": "You are acclimated to extreme climates and do not suffer the effects of high altitudes above 10,000 ft."
+                },
+                {
+                  "id": "climber"
+                }
+              ]
+            },
+            {
+              "id": "swamp",
+              "name": "Swamp",
+              "traits": [
+                {
+                  "id": "traversal",
+                  "description": "You can move across swampy or muddy difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor.",
+                  "summary": "You can move across swampy or muddy difficult terrain without expending extra movement if you are using your walking speed and are on the ground or...",
+                  "points": 0
+                },
+                {
+                  "id": "toxin-resilience",
+                  "summary": "You have advantage on saving throws you make to avoid or end the [poisoned]() or [diseased]() conditions on yourself."
+                },
+                {
+                  "id": "survival-training"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dwarf",
+          "name": "Dwarf",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "size-small"
+            },
+            {
+              "id": "artisan-s-lore"
+            },
+            {
+              "id": "artisan-tool-proficiency",
+              "description": "You gain proficiency with the artisan's tools of your choice.",
+              "summary": "You gain proficiency with the artisan's tools of your choice."
+            },
+            {
+              "id": "skilled-artistry",
+              "summary": "The time it takes to craft something using an artisan's tool with which you are proficient is halved."
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "stonebreaker",
+              "name": "Stonebreaker",
+              "traits": [
+                {
+                  "id": "strong",
+                  "summary": "You have advantage on Strength-based ability checks and Strength saving throws."
+                },
+                {
+                  "id": "stout-build"
+                },
+                {
+                  "id": "artisan-tool-proficiency",
+                  "description": "You gain proficiency with the artisan's tools of your choice.",
+                  "summary": "You gain proficiency with the artisan's tools of your choice."
+                },
+                {
+                  "id": "quick-learner",
+                  "summary": "You gain one skill proficiency of your choice and one tool proficiency of your choice."
+                },
+                {
+                  "id": "combat-training"
+                },
+                {
+                  "id": "martial-training",
+                  "summary": "You gain proficiency in 3 martial weapons of your choice.",
+                  "points": 0
+                }
+              ]
+            },
+            {
+              "id": "skyrider",
+              "name": "Skyrider",
+              "traits": [
+                {
+                  "id": "note"
+                }
+              ]
+            },
+            {
+              "id": "steppemaster",
+              "name": "Steppemaster",
+              "traits": [
+                {
+                  "id": "nimble"
+                },
+                {
+                  "id": "artisan-s-lore"
+                },
+                {
+                  "id": "small-stealth",
+                  "description": "You can attempt to Hide even when you are obscured only by a creature that is at least one size larger than you.",
+                  "summary": "You can attempt to Hide even when you are obscured only by a creature that is at least one size larger than you."
+                },
+                {
+                  "id": "skilled-artistry",
+                  "summary": "The time it takes to craft something using an artisan's tool with which you are proficient is halved."
+                },
+                {
+                  "id": "empathic"
+                },
+                {
+                  "id": "artisan-tool-proficiency",
+                  "description": "You gain proficiency with one type of gaming set, musical instrument of your choice, a cook's utensils, or herbalism kit.",
+                  "summary": "You gain proficiency with one type of gaming set, musical instrument of your choice, a cook's utensils, or herbalism kit."
+                },
+                {
+                  "id": "lucky",
+                  "summary": "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
+                }
+              ]
+            },
+            {
+              "id": "vineguard",
+              "name": "Vineguard",
+              "traits": [
+                {
+                  "id": "nimble-escape"
+                },
+                {
+                  "id": "note"
+                }
+              ]
+            },
+            {
+              "id": "lightbringer",
+              "name": "Lightbringer",
+              "traits": [
+                {
+                  "id": "toxin-resilience",
+                  "summary": "You have advantage on saving throws you make to avoid or end the [poisoned]() or [diseased]() conditions on yourself."
+                },
+                {
+                  "id": "poison-resistance"
+                },
+                {
+                  "id": "artisan-s-lore"
+                },
+                {
+                  "id": "skilled-artistry",
+                  "summary": "The time it takes to craft something using an artisan's tool with which you are proficient is halved."
+                },
+                {
+                  "id": "psychic-resistance"
+                },
+                {
+                  "id": "traversal",
+                  "summary": "You can move across difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor."
+                }
+              ]
+            },
+            {
+              "id": "wavetamer",
+              "name": "Wavetamer",
+              "traits": [
+                {
+                  "id": "finesse-training",
+                  "description": "Your training allows you to add the finesse property to a weapon you carry in your main hand, as long as it does not have the heavy or two-handed properties.",
+                  "summary": "Your training allows you to add the finesse property to a weapon you carry in your main hand, as long as it does not have the heavy or two-handed p..."
+                },
+                {
+                  "id": "artisan-tool-proficiency",
+                  "description": "You gain proficiency with one tool of your choice: carpenter's tools, navigator's tools, or vehicles (water).",
+                  "summary": "You gain proficiency with one tool of your choice: carpenter's tools, navigator's tools, or vehicles (water)."
+                },
+                {
+                  "id": "mariner-s-lore"
+                },
+                {
+                  "id": "swim-speed",
+                  "description": "You have a swim speed of 30 feet.",
+                  "summary": "You have a swim speed of 30 feet."
+                }
+              ]
+            },
+            {
+              "id": "frostbeard",
+              "name": "Frostbeard",
+              "traits": [
+                {
+                  "id": "note"
+                }
+              ]
+            },
+            {
+              "id": "ashbearer",
+              "name": "Ashbearer",
+              "traits": [
+                {
+                  "id": "note"
+                }
+              ]
+            },
+            {
+              "id": "muckmolder",
+              "name": "Muckmolder",
+              "traits": [
+                {
+                  "id": "note"
+                }
+              ]
+            }
+          ],
+          "description": "Ever since the arrival of goblins on Eora, the dwarves been locked in constant struggle with them.",
+          "summary": "Ever since the arrival of goblins on Eora, the dwarves been locked in constant struggle with them."
+        },
+        {
+          "id": "half-giant",
+          "name": "Half-Giant",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "powerful-build",
+              "points": 0
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "frost",
+              "name": "Frost",
+              "traits": [
+                {
+                  "id": "durable"
+                },
+                {
+                  "id": "water"
+                },
+                {
+                  "id": "elemental-strike",
+                  "description": "When you damage a creature with an attack, you can cause the attack to deal an extra 1d4 + your Proficiency Bonus lightning damage and the target has disadvantage to maintain Concentration on a spell. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
+                  "summary": "When you damage a creature with an attack, you can cause the attack to deal an extra 1d4 + your Proficiency Bonus lightning damage and the target h...",
+                  "points": 0
+                },
+                {
+                  "id": "artisan-skill-proficiency",
+                  "description": "You have proficiency in one of the following skills of your choice: Animal Handling, Medicine, Nature, Perception, Stealth, or Survival.",
+                  "summary": "You have proficiency in one of the following skills of your choice: Animal Handling, Medicine, Nature, Perception, Stealth, or Survival.",
+                  "points": 0
+                },
+                {
+                  "id": "traversal",
+                  "summary": "You can move across difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor.",
+                  "points": 0
+                },
+                {
+                  "id": "acclimatization"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rare",
+      "name": "Rare Ancestries",
+      "description": "These species are less common on Eora. They may have been created through magic, displaced or migrated from other worlds or planes, or slowly evolved through magical means or from different Godlike parents, and developed cultures of their own over time.",
+      "subcategories": [
+        {
+          "id": "fey",
+          "name": "Ancestral fey",
+          "description": "While they do not share all of the same traits of their ancestors, these species originated in the feywilds.",
+          "ancestries": [
+            {
+              "id": "gnome",
+              "name": "Gnome",
+              "traits": [
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "magic-resistance",
+                  "description": "All gnomish characters have either Magic Resistance Greater Magic Resistance.",
+                  "summary": "All gnomish characters have either Magic Resistance Greater Magic Resistance.",
+                  "points": 0
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "inventor",
+                  "name": "Inventor",
+                  "traits": [
+                    {
+                      "id": "magic-resistance"
+                    },
+                    {
+                      "id": "tinkerer"
+                    },
+                    {
+                      "id": "artisan-s-lore"
+                    },
+                    {
+                      "id": "artisan-tool-proficiency",
+                      "description": "You gain proficiency with the artisan's tools of your choice.",
+                      "summary": "You gain proficiency with the artisan's tools of your choice."
+                    },
+                    {
+                      "id": "skilled-artistry",
+                      "summary": "The time it takes to craft something using an artisan's tool with which you are proficient is halved."
+                    }
+                  ]
+                },
+                {
+                  "id": "traveler",
+                  "name": "Traveler",
+                  "traits": [
+                    {
+                      "id": "greater-magic-resistance"
+                    },
+                    {
+                      "id": "socializer"
+                    },
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know the [dancing lights](), [druidcraft](), [friends](), [minor illusion](), or [vicious mockery]() cantrip.",
+                      "summary": "You know the [dancing lights](), [druidcraft](), [friends](), [minor illusion](), or [vicious mockery]() cantrip."
+                    },
+                    {
+                      "id": "fey-magic",
+                      "description": "Starting at 3rd level, you can cast one spell from the following list: [animal friendship](), [cause fear](), [charm person](), [disguise self](), [enlarge/reduce](), [faerie fire](), [tasha's hideous laughter](), [sleep]().",
+                      "summary": "Starting at 3rd level, you can cast one spell from the following list: [animal friendship](), [cause fear](), [charm person](), [disguise self](), ..."
+                    }
+                  ]
+                },
+                {
+                  "id": "discoverer",
+                  "name": "Discoverer",
+                  "traits": [
+                    {
+                      "id": "greater-magic-resistance"
+                    },
+                    {
+                      "id": "beast-tracker"
+                    },
+                    {
+                      "id": "speech-beast-leaf",
+                      "summary": "You have the ability to communicate in a limited manner with Beasts, Plants, and vegetation."
+                    },
+                    {
+                      "id": "out-of-sight",
+                      "description": "You can attempt to hide even when you are only lightly obscured by foliage, rocky terrain, heavy rain, falling snow, mist, and other natural phenomena, and have advantage on these Dexterity checks.",
+                      "summary": "You can attempt to hide even when you are only lightly obscured by foliage, rocky terrain, heavy rain, falling snow, mist, and other natural phenom..."
+                    }
+                  ]
+                },
+                {
+                  "id": "seafarer",
+                  "name": "Seafarer",
+                  "traits": [
+                    {
+                      "id": "greater-magic-resistance"
+                    },
+                    {
+                      "id": "swim-speed"
+                    },
+                    {
+                      "id": "fishermen-s-tales"
+                    },
+                    {
+                      "id": "weather-worn",
+                      "summary": "You do not suffer disadvantage on perception checks due to heavy precipitation and wind, or areas lightly obscured by mist, light fog, or water con..."
+                    }
+                  ]
+                },
+                {
+                  "id": "deep-traveler",
+                  "name": "Deep Traveler",
+                  "traits": [
+                    {
+                      "id": "greater-magic-resistance"
+                    },
+                    {
+                      "id": "telepathy",
+                      "summary": "You can speak telepathically to any creature within 30 feet of you."
+                    }
+                  ]
+                }
+              ],
+              "description": "Long ago, early gnome ancestors emigrated from the First World, realm of the fey. While it's unclear why the first gnomes wandered to Eora, this ancestry manifests in modern gnomes as bizarre reasoning, eccentricity, obsessive tendencies, and what some see as naivete. These qualities are further reflected in their physical characteristics, such as spindly limbs, brightly colored hair, and childlike and extremely expressive facial features that further reflect their otherworldly origins.\n\nAlways hungry for new experiences, gnomes constantly wander both mentally and physically, attempting to stave off a terrible ailment that threatens all of their people. This affliction—the Bleaching—strikes gnomes who fail to dream, innovate, and take in new experiences, in the gnomes' absence of crucial magical essence from the First World.\n\nGnomes latch onto a source of localized magic where they live, typically primal magic, as befits their fey lineage, but this isn't enough to avoid the Bleaching unless they supplement this magic with new experiences. The Bleaching slowly drains the color—literally—from gnomes, and it plunges those affected into states of deep depression that eventually claim their lives. Very few gnomes survive this scourge, becoming deeply morose and wise survivors known as bleachlings.",
+              "summary": "Long ago, early gnome ancestors emigrated from the First World, realm of the fey."
+            }
+          ]
+        },
+        {
+          "id": "monstrous",
+          "name": "Monstrous species",
+          "description": "",
+          "ancestries": [
+            {
+              "id": "goblin",
+              "name": "Goblin",
+              "traits": [
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "darkvision-60"
+                },
+                {
+                  "id": "tooth-nail",
+                  "name": "Biter",
+                  "summary": "Your mouthful of sharp teeth is a light weapon dealing 1d6 + Strength slashing damage.",
+                  "description": "You have a mouthful of sharp teeth that allow you to make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals 1d6 + Strength modifier slashing damage"
+                },
+                {
+                  "id": "combat-awareness"
+                },
+                {
+                  "id": "out-of-sight"
+                },
+                {
+                  "id": "artisan"
+                },
+                {
+                  "id": "ambush"
+                },
+                {
+                  "id": "nimble-escape"
+                }
+              ],
+              "archetypes": [],
+              "description": "Goblinoids are an alien species and while are not kith are similar in body plan and structure. The multiple forms of goblinoid are life stages of a single species that reproduces hermaphroditically with larvae. These spawning pools are considered vile to most kith, mostly due to the smell, but more practically as a source of disease and vermin. While not all goblinoids are evil, their societies and cultures are significantly more chaotic, violent, and competitive than kith. While goblinoids do *rarely* join other societies, they will live on the fringes of settlements or in completely separate societies of their own.\n\nTheir fast metabolisms make goblins eating machines stricken with almost constant hunger; fortunately, goblins can subsist on almost anything organic, including other humanoids. This hunger subsides as they evolve. Combined with their tendency to scavenge and lay waste to local food sources causes most societies to view them as pests, outcasts, or annoyances at best. In rare occasions, befriending goblins has often led to great technological innovations and strategic military alliances.\n\nMany kith call them \"biters.\" Some consider goblins the \"teeth in the night\" that break into isolated farmhouses and steal babies, or devour entire cows in the field leaving bloody bones and scraps.",
+              "summary": "Goblinoids are an alien species and while are not kith are similar in body plan and structure."
+            },
+            {
+              "id": "dragonborn",
+              "name": "Dragonborn"
+            },
+        
+            {
+              "id": "returned",
+              "name": "Returned",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "constructed-form",
+                  "summary": "You are a Construct."
+                },
+                {
+                  "id": "vigilant-rest",
+                  "summary": "When you take a long rest, you can spend at least six hours in an inactive, motionless state, rather than sleeping."
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "ghost",
+                  "name": "Ghost",
+                  "traits": [
+                    {
+                      "id": "telepathy",
+                      "summary": "You can speak telepathically to any creature within 30 feet of you."
+                    },
+                    {
+                      "id": "strange-presence"
+                    },
+                    {
+                      "id": "resistance"
+                    },
+                    {
+                      "id": "traversal",
+                      "summary": "You can move across difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor."
+                    }
+                  ]
+                },
+                {
+                  "id": "poltergeist",
+                  "name": "Poltergeist",
+                  "traits": [
+                    {
+                      "id": "shifting-form"
+                    },
+                    {
+                      "id": "strange-magic"
+                    },
+                    {
+                      "id": "improviser"
+                    },
+                    {
+                      "id": "traversal",
+                      "summary": "You can move across difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor."
+                    }
+                  ]
+                },
+                {
+                  "id": "wildmorph",
+                  "name": "Wildmorph",
+                  "traits": [
+                    {
+                      "id": "hardened-form"
+                    },
+                    {
+                      "id": "strange-presence"
+                    },
+                    {
+                      "id": "note"
+                    }
+                  ]
+                },
+                {
+                  "id": "harrower",
+                  "name": "Harrower",
+                  "traits": [
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know the [stinging insects]() cantrip.",
+                      "summary": "You know the [stinging insects]() cantrip."
+                    },
+                    {
+                      "id": "natural-magic",
+                      "description": "Starting at 5th level, you can cast the [summon swarm]() spell.",
+                      "summary": "Starting at 5th level, you can cast the [summon swarm]() spell.",
+                      "points": 4
+                    },
+                    {
+                      "id": "shifting-form"
+                    },
+                    {
+                      "id": "natural-armor",
+                      "summary": "You can calculate your AC as 13 + your Dexterity modifier."
+                    }
+                  ]
+                },
+                {
+                  "id": "plasmoid",
+                  "name": "Plasmoid",
+                  "traits": [
+                    {
+                      "id": "constructed-form",
+                      "description": "You are a Construct and an Ooze. You don't need to eat, drink, or breathe, and magic can't put you to sleep. You are immune to disease and have advantage on saving throws against being [paralyzed]().",
+                      "summary": "You are a Construct and an Ooze.",
+                      "points": 0
+                    },
+                    {
+                      "id": "shape-self"
+                    },
+                    {
+                      "id": "amorphous"
+                    },
+                    {
+                      "id": "hold-breath",
+                      "summary": "You can hold your breath for up to 1 hour at a time.",
+                      "points": 0
+                    },
+                    {
+                      "id": "toxin-resilience",
+                      "summary": "You have advantage on saving throws you make to avoid or end the [poisoned]() or [diseased]() conditions on yourself.",
+                      "points": 0
+                    },
+                    {
+                      "id": "muck-walker"
+                    },
+                    {
+                      "id": "poison-resistance",
+                      "points": 0
+                    },
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know the [acid burst](), [poison fang](), or [poison spray]() cantrip.",
+                      "summary": "You know the [acid burst](), [poison fang](), or [poison spray]() cantrip.",
+                      "points": 0
+                    }
+                  ]
+                },
+                {
+                  "id": "mourntouched",
+                  "name": "Mourntouched",
+                  "traits": [
+                    {
+                      "id": "i-ve-seen-worse"
+                    },
+                    {
+                      "id": "magic-resistance",
+                      "description": "You have advantage on saving throws against spells and other magical effects.",
+                      "summary": "You have advantage on saving throws against spells and other magical effects.",
+                      "points": 0
+                    },
+                    {
+                      "id": "sixth-sense"
+                    },
+                    {
+                      "id": "unexplained-ability"
+                    }
+                  ],
+                  "description": "Some say that the dead-gray mist began in Metrol, initially flowing out of the royal palaces of Vermishard. Others swear that the disaster began in the Cannith stronghold Making. All that is known is that the mist swiftly spread across the kingdom, transforming the lands and creatures caught within it. Over a million people died in the Mourning, including nearly all of the inhabitants of central Cyre."
+                }
+              ],
+              "description": "*Occasionally souls or spirits may return to Eora for reasons unknown. Typically this is for unfinished business, revenge, or due to some curse or obligation their former soul made while living. The curse of a returned is not knowing their past life but having a driving motivation that may not match their new nature.*\n\n*Returned aren't born, they are manifest into the prime material plane without memories but with the basic skills they had in their life. The first thing a returned does is find a form. That might be discarded metal from a forge, a pile of gravel or sand, a hive of insects, a decaying chicken coop. Their magical forms twist the object(s) they inhabit into a humanoid form.*\n\n*Most returned will hide their true forms beneath layers of clothing, robes, or armor to fit in to other societies until their calling is fulfilled. Generally they are called \"ghosts,\" \"forgotten,\" or \"returned\" depending on whether the individual knows the returned is truly a returned and not a true ghost.*",
+              "summary": "*Occasionally souls or spirits may return to Eora for reasons unknown."
+            }
+          ]
+        },
+        {
+          "id": "awoken",
+          "name": "Awoken",
+          "description": "Each of the following below is considered a single ancestry, though many refer to them by their appearance. A small Mrrshan that looks like a lynx will often be called “lionkin” or “catfolk,” and an Iruxi that looks like a gila will likely be called “lizardkin” or “lizardfolk.” Many of these species have become so commonplace that they have established their own civilizations.",
+          "ancestries": [
+
+            {
+              "id": "auran-minotaur",
+              "name": "Auran (Minotaur)",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "keen-senses",
+                  "description": "You have proficiency in the Perception skill.",
+                  "summary": "You have proficiency in the Perception skill.",
+                  "points": 2
+                },
+                {
+                  "id": "horns"
+                },
+                {
+                  "id": "powerful-build"
+                },
+                {
+                  "id": "imposing-presence"
+                },
+                {
+                  "id": "goring-charge"
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "wildhorn",
+                  "name": "Wildhorn",
+                  "traits": [
+                    {
+                      "id": "fey-ancestry"
+                    },
+                    {
+                      "id": "artisan-skill-proficiency",
+                      "description": "You have proficiency in two of the following skills of your choice: Animal Handling, Nature, or Survival.",
+                      "summary": "You have proficiency in two of the following skills of your choice: Animal Handling, Nature, or Survival.",
+                      "points": 4
+                    },
+                    {
+                      "id": "traversal",
+                      "summary": "You can move across difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor."
+                    }
+                  ],
+                  "description": "*You are in touch with your bull's ancestry, and retain some of the power and grace of the wilds.*"
+                },
+                {
+                  "id": "abyssal-brood",
+                  "name": "Abyssal Brood",
+                  "traits": [
+                    {
+                      "id": "monstrous-ancestry"
+                    },
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know the [thaumaturgy]() cantrip.",
+                      "summary": "You know the [thaumaturgy]() cantrip."
+                    },
+                    {
+                      "id": "natural-magic",
+                      "description": "You know the [fearsome visage]() spell. You can cast [fearsome visage]() once per long rest without expending a spell slot or requiring concentration. Charisma is your spellcasting ability for this spell.",
+                      "summary": "You know the [fearsome visage]() spell."
+                    }
+                  ],
+                  "description": "*Your bloodline was corrupted by a foul demon.*"
+                },
+                {
+                  "id": "seafarer",
+                  "name": "Seafarer",
+                  "traits": [
+                    {
+                      "id": "artisan-skill-proficiency",
+                      "description": "You have proficiency in one of the following skills of your choice: Acrobatics, Athletics, or Survival.",
+                      "summary": "You have proficiency in one of the following skills of your choice: Acrobatics, Athletics, or Survival."
+                    },
+                    {
+                      "id": "rider-on-the-waves"
+                    },
+                    {
+                      "id": "swim-speed"
+                    }
+                  ],
+                  "description": "*You come from a society of rugged sailors and pirates, with a proud nautical tradition.*"
+                },
+                {
+                  "id": "labyrinth-born",
+                  "name": "Labyrinth-Born",
+                  "traits": [
+                    {
+                      "id": "darkvision-60",
+                      "name": "Darkvision",
+                      "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light."
+                    },
+                    {
+                      "id": "artisan-skill-proficiency",
+                      "description": "You have proficiency in one of the following skills of your choice: History, Perception, or Stealth.",
+                      "summary": "You have proficiency in one of the following skills of your choice: History, Perception, or Stealth."
+                    },
+                    {
+                      "id": "labyrinth-sense"
+                    }
+                  ],
+                  "description": "*You come from a lineage of minotaurs bred to stalk endless mazes, and hunt unlucky wanderers.*"
+                }
+              ],
+              "description": "*Minotaurs (Aurans) are massive humanoids with powerful physiques and heads resembling those of bulls. Their origins are shrouded in mystery. Some scholars believe them to be monsters of the wilderness, while others suspect they are descended from demon lords or even created in extra-dimensional mazes.*\n\nMinotaurs come in all the colors of natural bulls, though a dusty brown is most common. All minotaurs have horns, regardless of gender, which can easily reach several feet in length. Many minotaurs polish or decorate their horns, with some even sharpening them for combat or wrapping them in ceremonial gold collars.\n\nMinotaurs are furred all over their bodies, and generally have thick manes of hair on their necks and backs. Some carry hair on their face and chin as well. They have cloven hooves and thin tails, with a small tuft of fur on the end.",
+              "summary": "*Minotaurs (Aurans) are massive humanoids with powerful physiques and heads resembling those of bulls."
+            },
+            {
+              "id": "bearkin-bear",
+              "name": "Bearkin (Bear)",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "keen-senses",
+                  "description": "You have proficiency in the Perception skill.",
+                  "summary": "You have proficiency in the Perception skill.",
+                  "points": 2
+                },
+                {
+                  "id": "darkvision-60",
+                  "name": "Darkvision",
+                  "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light."
+                },
+                {
+                  "id": "tooth-nail",
+                  "description": "Your strong bite and claws allow you to make damaging unarmed strikes as natural, light weapons. When you hit, a strike deals 1d6 + Strength modifier slashing (claws) or piercing (bite) damage.",
+                  "summary": "Your strong bite and claws allow you to make damaging unarmed strikes as natural, light weapons."
+                },
+                {
+                  "id": "deep-slumber"
+                },
+                {
+                  "id": "toughness"
+                },
+                {
+                  "id": "stout-build"
+                }
+              ],
+              "archetypes": [],
+              "description": "*Bearkin are hulking humanoids with ursine features, known for their incredible strength and deep connection to the wilderness.*",
+              "summary": "*Bearkin are hulking humanoids with ursine features, known for their incredible strength and deep connection to the wilderness.*."
+            },
+            {
+              "id": "giff-hippo",
+              "name": "Giff (Hippo)",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "keen-senses",
+                  "description": "You have proficiency in the Perception skill.",
+                  "summary": "You have proficiency in the Perception skill.",
+                  "points": 2
+                },
+                {
+                  "id": "giff-resilience"
+                },
+                {
+                  "id": "tooth-nail",
+                  "description": "Your natural strength allows you to make damaging unarmed strikes using your head or bite as a natural, light weapon. When you hit with it, the strike deals 1d6 + Strength modifier bludgeoning damage.",
+                  "summary": "Your natural strength allows you to make damaging unarmed strikes using your head or bite as a natural, light weapon."
+                },
+                {
+                  "id": "powerful-build"
+                },
+                {
+                  "id": "toughness"
+                }
+              ],
+              "archetypes": [],
+              "description": "*Giff are hippo-headed humanoids known for their military discipline, love of firearms, and remarkable resilience.*",
+              "summary": "*Giff are hippo-headed humanoids known for their military discipline, love of firearms, and remarkable resilience.*."
+            },
+            {
+              "id": "kashrishi-rhino",
+              "name": "Kashrishi (Rhino)",
+              "traits": [
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "keen-senses",
+                  "description": "You have proficiency in the Perception skill.",
+                  "summary": "You have proficiency in the Perception skill.",
+                  "points": 2
+                },
+                {
+                  "id": "tooth-nail",
+                  "description": "Your powerful neck muscles and facial horn allow you to make damaging unarmed strikes as a natural, light weapon. When you hit with it, the strike deals 1d6 + Strength modifier piercing or bludgeoning damage (choose one).",
+                  "summary": "Your powerful neck muscles and facial horn allow you to make damaging unarmed strikes as a natural, light weapon."
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "athamasi",
+                  "name": "Athamasi",
+                  "traits": [
+                    {
+                      "id": "climb-speed",
+                      "description": "You have a small set of secondary arms adapted to climbing and hanging from trees. You have a climb speed of 20 feet.",
+                      "summary": "You have a small set of secondary arms adapted to climbing and hanging from trees."
+                    }
+                  ],
+                  "description": "*You have a small set of secondary arms adapted to climbing and hanging from trees.*"
+                },
+                {
+                  "id": "lethoci",
+                  "name": "Lethoci",
+                  "traits": [
+                    {
+                      "id": "swim-speed",
+                      "description": "You come from a kashrishi family adapted to coastal shores, or inland ponds and lakes. You have a swim speed of 30 feet.",
+                      "summary": "You come from a kashrishi family adapted to coastal shores, or inland ponds and lakes."
+                    }
+                  ],
+                  "description": "*Resembling dwarf-sized bipedal rhinoceroses with the occasional odd insectile feature, kashrishi adapt to their environs with unusual efficiency, using a combination of rapid physical evolutions and inherent psychic powers.*"
+                },
+                {
+                  "id": "trogloshi",
+                  "name": "Trogloshi",
+                  "traits": [
+                    {
+                      "id": "crystal-luminescence"
+                    }
+                  ],
+                  "description": "*You're adapted to the sunless regions of dense jungle forests and deep caves, with soft flesh lacking pigment and unusually clear crystalline horns.*"
+                },
+                {
+                  "id": "xyloshi",
+                  "name": "Xyloshi",
+                  "traits": [
+                    {
+                      "id": "finesse-training",
+                      "description": "You have prominent neck muscles that allow you to use your facial horn as a tool or weapon. Your physical strength and training allows you to add the finesse property to your horn. The damage it deals is increased to 1d8.",
+                      "summary": "You have prominent neck muscles that allow you to use your facial horn as a tool or weapon."
+                    }
+                  ],
+                  "description": "*You have prominent neck muscles that allow you to use your facial horn as a tool or weapon.*"
+                }
+              ],
+              "description": "*Resembling dwarf-sized bipedal rhinoceroses with the occasional odd insectile feature, kashrishi adapt to their environs with unusual efficiency, using a combination of rapid physical evolutions and inherent psychic powers.*\n\nKashrishi are often mistakenly referred to as having hive minds, though they're actually natural empaths, capable of discerning a creature's emotional state and impulses through proximity.",
+              "summary": "*Resembling dwarf-sized bipedal rhinoceroses with the occasional odd insectile feature, kashrishi adapt to their environs with unusual efficiency, ..."
+            },
+            {
+              "id": "loxodon-elephant",
+              "name": "Loxodon (Elephant)",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "keen-senses",
+                  "description": "You have proficiency in the Perception skill.",
+                  "summary": "You have proficiency in the Perception skill.",
+                  "points": 2
+                },
+                {
+                  "id": "tooth-nail",
+                  "description": "Your trunk and tusks allow you to make damaging unarmed strikes as natural, light weapons. When you hit, a strike deals 1d6 + Strength modifier bludgeoning (trunk) or piercing (tusks) damage.",
+                  "summary": "Your trunk and tusks allow you to make damaging unarmed strikes as natural, light weapons."
+                },
+                {
+                  "id": "prehensile-limb",
+                  "name": "Prehensile Limb, Trunk",
+                  "description": "You have a trunk that can perform simple tasks: lift, drop, hold, push, or pull an object or a creature; open or close a door or a container; grapple someone; or make an unarmed strike (damage dice of 1d4) with a reach of 5 feet. Your trunk can use an object as a bonus action, but cannot wield a shield or perform somatic components of a spell. Your trunk can act as a snorkel, and can lift a number of pounds equal to five times your Strength score.",
+                  "summary": "You have a trunk that can perform simple tasks: lift, drop, hold, push, or pull an object or a creature; open or close a door or a container; grapp...",
+                  "points": 2
+                },
+                {
+                  "id": "perfect-memory"
+                }
+              ],
+              "archetypes": [],
+              "description": "*Loxodons are elephantine humanoids known for their serene wisdom, incredible memory, and strong sense of community.*",
+              "summary": "*Loxodons are elephantine humanoids known for their serene wisdom, incredible memory, and strong sense of community.*."
+            },
+            {
+              "id": "aven-birdfolk",
+              "name": "Aven (Birdfolk)",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "beak-claw",
+                  "description": "You have a beak and/or talons that allow you to make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals 1d6 + Strength modifier slashing (talons) or piercing (beak) damage.",
+                  "summary": "You have a beak and/or talons that allow you to make damaging unarmed strikes as a light weapon."
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "flying",
+                  "name": "Flying",
+                  "traits": [
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You can control wind and know the [gust]() cantrip, or your voice carries on the wind and you know the [message]() cantrip.",
+                      "summary": "You can control wind and know the [gust]() cantrip, or your voice carries on the wind and you know the [message]() cantrip."
+                    },
+                    {
+                      "id": "wings"
+                    },
+                    {
+                      "id": "hardy",
+                      "name": "Hardy, High Altitudes",
+                      "description": "You are acclimated to extreme climates and do not suffer the effects of high altitudes above 10,000 ft.",
+                      "summary": "You are acclimated to extreme climates and do not suffer the effects of high altitudes above 10,000 ft."
+                    },
+                    {
+                      "id": "beast-tracker"
+                    },
+                    {
+                      "id": "artisan-skill-proficiency",
+                      "description": "You have proficiency in Perception.",
+                      "summary": "You have proficiency in Perception."
+                    }
+                  ]
+                },
+                {
+                  "id": "flightless",
+                  "name": "Flightless",
+                  "traits": [
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You can control wind and know the [gust]() cantrip, or your voice carries on the wind and you know the [message]() cantrip.",
+                      "summary": "You can control wind and know the [gust]() cantrip, or your voice carries on the wind and you know the [message]() cantrip."
+                    },
+                    {
+                      "id": "limited-flight"
+                    },
+                    {
+                      "id": "hardy",
+                      "name": "Hardy, High Altitudes",
+                      "description": "You are acclimated to extreme climates and do not suffer the effects of high altitudes above 10,000 ft.",
+                      "summary": "You are acclimated to extreme climates and do not suffer the effects of high altitudes above 10,000 ft."
+                    },
+                    {
+                      "id": "beast-tracker"
+                    },
+                    {
+                      "id": "artisan-skill-proficiency",
+                      "description": "You have proficiency in Perception.",
+                      "summary": "You have proficiency in Perception."
+                    }
+                  ]
+                },
+                {
+                  "id": "arctic",
+                  "name": "Arctic",
+                  "traits": [
+                    {
+                      "id": "keen-sight",
+                      "summary": "You have advantage on Wisdom (Perception), Wisdom (Survival), and Intelligence (Investigation) checks that rely on sight."
+                    },
+                    {
+                      "id": "swim-speed"
+                    },
+                    {
+                      "id": "acclimatization"
+                    },
+                    {
+                      "id": "insulation"
+                    },
+                    {
+                      "id": "hold-breath",
+                      "summary": "You can hold your breath for up to 1 hour at a time."
+                    },
+                    {
+                      "id": "glide"
+                    }
+                  ]
+                },
+                {
+                  "id": "raptor",
+                  "name": "Raptor",
+                  "traits": [
+                    {
+                      "id": "wings"
+                    },
+                    {
+                      "id": "keen-sight",
+                      "summary": "You have advantage on Wisdom (Perception), Wisdom (Survival), and Intelligence (Investigation) checks that rely on sight."
+                    },
+                    {
+                      "id": "acclimatization"
+                    }
+                  ]
+                }
+              ],
+              "description": "*Aven is the collective term for humanoids with birdlike appearances: feathers instead of hair, beaks, talons, ear holes, wings, and other avian physical features. Aven may be winged or wingless, but all of them are covered in feathers, have beaks, and have talons on their feet.*",
+              "summary": "*Aven is the collective term for humanoids with birdlike appearances: feathers instead of hair, beaks, talons, ear holes, wings, and other avian ph..."
+            },
+            {
+              "id": "osphrani-kangaroofolk",
+              "name": "Osphrani (Kangaroofolk)",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "strong-kick"
+                },
+                {
+                  "id": "leap",
+                  "summary": "Your long jump is 20 feet and your high jump is 10 feet, with or without a running start."
+                },
+                {
+                  "id": "quick"
+                },
+                {
+                  "id": "agile-fall",
+                  "description": "When you fall 100 feet or less and aren't [incapacitated](), you can make a DC 10 Dexterity (Acrobatics) check when you land. If you succeed, you take no falling damage and land on your feet.",
+                  "summary": "When you fall 100 feet or less and aren't [incapacitated](), you can make a DC 10 Dexterity (Acrobatics) check when you land."
+                },
+                {
+                  "id": "pouch"
+                },
+                {
+                  "id": "bounding"
+                }
+              ],
+              "archetypes": [],
+              "description": "Ysoki is the collective name for a number of rodent and marsupial-like mammalian species. They are generally small mammalian species, most commonly resembling rats, mice, hare, and squirrels.",
+              "summary": "Ysoki is the collective name for a number of rodent and marsupial-like mammalian species."
+            },
+            {
+              "id": "ysoki-ratfolk",
+              "name": "Ysoki (Ratfolk)",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "squeeze"
+                },
+                {
+                  "id": "darkvision-60",
+                  "name": "Darkvision",
+                  "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light."
+                },
+                {
+                  "id": "gifted-artisan",
+                  "description": "You gain proficiency with the artisan's tools of your choice, and add an additional 1d4 to all ability checks rolled using these tools.",
+                  "summary": "You gain proficiency with the artisan's tools of your choice, and add an additional 1d4 to all ability checks rolled using these tools."
+                },
+                {
+                  "id": "tooth-nail",
+                  "description": "Your strong bite allow you to make damaging unarmed strikes as natural, light weapons. When you hit with it, a strike deals 1d6 + Strength modifier slashing damage.",
+                  "summary": "Your strong bite allow you to make damaging unarmed strikes as natural, light weapons."
+                },
+                {
+                  "id": "gnaw"
+                },
+                {
+                  "id": "toxin-resilience",
+                  "summary": "You have advantage on saving throws you make to avoid or end the [poisoned]() or [diseased]() conditions on yourself."
+                },
+                {
+                  "id": "squeakspeak"
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "spotter",
+                  "name": "Spotter",
+                  "traits": [
+                    {
+                      "id": "hunters-senses",
+                      "description": "Thanks to your keen sense of smell, you have advantage on Wisdom (Perception), Wisdom (Survival), and Intelligence (Investigation) checks that involve smell. As an action you can focus your sense of smell and gain blindsight (30 ft.) until the end of your next turn.",
+                      "summary": "Thanks to your keen sense of smell, you have advantage on Wisdom (Perception), Wisdom (Survival), and Intelligence (Investigation) checks that invo...",
+                      "points": 7
+                    }
+                  ]
+                },
+                {
+                  "id": "scavenger",
+                  "name": "Scavenger",
+                  "traits": []
+                },
+                {
+                  "id": "rural",
+                  "name": "Rural",
+                  "traits": []
+                }
+              ]
+            },
+            {
+              "id": "harengon-rabbitfolk",
+              "name": "Harengon (Rabbitfolk)",
+              "traits": [
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "leap",
+                  "summary": "Your long jump is 20 feet and your high jump is 10 feet, with or without a running start."
+                },
+                {
+                  "id": "keen-hearing"
+                },
+                {
+                  "id": "twitchy"
+                },
+                {
+                  "id": "artisan-skill-proficiency",
+                  "description": "You have proficiency in the Acrobatics skill.",
+                  "summary": "You have proficiency in the Acrobatics skill."
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "hare",
+                  "name": "Hare",
+                  "traits": [
+                    {
+                      "id": "quick"
+                    },
+                    {
+                      "id": "bounding"
+                    }
+                  ]
+                },
+                {
+                  "id": "rabbit",
+                  "name": "Rabbit",
+                  "traits": [
+                    {
+                      "id": "lucky",
+                      "summary": "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
+                    },
+                    {
+                      "id": "socializer"
+                    },
+                    {
+                      "id": "strong-kick"
+                    },
+                    {
+                      "id": "traversal",
+                      "summary": "You can move across difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "iruxi-lizardfolk",
+              "name": "Iruxi (Lizardfolk)",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "tooth-tail",
+                  "description": "You have one or more features that allow you to make damaging unarmed strikes as a natural, light weapon.",
+                  "summary": "You have one or more features that allow you to make damaging unarmed strikes as a natural, light weapon.",
+                  "points": 0
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "badlands",
+                  "name": "Badlands",
+                  "traits": [
+                    {
+                      "id": "darkvision-60",
+                      "name": "Darkvision",
+                      "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light."
+                    },
+                    {
+                      "id": "strong-bite"
+                    },
+                    {
+                      "id": "defensive-feature",
+                      "name": "Defensive Feature, Spines",
+                      "description": "When another creature [grappled]() you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal piercing damage equal to 1d4 × your Proficiency Bonus.",
+                      "summary": "When another creature [grappled]() you or starts its turn grappling you, you can choose to use defensive features on your body to damage it."
+                    },
+                    {
+                      "id": "climb-speed"
+                    },
+                    {
+                      "id": "leap",
+                      "summary": "Your long jump is 20 feet and your high jump is 10 feet, with or without a running start."
+                    },
+                    {
+                      "id": "acclimatization"
+                    },
+                    {
+                      "id": "hold-breath",
+                      "summary": "You can hold your breath for up to 1 hour at a time."
+                    },
+                    {
+                      "id": "survivalist"
+                    },
+                    {
+                      "id": "skilled-tracker",
+                      "summary": "Whenever you make a Wisdom (Survival) check to track creatures, you have advantage on that check."
+                    }
+                  ]
+                },
+                {
+                  "id": "swamp",
+                  "name": "Swamp",
+                  "traits": [
+                    {
+                      "id": "hold-breath",
+                      "summary": "You can hold your breath for up to 1 hour at a time."
+                    },
+                    {
+                      "id": "darkvision-60",
+                      "name": "Darkvision",
+                      "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light."
+                    },
+                    {
+                      "id": "natural-weapons"
+                    },
+                    {
+                      "id": "hungry-jaws",
+                      "summary": "As a bonus action, you can make a special attack with your bite."
+                    },
+                    {
+                      "id": "natural-armor",
+                      "summary": "You can calculate your AC as 13 + your Dexterity modifier."
+                    },
+                    {
+                      "id": "weather-worn",
+                      "description": "You do not suffer disadvantage on Wisdom (Perception) checks due to heavy precipitation and wind, or areas lightly obscured by mist, light fog, or water conditions.",
+                      "summary": "You do not suffer disadvantage on Wisdom (Perception) checks due to heavy precipitation and wind, or areas lightly obscured by mist, light fog, or ..."
+                    },
+                    {
+                      "id": "swim-speed"
+                    },
+                    {
+                      "id": "artisan-skill-proficiency",
+                      "description": "You have proficiency in Intimidation.",
+                      "summary": "You have proficiency in Intimidation."
+                    }
+                  ]
+                },
+                {
+                  "id": "jungle",
+                  "name": "Jungle",
+                  "traits": [
+                    {
+                      "id": "darkvision-60",
+                      "name": "Darkvision",
+                      "description": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+                      "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light."
+                    },
+                    {
+                      "id": "chromatophore",
+                      "summary": "As a bonus action, you can turn invisible until the start of your next turn."
+                    },
+                    {
+                      "id": "tongue"
+                    },
+                    {
+                      "id": "climb-speed"
+                    },
+                    {
+                      "id": "artisan-skill-proficiency",
+                      "description": "You have proficiency in Stealth.",
+                      "summary": "You have proficiency in Stealth."
+                    }
+                  ]
+                },
+                {
+                  "id": "desert",
+                  "name": "Desert",
+                  "traits": [
+                    {
+                      "id": "quick"
+                    },
+                    {
+                      "id": "darkvision-60",
+                      "name": "Darkvision",
+                      "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light."
+                    },
+                    {
+                      "id": "acclimatization"
+                    },
+                    {
+                      "id": "tooth-tail",
+                      "description": "Your toothy maw can make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals 1d6 + Strength modifier slashing damage.",
+                      "summary": "Your toothy maw can make damaging unarmed strikes as a light weapon."
+                    },
+                    {
+                      "id": "natural-armor",
+                      "summary": "You can calculate your AC as 13 + your Dexterity modifier."
+                    },
+                    {
+                      "id": "burrow",
+                      "summary": "At 1st level, you can use your bonus action to gain a burrow speed of 10 feet for one turn."
+                    }
+                  ]
+                },
+                {
+                  "id": "forest",
+                  "name": "Forest",
+                  "traits": [
+                    {
+                      "id": "tooth-tail",
+                      "description": "Your toothy maw and/or strong tail allow you to make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals:\n- **Bite.** 1d6 + Strength modifier slashing damage\n- **Fangs.** 1d6 + Strength modifier piercing damage\n- **Tail.** 1d6 + Strength modifier bludgeoning damage",
+                      "summary": "Your toothy maw and/or strong tail allow you to make damaging unarmed strikes as a light weapon."
+                    },
+                    {
+                      "id": "regeneration",
+                      "summary": "As a bonus action, you can heal wounds you have taken."
+                    },
+                    {
+                      "id": "beast-tracker"
+                    },
+                    {
+                      "id": "toxin-resilience",
+                      "summary": "You have advantage on saving throws you make to avoid or end the [poisoned]() or [diseased]() conditions on yourself."
+                    },
+                    {
+                      "id": "poison-resistance"
+                    }
+                  ]
+                },
+                {
+                  "id": "shelled",
+                  "name": "Shelled",
+                  "traits": [
+                    {
+                      "id": "bite"
+                    },
+                    {
+                      "id": "shell"
+                    },
+                    {
+                      "id": "swim-speed"
+                    },
+                    {
+                      "id": "durable"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "kcerpa-squirrelfolk",
+              "name": "Kcerpa (Squirrelfolk)",
+              "traits": [
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "nimble"
+                },
+                {
+                  "id": "small-stealth"
+                },
+                {
+                  "id": "tooth-nail",
+                  "description": "Your strong bite and claws allow you to make damaging unarmed strikes as natural, light weapons. When you hit with it, a strike deals:\n- **Bite:** 1d6 + Strength modifier slashing damage\n- **Claws:** 1d4 + Strength modifier slashing damage",
+                  "summary": "Your strong bite and claws allow you to make damaging unarmed strikes as natural, light weapons."
+                },
+                {
+                  "id": "climb-speed"
+                },
+                {
+                  "id": "forager"
+                },
+                {
+                  "id": "traversal",
+                  "description": "You can move across difficult terrain without expending extra movement if you are using your walking or climbing speed.",
+                  "summary": "You can move across difficult terrain without expending extra movement if you are using your walking or climbing speed.",
+                  "points": 2
+                },
+                {
+                  "id": "fury-of-small",
+                  "summary": "When you damage a creature larger than you with an attack or a spell, you can cause the attack or spell to deal extra damage equal to your level."
+                }
+              ],
+              "archetypes": []
+            },
+            {
+              "id": "mrrshan",
+              "name": "Mrrshan",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "darkvision-60",
+                  "name": "Darkvision",
+                  "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light."
+                },
+                {
+                  "id": "tooth-nail",
+                  "description": "Your strong bite and claws allow you to make damaging unarmed strikes as natural, light weapons. When you hit with it, a strike deals:\n- **Bite:** 1d4 + Strength modifier slashing damage\n- **Claws:** 1d6 + Strength modifier slashing damage",
+                  "summary": "Your strong bite and claws allow you to make damaging unarmed strikes as natural, light weapons."
+                },
+                {
+                  "id": "agile-fall",
+                  "description": "When you fall 100 feet or less and aren't [incapacitated](), you can make a DC 10 Dexterity (Acrobatics) check when you land. If you succeed, you take no falling damage and land on your feet.",
+                  "summary": "When you fall 100 feet or less and aren't [incapacitated](), you can make a DC 10 Dexterity (Acrobatics) check when you land."
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "tabaxi",
+                  "name": "Tabaxi",
+                  "traits": [
+                    {
+                      "id": "climb-speed",
+                      "description": "You have a climbing speed equal to your walking speed.",
+                      "summary": "You have a climbing speed equal to your walking speed."
+                    },
+                    {
+                      "id": "leap",
+                      "summary": "Your long jump is 20 feet and your high jump is 10 feet, with or without a running start."
+                    },
+                    {
+                      "id": "combat-awareness"
+                    },
+                    {
+                      "id": "cat-s-talent"
+                    },
+                    {
+                      "id": "adrenaline-rush"
+                    }
+                  ]
+                },
+                {
+                  "id": "panthera",
+                  "name": "Panthera",
+                  "traits": [
+                    {
+                      "id": "roar",
+                      "summary": "As a bonus action, you can let out an especially menacing roar."
+                    },
+                    {
+                      "id": "swiftness",
+                      "summary": "When you move on your turn in combat, you can double your speed until the end of the turn.",
+                      "points": 2
+                    },
+                    {
+                      "id": "combat-climber"
+                    },
+                    {
+                      "id": "hunter-s-instincts"
+                    },
+                    {
+                      "id": "brave",
+                      "summary": "You have advantage on saving throws you make to avoid or end the [frightened]() condition on yourself."
+                    }
+                  ]
+                }
+              ],
+              "description": "Mrrshan are a species with feline-like traits and qualities. They commonly resemble large cats of the world, but their patterns and body structures vary as much as any other humanoid.\n\nCurious and gregarious wanderers, mrrshan have features of felines and humanoids in both appearance and temperament. They enjoy learning new things, collecting new tales and trinkets, and ensuring their loved ones are safe and happy. They view themselves as chosen guardians of natural places in the world and are often recklessly brave, even in the face of overwhelming opposition.\n\nMrrshan are outgoing, active humanoids who delight in discovery, whether of hidden ruins or a comfortable place to nap. They are exceptionally social, both within their tight-knit communities and with other creatures they meet. Remarkably brave, mrrshan see themselves as guardians of the world against forces that would assail it, and they believe that strong communities, breadth of experience, and continual self-improvement aid them in this fight.\n\nThey have fast reflexes and are even able to twist themselves in the air while falling to land on their feet. As quick as these reflexes are, mrrshani tempers are quicker, shifting from effusive glee to aggrieved fury in an instant.",
+              "summary": "Mrrshan are a species with feline-like traits and qualities."
+            },
+            {
+              "id": "khenra",
+              "name": "Khenra",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "quick"
+                },
+                {
+                  "id": "vigilant"
+                },
+                {
+                  "id": "pack-tactics",
+                  "description": "You have advantage on an attack roll against a creature if at least one of your allies is within 5 feet of the creature and the ally isn't [incapacitated]().",
+                  "summary": "You have advantage on an attack roll against a creature if at least one of your allies is within 5 feet of the creature and the ally isn't [incapac..."
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "twin-alive",
+                  "name": "Twin Alive",
+                  "traits": [
+                    {
+                      "id": "lucky",
+                      "summary": "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
+                    }
+                  ]
+                },
+                {
+                  "id": "twin-dead",
+                  "name": "Twin Dead",
+                  "traits": [
+                    {
+                      "id": "brave",
+                      "summary": "You have advantage on saving throws you make to avoid or end the [frightened]() condition on yourself."
+                    },
+                    {
+                      "id": "shadow-magic",
+                      "description": "Beginning at 3rd level, you can cast one 1st-level spell of your choice from the illusion or necromancy schools of magic.",
+                      "summary": "Beginning at 3rd level, you can cast one 1st-level spell of your choice from the illusion or necromancy schools of magic."
+                    }
+                  ],
+                  "description": "*Your twin is dead, or you were born without a twin. You are viewed as a natural-born initiate, sure to achieve a glorified death.*"
+                },
+                {
+                  "id": "twin-bonded",
+                  "name": "Twin-Bonded",
+                  "traits": [
+                    {
+                      "id": "lucky",
+                      "summary": "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
+                    }
+                  ]
+                },
+                {
+                  "id": "twin-severed",
+                  "name": "Twin-Severed",
+                  "traits": [
+                    {
+                      "id": "brave",
+                      "summary": "You have advantage on saving throws you make to avoid or end the [frightened]() condition on yourself."
+                    },
+                    {
+                      "id": "shadow-magic",
+                      "description": "Beginning at 3rd level, you can cast one 1st-level spell of your choice from the illusion or necromancy schools of magic.",
+                      "summary": "Beginning at 3rd level, you can cast one 1st-level spell of your choice from the illusion or necromancy schools of magic."
+                    }
+                  ]
+                }
+              ],
+              "description": "The khenra are typically tall and lean, with graceful bodies and heads that strongly resemble jackals, wild dogs, or foxes. Their snouts are long and sharp, and their ears rise straight above their heads. Their bodies are covered in sleek hair that tends to match their homelands. Despite their sharp teeth, they consider biting to be an uncouth and unworthy combat tactic.\n\nNearly every khenra is born a fraternal or identical twin, and a pair of khenra twins forms an extremely close emotional bond unknown to most others. The death of one twin in training or the trials causes a tremendous shock to the survivor, who typically grows more aggressive and foolhardy in battle. The rare khenra who are born without twins are believed to have killed their siblings in the womb, and are thus viewed as natural-born initiates, sure to achieve a glorified death in the trials.",
+              "summary": "The khenra are typically tall and lean, with graceful bodies and heads that strongly resemble jackals, wild dogs, or foxes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "versatile",
+      "name": "Versatile ancestries",
+      "description": "Humanoids influenced by the planes, gods, or magic often take on unnatural traits and appearances based on their influence. One may find a human with webbed hands, a goliath whose eyes glow red at night, or a dwarf with copper hair. There are also those with even more fully unnatural appearances such as a dwarf with the eyes, tongue, and skin of a frog, a half giant with red skin and flames for hair, or a human with horns, vestigial wings, and a scorpion tail. Non-kith occasionally take on these influences, but it seems to be exceedingly rare.\nIf you want to build a character with partial stats of a godlike, pick an archetype, then swap out **up to 8 points** of traits out of that archetype.",
+      "subcategories": [
+        {
+          "id": "godlike",
+          "name": "Godlike",
+          "description": "Generally human, dwarven, or half-giants that have been blessed, cursed, or influenced by magic at birth, through magical means, or otherwise created through magic. All godlike share two commonalities: they manifest physical features from their magical heritage, and their eyes are all unnatural in some way.",
+          "ancestries": [
+            {
+              "id": "oread",
+              "name": "Oread",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "darkvision-60",
+                  "name": "Darkvision",
+                  "description": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in monochromatic shades of brown or green.",
+                  "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light."
+                },
+                {
+                  "id": "wildtongue"
+                },
+                {
+                  "id": "speech-beast-leaf",
+                  "summary": "You have the ability to communicate in a limited manner with Beasts, Plants, and vegetation."
+                },
+                {
+                  "id": "traversal",
+                  "description": "You can move across difficult terrain caused by Plant creatures and vegetation without spending extra movement.",
+                  "summary": "You can move across difficult terrain caused by Plant creatures and vegetation without spending extra movement.",
+                  "points": 0
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "sandsoul",
+                  "name": "Sandsoul",
+                  "traits": [
+                    {
+                      "id": "poison-resistance",
+                      "description": "You have resistance to poison damage.",
+                      "summary": "You have resistance to poison damage.",
+                      "points": 2
+                    },
+                    {
+                      "id": "quick"
+                    },
+                    {
+                      "id": "survivalist"
+                    },
+                    {
+                      "id": "relentless"
+                    }
+                  ]
+                },
+                {
+                  "id": "rootwhisper",
+                  "name": "Rootwhisper",
+                  "traits": [
+                    {
+                      "id": "poison-resistance",
+                      "description": "You have resistance to poison damage.",
+                      "summary": "You have resistance to poison damage.",
+                      "points": 2
+                    },
+                    {
+                      "id": "speech-beast-leaf",
+                      "summary": "You have the ability to communicate in a limited manner with Beasts, Plants, and vegetation."
+                    },
+                    {
+                      "id": "keen-senses",
+                      "summary": "You have advantage on Wisdom (Perception) checks that rely on hearing or sight."
+                    }
+                  ]
+                },
+                {
+                  "id": "old-growth",
+                  "name": "Old Growth",
+                  "traits": [
+                    {
+                      "id": "speech-beast-leaf",
+                      "summary": "You have the ability to communicate in a limited manner with Beasts, Plants, and vegetation."
+                    },
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know the [druidcraft]() or [shillelagh]() cantrip.",
+                      "summary": "You know the [druidcraft]() or [shillelagh]() cantrip."
+                    },
+                    {
+                      "id": "elemental-magic",
+                      "description": "Starting at 3rd level, you can choose one spell [ensnaring strike](), [entangle](), [grasping roots](), or [bramble binding](), that you can cast with this trait. Then starting at 5th level, you can cast [sprout tree]() or [lashing vine](). These spells do not require a material component, and can be cast once per long rest, or by using any spell slots you have of the appropriate level.",
+                      "summary": "Starting at 3rd level, you can choose one spell [ensnaring strike](), [entangle](), [grasping roots](), or [bramble binding](), that you can cast w..."
+                    }
+                  ]
+                },
+                {
+                  "id": "mycelial",
+                  "name": "Mycelial",
+                  "traits": [
+                    {
+                      "id": "spore-strike"
+                    },
+                    {
+                      "id": "charm-resistance",
+                      "summary": "You have advantage on saving throws you make to avoid or end the [charmed]() condition on yourself."
+                    },
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know the [message](), [preservation](), [decaying touch](), or [corpselight]() cantrip. If you choose mage hand, the hand is invisible and doesn't require components when you cast it with this trait.",
+                      "summary": "You know the [message](), [preservation](), [decaying touch](), or [corpselight]() cantrip."
+                    },
+                    {
+                      "id": "spore-network"
+                    }
+                  ]
+                },
+                {
+                  "id": "florid",
+                  "name": "Florid",
+                  "traits": [
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know one cantrip of your choice associated with your elemental attunement: [infestation](), [druidcraft](), [thought wisp](), or [thorn whip]().",
+                      "summary": "You know one cantrip of your choice associated with your elemental attunement: [infestation](), [druidcraft](), [thought wisp](), or [thorn whip]()."
+                    },
+                    {
+                      "id": "elemental-magic",
+                      "description": "Starting at 3rd level, you can cast one spell associated with your elemental attunement: [hail of thorns](), [magic fruit](), or [calm emotions](). Then starting at 5th level, you can cast one spell associated with your elemental attunement: [plant growth](), [petal storm](), [spike growth](), or [wither and bloom](). These spells do not require a material component, and can be cast once per long rest, or by using any spell slots you have of the appropriate level.",
+                      "summary": "Starting at 3rd level, you can cast one spell associated with your elemental attunement: [hail of thorns](), [magic fruit](), or [calm emotions]()."
+                    },
+                    {
+                      "id": "speech-beast-leaf",
+                      "summary": "You have the ability to communicate in a limited manner with Beasts, Plants, and vegetation."
+                    },
+                    {
+                      "id": "spore-ward"
+                    }
+                  ]
+                }
+              ],
+              "description": "Nature godlike are manifestations of nature. Most have plantlike growths such as mossy or flowering vines for hair, barklike skin, or saplike blood. Some bear mammalian animal features such as horns or antlers, long cervine-like ears, tails, fur, or hooved legs. Their eyes, as with other godlike, feature solid glowing irises and/or pupils - in variants of green, blue, yellow and brown.",
+              "summary": "Nature godlike are manifestations of nature."
+            },
+            {
+              "id": "talos",
+              "name": "Talos",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "primordial"
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "stoneborn",
+                  "name": "Stoneborn",
+                  "traits": [
+                    {
+                      "id": "elemental-attunement",
+                      "name": "Elemental Attunement, Earth",
+                      "description": "You know the [stone forming]() or [manipulate earth]() cantrip.",
+                      "summary": "You know the [stone forming]() or [manipulate earth]() cantrip.",
+                      "points": 2
+                    },
+                    {
+                      "id": "unending-breath",
+                      "description": "You can hold your breath indefinitely while you're not [incapacitated]().",
+                      "summary": "You can hold your breath indefinitely while you're not [incapacitated]()."
+                    },
+                    {
+                      "id": "elemental-strike",
+                      "name": "Elemental Strike, Earth",
+                      "description": "When you damage a creature with an attack, you can cause a target no more than one size larger than you to make your choice of a Strength (Athletics) or Dexterity (Acrobatics) check to avoid being knocked [prone](). This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
+                      "summary": "When you damage a creature with an attack, you can cause a target no more than one size larger than you to make your choice of a Strength (Athletic..."
+                    },
+                    {
+                      "id": "elemental-magic",
+                      "name": "Elemental Magic, Earth",
+                      "description": "Starting at 3rd level, you can cast one spell associated with your elemental attunement: [absorb elements](), [earth tremor](), [expeditious retreat](), [longstrider](), [shield of faith]() (self only). Then starting at 5th level, you can cast one spell associated with your elemental attunement: [dust devil](), [earthbind](), [earthen grasp](), [heat metal]().",
+                      "summary": "Starting at 3rd level, you can cast one spell associated with your elemental attunement: [absorb elements](), [earth tremor](), [expeditious retrea..."
+                    },
+                    {
+                      "id": "natural-armor",
+                      "description": "You have thick skin. Your AC is 12 + your Constitution modifier. A shield's benefits apply as normal while you use your natural armor.",
+                      "summary": "You have thick skin."
+                    }
+                  ]
+                },
+                {
+                  "id": "ironborn",
+                  "name": "Ironborn",
+                  "traits": [
+                    {
+                      "id": "elemental-attunement",
+                      "name": "Elemental Attunement, Metal",
+                      "description": "You know the [blade ward]() cantrip and can cast it normally or as a bonus action a number of times equal to your Proficiency Bonus, replenishing on a long rest. If you have darkvision you see in shades of a color of your choice. You speak primordial (terran).",
+                      "summary": "You know the [blade ward]() cantrip and can cast it normally or as a bonus action a number of times equal to your Proficiency Bonus, replenishing o...",
+                      "points": 2
+                    },
+                    {
+                      "id": "metal-skin"
+                    },
+                    {
+                      "id": "toxin-resilience",
+                      "summary": "You have advantage on saving throws you make to avoid or end the [poisoned]() or [diseased]() conditions on yourself."
+                    },
+                    {
+                      "id": "combat-climber"
+                    },
+                    {
+                      "id": "artisan-tool-proficiency",
+                      "description": "You gain proficiency with smith's tools.",
+                      "summary": "You gain proficiency with smith's tools."
+                    },
+                    {
+                      "id": "charge"
+                    }
+                  ]
+                },
+                {
+                  "id": "goldenblood",
+                  "name": "Goldenblood",
+                  "traits": [
+                    {
+                      "id": "golden-bulwark"
+                    },
+                    {
+                      "id": "metallic-appendage"
+                    },
+                    {
+                      "id": "metal-skin"
+                    },
+                    {
+                      "id": "toxin-resilience",
+                      "summary": "You have advantage on saving throws you make to avoid or end the [poisoned]() or [diseased]() conditions on yourself."
+                    },
+                    {
+                      "id": "combat-climber"
+                    },
+                    {
+                      "id": "artisan-tool-proficiency",
+                      "description": "You gain proficiency with smith's tools.",
+                      "summary": "You gain proficiency with smith's tools."
+                    },
+                    {
+                      "id": "charge"
+                    }
+                  ]
+                },
+                {
+                  "id": "orchid",
+                  "name": "Orchid",
+                  "traits": [
+                    {
+                      "id": "natural-armor",
+                      "summary": "You can calculate your AC as 13 + your Dexterity modifier."
+                    },
+                    {
+                      "id": "chromatic-magic"
+                    },
+                    {
+                      "id": "constructed-form",
+                      "summary": "You are a Construct."
+                    },
+                    {
+                      "id": "psionic-resistance",
+                      "name": "Psionic Resistance, Psychic",
+                      "description": "You have resistance to psychic damage.",
+                      "summary": "You have resistance to psychic damage.",
+                      "points": 3
+                    },
+                    {
+                      "id": "empathic"
+                    },
+                    {
+                      "id": "serenity",
+                      "description": "You have advantage on saving throws to avoid or end the [charmed]() or [frightened]() conditions on yourself, and to resist the effects of madness.",
+                      "summary": "You have advantage on saving throws to avoid or end the [charmed]() or [frightened]() conditions on yourself, and to resist the effects of madness."
+                    }
+                  ]
+                },
+                {
+                  "id": "duster",
+                  "name": "Duster",
+                  "traits": [
+                    {
+                      "id": "necrotic-resistance"
+                    },
+                    {
+                      "id": "darkvision-60",
+                      "name": "Darkvision",
+                      "description": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade of the type of ooze you are associated with.",
+                      "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light."
+                    },
+                    {
+                      "id": "touch-of-decay"
+                    },
+                    {
+                      "id": "unending-breath"
+                    }
+                  ],
+                  "description": "Dust genasi, sometimes called sand or even salt genasi, have a connection to the elements of Earth and Air. Their magic manifests as a combination of their elements' physical properties: thick clouds of silica particles that flow through the air at the genasi's command, and seem to absorb moisture and possibly even life force from those they touch, grinding away at whatever it touches until it decays into dust. For this reason, many cultures that are aware of the existence of dust genasi fear their touch, either not knowing that the genasi has full control of their deadly magic or fearing how the genasi might use it.\n\nDust genasi almost always appear emaciated and malnourished, as though their magic is eating them from the inside. While their skin, eyes, and hair can have any mortal hue, they appear desaturated of color, perhaps even having a yellow, tan, or gray caste. Their hair is thin and wispy, almost constantly being whipped about by a phantom cyclone. When a creature sees a dust genasi from their peripheral vision, the genasi's skin and flesh may appear to blow away as particles similar in appearance to their cloud, appearing to leave only animate bone, though looking directly at the genasi or looking away proves this to have been only a trick of the mind."
+                },
+                {
+                  "id": "metal",
+                  "name": "Metal",
+                  "traits": [
+                    {
+                      "id": "heart-of-the-forge"
+                    },
+                    {
+                      "id": "metallic-skin"
+                    }
+                  ],
+                  "description": "A metal genasi's magic comes from the metaphysical combination of Earth and Fire, the purifying properties of fire augmenting the enduring properties of earth. Unlike most other types of genasi, metal genasi can't summon or shape their mixed element quite so much as channel their magic through it, oft excelling in the use of metal implements. Many feel most at home near a blacksmith's forge or with a metal weapon in their hands, leading the vast majority of metal genasi to enter a vocation of smithing or warfare.\n\nIt's common for those unfamiliar with metal genasi to initially mistake them for azers or constructs; a metal genasi's skin and hair are almost always glistening metallic tones, such as iron, steel, gold, or bronze, though any type of metal is possible. More often than not, their skin is of a type of metal, and their hair and nails an alloy of that metal, though both their skin and hair are nearly as flexible as any other mortal's. Metal genasi irises, though, burn with an intensity reminiscent of a forge's flame, generally in reds, greens, blues, oranges, or yellows, or even white hot."
+                },
+                {
+                  "id": "oozeborn",
+                  "name": "Oozeborn",
+                  "traits": [
+                    {
+                      "id": "swim-speed"
+                    },
+                    {
+                      "id": "darkvision-60",
+                      "name": "Darkvision",
+                      "description": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade of the type of ooze you are associated with.",
+                      "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light."
+                    },
+                    {
+                      "id": "acid-resistance"
+                    },
+                    {
+                      "id": "play-with-mud"
+                    },
+                    {
+                      "id": "slippery-skin"
+                    }
+                  ],
+                  "description": "The Swamp of Oblivion is a colloquial name given to the Paraelemental Plane of Ooze, where the Planes of Earth and Water meet to form an enormous bog of acidic mud and slime that eats away at the planar borders almost as quickly as they can renew themselves. Whether born in the Swamp or to an earth and water genasi parental pair, or imbued by dao and marid magics in the womb, ooze genasi wield the physical mixture of their two elemental connections: skin coated in slippery muck, as well as the ability to summon and manipulate the corrosive substances that pervade the Swamp of Oblivion.\n\nUsually, an ooze genasi's skin has mortal tones, though it secretes a layer of slime or moist mud that varies in thickness based on stress and causes their skin to appear oily with a green or brown tint. It is common for a community to mistake an ooze genasi with a mud coating as a separate type of genasi, referring to them as mud genasi. No matter which coating an ooze genasi's skin has, their hair appears in mortal or brackish hues, and easily becomes greasy if it isn't washed with incredible frequency. Similarly, their eyes are often a muddy brown or oily green."
+                }
+              ],
+              "description": "Talos are as variant as stone, crystals, and metals that fill the planes, but they always have a physical manifestation of that form in their person. Their skin or hair is often a specific type of stone, metal, or gemstone with physical features made, seeming to be made, or partially made of that material.\n\nTheir eyes are always a solid color similar in coloration to their form and never have pupils. A talos with marble skin may have bright white eyes while one with sapphire teeth and nails may have matching sapphire eyes.\n\nTalos godlike all have strange mercurial blood that sometimes differs in shade.",
+              "summary": "Talos are as variant as stone, crystals, and metals that fill the planes, but they always have a physical manifestation of that form in their person."
+            },
+            {
+              "id": "undine",
+              "name": "Undine",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "swim-speed",
+                  "description": "You have a swim speed of 30 feet.",
+                  "summary": "You have a swim speed of 30 feet."
+                },
+                {
+                  "id": "amphibious"
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "elemental",
+                  "name": "Elemental",
+                  "traits": [
+                    {
+                      "id": "elemental-attunement",
+                      "description": "You gain resistance to acid or cold damage. If you have darkvision you see in shades of blue.",
+                      "summary": "You gain resistance to acid or cold damage.",
+                      "points": 2
+                    },
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know one cantrip of your choice from: [acid splash](), [shape water](), [frostbite](), [ray of frost](), [waterspout]().",
+                      "summary": "You know one cantrip of your choice from: [acid splash](), [shape water](), [frostbite](), [ray of frost](), [waterspout]()."
+                    },
+                    {
+                      "id": "elemental-magic",
+                      "description": "Starting at 3rd level, you can cast [fog cloud](). Starting at 5th level, you can cast [water walk]() or [become water]().",
+                      "summary": "Starting at 3rd level, you can cast [fog cloud]()."
+                    },
+                    {
+                      "id": "emissary-sea",
+                      "summary": "You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed."
+                    },
+                    {
+                      "id": "amphibious"
+                    },
+                    {
+                      "id": "swim-speed",
+                      "description": "You have a swim speed of 30 feet.",
+                      "summary": "You have a swim speed of 30 feet."
+                    }
+                  ]
+                },
+                {
+                  "id": "surface",
+                  "name": "Surface",
+                  "traits": [
+                    {
+                      "id": "swim-speed",
+                      "description": "You have a swim speed of 30 feet.",
+                      "summary": "You have a swim speed of 30 feet."
+                    },
+                    {
+                      "id": "amphibious"
+                    },
+                    {
+                      "id": "artisan-tool-proficiency",
+                      "description": "You gain proficiency with one tool of your choice: carpenter's tools, navigator's tools, or vehicles (water).",
+                      "summary": "You gain proficiency with one tool of your choice: carpenter's tools, navigator's tools, or vehicles (water)."
+                    },
+                    {
+                      "id": "mariner-s-lore"
+                    },
+                    {
+                      "id": "sea-legs",
+                      "description": "You have advantage on Dexterity (Acrobatics) checks, and checks to be knocked prone when standing atop a vehicle.",
+                      "summary": "You have advantage on Dexterity (Acrobatics) checks, and checks to be knocked prone when standing atop a vehicle."
+                    }
+                  ]
+                },
+                {
+                  "id": "deep",
+                  "name": "Deep",
+                  "traits": [
+                    {
+                      "id": "darkvision-60",
+                      "name": "Darkvision",
+                      "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light."
+                    },
+                    {
+                      "id": "emissary-sea",
+                      "summary": "You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed."
+                    },
+                    {
+                      "id": "elemental-magic",
+                      "description": "Starting at 3rd level, you can cast [fog cloud]() with this trait. Then starting at 5th level, you can cast [water walk](). These spells do not require a material component, and can be cast once per long rest, or by using any spell slots you have of the appropriate level.",
+                      "summary": "Starting at 3rd level, you can cast [fog cloud]() with this trait."
+                    },
+                    {
+                      "id": "endurance",
+                      "description": "You are acclimated to extreme climates and do not suffer the effects of deep waters below 100 ft.",
+                      "summary": "You are acclimated to extreme climates and do not suffer the effects of deep waters below 100 ft.",
+                      "points": 1
+                    }
+                  ]
+                },
+                {
+                  "id": "extreme",
+                  "name": "Extreme",
+                  "traits": [
+                    {
+                      "id": "darkvision-60",
+                      "name": "Darkvision",
+                      "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light."
+                    },
+                    {
+                      "id": "emissary-sea",
+                      "summary": "You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed."
+                    },
+                    {
+                      "id": "endurance",
+                      "description": "You are acclimated to extreme climates and do not suffer the effects of deep waters below 100 ft.",
+                      "summary": "You are acclimated to extreme climates and do not suffer the effects of deep waters below 100 ft.",
+                      "points": 1
+                    },
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know the [dancing lights]() cantrip.",
+                      "summary": "You know the [dancing lights]() cantrip."
+                    },
+                    {
+                      "id": "natural-magic",
+                      "description": "Starting at 3rd level, you can cast [aldricor's elemental rebuke]() with this trait. This spell does not require a material component, and can be cast once per long rest, or by using any spell slots you have of the appropriate level.",
+                      "summary": "Starting at 3rd level, you can cast [aldricor's elemental rebuke]() with this trait."
+                    },
+                    {
+                      "id": "artisan-skill-proficiency",
+                      "description": "You have proficiency in Perception.",
+                      "summary": "You have proficiency in Perception."
+                    }
+                  ]
+                },
+                {
+                  "id": "fish",
+                  "name": "Fish",
+                  "traits": [
+                    {
+                      "id": "bite"
+                    },
+                    {
+                      "id": "aquatic-resistance",
+                      "description": "You have resistance to cold damage.",
+                      "summary": "You have resistance to cold damage."
+                    },
+                    {
+                      "id": "emissary-sea",
+                      "summary": "You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed."
+                    },
+                    {
+                      "id": "defensive-feature",
+                      "description": "When another creature grapples you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4 × your Proficiency Bonus of the damage type chosen.\n- **Poisonous.** Poison damage\n- **Spines.** Piercing damage",
+                      "summary": "When another creature grapples you or starts its turn grappling you, you can choose to use defensive features on your body to damage it."
+                    },
+                    {
+                      "id": "natural-armor",
+                      "description": "You have thick skin. Your AC is 12 + your Constitution modifier. A shield's benefits apply as normal while you use your natural armor.",
+                      "summary": "You have thick skin."
+                    },
+                    {
+                      "id": "weather-worn",
+                      "description": "You do not suffer disadvantage on perception checks due to heavy precipitation and wind, or areas lightly obscured by mist, light fog, silty, or choppy water.",
+                      "summary": "You do not suffer disadvantage on perception checks due to heavy precipitation and wind, or areas lightly obscured by mist, light fog, silty, or ch...",
+                      "points": 0
+                    }
+                  ]
+                },
+                {
+                  "id": "crustacean",
+                  "name": "Crustacean",
+                  "traits": [
+                    {
+                      "id": "chitinous-pincers"
+                    },
+                    {
+                      "id": "acclimatization"
+                    },
+                    {
+                      "id": "carapace"
+                    },
+                    {
+                      "id": "emissary-sea",
+                      "summary": "You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed."
+                    },
+                    {
+                      "id": "aquatic-resistance",
+                      "summary": "You have resistance to one of the following damage types: acid or cold."
+                    }
+                  ]
+                },
+                {
+                  "id": "iceborn",
+                  "name": "Iceborn",
+                  "traits": [
+                    {
+                      "id": "ice-skate"
+                    },
+                    {
+                      "id": "amphibious"
+                    },
+                    {
+                      "id": "water"
+                    },
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know one cantrip of your choice associated with your elemental attunement: [black ice](), [ice weapon](), [frostbite](), [ray of frost]().",
+                      "summary": "You know one cantrip of your choice associated with your elemental attunement: [black ice](), [ice weapon](), [frostbite](), [ray of frost]()."
+                    },
+                    {
+                      "id": "elemental-magic",
+                      "description": "Starting at 3rd level, you can cast one spell associated with your elemental attunement: [arctic breath](), [frost shuriken](), [ice arrow](), [entomb](). Then starting at 5th level, you can cast one spell associated with your elemental attunement: [Rime's binding ice](), [cold snap](). These spells do not require a material component, and can be cast once per long rest, or by using any spell slots you have of the appropriate level.",
+                      "summary": "Starting at 3rd level, you can cast one spell associated with your elemental attunement: [arctic breath](), [frost shuriken](), [ice arrow](), [ent..."
+                    }
+                  ],
+                  "description": "Arising from the Frostfell - the permafrost-coated border of the Planes of Air and Water - born to air and water genasi parents, or altered in the womb by exposure to the power of djinn and marids, an ice genasi results from the metaphysical combination of their two elements: the stillness of open air meeting the destructive power of roiling waters. They can freeze the water and air around them, launch deadly icicles from their hands, and chill their enemies to the bone.\n\nIceborn generally have skin with mortal hues overlaid with the blues, purples, and whites of a frozen corpse. They have spiky hair resembling cascading stalagmites and stalactites made of pure ice, and eyes whose color cycles through the soft iridescence of an aurora in a wintry night sky. They are often covered in a thin layer of frost that billows off as powder snow when they move, and are almost disconcertingly cold to the touch, as if they produce no body heat."
+                },
+                {
+                  "id": "poisonborn",
+                  "name": "Poisonborn",
+                  "traits": [
+                    {
+                      "id": "brew-the-toxin"
+                    },
+                    {
+                      "id": "darkvision-60",
+                      "name": "Darkvision",
+                      "description": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+                      "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light.",
+                      "points": 0
+                    },
+                    {
+                      "id": "poison-resilience"
+                    }
+                  ],
+                  "description": "Poison genasi bear the metaphysical connection of Fire and Water, the burn of fire with the flow of water to create a substance that scorches through veins and organs. Born to genasi of those elements or to mortals through the ambient magic of efreeti and marids, poison genasi bodies act as cauldrons in which virulent toxins are brewed and expelled.\n\nA poison genasi's skin generally has a strong, vivid coloration, with distinctive stripes or splotches of dark or other bright hues. Their hair often has a mortal coloration, though it may also be a bright, translucent, striated, or ombre hue of a distinct color to their skin. Their eyes are usually darkly colored, either in mortal tones or a deep black that makes the pupil nearly indistinguishable from the iris."
+                }
+              ]
+            },
+
+            {
+              "id": "ifriti-flameborn",
+              "name": "Ifriti (Flameborn)",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "size-small"
+                },
+                {
+                  "id": "fire"
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "fire",
+                  "name": "Fire",
+                  "traits": [
+                    {
+                      "id": "artisan-cantrip",
+                      "name": "Cantrip (Elemental), Fire",
+                      "description": "You know the [manipulate fire]() cantrip.",
+                      "summary": "You know the [manipulate fire]() cantrip."
+                    },
+                    {
+                      "id": "elemental-magic",
+                      "name": "Elemental Magic, Fire",
+                      "description": "Starting at 3rd level, you can cast [cone of flame]() or [chromatic orb]() (fire only). Then starting at 5th level, you can cast [become fire](), [enkindle](), [burning strike](), or [flame blade]().",
+                      "summary": "Starting at 3rd level, you can cast [cone of flame]() or [chromatic orb]() (fire only)."
+                    },
+                    {
+                      "id": "born-of-fire"
+                    },
+                    {
+                      "id": "flamewalker"
+                    }
+                  ]
+                },
+                {
+                  "id": "ash",
+                  "name": "Ash",
+                  "traits": [
+                    {
+                      "id": "artisan-cantrip",
+                      "name": "Cantrip (Elemental), Fire",
+                      "description": "You know either [aundair's silent sanctum](), [fists of fire](), or [prestidigitation]() cantrip.",
+                      "summary": "You know either [aundair's silent sanctum](), [fists of fire](), or [prestidigitation]() cantrip."
+                    },
+                    {
+                      "id": "elemental-magic",
+                      "name": "Elemental Magic, Fire",
+                      "description": "Starting at 3rd level, you can cast [fog cloud](). Then starting at 5th level, you can cast [burst of flame](), [vicious vapors](), or [suffocate]().",
+                      "summary": "Starting at 3rd level, you can cast [fog cloud]()."
+                    },
+                    {
+                      "id": "unending-breath",
+                      "description": "You can hold your breath indefinitely while you're not [incapacitated]().",
+                      "summary": "You can hold your breath indefinitely while you're not [incapacitated]()."
+                    }
+                  ]
+                },
+                {
+                  "id": "magma",
+                  "name": "Magma",
+                  "traits": [
+                    {
+                      "id": "artisan-cantrip",
+                      "name": "Cantrip (Elemental), Fire",
+                      "description": "You know the [magic stone]() cantrip.",
+                      "summary": "You know the [magic stone]() cantrip."
+                    },
+                    {
+                      "id": "elemental-magic",
+                      "name": "Elemental Magic, Fire",
+                      "description": "Starting at 3rd level, you can cast [earth tremor]() or [chromatic orb]() (fire only). Then starting at 5th level, you can cast [become fire](), [melf's minute meteors](), or [flame blade]().",
+                      "summary": "Starting at 3rd level, you can cast [earth tremor]() or [chromatic orb]() (fire only)."
+                    },
+                    {
+                      "id": "molten-core"
+                    },
+                    {
+                      "id": "volcanic-being"
+                    }
+                  ],
+                  "description": "*The border between the Planes of Earth and Fire is called the Fountains of Creation, a place of endless spires of volatilely active volcanoes and the rivers of magma that run between them. Magma genasi occur naturally in this Paraelemental Plane's perfect fusion of the physical properties of the intersecting planes.*"
+                },
+                {
+                  "id": "steam",
+                  "name": "Steam",
+                  "traits": [
+                    {
+                      "id": "amphibious"
+                    },
+                    {
+                      "id": "artisan-cantrip",
+                      "name": "Cantrip (Elemental), Fire",
+                      "description": "You know the [minor illusion]() cantrip.",
+                      "summary": "You know the [minor illusion]() cantrip."
+                    },
+                    {
+                      "id": "elemental-magic",
+                      "name": "Elemental Magic, Fire",
+                      "description": "Starting at 3rd level, you can cast [disguise self](). Then starting at 5th level, you can cast [blur]().",
+                      "summary": "Starting at 3rd level, you can cast [disguise self]()."
+                    },
+                    {
+                      "id": "burning-cloud"
+                    },
+                    {
+                      "id": "heat-distortion"
+                    }
+                  ],
+                  "description": "*When nonmagical water and fire meet, they create steam. So it is for steam genasi, whose magic is formed from the physical combination of the elements of Fire and Water. Sometimes referred to as mirage genasi, they control steam and waves of heat to distort light, blurring themselves or even creating full visual illusions that scorch those who touch them.*"
+                }
+              ],
+              "description": "*Flameborn as many call them, are hot tempered and impassioned folks normally. Perhaps they are children of a Fire Lord, or perhaps their homeland sits precariously close to a portal to the Fire Plane. However they received this connection, their fiery temperaments are not to be trifled with, holding sway over an element of destruction and raw power.*\n\n*Ifrit have physical traits of flame, smoke, or volcanic rock that allude to their fiery inheritance. Their eyes may be alight with a glow, their skin may flake with ash, or their breath emanate black smoke, or their \"hair\" may actually be an everburning flame. Some may be mistaken for Tieflings with powerful tails that mimic those of Salamanders or similar fire elementals.*",
+              "summary": "*Flameborn as many call them, are hot tempered and impassioned folks normally."
+            },
+            {
+              "id": "asir-windborn",
+              "name": "Asir (Windborn)",
+              "traits": [
+                {
+                  "id": "size-medium"
+                },
+                {
+                  "id": "size-small"
+                }
+              ],
+              "archetypes": [
+                {
+                  "id": "empath",
+                  "name": "Empath",
+                  "traits": [
+                    {
+                      "id": "bamboozler"
+                    },
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know the [encode thoughts](), [mage hand](), [message](), [mind sliver](), or [thaumaturgy]() cantrip. If you choose [mage hand](), the hand is invisible and doesn't require components when you cast it with this trait.",
+                      "summary": "You know the [encode thoughts](), [mage hand](), [message](), [mind sliver](), or [thaumaturgy]() cantrip."
+                    },
+                    {
+                      "id": "empathic"
+                    },
+                    {
+                      "id": "artisan-skill-proficiency",
+                      "name": "Skill Proficiency, Insight",
+                      "description": "You have proficiency in the Insight skill.",
+                      "summary": "You have proficiency in the Insight skill."
+                    },
+                    {
+                      "id": "out-of-sight",
+                      "description": "You can attempt to Hide even when you are only lightly obscured by foliage, rocky terrain, heavy rain, falling snow, mist, and other natural phenomena, and have advantage on these Dexterity checks.",
+                      "summary": "You can attempt to Hide even when you are only lightly obscured by foliage, rocky terrain, heavy rain, falling snow, mist, and other natural phenom..."
+                    },
+                    {
+                      "id": "psionic-resistance",
+                      "name": "Psionic Resistance, Psychic",
+                      "description": "You have resistance to psychic damage.",
+                      "summary": "You have resistance to psychic damage.",
+                      "points": 3
+                    },
+                    {
+                      "id": "limited-flight"
+                    }
+                  ]
+                },
+                {
+                  "id": "psionic",
+                  "name": "Psionic",
+                  "traits": [
+                    {
+                      "id": "elemental-attunement",
+                      "name": "Elemental Attunement, Air, Thunder",
+                      "description": "You gain resistance to thunder damage. If you have darkvision, it is tinged with wisps of white.",
+                      "summary": "You gain resistance to thunder damage.",
+                      "points": 2
+                    },
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know the [encode thoughts](), [mage hand](), [message](), [mind sliver](), or [thaumaturgy]() cantrip. If you choose [mage hand](), the hand is invisible and doesn't require components when you cast it with this trait.",
+                      "summary": "You know the [encode thoughts](), [mage hand](), [message](), [mind sliver](), or [thaumaturgy]() cantrip."
+                    },
+                    {
+                      "id": "psionic-magic",
+                      "description": "Starting at 3rd level, you can cast one 1st-level spell from the following spell list: [bane](), [catapult](), [magnify gravity](), [hellish rebuke](), [jump](), [shield](), [tenser's floating disk](), [unseen servant](), [wrathful smite]().",
+                      "summary": "Starting at 3rd level, you can cast one 1st-level spell from the following spell list: [bane](), [catapult](), [magnify gravity](), [hellish rebuke..."
+                    },
+                    {
+                      "id": "greater-psionic-magic",
+                      "description": "Starting at 5th level, you can cast one 2nd-level spell from the following spell list: [detect thoughts](), [kinetic jaunt](), [levitate](), [mind spike](), [misty step](), [phantasmal force](), [tasha's mind whip]().",
+                      "summary": "Starting at 5th level, you can cast one 2nd-level spell from the following spell list: [detect thoughts](), [kinetic jaunt](), [levitate](), [mind ..."
+                    },
+                    {
+                      "id": "telepathy",
+                      "summary": "You can speak telepathically to any creature within 30 feet of you."
+                    },
+                    {
+                      "id": "empathic"
+                    }
+                  ]
+                },
+                {
+                  "id": "lightningborn",
+                  "name": "Lightningborn",
+                  "traits": [
+                    {
+                      "id": "quick"
+                    },
+                    {
+                      "id": "lightning-resistance"
+                    },
+                    {
+                      "id": "static-touch"
+                    }
+                  ],
+                  "description": "*Lightning genasi bear a connection to the elements of Air and Fire, their magic manifesting as the combination of the elements' metaphysical properties - the speed and flight of the winds with the energy and light of fire - causing them to be constantly accompanied by the smell of ozone, the vigorous hum of electricity, and sparks of raw energy.*"
+                },
+                {
+                  "id": "thundercaller",
+                  "name": "Thundercaller",
+                  "traits": [
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know the [thunder burst]() or [thaumaturgy]() cantrip.",
+                      "summary": "You know the [thunder burst]() or [thaumaturgy]() cantrip."
+                    },
+                    {
+                      "id": "elemental-magic",
+                      "description": "Starting at 3rd level, you can cast [thunder punch](). Then starting at 5th level, you can cast [shatter]() or [silence]().",
+                      "summary": "Starting at 3rd level, you can cast [thunder punch]()."
+                    },
+                    {
+                      "id": "echolocation"
+                    },
+                    {
+                      "id": "silent-walk"
+                    },
+                    {
+                      "id": "thunder-resistance"
+                    }
+                  ],
+                  "description": "*Thunder genasi wield Air and Earth, combining the freedom of air and the quaking strength of earth to create waves of concussive sound, the ability to convey or suppress vibration, and crescendos that shake the land and sky.*"
+                },
+                {
+                  "id": "windborn",
+                  "name": "Windborn",
+                  "traits": [
+                    {
+                      "id": "quick"
+                    },
+                    {
+                      "id": "artisan-cantrip",
+                      "description": "You know the [manipulate wind](), [windborne weapon](), or [message]() cantrip.",
+                      "summary": "You know the [manipulate wind](), [windborne weapon](), or [message]() cantrip."
+                    },
+                    {
+                      "id": "elemental-magic",
+                      "description": "Starting at 3rd level, you can cast [gale bolt](), [zephyr strike](), or [violent updraft](). Then starting at 5th level, you can cast [vacuum pull](), [dust cyclone](), or [hurricane slash]().",
+                      "summary": "Starting at 3rd level, you can cast [gale bolt](), [zephyr strike](), or [violent updraft]()."
+                    },
+                    {
+                      "id": "limited-flight"
+                    }
+                  ]
+                },
+                {
+                  "id": "vapor",
+                  "name": "Vapor",
+                  "traits": [
+                    {
+                      "id": "dance-in-the-clouds"
+                    },
+                    {
+                      "id": "ethereal-body"
+                    },
+                    {
+                      "id": "mistvision"
+                    }
+                  ],
+                  "description": "*Vapor genasi, sometimes called mist or even cloud genasi, have a connection to the elements of Air and Water. A vapor genasi's magic results from the combination of their elements' physical properties: airborne particles of moisture, calling upon curtains of mist and fog, or even temporarily polymorphing their bodies into clouds of vapor.*"
+                }
+              ],
+              "description": "*Thought to be blessed or otherwise descended from celestials, asir godlike manifest with features of air, the heavens, or flying creatures.*\n\n*Their skin is often shades of whites, sky blues, highlighted with metallic shades or prismatic glows, though more often than not they share normal humanlike skintones. Instead, they are more often distinguished by a few specific characteristics. All asir have strange markings or symbols that adorn their skin, sometimes accompanied by symbols that float around them like halos or glowing manifestations of physical features.*",
+              "summary": "*Thought to be blessed or otherwise descended from celestials, asir godlike manifest with features of air, the heavens, or flying creatures.*\n\n*The..."
+            }
+          ]
+        },
+        {
+          "id": "shadowborn",
+          "name": "Shadowborn",
+          "description": "The shadowy magic of the fade affects all creatures that encounter it after some time. Much like the magic of the feywilds, the omnipresent magic of the shadowfell infuses creatures born there with shadow and illusion magic.",
+          "ancestries": [
+          ]
+        }
+      ]
+    }
+  ]
+}

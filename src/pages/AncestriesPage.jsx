@@ -18,7 +18,7 @@ export function AncestriesPage({
   useEffect(() => {
     async function loadAncestries() {
       try {
-        const response = await fetch('/data/ancestries.json');
+        const response = await fetch('/data/converted-ancestries.json');
         if (!response.ok) throw new Error('Failed to load ancestries');
         const data = await response.json();
         setCategories(data.categories || []);
@@ -31,9 +31,15 @@ export function AncestriesPage({
     loadAncestries();
   }, []);
 
+  // Collect all ancestries from both direct and subcategory sources
+  const allAncestries = categories.flatMap(c => [
+    ...(c.ancestries || []),
+    ...(c.subcategories || []).flatMap(sc => sc.ancestries || [])
+  ]);
+
   // Find the expanded ancestry object and selected archetype object
   const expandedAncestryObj = expandedAncestry
-    ? categories.flatMap(c => c.ancestries).find(a => a.id === expandedAncestry)
+    ? allAncestries.find(a => a.id === expandedAncestry)
     : null;
 
   const selectedArchetypeObj = expandedAncestryObj && selectedArchetypeId
@@ -132,20 +138,49 @@ export function AncestriesPage({
                 )}
               </div>
 
-              <div className="ancestry-grid">
-                {category.ancestries.map((ancestry) => (
-                  <AncestryCard
-                    key={ancestry.id}
-                    ancestry={ancestry}
-                    allTraits={allTraits}
-                    isExpanded={expandedAncestry === ancestry.id}
-                    onToggle={() => handleToggle(ancestry.id)}
-                    selectedArchetype={selectedArchetypeId}
-                    onSelectArchetype={handleSelectArchetype}
-                    showDetails={showDetails}
-                  />
-                ))}
-              </div>
+              {/* Direct ancestries */}
+              {category.ancestries && category.ancestries.length > 0 && (
+                <div className="ancestry-grid">
+                  {category.ancestries.map((ancestry) => (
+                    <AncestryCard
+                      key={ancestry.id}
+                      ancestry={ancestry}
+                      allTraits={allTraits}
+                      isExpanded={expandedAncestry === ancestry.id}
+                      onToggle={() => handleToggle(ancestry.id)}
+                      selectedArchetype={selectedArchetypeId}
+                      onSelectArchetype={handleSelectArchetype}
+                      showDetails={showDetails}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {/* Subcategories */}
+              {category.subcategories && category.subcategories.map((sub) => (
+                <div key={sub.id} className="ancestry-subcategory">
+                  <div className="subcategory-header">
+                    <h3>{sub.name}</h3>
+                    {sub.description && (
+                      <p className="subcategory-desc">{sub.description}</p>
+                    )}
+                  </div>
+                  <div className="ancestry-grid">
+                    {(sub.ancestries || []).map((ancestry) => (
+                      <AncestryCard
+                        key={ancestry.id}
+                        ancestry={ancestry}
+                        allTraits={allTraits}
+                        isExpanded={expandedAncestry === ancestry.id}
+                        onToggle={() => handleToggle(ancestry.id)}
+                        selectedArchetype={selectedArchetypeId}
+                        onSelectArchetype={handleSelectArchetype}
+                        showDetails={showDetails}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
             </section>
           ))}
         </div>
@@ -232,6 +267,7 @@ function AncestrySummary({ ancestry, archetype, allTraits, onUse, onCustomize })
                   selectedOptions={selectedOptions}
                   showFooter={false}
                   showDetails={false}
+                  compact={true}
                 />
               );
             })}
@@ -259,6 +295,7 @@ function AncestrySummary({ ancestry, archetype, allTraits, onUse, onCustomize })
                   selectedOptions={selectedOptions}
                   showFooter={false}
                   showDetails={false}
+                  compact={true}
                 />
               );
             })}

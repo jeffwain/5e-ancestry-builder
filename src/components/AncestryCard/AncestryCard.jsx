@@ -109,8 +109,11 @@ export function resolveTrait(trait, allTraits) {
   // Look up base trait from database
   const baseTrait = allTraits[trait.id];
 
-  // If not found in database, return what we have
+  // If not found in database, generate a display name from the ID if missing
   if (!baseTrait) {
+    if (!trait.name && trait.id) {
+      return { ...trait, name: trait.id.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) };
+    }
     return trait;
   }
 
@@ -161,7 +164,7 @@ function TraitDisplay({ trait, allTraits, showDetails = false }) {
   // If we couldn't resolve and there's no name, show error state
   if (!resolvedTrait.name) {
     return (
-      <div className="summary-trait-card compact trait-error">
+      <div className="simple-trait-card trait-error">
         <div className="summary-trait-header">
           <span className="summary-trait-name">Unknown trait: {trait.id}</span>
         </div>
@@ -179,7 +182,7 @@ function TraitDisplay({ trait, allTraits, showDetails = false }) {
     <SummaryTraitCard
       trait={resolvedTrait}
       selectedOptions={selectedOptions}
-      className='compact'
+      compact
       showDetails={false}
       showFooter={false}
     />

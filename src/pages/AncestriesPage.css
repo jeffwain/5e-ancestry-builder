@@ -76,6 +76,28 @@
   color: var(--color-ink-600);
 }
 
+/* Subcategory sections */
+.ancestries-page .ancestry-subcategory {
+  margin-top: var(--space-6);
+}
+
+.ancestries-page .subcategory-header {
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-parchment-300);
+}
+
+.ancestries-page .subcategory-header h3 {
+  font-size: var(--text-lg);
+  color: var(--color-heritage);
+  margin-bottom: var(--space-1);
+}
+
+.ancestries-page .subcategory-desc {
+  font-size: var(--text-sm);
+  color: var(--color-ink-600);
+}
+
 /* Ancestry grid - single column for readability */
 .ancestries-page .ancestry-grid {
   display: flex;
