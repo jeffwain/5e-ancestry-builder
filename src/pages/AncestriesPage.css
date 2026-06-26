@@ -216,6 +216,7 @@
 /* Action buttons */
 .ancestry-summary-actions {
   display: flex;
+  flex-direction: column;
   gap: var(--space-3);
   padding-top: var(--space-4);
   border-top: 1px solid var(--color-parchment-300);
@@ -224,6 +225,7 @@
 .ancestry-summary-actions .btn {
   flex: 1;
   justify-content: center;
+  font-size: var(--text-md);
 }
 
 .ancestry-summary-actions .btn-secondary {

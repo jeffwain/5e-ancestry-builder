@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { loadJson } from '../utils/dataCache';
 
 /**
  * Hook to load and organize trait data from the JSON file
@@ -10,22 +11,12 @@ export function useTraitData() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function loadTraits() {
-      try {
-        const response = await fetch('/data/traits.json');
-        if (!response.ok) {
-          throw new Error(`Failed to load traits: ${response.status}`);
-        }
-        const json = await response.json();
-        setData(json);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadTraits();
+    let active = true;
+    loadJson('/data/traits.json')
+      .then((json) => { if (active) setData(json); })
+      .catch((err) => { if (active) setError(err.message); })
+      .finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
   }, []);
 
   // Dynamically build all sections from traitTypes

@@ -343,8 +343,8 @@
               ]
             }
           ],
-          "description": "Ever since the arrival of goblins on Eora, the dwarves been locked in constant struggle with them.",
-          "summary": "Ever since the arrival of goblins on Eora, the dwarves been locked in constant struggle with them."
+          "description": "Ever since the arrival of goblins on the world, the dwarves been locked in constant struggle with them.",
+          "summary": "Ever since the arrival of goblins on the world, the dwarves been locked in constant struggle with them."
         },
         {
           "id": "half-giant",
@@ -398,7 +398,7 @@
     {
       "id": "rare",
       "name": "Rare Ancestries",
-      "description": "These species are less common on Eora. They may have been created through magic, displaced or migrated from other worlds or planes, or slowly evolved through magical means or from different Godlike parents, and developed cultures of their own over time.",
+      "description": "These species are less common on the world. They may have been created through magic, displaced or migrated from other worlds or planes, or slowly evolved through magical means or from different Godlike parents, and developed cultures of their own over time.",
       "subcategories": [
         {
           "id": "fey",
@@ -520,7 +520,7 @@
                   ]
                 }
               ],
-              "description": "Long ago, early gnome ancestors emigrated from the First World, realm of the fey. While it's unclear why the first gnomes wandered to Eora, this ancestry manifests in modern gnomes as bizarre reasoning, eccentricity, obsessive tendencies, and what some see as naivete. These qualities are further reflected in their physical characteristics, such as spindly limbs, brightly colored hair, and childlike and extremely expressive facial features that further reflect their otherworldly origins.\n\nAlways hungry for new experiences, gnomes constantly wander both mentally and physically, attempting to stave off a terrible ailment that threatens all of their people. This affliction—the Bleaching—strikes gnomes who fail to dream, innovate, and take in new experiences, in the gnomes' absence of crucial magical essence from the First World.\n\nGnomes latch onto a source of localized magic where they live, typically primal magic, as befits their fey lineage, but this isn't enough to avoid the Bleaching unless they supplement this magic with new experiences. The Bleaching slowly drains the color—literally—from gnomes, and it plunges those affected into states of deep depression that eventually claim their lives. Very few gnomes survive this scourge, becoming deeply morose and wise survivors known as bleachlings.",
+              "description": "Long ago, early gnome ancestors emigrated from the First World, realm of the fey. While it's unclear why the first gnomes wandered to the world, this ancestry manifests in modern gnomes as bizarre reasoning, eccentricity, obsessive tendencies, and what some see as naivete. These qualities are further reflected in their physical characteristics, such as spindly limbs, brightly colored hair, and childlike and extremely expressive facial features that further reflect their otherworldly origins.\n\nAlways hungry for new experiences, gnomes constantly wander both mentally and physically, attempting to stave off a terrible ailment that threatens all of their people. This affliction—the Bleaching—strikes gnomes who fail to dream, innovate, and take in new experiences, in the gnomes' absence of crucial magical essence from the First World.\n\nGnomes latch onto a source of localized magic where they live, typically primal magic, as befits their fey lineage, but this isn't enough to avoid the Bleaching unless they supplement this magic with new experiences. The Bleaching slowly drains the color—literally—from gnomes, and it plunges those affected into states of deep depression that eventually claim their lives. Very few gnomes survive this scourge, becoming deeply morose and wise survivors known as bleachlings.",
               "summary": "Long ago, early gnome ancestors emigrated from the First World, realm of the fey."
             }
           ]
@@ -733,8 +733,8 @@
                   "description": "Some say that the dead-gray mist began in Metrol, initially flowing out of the royal palaces of Vermishard. Others swear that the disaster began in the Cannith stronghold Making. All that is known is that the mist swiftly spread across the kingdom, transforming the lands and creatures caught within it. Over a million people died in the Mourning, including nearly all of the inhabitants of central Cyre."
                 }
               ],
-              "description": "*Occasionally souls or spirits may return to Eora for reasons unknown. Typically this is for unfinished business, revenge, or due to some curse or obligation their former soul made while living. The curse of a returned is not knowing their past life but having a driving motivation that may not match their new nature.*\n\n*Returned aren't born, they are manifest into the prime material plane without memories but with the basic skills they had in their life. The first thing a returned does is find a form. That might be discarded metal from a forge, a pile of gravel or sand, a hive of insects, a decaying chicken coop. Their magical forms twist the object(s) they inhabit into a humanoid form.*\n\n*Most returned will hide their true forms beneath layers of clothing, robes, or armor to fit in to other societies until their calling is fulfilled. Generally they are called \"ghosts,\" \"forgotten,\" or \"returned\" depending on whether the individual knows the returned is truly a returned and not a true ghost.*",
-              "summary": "*Occasionally souls or spirits may return to Eora for reasons unknown."
+              "description": "Occasionally souls or spirits may return to the world for reasons unknown. Typically this is for unfinished business, revenge, or due to some curse or obligation their former soul made while living. The curse of a returned is not knowing their past life but having a driving motivation that may not match their new nature.*\n\n*Returned aren't born, they are manifest into the prime material plane without memories but with the basic skills they had in their life. The first thing a returned does is find a form. That might be discarded metal from a forge, a pile of gravel or sand, a hive of insects, a decaying chicken coop. Their magical forms twist the object(s) they inhabit into a humanoid form.*\n\n*Most returned will hide their true forms beneath layers of clothing, robes, or armor to fit in to other societies until their calling is fulfilled. Generally they are called \"ghosts,\" \"forgotten,\" or \"returned\" depending on whether the individual knows the returned is truly a returned and not a true ghost.",
+              "summary": "Occasionally souls or spirits may return to the world for reasons unknown."
             }
           ]
         },
@@ -789,7 +789,7 @@
                       "summary": "You can move across difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor."
                     }
                   ],
-                  "description": "*You are in touch with your bull's ancestry, and retain some of the power and grace of the wilds.*"
+                  "description": "You are in touch with your bull's ancestry, and retain some of the power and grace of the wilds."
                 },
                 {
                   "id": "abyssal-brood",
@@ -809,7 +809,7 @@
                       "summary": "You know the [fearsome visage]() spell."
                     }
                   ],
-                  "description": "*Your bloodline was corrupted by a foul demon.*"
+                  "description": "Your bloodline was corrupted by a foul demon."
                 },
                 {
                   "id": "seafarer",
@@ -827,7 +827,7 @@
                       "id": "swim-speed"
                     }
                   ],
-                  "description": "*You come from a society of rugged sailors and pirates, with a proud nautical tradition.*"
+                  "description": "You come from a society of rugged sailors and pirates, with a proud nautical tradition."
                 },
                 {
                   "id": "labyrinth-born",
@@ -847,11 +847,11 @@
                       "id": "labyrinth-sense"
                     }
                   ],
-                  "description": "*You come from a lineage of minotaurs bred to stalk endless mazes, and hunt unlucky wanderers.*"
+                  "description": "You come from a lineage of minotaurs bred to stalk endless mazes, and hunt unlucky wanderers."
                 }
               ],
-              "description": "*Minotaurs (Aurans) are massive humanoids with powerful physiques and heads resembling those of bulls. Their origins are shrouded in mystery. Some scholars believe them to be monsters of the wilderness, while others suspect they are descended from demon lords or even created in extra-dimensional mazes.*\n\nMinotaurs come in all the colors of natural bulls, though a dusty brown is most common. All minotaurs have horns, regardless of gender, which can easily reach several feet in length. Many minotaurs polish or decorate their horns, with some even sharpening them for combat or wrapping them in ceremonial gold collars.\n\nMinotaurs are furred all over their bodies, and generally have thick manes of hair on their necks and backs. Some carry hair on their face and chin as well. They have cloven hooves and thin tails, with a small tuft of fur on the end.",
-              "summary": "*Minotaurs (Aurans) are massive humanoids with powerful physiques and heads resembling those of bulls."
+              "description": "Minotaurs (Aurans) are massive humanoids with powerful physiques and heads resembling those of bulls. Their origins are shrouded in mystery. Some scholars believe them to be monsters of the wilderness, while others suspect they are descended from demon lords or even created in extra-dimensional mazes.*\n\nMinotaurs come in all the colors of natural bulls, though a dusty brown is most common. All minotaurs have horns, regardless of gender, which can easily reach several feet in length. Many minotaurs polish or decorate their horns, with some even sharpening them for combat or wrapping them in ceremonial gold collars.\n\nMinotaurs are furred all over their bodies, and generally have thick manes of hair on their necks and backs. Some carry hair on their face and chin as well. They have cloven hooves and thin tails, with a small tuft of fur on the end.",
+              "summary": "Minotaurs (Aurans) are massive humanoids with powerful physiques and heads resembling those of bulls."
             },
             {
               "id": "bearkin-bear",
@@ -887,8 +887,8 @@
                 }
               ],
               "archetypes": [],
-              "description": "*Bearkin are hulking humanoids with ursine features, known for their incredible strength and deep connection to the wilderness.*",
-              "summary": "*Bearkin are hulking humanoids with ursine features, known for their incredible strength and deep connection to the wilderness.*."
+              "description": "Bearkin are hulking humanoids with ursine features, known for their incredible strength and deep connection to the wilderness.",
+              "summary": "Bearkin are hulking humanoids with ursine features, known for their incredible strength and deep connection to the wilderness.*."
             },
             {
               "id": "giff-hippo",
@@ -919,8 +919,8 @@
                 }
               ],
               "archetypes": [],
-              "description": "*Giff are hippo-headed humanoids known for their military discipline, love of firearms, and remarkable resilience.*",
-              "summary": "*Giff are hippo-headed humanoids known for their military discipline, love of firearms, and remarkable resilience.*."
+              "description": "Giff are hippo-headed humanoids known for their military discipline, love of firearms, and remarkable resilience.",
+              "summary": "Giff are hippo-headed humanoids known for their military discipline, love of firearms, and remarkable resilience.*."
             },
             {
               "id": "kashrishi-rhino",
@@ -952,7 +952,7 @@
                       "summary": "You have a small set of secondary arms adapted to climbing and hanging from trees."
                     }
                   ],
-                  "description": "*You have a small set of secondary arms adapted to climbing and hanging from trees.*"
+                  "description": "You have a small set of secondary arms adapted to climbing and hanging from trees."
                 },
                 {
                   "id": "lethoci",
@@ -964,7 +964,7 @@
                       "summary": "You come from a kashrishi family adapted to coastal shores, or inland ponds and lakes."
                     }
                   ],
-                  "description": "*Resembling dwarf-sized bipedal rhinoceroses with the occasional odd insectile feature, kashrishi adapt to their environs with unusual efficiency, using a combination of rapid physical evolutions and inherent psychic powers.*"
+                  "description": "Resembling dwarf-sized bipedal rhinoceroses with the occasional odd insectile feature, kashrishi adapt to their environs with unusual efficiency, using a combination of rapid physical evolutions and inherent psychic powers."
                 },
                 {
                   "id": "trogloshi",
@@ -974,7 +974,7 @@
                       "id": "crystal-luminescence"
                     }
                   ],
-                  "description": "*You're adapted to the sunless regions of dense jungle forests and deep caves, with soft flesh lacking pigment and unusually clear crystalline horns.*"
+                  "description": "You're adapted to the sunless regions of dense jungle forests and deep caves, with soft flesh lacking pigment and unusually clear crystalline horns."
                 },
                 {
                   "id": "xyloshi",
@@ -986,11 +986,11 @@
                       "summary": "You have prominent neck muscles that allow you to use your facial horn as a tool or weapon."
                     }
                   ],
-                  "description": "*You have prominent neck muscles that allow you to use your facial horn as a tool or weapon.*"
+                  "description": "You have prominent neck muscles that allow you to use your facial horn as a tool or weapon."
                 }
               ],
-              "description": "*Resembling dwarf-sized bipedal rhinoceroses with the occasional odd insectile feature, kashrishi adapt to their environs with unusual efficiency, using a combination of rapid physical evolutions and inherent psychic powers.*\n\nKashrishi are often mistakenly referred to as having hive minds, though they're actually natural empaths, capable of discerning a creature's emotional state and impulses through proximity.",
-              "summary": "*Resembling dwarf-sized bipedal rhinoceroses with the occasional odd insectile feature, kashrishi adapt to their environs with unusual efficiency, ..."
+              "description": "Resembling dwarf-sized bipedal rhinoceroses with the occasional odd insectile feature, kashrishi adapt to their environs with unusual efficiency, using a combination of rapid physical evolutions and inherent psychic powers.*\n\nKashrishi are often mistakenly referred to as having hive minds, though they're actually natural empaths, capable of discerning a creature's emotional state and impulses through proximity.",
+              "summary": "Resembling dwarf-sized bipedal rhinoceroses with the occasional odd insectile feature, kashrishi adapt to their environs with unusual efficiency, ..."
             },
             {
               "id": "loxodon-elephant",
@@ -1022,8 +1022,8 @@
                 }
               ],
               "archetypes": [],
-              "description": "*Loxodons are elephantine humanoids known for their serene wisdom, incredible memory, and strong sense of community.*",
-              "summary": "*Loxodons are elephantine humanoids known for their serene wisdom, incredible memory, and strong sense of community.*."
+              "description": "Loxodons are elephantine humanoids known for their serene wisdom, incredible memory, and strong sense of community.",
+              "summary": "Loxodons are elephantine humanoids known for their serene wisdom, incredible memory, and strong sense of community.*."
             },
             {
               "id": "aven-birdfolk",
@@ -1141,8 +1141,8 @@
                   ]
                 }
               ],
-              "description": "*Aven is the collective term for humanoids with birdlike appearances: feathers instead of hair, beaks, talons, ear holes, wings, and other avian physical features. Aven may be winged or wingless, but all of them are covered in feathers, have beaks, and have talons on their feet.*",
-              "summary": "*Aven is the collective term for humanoids with birdlike appearances: feathers instead of hair, beaks, talons, ear holes, wings, and other avian ph..."
+              "description": "Aven is the collective term for humanoids with birdlike appearances: feathers instead of hair, beaks, talons, ear holes, wings, and other avian physical features. Aven may be winged or wingless, but all of them are covered in feathers, have beaks, and have talons on their feet.",
+              "summary": "Aven is the collective term for humanoids with birdlike appearances: feathers instead of hair, beaks, talons, ear holes, wings, and other avian ph..."
             },
             {
               "id": "osphrani-kangaroofolk",
@@ -1666,7 +1666,7 @@
                       "summary": "Beginning at 3rd level, you can cast one 1st-level spell of your choice from the illusion or necromancy schools of magic."
                     }
                   ],
-                  "description": "*Your twin is dead, or you were born without a twin. You are viewed as a natural-born initiate, sure to achieve a glorified death.*"
+                  "description": "Your twin is dead, or you were born without a twin. You are viewed as a natural-born initiate, sure to achieve a glorified death."
                 },
                 {
                   "id": "twin-bonded",
@@ -2392,7 +2392,7 @@
                       "id": "volcanic-being"
                     }
                   ],
-                  "description": "*The border between the Planes of Earth and Fire is called the Fountains of Creation, a place of endless spires of volatilely active volcanoes and the rivers of magma that run between them. Magma genasi occur naturally in this Paraelemental Plane's perfect fusion of the physical properties of the intersecting planes.*"
+                  "description": "The border between the Planes of Earth and Fire is called the Fountains of Creation, a place of endless spires of volatilely active volcanoes and the rivers of magma that run between them. Magma genasi occur naturally in this Paraelemental Plane's perfect fusion of the physical properties of the intersecting planes."
                 },
                 {
                   "id": "steam",
@@ -2420,11 +2420,11 @@
                       "id": "heat-distortion"
                     }
                   ],
-                  "description": "*When nonmagical water and fire meet, they create steam. So it is for steam genasi, whose magic is formed from the physical combination of the elements of Fire and Water. Sometimes referred to as mirage genasi, they control steam and waves of heat to distort light, blurring themselves or even creating full visual illusions that scorch those who touch them.*"
+                  "description": "When nonmagical water and fire meet, they create steam. So it is for steam genasi, whose magic is formed from the physical combination of the elements of Fire and Water. Sometimes referred to as mirage genasi, they control steam and waves of heat to distort light, blurring themselves or even creating full visual illusions that scorch those who touch them."
                 }
               ],
-              "description": "*Flameborn as many call them, are hot tempered and impassioned folks normally. Perhaps they are children of a Fire Lord, or perhaps their homeland sits precariously close to a portal to the Fire Plane. However they received this connection, their fiery temperaments are not to be trifled with, holding sway over an element of destruction and raw power.*\n\n*Ifrit have physical traits of flame, smoke, or volcanic rock that allude to their fiery inheritance. Their eyes may be alight with a glow, their skin may flake with ash, or their breath emanate black smoke, or their \"hair\" may actually be an everburning flame. Some may be mistaken for Tieflings with powerful tails that mimic those of Salamanders or similar fire elementals.*",
-              "summary": "*Flameborn as many call them, are hot tempered and impassioned folks normally."
+              "description": "Flameborn as many call them, are hot tempered and impassioned folks normally. Perhaps they are children of a Fire Lord, or perhaps their homeland sits precariously close to a portal to the Fire Plane. However they received this connection, their fiery temperaments are not to be trifled with, holding sway over an element of destruction and raw power.*\n\n*Ifrit have physical traits of flame, smoke, or volcanic rock that allude to their fiery inheritance. Their eyes may be alight with a glow, their skin may flake with ash, or their breath emanate black smoke, or their \"hair\" may actually be an everburning flame. Some may be mistaken for Tieflings with powerful tails that mimic those of Salamanders or similar fire elementals.",
+              "summary": "Flameborn as many call them, are hot tempered and impassioned folks normally."
             },
             {
               "id": "asir-windborn",
@@ -2525,7 +2525,7 @@
                       "id": "static-touch"
                     }
                   ],
-                  "description": "*Lightning genasi bear a connection to the elements of Air and Fire, their magic manifesting as the combination of the elements' metaphysical properties - the speed and flight of the winds with the energy and light of fire - causing them to be constantly accompanied by the smell of ozone, the vigorous hum of electricity, and sparks of raw energy.*"
+                  "description": "Lightning genasi bear a connection to the elements of Air and Fire, their magic manifesting as the combination of the elements' metaphysical properties - the speed and flight of the winds with the energy and light of fire - causing them to be constantly accompanied by the smell of ozone, the vigorous hum of electricity, and sparks of raw energy."
                 },
                 {
                   "id": "thundercaller",
@@ -2551,7 +2551,7 @@
                       "id": "thunder-resistance"
                     }
                   ],
-                  "description": "*Thunder genasi wield Air and Earth, combining the freedom of air and the quaking strength of earth to create waves of concussive sound, the ability to convey or suppress vibration, and crescendos that shake the land and sky.*"
+                  "description": "Thunder genasi wield Air and Earth, combining the freedom of air and the quaking strength of earth to create waves of concussive sound, the ability to convey or suppress vibration, and crescendos that shake the land and sky."
                 },
                 {
                   "id": "windborn",
@@ -2589,11 +2589,11 @@
                       "id": "mistvision"
                     }
                   ],
-                  "description": "*Vapor genasi, sometimes called mist or even cloud genasi, have a connection to the elements of Air and Water. A vapor genasi's magic results from the combination of their elements' physical properties: airborne particles of moisture, calling upon curtains of mist and fog, or even temporarily polymorphing their bodies into clouds of vapor.*"
+                  "description": "Vapor genasi, sometimes called mist or even cloud genasi, have a connection to the elements of Air and Water. A vapor genasi's magic results from the combination of their elements' physical properties: airborne particles of moisture, calling upon curtains of mist and fog, or even temporarily polymorphing their bodies into clouds of vapor."
                 }
               ],
-              "description": "*Thought to be blessed or otherwise descended from celestials, asir godlike manifest with features of air, the heavens, or flying creatures.*\n\n*Their skin is often shades of whites, sky blues, highlighted with metallic shades or prismatic glows, though more often than not they share normal humanlike skintones. Instead, they are more often distinguished by a few specific characteristics. All asir have strange markings or symbols that adorn their skin, sometimes accompanied by symbols that float around them like halos or glowing manifestations of physical features.*",
-              "summary": "*Thought to be blessed or otherwise descended from celestials, asir godlike manifest with features of air, the heavens, or flying creatures.*\n\n*The..."
+              "description": "Thought to be blessed or otherwise descended from celestials, asir godlike manifest with features of air, the heavens, or flying creatures.*\n\n*Their skin is often shades of whites, sky blues, highlighted with metallic shades or prismatic glows, though more often than not they share normal humanlike skintones. Instead, they are more often distinguished by a few specific characteristics. All asir have strange markings or symbols that adorn their skin, sometimes accompanied by symbols that float around them like halos or glowing manifestations of physical features.",
+              "summary": "Thought to be blessed or otherwise descended from celestials, asir godlike manifest with features of air, the heavens, or flying creatures.*\n\n*The..."
             }
           ]
         },

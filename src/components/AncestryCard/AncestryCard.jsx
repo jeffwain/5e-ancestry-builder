@@ -1,4 +1,5 @@
 import { SummaryTraitCard } from '../SummaryTraitCard';
+import { Accordion } from '../Accordion';
 import './AncestryCard.css';
 
 export function AncestryCard({
@@ -10,45 +11,31 @@ export function AncestryCard({
   onSelectArchetype,
   showDetails = false
 }) {
-  const { name, summary, description, traits, archetypes } = ancestry;
+  const { name, description, traits, archetypes } = ancestry;
 
   // Count shared traits
   const sharedTraitCount = traits?.length || 0;
 
-  return (
-    <article className={`ancestry-card ${isExpanded ? 'expanded' : ''}`}>
-      <div className="ancestry-card-header" onClick={onToggle}>
-        <div className="ancestry-card-title">
-          <h3>{name}</h3>
-          {/* <p className="ancestry-summary">{summary}</p> */}
-        </div>
-        <div className="ancestry-card-meta">
-          <span className="pill type heritage">{sharedTraitCount} shared traits</span>
-          {archetypes?.length > 0 && (
-            <span className="pill">{archetypes.length} archetypes</span>
-          )}
-          <button
-            className="expand-toggle"
-            aria-expanded={isExpanded}
-            aria-label={isExpanded ? 'Collapse' : 'Expand'}
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              className={`chevron ${isExpanded ? 'rotated' : ''}`}
-            >
-              <path
-                fill="currentColor"
-                d="M4.646 5.646a.5.5 0 0 1 .708 0L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
+  const meta = (
+    <>
+      <span className="pill count heritage">{sharedTraitCount} shared traits</span>
+      {archetypes?.length > 0 && (
+        <span className="pill type on-dark">{archetypes.length} archetypes</span>
+      )}
+    </>
+  );
 
-      {isExpanded && (
-        <div className="ancestry-card-content">
+  return (
+    <Accordion
+      type="heritage"
+      className="ancestry-accordion"
+      title={<h3 className="name">{name}</h3>}
+      meta={meta}
+      isOpen={isExpanded}
+      onToggle={onToggle}
+    >
+      {(expanded) => (expanded ? (
+        <div className="ancestry-accordion-body">
           {description && (
             <p className="ancestry-description">{description}</p>
           )}
@@ -90,8 +77,8 @@ export function AncestryCard({
             </div>
           )}
         </div>
-      )}
-    </article>
+      ) : null)}
+    </Accordion>
   );
 }
 
@@ -158,7 +145,7 @@ export function getResolvedTraitsAndOptions(ancestry, archetype, allTraits) {
 }
 
 // Wrapper for trait display - resolves ID references from allTraits
-function TraitDisplay({ trait, allTraits, showDetails = false }) {
+function TraitDisplay({ trait, allTraits }) {
   const resolvedTrait = resolveTrait(trait, allTraits);
 
   // If we couldn't resolve and there's no name, show error state
@@ -189,9 +176,9 @@ function TraitDisplay({ trait, allTraits, showDetails = false }) {
   );
 }
 
-// Radio-style archetype item (replaces the old ArchetypeItem with action buttons)
+// Radio-style archetype item
 function ArchetypeRadioItem({ archetype, allTraits, isSelected, onSelect, showDetails = false }) {
-  const { name, icon, description, traits } = archetype;
+  const { name, description, traits } = archetype;
 
   return (
     <label
@@ -208,7 +195,6 @@ function ArchetypeRadioItem({ archetype, allTraits, isSelected, onSelect, showDe
         />
         <div className="archetype-radio-content">
           <span className="archetype-radio-name">
-            {/* {icon && <span className="archetype-icon">{icon}</span>} */}
             {name}.
           </span>
           {description && (

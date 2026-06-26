@@ -2,6 +2,9 @@ import { useState, useEffect, useMemo } from 'react';
 import { AncestryCard, resolveTrait, getResolvedTraitsAndOptions } from '../components/AncestryCard';
 import { SummaryTraitCard } from '../components/SummaryTraitCard';
 import { useConvertedTraits, combineTraitLookups } from '../hooks/useConvertedTraits';
+import { usePersistentState } from '../hooks/usePersistentState';
+import { loadJson } from '../utils/dataCache';
+import { STORAGE_KEYS } from '../utils/storage';
 import './AncestriesPage.css';
 
 export function AncestriesPage({
@@ -12,9 +15,9 @@ export function AncestriesPage({
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [expandedAncestry, setExpandedAncestry] = useState(null);
-  const [selectedArchetypeId, setSelectedArchetypeId] = useState(null);
-  const [showDetails, setShowDetails] = useState(false);
+  const [expandedAncestry, setExpandedAncestry] = usePersistentState(STORAGE_KEYS.ancestriesExpanded, null);
+  const [selectedArchetypeId, setSelectedArchetypeId] = usePersistentState(STORAGE_KEYS.ancestriesArchetype, null);
+  const [showDetails, setShowDetails] = usePersistentState(STORAGE_KEYS.ancestriesShowDetails, false);
 
   // Ancestry trait IDs resolve against the imported vocabulary (converted-traits.json)
   // plus the curated shared traits (traits.json / allTraits).
@@ -25,19 +28,12 @@ export function AncestriesPage({
   );
 
   useEffect(() => {
-    async function loadAncestries() {
-      try {
-        const response = await fetch('/data/converted-ancestries.json');
-        if (!response.ok) throw new Error('Failed to load ancestries');
-        const data = await response.json();
-        setCategories(data.categories || []);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadAncestries();
+    let active = true;
+    loadJson('/data/converted-ancestries.json')
+      .then((data) => { if (active) setCategories(data.categories || []); })
+      .catch((err) => { if (active) setError(err.message); })
+      .finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
   }, []);
 
   // Collect all ancestries from both direct and subcategory sources
@@ -135,7 +131,7 @@ export function AncestriesPage({
         </label>
       </header>
 
-      <div className="ancestries-two-col">
+      <div className="ancestries-two-col list-view">
         {/* Left Column — Browse */}
         <div className="ancestries-browse">
           {categories.map((category) => (
@@ -317,11 +313,11 @@ function AncestrySummary({ ancestry, archetype, allTraits, onUse, onCustomize, o
       {archetype && (
         <div className="ancestry-summary-actions">
           <button className="btn btn-primary" onClick={onUse}>
-            Use
+            Use this ancestry
           </button>
           <button className="btn btn-secondary" onClick={onCustomize}>
             <PencilIcon />
-            Customize
+            Customize ancestry
           </button>
         </div>
       )}

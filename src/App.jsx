@@ -1,10 +1,10 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { CharacterProvider, useCharacter } from './contexts/CharacterContext';
 import { useTraitData } from './hooks/useTraitData';
+import { preloadJson } from './utils/dataCache';
 import { TabNavigation } from './components/TabNavigation';
 import { Layout } from './components/Layout';
-import { SummaryPanel } from './components/SummaryPanel';
 import {
   CharacterCreation,
   CustomAncestryPage,
@@ -45,7 +45,11 @@ function AppContent() {
   } = useCharacter();
 
   const navigate = useNavigate();
-  const [showSummary, setShowSummary] = useState(false);
+
+  // Warm the Ancestries-page data in the background so navigating there is instant.
+  useEffect(() => {
+    preloadJson('/data/converted-ancestries.json', '/data/converted-traits.json');
+  }, []);
 
   // Determine if user has customized their ancestry (for showing Overview tab)
   const hasCustomAncestry = selectedTraits.length > 0;
@@ -161,7 +165,6 @@ function AppContent() {
             element={
               <Layout
                 sections={sections}
-                onShowSummary={() => setShowSummary(true)}
               />
             }
           />
@@ -179,11 +182,6 @@ function AppContent() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-
-      <SummaryPanel
-        isOpen={showSummary}
-        onClose={() => setShowSummary(false)}
-      />
 
       <footer className="app-footer">
         <p>5e Ancestry Builder — Point-buy character ancestry system</p>

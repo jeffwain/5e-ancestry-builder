@@ -1,5 +1,30 @@
-import { createContext, useContext, useReducer, useMemo, useCallback } from 'react';
+import { createContext, useContext, useReducer, useMemo, useCallback, useEffect } from 'react';
 import { createAncestryExport } from '../utils/ancestrySchema';
+import { loadState, saveState, STORAGE_KEYS } from '../utils/storage';
+
+// Only the user-authored part of the build is persisted. The rest of the state
+// (allTraits, requiredCategories, requiredTraits, traitTypes) is derived from the
+// JSON data files and is re-loaded on every boot, so persisting it would just
+// bloat storage and risk going stale.
+const PERSISTED_FIELDS = [
+  'selectedTraits',
+  'selectedOptions',
+  'ancestryName',
+  'loadedPrebuilt',
+  'loadedPrebuiltName',
+];
+
+function pickPersisted(state) {
+  const slice = {};
+  for (const key of PERSISTED_FIELDS) slice[key] = state[key];
+  return slice;
+}
+
+// Build the initial reducer state, hydrating the authored slice from storage.
+function initState(base) {
+  const saved = loadState(STORAGE_KEYS.build, null);
+  return saved ? { ...base, ...saved } : base;
+}
 
 // Initial state
 const initialState = {
@@ -266,7 +291,19 @@ const CharacterContext = createContext(null);
 
 // Provider component
 export function CharacterProvider({ children }) {
-  const [state, dispatch] = useReducer(characterReducer, initialState);
+  const [state, dispatch] = useReducer(characterReducer, initialState, initState);
+
+  // Persist the authored slice whenever it changes (auto-saved working draft).
+  useEffect(() => {
+    saveState(STORAGE_KEYS.build, pickPersisted(state));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    state.selectedTraits,
+    state.selectedOptions,
+    state.ancestryName,
+    state.loadedPrebuilt,
+    state.loadedPrebuiltName,
+  ]);
 
   // Computed values - includes points from selected options
   const pointsSpent = useMemo(() => {

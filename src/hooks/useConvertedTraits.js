@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { loadJson } from '../utils/dataCache';
 
 /**
  * Loads the ancestry-pool trait vocabulary from converted-traits.json.
@@ -15,22 +16,15 @@ export function useConvertedTraits() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function load() {
-      try {
-        const res = await fetch('/data/converted-traits.json');
-        if (!res.ok) {
-          throw new Error(`Failed to load converted traits: ${res.status}`);
-        }
-        const json = await res.json();
+    let active = true;
+    loadJson('/data/converted-traits.json')
+      .then((json) => {
         // File is a flat array of trait objects; tolerate a wrapped shape too.
-        setTraits(Array.isArray(json) ? json : (json.traits || []));
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    load();
+        if (active) setTraits(Array.isArray(json) ? json : (json.traits || []));
+      })
+      .catch((err) => { if (active) setError(err.message); })
+      .finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
   }, []);
 
   const convertedTraitsById = useMemo(() => {

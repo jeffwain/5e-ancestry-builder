@@ -1,0 +1,30 @@
+/* ===========================================
+   Shared "browse" layout modifiers
+   Both the Ancestries page and the Ancestry Builder reuse the existing
+   .ancestries-two-col / .ancestries-summary-col classes. These modifiers only
+   add the centred (list) and responsive-expanding (grid) behaviour — nothing
+   here edits the existing rules.
+   =========================================== */
+
+/* LIST view — a centred, readable column with the preview beside it. */
+.ancestries-two-col.list-view {
+  grid-template-columns: minmax(0, 46rem) 380px;
+  justify-content: center;
+}
+
+/* GRID view — cards expand responsively; the whole group stays centred within a
+   max width instead of anchoring the preview to the screen's right edge. */
+.ancestries-two-col.grid-view {
+  grid-template-columns: minmax(0, 1fr) 380px;
+  max-width: 96rem;
+  margin-inline: auto;
+}
+
+/* Stack into a single column on narrow screens (matches the existing
+   .ancestries-two-col / .ancestries-summary-col breakpoint). */
+@media (max-width: 768px) {
+  .ancestries-two-col.list-view,
+  .ancestries-two-col.grid-view {
+    grid-template-columns: 1fr;
+  }
+}
