@@ -1,0 +1,256 @@
+.audit-page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-12);
+}
+
+.audit-loading,
+.audit-error-message,
+.audit-empty {
+  padding: var(--space-6);
+  font-family: var(--font-body);
+  color: var(--color-ink-600);
+}
+
+.audit-error-message {
+  color: var(--color-error);
+}
+
+/* Header & stats ------------------------------------------------------ */
+.audit-header {
+  margin-bottom: var(--space-6);
+}
+
+.audit-header h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-ink-900);
+  margin: 0 0 var(--space-2);
+}
+
+.audit-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-ink-600);
+  margin: 0 0 var(--space-5);
+  max-width: 60ch;
+}
+
+.audit-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.audit-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 6.5rem;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-parchment-100);
+  border: var(--border-thin);
+  border-radius: var(--radius-md);
+}
+
+.audit-stat-value {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-ink-900);
+  line-height: var(--leading-tight);
+}
+
+.audit-stat-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-500);
+}
+
+.audit-stat.tone-good .audit-stat-value { color: var(--color-success); }
+.audit-stat.tone-warn .audit-stat-value { color: var(--color-warning); }
+.audit-stat.tone-bad .audit-stat-value { color: var(--color-error); }
+
+/* Legend & filter ----------------------------------------------------- */
+.audit-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.audit-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-ink-700);
+  cursor: pointer;
+}
+
+/* Status chips -------------------------------------------------------- */
+.audit-chip {
+  display: inline-block;
+  padding: 0.15em 0.6em;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--pill-bg);
+  color: var(--pill-text);
+}
+
+.audit-chip.status-ok       { background: var(--color-success-bg); color: var(--color-success); }
+.audit-chip.status-override { background: var(--color-heritage-bg); color: var(--color-heritage-dark); }
+.audit-chip.status-inline   { background: var(--color-culture-bg); color: var(--color-culture-dark); }
+.audit-chip.status-bad-option,
+.audit-chip.status-unresolved,
+.audit-chip.status-empty    { background: var(--color-error-bg); color: var(--color-error); }
+.audit-chip.status-unused   { background: var(--color-warning-bg); color: var(--color-warning); }
+
+/* Source tags --------------------------------------------------------- */
+.audit-source {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: 0.1em 0.45em;
+  border-radius: var(--radius-sm);
+  background: var(--color-parchment-200);
+  color: var(--color-ink-600);
+}
+
+.audit-source.src-imported { background: var(--color-blue-green-21); color: var(--color-parchment-50); }
+.audit-source.src-curated  { background: var(--color-gold-89); color: var(--color-ink-800); }
+.audit-source.src-inline   { background: var(--color-culture-bg); color: var(--color-culture-dark); }
+
+/* Ancestry blocks ----------------------------------------------------- */
+.audit-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.audit-ancestry {
+  border: var(--border-thin);
+  border-radius: var(--radius-md);
+  background: var(--color-parchment-50);
+  overflow: hidden;
+}
+
+.audit-ancestry.has-errors {
+  border-color: var(--color-error);
+  box-shadow: var(--shadow-sm);
+}
+
+.audit-ancestry.audit-unused {
+  border-color: var(--color-warning);
+}
+
+.audit-ancestry-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-parchment-100);
+  border-bottom: var(--border-thin);
+}
+
+.audit-ancestry-name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  margin: 0;
+  color: var(--color-ink-900);
+}
+
+.audit-ancestry-category {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--color-ink-500);
+}
+
+.audit-ancestry-meta {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--color-ink-500);
+  margin-left: auto;
+}
+
+.audit-ancestry-status {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.audit-ancestry-status.good { color: var(--color-success); }
+.audit-ancestry-status.bad  { color: var(--color-error); }
+
+/* Table --------------------------------------------------------------- */
+.audit-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+}
+
+.audit-table thead th {
+  text-align: left;
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-500);
+  border-bottom: var(--border-thin);
+}
+
+.audit-table tbody td {
+  padding: var(--space-2) var(--space-4);
+  border-bottom: 1px solid var(--color-parchment-300);
+  vertical-align: top;
+}
+
+.audit-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.audit-table tbody tr.row-error {
+  background: var(--color-error-bg);
+}
+
+.col-group {
+  color: var(--color-ink-500);
+  white-space: nowrap;
+}
+
+.col-ref code {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-ink-800);
+}
+
+.col-detail {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--color-ink-500);
+}
+
+.col-resolved {
+  color: var(--color-ink-700);
+}
+
+@media (max-width: 640px) {
+  .audit-table thead { display: none; }
+  .audit-table,
+  .audit-table tbody,
+  .audit-table tr,
+  .audit-table td { display: block; width: 100%; }
+  .audit-table tr { padding: var(--space-2) 0; border-bottom: var(--border-thin); }
+  .audit-table td { border: none; padding: 0.15em var(--space-4); }
+}

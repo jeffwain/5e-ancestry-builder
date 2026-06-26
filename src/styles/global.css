@@ -9,16 +9,19 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
-  font-weight: 410;
-  /* font-variation-settings: 'opsz' 54; */
-  font-size: var(--text-base);
-  color: var(--color-ink-800);
+  background-color: var(--color-parchment-100);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background-color: var(--color-parchment-100);
   background-image:
     radial-gradient(ellipse at top, var(--color-parchment-50) 0%, transparent 50%),
     radial-gradient(ellipse at bottom right, var(--color-parchment-200) 0%, transparent 40%);
-  min-height: 100vh;
 }
 
 #root {

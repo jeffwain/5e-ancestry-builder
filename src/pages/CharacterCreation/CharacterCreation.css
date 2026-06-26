@@ -1,0 +1,123 @@
+/* Three-column Character Creation layout */
+.character-creation-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr 260px;
+  gap: var(--space-6);
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* TOC sidebar */
+.creation-toc {
+  position: sticky;
+  top: var(--space-4);
+}
+
+.creation-toc h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-ink-800);
+  margin-bottom: var(--space-3);
+}
+
+.creation-toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.creation-toc li {
+  margin-bottom: var(--space-1);
+}
+
+.creation-toc a {
+  display: block;
+  padding: var(--space-1) var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-ink-600);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.creation-toc a:hover {
+  color: var(--color-heritage);
+  background: var(--color-heritage-bg);
+}
+
+/* Main column */
+.creation-main {
+  min-width: 0;
+}
+
+/* Summary sidebar */
+.creation-summary {
+  position: sticky;
+  top: var(--space-4);
+}
+
+.creation-summary h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-ink-800);
+  margin-bottom: var(--space-3);
+}
+
+/* Summary cards */
+.summary-card {
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.summary-card h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-ink-700);
+  margin: 0 0 var(--space-1);
+  text-transform: capitalize;
+}
+
+.summary-placeholder {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--color-ink-400);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Step header links */
+.step-link {
+  color: inherit;
+  text-decoration: none;
+  flex: 1;
+}
+
+.step-link:hover {
+  color: var(--color-heritage);
+}
+
+/* Responsive: collapse to single column on narrow screens */
+@media (max-width: 1024px) {
+  .character-creation-layout {
+    grid-template-columns: 1fr 260px;
+  }
+
+  .creation-toc {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .character-creation-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .creation-summary {
+    position: static;
+  }
+}

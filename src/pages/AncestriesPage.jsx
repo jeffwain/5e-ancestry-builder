@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { AncestryCard, resolveTrait, getResolvedTraitsAndOptions } from '../components/AncestryCard';
 import { SummaryTraitCard } from '../components/SummaryTraitCard';
+import { useConvertedTraits, combineTraitLookups } from '../hooks/useConvertedTraits';
 import './AncestriesPage.css';
 
 export function AncestriesPage({
@@ -14,6 +15,14 @@ export function AncestriesPage({
   const [expandedAncestry, setExpandedAncestry] = useState(null);
   const [selectedArchetypeId, setSelectedArchetypeId] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
+
+  // Ancestry trait IDs resolve against the imported vocabulary (converted-traits.json)
+  // plus the curated shared traits (traits.json / allTraits).
+  const { convertedTraitsById } = useConvertedTraits();
+  const traitLookup = useMemo(
+    () => combineTraitLookups(convertedTraitsById, allTraits),
+    [convertedTraitsById, allTraits]
+  );
 
   useEffect(() => {
     async function loadAncestries() {
@@ -63,7 +72,7 @@ export function AncestriesPage({
   const handleUse = () => {
     if (onUse && expandedAncestryObj && selectedArchetypeObj) {
       const { traits, options } = getResolvedTraitsAndOptions(
-        expandedAncestryObj, selectedArchetypeObj, allTraits
+        expandedAncestryObj, selectedArchetypeObj, traitLookup
       );
       onUse({
         ancestry: expandedAncestryObj,
@@ -77,7 +86,7 @@ export function AncestriesPage({
   const handleCustomize = () => {
     if (onCustomize && expandedAncestryObj && selectedArchetypeObj) {
       const { traits, options } = getResolvedTraitsAndOptions(
-        expandedAncestryObj, selectedArchetypeObj, allTraits
+        expandedAncestryObj, selectedArchetypeObj, traitLookup
       );
       onCustomize({
         ancestry: expandedAncestryObj,
@@ -145,7 +154,7 @@ export function AncestriesPage({
                     <AncestryCard
                       key={ancestry.id}
                       ancestry={ancestry}
-                      allTraits={allTraits}
+                      allTraits={traitLookup}
                       isExpanded={expandedAncestry === ancestry.id}
                       onToggle={() => handleToggle(ancestry.id)}
                       selectedArchetype={selectedArchetypeId}
@@ -170,7 +179,7 @@ export function AncestriesPage({
                       <AncestryCard
                         key={ancestry.id}
                         ancestry={ancestry}
-                        allTraits={allTraits}
+                        allTraits={traitLookup}
                         isExpanded={expandedAncestry === ancestry.id}
                         onToggle={() => handleToggle(ancestry.id)}
                         selectedArchetype={selectedArchetypeId}
@@ -190,9 +199,10 @@ export function AncestriesPage({
           <AncestrySummary
             ancestry={expandedAncestryObj}
             archetype={selectedArchetypeObj}
-            allTraits={allTraits}
+            allTraits={traitLookup}
             onUse={handleUse}
             onCustomize={handleCustomize}
+            onSelectArchetype={handleSelectArchetype}
           />
         </div>
       </div>
@@ -207,7 +217,7 @@ const PencilIcon = () => (
   </svg>
 );
 
-function AncestrySummary({ ancestry, archetype, allTraits, onUse, onCustomize }) {
+function AncestrySummary({ ancestry, archetype, allTraits, onUse, onCustomize, onSelectArchetype }) {
   // Empty state — no ancestry selected
   if (!ancestry) {
     return (
@@ -245,10 +255,10 @@ function AncestrySummary({ ancestry, archetype, allTraits, onUse, onCustomize })
         {archetypeIcon && <span>{archetypeIcon} </span>}
         {title}
       </h2>
-
+{/* 
       {ancestry.description && (
         <p className="ancestry-summary-desc">{ancestry.description}</p>
-      )}
+      )} */}
 
       {/* Shared Traits */}
       {sharedTraits.length > 0 && (
@@ -318,9 +328,24 @@ function AncestrySummary({ ancestry, archetype, allTraits, onUse, onCustomize })
 
       {/* Prompt to select archetype if ancestry expanded but no archetype chosen */}
       {!archetype && (
-        <p className="ancestry-summary-hint">
-          Select an archetype for the full list of traits.
-        </p>
+        <div className="ancestry-summary-hint">
+          <p>Select an archetype for the full list of traits.</p>
+          {ancestry.archetypes && ancestry.archetypes.length > 0 && (
+            <ul className="ancestry-summary-archetype-list">
+              {ancestry.archetypes.map((at) => (
+                <li key={at.id}>
+                  <button
+                    className="ancestry-summary-archetype-btn"
+                    onClick={() => onSelectArchetype(at.id)}
+                  >
+                    {at.icon && <span>{at.icon}</span>}
+                    {at.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       )}
     </div>
   );

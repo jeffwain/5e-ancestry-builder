@@ -169,6 +169,7 @@
 .ancestry-card .archetype-radio-content {
   display: flex;
   flex-direction: row;
+  display: inline;
   gap: var(--space-1);
   min-width: 0;
 }
