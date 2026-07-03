@@ -1,0 +1,1 @@
+export { TraitContent } from './TraitContent';

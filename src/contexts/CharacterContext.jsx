@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer, useMemo, useCallback, useEffect } from 'react';
 import { createAncestryExport } from '../utils/ancestrySchema';
+import { getTraitPointCost, POINT_BUDGET } from '../utils/traitDisplay';
 import { loadState, saveState, STORAGE_KEYS } from '../utils/storage';
 
 // Only the user-authored part of the build is persisted. The rest of the state
@@ -307,24 +308,10 @@ export function CharacterProvider({ children }) {
 
   // Computed values - includes points from selected options
   const pointsSpent = useMemo(() => {
-    return state.selectedTraits.reduce((sum, trait) => {
-      // Base trait points
-      let traitPoints = trait.points || 0;
-      
-      // If trait has a selected option, add option points instead of (or in addition to) base
-      if (trait.requiresOption && trait.options) {
-        const selectedOptionId = state.selectedOptions[trait.id];
-        if (selectedOptionId) {
-          const selectedOption = trait.options.find(o => o.id === selectedOptionId);
-          if (selectedOption) {
-            // For requiresOption traits, option points replace base points
-            traitPoints = selectedOption.points || 0;
-          }
-        }
-      }
-      
-      return sum + traitPoints;
-    }, 0);
+    return state.selectedTraits.reduce(
+      (sum, trait) => sum + getTraitPointCost(trait, state.selectedOptions),
+      0
+    );
   }, [state.selectedTraits, state.selectedOptions]);
 
   const selectedTraitIds = useMemo(() => 
@@ -401,8 +388,22 @@ export function CharacterProvider({ children }) {
       }
     }
 
+    // Budget check — simulate excludes removals (same as SELECT_TRAIT reducer)
+    const removals = state.selectedTraits.filter(t => trait.excludes?.includes(t.id));
+    const removalCost = removals.reduce(
+      (sum, t) => sum + getTraitPointCost(t, state.selectedOptions),
+      0
+    );
+    const projected = pointsSpent - removalCost + getTraitPointCost(trait, state.selectedOptions);
+    if (projected > POINT_BUDGET) {
+      return {
+        canSelect: false,
+        reason: `Would exceed ${POINT_BUDGET} points`
+      };
+    }
+
     return { canSelect: true, reason: null };
-  }, [selectedTraitIds, state.selectedTraits, state.allTraits]);
+  }, [selectedTraitIds, state.selectedTraits, state.allTraits, state.selectedOptions, pointsSpent]);
 
   // Actions
   const selectTrait = useCallback((trait) => {
@@ -547,7 +548,7 @@ export function CharacterProvider({ children }) {
     
     // Computed
     pointsSpent,
-    remainingPoints: 16 - pointsSpent,
+    remainingPoints: POINT_BUDGET - pointsSpent,
     selectedTraitIds,
     categoriesByType,
     // Legacy values for backwards compatibility

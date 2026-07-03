@@ -1,0 +1,190 @@
+/* ===========================================
+   Shared trait content (.trait-content-*)
+   One inner-content class system for all three trait surfaces. The base rules
+   are the shared defaults; each wrapper (.card-trait / .summary-trait-card /
+   .trait-tooltip) "sends styles down" into these classes via the cascade.
+
+   NOTE: the legacy inner classes (.card-trait .header/.name/.description,
+   .summary-trait-*, .tooltip-*) still exist in the component CSS files and are
+   left untouched — a couple are still used directly (e.g. AncestryCard's
+   error state). They no longer style TraitContent output.
+   =========================================== */
+
+/* ── Shared base ─────────────────────────── */
+.trait-content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+.trait-content-name {
+  font-weight: 600;
+  margin: 0;
+}
+
+.trait-content-description {
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+
+.trait-content-description p {
+  margin: 0;
+}
+
+.trait-content-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.trait-content-meta:empty,
+.trait-content-meta:not(:has(*)) {
+  display: none;
+}
+
+/* ── Selectable builder card (.card-trait) ─ */
+.card-trait .trait-content-name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-ink-900);
+  line-height: var(--leading-tight);
+  margin: 0.0625rem 0 0 0;
+}
+
+.card-trait.disabled .trait-content-name {
+  color: var(--color-ink-300);
+}
+
+.card-trait .trait-content-header .pill {
+  margin-top: -0.125rem;
+}
+
+.card-trait .trait-content-description {
+  font-size: 0.9375rem;
+  color: var(--color-ink-800);
+}
+
+.card-trait.disabled .trait-content-description {
+  color: var(--color-ink-400);
+}
+
+.card-trait .trait-content-description a {
+  font-style: italic;
+  color: var(--category-background-light);
+}
+
+.card-trait .trait-content-description a:hover,
+.card-trait .trait-content-description a:focus-visible,
+.card-trait .trait-content-description a:active {
+  color: var(--category-background-light-hover);
+  text-decoration: underline;
+  text-decoration-thickness: 0.125rem;
+  text-decoration-color: oklch(from var(--category-background-light) l c h);
+}
+
+.card-trait .trait-content-description p:not(:last-child) {
+  margin-bottom: var(--space-2);
+}
+
+/* Compact builder card (collapsed selected traits) */
+.card-trait.compact .trait-content-header {
+  margin-bottom: 0;
+}
+
+.card-trait.compact .trait-content-name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Builder list view: header / description become row columns */
+.list-view .card-trait .trait-content-header {
+  flex: 2;
+  justify-content: flex-start;
+  margin: 0;
+}
+
+.list-view .card-trait .trait-content-header .trait-content-name {
+  flex: 0 1 fit-content;
+}
+
+.list-view .card-trait .trait-content-description {
+  flex: 5;
+  margin: 0;
+}
+
+.list-view .card-trait .trait-content-description .restriction {
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 64rem) {
+  .list-view .card-trait .trait-content-header {
+    flex: 1;
+  }
+
+  .list-view .card-trait .trait-content-description {
+    flex: 2;
+  }
+}
+
+/* ── Read-only summary card (.summary-trait-card / .simple-trait-card) ─
+   Both the full and inline (compact) summary containers share these. */
+.summary-trait-card .trait-content-name,
+.simple-trait-card .trait-content-name {
+  color: var(--color-ink-800);
+  font-weight: 600;
+  margin-right: var(--space-1);
+}
+
+.summary-trait-card .trait-content-description,
+.simple-trait-card .trait-content-description {
+  color: var(--color-ink-600);
+}
+
+/* Full summary layout only (the inline variant has no option/footer blocks). */
+.summary-trait-card .trait-content-option {
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px dashed var(--color-parchment-300);
+  font-size: var(--text-sm);
+  color: var(--color-ink-600);
+}
+
+.summary-trait-card .trait-content-option p {
+  margin: 0;
+}
+
+.summary-trait-card .trait-content-meta {
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-parchment-200);
+}
+
+/* ── Hover popover (.trait-tooltip) ──────── */
+.trait-tooltip .trait-content-header {
+  margin-bottom: var(--space-2);
+}
+
+.trait-tooltip .trait-content-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-parchment-50);
+}
+
+.trait-tooltip .trait-content-description {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-parchment-200);
+  margin: 0 0 var(--space-2);
+}
+
+.trait-tooltip .trait-content-meta {
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-ink-600);
+}

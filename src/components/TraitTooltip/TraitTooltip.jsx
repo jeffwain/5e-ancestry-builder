@@ -1,58 +1,28 @@
 import { useState, useRef, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
+import { TraitContent } from '../TraitContent';
 import './TraitTooltip.css';
 
 /**
- * Reusable trait tooltip component that shows trait details on hover
- * @param {Object} trait - The trait object with name, description, points, categoryName
+ * Hover popover wrapper for a trait. Owns the trigger + viewport-aware
+ * positioning; the popover body is the shared TraitContent (variant "tooltip").
+ *
+ * @param {Object} trait - The trait object
  * @param {Object} selectedOptions - Map of trait ID -> selected option ID
  * @param {React.ReactNode} children - The trigger element
  * @param {Function} onClick - Optional click handler
  * @param {string} className - Additional class names
  */
-export function TraitTooltip({ 
-  trait, 
-  selectedOptions = {}, 
-  children, 
+export function TraitTooltip({
+  trait,
+  selectedOptions = {},
+  children,
   onClick,
-  className = '' 
+  className = ''
 }) {
   const [isVisible, setIsVisible] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
   const triggerRef = useRef(null);
   const tooltipRef = useRef(null);
-
-  // Calculate display cost
-  const getDisplayCost = () => {
-    if (trait.options && trait.requiresOption) {
-      const selectedOptionId = selectedOptions[trait.id];
-      if (selectedOptionId) {
-        const opt = trait.options.find(o => o.id === selectedOptionId);
-        return opt?.points ?? 0;
-      }
-      // Show range if no option selected
-      const costs = trait.options.map(o => o.points || 0);
-      const min = Math.min(...costs);
-      const max = Math.max(...costs);
-      return min === max ? min : `${min}–${max}`;
-    }
-    return trait.points ?? 0;
-  };
-
-  // Get selected option object if applicable
-  const getSelectedOption = () => {
-    if (trait.options && selectedOptions[trait.id]) {
-      return trait.options.find(o => o.id === selectedOptions[trait.id]) || null;
-    }
-    return null;
-  };
-
-  const displayCost = getDisplayCost();
-  const selectedOption = getSelectedOption();
-  
-  // For option traits: show option name as title, trait name as source
-  const displayName = selectedOption ? selectedOption.name : trait.name;
-  const sourceTrait = selectedOption ? trait.name : null;
 
   // Position tooltip on show
   useEffect(() => {
@@ -84,7 +54,7 @@ export function TraitTooltip({
   const handleMouseLeave = () => setIsVisible(false);
 
   return (
-    <div 
+    <div
       ref={triggerRef}
       className={`trait-tooltip-trigger ${className}`}
       onMouseEnter={handleMouseEnter}
@@ -92,44 +62,22 @@ export function TraitTooltip({
       onClick={onClick}
     >
       {children}
-      
+
       {isVisible && (
-        <div 
+        <div
           ref={tooltipRef}
           className="trait-tooltip"
-          style={{ 
+          style={{
             position: 'fixed',
             top: position.top,
             left: position.left
           }}
         >
-          <div className="tooltip-header">
-            <span className="tooltip-name">{displayName}</span>
-            <span className={`pill dark ${displayCost === 0 ? 'free' : ''}`}>
-              {displayCost === 0 ? 'Free' : `${displayCost} pt${displayCost !== 1 ? 's' : ''}`}
-            </span>
-          </div>
-          
-
-          
-          <div className="tooltip-description">
-            <ReactMarkdown>{trait.description}</ReactMarkdown>
-            {selectedOption?.description && (
-              <ReactMarkdown>{selectedOption.description}</ReactMarkdown>
-            )}
-          </div>
-          
-          <div className="tooltip-meta">
-            {trait.type && trait.type !== 'core' && (
-              <span className={`pill type ${trait.type}`}>
-                {trait.categoryName && `${trait.categoryName} `}{trait.type.charAt(0).toUpperCase() + trait.type.slice(1)}
-              </span>
-            )}
-            
-            {sourceTrait && (
-                <span className="pill type from-source">From {sourceTrait}</span>
-            )}
-          </div>
+          <TraitContent
+            trait={trait}
+            selectedOptions={selectedOptions}
+            variant="tooltip"
+          />
         </div>
       )}
     </div>
