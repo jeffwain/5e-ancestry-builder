@@ -365,7 +365,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .layout .card-view .traits-grid {
     column-count: 1;
   }
