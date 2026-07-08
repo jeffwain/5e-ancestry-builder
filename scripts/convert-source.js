@@ -93,8 +93,8 @@ function buildTraitLookup(traitsData) {
     }
   }
 
-  for (const [typeKey, typeObj] of Object.entries(traitsData.traitTypes)) {
-    for (const [catKey, catObj] of Object.entries(typeObj.categories)) {
+  for (const typeObj of Object.values(traitsData.traitTypes)) {
+    for (const catObj of Object.values(typeObj.categories)) {
       if (catObj.traits) {
         processTraits(catObj.traits);
       }
@@ -150,11 +150,6 @@ function processEntry(entry, traitLookup) {
   // Skip "Description" entries
   if (entry.name === 'Description') return null;
 
-  // Combine all string entries
-  const rawEntries = (entry.entries || [])
-    .filter(e => typeof e === 'string')
-    .join(' ');
-
   // If entries contain a list, append list items
   const listEntries = (entry.entries || [])
     .filter(e => typeof e === 'object' && e.type === 'list')
@@ -208,7 +203,7 @@ function processEntry(entry, traitLookup) {
   // Handle specific patterns
   if (!matchedId) {
     // Check for "X, Y" or "X (Y)" patterns
-    const baseName = normName.replace(/\s*[\(,].*$/, '').trim();
+    const baseName = normName.replace(/\s*[(,].*$/, '').trim();
     if (NAME_OVERRIDES[baseName]) {
       matchedId = NAME_OVERRIDES[baseName];
       isExisting = true;

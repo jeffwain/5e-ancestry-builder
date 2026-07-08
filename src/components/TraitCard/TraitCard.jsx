@@ -2,6 +2,7 @@ import ReactMarkdown from 'react-markdown';
 import { useCharacter } from '../../contexts/CharacterContext';
 import { TraitTooltip } from '../TraitTooltip';
 import { TraitContent } from '../TraitContent';
+import { CostPill } from '../TraitContent/TraitContent';
 import './TraitCard.css';
 
 export function TraitCard({ trait, compact = false }) {
@@ -71,31 +72,6 @@ export function TraitCard({ trait, compact = false }) {
     compact && 'compact'
   ].filter(Boolean).join(' ');
 
-  const getPointsLabel = (points) => {
-    if (points === 0) return 'Free';
-    if (!points || points === '') return null;
-    if (points === 1) return <><span className="points">{points}</span>&nbsp;pt</>;
-    return <><span className="points">{points}</span>&nbsp;pts</>;
-  };
-
-  // Cost pill for the per-option rows inside the options block.
-  const renderOptionCostPill = (cost) => {
-    if (cost === undefined || cost === null || cost === '') {
-      return (
-        <span className="pill pill-icon-only cost option-cost">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path d="M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z" />
-          </svg>
-        </span>
-      );
-    }
-    return (
-      <span className={`pill cost option-cost ${cost === 0 ? 'free' : ''}`}>
-        {getPointsLabel(cost)}
-      </span>
-    );
-  };
-
   // Compact view - shared header only (selected option name shown by TraitContent)
   if (compact) {
     return (
@@ -155,7 +131,7 @@ export function TraitCard({ trait, compact = false }) {
                 <span className="option-content-container">
                   <span className="option-content">
                     <span className="option-name">{option.name}</span>
-                    {renderOptionCostPill(option.points)}
+                    <CostPill cost={option.points} variant="card" className="option-cost" />
                   </span>
                   {option.description && (
                     <span className="description">

@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
-import { AncestryCard, resolveTrait, getResolvedTraitsAndOptions } from '../components/AncestryCard';
-import { SummaryTraitCard } from '../components/SummaryTraitCard';
+import { AncestryCard } from '../components/AncestryCard';
+import { TraitGroupList } from '../components/TraitGroupList';
+import { resolveTrait, getResolvedTraitsAndOptions } from '../utils/ancestryResolve';
 import { useConvertedTraits, combineTraitLookups } from '../hooks/useConvertedTraits';
 import { usePersistentState } from '../hooks/usePersistentState';
 import { loadJson } from '../utils/dataCache';
@@ -225,19 +226,24 @@ function AncestrySummary({ ancestry, archetype, allTraits, onUse, onCustomize, o
     );
   }
 
-  // Resolve shared traits
-  const sharedTraits = (ancestry.traits || []).map(t => ({
-    resolved: resolveTrait(t, allTraits),
-    raw: t
-  }));
+  // Resolve a list of raw trait refs into TraitGroupList items, carrying any
+  // pinned option selection along.
+  const toItems = (rawTraits) =>
+    (rawTraits || []).filter(Boolean).map((raw, idx) => {
+      const resolved = resolveTrait(raw, allTraits);
+      const selectedOptions = {};
+      if (raw.option && raw.id) {
+        selectedOptions[raw.id] = raw.option;
+      }
+      return {
+        key: `${resolved.id || 'trait'}-${idx}`,
+        trait: resolved,
+        selectedOptions
+      };
+    });
 
-  // Resolve archetype traits
-  const archetypeTraits = archetype
-    ? (archetype.traits || []).filter(Boolean).map(t => ({
-        resolved: resolveTrait(t, allTraits),
-        raw: t
-      }))
-    : [];
+  const sharedItems = toItems(ancestry.traits);
+  const archetypeItems = archetype ? toItems(archetype.traits) : [];
 
   const archetypeName = archetype?.name;
   const archetypeIcon = archetype?.icon;
@@ -245,69 +251,32 @@ function AncestrySummary({ ancestry, archetype, allTraits, onUse, onCustomize, o
     ? `${ancestry.name} (${archetypeName})`
     : ancestry.name;
 
+  const groups = [
+    ...(sharedItems.length > 0
+      ? [{ key: 'shared', title: 'Shared Traits', items: sharedItems }]
+      : []),
+    ...(archetype && archetypeItems.length > 0
+      ? [{
+          key: 'archetype',
+          title: (
+            <>
+              {archetypeIcon && <span>{archetypeIcon} </span>}
+              {archetypeName} Traits
+            </>
+          ),
+          items: archetypeItems
+        }]
+      : [])
+  ];
+
   return (
     <div className="ancestry-summary">
       <h2 className="ancestry-summary-title">
         {archetypeIcon && <span>{archetypeIcon} </span>}
         {title}
       </h2>
-{/* 
-      {ancestry.description && (
-        <p className="ancestry-summary-desc">{ancestry.description}</p>
-      )} */}
 
-      {/* Shared Traits */}
-      {sharedTraits.length > 0 && (
-        <div className="ancestry-summary-section">
-          <h3>Shared Traits</h3>
-          <div className="ancestry-summary-traits">
-            {sharedTraits.map(({ resolved, raw }, idx) => {
-              const selectedOptions = {};
-              if (raw.option && raw.id) {
-                selectedOptions[raw.id] = raw.option;
-              }
-              return (
-                <SummaryTraitCard
-                  key={`${resolved.id || 'trait'}-${idx}`}
-                  trait={resolved}
-                  selectedOptions={selectedOptions}
-                  showFooter={false}
-                  showDetails={false}
-                  compact={true}
-                />
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Archetype Traits */}
-      {archetype && archetypeTraits.length > 0 && (
-        <div className="ancestry-summary-section">
-          <h3>
-            {archetypeIcon && <span>{archetypeIcon} </span>}
-            {archetypeName} Traits
-          </h3>
-          <div className="ancestry-summary-traits">
-            {archetypeTraits.map(({ resolved, raw }, idx) => {
-              const selectedOptions = {};
-              if (raw.option && raw.id) {
-                selectedOptions[raw.id] = raw.option;
-              }
-              return (
-                <SummaryTraitCard
-                  key={`${resolved.id || 'trait'}-${idx}`}
-                  trait={resolved}
-                  selectedOptions={selectedOptions}
-                  showFooter={false}
-                  showDetails={false}
-                  compact={true}
-                />
-              );
-            })}
-          </div>
-        </div>
-      )}
+      <TraitGroupList groups={groups} />
 
       {/* Action buttons — shown when an archetype is selected */}
       {archetype && (

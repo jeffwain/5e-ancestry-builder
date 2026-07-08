@@ -156,8 +156,6 @@
   gap: var(--space-1);
 }
 
-.category-trais:has(.empty-state) {}
-
 .category-trait .empty-state {
   color: var(--color-ink-400);
   font-style: italic;

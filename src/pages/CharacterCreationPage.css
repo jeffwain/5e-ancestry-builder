@@ -3,11 +3,6 @@
   padding: var(--space-8) var(--space-6);
 }
 
-.character-creation-page .creation-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
 .character-creation-page .creation-header {
   text-align: center;
   margin-bottom: var(--space-8);

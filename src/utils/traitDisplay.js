@@ -69,6 +69,42 @@ export function resolveDisplayCost(trait, selectedOptions = {}) {
 }
 
 /**
+ * Group selected traits by their type for summary views. Returns
+ * [{ name, traits }] in insertion order. Previously duplicated in
+ * AncestryOverview and the ancestry step's summary card.
+ */
+export function groupTraitsByType(selectedTraits, traitTypes = {}) {
+  const grouped = {};
+  selectedTraits.forEach((trait) => {
+    const typeId = trait.type || 'unknown';
+    if (!grouped[typeId]) {
+      grouped[typeId] = {
+        name: traitTypes[typeId]?.name || 'Custom Traits',
+        traits: []
+      };
+    }
+    grouped[typeId].traits.push(trait);
+  });
+  return Object.values(grouped);
+}
+
+/**
+ * Shape traits-grouped-by-type into TraitGroupList `groups`
+ * ([{ key, title, items: [{ key, trait, selectedOptions }] }]).
+ */
+export function groupsFromTraitsByType(traitsByType, selectedOptions) {
+  return traitsByType.map((typeGroup) => ({
+    key: typeGroup.name,
+    title: typeGroup.name,
+    items: typeGroup.traits.map((trait) => ({
+      key: trait.id,
+      trait,
+      selectedOptions,
+    })),
+  }));
+}
+
+/**
  * Derive the display-ready fields for a trait. Returns primitives only; each
  * view composes the final name/cost presentation it wants (e.g. the tooltip
  * shows the option name with the trait as a "source", while a summary shows

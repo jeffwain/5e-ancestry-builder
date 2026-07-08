@@ -1,0 +1,1 @@
+export { TraitGroupList } from './TraitGroupList';

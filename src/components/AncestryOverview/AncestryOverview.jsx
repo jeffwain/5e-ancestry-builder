@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useCharacter } from '../../contexts/CharacterContext';
-import { SummaryTraitCard } from '../SummaryTraitCard';
+import { TraitGroupList } from '../TraitGroupList';
+import { groupTraitsByType, groupsFromTraitsByType } from '../../utils/traitDisplay';
 import './AncestryOverview.css';
 
 // Reusable ancestry overview content - used by both modal and page views
@@ -27,22 +28,10 @@ export function AncestryOverview({
 
 
   // Group selected traits by their type
-  const traitsByType = useMemo(() => {
-    const grouped = {};
-
-    selectedTraits.forEach(trait => {
-      const typeId = trait.type || 'unknown';
-      if (!grouped[typeId]) {
-        grouped[typeId] = {
-          name: traitTypes[typeId]?.name || "Custom Traits",
-          traits: []
-        };
-      }
-      grouped[typeId].traits.push(trait);
-    });
-
-    return Object.values(grouped);
-  }, [selectedTraits, traitTypes]);
+  const traitsByType = useMemo(
+    () => groupTraitsByType(selectedTraits, traitTypes),
+    [selectedTraits, traitTypes]
+  );
 
   const handleExport = () => {
     if (onExport) {
@@ -134,23 +123,10 @@ export function AncestryOverview({
       {selectedTraits.length === 0 ? (
         <p className="overview-empty">No traits selected yet.</p>
       ) : (
-        <div className="overview-trait-lists">
-          {traitsByType.map((typeGroup) => (
-            <div key={typeGroup.name} className="trait-section">
-              <h3 className="section-title">{typeGroup.name}</h3>
-              <div className="trait-list">
-                {typeGroup.traits.map(trait => (
-                  <SummaryTraitCard
-                    key={trait.id}
-                    trait={trait}
-                    selectedOptions={selectedOptions}
-                    showFooter={true}
-                  />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <TraitGroupList
+          variant="overview"
+          groups={groupsFromTraitsByType(traitsByType, selectedOptions)}
+        />
       )}
 
       {showFooter && (

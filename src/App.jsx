@@ -11,21 +11,11 @@ import {
   AncestriesPage,
   AuditPage,
   OverviewPage,
-  IdeaPage,
-  ClassPage,
-  BackgroundPage,
-  AncestryPage,
-  AbilityScoresPage,
-  ProficienciesPage,
-  ToolsPage,
-  LanguagesPage,
-  FeatPage,
 } from './pages';
 
 function AppContent() {
   const {
     sections,
-    prebuiltAncestries,
     allTraits,
     defaultTraits,
     requiredCategories,
@@ -170,15 +160,6 @@ function AppContent() {
           />
           <Route path="/audit" element={<AuditPage allTraits={allTraits} />} />
           <Route path="/overview" element={<OverviewPage />} />
-          <Route path="/character/idea" element={<IdeaPage />} />
-          <Route path="/character/class" element={<ClassPage />} />
-          <Route path="/character/background" element={<BackgroundPage />} />
-          <Route path="/character/ancestry" element={<AncestryPage />} />
-          <Route path="/character/ability-scores" element={<AbilityScoresPage />} />
-          <Route path="/character/proficiencies" element={<ProficienciesPage />} />
-          <Route path="/character/tools" element={<ToolsPage />} />
-          <Route path="/character/languages" element={<LanguagesPage />} />
-          <Route path="/character/feat" element={<FeatPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

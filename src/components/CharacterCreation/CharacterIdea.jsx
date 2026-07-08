@@ -1,4 +1,0 @@
-getOverview()
-
-getSummaryCard()
-
