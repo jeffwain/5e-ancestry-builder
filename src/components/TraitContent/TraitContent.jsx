@@ -29,7 +29,6 @@ export function TraitContent({
   showFooter = true,
 }) {
   const d = getTraitDisplay(trait, selectedOptions);
-  const bodyText = d.summary || d.description; // summary views prefer the summary
 
   switch (variant) {
     case 'card':
@@ -61,9 +60,9 @@ export function TraitContent({
       return (
         <>
           <span className="trait-content-name">{summaryName(d)}.</span>
-          {bodyText && (
+          {d.description && (
             <span className="trait-content-description">
-              <ReactMarkdown>{bodyText}</ReactMarkdown>
+              <ReactMarkdown>{d.description}</ReactMarkdown>
             </span>
           )}
         </>
@@ -104,9 +103,9 @@ export function TraitContent({
             <span className="trait-content-name">{summaryName(d)}</span>
             <CostPill cost={d.cost} variant="summary" />
           </div>
-          {bodyText && (
+          {d.description && (
             <div className="trait-content-description">
-              <ReactMarkdown>{bodyText}</ReactMarkdown>
+              <ReactMarkdown>{d.description}</ReactMarkdown>
             </div>
           )}
           {d.optionDescription && (

@@ -179,12 +179,6 @@ function processEntry(entry, traitLookup) {
     description += '\n' + listEntries.map(item => `- ${item}`).join('\n');
   }
 
-  // Create summary (first sentence, max ~150 chars)
-  const firstSentence = description.split(/\.\s/)[0];
-  const summary = firstSentence.length > 150
-    ? firstSentence.substring(0, 147) + '...'
-    : firstSentence + (firstSentence.endsWith('.') ? '' : '.');
-
   const name = entry.name;
   const normName = name.toLowerCase().trim();
 
@@ -229,13 +223,11 @@ function processEntry(entry, traitLookup) {
       // Only add overrides if they differ from existing
       if (name !== existing.name) traitRef.name = name;
       if (description && description !== existing.description) traitRef.description = description;
-      if (summary && summary !== existing.summary) traitRef.summary = summary;
       if (points !== existing.points) traitRef.points = points;
     }
   } else {
     // New trait - full object
     traitRef.name = name;
-    traitRef.summary = summary;
     traitRef.description = description;
     traitRef.points = points;
     traitRef._isNew = true;

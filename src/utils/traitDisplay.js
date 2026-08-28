@@ -84,12 +84,11 @@ export function getTraitDisplay(trait, selectedOptions = {}) {
   const hasNameOverride = Boolean(trait.nameOverride);
   const baseName = trait.nameOverride || trait.name;
   const description = trait.descriptionOverride || trait.description;
-  const summary = trait.summaryOverride || trait.summary;
 
   // Only surface the option's own description when the ancestry hasn't overridden
-  // the description/summary out from under it.
+  // the description out from under it.
   const optionDescription =
-    selectedOption && !trait.descriptionOverride && !trait.summaryOverride
+    selectedOption && !trait.descriptionOverride
       ? selectedOption.description || null
       : null;
 
@@ -100,7 +99,6 @@ export function getTraitDisplay(trait, selectedOptions = {}) {
     hasNameOverride,
     selectedOption,
     description,
-    summary,
     optionDescription,
     cost: resolveDisplayCost(trait, selectedOptions),
     restriction: trait.restriction?.label || trait.restriction || null,

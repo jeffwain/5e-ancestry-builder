@@ -73,7 +73,6 @@ function auditTraitRef(raw, lookup) {
   const hasOverride =
     (raw.name && raw.name !== base.name) ||
     (raw.description && raw.description !== base.description) ||
-    (raw.summary && raw.summary !== base.summary) ||
     (raw.points !== undefined && raw.points !== base.points);
 
   return {

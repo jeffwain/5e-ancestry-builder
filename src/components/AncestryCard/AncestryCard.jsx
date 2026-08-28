@@ -114,9 +114,6 @@ export function resolveTrait(trait, allTraits) {
   if (trait.description && trait.description !== baseTrait.description) {
     resolved.descriptionOverride = trait.description;
   }
-  if (trait.summary && trait.summary !== baseTrait.summary) {
-    resolved.summaryOverride = trait.summary;
-  }
   if (trait.points !== undefined && trait.points !== baseTrait.points) {
     resolved.pointsOverride = trait.points;
   }

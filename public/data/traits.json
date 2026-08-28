@@ -16,7 +16,6 @@
             {
               "id": "size-medium",
               "name": "Medium Size",
-              "summary": "Medium creatures vary widely in height and build, from barely 5 feet to over 8 feet tall.",
               "description": "Medium creatures vary widely in height and build, from barely 5 feet to over 8 feet tall and from nearly 100 to over 400 pounds.",
               "points": 0,
               "default": true,
@@ -25,7 +24,6 @@
             {
               "id": "size-small",
               "name": "Small Size",
-              "summary": "Small creatures are short and light, often shorter than 4 feet tall and less than 80 pounds.",
               "description": "Small creatures are short and light, often shorter than 4 feet tall and less than 80 pounds.",
               "points": 0,
               "excludes": ["size-medium"]
@@ -39,7 +37,6 @@
             {
               "id": "powerful-build",
               "name": "Powerful Build",
-              "summary": "You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.",
               "description": "You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.",
               "points": 1,
               "requires": ["size-medium"]
@@ -47,7 +44,6 @@
             {
               "id": "stout-build",
               "name": "Stout Build",
-              "summary": "If you would be slowed by heavy armor you can move as normal.",
               "description": "If you would be slowed by heavy armor you can move as normal.",
               "points": 2,
               "requires": ["size-medium"]
@@ -55,7 +51,6 @@
             {
               "id": "reach",
               "name": "Reach",
-              "summary": "When you make a melee attack on your turn, your reach for it is 5 feet greater than normal.",
               "description": "When you make a melee attack on your turn, your reach for it is 5 feet greater than normal.",
               "points": 5,
               "requires": ["size-medium"]
@@ -63,7 +58,6 @@
             {
               "id": "fury-of-small",
               "name": "Fury of the Small",
-              "summary": "When you damage a creature larger than you with an attack or a spell, you can cause the attack or spell to deal extra damage equal to your level. You regain use of this trait after a short rest.",
               "description": "When you damage a creature larger than you with an attack or a spell, you can cause the attack or spell to deal extra damage equal to your level. You regain use of this trait after a short rest.",
               "points": 1,
               "requires": ["size-small"]
@@ -71,7 +65,6 @@
             {
               "id": "nimble",
               "name": "Nimble",
-              "summary": "You can move through the space of any creature that is of a size larger than yours.",
               "description": "You can move through the space of any creature that is of a size larger than yours.",
               "points": 2,
               "requires": ["size-small"]
@@ -79,7 +72,6 @@
             {
               "id": "small-stealth",
               "name": "Small Stealth",
-              "summary": "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you.",
               "description": "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you.",
               "points": 2,
               "requires": ["size-small"]
@@ -94,7 +86,6 @@
             {
               "id": "speed-base",
               "name": "Base Speed (30 ft.)",
-              "summary": "Your base walking speed is 30 feet.",
               "description": "Your base walking speed is 30 feet.",
               "points": 0,
               "default": true,
@@ -103,7 +94,6 @@
             {
               "id": "speed-quick",
               "name": "Quick (35 ft.)",
-              "summary": "Your base walking speed is 35 feet.",
               "description": "Your base walking speed is 35 feet.",
               "points": 2,
               "excludes": ["speed-base", "speed-speedy"]
@@ -111,7 +101,6 @@
             {
               "id": "speed-speedy",
               "name": "Speedy (40 ft.)",
-              "summary": "Your base walking speed is 40 feet.",
               "description": "Your base walking speed is 40 feet.",
               "points": 5,
               "excludes": ["speed-base", "speed-quick"]
@@ -124,8 +113,7 @@
           "traits": [
             {
               "id": "darkvision-60",
-              "name": "Darkvision (60 ft.)",
-              "summary": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+              "name": "Darkvision",
               "description": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade, usually gray.",
               "points": 3,
               "excludes": ["darkvision-120"]
@@ -133,7 +121,6 @@
             {
               "id": "darkvision-120",
               "name": "Superior Darkvision (120 ft.)",
-              "summary": "You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
               "description": "You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, in a monochromatic shade, usually gray.",
               "points": 4,
               "excludes": ["darkvision-60"]
@@ -148,28 +135,24 @@
             {
               "id": "spellcasting-intelligence",
               "name": "Intelligence Spellcaster",
-              "summary": "Your spellcasting ability is Intelligence.",
               "description": "Your spellcasting ability is Intelligence.",
               "excludes": ["spellcasting-wisdom", "spellcasting-charisma", "spellcasting-constitution"]
             },
             {
               "id": "spellcasting-wisdom",
               "name": "Wisdom Spellcaster",
-              "summary": "Your spellcasting ability is Wisdom.",
               "description": "Your spellcasting ability is Wisdom.",
               "excludes": ["spellcasting-intelligence", "spellcasting-charisma", "spellcasting-constitution"]
             },
             {
               "id": "spellcasting-charisma",
               "name": "Charisma Spellcaster",
-              "summary": "Your spellcasting ability is Charisma.",
               "description": "Your spellcasting ability is Charisma.",
               "excludes": ["spellcasting-intelligence", "spellcasting-wisdom", "spellcasting-constitution"]
             },
             {
               "id": "spellcasting-constitution",
               "name": "Constitution Spellcaster",
-              "summary": "Your spellcasting ability is Constitution.",
               "description": "Your spellcasting ability is Constitution.",
               "excludes": ["spellcasting-intelligence", "spellcasting-wisdom", "spellcasting-charisma"]
             }
@@ -195,7 +178,6 @@
             {
               "id": "elemental-attunement",
               "name": "Elemental Attunement",
-              "summary": "If you have elemental ancestry, you must take this trait. Choose one of the following element types.",
               "description": "If you have elemental ancestry, you must take this trait. Choose one of the following element types.",
               "points": 0,
               "required": true,
@@ -211,7 +193,6 @@
             {
               "id": "unending-breath",
               "name": "Unending Breath",
-              "summary": "You can hold your breath indefinitely while you're not incapacitated.",
               "description": "You can hold your breath indefinitely while you're not incapacitated.",
               "points": 1,
               "requires": ["elemental-attunement"]
@@ -219,7 +200,6 @@
             {
               "id": "elemental-cantrip",
               "name": "Elemental Cantrip",
-              "summary": "You know one cantrip associated with your elemental attunement.",
               "description": "You know one cantrip of your choice associated with your elemental attunement.",
               "options": [
                 {"id": "air", "name": "Air", "points": 2, "description": "[Gust](), [lightning lure](), [shocking grasp](), [wind lash](), [zap]()."},
@@ -234,7 +214,6 @@
             {
               "id": "elemental-strike",
               "name": "Elemental Strike",
-              "summary": "When you damage a creature with an attack, you can cause the attack to deal extra damage of your elemental type. Usable Proficiency Bonus times per long rest.",
               "description": "When you damage a creature with an attack, you can cause the attack to deal extra damage of your elemental attunement type. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
               "options": [
                 {"id": "air", "name": "Air", "points": 3, "description": "1d4 + your Proficiency Bonus lightning or thunder damage and the target has disadvantage to maintain Concentration on a spell."},
@@ -249,7 +228,6 @@
             {
               "id": "elemental-magic",
               "name": "Elemental Magic",
-              "summary": "Starting at 3rd level, cast one 1st-level spell of your element. At 5th level, cast one 2nd-level spell.",
               "description": "Starting at 3rd level, you can cast one 1st level spell associated with your elemental attunement. Then starting at 5th level, you can cast one 2nd level spell associated with your elemental attunement.",
               "options": [  
                 {"id": "air", "name": "Air", "points": 7, "description": "**3rd level:** [Chromatic orb]() (lightning or thunder only), [feather fall](), [gust of wind](), [jump](), [longstrider](), [thunderous smite](), [thunderwave](), [zephyr strike](). **5th level:** [Blur](), [gust of wind](), [levitate](), [warding wind]()."},
@@ -271,28 +249,24 @@
             {
               "id": "fey-creature",
               "name": "Fey",
-              "summary": "You are a fey creature.",
               "description": "You are a fey creature.",
               "points": 1
             },
             {
               "id": "trance",
               "name": "Trance",
-              "summary": "You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours of trance-like meditation. After each trance, gain two weapon or tool proficiencies until your next rest.",
               "description": "You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in a trance-like meditation, during which you retain consciousness. Whenever you finish this trance, you can mystically gain two proficiencies that you don't have, each one with a weapon or a tool of your choice, and you retain them until you finish your next long rest.",
               "points": 2
             },
             {
               "id": "charm-resistance",
               "name": "Charm Resistance",
-              "summary": "You have advantage on saving throws to avoid or end the charmed condition.",
               "description": "You have advantage on saving throws you make to avoid or end the [charmed]() condition on yourself.",
               "points": 2
             },
             {
               "id": "fey-cantrip",
               "name": "Fey Cantrip",
-              "summary": "You know dancing lights, druidcraft, friends, minor illusion, or vicious mockery.",
               "description": "You know the [dancing lights](), [druidcraft](), [friends](), [minor illusion](), or [vicious mockery]() cantrip.",
               "points": 2,
               "grants": ["spellcasting"]
@@ -300,7 +274,6 @@
             {
               "id": "fey-magic",
               "name": "Fey Magic",
-              "summary": "Starting at 3rd level, cast one spell: animal friendship, cause fear, charm person, color spray, enlarge/reduce, faerie fire, hideous laughter, or sleep.",
               "description": "Starting at 3rd level, you can cast one spell from the following list: [Animal friendship](), [cause fear](), [charm person](), [color spray](), [enlarge/reduce](), [faerie fire](), [hideous laughter](), [sleep]().",
               "points": 2,
               "grants": ["spellcasting"]
@@ -308,7 +281,6 @@
             {
               "id": "greater-fey-magic",
               "name": "Greater Fey Magic",
-              "summary": "Starting at 5th level, cast one spell: alter self, crown of madness, disorient, invisibility, mischief, or suggestion.",
               "description": "Starting at 5th level, you can cast one spell from the following list: [alter self](), [crown of madness](), [disorient](), [invisibility](), [mischief](), [suggestion]().",
               "points": 4,
               "requires": ["fey-magic"],
@@ -317,14 +289,12 @@
             {
               "id": "fey-step",
               "name": "Fey Step",
-              "summary": "As a bonus action, teleport up to 30 feet to an unoccupied space you can see. Usable Proficiency Bonus times per long rest.",
               "description": "As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
               "points": 6
             },
             {
               "id": "fey-step-improvement",
               "name": "Fey Step Improvement",
-              "summary": "Starting at 3rd level, your Fey Step gains a seasonal effect (Autumn, Winter, Spring, or Summer) that can be changed after a long rest.",
               "description": "Starting at 3rd level, your Fey Step gains one of the following traits, which can be changed after a long rest. The DC equals 8 + your Proficiency Bonus + your Spellcasting Ability modifier.",
               "options": [
                 {"id": "autumn", "name": "Autumn", "points": 2, "description": "Immediately after you teleport, up to two creatures that you can see within 10 feet of you must succeed on a Wisdom saving throw or be [charmed]() by you for 1 minute, or until you or your companions deal any damage to the creatures."},
@@ -338,21 +308,18 @@
             {
               "id": "magic-resistance",
               "name": "Magic Resistance",
-              "summary": "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic.",
               "description": "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic.",
               "points": 6
             },
             {
               "id": "shapechanger",
               "name": "Shapechanger",
-              "summary": "As an action, change your appearance, voice, height, weight, and size between Medium and Small. Lasts until you revert or die.",
               "description": "As an action you can change your appearance and voice. You determine the specifics of the changes, including your hair length and sex. You also adjust your height and weight and can change your size between Medium and Small. You can make yourself appear as another ancestry, and you must adopt a form that has the same basic arrangement of limbs that you have. Your clothing and equipment aren't changed by this trait. You stay into your new form until you use an action to revert to your true form or until you die.",
               "points": 7
             },
             {
               "id": "greater-magic-resistance",
               "name": "Greater Magic Resistance",
-              "summary": "You have advantage on all saving throws against magic.",
               "description": "You have advantage on all saving throws against magic.",
               "points": 9
             }
@@ -367,7 +334,6 @@
             {
               "id": "planar-attunement",
               "name": "Planar Attunement",
-              "summary": "You have a connection to your planar ancestry that grants access to magic and resistance to a type of damage.",
               "description": "You have a connection to your planar ancestry that grants access to magic and resistance to a type of damage.",
               "points": 0,
               "required": true,
@@ -383,7 +349,6 @@
             {
               "id": "planar-cantrip",
               "name": "Planar Cantrip",
-              "summary": "You know one cantrip from the spell list matching your planar attunement.",
               "description": "You know one cantrip from the spell list matching your planar attunement.",
               "points": 2,
               "requires": ["planar-attunement"],
@@ -392,7 +357,6 @@
             {
               "id": "planar-magic",
               "name": "Planar Magic",
-              "summary": "Starting at 3rd level, cast one 1st-level spell from your attunement's spell list.",
               "description": "Starting at 3rd level, you may cast one 1st-level spell chosen from the spell list matching your planar attunement.",
               "points": 2,
               "requires": ["planar-attunement"],
@@ -401,7 +365,6 @@
             {
               "id": "greater-planar-magic",
               "name": "Greater Planar Magic",
-              "summary": "Starting at 5th level, cast one 2nd-level spell from your attunement's spell list.",
               "description": "Starting at 5th level, you may cast one 2nd-level spell chosen from the spell list matching your planar attunement.",
               "points": 4,
               "requires": ["planar-magic"],
@@ -410,7 +373,6 @@
             {
               "id": "planar-power",
               "name": "Planar Power",
-              "summary": "Damage matching your attunement ignores resistances. Immunity becomes resistance instead.",
               "description": "Damage that you deal matching your attunement type ignores resistances. If a creature is immune to that damage type, it is resistant and takes half damage instead.",
               "options": [
                 {"id": "celestial", "name": "Celestial", "points": 2, "description": "You cause it to regain hit points equal to 1d4 per point of your Proficiency Bonus."},
@@ -422,7 +384,6 @@
             {
               "id": "plane-strike",
               "name": "Plane Strike",
-              "summary": "When you damage a creature with an attack, deal extra damage of your attunement type equal to 1d4&nbsp× Proficiency Bonus. Usable PB times per long rest.",
               "description": "When you damage a creature with an attack, you can cause the attack to deal extra damage of your planar attunement type equal to 1d4 per point of your Proficiency Bonus. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
               "points": 3,
               "requires": ["planar-attunement"]
@@ -430,7 +391,6 @@
             {
               "id": "celestial-revelation",
               "name": "Celestial Revelation",
-              "summary": "At 3rd level, use reaction to transform for 1 minute: Necrotic Shroud (frighten), Radiant Consumption (blind), or Radiant Wings (fly). Once per long rest.",
               "description": "**Celestial Revelation (3).** When you reach 3rd level, you can use a reaction to unleash the celestial energy inside yourself. The benefits of that transformation last for 1 minute or until you end it as a bonus action. Once you transform you can't use it again until you finish a long rest. ***Only available for celestial planar attunements**.* Choose one:",
               "options": [
                 {"id": "necrotic-shroud", "name": "Necrotic Shroud", "points": 3, "description": "Creatures of your choice within 10 feet of you that can see you must succeed against a Charisma Saving Throw (DC 8 + your Proficiency Bonus + your Charisma modifier) or become [frightened]() of you until the end of your next turn."},
@@ -450,14 +410,19 @@
             {
               "id": "brave",
               "name": "Brave",
-              "summary": "You have advantage on saving throws to avoid or end the frightened condition.",
               "description": "You have advantage on saving throws you make to avoid or end the [frightened]() condition on yourself.",
               "points": 2
             },
             {
+              "id": "infectious-bravery",
+              "name": "Infectious Bravery",
+              "description": "You can use your reaction to bolster an ally who can see or hear you, granting them advantage on a saving throw against being [frightened](). You can use this trait a number of times equal to your Proficiency Bonus per long rest.",
+              "points": 2,
+              "requires": ["brave"]
+            },
+            {
               "id": "shadow-cantrip",
               "name": "Shadow Cantrip",
-              "summary": "You know chill touch, deathworking, minor illusion, or primal savagery.",
               "description": "You know the [chill touch](), [deathworking](), [minor illusion](), or [primal savagery]() cantrip.",
               "points": 2,
               "grants": ["spellcasting"]
@@ -465,22 +430,25 @@
             {
               "id": "shadow-magic",
               "name": "Shadow Magic",
-              "summary": "At 3rd level, cast one 1st-level illusion or necromancy spell.",
               "description": "Beginning at 3rd level, you can cast one 1st-level spell of your choice from the [illusion]() or [necromancy]() schools of magic.",
               "points": 2,
               "grants": ["spellcasting"]
             },
             {
+              "id": "lightbender",
+              "name": "Lightbender",
+              "description": "Light naturally sculpts around your skin. You have advantage on saving throws against being [blinded](), and you have resistance to radiant damage.",
+              "points": 3
+            },
+            {
               "id": "necrotic-resistance",
               "name": "Necrotic Resistance",
-              "summary": "You have resistance to necrotic damage.",
               "description": "You have resistance to necrotic damage.",
               "points": 3
             },
             {
               "id": "greater-shadow-magic",
               "name": "Greater Shadow Magic",
-              "summary": "At 5th level, cast one 2nd-level illusion or necromancy spell.",
               "description": "Beginning at 5th level, you can cast one 2nd-level spell of your choice from the [illusion]() or [necromancy]() schools of magic.",
               "points": 4,
               "requires": ["shadow-magic"],
@@ -489,21 +457,18 @@
             {
               "id": "close-to-death",
               "name": "Close to Death",
-              "summary": "You have advantage on death saving throws.",
               "description": "You have advantage on death saving throws.",
               "points": 4
             },
             {
               "id": "shadow-camouflage",
               "name": "Camouflage",
-              "summary": "Advantage on Stealth checks and can hide when only lightly obscured. Usable PB times per long rest.",
               "description": "When you make a Dexterity (Stealth) check, you make the check with advantage, and can attempt to hide even when you are only lightly obscured. You can use this trait a number of times equal to your Proficiency Bonus per long rest.",
               "points": 4
             },
             {
               "id": "shifting",
               "name": "Shifting",
-              "summary": "As bonus action, assume bestial form for 1 minute gaining temp HP. Choose: Beasthide (+AC), Swiftstride (+speed), or Wildhunt (advantage on Wisdom). PB uses per long rest.",
               "description": "As a bonus action, you can assume a more bestial appearance for 1 minute, until you die, or until you revert to your normal form as a bonus action. You can shift a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. When you shift, you gain temporary hit points equal to 2&nbsp× your Proficiency Bonus, and an additional benefit chosen when you select this race:",
               "options": [
                 {"id": "beasthide", "name": "Beasthide", "points": 7, "description": "You gain 1d6 additional temporary hit points. While shifted, you have a +1 bonus to your Armor Class."},
@@ -515,7 +480,6 @@
             {
               "id": "step-of-darkness",
               "name": "Step of Darkness",
-              "summary": "Teleport up to 30 feet. At 3rd level, gain resistance to all damage until start of next turn. PB uses per long rest.",
               "description": "Briefly disappearing into the shadows, you magically teleport up to 30 feet to an unoccupied space that you can see. This trait can be used a number of times equal to your Proficiency Bonus per long rest. Starting at 3rd level, you gain resistance to all damage when you teleport using this spell. The resistance lasts until the start of your next turn. During that time, you appear ghostly and translucent.",
               "points": 8
             }
@@ -529,7 +493,6 @@
             {
               "id": "bite-pincers",
               "name": "Bite or Pincers",
-              "summary": "Your toothy maw or pincers are natural light weapons dealing 1d6 + Strength slashing damage.",
               "description": "You can use your toothy maw or chitinous pincers to make unarmed strikes as a [light]() weapon. When you hit with them, the strike deals:",
               "options": [
                 {"id": "bite", "name": "Bite", "points": 1, "description": "1d6 + Strength modifier slashing damage"},
@@ -540,28 +503,24 @@
             {
               "id": "emissary-sea",
               "name": "Emissary of the Sea",
-              "summary": "You can communicate simple ideas to any Beast, Elemental, or Monstrosity with a swimming speed.",
               "description": "You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed. They can understand the meaning of your words, though you have no special ability to understand them in return.",
               "points": 1
             },
             {
               "id": "amphibious",
               "name": "Amphibious",
-              "summary": "You can breathe both air and water.",
               "description": "You can breathe both air and water.",
               "points": 2
             },
             {
               "id": "aquatic-resistance",
               "name": "Aquatic Resistance",
-              "summary": "You have resistance to acid or cold damage.",
               "description": "You have resistance to one of the following damage types: acid or cold.",
               "points": 2
             },
             {
               "id": "aquatic-cantrip",
               "name": "Aquatic Cantrip",
-              "summary": "You know shape water or acid splash.",
               "description": "You know the [shape water]() or [acid splash]() cantrip.",
               "points": 2,
               "grants": ["spellcasting"]
@@ -569,7 +528,6 @@
             {
               "id": "swim-speed",
               "name": "Swim Speed",
-              "summary": "You have a swim speed of 30 feet provided you are not wearing medium or heavy armor.",
               "description": "You have a swim speed of 30 feet provided you are not wearing medium or heavy armor.",
               "points": 2,
               "restriction": { "type": "equipment", "label": "No medium/heavy armor" }
@@ -577,7 +535,6 @@
             {
               "id": "defensive-feature",
               "name": "Defensive Feature",
-              "summary": "When grappled, deal 1d4&nbsp× PB damage (poison, piercing spines, or another type).",
               "description": "When another creature [grapples]() you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4&nbsp× your Proficiency Bonus of the damage type chosen.",
               "options": [
                 {"id": "poisonous", "name": "Poisonous", "points": 4, "description": "Poison"},
@@ -588,7 +545,6 @@
             {
               "id": "carapace",
               "name": "Carapace / Shell",
-              "summary": "Base AC of 17 (no ability modifier added). Can't wear armor but can wield shields. AC becomes 18 at level 12.",
               "description": "Due to your protective exoskeleton, scales, or shell and the shape of your body, you are ill-suited to wearing armor. Your body provides ample protection, however; it gives you a base AC of 17. Ability modifiers do not affect your AC. You gain no benefit from wearing armor, but if you are using a shield, you can apply the shield's bonus as normal. At level 12, the base AC increases to 18 due to your combat experience.",
               "points": 5
             }
@@ -602,7 +558,6 @@
             {
               "id": "beak-claw",
               "name": "Beak and Claw",
-              "summary": "Your beak or talons are natural light weapons dealing 1d6 + Strength damage.",
               "description": "You have a beak and/or talons that allow you to make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals:",
               "options": [
                 {"id": "talons", "name": "Talons", "points": 1, "description": "1d6 + Strength modifier slashing damage"},
@@ -613,7 +568,6 @@
             {
               "id": "flying-cantrip",
               "name": "Flying Cantrip",
-              "summary": "You know gust or message.",
               "description": "You can control wind and know the [gust]() cantrip, or your voice carries on the wind and you know the [message]() cantrip.",
               "points": 2,
               "grants": ["spellcasting"]
@@ -621,14 +575,12 @@
             {
               "id": "keen-sight",
               "name": "Keen Sight",
-              "summary": "Advantage on Perception, Survival, and Investigation checks that rely on sight.",
               "description": "You have advantage on Wisdom (Perception), Wisdom (Survival), and Intelligence (Investigation) checks that rely on sight.",
               "points": 6
             },
             {
               "id": "flight",
               "name": "Flight",
-              "summary": "Choose from Glide (3), Limited Flight (5), or Wings (9).",
               "description": "You have vestigial wings. When you fall at least 10 feet and aren't incapacitated, you can use your Reaction to safely glide downward, taking no damage from the fall. In addition, when you take the Jump Action, you can flap your wings to gain Advantage on that Action's Ability Check. Choose one:",
               "points": 0,
               "requiresOption": true,
@@ -648,7 +600,6 @@
             {
               "id": "tooth-nail",
               "name": "Tooth and Nail",
-              "summary": "Your natural weapons (bite, claws, hooves, horns) are light weapons dealing 1d6 + Strength damage.",
               "description": "You have one or more features that allow you to make damaging unarmed strikes as a natural, *light* weapon. When you hit with it, the strike deals:",
               "options": [
                 {"id": "bite", "name": "Bite", "points": 1, "description": "1d6 + Strength modifier slashing damage"},
@@ -662,42 +613,36 @@
             {
               "id": "traversal",
               "name": "Traversal",
-              "summary": "Move across difficult terrain without extra movement cost when using walking speed on ground.",
               "description": "You can move across difficult terrain without expending extra movement if you are using your walking speed and are on the ground or floor.",
               "points": 1
             },
             {
               "id": "climb-speed",
               "name": "Climb Speed",
-              "summary": "You have a climbing speed of 30 feet.",
               "description": "You have a climbing speed of 30 feet.",
               "points": 2
             },
             {
               "id": "leap",
               "name": "Leap",
-              "summary": "Your long jump is 20 feet and high jump is 10 feet, with or without a running start.",
               "description": "Your long jump is 20 feet and your high jump is 10 feet, with or without a running start.",
               "points": 2
             },
             {
               "id": "roar",
               "name": "Roar",
-              "summary": "As bonus action, creatures within 10ft that hear you must save or be frightened until end of next turn. PB uses per long rest.",
               "description": "As a bonus action, you can let out an especially menacing roar. Creatures of your choice within 10 feet of you that can hear you must succeed on a Wisdom saving throw or become [frightened]() of you until the end of your next turn. The DC of the save equals 8 + your Proficiency Bonus + your Constitution modifier. You can use this trait a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a long rest.",
               "points": 2
             },
             {
               "id": "agile-fall",
               "name": "Agile Fall",
-              "summary": "When falling 100ft or less, DC 10 Acrobatics to take no damage and land on feet.",
               "description": "When you fall 100 feet or less and aren't incapacitated, you can make a DC 10 Dexterity (Acrobatics) check when you land. If you succeed, you take no falling damage and land on your feet.",
               "points": 3
             },
             {
               "id": "prehensile-limb",
               "name": "Prehensile Limb",
-              "summary": "You have a prehensile limb such as a tail, trunk, or extra limbs.",
               "description": "You have a prehensile limb such as a tail and feet with opposable thumbs, an extra set of limbs, or a trunk that can perform simple tasks: lift, drop, hold, push, or pull an object or a creature; open or close a door or a container; grapple someone; or make an unarmed strike (damage dice of 1d4) with a reach of 5 feet. The limb(s) can use an object as a bonus action, but cannot wield a shield or perform somatic components of a spell.",
               "options": [
                 {"id": "appendage", "name": "Appendage", "points": 3, "description": "You can hold an extra [weapon]() with the *light* property."},
@@ -709,14 +654,12 @@
             {
               "id": "keen-smell",
               "name": "Keen Smell",
-              "summary": "Advantage on Perception, Survival, and Investigation checks that involve smell.",
               "description": "Thanks to your keen sense of smell, you have advantage on Wisdom (Perception), Wisdom (Survival), and Intelligence (Investigation) checks that involve smell.",
               "points": 3
             },
             {
               "id": "hunters-senses",
               "name": "Hunter's Senses",
-              "summary": "As an action, gain blindsight (30 ft.) until end of next turn.",
               "description": "As an action you can focus your sense of smell and gain [blindsight]() (30 ft.) until the end of your next turn.",
               "points": 4,
               "requires": ["keen-smell"]
@@ -724,23 +667,27 @@
             {
               "id": "burrow",
               "name": "Burrow",
-              "summary": "Bonus action to gain 10ft burrow speed for one turn. At 5th level, burrow speed is 20ft.",
               "description": "At 1st level, you can use your bonus action to gain a burrow speed of 10 feet for one turn. At 5th level, your burrow speed increases to 20 feet.",
               "points": 5
             },
             {
               "id": "swiftness",
               "name": "Swiftness",
-              "summary": "Double your speed for one turn in combat. Can't use again until you move 0 feet on a turn.",
               "description": "When you move on your turn in combat, you can double your speed until the end of the turn. Once you use this trait, you can't use it again until you move 0 feet on one of your turns.",
               "points": 5
             },
             {
               "id": "pack-tactics",
               "name": "Pack Tactics",
-              "summary": "Advantage on attack rolls if an ally is within 5 feet of the target and not incapacitated.",
               "description": "You have advantage on an attack roll against a creature if at least one of your allies is within 5 feet of the creature and the ally isn't incapacitated.",
               "points": 8
+            },
+            {
+              "id": "pack-hunter",
+              "name": "Pack Hunter",
+              "description": "When an ally within 10 feet of you is about to make an attack roll or a saving throw, you can use your reaction to grant that ally advantage on the roll. You can use this trait a number of times equal to your Proficiency Bonus per long rest.",
+              "points": 2,
+              "requires": ["pack-tactics"]
             }
           ]
         },
@@ -752,14 +699,19 @@
             {
               "id": "hold-breath",
               "name": "Hold Breath",
-              "summary": "You can hold your breath for up to 1 hour.",
               "description": "You can hold your breath for up to 1 hour at a time.",
               "points": 1
             },
             {
+              "id": "endless-breath",
+              "name": "Endless Breath",
+              "description": "You can hold your breath for up to 8 hours at a time.",
+              "points": 1,
+              "requires": ["hold-breath"]
+            },
+            {
               "id": "tooth-tail",
               "name": "Tooth and Tail",
-              "summary": "Your bite, fangs, or tail are natural light weapons dealing 1d6 + Strength damage.",
               "description": "Your toothy maw and/or strong tail allow you to make damaging unarmed strikes as a *light* weapon. When you hit with it, the strike deals:",
               "options": [
                 {"id": "bite", "name": "Bite", "points": 1, "description": "1d6 + Strength modifier slashing damage"},
@@ -771,42 +723,43 @@
             {
               "id": "shell-defense",
               "name": "Shell Defense",
-              "summary": "As action, withdraw into shell for +4 AC, advantage on Str/Con saves, but prone, speed 0, disadvantage on Dex saves.",
               "description": "You have a shell and can withdraw into it as an action. Until you emerge, you gain a +4 bonus to AC, and you have advantage on Strength and Constitution saving throws. While in your shell, you are treated as being prone, your speed is 0 and can't increase, you have disadvantage on Dexterity saving throws, you can't take reactions, attack rolls made against you do not have advantage normally granted by the prone condition, and the only action you can take is a bonus action to emerge from your shell.",
               "points": 1
             },
             {
               "id": "hungry-jaws",
               "name": "Hungry Jaws",
-              "summary": "Bonus action bite attack that grants temp HP equal to PB on hit. PB uses per long rest.",
               "description": "As a bonus action, you can make a special attack with your bite. If the attack hits, it deals normal damage, and you gain temporary hit points (minimum of 1) equal to your Proficiency Bonus. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
               "points": 3
             },
             {
               "id": "natural-armor",
               "name": "Natural Armor",
-              "summary": "Your AC is 13 + Dexterity modifier. Shields work as normal.",
               "description": "You can calculate your AC as 13 + your Dexterity modifier. A shield's benefits apply as normal while you use your natural armor.",
               "points": 3
             },
             {
               "id": "reptilian-camouflage",
               "name": "Camouflage",
-              "summary": "Advantage on Stealth checks and can hide when only lightly obscured. PB uses per long rest.",
               "description": "When you make a Dexterity (Stealth) check, you make the check with advantage, and can attempt to hide even when you are only lightly obscured. You can use this trait a number of times equal to your Proficiency Bonus per long rest.",
               "points": 4
             },
             {
               "id": "regeneration",
               "name": "Regeneration",
-              "summary": "As bonus action, spend a hit die to heal. PB uses per long rest.",
               "description": "As a bonus action, you can heal wounds you have taken. You may spend a hit die to regain that much health a number of times equal to your Proficiency Bonus per long rest.",
               "points": 4
             },
             {
+              "id": "regrowth",
+              "name": "Regrowth",
+              "description": "During a long rest, you can restore and heal lost body parts like limbs or digits, scars, and physical wounds. When regrowing lost body parts you can make visual alterations.",
+              "points": 1,
+              "requires": ["regeneration"]
+            },
+            {
               "id": "chromatophore",
               "name": "Chromatophore",
-              "summary": "As bonus action, turn invisible until start of next turn (ends if you attack or force a save). PB uses per long rest.",
               "description": "As a bonus action, you can turn invisible until the start of your next turn. This effect ends early if you make an attack roll or force a creature to make a saving throw. You can use this trait a number of times equal to your Proficiency Bonus per long rest.",
               "points": 6
             }
@@ -820,56 +773,60 @@
             {
               "id": "toxin-resilience",
               "name": "Toxin Resilience",
-              "summary": "Advantage on saves to avoid or end poisoned or diseased conditions.",
               "description": "You have advantage on saving throws you make to avoid or end the [poisoned]() or [diseased]() conditions on yourself.",
               "points": 2
             },
             {
               "id": "vigilant-rest",
               "name": "Vigilant Rest",
-              "summary": "During long rest, spend 6 hours inactive but conscious and aware.",
               "description": "When you take a long rest, you can spend at least six hours in an inactive, motionless state, rather than sleeping. In this state, you appear inert, but it doesn't render you unconscious, and you can see and hear as normal.",
+              "points": 2
+            },
+            {
+              "id": "contortion",
+              "name": "Contortion",
+              "description": "Your frame folds and reshapes to fit where others cannot. You can squeeze through a space large enough for a creature two sizes smaller than you, rather than one size smaller.",
               "points": 2
             },
             {
               "id": "construct-natural-armor",
               "name": "Natural Armor",
-              "summary": "Your AC is 13 + Dexterity modifier. Shields work as normal.",
               "description": "You can calculate your AC as 13 + your Dexterity modifier. A shield's benefits apply as normal while you use your natural armor.",
               "points": 3
             },
             {
               "id": "poison-resistance",
               "name": "Poison Resistance",
-              "summary": "You are resistant to poison damage.",
               "description": "You are resistant to poison damage.",
+              "points": 3
+            },
+            {
+              "id": "defensive-form",
+              "name": "Defensive Form",
+              "description": "Once per long rest you harden or shift your physical form and gain Temporary Hit Points equal to 4 + 1d4 × your Proficiency Bonus.",
               "points": 3
             },
             {
               "id": "constructed-form",
               "name": "Constructed Form",
-              "summary": "You are a Construct. Don't need to eat, drink, or breathe. Immune to disease, advantage vs paralyzed, magic can't put you to sleep.",
-              "description": "You are a Construct. You don't need to eat, drink, or breathe, and magic can't put you to sleep. You are immune to disease and have advantage on saving throws against being [paralyzed]().",
+              "description": "Your creature type is Construct. You don't need to eat, drink, or breathe, and magic can't put you to sleep. You are immune to disease and have advantage on saving throws against being [paralyzed]().",
               "points": 4
             },
             {
               "id": "built-for-success",
               "name": "Built for Success",
-              "summary": "Add d4 to one attack roll, ability check, or saving throw after seeing the roll. PB uses per long rest.",
               "description": "You can add a d4 to one attack roll, ability check, or saving throw you make after seeing the d20 roll but before the effects of the roll are resolved. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
               "points": 4
             },
             {
               "id": "healing-machine",
               "name": "Healing Machine",
-              "summary": "Mending lets you spend a Hit Die to heal. Healing spells that normally don't affect constructs work on you.",
               "description": "If the [mending]() spell is cast on you, you can spend a Hit Die, roll it, and regain a number of hit points equal to the roll plus your Constitution modifier (minimum of 1 hit point). In addition, your creator designed you to benefit from several spells that preserve life but that normally don't affect constructs: [cure wounds](), [healing word](), [mass cure wounds](), [mass healing word](), and [spare the dying]().",
               "points": 4
             },
             {
               "id": "integrated-protection",
               "name": "Integrated Protection",
-              "summary": "+1 bonus to AC. Armor takes 1 hour to don/doff and is integrated into your body.",
               "description": "You gain a +1 bonus to Armor Class. Donning and doffing armor other than a shield takes 1 hour, is integrated into and cannot be removed from your body while you live, and can be done while you rest.",
               "points": 6
             }
@@ -884,8 +841,7 @@
             {
               "id": "draconic-ancestry",
               "name": "Draconic Ancestry",
-              "summary": "If you have draconic ancestry, you must take this trait. Choose one of the following damage types.",
-              "description": "If you have draconic ancestry, you must take this trait. Choose one of the following damage types:",
+              "description": "If you have draconic ancestry, you must take this trait. Your creature type is also Dragon.Choose one of the following damage types:",
               "points": 0,
               "required": true,
               "requiresOption": true,
@@ -905,7 +861,6 @@
             {
               "id": "draconic-cantrip",
               "name": "Draconic Cantrip",
-              "summary": "You know one cantrip from the sorcerer spell list.",
               "description": "You know one cantrip of your choice from the [sorcerer]() [spell list]().",
               "points": 2,
               "requires": ["draconic-ancestry"],
@@ -914,7 +869,6 @@
             {
               "id": "draconic-resistance",
               "name": "Draconic Resistance",
-              "summary": "You have resistance to your ancestry's damage type.",
               "description": "You have resistance to the damage type associated with your draconic ancestry.",
               "points": 2,
               "requires": ["draconic-ancestry"]
@@ -922,7 +876,6 @@
             {
               "id": "draconic-warding",
               "name": "Draconic Warding",
-              "summary": "At 5th level, as action become immune to your ancestry's damage type for 1 minute. Once per long rest.",
               "description": "Starting at 5th level, as an action, you can channel your draconic energy to protect yourself. For 1 minute, you become immune to the damage type associated with your draconic ancestry. You can't use this trait again until you finish a long rest.",
               "points": 4,
               "requires": ["draconic-resistance"]
@@ -930,7 +883,6 @@
             {
               "id": "draconic-presence",
               "name": "Draconic Presence",
-              "summary": "Advantage on Intimidation checks.",
               "description": "You have advantage on Charisma (Intimidation) checks.",
               "points": 4,
               "requires": ["draconic-ancestry"]
@@ -938,7 +890,6 @@
             {
               "id": "draconic-cry",
               "name": "Draconic Cry",
-              "summary": "Bonus action cry gives you and allies advantage on attacks against enemies within 10ft who heard you. PB uses per long rest.",
               "description": "As a bonus action, you let out a cry at your enemies within 10 feet of you. Until the start of your next turn, you and your allies have advantage on attack rolls against any of those creatures who could hear you. You can use this trait a number of times equal to your Proficiency Bonus per long rest.",
               "points": 5,
               "requires": ["draconic-ancestry"]
@@ -946,7 +897,6 @@
             {
               "id": "breath-weapon",
               "name": "Breath Weapon",
-              "summary": "Replace one attack with 15-foot cone, Dex save for 1d10 damage (scales to 4d10). PB uses per long rest.",
               "description": "When you take the Attack action, you can replace one of your attacks with an exhalation of a magical energy in a 15-foot cone. Each creature in the area must make a Dexterity saving throw of DC 8 + your Constitution modifier + your Proficiency Bonus. A creature takes 1d10 damage of the type associated with your Draconic Ancestry on a failed save, and half as much damage on a successful one. The damage increases to 2d10 at 5th level, 3d10 at 11th level, and 4d10 at 17th level. You can use this trait a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a long rest.",
               "points": 6,
               "requires": ["draconic-ancestry"]
@@ -961,7 +911,6 @@
             {
               "id": "psionic-cantrip",
               "name": "Psionic Cantrip",
-              "summary": "You know encode thoughts, mage hand (invisible, no components), message, mind sliver, or thaumaturgy.",
               "description": "You know the [encode thoughts](), [mage hand](), [message](), [mind sliver](), or [thaumaturgy]() cantrip. If you choose [mage hand](), the hand is invisible and doesn't require components when you cast it with this trait.",
               "points": 2,
               "grants": ["spellcasting"]
@@ -969,7 +918,6 @@
             {
               "id": "psionic-resistance",
               "name": "Psionic Resistance",
-              "summary": "You have resistance to force or psychic damage.",
               "description": "You have resistance to one of the following damage types:",
               "options": [
                 {"id": "force", "name": "Force", "points": 2, "description": ""},
@@ -981,7 +929,6 @@
             {
               "id": "psionic-magic",
               "name": "Psionic Magic",
-              "summary": "At 3rd level, cast one 1st-level spell: bane, catapult, floating disk, hellish rebuke, jump, magnify gravity, shield, unseen servant, or wrathful smite.",
               "description": "Starting at 3rd level, you can cast one 1st-level spell from the following spell list: [bane](), [catapult](), [floating disk](), [hellish rebuke](), [jump](), [magnify gravity](), [shield](), [unseen servant](), [wrathful smite]().",
               "points": 2,
               "grants": ["spellcasting"]
@@ -989,7 +936,6 @@
             {
               "id": "greater-psionic-magic",
               "name": "Greater Psionic Magic",
-              "summary": "At 5th level, cast one 2nd-level spell: detect thoughts, kinetic jaunt, levitate, mind spike, mind whip, or phantasmal force.",
               "description": "Starting at 5th level, you can cast one 2nd-level spell from the following spell list: [detect thoughts](), [kinetic jaunt](), [levitate](), [mind spike](), [mind whip](), [phantasmal force]().",
               "points": 4,
               "requires": ["psionic-magic"],
@@ -998,14 +944,24 @@
             {
               "id": "psychic-defense",
               "name": "Psychic Defense",
-              "summary": "Advantage on saves to avoid or end charmed or frightened conditions.",
               "description": "You have advantage on saving throws you make to avoid or end the [charmed]() or [frightened]() conditions on yourself.",
+              "points": 2
+            },
+            {
+              "id": "battlefield-intuition",
+              "name": "Battlefield Intuition",
+              "description": "You sense the shape of a fight a moment before it breaks. You add your Proficiency Bonus to your initiative rolls.",
+              "points": 2
+            },
+            {
+              "id": "tremorsense",
+              "name": "Tremorsense",
+              "description": "You have [tremorsense]() out to a range of 5 feet. As an action, you can hone your senses, increasing the range of this sense out to 20 feet until the end of your next turn.",
               "points": 2
             },
             {
               "id": "telepathy",
               "name": "Telepathy",
-              "summary": "Speak telepathically to any creature within 30 feet if you share a language. One creature at a time.",
               "description": "You can speak telepathically to any creature within 30 feet of you. The creature understands you only if the two of you share a language. You can speak telepathically in this way to one creature at a time.",
               "points": 5
             }
@@ -1019,35 +975,49 @@
             {
               "id": "hardy",
               "name": "Hardy",
-              "summary": "Acclimated to one extreme climate: extreme cold, extreme heat, high altitudes, or deep waters.",
               "description": "You are acclimated to extreme climates and do not suffer the effects of one of the following:\n\n- Extreme cold below 0 degrees Fahrenheit\n- Extreme heat above 100 degrees Fahrenheit\n- High altitudes above 10,000 ft.\n- Deep waters below 100 ft (n/a if you have swim speed)",
               "points": 1
             },
             {
+              "id": "defensive-stance",
+              "name": "Defensive Stance",
+              "description": "Once per Short Rest as a Reaction, you use defensive features of your body or enter a defensive stance. Until the start of your next turn, you have a +2 bonus to your Armor Class against melee attacks.",
+              "points": 2
+            },
+            {
+              "id": "body-check",
+              "name": "Body Check",
+              "description": "Your weight behind a blow sends targets reeling. When you hit a creature no more than one size larger than you with a melee attack, you can use a bonus action to shove that creature. The target must succeed on a Strength saving throw of DC 8 + your Strength modifier + your Proficiency Bonus or be pushed up to 10 feet away from you.",
+              "points": 2
+            },
+            {
+              "id": "power-tackle",
+              "name": "Power Tackle",
+              "description": "When you use Body Check, the target has disadvantage on the saving throw, and you can choose to knock it [prone]() instead of pushing it.",
+              "points": 2,
+              "requires": ["body-check"]
+            },
+            {
+              "id": "stout-natural-armor",
+              "name": "Natural Armor",
+              "description": "You have thick skin. Your AC is 12 + your Constitution modifier. A shield's benefits apply as normal while you use your natural armor.",
+              "points": 3
+            },
+            {
               "id": "stout-toxin-resilience",
               "name": "Toxin Resilience",
-              "summary": "Advantage on saves to avoid or end poisoned or diseased conditions.",
               "description": "You have advantage on saving throws you make to avoid or end the [poisoned]() or [diseased]() conditions on yourself.",
               "points": 2
             },
             {
               "id": "stout-poison-resistance",
               "name": "Poison Resistance",
-              "summary": "You are resistant to poison damage.",
               "description": "You are resistant to poison damage.",
-              "points": 3
-            },
-            {
-              "id": "stout-natural-armor",
-              "name": "Natural Armor",
-              "summary": "Your AC is 12 + Constitution modifier. Shields work as normal.",
-              "description": "You have thick skin. Your AC is 12 + your Constitution modifier. A shield's benefits apply as normal while you use your natural armor.",
               "points": 3
             },
             {
               "id": "sturdy",
               "name": "Sturdy",
-              "summary": "You are more resilient and able to survive physical damage. Choose one of the following abilities.",
               "description": "You are more resilient and able to survive physical damage. Choose one of the following abilities.",
               "points": 0,
               "requiresOption": true,
@@ -1060,14 +1030,12 @@
             {
               "id": "strong",
               "name": "Strong",
-              "summary": "Advantage on Strength checks and Strength saves.",
               "description": "You have advantage on Strength-based ability checks and Strength saving throws.",
               "points": 5
             },
             {
               "id": "endurance",
               "name": "Endurance",
-              "summary": "Avoid gaining exhaustion if you have none. Resets on long rest.",
               "description": "Your body is naturally able to travel great distances and endure great hardships. If you have no Exhaustion you can use this trait to avoid gaining a level of Exhaustion, regaining its use on a long rest.",
               "points": 6,
               "restriction": {"type": "creature-type", "label": "Human only"}
@@ -1094,7 +1062,6 @@
             {
               "id": "artisan-cultural-skill",
               "name": "Cultural Skill",
-              "summary": "Choose one of the following skills related to your craft.",
               "description": "You are knowledgable about the history and creation of items related to your craft. Choose one of the following skills related to your craft.",
               "points": 0,
               "required": true,
@@ -1102,49 +1069,62 @@
               "options": [
                 {"id": "artisans-lore", "name": "Artisan's Lore", "description": "Whenever you make an Intelligence (History) check related to the origin or history of an item related to an Artisan Tool with which you are proficient, you are considered proficient in the History skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus.", "points": 0},
                 {"id": "craftsmans-memory", "name": "Craftsman's Memory", "description": "You can perfectly recall any item you have ever seen or handled, and can describe it in detail, including any flaws or unique features.", "points": 1},
+                {
+                  "id": "gifted-artisan",
+                  "name": "Gifted Artisan",
+                  "description": "You gain proficiency with the artisan's tools of your choice, and add an additional 1d4 to all ability checks rolled using these tools.",
+                  "points": 2
+                },
                 {"id": "tinkerer", "name": "Tinkerer", "description": "Whenever you create an item, you can add a small clockwork effect to it. This effect can be a minor light source, sound effect, movement, or visual effect. These effects grant no mechanical benefit or additional value to the item.", "points": 0}
               ]
             },
             {
               "id": "artisan-tool-proficiency",
               "name": "Tool Proficiency",
-              "summary": "You gain proficiency with the Artisan's Tools of your choice.",
               "description": "You gain proficiency with the Artisan's Tools of your choice.",
               "points": 1
             },
             {
               "id": "artisan-cantrip",
               "name": "Cantrip",
-              "summary": "You know mending, dismantle, or guidance.",
               "description": "You know the [mending](), [dismantle](), or [guidance]() cantrip.",
-              "points": 2
-            },
-            {
-              "id": "gifted-artisan",
-              "name": "Gifted Artisan",
-              "summary": "Add 1d4 to ability checks using Artisan's Tools you are proficient with.",
-              "description": "When you make an ability check using an artisan's tool with which you are proficient, you can roll 1d4 and add the number rolled to the ability check.",
               "points": 2
             },
             {
               "id": "skilled-artistry",
               "name": "Skilled Artistry",
-              "summary": "Crafting with proficient Artisan's Tools takes half the time.",
               "description": "The time it takes to craft something using an artisan's tool with which you are proficient is halved.",
               "points": 2
             },
             {
+              "id": "scavenger",
+              "name": "Scavenger",
+              "description": "You have never known the luxury of the right tool for the job, and you make do. If you have artisan's tools with which you are proficient and access to appropriate raw materials, you can use a short rest to craft any one nonmagical item worth 10 gp or less. The gear you create is workable but not high quality, and can't be sold except as your GM determines.",
+              "points": 2
+            },
+            {
+              "id": "master-crafter",
+              "name": "Master Crafter",
+              "description": "You can use Scavenger during a long rest instead, crafting one nonmagical item worth 50 gp or less.",
+              "points": 2,
+              "requires": ["scavenger"]
+            },
+            {
               "id": "artisan-skill-proficiency",
               "name": "Skill Proficiency",
-              "summary": "Gain proficiency in Arcana, History, Insight, Persuasion, or Sleight of Hand.",
               "description": "You gain proficiency with one of the following skills of your choice: Arcana, History, Insight, Persuasion, Sleight of Hand.",
               "points": 2
             },
             {
               "id": "quick-learner",
               "name": "Quick Learner",
-              "summary": "Gain one skill and one tool proficiency. Learning new proficiencies takes half the time.",
               "description": "You gain one skill proficiency of your choice and one tool proficiency of your choice. Additionally, it takes you half as much time to learn a new language, or train and become proficient in a tool, weapon, armor, or skill.",
+              "points": 4
+            },
+            {
+              "id": "adept",
+              "name": "Adept",
+              "description": "Choose one of your skill or tool proficiencies. You have expertise with that proficiency, doubling your Proficiency Bonus on any ability check you make using it.",
               "points": 4
             }
           ]
@@ -1157,7 +1137,6 @@
             {
               "id": "friendly-cultural-skill",
               "name": "Cultural Skill",
-              "summary": "Choose from the following abilities that represent your ability to quickly form connections with new people.",
               "description": "Choose from the following abilities that represent your ability to quickly form connections with new people.",
               "points": 0,
               "required": true,
@@ -1166,42 +1145,56 @@
                 {"id": "entertainers-lore", "name": "Entertainer's Lore", "description": "Whenever you make an Intelligence (History) or Wisdom (Insight) check related to a gaming set or musical instrument with which you are proficient, you are considered proficient and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus.", "points": 0},
                 {"id": "socializer", "name": "Socializer", "description": "The first time you interact with strangers in an unfamiliar land, culture, or region, add 1d4 to the first Charisma (Persuasion or Deception) check you make against them. This trait does not work on groups if at least one person in the group knows you.", "points": 0},
                 {"id": "empathic", "name": "Empathic", "description": "You have advantage on Wisdom (Insight) checks made to discern the emotions of others.", "points": 1},
-                {"id": "peaceful-negotiator", "name": "Peaceful Negotiator", "description": "You have proficiency in the Persuasion skill. When you make a Persuasion check to resolve a conflict without violence, you can roll with advantage.", "points": 1}
+                {"id": "peaceful-negotiator", "name": "Peaceful Negotiator", "description": "You have proficiency in the Persuasion skill. When you make a Persuasion check to resolve a conflict without violence, you can roll with advantage.", "points": 1},
+                {"id": "polyglot", "name": "Polyglot", "description": "You learn a language of your choice.", "points": 0}
               ]
             },
             {
               "id": "friendly-tool-proficiency",
               "name": "Tool Proficiency",
-              "summary": "Gain proficiency with a gaming set, instrument, Cook's Utensils, or Herbalism Kit.",
               "description": "You gain proficiency with one type of gaming set, musical instrument of your choice, a Cook's Utensils, or Herbalism Kit.",
               "points": 1
             },
             {
+              "id": "cute",
+              "name": "RECOMMENDED: Cute",
+              "description": "You have half proficiency in Persuasion and Deception checks. The first time you interact with strangers in an unfamiliar land, culture, or region, add 1d4 to the first Persuasion, Deception, or Performance check you make against them. This trait does not work on groups if at least one person in the group knows you.",
+              "points": 2
+            },
+            {
               "id": "gifted-entertainer",
               "name": "Gifted Entertainer",
-              "summary": "Add 1d4 to ability checks using gaming sets or instruments you're proficient with.",
               "description": "When you make an ability check using a gaming set or musical instrument with which you are proficient, you can roll one a d4 and add the number rolled to the ability check.",
               "points": 1
             },
             {
+              "id": "the-way-my-ma-taught-me",
+              "name": "The Way my 'Ma Taught Me",
+              "description": "When you make an attack roll, ability check, or saving throw, you can roll 1d6 and add it to the total. You can do this after seeing the die roll, but must use it before learning whether the roll is a success or failure. Once you use this ability, you can't do so again until you finish a short or long rest.",
+              "points": 2
+            },
+            {
               "id": "friendly-skill-proficiency",
               "name": "Skill Proficiency",
-              "summary": "Gain proficiency in Acrobatics, Insight, Medicine, Performance, or Persuasion.",
               "description": "You gain proficiency with one of the following skills of your choice: Acrobatics, Insight, Medicine, Performance, Persuasion.",
               "points": 2
             },
             {
               "id": "healers-intuition",
               "name": "Healer's Intuition",
-              "summary": "Advantage on Medicine checks and Herbalism Kit checks.",
               "description": "When you make a Wisdom (Medicine) check or an ability check using an Herbalism Kit, you can roll with advantage.",
               "points": 3
             },
             {
               "id": "lucky",
               "name": "Lucky",
-              "summary": "When you roll a 1 on an attack, check, or save, you can reroll and must use the new roll.",
               "description": "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll.",
+              "points": 4
+            },
+            {
+              "id": "helping-hand",
+              "name": "Helping Hand",
+              "description": "You excel at aiding others, knowing the time will come when you need them to return the favor. You can take the Help action as a bonus action.",
               "points": 4
             }
           ]
@@ -1214,7 +1207,6 @@
             {
               "id": "mage-cultural-skill",
               "name": "Cultural Skill",
-              "summary": "Choose from the following special abilities that your skill with arcane magic grants you.",
               "description": "Choose from the following special abilities that your skill with arcane magic grants you.",
               "points": 0,
               "required": true,
@@ -1228,36 +1220,37 @@
             {
               "id": "mage-cantrip",
               "name": "Cantrip",
-              "summary": "Learn one cantrip from the Wizard spell list.",
               "description": "You learn one cantrip of your choice from the [Wizard]() [spell list]().",
               "points": 2
             },
             {
               "id": "mage-skill-proficiency",
               "name": "Skill Proficiency",
-              "summary": "Gain proficiency in Arcana, History, Investigation, Nature, or Religion.",
               "description": "You have proficiency in one of the following skills of your choice: Arcana, History, Investigation, Nature, Religion.",
               "points": 2
             },
             {
               "id": "arcane-infusion",
               "name": "Arcane Infusion",
-              "summary": "During long rest, infuse items with wizard cantrips. Maintain up to PB items.",
               "description": "During a long rest, you can infuse a non-magical item with a cantrip from the [Wizard]() [spell list](). You can maintain a number of these items equal to your Proficiency Bonus.",
               "points": 3
             },
             {
               "id": "destructive-spell",
               "name": "Destructive Spell",
-              "summary": "When damaging with a spell, add 1d4&nbsp× PB to one target. PB uses per long rest.",
               "description": "When you damage a creature with a spell, you can cause the spell to deal extra damage equal to 1d4 per point of your Proficiency Bonus to a single target of the spell. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
               "points": 3
             },
             {
               "id": "learned-magic",
               "name": "Learned Magic",
-              "summary": "Learn one 1st-level spell from the Wizard spell list.",
               "description": "You learn one 1st-level spell from the [Wizard]() [spell list]().",
+              "points": 3
+            },
+            {
+              "id": "ritualist",
+              "name": "Ritualist",
+              "description": "Choose any 1st-level spell with the ritual tag. You can cast this spell as a ritual. Intelligence is your spellcasting ability for this spell.",
               "points": 3
             }
           ]
@@ -1270,10 +1263,9 @@
             {
               "id": "skirmisher-cultural-skill",
               "name": "Cultural Skill",
-              "summary": "Choose from the following abilities you gained from your upbringing.",
               "description": "Choose one of the following abilities you gained from your upbringing.",
               "points": 0,
-              "required": true,
+              "required": false,
               "hasOptions": true,
               "options": [
                 {"id": "combat-awareness", "name": "Combat Awareness", "description": "If you are surprised in battle, enemies do not have advantage against you in the surprise round.", "points": 0},
@@ -1281,30 +1273,32 @@
               ]
             },
             {
+              "id": "battlefield-control",
+              "name": "Battlefield Control",
+              "description": "When foes attempt to press you in melee, they do so at their peril. Other creatures provoke Opportunity Attacks from you whenever they move into your reach, in addition to when they move out of your reach.",
+              "points": 3
+            },
+            {
               "id": "finesse-training",
               "name": "Finesse Training",
-              "summary": "Add finesse property to a non-heavy, non-two-handed melee weapon.",
               "description": "Your training allows you to add the [finesse]() property to a melee weapon you carry in your main hand. The weapon cannot be a hammer, mace, or have the [heavy]() or [two-handed]() properties.",
               "points": 2
             },
             {
               "id": "skirmisher-skill-proficiency",
               "name": "Skill Proficiency",
-              "summary": "Gain proficiency in Athletics, Insight, Nature, Perception, Stealth, or Survival.",
               "description": "You have proficiency in one of the following skills of your choice: Athletics, Insight, Nature, Perception, Stealth, or Survival.",
               "points": 2
             },
             {
               "id": "lethal-strike",
               "name": "Lethal Strike",
-              "summary": "Add 1d4&nbsp× PB damage to weapon attack. PB uses per long rest.",
               "description": "When you damage a creature with a weapon attack, you can cause the attack to deal extra damage equal to 1d4 per point of your Proficiency Bonus. This trait can be used a number of times equal to your Proficiency Bonus per long rest.",
               "points": 3
             },
             {
               "id": "skilled-combatant",
               "name": "Skilled Combatant",
-              "summary": "Choose from the following abilities you gained from your upbringing.",
               "description": "Choose from the following abilities you gained from your upbringing.",
               "points": 0,
               "requiresOption": true,
@@ -1325,7 +1319,6 @@
             {
               "id": "streetwise-cultural-skill",
               "name": "Cultural Skill",
-              "summary": "Choose from one of the following abilities you gained from your upbringing.",
               "description": "Choose one of the following abilities you gained from your upbringing.",
               "points": 1,
               "required": true,
@@ -1339,49 +1332,42 @@
             {
               "id": "out-of-sight",
               "name": "Out of Sight",
-              "summary": "Hide when lightly obscured by natural phenomena, advantage on those Stealth checks.",
               "description": "You can attempt to Hide even when you are only lightly obscured by foliage, rocky terrain, heavy rain, falling snow, mist, and other natural phenomena, and have advantage on these Dexterity (Stealth) checks.",
               "points": 1
             },
             {
               "id": "streetwise-cantrip",
               "name": "Cantrip",
-              "summary": "Learn one cantrip from the Bard spell list.",
               "description": "You know one cantrip from the [Bard]() [spell list]().",
               "points": 2
             },
             {
               "id": "streetwise-tool-proficiency",
               "name": "Tool Proficiency",
-              "summary": "Gain proficiency with a gaming set, Thieves' Tools, Disguise Kit, Forgery Kit, or Poisoner's Kit.",
               "description": "You gain proficiency with a gaming set or one set of tools of your choice: Thieves' Tools, Disguise Kit, Forgery Kit, or Poisoner's Kit.",
               "points": 2
             },
             {
               "id": "streetwise-skill-proficiency",
               "name": "Skill Proficiency",
-              "summary": "Gain proficiency in Acrobatics, Deception, Insight, Intimidation, Investigation, Performance, Sleight of Hand, or Stealth.",
               "description": "You have proficiency in one of the following skills of your choice: Acrobatics, Deception, Insight, Intimidation, Investigation, Performance, Sleight of Hand, or Stealth.",
               "points": 2
             },
             {
               "id": "merge-with-shadows",
               "name": "Merge with Shadows",
-              "summary": "At 3rd level, cast [pass without trace]() as spell-like ability.",
               "description": "Starting at 3rd level, you gain the ability to use [pass without trace](), treating it as a spell-like ability.",
               "points": 4
             },
             {
               "id": "thiefs-intuition",
               "name": "Thief's Intuition",
-              "summary": "Add 1d4 to checks with Thieves' Tools.",
               "description": "When you make an ability check using Thieves' Tools, you can roll a d4 and add the number rolled to the ability check.",
               "points": 4
             },
             {
               "id": "skilled",
               "name": "Skilled",
-              "summary": "Give yourself advantage on proficient skill checks. PB uses per long rest. Cannot take as Rogue.",
               "description": "When you make an ability check using a skill in which you have proficiency, you can give yourself advantage on the check before rolling a d20. You can give yourself advantage in this way a number of times equal to your Proficiency Bonus per long rest. *You cannot take this trait as a [Rogue]().*",
               "points": 6
             }
@@ -1395,7 +1381,6 @@
             {
               "id": "survivalist-cultural-skill",
               "name": "Cultural Skill",
-              "summary": "Choose one of the following skills related to your survival skills.",
               "description": "Choose one of the following skills related to your survival skills.",
               "points": 0,
               "required": true,
@@ -1407,46 +1392,99 @@
               ]
             },
             {
+              "id": "native-environment",
+              "name": "Native Environment",
+              "description": "You know one landscape better than any outsider ever will. Choose the environment you were raised in.",
+              "points": 0,
+              "required": true,
+              "requiresOption": true,
+              "options": [
+                {"id": "arctic", "name": "Arctic", "points": 0, "description": "Tundra, glaciers, and frozen coastlines."},
+                {"id": "coastal", "name": "Coastal", "points": 0, "description": "Shorelines, cliffs, and reefs."},
+                {"id": "desert", "name": "Desert", "points": 0, "description": "Sand, badlands, wastelands, and arid scrub."},
+                {"id": "forest", "name": "Forest", "points": 0, "description": "Woodlands, jungles, and dense undergrowth."},
+                {"id": "grassland", "name": "Grassland", "points": 0, "description": "Plains, savannas, steppes, and farmland."},
+                {"id": "hill-mountain", "name": "Hill and Mountain", "points": 0, "description": "Foothills, ravines, passes, and high peaks."},
+                {"id": "swamp", "name": "Swamp", "points": 0, "description": "Marshes, swamps, fens, and bogs."},
+                {"id": "subterranean", "name": "Subterranean", "points": 0, "description": "Caves, tunnels, and the deep underground."},
+                {"id": "underwater", "name": "Underwater", "points": 0, "description": "Rivers, lakes, and the open sea."},
+                {"id": "urban", "name": "Urban", "points": 0, "description": "Cities, towns, crowds, and populated urban areas similar to your upbringing."}
+              ]
+            },
+            {
+              "id": "natural-movement",
+              "name": "Natural Movement",
+              "description": "Moving through nonmagical difficult terrain common to your native environment costs you no extra movement, and ability checks made to track you have disadvantage.",
+              "points": 1,
+              "requires": ["native-environment"]
+            },
+            {
+              "id": "environmental-awareness",
+              "name": "Environmental Awareness",
+              "description": "While in your native environment, whenever you make an ability check to assess structures, monuments, or natural features, to find food or drinkable water, or to track creatures, you are considered proficient in the appropriate skill for the check and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus.",
+              "points": 2,
+              "requires": ["native-environment"]
+            },
+            {
+              "id": "natural-camouflage",
+              "name": "Natural Camouflage",
+              "description": "You fade into the background of familiar terrain. You have advantage on Dexterity (Stealth) checks made to hide while in your native environment.",
+              "points": 2,
+              "requires": ["native-environment"]
+            },
+            {
               "id": "survivalist-skill-proficiency",
               "name": "Skill Proficiency",
-              "summary": "Gain proficiency in Animal Handling, Medicine, Nature, Perception, Stealth, or Survival.",
               "description": "You have proficiency in one of the following skills of your choice: Animal Handling, Medicine, Nature, Perception, Stealth, or Survival.",
               "points": 2
             },
             {
               "id": "skilled-tracker",
               "name": "Skilled Tracker",
-              "summary": "Advantage on Survival to track creatures.",
               "description": "Whenever you make a Wisdom (Survival) check to track creatures, you have advantage on that check.",
               "points": 2
             },
             {
               "id": "speech-beast-leaf",
               "name": "Speech of Beast and Leaf",
-              "summary": "Communicate with Beasts and Plants. Advantage on Charisma checks to influence them.",
               "description": "You have the ability to communicate in a limited manner with Beasts, Plants, and vegetation. They can understand the meaning of your words, though you have no special ability to understand them in return. You have advantage on all Charisma checks you make to influence them.",
               "points": 2
             },
             {
               "id": "natural-magic",
               "name": "Natural Magic",
-              "summary": "You know one 1st-level spell from the Ranger spell list.",
               "description": "You know one 1st-level spell from the [Ranger]() [spell list]().",
               "points": 3
             },
             {
               "id": "creativity",
               "name": "Creativity",
-              "summary": "Gain advantage on a roll after seeing it but before result. PB - 1 uses per long rest.",
               "description": "When making an ability check, attack roll, or saving throw, you can use this trait to gain advantage on the roll. You can choose to do this after the roll has been made but before the result is declared. This trait can be used a number of times equal to your Proficiency Bonus - 1 per long rest.",
               "points": 6
             },
             {
               "id": "keen-senses",
               "name": "Keen Senses",
-              "summary": "Advantage on Perception checks that rely on hearing or sight.",
               "description": "You have advantage on Wisdom (Perception) checks that rely on hearing or sight.",
               "points": 6
+            },
+            {
+              "id": "keen-senses-proficiency",
+              "name": "RECOMMENDED: Keen Senses (Perception)",
+              "description": "You have proficiency in the Perception skill.",
+              "points": 2
+            },
+            {
+              "id": "survival-training",
+              "name": "RECOMMENDED: Survival Training",
+              "description": "You have proficiency in the Survival skill.",
+              "points": 2
+            },
+            {
+              "id": "skilled-agriculturalist",
+              "name": "RECOMMENDED: Skilled Agriculturalist",
+              "description": "You have proficiency in Nature checks, proficiency with the sickle, and advantage on any check made to farm, forage, or harvest.",
+              "points": 2
             }
           ]
         },
@@ -1458,7 +1496,6 @@
             {
               "id": "theocratic-cultural-skill",
               "name": "Cultural Skill",
-              "summary": "Choose one of the following abilities related to your religious training.",
               "description": "Choose one of the following abilities related to your religious training.",
               "points": 0,
               "required": true,
@@ -1466,43 +1503,45 @@
               "options": [
                 {"id": "presence", "name": "Presence", "description": "You can add 1d4 to any Wisdom (Persuasion) or Strength (Intimidation) checks made against those in your same religion.", "points": 0},
                 {"id": "blessed", "name": "Blessed", "description": "Your were blessed with or are able to pray for divine gifts. You can cast *guidance* on yourself as a reaction a number of times per day equal to your proficiency bonus - 1. You regain uses of this ability at dawn.", "points": 1},
-                {"id": "pious-study", "name": "Pious Study", "description": "Whenever you make an Intelligence (History) or Intelligence (Religion) check about religious history, the pantheon of gods, symbolism and other general religious knowledge, you are considered proficient in the History or Religion skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus.", "points": 1}
+                {"id": "pious-study", "name": "Pious Study", "description": "Whenever you make an Intelligence (History) or Intelligence (Religion) check about religious history, the pantheon of gods, symbolism and other general religious knowledge, you are considered proficient in the History or Religion skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus.", "points": 1},
+                {"id": "polyglot", "name": "Polyglot", "description": "You learn a language of your choice.", "points": 0}
               ]
             },
             {
               "id": "theocratic-cantrip",
               "name": "Cantrip",
-              "summary": "You know one cantrip from the Cleric spell list.",
               "description": "You know one cantrip from the [Cleric]() [spell list]().",
               "points": 2
             },
             {
               "id": "theocratic-skill-proficiency",
               "name": "Skill Proficiency",
-              "summary": "Gain proficiency in Religion, History, Insight, Persuasion, Deception, or Medicine.",
               "description": "You have proficiency in one of the following skills of your choice: Religion, History, Insight, Persuasion, Deception, Medicine.",
               "points": 2
             },
             {
               "id": "devout-magic",
               "name": "Devout Magic",
-              "summary": "You know one 1st-level spell from the Cleric spell list.",
               "description": "You know one 1st-level spell from the [Cleric]() [spell list]().",
               "points": 3
             },
             {
               "id": "religious-intuition",
               "name": "Religious Intuition",
-              "summary": "Advantage on Religion checks.",
               "description": "You have advantage on Intelligence (Religion) checks.",
               "points": 3
             },
             {
               "id": "serenity",
               "name": "Serenity",
-              "summary": "Advantage on saves vs charmed, frightened, and madness.",
               "description": "You have advantage on saving throws to avoid or end the [charmed]() or [frightened]() conditions on yourself, and to resist the effects of [madness]().",
               "points": 4
+            },
+            {
+              "id": "ponder",
+              "name": "RECOMMENDED: Ponder",
+              "description": "You have the foresight to consider your options in stressful situations, and you know the [moment to think]() spell.",
+              "points": 2
             }
           ]
         },
@@ -1514,7 +1553,6 @@
             {
               "id": "warrior-cultural-skill",
               "name": "Cultural Skill",
-              "summary": "Choose one of the following abilities related to your combat training.",
               "description": "Choose one of the following abilities related to your combat training.",
               "points": 0,
               "required": true,
@@ -1528,42 +1566,43 @@
             {
               "id": "warrior-brave",
               "name": "Brave",
-              "summary": "Advantage on saves vs frightened.",
               "description": "You have advantage on saving throws you make to avoid or end the [frightened]() condition on yourself.",
               "points": 2
             },
             {
+              "id": "warrior-infectious-bravery",
+              "name": "Infectious Bravery",
+              "description": "You can use your reaction to bolster an ally who can see or hear you, granting them advantage on a saving throw against being [frightened](). You can use this trait a number of times equal to your Proficiency Bonus per long rest.",
+              "points": 2,
+              "requires": ["warrior-brave"]
+            },
+            {
               "id": "martial-training",
               "name": "Martial Training",
-              "summary": "Proficiency with 3 martial weapons.",
               "description": "You gain proficiency in 3 martial weapons of your choice.",
               "points": 2
             },
             {
               "id": "light-armor-training",
               "name": "Light Armor Training",
-              "summary": "Proficiency with light armor.",
               "description": "You have proficiency with light armor.",
               "points": 2
             },
             {
               "id": "medium-armor-training",
               "name": "Medium Armor Training",
-              "summary": "Proficiency with light and medium armor.",
               "description": "You have proficiency with light and medium armor.",
               "points": 5
             },
             {
               "id": "shield-training",
               "name": "Shield Training",
-              "summary": "Proficiency with shields.",
               "description": "You have proficiency with shields.",
               "points": 3
             },
             {
               "id": "weapons-expert",
               "name": "Weapons Expert",
-              "summary": "Choose one: Savage Attacks or Targeted Strike.",
               "description": "Choose one:",
               "points": 0,
               "requiresOption": true,
@@ -1575,7 +1614,6 @@
             {
               "id": "ranged-weapon-expert",
               "name": "Ranged Weapon Expert",
-              "summary": "Proficiency with crossbows or firearms, ignore loading, no long range disadvantage.",
               "description": "For all weapons of the type you select: gain proficiency with all weapons of that type, ignore the loading property, and firing at long range doesn't impose disadvantage on your attack roll.",
               "options": [
                 {"id": "crossbows", "name": "Crossbow Expert", "points": 4, "description": ""},
@@ -1594,7 +1632,6 @@
             {
               "id": "waterborne-cultural-skill",
               "name": "Cultural Skill",
-              "summary": "Choose one of the following skills related to your maritime training.",
               "description": "Choose one of the following skills related to your maritime training.",
               "points": 0,
               "required": true,
@@ -1607,28 +1644,24 @@
             {
               "id": "waterborne-tool-proficiency",
               "name": "Tool Proficiency",
-              "summary": "Gain proficiency with Carpenter's Tools, Navigator's Tools, or Vehicles (Water).",
               "description": "You gain proficiency with one tool of your choice: Carpenter's Tools, Navigator's Tools, or Vehicles (Water).",
               "points": 1
             },
             {
               "id": "weather-worn",
               "name": "Weather Worn",
-              "summary": "No disadvantage on Perception from precipitation, wind, mist, or fog.",
               "description": "You do not suffer disadvantage on perception checks due to heavy precipitation and wind, or areas lightly obscured by mist, light fog, or water conditions.",
               "points": 1
             },
             {
               "id": "waterborne-cantrip",
               "name": "Cantrip",
-              "summary": "You know the gust or mending cantrip.",
               "description": "You know the [gust]() or [mending]() cantrip.",
               "points": 2
             },
             {
               "id": "waterborne-swim-speed",
               "name": "Swim Speed",
-              "summary": "You have a swim speed of 30 feet provided you are not wearing medium or heavy armor.",
               "description": "You have a swim speed of 30 feet provided you are not wearing medium or heavy armor.",
               "points": 2,
               "restriction": { "type": "equipment", "label": "No medium/heavy armor" }
@@ -1636,16 +1669,21 @@
             {
               "id": "waterborne-skill-proficiency",
               "name": "Skill Proficiency",
-              "summary": "Gain proficiency in Acrobatics, Athletics, Perception, Nature, Sleight of Hand, or Survival.",
               "description": "You have proficiency in one of the following skills of your choice: Acrobatics, Athletics, Perception, Nature, Sleight of Hand, Survival.",
               "points": 2
             },
             {
               "id": "sea-legs",
               "name": "Sea Legs",
-              "summary": "Advantage on Acrobatics and checks to avoid being knocked prone (except from attacks).",
-              "description": "You have advantage on Dexterity (Acrobatics) checks, and checks to be knocked [prone]() from effects other than attacks.",
-              "points": 6
+              "description": "You have advantage on saving throws to be moved against your will and to be knocked prone.",
+              "points": 4
+            },
+            {
+              "id": "sure-footed",
+              "name": "Sure Footed",
+              "description": "Standing up from [prone]() costs you only 5 feet of movement instead of half your speed. In addition, when you fail a saving throw against being knocked [prone](), you can use your reaction to succeed on the save instead. You regain the use of this reaction when you finish a long rest.",
+              "points": 2,
+              "requires": ["sea-legs"]
             }
           ]
         }
