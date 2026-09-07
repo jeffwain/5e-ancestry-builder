@@ -35,7 +35,7 @@ Built from 27 lineages.
 - Muul ▸ Giff (Hippo) — 17 + 0 = **17** — **+1** · _no archetypes_
 - Goblin ▸ Goblin — 0 + 18 = **18** — **+2**
 - Goblin ▸ Moglin — 0 + 18 = **18** — **+2**
-- Anadi — 17 + 0 = **17** — **+1** · _no archetypes_
+- Anadi — 18 + 0 = **18** — **+2** · _no archetypes_
 - Returned ▸ Wildmorph form — 6 + 12 = **18** — **+2**
 - Returned ▸ Harrower form — 6 + 13 = **19** — **+3**
 - Returned ▸ Plasmoid form — 6 + 12 = **18** — **+2**
