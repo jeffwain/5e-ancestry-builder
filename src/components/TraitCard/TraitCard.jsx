@@ -74,6 +74,11 @@ export function TraitCard({ trait, compact = false }) {
   const getPointsLabel = (points) => {
     if (points === 0) return 'Free';
     if (!points || points === '') return null;
+    // Drawbacks cost negative points — they refund budget, so show "+N".
+    if (typeof points === 'number' && points < 0) {
+      const refund = Math.abs(points);
+      return <><span className="points">+{refund}</span>&nbsp;{refund === 1 ? 'pt' : 'pts'}</>;
+    }
     if (points === 1) return <><span className="points">{points}</span>&nbsp;pt</>;
     return <><span className="points">{points}</span>&nbsp;pts</>;
   };

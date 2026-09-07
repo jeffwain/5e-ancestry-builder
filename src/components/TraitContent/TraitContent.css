@@ -144,6 +144,11 @@
   color: var(--color-ink-600);
 }
 
+.simple-trait-card .trait-content-points {
+  color: var(--color-ink-400);
+  font-style: italic;
+}
+
 /* Full summary layout only (the inline variant has no option/footer blocks). */
 .summary-trait-card .trait-content-option {
   margin-top: var(--space-2);

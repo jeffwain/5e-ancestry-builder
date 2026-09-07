@@ -1,0 +1,1 @@
+export { AncestrySummary } from './AncestrySummary';

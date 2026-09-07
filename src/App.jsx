@@ -9,6 +9,7 @@ import {
   CharacterCreation,
   CustomAncestryPage,
   AncestriesPage,
+  AncestriesTextPage,
   AuditPage,
   OverviewPage,
   IdeaPage,
@@ -154,6 +155,16 @@ function AppContent() {
             path="/ancestries"
             element={
               <AncestriesPage
+                allTraits={allTraits}
+                onUse={handleUseAncestry}
+                onCustomize={handleCustomizeAncestry}
+              />
+            }
+          />
+          <Route
+            path="/ancestries-text"
+            element={
+              <AncestriesTextPage
                 allTraits={allTraits}
                 onUse={handleUseAncestry}
                 onCustomize={handleCustomizeAncestry}

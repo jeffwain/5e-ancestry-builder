@@ -80,7 +80,6 @@ async function copyDiceMonsterData() {
     fs.writeFileSync(destinationPath, data);
 
     console.log(`✅ Successfully copied to: ${destinationPath}`);
-    console.log('To use this data source, make sure the DATA_SOURCE in src/hooks/useNotionData.js is set to "dice-monster"');
 
     // Also create a second copy with the alternative name for compatibility
     const altPath = path.resolve(__dirname, '../public/data/The Dice Monster\'s Ancestries.json');

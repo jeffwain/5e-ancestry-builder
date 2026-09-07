@@ -28,10 +28,17 @@ export function getTraitPointCost(trait, selectedOptions = {}) {
   return traitPoints;
 }
 
-// "Free" / "1 pt" / "N pts" — or null when there is no cost to show.
+// "Free" / "1 pt" / "N pts" / "+1 pt" for drawbacks that refund points —
+// or null when there is no cost to show.
 export function formatPointsLabel(points) {
   if (points === 0) return 'Free';
   if (points === undefined || points === null || points === '') return null;
+  // Negative-cost traits are drawbacks: they hand points back to the budget, so
+  // show what the character gains rather than a bare minus sign.
+  if (points < 0) {
+    const refund = Math.abs(points);
+    return refund === 1 ? '+1 pt' : `+${refund} pts`;
+  }
   return points === 1 ? '1 pt' : `${points} pts`;
 }
 
@@ -105,4 +112,27 @@ export function getTraitDisplay(trait, selectedOptions = {}) {
     categoryName: trait.categoryName || null,
     type: trait.type || null,
   };
+}
+
+// Inline simple-trait-card: option name when chosen, otherwise the trait name.
+export function compactTraitName(d) {
+  if (d.selectedOption && !d.hasNameOverride) {
+    return d.selectedOption.name;
+  }
+  return d.baseName;
+}
+
+// Base description plus the selected option's text when applicable.
+export function compactTraitDescription(d) {
+  const parts = [];
+  if (d.description) parts.push(d.description);
+  if (d.optionDescription) parts.push(d.optionDescription);
+  return parts.join(' ');
+}
+
+// Point suffix for inline trait cards — number only, or null when nothing to show.
+export function formatCompactPoints(cost) {
+  if (cost === undefined || cost === null || cost === '' || cost === 0) return null;
+  if (typeof cost === 'number' && cost < 0) return `+${Math.abs(cost)}`;
+  return String(cost);
 }

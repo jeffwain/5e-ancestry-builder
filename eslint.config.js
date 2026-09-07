@@ -6,7 +6,22 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 export default [
   { ignores: ['dist'] },
   {
+    // Build-time scripts run in Node, not the browser, and include .mjs — which
+    // the app block below never matched, so the ancestry pipeline went unlinted.
+    files: ['scripts/**/*.{js,mjs}'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: globals.node,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+    },
+  },
+  {
     files: ['**/*.{js,jsx}'],
+    ignores: ['scripts/**'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,

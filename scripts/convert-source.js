@@ -1,3 +1,19 @@
+/**
+ * SUPERSEDED — this is the old 5etools-brew converter.
+ *
+ * It flattens the Dice Monster brew file into scripts/output/, and it is what
+ * produced the ancestry data the sixteen-point audit found wrong: it treats
+ * ancestries as flat, so it converts only an archetype's own tier and loses every
+ * shared trait above it, and it double-pays any trait the source re-lists.
+ *
+ * Ancestry data now comes from the hand-maintained lineage files instead:
+ *   source  public/data/ancestries-*.mjs
+ *   build   npm run ancestries   →  public/data/converted-ancestries.json
+ *
+ * Kept only because converted-traits.json still exists as a backlog reference.
+ * Do not use its output to regenerate public/data/converted-ancestries.json.
+ */
+
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';

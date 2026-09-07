@@ -112,18 +112,25 @@
           "description": "Not all species have the ability to naturally see in the dark.",
           "traits": [
             {
+              "id": "low-light-vision",
+              "name": "Low-light Vision",
+              "description": "You can see in dim light within 60 feet of you as if it were bright light. This grants you no ability to see in darkness.",
+              "points": 1,
+              "excludes": ["darkvision-60", "darkvision-120"]
+            },
+            {
               "id": "darkvision-60",
               "name": "Darkvision",
               "description": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade, usually gray.",
               "points": 3,
-              "excludes": ["darkvision-120"]
+              "excludes": ["darkvision-120", "low-light-vision"]
             },
             {
               "id": "darkvision-120",
               "name": "Superior Darkvision (120 ft.)",
               "description": "You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, in a monochromatic shade, usually gray.",
               "points": 4,
-              "excludes": ["darkvision-60"]
+              "excludes": ["darkvision-60", "low-light-vision"]
             }
           ]
         },
@@ -204,7 +211,7 @@
               "options": [
                 {"id": "air", "name": "Air", "points": 2, "description": "[Gust](), [lightning lure](), [shocking grasp](), [wind lash](), [zap]()."},
                 {"id": "earth", "name": "Earth", "points": 2, "description": "[Blade ward](), [mold earth](), [magic stone](), [resistance]()."},
-                {"id": "fire", "name": "Fire", "points": 3, "description": "[Control flames](), [create bonfire](), [light](), [produce flame]()."},
+                {"id": "fire", "name": "Fire", "points": 2, "description": "[Control flames](), [create bonfire](), [light](), [produce flame]()."},
                 {"id": "nature", "name": "Nature", "points": 2, "description": "[Acid splash](), [infestation](), [druidcraft](), [poison spray](), [primal savagery]()."},
                 {"id": "water", "name": "Water", "points": 2, "description": "[Acid splash](), [shape water](), [frostbite](), [ray of frost](), [water lash]()."}
               ],
@@ -310,6 +317,12 @@
               "name": "Magic Resistance",
               "description": "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic.",
               "points": 6
+            },
+            {
+              "id": "shifter",
+              "name": "Shifter",
+              "description": "You can take the shape of one humanoid creature that you've trained yourself to transform into. Over the course of one minute, you can change your physical form, including height, weight, facial features, voice, hair length and coloration, distinguishing characteristics, and changing to Medium or Small sizes. Once per day you can force yourself to quickly shift forms, which takes your action, bonus action, and reaction, and you can't use this ability again until you take a long rest.",
+              "points": 2
             },
             {
               "id": "shapechanger",
@@ -579,6 +592,12 @@
               "points": 6
             },
             {
+              "id": "strong-wings",
+              "name": "Strong Wings",
+              "description": "You can make use of your flying speed while wearing medium or heavy armor.",
+              "points": 4
+            },
+            {
               "id": "flight",
               "name": "Flight",
               "description": "You have vestigial wings. When you fall at least 10 feet and aren't incapacitated, you can use your Reaction to safely glide downward, taking no damage from the fall. In addition, when you take the Jump Action, you can flap your wings to gain Advantage on that Action's Ability Check. Choose one:",
@@ -736,7 +755,8 @@
               "id": "natural-armor",
               "name": "Natural Armor",
               "description": "You can calculate your AC as 13 + your Dexterity modifier. A shield's benefits apply as normal while you use your natural armor.",
-              "points": 3
+              "points": 3,
+              "excludes": ["stout-natural-armor"]
             },
             {
               "id": "reptilian-camouflage",
@@ -789,12 +809,6 @@
               "points": 2
             },
             {
-              "id": "construct-natural-armor",
-              "name": "Natural Armor",
-              "description": "You can calculate your AC as 13 + your Dexterity modifier. A shield's benefits apply as normal while you use your natural armor.",
-              "points": 3
-            },
-            {
               "id": "poison-resistance",
               "name": "Poison Resistance",
               "description": "You are resistant to poison damage.",
@@ -805,6 +819,24 @@
               "name": "Defensive Form",
               "description": "Once per long rest you harden or shift your physical form and gain Temporary Hit Points equal to 4 + 1d4 × your Proficiency Bonus.",
               "points": 3
+            },
+            {
+              "id": "hybrid-nature",
+              "name": "Hybrid Nature",
+              "description": "You have two creature types: Humanoid and Plant. You can be affected by a game effect if it works on either of your creature types.",
+              "points": -1
+            },
+            {
+              "id": "amorphous",
+              "name": "Amorphous",
+              "description": "You have advantage on ability checks you make to initiate or escape a grapple. You can also squeeze through a space as narrow as 1 inch wide, provided you are wearing and carrying nothing.",
+              "points": 2
+            },
+            {
+              "id": "shape-self",
+              "name": "Shape Self",
+              "description": "As an action, you can reshape your body to give yourself a head, one or two arms, one or two legs, and makeshift hands and feet, or you can revert to a limbless blob. While you have a humanlike shape, you can wear clothing and armor made for a Humanoid of your size.\n\nAs a bonus action, you can extrude a pseudopod that is up to 6 inches wide and 10 feet long, or reabsorb it into your body. As part of the same bonus action, you can use that pseudopod to manipulate an object, open or close a door or container, or pick up or set down a Tiny object. The pseudopod contains no sensory organs and can't attack, activate magic items, or lift more than 10 pounds.",
+              "points": 1
             },
             {
               "id": "constructed-form",
@@ -841,21 +873,71 @@
             {
               "id": "draconic-ancestry",
               "name": "Draconic Ancestry",
-              "description": "If you have draconic ancestry, you must take this trait. Your creature type is also Dragon.Choose one of the following damage types:",
+              "description": "If you have draconic ancestry, you must take this trait. Your creature type is also Dragon. Choose one of the following damage types. Each carries the temperament of the dragons it descends from.",
               "points": 0,
               "required": true,
               "requiresOption": true,
               "options": [
-                {"id": "acid", "name": "Acid", "points": 0, "description": ""},
-                {"id": "cold", "name": "Cold", "points": 0, "description": ""},
-                {"id": "force", "name": "Force", "points": 0, "description": ""},
-                {"id": "lightning", "name": "Lightning", "points": 0, "description": ""},
-                {"id": "radiant", "name": "Radiant", "points": 0, "description": ""},
-                {"id": "thunder", "name": "Thunder", "points": 0, "description": ""},
-                {"id": "fire", "name": "Fire", "points": 1, "description": ""},
-                {"id": "necrotic", "name": "Necrotic", "points": 1, "description": ""},
-                {"id": "poison", "name": "Poison", "points": 1, "description": ""},
-                {"id": "psychic", "name": "Psychic", "points": 1, "description": ""}
+                {
+                  "id": "acid",
+                  "name": "Acid",
+                  "points": 0,
+                  "description": "**Brutal and Cruel.** Your scales are black or dark green and your breath carries the reek of standing water. You have advantage on Charisma (Intimidation) checks made against a creature that has already taken damage from you."
+                },
+                {
+                  "id": "cold",
+                  "name": "Cold",
+                  "points": 0,
+                  "description": "**Primal and Vengeful.** Your scales are white or pale silver, and frost gathers where you sleep. You never forget the scent of a creature that has wounded you, and you have advantage on Wisdom (Survival) checks made to track it."
+                },
+                {
+                  "id": "force",
+                  "name": "Force",
+                  "points": 0,
+                  "description": "**Unbroken Line.** Your scales hold no fixed colour and shift with the light. You have advantage on Charisma checks made to convince another creature of your draconic lineage, and you can always tell whether a creature you can see carries dragon blood."
+                },
+                {
+                  "id": "lightning",
+                  "name": "Lightning",
+                  "points": 0,
+                  "description": "**Mocking Tricksters.** Your scales are blue and your laugh carries further than you mean it to. You have advantage on Charisma (Deception) checks made to maintain a falsehood you find funny."
+                },
+                {
+                  "id": "radiant",
+                  "name": "Radiant",
+                  "points": 0,
+                  "description": "**Reserved Companion.** Your scales are gold and you say a good deal less than you know. You have advantage on Wisdom (Insight) checks made to determine whether a creature is lying to someone you have named a friend."
+                },
+                {
+                  "id": "thunder",
+                  "name": "Thunder",
+                  "points": 0,
+                  "description": "**Boldly Talkative.** Your scales are brass and you have never in your life let a silence stand. You have advantage on Charisma (Persuasion) checks made to keep a conversation going with a creature that would rather end it."
+                },
+                {
+                  "id": "fire",
+                  "name": "Fire",
+                  "points": 1,
+                  "description": "**Arrogant Tyrant.** Your scales are red and you assume any room you enter is yours. You have advantage on Charisma (Intimidation) checks made against a creature you outmatch in size or station."
+                },
+                {
+                  "id": "necrotic",
+                  "name": "Necrotic",
+                  "points": 1,
+                  "description": "**Hoarding History.** Your scales are ash-grey and cold to the touch. You have advantage on Intelligence (History) checks made to recall the deeds of the dead, and you can tell at a glance roughly how long ago a corpse died."
+                },
+                {
+                  "id": "poison",
+                  "name": "Poison",
+                  "points": 1,
+                  "description": "**Manipulative Schemer.** Your scales are green and you would far rather arrange a thing than ask for it. You have advantage on Charisma (Deception) checks made to convince a creature that you are acting in its interest."
+                },
+                {
+                  "id": "psychic",
+                  "name": "Psychic",
+                  "points": 1,
+                  "description": "**Good Host.** Your scales are burnished copper and your eyes never quite settle. You have advantage on Wisdom (Insight) checks made to work out what a creature wants from you."
+                }
               ]
             },
             {
@@ -1001,7 +1083,8 @@
               "id": "stout-natural-armor",
               "name": "Natural Armor",
               "description": "You have thick skin. Your AC is 12 + your Constitution modifier. A shield's benefits apply as normal while you use your natural armor.",
-              "points": 3
+              "points": 3,
+              "excludes": ["natural-armor"]
             },
             {
               "id": "stout-toxin-resilience",
@@ -1075,7 +1158,7 @@
                   "description": "You gain proficiency with the artisan's tools of your choice, and add an additional 1d4 to all ability checks rolled using these tools.",
                   "points": 2
                 },
-                {"id": "tinkerer", "name": "Tinkerer", "description": "Whenever you create an item, you can add a small clockwork effect to it. This effect can be a minor light source, sound effect, movement, or visual effect. These effects grant no mechanical benefit or additional value to the item.", "points": 0}
+                {"id": "tinkerer", "name": "Tinkerer", "description": "Whenever you create an item, you can add a small clockwork effect to it. This effect can be a minor light source, sound effect, movement, or visual effect. These effects grant no mechanical benefit or additional value to the item.", "points": 2}
               ]
             },
             {
@@ -1297,6 +1380,18 @@
               "points": 3
             },
             {
+              "id": "opportunistic-teamwork",
+              "name": "Opportunistic Teamwork",
+              "description": "If an ally attacks a target during their turn, you can use your reaction to make a single attack against that same target with advantage, as long as the creature is within range. You can't use this trait again until you finish a short or long rest.",
+              "points": 3
+            },
+            {
+              "id": "evasive-skitter",
+              "name": "Evasive Skitter",
+              "description": "If you are forced to make a Dexterity saving throw due to an area of effect, you can use your reaction to move up to 5 feet as normal, provoking opportunity attacks, before the effect is resolved — possibly moving out of it entirely. You can't use this trait if your movement speed is reduced to 0.",
+              "points": 3
+            },
+            {
               "id": "skilled-combatant",
               "name": "Skilled Combatant",
               "description": "Choose from the following abilities you gained from your upbringing.",
@@ -1433,6 +1528,12 @@
               "requires": ["native-environment"]
             },
             {
+              "id": "plant-camouflage",
+              "name": "Plant Camouflage",
+              "description": "When standing still, you have advantage on Dexterity (Stealth) checks you make while obscured by plants.",
+              "points": 2
+            },
+            {
               "id": "survivalist-skill-proficiency",
               "name": "Skill Proficiency",
               "description": "You have proficiency in one of the following skills of your choice: Animal Handling, Medicine, Nature, Perception, Stealth, or Survival.",
@@ -1520,6 +1621,12 @@
               "points": 2
             },
             {
+              "id": "divine-presence",
+              "name": "Divine Presence",
+              "description": "You were raised as the living image of your god. You gain proficiency in the Intimidation skill, and you have advantage on Charisma (Intimidation) checks made against fiends and undead.",
+              "points": 3
+            },
+            {
               "id": "devout-magic",
               "name": "Devout Magic",
               "description": "You know one 1st-level spell from the [Cleric]() [spell list]().",
@@ -1561,6 +1668,17 @@
                 {"id": "combat-training", "name": "Combat Training", "description": "You gain proficiency in 3 simple weapons of your choice.", "points": 0},
                 {"id": "weaponsmith", "name": "Weaponsmith", "description": "Your knowledge of weaponry of all kinds and experience in battle gives you the ability to assess your opponent's equipment. At level 3, if you are observing a creature for one minute, you can assess the properties of a creature's weapons as if casting [identify]() on them.", "points": 0},
                 {"id": "combat-climber", "name": "Combat Climber", "description": "Your techniques allow you to fight as you climb. You can Climb with a hand occupied. You must still use another hand and both legs to Climb.", "points": 0}
+              ]
+            },
+            {
+              "id": "menacing",
+              "name": "Menacing",
+              "description": "Your size, bearing, or bloodline makes you hard to ignore. Choose how you carry it.",
+              "points": 0,
+              "requiresOption": true,
+              "options": [
+                {"id": "intimidation", "name": "Intimidation", "points": 2, "description": "You gain proficiency in the Intimidation skill."},
+                {"id": "persuasion", "name": "Persuasion", "points": 2, "description": "You gain proficiency in the Persuasion skill."}
               ]
             },
             {
@@ -1637,7 +1755,7 @@
               "required": true,
               "hasOptions": true,
               "options": [
-                {"id": "mariners-lore", "name": "Mariner's Lore", "description": "Whenever you make an Intelligence (History) or Intelligence (Religion) check related to the sea, its creatures and cultures, or water vehicles, you are considered proficient in the History or Religion skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus.", "points": 0},
+                {"id": "mariners-lore", "name": "Mariner's Lore", "description": "Whenever you make an Intelligence (History) or Intelligence (Religion) check related to the sea, its creatures and cultures, or water vehicles, you are considered proficient in the History or Religion skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus.", "points": 1},
                 {"id": "fishermens-tales", "name": "Fishermen's Tales", "description": "Whenever you make an Wisdom (Insight) or Wisdom (Survival) check related to the sea or other bodies of water, you are considered proficient in the Insight or Survival skill and add double your Proficiency Bonus to the check, instead of your normal Proficiency Bonus.", "points": 1}
               ]
             },
@@ -1676,7 +1794,7 @@
               "id": "sea-legs",
               "name": "Sea Legs",
               "description": "You have advantage on saving throws to be moved against your will and to be knocked prone.",
-              "points": 4
+              "points": 6
             },
             {
               "id": "sure-footed",

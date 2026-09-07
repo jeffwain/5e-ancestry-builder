@@ -1,5 +1,11 @@
 import ReactMarkdown from 'react-markdown';
-import { getTraitDisplay, formatPointsLabel } from '../../utils/traitDisplay';
+import {
+  getTraitDisplay,
+  formatPointsLabel,
+  compactTraitName,
+  compactTraitDescription,
+  formatCompactPoints,
+} from '../../utils/traitDisplay';
 import './TraitContent.css';
 
 /**
@@ -56,17 +62,21 @@ export function TraitContent({
         </div>
       );
 
-    case 'summary-compact':
+    case 'summary-compact': {
+      const description = compactTraitDescription(d);
+      const points = formatCompactPoints(d.cost);
       return (
         <>
-          <span className="trait-content-name">{summaryName(d)}.</span>
-          {d.description && (
+          <span className="trait-content-name">{compactTraitName(d)}.</span>
+          {(description || points) && (
             <span className="trait-content-description">
-              <ReactMarkdown>{d.description}</ReactMarkdown>
+              {description && <ReactMarkdown>{description}</ReactMarkdown>}
+              {points && <span className="trait-content-points"> {points}</span>}
             </span>
           )}
         </>
       );
+    }
 
     case 'tooltip':
       return (

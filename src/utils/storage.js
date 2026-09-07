@@ -25,6 +25,8 @@ export const STORAGE_KEYS = {
   ancestriesShowDetails: 'ui:ancestries-show-details', // Ancestries "show details" (#1)
   ancestriesExpanded: 'ui:ancestries-expanded',    // currently expanded ancestry (#1)
   ancestriesArchetype: 'ui:ancestries-archetype',  // selected archetype (#1)
+  ancestriesTextExpanded: 'ui:ancestries-text-expanded',   // expanded ancestry, text list
+  ancestriesTextArchetype: 'ui:ancestries-text-archetype', // selected archetype, text list
 };
 
 // Detect usable storage once. typeof guard keeps this safe in non-browser envs.

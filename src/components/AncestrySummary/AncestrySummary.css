@@ -1,0 +1,58 @@
+/*
+ * AncestrySummary — additions only.
+ *
+ * The sidebar's look already comes from the .ancestry-summary* rules in
+ * AncestriesPage.css. This file adds nothing but the archetype heading row and
+ * its clear button, so the existing rules stay untouched.
+ */
+
+/* Turn the archetype heading into a row so the clear button can sit at its end.
+   Scoped with the extra class so the plain "Shared Traits" h3 is unaffected. */
+.ancestry-summary-section h3.ancestry-summary-archetype-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.ancestry-summary-archetype-heading-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Optional per-archetype description, shown when the source carries one. */
+.ancestry-summary-archetype-desc {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-600);
+}
+
+.ancestry-summary-clear {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  padding: 0;
+  border: 1px solid var(--color-parchment-300);
+  border-radius: var(--radius-sm);
+  background: var(--color-parchment-100);
+  color: var(--color-ink-500);
+  font-size: var(--text-base);
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.ancestry-summary-clear:hover {
+  background: var(--color-parchment-200);
+  border-color: var(--color-heritage);
+  color: var(--color-heritage);
+}
+
+.ancestry-summary-clear:focus-visible {
+  outline: 2px solid var(--color-heritage);
+  outline-offset: 2px;
+}
