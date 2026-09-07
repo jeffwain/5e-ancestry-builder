@@ -144,25 +144,31 @@ function summaryName(d) {
 
 // Cost pill. Styling lives in components.css / TraitContent.css; `variant` only
 // chooses the base pill flavor (card check-icon fallback, plain cost, or dark).
-function CostPill({ cost, variant }) {
+// Exported so wrappers (e.g. TraitCard's option rows) reuse it rather than
+// re-implementing the pill; `className` lets them add context classes.
+export function CostPill({ cost, variant, className = '' }) {
   const noCost = cost === undefined || cost === null || cost === '';
   const isFree = cost === 0;
+  const extra = className ? ` ${className}` : '';
 
   if (variant === 'card') {
     if (noCost) {
       return (
-        <span className="pill pill-icon-only cost">
+        <span className={`pill pill-icon-only cost${extra}`}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
             <path d="M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z" />
           </svg>
         </span>
       );
     }
+    // Drawbacks cost negative points — they refund budget, so show "+N".
+    const isRefund = typeof cost === 'number' && cost < 0;
+    const amount = isRefund ? Math.abs(cost) : cost;
     return (
-      <span className={`pill cost ${isFree ? 'free' : ''}`}>
+      <span className={`pill cost ${isFree ? 'free' : ''}${extra}`}>
         {isFree ? 'Free' : (
           <>
-            <span className="points">{cost}</span>&nbsp;{cost === 1 ? 'pt' : 'pts'}
+            <span className="points">{isRefund ? `+${amount}` : amount}</span>&nbsp;{amount === 1 ? 'pt' : 'pts'}
           </>
         )}
       </span>
@@ -174,5 +180,5 @@ function CostPill({ cost, variant }) {
   const cls = variant === 'dark'
     ? `pill dark ${isFree ? 'free' : ''}`
     : `pill cost ${isFree ? 'free' : ''}`;
-  return <span className={cls.trim()}>{label}</span>;
+  return <span className={`${cls.trim()}${extra}`}>{label}</span>;
 }

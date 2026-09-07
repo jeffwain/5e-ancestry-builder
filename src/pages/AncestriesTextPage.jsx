@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { Accordion } from '../components/Accordion';
 import { AncestrySummary } from '../components/AncestrySummary';
 import { SummaryTraitCard } from '../components/SummaryTraitCard';
-import { getResolvedTraitsAndOptions, resolveTrait } from '../components/AncestryCard';
+import { getResolvedTraitsAndOptions, resolveTrait } from '../utils/ancestryResolve';
 import { useConvertedTraits, combineTraitLookups } from '../hooks/useConvertedTraits';
 import { usePersistentState } from '../hooks/usePersistentState';
 import { loadJson } from '../utils/dataCache';

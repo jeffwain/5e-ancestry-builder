@@ -82,13 +82,6 @@
   --pill-text: var(--pill-text-size);
 }
 
-.pill.selected-option {
-  font-weight: 500;
-  --pill-bg: var(--pill-bg-free);
-  --pill-text: var(--pill-text-free);
-  border: 0.0625rem solid var(--pill-text-free);
-}
-
 /* ── Pills - Type Badges ────────────────── */
 .pill.type {
   text-transform: uppercase;
@@ -173,12 +166,6 @@
 .pill.dark.free {
   --pill-bg: var(--color-green-38);
   --pill-text: var(--color-parchment-50);
-}
-
-/* ── Pills - Spacing Modifiers ──────────── */
-.pill.spaced {
-  margin-top: var(--space-2);
-  margin-right: var(--space-1);
 }
 
 /* ── Pill Wrapper (for tooltips) ────────── */

@@ -112,6 +112,12 @@ export function CustomAncestryPage() {
                 that most fit into. Some species are only a certain size, such as goliaths
                 (medium) or gnomes (small). Choose one of the following options:
               </p>
+              <ul>
+                <li><strong>Medium</strong> — about 4–7 feet tall. Most species fit here.</li>
+                <li><strong>Small</strong> — about 2–4 feet tall. You can move through the
+                space of any creature that is of a size larger than yours, but you have
+                disadvantage on attack rolls with Heavy weapons.</li>
+              </ul>
               <div className="ancestry-actions">
                 <button
                   className="btn btn-primary"

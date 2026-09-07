@@ -1,1 +1,1 @@
-export { AncestryCard, resolveTrait, getResolvedTraitsAndOptions } from './AncestryCard';
+export { AncestryCard } from './AncestryCard';

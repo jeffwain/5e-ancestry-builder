@@ -2,7 +2,13 @@
 
 ## Rules
 
-- Do not remove or change CSS styles. Use existing classes and styles. Strive for reuse. If styles are missing, you can add new files and styles and classes to components, but do not edit existing styles.
+- Do not remove or change existing CSS styles. Use existing classes and styles.
+  Strive for reuse. If styles are missing you can add new files, classes and
+  styles to components, but do not edit existing ones.
+- Write new CSS modern and flat. `:is()` for parent elements and multi-select
+  items like hover/active/focus. Logical positioning. Nested declarations, but
+  as shallow as possible. Literal naming over short (e.g. `.trait-card-large`,
+  not `.t-lg`).
 
 ## Ancestry data is generated
 

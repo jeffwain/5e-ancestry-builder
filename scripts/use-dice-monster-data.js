@@ -1,14 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { createRequire } from 'module';
 import dotenv from 'dotenv';
 
 // Load environment variables
 dotenv.config();
-
-// Use createRequire to simulate require() in ES modules
-const require = createRequire(import.meta.url);
 
 // Get the directory of the current script
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

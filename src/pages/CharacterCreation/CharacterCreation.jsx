@@ -1,28 +1,7 @@
-import {
-  ideaStep,
-  classStep,
-  backgroundStep,
-  ancestryStep,
-  abilityScoresStep,
-  proficienciesStep,
-  toolsStep,
-  languagesStep,
-  featStep,
-} from './steps';
+import { steps } from './steps';
+import { StepCard, StepSummaryCard } from './steps/StepCard';
 import '../CharacterCreationPage.css';
 import './CharacterCreation.css';
-
-const steps = [
-  ideaStep,
-  classStep,
-  backgroundStep,
-  ancestryStep,
-  abilityScoresStep,
-  proficienciesStep,
-  toolsStep,
-  languagesStep,
-  featStep,
-];
 
 export function CharacterCreation() {
   return (
@@ -45,15 +24,16 @@ export function CharacterCreation() {
           <h1>Creating a Character</h1>
         </header>
         {steps.map((step) => (
-          <step.StepCard key={step.id} />
+          <StepCard key={step.id} step={step} />
         ))}
       </main>
 
       <aside className="creation-summary">
         <h3>Character Summary</h3>
-        {steps.map((step) => (
-          <step.SummaryCard key={step.id} />
-        ))}
+        {steps.map((step) => {
+          const Summary = step.SummaryCard || StepSummaryCard;
+          return <Summary key={step.id} step={step} />;
+        })}
       </aside>
     </div>
   );

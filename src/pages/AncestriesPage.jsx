@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
-import { AncestryCard, getResolvedTraitsAndOptions } from '../components/AncestryCard';
+import { AncestryCard } from '../components/AncestryCard';
 import { AncestrySummary } from '../components/AncestrySummary';
+import { getResolvedTraitsAndOptions } from '../utils/ancestryResolve';
 import { useConvertedTraits, combineTraitLookups } from '../hooks/useConvertedTraits';
 import { usePersistentState } from '../hooks/usePersistentState';
 import { loadJson } from '../utils/dataCache';

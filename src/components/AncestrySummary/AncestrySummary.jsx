@@ -1,4 +1,4 @@
-import { resolveTrait } from '../AncestryCard';
+import { resolveTrait } from '../../utils/ancestryResolve';
 import { SummaryTraitCard } from '../SummaryTraitCard';
 import './AncestrySummary.css';
 
