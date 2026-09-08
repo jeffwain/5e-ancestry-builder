@@ -10,6 +10,7 @@ import {
   CustomAncestryPage,
   AncestriesPage,
   AncestriesTextPage,
+  AncestryEditorPage,
   AuditPage,
   OverviewPage,
 } from './pages';
@@ -161,6 +162,7 @@ function AppContent() {
               />
             }
           />
+          <Route path="/editor" element={<AncestryEditorPage />} />
           <Route
             path="/builder"
             element={

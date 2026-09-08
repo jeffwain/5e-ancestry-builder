@@ -1,0 +1,372 @@
+/*
+ * Ancestry editor — ISOLATED.
+ *
+ * Every selector here is prefixed `ae-` and nothing outside this file is
+ * touched. To remove the feature entirely, delete this file,
+ * AncestryEditorPage.jsx, scripts/ancestry-source-api.mjs, the route + tab, and
+ * the ancestryEditorApi plugin in vite.config.js. Nothing else references it.
+ */
+
+.ae-page {
+  padding: var(--space-4);
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.ae-muted { color: var(--color-ink-500); font-size: var(--text-sm); }
+.ae-error { color: var(--color-error); font-size: var(--text-sm); line-height: var(--leading-relaxed); }
+
+.ae-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-parchment-300);
+  margin-bottom: var(--space-4);
+}
+
+.ae-header h1 {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-xl);
+  color: var(--color-ink-900);
+}
+
+.ae-header p { margin: 0; max-width: 70ch; }
+
+.ae-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ae-status {
+  font-size: var(--text-sm);
+  color: var(--color-ink-600);
+  max-width: 38ch;
+  text-align: right;
+}
+
+.ae-save {
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-heritage);
+  border-radius: var(--radius-sm);
+  background: var(--color-heritage);
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  cursor: pointer;
+}
+.ae-save:disabled { opacity: 0.45; cursor: default; }
+
+/* ── three-column shell ─────────────────────────────────────────────────── */
+
+.ae-grid {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr) 460px;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+@media (max-width: 1200px) {
+  .ae-grid { grid-template-columns: 220px minmax(0, 1fr); }
+  .ae-col-picker { grid-column: 1 / -1; }
+}
+
+@media (max-width: 800px) {
+  .ae-grid { grid-template-columns: minmax(0, 1fr); }
+  .ae-col-picker { grid-column: auto; }
+}
+
+.ae-col {
+  border: 1px solid var(--color-parchment-300);
+  border-radius: var(--radius-md);
+  background: var(--color-parchment-50);
+  padding: var(--space-3);
+  max-height: calc(100vh - 190px);
+  overflow: auto;
+}
+
+.ae-input {
+  width: 100%;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-parchment-300);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  font-family: inherit;
+  font-size: var(--text-sm);
+  color: var(--color-ink-800);
+}
+.ae-input-pts { width: 6rem; }
+
+/* ── column 1: ancestry list ────────────────────────────────────────────── */
+
+.ae-ancestry-list {
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ae-ancestry-btn {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  cursor: pointer;
+}
+.ae-ancestry-btn:hover { background: var(--color-parchment-100); }
+.ae-ancestry-btn.selected {
+  background: var(--color-parchment-200);
+  border-color: var(--color-heritage);
+}
+
+.ae-ancestry-name { font-size: var(--text-sm); color: var(--color-ink-800); }
+.ae-ancestry-sub { font-size: var(--text-xs); color: var(--color-ink-400); }
+
+/* ── column 2: slots ────────────────────────────────────────────────────── */
+
+.ae-current-title { margin: 0; font-size: var(--text-lg); color: var(--color-ink-900); }
+.ae-current-sum { margin: var(--space-1) 0 var(--space-3); }
+
+.ae-subhead {
+  margin: var(--space-4) 0 var(--space-2);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-500);
+}
+
+.ae-slot {
+  border: 1px solid var(--color-parchment-300);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  padding: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+.ae-slot-active {
+  border-color: var(--color-heritage);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-heritage) 18%, transparent);
+}
+
+.ae-slot-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+.ae-slot-target {
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-ink-800);
+  cursor: pointer;
+}
+.ae-slot-target:hover { color: var(--color-heritage); }
+
+.ae-slot-meta { display: flex; align-items: center; gap: var(--space-2); }
+
+.ae-points {
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink-500);
+}
+
+.ae-dirty {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-heritage);
+  font-weight: 700;
+}
+
+.ae-empty { margin: 0; font-style: italic; }
+
+.ae-trait-rows { list-style: none; margin: 0; padding: 0; }
+
+.ae-trait-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2.5rem auto;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 2px 0;
+  border-bottom: 1px solid var(--color-parchment-100);
+  font-size: var(--text-sm);
+}
+.ae-trait-row:last-child { border-bottom: none; }
+
+/* The tooltip trigger defaults to inline-flex; here it is the row's label cell.
+   Hover previews the trait, click pins the popover open. */
+.ae-row-trigger {
+  display: block;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.ae-row-label {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 var(--space-2);
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--color-ink-800);
+}
+
+.ae-row-name { color: var(--color-ink-800); }
+
+/* The raw source reference, kept alongside the friendly name — this is a source
+   editor, so the id you are actually writing stays visible. */
+.ae-row-ref {
+  font-family: monospace;
+  font-size: var(--text-xs);
+  color: var(--color-ink-400);
+}
+.ae-row-pts {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink-500);
+  font-size: var(--text-xs);
+}
+
+.ae-row-actions { display: flex; gap: 2px; }
+.ae-row-actions button {
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  border: 1px solid var(--color-parchment-300);
+  border-radius: 3px;
+  background: var(--color-parchment-50);
+  color: var(--color-ink-500);
+  font-size: var(--text-xs);
+  line-height: 1;
+  cursor: pointer;
+}
+.ae-row-actions button:hover { background: var(--color-parchment-200); }
+.ae-remove:hover { color: var(--color-error); border-color: var(--color-error); }
+
+.ae-tag {
+  margin-left: var(--space-1);
+  padding: 0 4px;
+  border-radius: 3px;
+  background: var(--color-parchment-200);
+  color: var(--color-ink-500);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.ae-tag-note { background: color-mix(in srgb, var(--color-heritage) 15%, transparent); }
+
+/* Spread entries can't be priced without resolving the constant. */
+.ae-kind-spread .ae-row-label { font-style: italic; color: var(--color-ink-500); }
+
+/* ── column 3: trait picker ─────────────────────────────────────────────── */
+
+.ae-picker-head { position: sticky; top: 0; background: var(--color-parchment-50); padding-bottom: var(--space-2); }
+.ae-target-line { margin: var(--space-2) 0 0; }
+
+.ae-table-wrap { overflow-x: auto; }
+
+.ae-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-xs);
+}
+.ae-table th {
+  text-align: left;
+  padding: var(--space-1) var(--space-1) var(--space-1) 0;
+  border-bottom: 1px solid var(--color-parchment-300);
+  color: var(--color-ink-500);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  background: var(--color-parchment-50);
+}
+.ae-table td {
+  padding: 3px var(--space-1) 3px 0;
+  border-bottom: 1px solid var(--color-parchment-100);
+  vertical-align: middle;
+}
+.ae-num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.ae-t-name { display: block; color: var(--color-ink-800); font-size: var(--text-sm); }
+.ae-t-id { display: block; color: var(--color-ink-400); font-family: monospace; }
+.ae-t-cat { color: var(--color-ink-500); }
+
+.ae-select {
+  max-width: 11rem;
+  padding: 1px 2px;
+  border: 1px solid var(--color-parchment-300);
+  border-radius: 3px;
+  background: #fff;
+  font-family: inherit;
+  font-size: var(--text-xs);
+}
+
+.ae-add {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 1px solid var(--color-parchment-300);
+  border-radius: 3px;
+  background: var(--color-parchment-100);
+  color: var(--color-ink-700);
+  font-size: var(--text-sm);
+  line-height: 1;
+  cursor: pointer;
+}
+.ae-add:hover:not(:disabled) { background: var(--color-heritage); border-color: var(--color-heritage); color: #fff; }
+.ae-add:disabled { opacity: 0.4; cursor: default; }
+
+/* ── inline trait form ──────────────────────────────────────────────────── */
+
+.ae-inline-box {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-parchment-300);
+}
+
+.ae-linkish {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--color-heritage);
+  font-family: inherit;
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+.ae-inline-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.ae-add-inline {
+  align-self: flex-start;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-heritage);
+  border-radius: var(--radius-sm);
+  background: var(--color-parchment-100);
+  color: var(--color-heritage);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  cursor: pointer;
+}
+.ae-add-inline:disabled { opacity: 0.45; cursor: default; }
