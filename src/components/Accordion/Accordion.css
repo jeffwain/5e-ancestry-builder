@@ -1,0 +1,139 @@
+/* Accordion — the collapsible card shell (.category-trait / .header / .trait-category-content) */
+.category-trait {
+  --category-border: var(--color-heritage);
+  --category-background-light: var(--color-ink-400);
+  --category-background-dark: var(--color-ink-500);
+  --category-background-light-hover: var(--color-ink-500);
+  --category-background-dark-hover: var(--color-ink-600);
+  background: var(--color-parchment-100);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  /* Prevent break inside for masonry */
+  break-inside: avoid;
+}
+
+/* Culture category styling - use culture colors */
+.category-trait.culture {
+  --category-border: var(--color-culture);
+  --category-background-light: var(--color-green-43);
+  --category-background-dark: var(--color-green-29);
+  --category-background-light-hover: var(--color-green-38);
+  --category-background-dark-hover: var(--color-green-21);
+}
+
+/* Core attribute styling */
+.category-trait.heritage {
+  --category-border: var(--color-red-45);
+  --category-background-light: var(--color-red-45);
+  --category-background-dark: var(--color-red-31);
+  --category-background-light-hover: var(--color-red-31);
+  --category-background-dark-hover: var(--color-red-27);
+}
+
+/* Culture category styling - use culture colors */
+.category-trait.core-attribute {
+  --category-border: var(--color-blue-green-50);
+  --category-background-light: var(--color-blue-green-50);
+  --category-background-dark: var(--color-blue-green-30);
+  --category-background-light-hover: var(--color-blue-green-40);
+  --category-background-dark-hover: var(--color-blue-green-21);
+}
+
+/* Missing required selection warning state */
+.category-trait.missing-required {
+  --category-border: var(--color-warning);
+  --category-background-light: var(--color-warning);
+  --category-background-dark: oklch(from var(--color-warning) calc(l - 0.15) c h);
+  --category-background-light-hover: oklch(from var(--color-warning) calc(l - 0.05) c h);
+  --category-background-dark-hover: oklch(from var(--color-warning) calc(l - 0.2) c h);
+}
+
+.category-trait > .header {
+  background: linear-gradient(135deg, var(--category-background-light) 0%, var(--category-background-dark) 100%);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.category-trait > .header:hover,
+.category-trait > .header:focus-visible,
+.category-trait > .header:active {
+  background: linear-gradient(135deg, var(--category-background-light-hover) 0%, var(--category-background-dark-hover) 100%);
+}
+
+.category-trait > .header .header-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.category-trait > .header .name {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+}
+
+.category-trait > .header .pill.required {
+  background: oklch(from var(--category-background-light) calc(l * 1.8) calc(c * 1.4) h);
+  color: var(--color-ink-800);
+}
+
+.category-trait > .header .pill.heritage {
+  background: oklch(from var(--category-background-light) calc(l * 1.8) calc(c * 1.4) h);
+  color: var(--color-ink-800);
+}
+
+.category-trait > .header .pill.heritage,
+.category-trait > .header .pill.culture {
+  background: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.8);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.24);
+}
+
+/* Selected count pill - uses .pill.count from components.css */
+.category-trait .chevron {
+  font-size: var(--text-base);
+  color: var(--color-parchment-200);
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.category-trait .chevron.expanded {
+  transform: rotate(180deg);
+}
+
+.trait-category-content {
+  background: var(--color-parchment-50);
+  border: 0.0625rem solid var(--category-border);
+  box-shadow: inset 0 0 1px 0.0625rem oklch(from var(--category-border) l c h / 0.2);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+}
+
+.category-trait.collapsed .trait-category-content:not(:has(*)) {
+  height: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+}
+
+.trait-category-content > .description {
+  margin-bottom: var(--space-1);
+}
+
+.category-trait > .description {
+  font-size: var(--text-base);
+  color: var(--color-ink-900);
+}

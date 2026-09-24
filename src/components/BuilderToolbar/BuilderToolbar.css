@@ -1,0 +1,162 @@
+/* BuilderToolbar — sticky budget / trait-pill bar shared by the builder pages */
+.sticky-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-parchment-50);
+  border-bottom: 1px solid var(--color-parchment-300);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.sticky-toolbar.scrolled {
+  box-shadow: none
+}
+
+.sticky-toolbar .toolbar-content {
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+}
+
+/* Progress bar at top of toolbar */
+.sticky-toolbar .toolbar-progress {
+  height: 4px;
+  background: var(--color-parchment-300);
+  overflow: hidden;
+}
+
+.sticky-toolbar .toolbar-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-green-65) 0%, var(--color-green-43) 100%);
+  transition: width var(--transition-base);
+}
+
+.sticky-toolbar .toolbar-progress-bar.over {
+  background: linear-gradient(90deg, var(--color-error) 0%, #b22222 100%);
+}
+
+/* Main toolbar row */
+.sticky-toolbar .toolbar-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-2) var(--space-6);
+  min-height: 3rem;
+  transition: all var(--transition-fast);
+}
+
+/* Collapsed state when scrolled */
+.sticky-toolbar.scrolled .toolbar-row {
+  max-height: 3.5rem;
+  overflow: hidden;
+}
+
+/* Points display - compact in toolbar */
+.sticky-toolbar .toolbar-points {
+  display: flex;
+  align-items: baseline;
+  gap: 0.125rem;
+  flex-shrink: 0;
+  padding-right: var(--space-3);
+  border-right: 1px solid var(--color-parchment-300);
+}
+
+.sticky-toolbar .points-spent {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-heritage);
+  line-height: 1;
+}
+
+.sticky-toolbar .points-spent.over {
+  color: var(--color-error);
+}
+
+.sticky-toolbar .points-divider {
+  font-size: var(--text-base);
+  color: var(--color-ink-500);
+}
+
+.sticky-toolbar .points-total {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-ink-700);
+}
+
+.sticky-toolbar .points-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--color-ink-500);
+  margin-left: var(--space-1);
+}
+
+/* Trait pills */
+.sticky-toolbar .toolbar-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem var(--space-1);
+  flex: 1;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.sticky-toolbar .pills-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-500);
+  flex-shrink: 0;
+}
+
+.sticky-toolbar .no-pills {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--color-ink-400);
+  font-style: italic;
+}
+
+/* Toolbar actions (warning + button) */
+.sticky-toolbar .toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* ── Responsive ─────────────────────────── */
+@media (max-width: 1024px) {
+  .sticky-toolbar .toolbar-row {
+    flex-wrap: wrap;
+  }
+
+  .sticky-toolbar .pills-label,
+  .sticky-toolbar .points-label {
+    display: none;
+  }
+
+  .sticky-toolbar .toolbar-points {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .sticky-toolbar.scrolled .toolbar-pills {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .sticky-toolbar .toolbar-row {
+    padding: var(--space-2) var(--space-4);
+    gap: var(--space-2);
+  }
+
+  .sticky-toolbar .pills-label {
+    display: none;
+  }
+}

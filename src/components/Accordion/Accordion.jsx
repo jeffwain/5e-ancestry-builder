@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import './Accordion.css';
 
 /**
  * Shared collapsible card shell.

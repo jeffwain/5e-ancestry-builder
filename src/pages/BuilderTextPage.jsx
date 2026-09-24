@@ -6,8 +6,6 @@ import { BuilderToolbar } from '../components/BuilderToolbar';
 import { TraitBlock } from '../components/TraitBlock';
 import { useAncestryActions } from '../hooks/useAncestryActions';
 import { groupTraitsByType, POINT_BUDGET } from '../utils/traitDisplay';
-// Page shell, two-column grid and sidebar styling are shared with /ancestries.
-import './AncestriesPage.css';
 import './BuilderTextPage.css';
 
 /**

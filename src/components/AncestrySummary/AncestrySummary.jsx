@@ -22,8 +22,7 @@ const PencilIcon = () => (
  *    Whatever a page leaves out is simply not rendered, so the ancestry pages
  *    get exactly the sidebar they had before.
  *
- * Its look comes from the existing .ancestry-summary* rules in AncestriesPage.css;
- * AncestrySummary.css adds the archetype-heading row and its clear button, and
+ * AncestrySummary.css holds the panel and the archetype-heading row;
  * AncestrySummaryBuilder.css the generic header / footer bits.
  *
  * Props (ancestry mode):

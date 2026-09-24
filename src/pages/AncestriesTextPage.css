@@ -1,8 +1,7 @@
 /*
  * Text-based ancestry list.
  *
- * The page shell, category headings and sidebar all come from AncestriesPage.css,
- * which this page also imports. Everything here is new: the stacked accordion
+ * The page shell, category headings and sidebar all come from styles/browse.css. Everything here is new: the stacked accordion
  * heading (name / summary / tags) and the two-column archetype list.
  */
 .ancestry-text-list {

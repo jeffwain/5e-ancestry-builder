@@ -7,8 +7,6 @@ import { useConvertedTraits, combineTraitLookups } from '../hooks/useConvertedTr
 import { usePersistentState } from '../hooks/usePersistentState';
 import { loadJson } from '../utils/dataCache';
 import { STORAGE_KEYS } from '../utils/storage';
-// Layout and sidebar styling are shared with /ancestries — reused, not duplicated.
-import './AncestriesPage.css';
 import './AncestriesTextPage.css';
 
 /**

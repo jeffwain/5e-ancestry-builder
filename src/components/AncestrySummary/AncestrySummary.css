@@ -1,10 +1,122 @@
-/*
- * AncestrySummary — additions only.
- *
- * The sidebar's look already comes from the .ancestry-summary* rules in
- * AncestriesPage.css. This file adds nothing but the archetype heading row and
- * its clear button, so the existing rules stay untouched.
- */
+/* AncestrySummary — the sticky sidebar panel */
+.ancestry-summary {
+  background: var(--color-parchment-50);
+  border: 1px solid var(--color-parchment-300);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.ancestry-summary.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.ancestry-summary-placeholder {
+  color: var(--color-ink-400);
+  font-style: italic;
+  text-align: center;
+  line-height: var(--leading-relaxed);
+}
+
+.ancestry-summary-title {
+  font-size: var(--text-xl);
+  color: var(--color-ink-900);
+  margin-bottom: var(--space-3);
+  line-height: var(--leading-tight);
+}
+
+.ancestry-summary-desc {
+  font-size: var(--text-sm);
+  color: var(--color-ink-600);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.ancestry-summary-section {
+  margin-bottom: var(--space-4);
+}
+
+.ancestry-summary-section h3 {
+  font-size: var(--text-base);
+  color: var(--color-heritage);
+  margin-bottom: var(--space-2);
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--color-parchment-300);
+}
+
+.ancestry-summary-traits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ancestry-summary-hint {
+  background: var(--color-parchment-100);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-parchment-300);
+  color: var(--color-ink-500);
+  font-style: italic;
+  font-size: var(--text-sm);
+  padding: var(--space-2) var(--space-3);
+}
+
+.ancestry-summary-archetype-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.ancestry-summary-archetype-btn {
+  width: 100%;
+  text-align: left;
+  background: var(--color-parchment-50);
+  border: 1px solid var(--color-parchment-300);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-sm);
+  font-style: normal;
+  color: var(--color-ink-700);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.ancestry-summary-archetype-btn:hover {
+  background: var(--color-parchment-200);
+  border-color: var(--color-heritage);
+  color: var(--color-heritage);
+}
+
+/* Action buttons */
+.ancestry-summary-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-parchment-300);
+}
+
+.ancestry-summary-actions .btn {
+  flex: 1;
+  justify-content: center;
+  font-size: var(--text-md);
+}
+
+.ancestry-summary-actions .btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+
+/* Archetype heading row and its clear button. */
 
 /* Turn the archetype heading into a row so the clear button can sit at its end.
    Scoped with the extra class so the plain "Shared Traits" h3 is unaffected. */

@@ -1,9 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useCharacter } from '../../contexts/CharacterContext';
 import { TraitTooltip } from '../TraitTooltip';
-// The .sticky-toolbar rules live in Layout.css, where this markup started, and
-// are not scoped to .layout — so both builder pages get them from here.
-import '../Layout/Layout.css';
+import './BuilderToolbar.css';
 
 /**
  * The builder's sticky toolbar: budget progress, points spent, and a pill per

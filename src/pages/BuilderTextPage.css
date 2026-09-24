@@ -1,7 +1,7 @@
 /*
  * Block builder page.
  *
- * Everything structural is borrowed: .ancestries-page for the shell,
+ * Everything structural comes from styles/browse.css: .ancestries-page for the shell,
  * .ancestries-two-col / .ancestries-browse / .ancestries-summary-col for the
  * grid and sticky sidebar, .ancestry-category / .category-header for the trait
  * type headings. This file only lifts the sticky sidebar clear of the toolbar,
