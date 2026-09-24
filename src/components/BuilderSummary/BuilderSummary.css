@@ -1,0 +1,6 @@
+/* The prebuilt a renamed build started from, under the points / name header. */
+.builder-summary-based-on {
+  margin-block: calc(-1 * var(--space-2)) var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-ink-600);
+}

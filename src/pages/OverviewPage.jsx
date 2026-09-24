@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { AncestryOverview } from '../components/AncestryOverview';
+import { BuilderSummary } from '../components/BuilderSummary';
 import './OverviewPage.css';
 
 export function OverviewPage() {
@@ -19,10 +19,7 @@ export function OverviewPage() {
           </button>
         </header>
 
-        <AncestryOverview
-          showHeader={true}
-          showFooter={true}
-        />
+        <BuilderSummary />
       </div>
     </div>
   );
