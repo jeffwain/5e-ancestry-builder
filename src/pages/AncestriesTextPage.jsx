@@ -124,8 +124,8 @@ export function AncestriesTextPage({ allTraits = {}, onUse, onCustomize }) {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [expandedAncestry, setExpandedAncestry] = usePersistentState(STORAGE_KEYS.ancestriesTextExpanded, null);
-  const [selectedArchetypeId, setSelectedArchetypeId] = usePersistentState(STORAGE_KEYS.ancestriesTextArchetype, null);
+  const [expandedAncestry, setExpandedAncestry] = usePersistentState(STORAGE_KEYS.ancestriesExpanded, null);
+  const [selectedArchetypeId, setSelectedArchetypeId] = usePersistentState(STORAGE_KEYS.ancestriesArchetype, null);
 
   const { convertedTraitsById } = useConvertedTraits();
   const traitLookup = useMemo(

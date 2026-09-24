@@ -12,27 +12,25 @@ import './TraitContent.css';
 /**
  * The shared inner content of a trait card.
  *
- * The three trait surfaces — the selectable builder card (TraitCard), the
- * read-only summary card (SummaryTraitCard) and the hover popover
- * (TraitTooltip) — are the *same content* in different wrappers. This renders
- * that content once, with one class system (`.trait-content-*`). Each wrapper
- * keeps its own root class (`.card-trait` / `.summary-trait-card` /
- * `.trait-tooltip`) and "sends styles down" into these inner classes via the
- * cascade — see TraitContent.css.
+ * The trait surfaces — the builder paragraph (TraitParagraph), the read-only
+ * summary card (SummaryTraitCard) and the hover popover (TraitTooltip) — are
+ * the *same content* in different wrappers. This renders that content once,
+ * with one class system (`.trait-content-*`). Each wrapper keeps its own root
+ * class (`.trait-paragraph` / `.summary-trait-card` / `.trait-tooltip`) and
+ * "sends styles down" into these inner classes via the cascade — see
+ * TraitContent.css.
  *
  * Wrappers pass only context-specific interactive extras:
- *   - headerExtra: node in the header between name and cost (builder "Required" pill)
  *   - metaExtra:   node appended to the meta row (sidebar requirement pills)
  *   - children:    node appended inside the description (builder option radios etc.)
  *   - showFooter:  whether the summary meta row (cost / restriction / category) is shown
  *
- * variant: 'card' | 'card-compact' | 'paragraph' | 'summary' | 'summary-compact' | 'tooltip'
+ * variant: 'paragraph' | 'summary' | 'summary-compact' | 'tooltip'
  */
 export function TraitContent({
   trait,
   selectedOptions = {},
   variant = 'summary',
-  headerExtra = null,
   metaExtra = null,
   children = null,
   showFooter = true,
@@ -40,31 +38,6 @@ export function TraitContent({
   const d = getTraitDisplay(trait, selectedOptions);
 
   switch (variant) {
-    case 'card':
-      return (
-        <>
-          <div className="trait-content-header">
-            <h4 className="trait-content-name flex1">{d.baseName}</h4>
-            {headerExtra}
-            <CostPill cost={d.cost} variant="card" />
-          </div>
-          <div className="trait-content-description">
-            {d.description && <ReactMarkdown>{d.description}</ReactMarkdown>}
-            {children}
-          </div>
-        </>
-      );
-
-    case 'card-compact':
-      return (
-        <div className="trait-content-header">
-          <h4 className="trait-content-name flex1">
-            {d.selectedOption ? d.selectedOption.name : d.baseName}
-          </h4>
-          <CostPill cost={d.cost} variant="card" />
-        </div>
-      );
-
     // Runs the whole trait together as one sentence — "Name [2]. Description." —
     // for the block builder, where traits read as prose rather than as cards.
     case 'paragraph': {
@@ -186,42 +159,15 @@ function summaryName(d) {
 }
 
 // Cost pill. Styling lives in components.css / TraitContent.css; `variant` only
-// chooses the base pill flavor (card check-icon fallback, plain cost, or dark).
-// Exported so wrappers (e.g. TraitCard's option rows) reuse it rather than
-// re-implementing the pill; `className` lets them add context classes.
-export function CostPill({ cost, variant, className = '' }) {
+// chooses the base pill flavor (plain cost, or dark).
+function CostPill({ cost, variant }) {
   const noCost = cost === undefined || cost === null || cost === '';
   const isFree = cost === 0;
-  const extra = className ? ` ${className}` : '';
-
-  if (variant === 'card') {
-    if (noCost) {
-      return (
-        <span className={`pill pill-icon-only cost${extra}`}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path d="M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z" />
-          </svg>
-        </span>
-      );
-    }
-    // Drawbacks cost negative points — they refund budget, so show "+N".
-    const isRefund = typeof cost === 'number' && cost < 0;
-    const amount = isRefund ? Math.abs(cost) : cost;
-    return (
-      <span className={`pill cost ${isFree ? 'free' : ''}${extra}`}>
-        {isFree ? 'Free' : (
-          <>
-            <span className="points">{isRefund ? `+${amount}` : amount}</span>&nbsp;{amount === 1 ? 'pt' : 'pts'}
-          </>
-        )}
-      </span>
-    );
-  }
 
   if (noCost) return null;
   const label = formatPointsLabel(cost) || `${cost} pts`;
   const cls = variant === 'dark'
     ? `pill dark ${isFree ? 'free' : ''}`
     : `pill cost ${isFree ? 'free' : ''}`;
-  return <span className={`${cls.trim()}${extra}`}>{label}</span>;
+  return <span className={cls.trim()}>{label}</span>;
 }

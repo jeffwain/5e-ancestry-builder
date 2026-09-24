@@ -12,7 +12,6 @@ import { SummaryTraitCard } from '../SummaryTraitCard';
  *
  * variant:
  *  - 'summary'  — compact short-text trait cards (.ancestry-summary-* classes)
- *  - 'overview' — full detail cards (.overview-trait-lists / .trait-section)
  */
 const VARIANTS = {
   summary: {
@@ -21,13 +20,6 @@ const VARIANTS = {
     titleClass: null,
     listClass: 'ancestry-summary-traits',
     cardProps: { compact: true, showDetails: false, showFooter: false },
-  },
-  overview: {
-    wrapperClass: 'overview-trait-lists',
-    sectionClass: 'trait-section',
-    titleClass: 'section-title',
-    listClass: 'trait-list',
-    cardProps: { showFooter: true },
   },
 };
 

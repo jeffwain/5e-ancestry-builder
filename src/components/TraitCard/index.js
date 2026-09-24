@@ -1,1 +1,0 @@
-export { TraitCard } from './TraitCard';

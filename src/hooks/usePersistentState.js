@@ -7,7 +7,7 @@ import { loadState, saveState } from '../utils/storage';
  * Survives reloads; degrades gracefully to plain in-memory state when storage
  * is unavailable. One call per persisted UI preference, e.g.:
  *
- *   const [view, setView] = usePersistentState(STORAGE_KEYS.builderView, 'card');
+ *   const [expanded, setExpanded] = usePersistentState(STORAGE_KEYS.ancestriesExpanded, null);
  *
  * @param {string} key   storage key (use a STORAGE_KEYS constant)
  * @param {*} defaultValue value used when nothing is stored yet
