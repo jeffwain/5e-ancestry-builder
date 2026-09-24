@@ -6,9 +6,7 @@ export function TabNavigation({ hasCustomAncestry = false }) {
     { path: '/', label: 'Character Creation' },
     { path: '/customancestry', label: 'Create an Ancestry' },
     { path: '/ancestries', label: 'Ancestries' },
-    { path: '/ancestries-text', label: 'Ancestry List' },
     { path: '/builder', label: 'Ancestry Builder' },
-    { path: '/builder-text', label: 'Builder List' },
     { path: '/editor', label: 'Editor' },
     { path: '/audit', label: 'Audit' },
     // Only show Overview tab if user has customized

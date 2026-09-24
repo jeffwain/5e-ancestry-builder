@@ -4,11 +4,9 @@ import { CharacterProvider, useCharacter } from './contexts/CharacterContext';
 import { useTraitData } from './hooks/useTraitData';
 import { preloadJson } from './utils/dataCache';
 import { TabNavigation } from './components/TabNavigation';
-import { Layout } from './components/Layout';
 import {
   CharacterCreation,
   CustomAncestryPage,
-  AncestriesPage,
   AncestriesTextPage,
   AncestryEditorPage,
   AuditPage,
@@ -146,16 +144,6 @@ function AppContent() {
           <Route
             path="/ancestries"
             element={
-              <AncestriesPage
-                allTraits={allTraits}
-                onUse={handleUseAncestry}
-                onCustomize={handleCustomizeAncestry}
-              />
-            }
-          />
-          <Route
-            path="/ancestries-text"
-            element={
               <AncestriesTextPage
                 allTraits={allTraits}
                 onUse={handleUseAncestry}
@@ -167,19 +155,14 @@ function AppContent() {
           <Route
             path="/builder"
             element={
-              <Layout
-                sections={sections}
-              />
-            }
-          />
-          <Route
-            path="/builder-text"
-            element={
               <BuilderTextPage
                 sections={sections}
               />
             }
           />
+          {/* Old URLs from while the list views ran beside the card views. */}
+          <Route path="/ancestries-text" element={<Navigate to="/ancestries" replace />} />
+          <Route path="/builder-text" element={<Navigate to="/builder" replace />} />
           <Route path="/audit" element={<AuditPage allTraits={allTraits} />} />
           <Route path="/overview" element={<OverviewPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
