@@ -1,6 +1,7 @@
 import { Buffer } from 'node:buffer'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { codeInspectorPlugin } from 'code-inspector-plugin'
 import { readSources, writeSlot } from './scripts/ancestry-source-api.mjs'
 
 /**
@@ -58,6 +59,21 @@ function ancestryEditorApi() {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), ancestryEditorApi()],
+  plugins: [
+    // React analog of tidy’s Svelte inspector: hold Ctrl+Alt+Shift, click a node, open source in Cursor.
+    codeInspectorPlugin({
+      bundler: 'vite',
+      editor: 'cursor',
+      hotKeys: ['ctrlKey', 'altKey', 'shiftKey'],
+      // File import into the SPA entry; skip the empty HTML snippet the plugin also injects.
+      importClient: 'file',
+      skipSnippets: ['htmlScript'],
+    }),
+    react(),
+    ancestryEditorApi(),
+  ],
   logLevel: 'info',
+  server: {
+    host: true,
+  },
 })

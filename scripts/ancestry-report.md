@@ -2,9 +2,9 @@
 
 Built from 27 lineages.
 
-- 76 archetypes land on exactly 16
+- 80 archetypes land on exactly 16
 - 13 over budget
-- 30 under budget
+- 26 under budget
 - 0 still empty
 - 16 re-listed traits dropped
 
@@ -49,7 +49,6 @@ Built from 27 lineages.
 - Dwarves ▸ Lightbringer — 3 + 8 = **11** — **-5**
 - Dwarves ▸ Vineguard — 3 + 7 = **10** — **-6**
 - Dwarves ▸ Wavetamer — 3 + 6 = **9** — **-7**
-- Iruxi ▸ Shelled — 0 + 15 = **15** — **-1**
 - Muul ▸ Auran (Minotaur) ▸ Wildhorn — 8 + 6 = **14** — **-2**
 - Muul ▸ Auran (Minotaur) ▸ Abyssal Brood — 8 + 6 = **14** — **-2**
 - Muul ▸ Auran (Minotaur) ▸ Seafarer — 8 + 6 = **14** — **-2**
@@ -59,9 +58,6 @@ Built from 27 lineages.
 - Muul ▸ Kashrishi (Rhino) ▸ Lethoci — 13 + 2 = **15** — **-1**
 - Muul ▸ Kashrishi (Rhino) ▸ Trogloshi — 13 + 2 = **15** — **-1**
 - Muul ▸ Kashrishi (Rhino) ▸ Xyloshi — 13 + 2 = **15** — **-1**
-- Ysoki ▸ Rabbitfolk (Harengon) — 14 + 0 = **14** — **-2** · _no archetypes_
-- Aven ▸ Flightless — 0 + 12 = **12** — **-4**
-- Aven ▸ Arctic — 0 + 15 = **15** — **-1**
 - Elves ▸ Boreal — 10 + 5 = **15** — **-1**
 - Elves ▸ Jungle — 10 + 3 = **13** — **-3**
 - Gnomes ▸ Inventor — 0 + 13 = **13** — **-3**
@@ -98,6 +94,7 @@ Built from 27 lineages.
 - Iruxi ▸ Jungle — 0 + 16 = **16** — on budget
 - Iruxi ▸ Desert — 0 + 16 = **16** — on budget
 - Iruxi ▸ Forest or Plains — 0 + 16 = **16** — on budget
+- Iruxi ▸ Shelled — 0 + 16 = **16** — on budget
 - Khenra ▸ Twin alive — 12 + 4 = **16** — on budget
 - Khenra ▸ Twin dead — 12 + 4 = **16** — on budget
 - Mrrshan ▸ Felis — 7 + 9 = **16** — on budget
@@ -108,8 +105,11 @@ Built from 27 lineages.
 - Ysoki ▸ Ratfolk (Ysoki) ▸ Spotter — 9 + 7 = **16** — on budget
 - Ysoki ▸ Ratfolk (Ysoki) ▸ Scavenger — 9 + 7 = **16** — on budget
 - Ysoki ▸ Ratfolk (Ysoki) ▸ Rural — 9 + 7 = **16** — on budget
+- Ysoki ▸ Rabbitfolk (Harengon) — 16 + 0 = **16** — on budget · _no archetypes_
 - Ysoki ▸ Squirrelfolk (Kercpa) — 16 + 0 = **16** — on budget · _no archetypes_
 - Aven ▸ Flying — 0 + 16 = **16** — on budget
+- Aven ▸ Flightless — 0 + 16 = **16** — on budget
+- Aven ▸ Arctic — 0 + 16 = **16** — on budget
 - Aven ▸ Raptor — 0 + 16 = **16** — on budget
 - Elves ▸ Old growth — 10 + 6 = **16** — on budget
 - Elves ▸ Primeval — 10 + 6 = **16** — on budget

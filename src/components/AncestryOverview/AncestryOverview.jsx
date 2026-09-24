@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useCharacter } from '../../contexts/CharacterContext';
 import { TraitGroupList } from '../TraitGroupList';
 import { groupTraitsByType, groupsFromTraitsByType } from '../../utils/traitDisplay';
+import { useAncestryActions } from '../../hooks/useAncestryActions';
 import './AncestryOverview.css';
 
 // Reusable ancestry overview content - used by both modal and page views
@@ -20,11 +21,13 @@ export function AncestryOverview({
     ancestryName,
     warnings,
     loadedPrebuiltName,
-    reset,
-    exportAsJson,
     setAncestryName,
     traitTypes
   } = useCharacter();
+
+  const { handleExport, handleCopy, handleReset } = useAncestryActions({
+    onReset, onExport, onCopy
+  });
 
 
   // Group selected traits by their type
@@ -32,47 +35,6 @@ export function AncestryOverview({
     () => groupTraitsByType(selectedTraits, traitTypes),
     [selectedTraits, traitTypes]
   );
-
-  const handleExport = () => {
-    if (onExport) {
-      onExport();
-      return;
-    }
-    const json = exportAsJson();
-    const blob = new Blob([json], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `ancestry-${Date.now()}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
-
-  const handleCopy = async () => {
-    if (onCopy) {
-      onCopy();
-      return;
-    }
-    const json = exportAsJson();
-    try {
-      await navigator.clipboard.writeText(json);
-      alert('Copied to clipboard!');
-    } catch {
-      alert('Failed to copy to clipboard');
-    }
-  };
-
-  const handleReset = () => {
-    if (onReset) {
-      onReset();
-      return;
-    }
-    if (confirm('Are you sure you want to reset? This will clear all selected traits.')) {
-      reset();
-    }
-  };
 
   const handleNameChange = (e) => {
     if (setAncestryName) {

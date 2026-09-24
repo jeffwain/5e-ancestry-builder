@@ -1,0 +1,46 @@
+/*
+ * Block builder page.
+ *
+ * Everything structural is borrowed: .ancestries-page for the shell,
+ * .ancestries-two-col / .ancestries-browse / .ancestries-summary-col for the
+ * grid and sticky sidebar, .ancestry-category / .category-header for the trait
+ * type headings. This file only lifts the sticky sidebar clear of the toolbar,
+ * which the ancestry pages do not have.
+ */
+.builder-text-page {
+  --builder-text-toolbar-height: 3.25rem;
+}
+
+.builder-text-page .ancestries-summary-col {
+  top: calc(var(--builder-text-toolbar-height) + var(--space-4));
+  max-height: calc(100vh - var(--builder-text-toolbar-height) - var(--space-8));
+}
+
+/* Trait-type headings sit above a run of blocks, so they need the air the
+   ancestry list gives its categories. */
+.builder-text-page .ancestry-category + .ancestry-category {
+  margin-block-start: var(--space-4);
+}
+
+/* The pill a trait flashes when its toolbar pill is clicked. */
+.builder-text-page .trait-paragraph.highlight-flash {
+  animation: builder-text-flash 1.5s ease-out;
+}
+
+@keyframes builder-text-flash {
+  0%, 60% {
+    background: var(--color-warning-bg);
+  }
+
+  100% {
+    background: transparent;
+  }
+}
+
+/* Nothing left after a search — say so rather than showing a blank column. */
+.builder-text-empty {
+  margin: var(--space-8) 0;
+  font-size: var(--text-base);
+  font-style: italic;
+  color: var(--color-ink-400);
+}

@@ -12,6 +12,7 @@ import {
   AncestriesTextPage,
   AncestryEditorPage,
   AuditPage,
+  BuilderTextPage,
   OverviewPage,
 } from './pages';
 
@@ -167,6 +168,14 @@ function AppContent() {
             path="/builder"
             element={
               <Layout
+                sections={sections}
+              />
+            }
+          />
+          <Route
+            path="/builder-text"
+            element={
+              <BuilderTextPage
                 sections={sections}
               />
             }

@@ -1,0 +1,70 @@
+/*
+ * TraitBlock — one category, two columns of trait paragraphs.
+ *
+ * The accent per trait type mirrors TraitCategory's --category-* tokens, but is
+ * declared separately because those are bound to the .category-trait accordion
+ * shell this view does not use. Blocks own --trait-paragraph-accent, which the
+ * paragraphs inside them read.
+ */
+.trait-block {
+  --trait-paragraph-accent: var(--color-heritage);
+  margin-block-end: var(--space-8);
+
+  &.core {
+    --trait-paragraph-accent: var(--color-blue-green-50);
+  }
+
+  &.heritage {
+    --trait-paragraph-accent: var(--color-red-45);
+  }
+
+  &.culture {
+    --trait-paragraph-accent: var(--color-culture);
+  }
+
+  /* A required category with nothing chosen flags itself the way the accordion
+     builder does. */
+  &.missing-required {
+    --trait-paragraph-accent: var(--color-warning);
+  }
+}
+
+.trait-block-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-block-end: var(--space-2);
+  padding-block-end: var(--space-1);
+  border-block-end: 1px solid var(--color-parchment-300);
+}
+
+.trait-block-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  color: var(--trait-paragraph-accent);
+}
+
+.trait-block-description {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-600);
+}
+
+/* Items wrap between the columns rather than being dealt into them, so a block
+   fills its first column before starting the second. The gutter is wide enough
+   to absorb each paragraph's negative inline margin. */
+.trait-block-columns {
+  columns: 2;
+  column-gap: var(--space-8);
+  orphans: 2;
+  widows: 2;
+}
+
+@media (max-width: 60rem) {
+  .trait-block-columns {
+    columns: 1;
+  }
+}

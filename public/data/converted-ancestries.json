@@ -1551,12 +1551,6 @@
               "description": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. Your darkvision appears in shades of shifting purple."
             },
             {
-              "id": "skittering",
-              "name": "Skittering",
-              "description": "Your movement speed is 25 feet.",
-              "points": -1
-            },
-            {
               "name": "Spider Climb",
               "description": "While in spider form, you can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check. While doing so, you cannot use your extra arms for any purpose but to aid in climbing. You are not affected by the web spell or difficult terrain from webs.",
               "points": 4

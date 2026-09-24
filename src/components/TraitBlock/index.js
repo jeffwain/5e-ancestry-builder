@@ -1,0 +1,1 @@
+export { TraitBlock } from './TraitBlock';

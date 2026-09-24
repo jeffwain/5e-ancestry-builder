@@ -5,6 +5,7 @@ import {
   compactTraitName,
   compactTraitDescription,
   formatCompactPoints,
+  formatBracketCost,
 } from '../../utils/traitDisplay';
 import './TraitContent.css';
 
@@ -21,16 +22,18 @@ import './TraitContent.css';
  *
  * Wrappers pass only context-specific interactive extras:
  *   - headerExtra: node in the header between name and cost (builder "Required" pill)
+ *   - metaExtra:   node appended to the meta row (sidebar requirement pills)
  *   - children:    node appended inside the description (builder option radios etc.)
- *   - showFooter:  whether the summary meta row (restriction / category) is shown
+ *   - showFooter:  whether the summary meta row (cost / restriction / category) is shown
  *
- * variant: 'card' | 'card-compact' | 'summary' | 'summary-compact' | 'tooltip'
+ * variant: 'card' | 'card-compact' | 'paragraph' | 'summary' | 'summary-compact' | 'tooltip'
  */
 export function TraitContent({
   trait,
   selectedOptions = {},
   variant = 'summary',
   headerExtra = null,
+  metaExtra = null,
   children = null,
   showFooter = true,
 }) {
@@ -46,7 +49,7 @@ export function TraitContent({
             <CostPill cost={d.cost} variant="card" />
           </div>
           <div className="trait-content-description">
-            <ReactMarkdown>{d.description}</ReactMarkdown>
+            {d.description && <ReactMarkdown>{d.description}</ReactMarkdown>}
             {children}
           </div>
         </>
@@ -62,9 +65,32 @@ export function TraitContent({
         </div>
       );
 
+    // Runs the whole trait together as one sentence — "Name [2]. Description." —
+    // for the block builder, where traits read as prose rather than as cards.
+    case 'paragraph': {
+      const bracketCost = formatBracketCost(d.cost);
+      const description = compactTraitDescription(d);
+      return (
+        <>
+          <span className="trait-content-name">
+            {compactTraitName(d)}
+            {bracketCost && <span className="trait-content-cost"> [{bracketCost}]</span>}.
+          </span>
+          {description && (
+            <span className="trait-content-description">
+              <ReactMarkdown>{description}</ReactMarkdown>
+            </span>
+          )}
+          {children}
+        </>
+      );
+    }
+
     case 'summary-compact': {
       const description = compactTraitDescription(d);
-      const points = formatCompactPoints(d.cost);
+      // The badge row carries the cost when it is shown, so the trailing inline
+      // points would only say the same thing twice.
+      const points = showFooter ? null : formatCompactPoints(d.cost);
       return (
         <>
           <span className="trait-content-name">{compactTraitName(d)}.</span>
@@ -73,6 +99,14 @@ export function TraitContent({
               {description && <ReactMarkdown>{description}</ReactMarkdown>}
               {points && <span className="trait-content-points"> {points}</span>}
             </span>
+          )}
+          {showFooter && (
+            <div className="trait-content-meta">
+              <CostPill cost={d.cost} variant="summary" />
+              {d.categoryName && <span className="pill">{d.categoryName}</span>}
+              {d.restriction && <span className="pill restriction">{d.restriction}</span>}
+              {metaExtra}
+            </div>
           )}
         </>
       );
@@ -88,8 +122,11 @@ export function TraitContent({
             <CostPill cost={d.cost} variant="dark" />
           </div>
           <div className="trait-content-description">
-            <ReactMarkdown>{d.description}</ReactMarkdown>
+            {d.description && <ReactMarkdown>{d.description}</ReactMarkdown>}
             {d.optionDescription && <ReactMarkdown>{d.optionDescription}</ReactMarkdown>}
+            {!d.selectedOption && d.chooseOne && (
+              <p className="trait-content-choose">{d.chooseOne}</p>
+            )}
           </div>
           <div className="trait-content-meta">
             {d.type && d.type !== 'core' && (
@@ -123,10 +160,16 @@ export function TraitContent({
               <ReactMarkdown>{d.optionDescription}</ReactMarkdown>
             </div>
           )}
-          {showFooter && (d.restriction || d.categoryName) && (
+          {/* No option picked yet — say what the choice is. Once one is chosen
+              the option itself is shown and the instruction is just noise. */}
+          {!d.selectedOption && d.chooseOne && (
+            <p className="trait-content-choose">{d.chooseOne}</p>
+          )}
+          {showFooter && (d.restriction || d.categoryName || metaExtra) && (
             <div className="trait-content-meta">
               {d.restriction && <span className="pill restriction">{d.restriction}</span>}
               {d.categoryName && <span className="pill">{d.categoryName}</span>}
+              {metaExtra}
             </div>
           )}
         </>

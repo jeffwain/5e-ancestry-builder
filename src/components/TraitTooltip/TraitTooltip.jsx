@@ -108,7 +108,7 @@ export function TraitTooltip({
           {pinned && (
             <button
               type="button"
-              className="trait-tooltip-close"
+              className="btn btn-secondary btn-icon-only trait-tooltip-close"
               onClick={(e) => { e.stopPropagation(); setPinned(false); }}
               aria-label="Close"
               title="Close"

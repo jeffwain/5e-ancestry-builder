@@ -143,6 +143,10 @@ export function getTraitDisplay(trait, selectedOptions = {}) {
     selectedOption,
     description,
     optionDescription,
+    // Instruction for picking among this trait's options ("Choose one of the
+    // following element types."). Kept out of the description so views can put
+    // it where the choice actually happens.
+    chooseOne: trait.chooseOne || null,
     cost: resolveDisplayCost(trait, selectedOptions),
     restriction: trait.restriction?.label || trait.restriction || null,
     categoryName: trait.categoryName || null,
@@ -163,12 +167,24 @@ export function compactTraitDescription(d) {
   const parts = [];
   if (d.description) parts.push(d.description);
   if (d.optionDescription) parts.push(d.optionDescription);
+  // Traits whose whole text was the pick instruction have no description of
+  // their own — fall back to it so the row isn't just a bare name.
+  if (!parts.length && d.chooseOne) parts.push(d.chooseOne);
   return parts.join(' ');
 }
 
 // Point suffix for inline trait cards — number only, or null when nothing to show.
 export function formatCompactPoints(cost) {
   if (cost === undefined || cost === null || cost === '' || cost === 0) return null;
+  if (typeof cost === 'number' && cost < 0) return `+${Math.abs(cost)}`;
+  return String(cost);
+}
+
+// Inline bracketed cost for the paragraph trait view — "Trait Name [2]." The
+// range strings resolveDisplayCost returns ("1–3") pass through unchanged.
+export function formatBracketCost(cost) {
+  if (cost === undefined || cost === null || cost === '') return null;
+  if (cost === 0) return 'Free';
   if (typeof cost === 'number' && cost < 0) return `+${Math.abs(cost)}`;
   return String(cost);
 }

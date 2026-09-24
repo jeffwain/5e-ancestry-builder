@@ -1,6 +1,7 @@
 import { resolveTrait } from '../../utils/ancestryResolve';
 import { SummaryTraitCard } from '../SummaryTraitCard';
 import './AncestrySummary.css';
+import './AncestrySummaryBuilder.css';
 
 // Pencil icon for customize button
 const PencilIcon = () => (
@@ -10,18 +11,36 @@ const PencilIcon = () => (
 );
 
 /**
- * Sticky sidebar summarising the expanded ancestry and its selected archetype.
+ * Sticky sidebar listing a set of traits under section headings.
  *
- * Shared by /ancestries and /ancestries-text so both pages get the same sidebar.
+ * Two ways to drive it, sharing one look:
+ *
+ * 1. Ancestry mode (/ancestries, /ancestries-text) — pass `ancestry` and
+ *    `archetype` and it derives the title and the shared/archetype sections.
+ * 2. Generic mode (/builder-text) — pass `sections` and it renders those
+ *    instead, with optional `header`, `footer` and per-trait meta/actions.
+ *    Whatever a page leaves out is simply not rendered, so the ancestry pages
+ *    get exactly the sidebar they had before.
+ *
  * Its look comes from the existing .ancestry-summary* rules in AncestriesPage.css;
- * AncestrySummary.css only adds the archetype-heading row and its clear button.
+ * AncestrySummary.css adds the archetype-heading row and its clear button, and
+ * AncestrySummaryBuilder.css the generic header / footer bits.
  *
- * Props:
+ * Props (ancestry mode):
  * - ancestry / archetype: the currently expanded + selected objects (may be null)
  * - allTraits: combined trait lookup for resolving trait references
  * - onUse / onCustomize: action buttons, shown once an archetype is selected
  * - onSelectArchetype: pick an archetype from the prompt list
  * - onClearArchetype: drop the selected archetype and show that list again
+ *
+ * Props (generic mode):
+ * - title: heading text
+ * - header / footer: nodes above the sections and below them
+ * - sections: [{ key, title, traits: [{ key, trait, selectedOptions }] }]
+ * - emptyMessage: shown when every section is empty
+ * - showTraitMeta: give each trait the cost / category badge row
+ * - renderTraitMeta(trait): extra badges appended to that row
+ * - renderTraitActions(trait): node pinned to the trait row (the remove button)
  */
 export function AncestrySummary({
   ancestry,
@@ -31,7 +50,56 @@ export function AncestrySummary({
   onCustomize,
   onSelectArchetype,
   onClearArchetype,
+  title,
+  header = null,
+  footer = null,
+  sections,
+  emptyMessage = 'No traits selected yet.',
+  showTraitMeta = false,
+  renderTraitMeta,
+  renderTraitActions,
 }) {
+  const traitRow = ({ key, trait, selectedOptions = {} }) => (
+    <SummaryTraitCard
+      key={key}
+      trait={trait}
+      selectedOptions={selectedOptions}
+      showFooter={showTraitMeta}
+      showDetails={false}
+      compact={true}
+      metaExtra={renderTraitMeta ? renderTraitMeta(trait) : null}
+      actions={renderTraitActions ? renderTraitActions(trait) : null}
+    />
+  );
+
+  // ── Generic mode ─────────────────────────────────────────────────────────
+  if (sections) {
+    const filled = sections.filter((section) => section.traits?.length > 0);
+
+    return (
+      <div className="ancestry-summary">
+        {title && <h2 className="ancestry-summary-title">{title}</h2>}
+        {header}
+
+        {filled.length > 0 ? (
+          filled.map((section) => (
+            <div key={section.key} className="ancestry-summary-section">
+              <h3>{section.title}</h3>
+              <div className="ancestry-summary-traits">
+                {section.traits.map(traitRow)}
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="ancestry-summary-placeholder">{emptyMessage}</p>
+        )}
+
+        {footer}
+      </div>
+    );
+  }
+
+  // ── Ancestry mode ────────────────────────────────────────────────────────
   // Empty state — no ancestry selected
   if (!ancestry) {
     return (
@@ -43,23 +111,24 @@ export function AncestrySummary({
     );
   }
 
-  // Resolve shared traits
-  const sharedTraits = (ancestry.traits || []).map(t => ({
-    resolved: resolveTrait(t, allTraits),
-    raw: t
-  }));
+  // Resolve a trait reference into the row shape traitRow expects.
+  const toRow = (raw, idx) => {
+    const resolved = resolveTrait(raw, allTraits);
+    const selectedOptions = {};
+    if (raw.option && raw.id) {
+      selectedOptions[raw.id] = raw.option;
+    }
+    return { key: (resolved.id || 'trait') + '-' + idx, trait: resolved, selectedOptions };
+  };
 
-  // Resolve archetype traits
+  const sharedTraits = (ancestry.traits || []).filter(Boolean).map(toRow);
   const archetypeTraits = archetype
-    ? (archetype.traits || []).filter(Boolean).map(t => ({
-        resolved: resolveTrait(t, allTraits),
-        raw: t
-      }))
+    ? (archetype.traits || []).filter(Boolean).map(toRow)
     : [];
 
   const archetypeName = archetype?.name;
   const archetypeIcon = archetype?.icon;
-  const title = archetypeName
+  const heading = archetypeName
     ? `${ancestry.name} (${archetypeName})`
     : ancestry.name;
 
@@ -67,7 +136,7 @@ export function AncestrySummary({
     <div className="ancestry-summary">
       <h2 className="ancestry-summary-title">
         {archetypeIcon && <span>{archetypeIcon} </span>}
-        {title}
+        {heading}
       </h2>
 
       {/* Shared Traits */}
@@ -75,22 +144,7 @@ export function AncestrySummary({
         <div className="ancestry-summary-section">
           <h3>Shared Traits</h3>
           <div className="ancestry-summary-traits">
-            {sharedTraits.map(({ resolved, raw }, idx) => {
-              const selectedOptions = {};
-              if (raw.option && raw.id) {
-                selectedOptions[raw.id] = raw.option;
-              }
-              return (
-                <SummaryTraitCard
-                  key={`${resolved.id || 'trait'}-${idx}`}
-                  trait={resolved}
-                  selectedOptions={selectedOptions}
-                  showFooter={false}
-                  showDetails={false}
-                  compact={true}
-                />
-              );
-            })}
+            {sharedTraits.map(traitRow)}
           </div>
         </div>
       )}
@@ -119,22 +173,7 @@ export function AncestrySummary({
             <p className="ancestry-summary-archetype-desc">{archetype.description}</p>
           )}
           <div className="ancestry-summary-traits">
-            {archetypeTraits.map(({ resolved, raw }, idx) => {
-              const selectedOptions = {};
-              if (raw.option && raw.id) {
-                selectedOptions[raw.id] = raw.option;
-              }
-              return (
-                <SummaryTraitCard
-                  key={`${resolved.id || 'trait'}-${idx}`}
-                  trait={resolved}
-                  selectedOptions={selectedOptions}
-                  showFooter={false}
-                  showDetails={false}
-                  compact={true}
-                />
-              );
-            })}
+            {archetypeTraits.map(traitRow)}
           </div>
         </div>
       )}

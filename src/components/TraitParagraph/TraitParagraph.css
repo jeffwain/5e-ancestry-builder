@@ -1,0 +1,155 @@
+/*
+ * TraitParagraph — a selectable trait that reads as a paragraph.
+ *
+ * The offset (negative inline margin + matching padding) is applied at every
+ * state, not just when selected: the geometry then never changes as you select
+ * or hover, and only the background moves. --trait-paragraph-accent comes from
+ * the enclosing .trait-block, so each block tints in its own colour.
+ */
+.trait-paragraph {
+  --trait-paragraph-accent: var(--color-heritage);
+  break-inside: avoid;
+  margin-block-end: var(--space-1);
+  margin-inline: calc(var(--space-2) * -1);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-800);
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.trait-paragraph:is(:hover, :focus-visible):not(.disabled) {
+  background: var(--color-card-bg-hover);
+}
+
+.trait-paragraph:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 0;
+}
+
+.trait-paragraph.selected {
+  background: oklch(from var(--trait-paragraph-accent) l c h / 0.12);
+  box-shadow: inset 0.125rem 0 var(--trait-paragraph-accent);
+}
+
+.trait-paragraph.selected:is(:hover, :focus-visible) {
+  background: oklch(from var(--trait-paragraph-accent) l c h / 0.18);
+}
+
+/* Locked (a required category's last selection) still reads as chosen, but
+   there is nothing a click can do. */
+.trait-paragraph.locked {
+  cursor: default;
+}
+
+/* Excluded, unmet, or unaffordable — the same recede the cards use. */
+.trait-paragraph.disabled {
+  color: var(--color-ink-300);
+  cursor: default;
+}
+
+/* ── The sentence itself ────────────────────────────────────────────────── */
+.trait-paragraph .trait-content-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-ink-900);
+}
+
+.trait-paragraph.disabled .trait-content-name {
+  color: var(--color-ink-300);
+}
+
+.trait-paragraph .trait-content-cost {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  color: var(--trait-paragraph-accent);
+}
+
+.trait-paragraph.disabled .trait-content-cost {
+  color: var(--color-ink-300);
+}
+
+/* Description and its markdown paragraphs run on from the name. */
+.trait-paragraph :is(.trait-content-description, .trait-content-description p) {
+  display: inline;
+}
+
+.trait-paragraph .trait-content-description::before {
+  content: ' ';
+}
+
+.trait-paragraph-note {
+  font-style: italic;
+  color: var(--color-ink-500);
+}
+
+.trait-paragraph.disabled .trait-paragraph-note {
+  color: var(--color-ink-300);
+}
+
+/* ── Options: the radio is the bullet ───────────────────────────────────── */
+.trait-paragraph-options {
+  list-style: none;
+  margin: var(--space-1) 0 0;
+  padding: 0;
+}
+
+.trait-paragraph-option {
+  margin: 0;
+
+  & label {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    padding: 0.125rem var(--space-1);
+    border-radius: var(--radius-sm);
+    cursor: inherit;
+  }
+
+  &:not(.selected) label:hover {
+    background: var(--color-parchment-200);
+  }
+}
+
+.trait-paragraph-option-radio {
+  flex: 0 0 auto;
+  /* Sit where a bullet would, on the text's first line. */
+  align-self: baseline;
+  translate: 0 0.125rem;
+  margin: 0;
+  accent-color: var(--trait-paragraph-accent);
+  cursor: inherit;
+}
+
+.trait-paragraph-option-text {
+  min-width: 0;
+}
+
+.trait-paragraph-option-name {
+  font-weight: 600;
+  color: var(--color-ink-800);
+}
+
+.trait-paragraph-option :is(.trait-paragraph-option-desc, .trait-paragraph-option-desc p) {
+  display: inline;
+  color: var(--color-ink-600);
+}
+
+.trait-paragraph-option.selected .trait-paragraph-option-name {
+  color: var(--trait-paragraph-accent);
+}
+
+/* An option not taken, once one has been — and every option of a trait that
+   cannot be taken at all — recedes the same way a spent-out trait does. */
+.trait-paragraph.selected:has(.trait-paragraph-option.selected)
+  .trait-paragraph-option:not(.selected),
+.trait-paragraph.disabled .trait-paragraph-option {
+  color: var(--color-ink-300);
+
+  & :is(.trait-paragraph-option-name, .trait-paragraph-option-desc, .trait-paragraph-option-desc p, .trait-content-cost) {
+    color: var(--color-ink-300);
+  }
+}

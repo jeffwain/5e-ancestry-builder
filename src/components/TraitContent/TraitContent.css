@@ -9,7 +9,6 @@
    left untouched — a couple are still used directly (e.g. AncestryCard's
    error state). They no longer style TraitContent output.
    =========================================== */
-
 /* ── Shared base ─────────────────────────── */
 .trait-content-header {
   display: flex;
@@ -33,10 +32,39 @@
   margin: 0;
 }
 
+/* The `chooseOne` instruction, shown when no option has been picked yet.
+   Set apart from the rules text — it tells you what to do, not what you get. */
+.trait-content-choose {
+  margin: var(--space-1) 0 0;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.trait-content-description ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  margin-block-start: 0.25rem;
+  margin-inline: 0.375rem 0;
+  padding-inline-start: var(--space-2);
+  list-style: disc;
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+.trait-content-description li {
+  margin: 0;
+  /* Ensure bullets display */
+  display: list-item;
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
 .trait-content-meta {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  flex-wrap: wrap;
 }
 
 .trait-content-meta:empty,

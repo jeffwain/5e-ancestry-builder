@@ -113,7 +113,7 @@ export function TraitCard({ trait, compact = false }) {
         {hasOptions && selected && (
           <div className="options">
             <div className="options-label">
-              {trait.requiresOption ? 'Choose one:' : 'Options:'}
+              {trait.chooseOne || (trait.requiresOption ? 'Choose one:' : 'Options:')}
             </div>
             {trait.options.map(option => (
               <label
