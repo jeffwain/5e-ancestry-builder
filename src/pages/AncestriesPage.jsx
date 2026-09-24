@@ -7,7 +7,7 @@ import { useConvertedTraits, combineTraitLookups } from '../hooks/useConvertedTr
 import { usePersistentState } from '../hooks/usePersistentState';
 import { loadJson } from '../utils/dataCache';
 import { STORAGE_KEYS } from '../utils/storage';
-import './AncestriesTextPage.css';
+import './AncestriesPage.css';
 
 /**
  * Split a descriptors string into individual tags.
@@ -28,12 +28,12 @@ function AncestryHeading({ ancestry }) {
   const sharedCount = ancestry.traits?.length || 0;
 
   return (
-    <div className="ancestry-text-heading">
+    <div className="ancestry-entry-heading">
       <h3 className="name">{ancestry.name}</h3>
       {ancestry.summary && (
-        <p className="ancestry-text-summary">{ancestry.summary}</p>
+        <p className="ancestry-entry-summary">{ancestry.summary}</p>
       )}
-      <div className="ancestry-text-tags">
+      <div className="ancestry-entry-tags">
         {tags.map((tag) => (
           <span key={tag} className="pill type on-dark">{tag}</span>
         ))}
@@ -84,33 +84,33 @@ function TraitList({ traits, allTraits }) {
  */
 function ArchetypeColumns({ archetypes, allTraits, selectedArchetype, onSelectArchetype }) {
   if (!archetypes?.length) {
-    return <p className="ancestry-text-empty">No archetypes defined yet.</p>;
+    return <p className="ancestry-entry-empty">No archetypes defined yet.</p>;
   }
 
   return (
-    <ul className="ancestry-text-archetypes">
+    <ul className="ancestry-entry-archetypes">
       {archetypes.map((archetype) => {
         const isSelected = selectedArchetype === archetype.id;
         return (
-          <li key={archetype.id} className="ancestry-text-archetype">
-            <div className="ancestry-text-archetype-head">
+          <li key={archetype.id} className="ancestry-entry-archetype">
+            <div className="ancestry-entry-archetype-head">
               <button
                 type="button"
-                className={`ancestry-text-archetype-name${isSelected ? ' selected' : ''}`}
+                className={`ancestry-entry-archetype-name${isSelected ? ' selected' : ''}`}
                 onClick={() => onSelectArchetype?.(archetype.id)}
                 aria-pressed={isSelected}
               >
-                {archetype.icon && <span className="ancestry-text-archetype-icon">{archetype.icon}</span>}
+                {archetype.icon && <span className="ancestry-entry-archetype-icon">{archetype.icon}</span>}
                 {archetype.name}
               </button>
               {archetype.designed && (
-                <span className="ancestry-text-designed" title="Designed for the builder, not taken from the source">
+                <span className="ancestry-entry-designed" title="Designed for the builder, not taken from the source">
                   designed
                 </span>
               )}
             </div>
             {archetype.description && (
-              <p className="ancestry-text-archetype-desc">{archetype.description}</p>
+              <p className="ancestry-entry-archetype-desc">{archetype.description}</p>
             )}
             <TraitList traits={archetype.traits} allTraits={allTraits} />
           </li>
@@ -120,7 +120,7 @@ function ArchetypeColumns({ archetypes, allTraits, selectedArchetype, onSelectAr
   );
 }
 
-export function AncestriesTextPage({ allTraits = {}, onUse, onCustomize }) {
+export function AncestriesPage({ allTraits = {}, onUse, onCustomize }) {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -182,7 +182,7 @@ export function AncestriesTextPage({ allTraits = {}, onUse, onCustomize }) {
 
   if (loading) {
     return (
-      <div className="ancestries-page ancestries-text-page">
+      <div className="ancestries-page">
         <div className="ancestries-content">
           <p className="loading-message">Loading ancestries...</p>
         </div>
@@ -192,7 +192,7 @@ export function AncestriesTextPage({ allTraits = {}, onUse, onCustomize }) {
 
   if (error) {
     return (
-      <div className="ancestries-page ancestries-text-page">
+      <div className="ancestries-page">
         <div className="ancestries-content">
           <p className="error-message">Error: {error}</p>
         </div>
@@ -204,26 +204,26 @@ export function AncestriesTextPage({ allTraits = {}, onUse, onCustomize }) {
     <Accordion
       key={ancestry.id}
       type="heritage"
-      className="ancestry-text-accordion"
+      className="ancestry-entry-accordion"
       title={<AncestryHeading ancestry={ancestry} />}
       isOpen={expandedAncestry === ancestry.id}
       onToggle={() => handleToggle(ancestry.id)}
     >
       {(expanded) => (expanded ? (
-        <div className="ancestry-text-body">
+        <div className="ancestry-entry-body">
           {ancestry.description && (
-            <p className="ancestry-text-description">{ancestry.description}</p>
+            <p className="ancestry-entry-description">{ancestry.description}</p>
           )}
 
           {ancestry.traits?.length > 0 && (
-            <section className="ancestry-text-section">
-              <h4 className="ancestry-text-section-title">Shared Traits</h4>
+            <section className="ancestry-entry-section">
+              <h4 className="ancestry-entry-section-title">Shared Traits</h4>
               <TraitList traits={ancestry.traits} allTraits={traitLookup} />
             </section>
           )}
 
-          <section className="ancestry-text-section">
-            <h4 className="ancestry-text-section-title">Archetypes</h4>
+          <section className="ancestry-entry-section">
+            <h4 className="ancestry-entry-section-title">Archetypes</h4>
             <ArchetypeColumns
               archetypes={ancestry.archetypes}
               allTraits={traitLookup}
@@ -237,7 +237,7 @@ export function AncestriesTextPage({ allTraits = {}, onUse, onCustomize }) {
   );
 
   return (
-    <div className="ancestries-page ancestries-text-page">
+    <div className="ancestries-page">
       <header className="ancestries-header">
         <h1>Ancestries</h1>
         <p>
@@ -259,7 +259,7 @@ export function AncestriesTextPage({ allTraits = {}, onUse, onCustomize }) {
               </div>
 
               {category.ancestries?.length > 0 && (
-                <div className="ancestry-text-list">
+                <div className="ancestry-entry-list">
                   {category.ancestries.map(renderAncestry)}
                 </div>
               )}
@@ -272,7 +272,7 @@ export function AncestriesTextPage({ allTraits = {}, onUse, onCustomize }) {
                       <p className="subcategory-desc">{sub.description}</p>
                     )}
                   </div>
-                  <div className="ancestry-text-list">
+                  <div className="ancestry-entry-list">
                     {(sub.ancestries || []).map(renderAncestry)}
                   </div>
                 </div>

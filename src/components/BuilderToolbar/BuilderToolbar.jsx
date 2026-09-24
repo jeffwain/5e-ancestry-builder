@@ -7,10 +7,9 @@ import './BuilderToolbar.css';
  * The builder's sticky toolbar: budget progress, points spent, and a pill per
  * selected trait that scrolls to (and flashes) that trait in the page.
  *
- * Shared by both builder views. Anything view-specific — the card/list toggle
- * on /builder, the search and category chips on /builder-text — is passed in as
- * `actions` (at the end of the main row) or `below` (its own row underneath,
- * which means it sticks along with the toolbar).
+ * Anything page-specific — the builder's search and category chips — is passed
+ * in as `actions` (at the end of the main row) or `below` (its own row
+ * underneath, which means it sticks along with the toolbar).
  *
  * `toolbarRef` is optional: pass one when the page needs the toolbar's height
  * to offset its own scrolling.

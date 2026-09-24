@@ -9,8 +9,7 @@ import './TraitParagraph.css';
  *
  *   Fire Resistance [2]. You have resistance to fire damage.
  *
- * Same selection behaviour as TraitCard — it just reads as prose, for the
- * block builder. Options are bullets that double as radio buttons, and stay
+ * The builder's selectable trait, read as prose. Options are bullets that double as radio buttons, and stay
  * visible whether or not the trait is selected so a block still reads as a
  * complete list of what is on offer.
  */

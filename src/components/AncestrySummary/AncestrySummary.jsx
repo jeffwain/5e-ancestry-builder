@@ -15,12 +15,11 @@ const PencilIcon = () => (
  *
  * Two ways to drive it, sharing one look:
  *
- * 1. Ancestry mode (/ancestries, /ancestries-text) — pass `ancestry` and
- *    `archetype` and it derives the title and the shared/archetype sections.
- * 2. Generic mode (/builder-text) — pass `sections` and it renders those
+ * 1. Ancestry mode (/ancestries) — pass `ancestry` and `archetype` and it
+ *    derives the title and the shared/archetype sections.
+ * 2. Generic mode (BuilderSummary) — pass `sections` and it renders those
  *    instead, with optional `header`, `footer` and per-trait meta/actions.
- *    Whatever a page leaves out is simply not rendered, so the ancestry pages
- *    get exactly the sidebar they had before.
+ *    Whatever a caller leaves out is simply not rendered.
  *
  * AncestrySummary.css holds the panel and the archetype-heading row;
  * AncestrySummaryBuilder.css the generic header / footer bits.

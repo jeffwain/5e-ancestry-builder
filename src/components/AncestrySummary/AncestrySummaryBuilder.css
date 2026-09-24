@@ -4,8 +4,7 @@
  * The sidebar shell, title, section headings and trait rows all come from the
  * existing .ancestry-summary* rules in AncestrySummary.css. This file adds only
  * the parts the ancestry pages never needed: the points / name header, the
- * warning list and the export footer. AncestryOverview's equivalents are all
- * nested under .ancestry-overview, so they cannot be reused from here.
+ * warning list and the export footer.
  */
 
 /* ── Header: points spent and the ancestry name ─────────────────────────── */

@@ -7,10 +7,10 @@ import { TabNavigation } from './components/TabNavigation';
 import {
   CharacterCreation,
   CustomAncestryPage,
-  AncestriesTextPage,
+  AncestriesPage,
   AncestryEditorPage,
   AuditPage,
-  BuilderTextPage,
+  BuilderPage,
   OverviewPage,
 } from './pages';
 
@@ -144,7 +144,7 @@ function AppContent() {
           <Route
             path="/ancestries"
             element={
-              <AncestriesTextPage
+              <AncestriesPage
                 allTraits={allTraits}
                 onUse={handleUseAncestry}
                 onCustomize={handleCustomizeAncestry}
@@ -155,7 +155,7 @@ function AppContent() {
           <Route
             path="/builder"
             element={
-              <BuilderTextPage
+              <BuilderPage
                 sections={sections}
               />
             }

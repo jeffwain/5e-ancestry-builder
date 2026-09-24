@@ -1,12 +1,10 @@
 import { SummaryTraitCard } from '../SummaryTraitCard';
 
 /**
- * Shared renderer for "groups of traits" in summary surfaces. Previously this
- * markup existed three times: the Ancestries page summary column, the
- * character-creation ancestry summary card, and the AncestryOverview trait
- * lists. Each surface keeps its existing class names (and therefore its
- * existing CSS) via the variant map below — this component only unifies the
- * structure and the SummaryTraitCard wiring.
+ * Shared renderer for "groups of traits" in summary surfaces — today the
+ * character-creation ancestry summary card. Each surface keeps its existing
+ * class names (and therefore its existing CSS) via the variant map below —
+ * this component only unifies the structure and the SummaryTraitCard wiring.
  *
  * groups: [{ key, title (node), items: [{ key, trait, selectedOptions }] }]
  *

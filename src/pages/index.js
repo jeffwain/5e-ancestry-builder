@@ -1,7 +1,7 @@
 export { CharacterCreation } from './CharacterCreation/CharacterCreation';
 export { CustomAncestryPage } from './CustomAncestryPage';
-export { AncestriesTextPage } from './AncestriesTextPage';
+export { AncestriesPage } from './AncestriesPage';
 export { AncestryEditorPage } from './AncestryEditorPage';
-export { BuilderTextPage } from './BuilderTextPage';
+export { BuilderPage } from './BuilderPage';
 export { AuditPage } from './AuditPage';
 export { OverviewPage } from './OverviewPage';

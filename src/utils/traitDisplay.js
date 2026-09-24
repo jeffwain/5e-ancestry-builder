@@ -77,8 +77,7 @@ export function resolveDisplayCost(trait, selectedOptions = {}) {
 
 /**
  * Group selected traits by their type for summary views. Returns
- * [{ name, traits }] in insertion order. Previously duplicated in
- * AncestryOverview and the ancestry step's summary card.
+ * [{ name, traits }] in insertion order.
  */
 export function groupTraitsByType(selectedTraits, traitTypes = {}) {
   const grouped = {};

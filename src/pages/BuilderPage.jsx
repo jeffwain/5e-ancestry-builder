@@ -3,16 +3,13 @@ import { BuilderFilters } from '../components/BuilderFilters';
 import { BuilderSummary } from '../components/BuilderSummary';
 import { BuilderToolbar } from '../components/BuilderToolbar';
 import { TraitBlock } from '../components/TraitBlock';
-import './BuilderTextPage.css';
+import './BuilderPage.css';
 
 /**
- * The builder as blocks of prose rather than a grid of cards.
- *
- * Same build as /builder — both read and write the one CharacterContext, so a
- * trait picked here is picked there. What differs is the reading: each trait
- * category is a two-column block, and each trait a sentence you click.
+ * The ancestry builder. Each trait category is a two-column block and each
+ * trait a sentence you click; the build itself lives in CharacterContext.
  */
-export function BuilderTextPage({ sections = [] }) {
+export function BuilderPage({ sections = [] }) {
   const [search, setSearch] = useState('');
   const toolbarRef = useRef(null);
   const pageRef = useRef(null);
@@ -26,7 +23,7 @@ export function BuilderTextPage({ sections = [] }) {
     if (!toolbar || !page) return;
 
     const apply = () => {
-      page.style.setProperty('--builder-text-toolbar-height', `${toolbar.offsetHeight}px`);
+      page.style.setProperty('--builder-page-toolbar-height', `${toolbar.offsetHeight}px`);
     };
     apply();
 
@@ -83,7 +80,7 @@ export function BuilderTextPage({ sections = [] }) {
   }, []);
 
   return (
-    <div className="builder-text-page" ref={pageRef}>
+    <div className="builder-page" ref={pageRef}>
       <BuilderToolbar
         toolbarRef={toolbarRef}
         below={
@@ -122,7 +119,7 @@ export function BuilderTextPage({ sections = [] }) {
             ))}
 
             {visibleSections.length === 0 && (
-              <p className="builder-text-empty">
+              <p className="builder-page-empty">
                 No traits match “{search.trim()}”.
               </p>
             )}

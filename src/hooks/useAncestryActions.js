@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useCharacter } from '../contexts/CharacterContext';
 
 /**
- * The reset / copy / export actions both builder sidebars offer.
+ * The builder summary's reset / copy / export actions.
  *
  * Each is overridable, so a caller that wants its own confirmation or download
  * behaviour passes a handler in and the default is skipped.

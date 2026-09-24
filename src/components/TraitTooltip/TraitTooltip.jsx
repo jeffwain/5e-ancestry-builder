@@ -12,8 +12,8 @@ import './TraitTooltip.css';
  * @param {Function} onClick - Optional click handler
  * @param {boolean} pinOnClick - Opt in to click-to-pin: the popover stays open
  *   after the pointer leaves, until it is clicked again, something outside it is
- *   clicked, or Escape is pressed. Off by default so existing callers (TraitCard,
- *   Layout) keep plain hover behaviour and their own click handling.
+ *   clicked, or Escape is pressed. Off by default, so callers keep plain hover
+ *   behaviour and their own click handling.
  * @param {string} className - Additional class names
  */
 export function TraitTooltip({
