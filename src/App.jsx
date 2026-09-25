@@ -42,9 +42,6 @@ function AppContent() {
     preloadJson('/data/converted-ancestries.json', '/data/converted-traits.json');
   }, []);
 
-  // Determine if user has customized their ancestry (for showing Overview tab)
-  const hasCustomAncestry = selectedTraits.length > 0;
-
   // Transform sections array into a map for easy lookup by ID
   const traitTypesMap = useMemo(() => {
     return sections.reduce((acc, section) => {
@@ -135,7 +132,7 @@ function AppContent() {
 
   return (
     <div className="app">
-      <TabNavigation hasCustomAncestry={hasCustomAncestry} />
+      <TabNavigation />
 
       <main className="app-content">
         <Routes>
