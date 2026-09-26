@@ -80,8 +80,8 @@
   cursor: default;
 }
 
-/* ── The sentence itself ────────────────────────────────────────────────── */
-.trait-paragraph .trait-content-name {
+/* ── The sentence itself — shared with the Ancestries page's written-out traits ── */
+:is(.trait-paragraph, .ancestry-book-trait) .trait-content-name {
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--color-ink-900);
@@ -91,7 +91,7 @@
   color: var(--color-ink-300);
 }
 
-.trait-paragraph .trait-content-cost {
+:is(.trait-paragraph, .ancestry-book-trait) .trait-content-cost {
   font-family: var(--font-ui);
   font-weight: 600;
   color: var(--trait-paragraph-accent);
@@ -102,11 +102,11 @@
 }
 
 /* Description and its markdown paragraphs run on from the name. */
-.trait-paragraph :is(.trait-content-description, .trait-content-description p) {
+:is(.trait-paragraph, .ancestry-book-trait) :is(.trait-content-description, .trait-content-description p) {
   display: inline;
 }
 
-.trait-paragraph .trait-content-description::before {
+:is(.trait-paragraph, .ancestry-book-trait) .trait-content-description::before {
   content: ' ';
 }
 

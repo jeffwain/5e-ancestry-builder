@@ -24,6 +24,7 @@ import './TraitContent.css';
  *   - metaExtra:   node appended to the meta row (sidebar requirement pills)
  *   - children:    node appended inside the description (builder option radios etc.)
  *   - showFooter:  whether the summary meta row (cost / restriction / category) is shown
+ *   - longName:    paragraph variant only — "Trait (Option)" instead of the option alone
  *
  * variant: 'paragraph' | 'summary' | 'summary-compact' | 'tooltip'
  */
@@ -34,6 +35,7 @@ export function TraitContent({
   metaExtra = null,
   children = null,
   showFooter = true,
+  longName = false,
 }) {
   const d = getTraitDisplay(trait, selectedOptions);
 
@@ -46,7 +48,7 @@ export function TraitContent({
       return (
         <>
           <span className="trait-content-name">
-            {compactTraitName(d)}
+            {longName ? summaryName(d) : compactTraitName(d)}
             {bracketCost && <span className="trait-content-cost"> [{bracketCost}]</span>}.
           </span>
           {description && (
