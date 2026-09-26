@@ -131,6 +131,15 @@
 
 .ae-ancestry-name { font-size: var(--text-sm); color: var(--color-ink-800); }
 .ae-ancestry-sub { font-size: var(--text-xs); color: var(--color-ink-400); }
+.ae-ancestry-warning {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-block-start: 0.125rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--color-warning);
+}
 
 /* ── column 2: slots ────────────────────────────────────────────────────── */
 

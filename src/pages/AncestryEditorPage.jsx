@@ -1,5 +1,10 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { TraitTooltip } from '../components/TraitTooltip';
+import { useCharacter } from '../contexts/CharacterContext';
+import { useConvertedTraits, combineTraitLookups } from '../hooks/useConvertedTraits';
+import { ancestryIssues } from '../utils/ancestryResolve';
+import { loadJson } from '../utils/dataCache';
+import { POINT_BUDGET } from '../utils/traitDisplay';
 import './AncestryEditorPage.css';
 
 /*
@@ -155,6 +160,42 @@ export function AncestryEditorPage() {
   }, []);
 
   useEffect(() => { reload(); }, [reload]);
+
+  // ── warnings, from the last build ───────────────────────────────────────
+  // Recommended traits and off-budget archetypes are only known once the source
+  // is built (the build adds RECOMMENDED: and drops re-listed traits), so these
+  // read converted-ancestries.json — as of the last `npm run ancestries`.
+  const { allTraits } = useCharacter();
+  const { convertedTraitsById } = useConvertedTraits();
+  const [built, setBuilt] = useState(null);
+
+  useEffect(() => {
+    loadJson('/data/converted-ancestries.json').then(setBuilt).catch(() => {});
+  }, []);
+
+  const issuesById = useMemo(() => {
+    if (!built) return {};
+    const lookup = combineTraitLookups(convertedTraitsById, allTraits);
+    const byId = {};
+    for (const category of built.categories || []) {
+      for (const ancestry of category.ancestries || []) {
+        byId[ancestry.id] = ancestryIssues(ancestry, lookup);
+      }
+      // A lineage with sub-lineages has no archetypes of its own; it carries
+      // the sum of its children's.
+      for (const sub of category.subcategories || []) {
+        const children = (sub.ancestries || []).map((ancestry) => {
+          byId[ancestry.id] = ancestryIssues(ancestry, lookup);
+          return byId[ancestry.id];
+        });
+        byId[sub.id] = {
+          recommended: children.reduce((sum, child) => sum + child.recommended, 0),
+          offBudget: children.flatMap((child) => child.offBudget),
+        };
+      }
+    }
+    return byId;
+  }, [built, convertedTraitsById, allTraits]);
 
   // ── derived ─────────────────────────────────────────────────────────────
   const lineages = useMemo(() => {
@@ -425,6 +466,7 @@ export function AncestryEditorPage() {
                     <span className="ae-ancestry-name">{l.name}</span>
                     <span className="ae-ancestry-sub">
                       {l.file} · {(l.archetypes || []).length} arch
+                      <AncestryWarning issues={issuesById[l.sublineageId || l.id]} />
                     </span>
                   </button>
                 </li>
@@ -572,5 +614,35 @@ export function AncestryEditorPage() {
         </aside>
       </div>
     </div>
+  );
+}
+
+/**
+ * The list's warning for one ancestry: recommended traits still standing in for
+ * source text, and archetypes that don't come to the full budget.
+ */
+function AncestryWarning({ issues }) {
+  if (!issues) return null;
+  const { recommended, offBudget } = issues;
+  if (recommended === 0 && offBudget.length === 0) return null;
+
+  const parts = [];
+  if (recommended > 0) parts.push(`${recommended} recommended`);
+  if (offBudget.length > 0) parts.push(`${offBudget.length} ≠ ${POINT_BUDGET} pts`);
+
+  const detail = [
+    recommended > 0 && `${recommended} recommended trait${recommended === 1 ? '' : 's'}`,
+    offBudget.length > 0 &&
+      `Not ${POINT_BUDGET} points: ${offBudget.map((a) => `${a.name} (${a.total})`).join(', ')}`,
+  ].filter(Boolean).join('\n');
+
+  return (
+    <span className="ae-ancestry-warning" title={detail}>
+      <svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M8 1.5 15 14H1z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+        <path d="M8 6v3.5M8 11.5v.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      </svg>
+      {parts.join(' · ')}
+    </span>
   );
 }
