@@ -4,6 +4,7 @@ import { BuilderFilters } from '../components/BuilderFilters';
 import { BuilderSummary } from '../components/BuilderSummary';
 import { BuilderToolbar } from '../components/BuilderToolbar';
 import { TraitBlock } from '../components/TraitBlock';
+import { POINT_BUDGET } from '../utils/traitDisplay';
 import './BuilderPage.css';
 
 /**
@@ -11,7 +12,7 @@ import './BuilderPage.css';
  * trait a sentence you click; the build itself lives in CharacterContext.
  */
 export function BuilderPage({ sections = [] }) {
-  const { isTraitSelected, selectedTraits, remainingPoints } = useCharacter();
+  const { isTraitSelected, selectedTraits, remainingPoints, pointsSpent, ancestryName } = useCharacter();
 
   const [search, setSearch] = useState('');
   const [showChosen, setShowChosen] = useState(false);
@@ -135,10 +136,22 @@ export function BuilderPage({ sections = [] }) {
             )}
           </div>
 
-          <div className="ancestries-summary-col">
+          <div className="ancestries-summary-col" id="builder-summary">
             <BuilderSummary />
           </div>
         </div>
+      </div>
+
+      {/* On a phone the summary stacks below every trait, so a bar keeps the
+          build in reach. Hidden on wider screens, where the summary sits beside. */}
+      <div className="builder-page-bar">
+        <div className="builder-page-bar-text">
+          <span className="builder-page-bar-name">{ancestryName || 'Custom Ancestry'}</span>
+          <span className="builder-page-bar-points">
+            {selectedTraits.length} traits · {pointsSpent} of {POINT_BUDGET} points
+          </span>
+        </div>
+        <a href="#builder-summary" className="btn btn-primary builder-page-bar-button">View build</a>
       </div>
     </div>
   );

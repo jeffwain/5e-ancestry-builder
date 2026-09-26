@@ -44,3 +44,57 @@
   font-style: italic;
   color: var(--color-ink-400);
 }
+
+/* Phone-only bar: the build in progress, with a jump to its summary. */
+.builder-page-bar {
+  display: none;
+}
+
+@media (max-width: 48rem) {
+  .builder-page {
+    padding-block-end: 4.5rem;
+  }
+
+  .builder-page .ancestries-summary-col {
+    scroll-margin-block-start: calc(var(--tab-navigation-height) + var(--builder-page-toolbar-height));
+  }
+
+  .builder-page-bar {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-ink-900);
+    color: var(--color-parchment-200);
+  }
+
+  .builder-page-bar-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .builder-page-bar-name {
+    overflow: hidden;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--color-parchment-50);
+  }
+
+  .builder-page-bar-points {
+    font-family: var(--font-ui);
+    font-size: var(--text-sm);
+  }
+
+  .builder-page-bar-button {
+    flex: 0 0 auto;
+    min-block-size: 2.75rem;
+    text-decoration: none;
+  }
+}

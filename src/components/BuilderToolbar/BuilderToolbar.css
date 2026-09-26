@@ -124,6 +124,12 @@
   .sticky-toolbar .toolbar-chosen {
     display: none;
   }
+
+  /* The filters wrap to three rows here — too much to pin over a small screen.
+     The builder's bottom bar keeps the points in view instead. */
+  .sticky-toolbar {
+    position: static;
+  }
 }
 
 /* Rows line up with the page's centred list + summary grid below them. */
