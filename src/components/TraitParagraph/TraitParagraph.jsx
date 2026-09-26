@@ -39,6 +39,8 @@ export function TraitParagraph({ trait }) {
     ? `Requires ${trait.requires.map(id => allTraits[id]?.name || id).join(', ')}.`
     : null;
   const restrictionNote = trait.restriction?.label || trait.restriction || null;
+  // A trait you can't take says why, in place of the plain requirement.
+  const blockedNote = disabled && reason ? reason : null;
 
   const handleClick = () => {
     if (disabled) return;
@@ -86,12 +88,16 @@ export function TraitParagraph({ trait }) {
       tabIndex={disabled ? -1 : 0}
       title={disabled ? reason : locked ? lockedReason : undefined}
     >
+      <span className="trait-paragraph-box" aria-hidden="true" />
       <TraitContent trait={trait} selectedOptions={selectedOptions} variant="paragraph">
-        {(requiresNote || restrictionNote) && (
+        {(restrictionNote || (!blockedNote && requiresNote)) && (
           <span className="trait-paragraph-note">
             {' '}
-            {[restrictionNote, requiresNote].filter(Boolean).join(' ')}
+            {[restrictionNote, !blockedNote && requiresNote].filter(Boolean).join(' ')}
           </span>
+        )}
+        {blockedNote && (
+          <span className="trait-paragraph-blocked"> {blockedNote}</span>
         )}
 
         {hasOptions && (

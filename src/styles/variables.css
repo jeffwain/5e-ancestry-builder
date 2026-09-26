@@ -89,6 +89,7 @@
   --max-width: 1200px;
   --sidebar-width: 320px;
   --header-height: 64px;
+  --tab-navigation-height: 3rem;
   /* ── Pill Colors ──────────────────────── */
   --pill-bg: var(--color-parchment-300);
   --pill-text: var(--color-ink-700);

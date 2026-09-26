@@ -17,7 +17,9 @@ export function TraitBlock({ category, categoryId, type }) {
   const missingRequired = category.required &&
     warnings.some(w => w.type === 'required-category' && w.categoryId === categoryId);
 
-  const pillText = category.label || type;
+  // Optional categories get a plain label; the dark pill was built for the old
+  // accordion headers and vanished on this page's light background.
+  const labelText = category.label || 'Optional';
 
   const decorateTrait = (trait) => ({
     ...trait,
@@ -35,7 +37,7 @@ export function TraitBlock({ category, categoryId, type }) {
         <h3 className="trait-block-name">{category.name}</h3>
         {category.required
           ? <span className="pill required">Required</span>
-          : pillText && <span className={`pill type on-dark ${type}`}>{pillText}</span>}
+          : <span className="trait-block-label">{labelText}</span>}
       </header>
 
       {category.description && (

@@ -1,78 +1,122 @@
 import './BuilderFilters.css';
 
+// Cost filter values. 'affordable' reads the build's remaining points.
+const COST_FILTERS = [
+  { value: 'any', label: 'Any cost' },
+  { value: '0', label: 'Free' },
+  { value: '1', label: '1 pt' },
+  { value: '2', label: '2 pts' },
+  { value: '3', label: '3 pts' },
+  { value: '4+', label: '4+ pts' },
+  { value: 'affordable', label: 'What I can afford' },
+];
+
 /**
- * The block builder's search box and category jump chips.
+ * The builder's quick filters: search, all-or-chosen, cost and category.
  *
- * The two controls do different jobs on purpose: the search narrows the page
- * down to matching traits, while a chip scrolls to that category and leaves the
- * page as it is. Presentational only — the page owns the search term and does
- * the filtering.
+ * Presentational only — the page owns every value and does the filtering, so
+ * the count here always agrees with what the page shows.
  *
  * Props:
- * - search / onSearchChange: the current term
- * - groups: [{ type, typeName, categories: [{ id, name, matches }] }]
- * - onSelectCategory(categoryId): scroll to that block
+ * - search / onSearchChange
+ * - showChosen / onShowChosenChange: true narrows the page to chosen traits
+ * - chosenCount: how many traits are chosen, for the toggle's label
+ * - cost / onCostChange: one of COST_FILTERS' values
+ * - remainingPoints: shown on the 'affordable' option
+ * - category / onCategoryChange: a category id, or '' for all of them
+ * - groups: [{ type, typeName, categories: [{ id, name }] }]
  * - matchCount / totalCount: traits still showing, out of all of them
  */
 export function BuilderFilters({
   search,
   onSearchChange,
+  showChosen,
+  onShowChosenChange,
+  chosenCount = 0,
+  cost,
+  onCostChange,
+  remainingPoints = 0,
+  category,
+  onCategoryChange,
   groups = [],
-  onSelectCategory,
   matchCount = 0,
   totalCount = 0,
 }) {
-  const searching = search.trim().length > 0;
+  const filtering = search.trim() || showChosen || cost !== 'any' || category;
+
+  const clearAll = () => {
+    onSearchChange('');
+    onShowChosenChange(false);
+    onCostChange('any');
+    onCategoryChange('');
+  };
 
   return (
-    <div className="builder-filters">
-      <div className="builder-filters-search">
+    <div className="builder-filters" role="search">
+      <label className="builder-filters-field builder-filters-search">
+        <span className="builder-filters-label">Search</span>
         <input
           type="search"
-          className="builder-filters-input"
-          placeholder="Search traits by name, text, or key…"
+          className="builder-filters-control"
+          placeholder="Trait name, option or rules text"
           value={search}
           onChange={(e) => onSearchChange(e.target.value)}
-          aria-label="Search traits"
         />
-        {searching && (
-          <>
-            <span className="builder-filters-count">
-              {matchCount} of {totalCount}
-            </span>
-            <button
-              type="button"
-              className="btn btn-secondary btn-small"
-              onClick={() => onSearchChange('')}
-            >
-              Clear
-            </button>
-          </>
-        )}
+      </label>
+
+      <div className="builder-filters-field">
+        <span className="builder-filters-label" id="builder-filters-show">Show</span>
+        <div className="builder-filters-toggle" role="group" aria-labelledby="builder-filters-show">
+          <button type="button" aria-pressed={!showChosen} onClick={() => onShowChosenChange(false)}>
+            All traits
+          </button>
+          <button type="button" aria-pressed={showChosen} onClick={() => onShowChosenChange(true)}>
+            Chosen ({chosenCount})
+          </button>
+        </div>
       </div>
 
-      <div className="builder-filters-chips">
-        {groups.map((group) => (
-          <div key={group.type} className="builder-filters-group">
-            <span className="builder-filters-group-label">{group.typeName}</span>
-            {group.categories.map((category) => (
-              <button
-                key={category.id}
-                type="button"
-                className={`pill type clickable ${group.type} builder-filters-chip`}
-                onClick={() => onSelectCategory?.(category.id)}
-                disabled={!category.matches}
-                // A chip for a category the search emptied has nothing to
-                // scroll to, so it dims rather than disappearing — the row
-                // would otherwise reshuffle on every keystroke.
-                title={category.matches ? `Go to ${category.name}` : `No matches in ${category.name}`}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
-        ))}
-      </div>
+      <label className="builder-filters-field">
+        <span className="builder-filters-label">Cost</span>
+        <select
+          className="builder-filters-control"
+          value={cost}
+          onChange={(e) => onCostChange(e.target.value)}
+        >
+          {COST_FILTERS.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.value === 'affordable' ? `${option.label} (${remainingPoints})` : option.label}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label className="builder-filters-field">
+        <span className="builder-filters-label">Category</span>
+        <select
+          className="builder-filters-control builder-filters-category"
+          value={category}
+          onChange={(e) => onCategoryChange(e.target.value)}
+        >
+          <option value="">All categories</option>
+          {groups.map((group) => (
+            <optgroup key={group.type} label={group.typeName}>
+              {group.categories.map((entry) => (
+                <option key={entry.id} value={entry.id}>{entry.name}</option>
+              ))}
+            </optgroup>
+          ))}
+        </select>
+      </label>
+
+      {filtering && (
+        <p className="builder-filters-status">
+          {matchCount} of {totalCount} traits
+          <button type="button" className="builder-filters-clear" onClick={clearAll}>
+            Clear filters
+          </button>
+        </p>
+      )}
     </div>
   );
 }

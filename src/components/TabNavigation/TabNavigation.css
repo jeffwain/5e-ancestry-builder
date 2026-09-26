@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-6);
-  min-height: 3rem;
+  min-height: var(--tab-navigation-height);
   padding-inline: var(--space-8);
   background: linear-gradient(135deg, var(--color-ink-700) 0%, var(--color-ink-900) 100%);
 }

@@ -4,16 +4,16 @@
  * Everything structural comes from styles/browse.css: .ancestries-page for the shell,
  * .ancestries-two-col / .ancestries-browse / .ancestries-summary-col for the
  * grid and sticky sidebar, .ancestry-category / .category-header for the trait
- * type headings. This file only lifts the sticky sidebar clear of the toolbar,
- * which the ancestry pages do not have.
+ * type headings. This file only lifts the sticky sidebar clear of the main
+ * navigation and the toolbar, both sticky above it.
  */
 .builder-page {
   --builder-page-toolbar-height: 3.25rem;
 }
 
 .builder-page .ancestries-summary-col {
-  top: calc(var(--builder-page-toolbar-height) + var(--space-4));
-  max-height: calc(100vh - var(--builder-page-toolbar-height) - var(--space-8));
+  top: calc(var(--tab-navigation-height) + var(--builder-page-toolbar-height) + var(--space-4));
+  max-height: calc(100vh - var(--tab-navigation-height) - var(--builder-page-toolbar-height) - var(--space-8));
 }
 
 /* Trait-type headings sit above a run of blocks, so they need the air the

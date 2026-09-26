@@ -1,17 +1,19 @@
 /*
  * TraitParagraph — a selectable trait that reads as a paragraph.
  *
- * The offset (negative inline margin + matching padding) is applied at every
- * state, not just when selected: the geometry then never changes as you select
- * or hover, and only the background moves. --trait-paragraph-accent comes from
- * the enclosing .trait-block, so each block tints in its own colour.
+ * Each trait reads as a line on a printed form: a small checkbox, then the
+ * sentence. The box fills when the trait is chosen; nothing else about the
+ * paragraph moves. --trait-paragraph-accent comes from the enclosing
+ * .trait-block, so each block's boxes fill in its own colour.
  */
 .trait-paragraph {
   --trait-paragraph-accent: var(--color-heritage);
+  position: relative;
   break-inside: avoid;
   margin-block-end: var(--space-1);
   margin-inline: calc(var(--space-2) * -1);
   padding: var(--space-2);
+  padding-inline-start: calc(var(--space-2) + 1.375rem);
   border-radius: var(--radius-sm);
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
@@ -30,13 +32,40 @@
   outline-offset: 0;
 }
 
-.trait-paragraph.selected {
-  background: oklch(from var(--trait-paragraph-accent) l c h / 0.12);
-  box-shadow: inset 0.125rem 0 var(--trait-paragraph-accent);
+/* The checkbox, drawn rather than a real input: the whole paragraph is the control. */
+.trait-paragraph-box {
+  position: absolute;
+  inset-inline-start: var(--space-2);
+  inset-block-start: calc(var(--space-2) + 0.2rem);
+  inline-size: 0.875rem;
+  block-size: 0.875rem;
+  box-sizing: border-box;
+  border: 1.5px solid var(--color-ink-400);
+  border-radius: 2px;
+  background: var(--color-parchment-50);
 }
 
-.trait-paragraph.selected:is(:hover, :focus-visible) {
-  background: oklch(from var(--trait-paragraph-accent) l c h / 0.18);
+.trait-paragraph.selected .trait-paragraph-box {
+  border-color: var(--trait-paragraph-accent);
+  background: var(--trait-paragraph-accent);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0.25rem;
+    inset-block-start: 0.0625rem;
+    inline-size: 0.25rem;
+    block-size: 0.5rem;
+    border: solid var(--color-parchment-50);
+    border-width: 0 2px 2px 0;
+    rotate: 45deg;
+  }
+}
+
+.trait-paragraph.disabled .trait-paragraph-box {
+  border-style: dashed;
+  border-color: var(--color-ink-300);
+  background: none;
 }
 
 /* Locked (a required category's last selection) still reads as chosen, but
@@ -88,6 +117,16 @@
 
 .trait-paragraph.disabled .trait-paragraph-note {
   color: var(--color-ink-300);
+}
+
+/* Why a trait can't be taken right now: "Requires Small Size", "Would exceed…" */
+.trait-paragraph-blocked {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-heritage-dark);
 }
 
 /* ── Options: the radio is the bullet ───────────────────────────────────── */

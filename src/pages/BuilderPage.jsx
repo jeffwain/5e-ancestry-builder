@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCharacter } from '../contexts/CharacterContext';
 import { BuilderFilters } from '../components/BuilderFilters';
 import { BuilderSummary } from '../components/BuilderSummary';
 import { BuilderToolbar } from '../components/BuilderToolbar';
@@ -10,13 +11,18 @@ import './BuilderPage.css';
  * trait a sentence you click; the build itself lives in CharacterContext.
  */
 export function BuilderPage({ sections = [] }) {
+  const { isTraitSelected, selectedTraits, remainingPoints } = useCharacter();
+
   const [search, setSearch] = useState('');
+  const [showChosen, setShowChosen] = useState(false);
+  const [cost, setCost] = useState('any');
+  const [category, setCategory] = useState('');
   const toolbarRef = useRef(null);
   const pageRef = useRef(null);
   const term = search.trim().toLowerCase();
 
   // The sticky sidebar has to clear the sticky toolbar, whose height changes as
-  // trait pills and chip rows wrap — so measure it rather than guess.
+  // the chosen list and filter row wrap — so measure it rather than guess.
   useEffect(() => {
     const toolbar = toolbarRef.current;
     const page = pageRef.current;
@@ -32,52 +38,49 @@ export function BuilderPage({ sections = [] }) {
     return () => observer.disconnect();
   }, []);
 
-  // One pass over the data gives the page its blocks, the chip row its enabled
-  // state and the search box its count — all from the same match, so they can
-  // never disagree about what is showing.
-  const { visibleSections, chipGroups, matchCount, totalCount } = useMemo(() => {
+  // One pass over the data gives the page its blocks, the category menu its
+  // entries and the status line its count — all from the same match, so they
+  // can never disagree about what is showing.
+  const { visibleSections, categoryGroups, matchCount, totalCount } = useMemo(() => {
     const visible = [];
-    const chips = [];
+    const groups = [];
     let matched = 0;
     let total = 0;
 
+    const keep = (trait, categoryId) =>
+      (!category || category === categoryId) &&
+      (!term || traitMatches(trait, term)) &&
+      (!showChosen || isTraitSelected(trait.id)) &&
+      // What you already have stays in view under "What I can afford".
+      (costMatches(trait, cost, remainingPoints) || (cost === 'affordable' && isTraitSelected(trait.id)));
+
     for (const section of sections) {
       const categories = [];
-      const sectionChips = [];
+      const groupEntries = [];
 
-      for (const [categoryId, category] of Object.entries(section.categories || {})) {
-        const traits = category.traits || [];
-        const hits = term ? traits.filter((trait) => traitMatches(trait, term)) : traits;
+      for (const [categoryId, entry] of Object.entries(section.categories || {})) {
+        const traits = entry.traits || [];
+        const hits = traits.filter((trait) => keep(trait, categoryId));
 
         total += traits.length;
         matched += hits.length;
 
-        sectionChips.push({ id: categoryId, name: category.name, matches: hits.length > 0 });
+        groupEntries.push({ id: categoryId, name: entry.name });
         if (hits.length > 0) {
-          categories.push([categoryId, { ...category, traits: hits }]);
+          categories.push([categoryId, { ...entry, traits: hits }]);
         }
       }
 
-      if (sectionChips.length > 0) {
-        chips.push({ type: section.id, typeName: section.name, categories: sectionChips });
+      if (groupEntries.length > 0) {
+        groups.push({ type: section.id, typeName: section.name, categories: groupEntries });
       }
       if (categories.length > 0) {
         visible.push({ ...section, categoryEntries: categories });
       }
     }
 
-    return { visibleSections: visible, chipGroups: chips, matchCount: matched, totalCount: total };
-  }, [sections, term]);
-
-  // Chips are navigation, not a filter — they scroll their block under the
-  // toolbar and leave the rest of the page alone.
-  const scrollToCategory = useCallback((categoryId) => {
-    const block = document.querySelector(`[data-category-id="${categoryId}"]`);
-    if (!block) return;
-    const toolbarHeight = toolbarRef.current?.offsetHeight || 60;
-    const blockTop = block.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({ top: blockTop - toolbarHeight - 16, behavior: 'smooth' });
-  }, []);
+    return { visibleSections: visible, categoryGroups: groups, matchCount: matched, totalCount: total };
+  }, [sections, term, category, showChosen, cost, remainingPoints, isTraitSelected]);
 
   return (
     <div className="builder-page" ref={pageRef}>
@@ -87,8 +90,15 @@ export function BuilderPage({ sections = [] }) {
           <BuilderFilters
             search={search}
             onSearchChange={setSearch}
-            groups={chipGroups}
-            onSelectCategory={scrollToCategory}
+            showChosen={showChosen}
+            onShowChosenChange={setShowChosen}
+            chosenCount={selectedTraits.length}
+            cost={cost}
+            onCostChange={setCost}
+            remainingPoints={remainingPoints}
+            category={category}
+            onCategoryChange={setCategory}
+            groups={categoryGroups}
             matchCount={matchCount}
             totalCount={totalCount}
           />
@@ -96,7 +106,7 @@ export function BuilderPage({ sections = [] }) {
       />
 
       <div className="ancestries-page">
-        <div className="ancestries-two-col">
+        <div className="ancestries-two-col list-view">
           <div className="ancestries-browse">
             {visibleSections.map((section) => (
               <section key={section.id} className="ancestry-category">
@@ -107,10 +117,10 @@ export function BuilderPage({ sections = [] }) {
                   )}
                 </div>
 
-                {section.categoryEntries.map(([categoryId, category]) => (
+                {section.categoryEntries.map(([categoryId, entry]) => (
                   <TraitBlock
                     key={categoryId}
-                    category={category}
+                    category={entry}
                     categoryId={categoryId}
                     type={section.id}
                   />
@@ -120,7 +130,7 @@ export function BuilderPage({ sections = [] }) {
 
             {visibleSections.length === 0 && (
               <p className="builder-page-empty">
-                No traits match “{search.trim()}”.
+                No traits match these filters.
               </p>
             )}
           </div>
@@ -143,4 +153,15 @@ function traitMatches(trait, term) {
     parts.push(option.name, option.description, option.id);
   }
   return parts.some((part) => part && String(part).toLowerCase().includes(term));
+}
+
+// A trait whose price depends on its option matches if any option does.
+function costMatches(trait, cost, remainingPoints) {
+  if (cost === 'any') return true;
+  const prices = trait.requiresOption && trait.options?.length
+    ? trait.options.map((option) => option.points || 0)
+    : [trait.points || 0];
+  if (cost === 'affordable') return prices.some((price) => price <= remainingPoints);
+  if (cost === '4+') return prices.some((price) => price >= 4);
+  return prices.some((price) => price === Number(cost));
 }
