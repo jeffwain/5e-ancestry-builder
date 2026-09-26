@@ -1,41 +1,53 @@
-/* OverviewPage - Full page ancestry overview */
+/* OverviewPage — your ancestry, the builder summary opened out into one column */
 .overview-page {
   flex: 1;
-  padding: var(--space-6);
-  background: var(--color-parchment-100);
+  padding: var(--space-10) var(--space-6);
 }
 
 .overview-page-container {
-  max-width: 1024px;
-  margin: 0 auto;
+  max-inline-size: 52rem;
+  margin-inline: auto;
 }
 
-.overview-page-header {
+/* The ancestry it came from, between the name header and the traits. */
+.overview-page-source {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--space-6);
-  padding-bottom: var(--space-4);
-  border-bottom: 2px solid var(--color-parchment-300);
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-block-end: var(--space-6);
 }
 
-.overview-page-title {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  color: var(--color-ink-800);
+.overview-page-section-title,
+.overview-page .ancestry-summary-section h3 {
   margin: 0;
+  padding-block-end: var(--space-1);
+  border-block-end: 1px solid var(--color-parchment-300);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-500);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+.overview-page-summary {
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-600);
+}
+
+.overview-page-description {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-600);
+
+  & p {
+    margin: 0;
+  }
+}
+
+@media (max-width: 48rem) {
   .overview-page {
     padding: var(--space-4);
-  }
-
-  .overview-page-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-3);
   }
 }

@@ -4,3 +4,80 @@
   font-size: var(--text-sm);
   color: var(--color-ink-600);
 }
+
+/* ── Expanded: the summary as a page ────────────────────────────────────── */
+.builder-summary-expanded {
+  & .ancestry-summary {
+    padding: var(--space-6) var(--space-8) var(--space-8);
+  }
+
+  & .ancestry-summary-header {
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    padding-block-end: var(--space-5);
+  }
+
+  /* The name is the page's title, so it leads and takes the room. */
+  & .ancestry-summary-name {
+    order: -1;
+    flex: 1 1 20rem;
+  }
+
+  & .ancestry-summary-name-input {
+    block-size: 3.25rem;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 900;
+    color: var(--color-ink-900);
+  }
+
+  & .ancestry-summary-points-value {
+    font-size: var(--text-2xl);
+    line-height: 3.25rem;
+  }
+
+  & .ancestry-summary-footer {
+    flex-wrap: wrap;
+  }
+}
+
+.builder-summary-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.builder-summary-source-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  line-height: 3.25rem;
+  color: var(--color-ink-800);
+}
+
+/* Next steps sit at the end of the footer, after the export actions. */
+.builder-summary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-inline-start: auto;
+}
+
+/* Trait type as an outlined tag, in that type's colour. */
+.pill.trait-type-tag {
+  border: 1px solid currentColor;
+  background: none;
+  color: var(--color-ink-600);
+
+  &.core {
+    color: var(--color-blue-green-50);
+  }
+
+  &.heritage {
+    color: var(--color-red-45);
+  }
+
+  &.culture {
+    color: var(--color-culture);
+  }
+}

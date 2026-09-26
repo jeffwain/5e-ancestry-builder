@@ -7,9 +7,13 @@ import './BuilderSummary.css';
 
 /**
  * The build in progress: points, name, warnings, the chosen traits grouped by
- * type, and reset / copy / export. The builder's sidebar and the Overview page.
+ * type, and reset / copy / export. The builder's sidebar.
+ *
+ * `expanded` is the same summary as a page (the Overview): the name becomes the
+ * title, the traits run as one list with their type as a tag, `intro` sits
+ * above them and `actions` join the footer.
  */
-export function BuilderSummary() {
+export function BuilderSummary({ expanded = false, intro = null, actions = null }) {
   const {
     selectedTraits,
     selectedOptions,
@@ -28,8 +32,8 @@ export function BuilderSummary() {
 
   const isOverBudget = pointsSpent > POINT_BUDGET;
 
-  const sections = useMemo(
-    () => groupTraitsByType(selectedTraits, traitTypes).map((group) => ({
+  const sections = useMemo(() => {
+    const groups = groupTraitsByType(selectedTraits, traitTypes).map((group) => ({
       key: group.name,
       title: group.name,
       traits: group.traits.map((trait) => ({
@@ -37,9 +41,12 @@ export function BuilderSummary() {
         trait,
         selectedOptions,
       })),
-    })),
-    [selectedTraits, traitTypes, selectedOptions]
-  );
+    }));
+    // On the page the grouping moves into each trait's tags: one list, same order.
+    return expanded
+      ? [{ key: 'traits', title: 'Traits', traits: groups.flatMap((group) => group.traits) }]
+      : groups;
+  }, [selectedTraits, traitTypes, selectedOptions, expanded]);
 
   const traitName = (id) => allTraits[id]?.name || id;
 
@@ -50,8 +57,14 @@ export function BuilderSummary() {
       .filter((other) => other.id !== trait.id && other.requires?.includes(trait.id))
       .map((other) => other.name);
 
+    // "Core Attributes" → "Core": the tag only has to say which kind.
+    const typeLabel = traitTypes[trait.type]?.name?.split(' ')[0];
+
     return (
       <>
+        {expanded && typeLabel && (
+          <span className={`pill trait-type-tag ${trait.type}`}>{typeLabel}</span>
+        )}
         {trait.requires?.length > 0 && (
           <span className="pill requirement met">
             Requires {trait.requires.map(traitName).join(', ')}
@@ -88,6 +101,12 @@ export function BuilderSummary() {
   const header = (
     <>
       <div className="ancestry-summary-header">
+        {expanded && showBasedOn && (
+          <div className="builder-summary-field builder-summary-source">
+            <span className="ancestry-summary-field-label">Based on</span>
+            <span className="builder-summary-source-name">{loadedPrebuiltName}</span>
+          </div>
+        )}
         <div className="ancestry-summary-points">
           <span className="ancestry-summary-field-label">Points</span>
           <span className={`ancestry-summary-points-value${isOverBudget ? ' over' : ''}`}>
@@ -110,7 +129,7 @@ export function BuilderSummary() {
         </div>
       </div>
 
-      {showBasedOn && (
+      {showBasedOn && !expanded && (
         <p className="builder-summary-based-on">
           <span className="ancestry-summary-field-label">Based on</span> {loadedPrebuiltName}
         </p>
@@ -125,6 +144,8 @@ export function BuilderSummary() {
           ))}
         </div>
       )}
+
+      {intro}
     </>
   );
 
@@ -134,19 +155,25 @@ export function BuilderSummary() {
         Reset
       </button>
       <div className="ancestry-summary-export">
+        {expanded && (
+          <button className="btn btn-secondary" onClick={() => window.print()}>
+            Print
+          </button>
+        )}
         <button className="btn btn-secondary" onClick={handleCopy}>
           Copy JSON
         </button>
-        <button className="btn btn-primary" onClick={handleExport}>
+        <button className={`btn ${expanded ? 'btn-secondary' : 'btn-primary'}`} onClick={handleExport}>
           Export JSON
         </button>
       </div>
+      {actions && <div className="builder-summary-actions">{actions}</div>}
     </div>
   );
 
-  return (
+  const summary = (
     <AncestrySummary
-      title={ancestryName || 'Custom Ancestry'}
+      title={expanded ? null : ancestryName || 'Custom Ancestry'}
       header={header}
       footer={footer}
       sections={sections}
@@ -156,4 +183,6 @@ export function BuilderSummary() {
       renderTraitActions={renderTraitActions}
     />
   );
+
+  return expanded ? <div className="builder-summary-expanded">{summary}</div> : summary;
 }
