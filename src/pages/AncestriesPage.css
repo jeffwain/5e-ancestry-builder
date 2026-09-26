@@ -320,6 +320,12 @@
   }
 }
 
+.ancestry-book-actions-choice {
+  display: block;
+  margin-block-start: var(--space-1);
+  color: var(--color-parchment-300);
+}
+
 .ancestry-book-actions .btn-secondary {
   border-color: var(--color-parchment-400);
   background: transparent;

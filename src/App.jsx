@@ -80,18 +80,20 @@ function AppContent() {
   }, [defaultTraits, setDefaults, selectedTraits.length]);
 
   // Handle "Use" - load ancestry+archetype traits and navigate to Overview
-  const handleUseAncestry = ({ ancestry, archetype, traits, options = {} }) => {
+  // A choice left open (Small or Medium Size) can only be made in the builder,
+  // so "Use" goes there instead until it is made.
+  const handleUseAncestry = ({ ancestry, archetype, traits, options = {}, choices = [], openCategories = [] }) => {
     const prebuiltId = `${ancestry.id}-${archetype.id}`;
     const ancestryName = `${ancestry.name} (${archetype.name})`;
-    loadPrebuilt(prebuiltId, traits, options, ancestryName);
-    navigate('/overview');
+    loadPrebuilt(prebuiltId, traits, options, ancestryName, openCategories);
+    navigate(choices.length > 0 ? '/builder' : '/overview');
   };
 
   // Handle "Customize" - load ancestry+archetype traits and navigate to Builder
-  const handleCustomizeAncestry = ({ ancestry, archetype, traits, options = {} }) => {
+  const handleCustomizeAncestry = ({ ancestry, archetype, traits, options = {}, openCategories = [] }) => {
     const prebuiltId = `${ancestry.id}-${archetype.id}`;
     const ancestryName = `${ancestry.name} (${archetype.name})`;
-    loadPrebuilt(prebuiltId, traits, options, ancestryName);
+    loadPrebuilt(prebuiltId, traits, options, ancestryName, openCategories);
     navigate('/builder');
   };
 

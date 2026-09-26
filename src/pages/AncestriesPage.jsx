@@ -1,8 +1,14 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { TraitContent } from '../components/TraitContent';
-import { getResolvedTraitsAndOptions, resolveTrait } from '../utils/ancestryResolve';
-import { getTraitDisplay, POINT_BUDGET } from '../utils/traitDisplay';
+import {
+  getResolvedTraitsAndOptions,
+  resolveTrait,
+  sumTraitCost,
+  withoutOpenChoices,
+  RECOMMENDED_PREFIX,
+} from '../utils/ancestryResolve';
+import { POINT_BUDGET } from '../utils/traitDisplay';
 import { useConvertedTraits, combineTraitLookups } from '../hooks/useConvertedTraits';
 import { usePersistentState } from '../hooks/usePersistentState';
 import { loadJson } from '../utils/dataCache';
@@ -66,11 +72,19 @@ export function AncestriesPage({ allTraits = {}, onUse, onCustomize }) {
     entryRef.current?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   };
 
+  // A choice the ancestry leaves open (Small or Medium Size) is the player's to
+  // make, so it isn't loaded — `choices` tells the app to send them to the builder.
   const emit = (handler, chosen) => {
     if (!handler || !ancestry || !chosen) return;
-    const { traits, options } = getResolvedTraitsAndOptions(ancestry, chosen, traitLookup);
-    handler({ ancestry, archetype: chosen, traits, options });
+    const resolved = getResolvedTraitsAndOptions(ancestry, chosen, traitLookup);
+    const { traits, choices, openCategories } = withoutOpenChoices(resolved.traits);
+    handler({ ancestry, archetype: chosen, traits, options: resolved.options, choices, openCategories });
   };
+
+  // What the picked archetype leaves open, for the note beside Use / Customize.
+  const openChoices = ancestry && archetype
+    ? withoutOpenChoices(getResolvedTraitsAndOptions(ancestry, archetype, traitLookup).traits).choices
+    : [];
 
   // Building from the shared traits alone is an archetype with nothing of its own.
   const sharedOnly = ancestry && { id: 'custom', name: 'Custom', traits: [] };
@@ -85,7 +99,7 @@ export function AncestriesPage({ allTraits = {}, onUse, onCustomize }) {
     );
   }
 
-  const sharedCost = sumCost(ancestry?.traits, traitLookup);
+  const sharedCost = sumTraitCost(ancestry?.traits, traitLookup);
 
   return (
     <div className="ancestry-book">
@@ -158,7 +172,12 @@ export function AncestriesPage({ allTraits = {}, onUse, onCustomize }) {
                 <span className="ancestry-book-actions-text">
                   <strong>{ancestry.name} ({archetype.name})</strong>
                   {' · '}
-                  {sharedCost + sumCost(archetype.traits, traitLookup)} of {POINT_BUDGET} points
+                  {sharedCost + sumTraitCost(archetype.traits, traitLookup)} of {POINT_BUDGET} points
+                  {openChoices.length > 0 && (
+                    <span className="ancestry-book-actions-choice">
+                      You'll choose {openChoices.join(' or ')} in the builder.
+                    </span>
+                  )}
                 </span>
                 <button type="button" className="btn btn-secondary" onClick={() => emit(onCustomize, archetype)}>
                   Customize in the builder
@@ -182,7 +201,7 @@ export function AncestriesPage({ allTraits = {}, onUse, onCustomize }) {
                   <h4 className="ancestry-book-section-title">Archetypes</h4>
                   <div className="ancestry-book-archetypes">
                     {ancestry.archetypes.map((entry) => {
-                      const available = POINT_BUDGET - sharedCost - sumCost(entry.traits, traitLookup);
+                      const available = POINT_BUDGET - sharedCost - sumTraitCost(entry.traits, traitLookup);
                       return (
                         <article key={entry.id} className="ancestry-book-archetype">
                           <div className="ancestry-book-archetype-head">
@@ -284,11 +303,8 @@ function AncestryIndex({ categories, search, onSearchChange, selectedId, onSelec
   );
 }
 
-// The build marks every trait of a designed archetype "RECOMMENDED: …" so it is
-// never taken for source text. Here the archetype's own "Designed" tag says so
-// once, and the prefix on each name would only repeat it.
-const RECOMMENDED = 'RECOMMENDED: ';
-
+// On a designed archetype the "Designed" tag already says its traits are
+// suggestions, so the RECOMMENDED: prefix on each name would only repeat it.
 /** Traits written out in full, "Name [cost]. Description." */
 function TraitList({ traits, lookup, columns = false, designed = false }) {
   if (!traits?.length) return null;
@@ -311,21 +327,8 @@ function TraitList({ traits, lookup, columns = false, designed = false }) {
 // trait's name in traits.json — strip whichever is showing.
 function withoutRecommended(trait, designed) {
   const shown = trait.nameOverride || trait.name;
-  if (!designed || !shown?.startsWith(RECOMMENDED)) return trait;
-  return { ...trait, nameOverride: shown.slice(RECOMMENDED.length) };
-}
-
-// Point total of a list of trait references, as the builder would count them.
-function sumCost(traits, lookup) {
-  let total = 0;
-  for (const raw of traits || []) {
-    if (!raw) continue;
-    const resolved = resolveTrait(raw, lookup);
-    const selectedOptions = raw.option && raw.id ? { [raw.id]: raw.option } : {};
-    const cost = getTraitDisplay(resolved, selectedOptions).cost;
-    if (typeof cost === 'number') total += cost;
-  }
-  return total;
+  if (!designed || !shown?.startsWith(RECOMMENDED_PREFIX)) return trait;
+  return { ...trait, nameOverride: shown.slice(RECOMMENDED_PREFIX.length) };
 }
 
 function countLabel(count, noun) {
