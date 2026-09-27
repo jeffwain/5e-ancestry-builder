@@ -8,6 +8,8 @@
  */
 
 .ae-page {
+  /* Native selects and buttons stay ink-on-parchment even when the OS is dark. */
+  color-scheme: light;
   padding: var(--space-4);
   max-width: 1800px;
   margin: 0 auto;
@@ -49,22 +51,35 @@
 }
 
 .ae-save {
-  padding: var(--space-2) var(--space-4);
-  border: 1px solid var(--color-heritage);
+  min-block-size: 2.25rem;
+  padding: 0.4375rem var(--space-4) 0.5625rem;
+  border: 1px solid var(--color-heritage-dark);
   border-radius: var(--radius-sm);
   background: var(--color-heritage);
-  color: #fff;
+  color: var(--color-parchment-50);
+  font-family: var(--font-ui);
   font-size: var(--text-sm);
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
 }
-.ae-save:disabled { opacity: 0.45; cursor: default; }
+
+.ae-save:where(:hover, :focus-visible):not(:disabled) {
+  background: var(--color-heritage-light);
+}
+
+.ae-save:disabled {
+  opacity: 1;
+  border-color: var(--color-parchment-400);
+  background: var(--color-parchment-300);
+  color: var(--color-ink-500);
+  cursor: not-allowed;
+}
 
 /* ── three-column shell ─────────────────────────────────────────────────── */
 
 .ae-grid {
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr) 460px;
+  grid-template-columns: 16rem minmax(0, 1fr) minmax(28rem, 36rem);
   gap: var(--space-4);
   align-items: start;
 }
@@ -89,15 +104,31 @@
 }
 
 .ae-input {
+  box-sizing: border-box;
   width: 100%;
-  padding: var(--space-1) var(--space-2);
-  border: 1px solid var(--color-parchment-300);
+  min-block-size: 2.25rem;
+  padding: var(--space-2);
+  border: 1px solid var(--color-parchment-400);
   border-radius: var(--radius-sm);
-  background: #fff;
-  font-family: inherit;
+  background: var(--color-parchment-50);
+  font-family: var(--font-body);
   font-size: var(--text-sm);
   color: var(--color-ink-800);
 }
+
+.ae-input::placeholder {
+  color: var(--color-ink-400);
+}
+
+.ae-input:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 0;
+}
+
+textarea.ae-input {
+  min-block-size: 4.5rem;
+}
+
 .ae-input-pts { width: 6rem; }
 
 /* ── column 1: ancestry list ────────────────────────────────────────────── */
@@ -175,16 +206,22 @@
 }
 
 .ae-slot-target {
+  min-block-size: 2.25rem;
+  padding-inline: var(--space-2);
   border: none;
+  border-radius: var(--radius-sm);
   background: none;
-  padding: 0;
   font-family: var(--font-heading);
   font-size: var(--text-sm);
   font-weight: 700;
   color: var(--color-ink-800);
   cursor: pointer;
 }
-.ae-slot-target:hover { color: var(--color-heritage); }
+
+.ae-slot-target:where(:hover, :focus-visible) {
+  background: var(--color-parchment-200);
+  color: var(--color-heritage);
+}
 
 .ae-slot-meta { display: flex; align-items: center; gap: var(--space-2); }
 
@@ -251,21 +288,31 @@
   font-size: var(--text-xs);
 }
 
-.ae-row-actions { display: flex; gap: 2px; }
+.ae-row-actions { display: flex; gap: var(--space-1); }
+
 .ae-row-actions button {
-  width: 1.25rem;
-  height: 1.25rem;
+  inline-size: 2rem;
+  block-size: 2rem;
   padding: 0;
-  border: 1px solid var(--color-parchment-300);
-  border-radius: 3px;
+  border: 1px solid var(--color-ink-500);
+  border-radius: var(--radius-sm);
   background: var(--color-parchment-50);
-  color: var(--color-ink-500);
-  font-size: var(--text-xs);
+  color: var(--color-ink-700);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
   line-height: 1;
   cursor: pointer;
 }
-.ae-row-actions button:hover { background: var(--color-parchment-200); }
-.ae-remove:hover { color: var(--color-error); border-color: var(--color-error); }
+
+.ae-row-actions button:where(:hover, :focus-visible) {
+  background: var(--color-parchment-200);
+  border-color: var(--color-ink-700);
+}
+
+.ae-remove:where(:hover, :focus-visible) {
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
 
 .ae-tag {
   margin-left: var(--space-1);
@@ -296,51 +343,74 @@
 }
 .ae-table th {
   text-align: left;
-  padding: var(--space-1) var(--space-1) var(--space-1) 0;
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
   border-bottom: 1px solid var(--color-parchment-300);
   color: var(--color-ink-500);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-weight: 600;
+  white-space: nowrap;
   position: sticky;
   top: 0;
   background: var(--color-parchment-50);
 }
 .ae-table td {
-  padding: 3px var(--space-1) 3px 0;
+  padding: var(--space-2) var(--space-2) var(--space-2) 0;
   border-bottom: 1px solid var(--color-parchment-100);
   vertical-align: middle;
 }
 .ae-num { text-align: right; font-variant-numeric: tabular-nums; }
 
 .ae-t-name { display: block; color: var(--color-ink-800); font-size: var(--text-sm); }
-.ae-t-id { display: block; color: var(--color-ink-400); font-family: monospace; }
-.ae-t-cat { color: var(--color-ink-500); }
+.ae-t-hit { font-weight: 600; color: var(--color-heritage); }
+.ae-t-id { display: block; color: var(--color-ink-500); font-family: var(--font-mono); font-size: var(--text-xs); }
+.ae-t-cat { color: var(--color-ink-600); }
 
 .ae-select {
-  max-width: 11rem;
-  padding: 1px 2px;
-  border: 1px solid var(--color-parchment-300);
-  border-radius: 3px;
-  background: #fff;
-  font-family: inherit;
-  font-size: var(--text-xs);
+  box-sizing: border-box;
+  width: 100%;
+  max-inline-size: 16rem;
+  min-block-size: 2.25rem;
+  padding-inline: var(--space-2);
+  border: 1px solid var(--color-parchment-400);
+  border-radius: var(--radius-sm);
+  background: var(--color-parchment-50);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-ink-800);
+  cursor: pointer;
+}
+
+.ae-select:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 0;
 }
 
 .ae-add {
-  width: 1.5rem;
-  height: 1.5rem;
-  padding: 0;
-  border: 1px solid var(--color-parchment-300);
-  border-radius: 3px;
-  background: var(--color-parchment-100);
-  color: var(--color-ink-700);
+  min-block-size: 2.25rem;
+  padding: 0.4375rem var(--space-3) 0.5625rem;
+  border: 1px solid var(--color-heritage-dark);
+  border-radius: var(--radius-sm);
+  background: var(--color-heritage);
+  color: var(--color-parchment-50);
+  font-family: var(--font-ui);
   font-size: var(--text-sm);
+  font-weight: 500;
   line-height: 1;
   cursor: pointer;
 }
-.ae-add:hover:not(:disabled) { background: var(--color-heritage); border-color: var(--color-heritage); color: #fff; }
-.ae-add:disabled { opacity: 0.4; cursor: default; }
+
+.ae-add:where(:hover, :focus-visible):not(:disabled) {
+  background: var(--color-heritage-light);
+}
+
+.ae-add:disabled {
+  opacity: 1;
+  border-color: var(--color-parchment-400);
+  background: var(--color-parchment-200);
+  color: var(--color-ink-500);
+  cursor: not-allowed;
+}
 
 /* ── inline trait form ──────────────────────────────────────────────────── */
 
@@ -369,13 +439,26 @@
 
 .ae-add-inline {
   align-self: flex-start;
-  padding: var(--space-1) var(--space-3);
-  border: 1px solid var(--color-heritage);
+  min-block-size: 2.25rem;
+  padding: 0.4375rem var(--space-3) 0.5625rem;
+  border: 1px solid var(--color-ink-500);
   border-radius: var(--radius-sm);
-  background: var(--color-parchment-100);
-  color: var(--color-heritage);
+  background: transparent;
+  color: var(--color-ink-700);
+  font-family: var(--font-ui);
   font-size: var(--text-sm);
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
 }
-.ae-add-inline:disabled { opacity: 0.45; cursor: default; }
+
+.ae-add-inline:where(:hover, :focus-visible):not(:disabled) {
+  border-color: var(--color-ink-700);
+  background: var(--color-parchment-200);
+}
+
+.ae-add-inline:disabled {
+  opacity: 1;
+  border-color: var(--color-parchment-400);
+  color: var(--color-ink-400);
+  cursor: not-allowed;
+}

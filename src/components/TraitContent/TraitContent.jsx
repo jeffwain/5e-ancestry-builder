@@ -25,6 +25,7 @@ import './TraitContent.css';
  *   - children:    node appended inside the description (builder option radios etc.)
  *   - showFooter:  whether the summary meta row (cost / restriction / category) is shown
  *   - longName:    paragraph variant only — "Trait (Option)" instead of the option alone
+ *   - showCost:    paragraph variant only — whether the "[2]" after the name is shown
  *
  * variant: 'paragraph' | 'summary' | 'summary-compact' | 'tooltip'
  */
@@ -36,6 +37,7 @@ export function TraitContent({
   children = null,
   showFooter = true,
   longName = false,
+  showCost = true,
 }) {
   const d = getTraitDisplay(trait, selectedOptions);
 
@@ -43,7 +45,7 @@ export function TraitContent({
     // Runs the whole trait together as one sentence — "Name [2]. Description." —
     // for the block builder, where traits read as prose rather than as cards.
     case 'paragraph': {
-      const bracketCost = formatBracketCost(d.cost);
+      const bracketCost = showCost ? formatBracketCost(d.cost) : null;
       const description = compactTraitDescription(d);
       return (
         <>

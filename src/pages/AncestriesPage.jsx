@@ -59,7 +59,10 @@ export function AncestriesPage({ allTraits = {}, onUse, onCustomize }) {
   // is never an empty frame.
   const current = allAncestries.find((entry) => entry.ancestry.id === selectedAncestryId) || allAncestries[0];
   const ancestry = current?.ancestry;
-  const archetype = ancestry?.archetypes?.find((entry) => entry.id === selectedArchetypeId) || null;
+  // An ancestry with a single archetype has nothing to choose between, so it
+  // opens already picked: shared traits beside the archetype's, ready to use.
+  const onlyArchetype = ancestry?.archetypes?.length === 1 ? ancestry.archetypes[0] : null;
+  const archetype = ancestry?.archetypes?.find((entry) => entry.id === selectedArchetypeId) || onlyArchetype;
 
   const selectAncestry = (ancestryId) => {
     setSelectedAncestryId(ancestryId);
@@ -117,7 +120,7 @@ export function AncestriesPage({ allTraits = {}, onUse, onCustomize }) {
             <span className="ancestry-book-kicker">
               {current.categoryName}
               {ancestry.archetypes?.length > 0 && ` · ${countLabel(ancestry.archetypes.length, 'archetype')}`}
-              {ancestry.traits?.length > 0 && ` · ${countLabel(ancestry.traits.length, 'shared trait')}`}
+              {/* {ancestry.traits?.length > 0 && ` · ${countLabel(ancestry.traits.length, 'shared trait')}`} */}
             </span>
             <h1 className="ancestry-book-name">{ancestry.name}</h1>
             {ancestry.summary && <p className="ancestry-book-summary">{ancestry.summary}</p>}
@@ -128,7 +131,7 @@ export function AncestriesPage({ allTraits = {}, onUse, onCustomize }) {
             )}
           </header>
 
-          {ancestry.archetypes?.length > 0 && (
+          {ancestry.archetypes?.length > 1 && (
             <nav className="ancestry-book-pills" aria-label="Archetypes">
               <button
                 type="button"
@@ -155,12 +158,16 @@ export function AncestriesPage({ allTraits = {}, onUse, onCustomize }) {
           {archetype ? (
             <>
               <div className="ancestry-book-picked">
+                {ancestry.traits?.length > 0 && (
+                  <section className="ancestry-book-section">
+                    <h4 className="ancestry-book-section-title">Shared Traits</h4>
+                    <TraitList traits={ancestry.traits} lookup={traitLookup} />
+                  </section>
+                )}
                 <section className="ancestry-book-section">
-                  <h4 className="ancestry-book-section-title">Shared Traits</h4>
-                  <TraitList traits={ancestry.traits} lookup={traitLookup} />
-                </section>
-                <section className="ancestry-book-section">
-                  <h4 className="ancestry-book-section-title">{archetype.name} adds</h4>
+                  <h4 className="ancestry-book-section-title">
+                    {onlyArchetype || !ancestry.traits?.length ? archetype.name : `${archetype.name} adds`}
+                  </h4>
                   {archetype.description && (
                     <p className="ancestry-book-archetype-description">{archetype.description}</p>
                   )}
@@ -212,11 +219,6 @@ export function AncestriesPage({ allTraits = {}, onUse, onCustomize }) {
                             >
                               {entry.name}
                             </button>
-                            {entry.designed && (
-                              <span className="ancestry-book-designed" title="Designed for the builder, not taken from the source">
-                                Designed
-                              </span>
-                            )}
                             {/* A full build needs no count; leftover points are the reader's to fill. */}
                             {available > 0 && (
                               <span className="ancestry-book-available">
@@ -258,6 +260,7 @@ function AncestryIndex({ categories, search, onSearchChange, selectedId, onSelec
   const term = search.trim().toLowerCase();
   const matches = (ancestry) => !term ||
     ancestry.name.toLowerCase().includes(term) ||
+    ancestry.subtitle?.toLowerCase().includes(term) ||
     ancestry.summary?.toLowerCase().includes(term);
 
   // Subcategories file under their own heading, same as the category they sit in.
@@ -292,8 +295,11 @@ function AncestryIndex({ categories, search, onSearchChange, selectedId, onSelec
                 aria-current={ancestry.id === selectedId ? 'true' : undefined}
                 onClick={() => onSelect(ancestry.id)}
               >
-                <span>{ancestry.name}</span>
-                <span className="ancestry-book-index-count">{ancestry.archetypes?.length || '—'}</span>
+                <span className="ancestry-book-index-name">
+                  <span>{ancestry.name}</span>
+                  <span className="ancestry-book-index-count">{ancestry.archetypes?.length || '—'}</span>
+                </span>
+                {ancestry.subtitle && <span className="ancestry-book-index-subtitle">{ancestry.subtitle}</span>}
               </button>
             ))}
           </nav>
@@ -303,9 +309,12 @@ function AncestryIndex({ categories, search, onSearchChange, selectedId, onSelec
   );
 }
 
-// On a designed archetype the "Designed" tag already says its traits are
-// suggestions, so the RECOMMENDED: prefix on each name would only repeat it.
-/** Traits written out in full, "Name [cost]. Description." */
+// On a designed archetype every trait is a suggestion, so the RECOMMENDED:
+// prefix on each name would only repeat itself down the list.
+/**
+ * Traits written out in full, "Name. Description." — no cost; this page is for
+ * reading. A trait with a chosen option shows the option's name alone.
+ */
 function TraitList({ traits, lookup, columns = false, designed = false }) {
   if (!traits?.length) return null;
   return (
@@ -315,7 +324,7 @@ function TraitList({ traits, lookup, columns = false, designed = false }) {
         const selectedOptions = raw.option && raw.id ? { [raw.id]: raw.option } : {};
         return (
           <div key={`${resolved.id || 'trait'}-${index}`} className="ancestry-book-trait">
-            <TraitContent trait={resolved} selectedOptions={selectedOptions} variant="paragraph" longName />
+            <TraitContent trait={resolved} selectedOptions={selectedOptions} variant="paragraph" showCost={false} />
           </div>
         );
       })}

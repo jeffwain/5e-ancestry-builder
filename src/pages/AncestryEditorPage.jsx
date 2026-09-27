@@ -117,6 +117,36 @@ function refText(id, option) {
   return option ? `'${id}:${option}'` : `'${id}'`;
 }
 
+function traitSearchText(row) {
+  return `${row.name} ${row.id} ${row.categoryName} ${row.type}`.toLowerCase();
+}
+
+function optionSearchText(option) {
+  return `${option.name} ${option.id}`.toLowerCase();
+}
+
+/**
+ * Options a query is asking for.
+ * null hides the trait. [] means the trait matched on its own name, so every
+ * option stays available. "cultural skill > beast tracker" requires both sides,
+ * because neither the trait name nor the option name contains that whole string.
+ */
+function matchedOptionsFor(row, query) {
+  const parts = query.split(/\s*[>›]\s*/).map((part) => part.trim()).filter(Boolean);
+  const traitHit = (term) => traitSearchText(row).includes(term);
+  const optionHits = (term) => row.options.filter((option) => optionSearchText(option).includes(term));
+
+  if (parts.length >= 2) {
+    const matched = optionHits(parts.slice(1).join(' '));
+    if (!traitHit(parts[0]) || matched.length === 0) return null;
+    return matched;
+  }
+
+  const matched = optionHits(query);
+  if (traitHit(query)) return [];
+  return matched.length ? matched : null;
+}
+
 /** Build the source text for a new inline trait. */
 function inlineText({ name, points, description }) {
   const parts = [
@@ -263,9 +293,11 @@ export function AncestryEditorPage() {
       return list;
     });
 
-  const addTrait = (row) => {
+  const addTrait = (row, optionId) => {
     if (!activeSlot) { setStatus('Pick a target slot first.'); return; }
-    const option = pendingOption[row.id] || (row.requiresOption ? row.options[0]?.id : undefined);
+    // The dropdown is what the user sees, so Add writes that option — including
+    // when the search landed on one (Cultural Skill › Beast Tracker).
+    const option = optionId || undefined;
     const el = {
       kind: 'ref',
       id: row.id,
@@ -274,7 +306,8 @@ export function AncestryEditorPage() {
       text: refText(row.id, option),
     };
     mutate(activeSlot, activeSlot.original, list => [...list, el]);
-    setStatus(`Added ${row.name}${option ? ` (${option})` : ''}`);
+    const optName = row.options.find((entry) => entry.id === option)?.name;
+    setStatus(`Added ${row.name}${optName ? ` (${optName})` : ''}`);
   };
 
   const addInline = () => {
@@ -326,13 +359,13 @@ export function AncestryEditorPage() {
 
   const visibleTraits = useMemo(() => {
     const q = traitFilter.trim().toLowerCase();
-    if (!q) return traitIndex.rows;
-    return traitIndex.rows.filter(r =>
-      r.name.toLowerCase().includes(q) ||
-      r.id.includes(q) ||
-      r.categoryName.toLowerCase().includes(q) ||
-      r.type.includes(q)
-    );
+    if (!q) return traitIndex.rows.map((row) => ({ row, matchedOptions: [] }));
+    const hits = [];
+    for (const row of traitIndex.rows) {
+      const matchedOptions = matchedOptionsFor(row, q);
+      if (matchedOptions) hits.push({ row, matchedOptions });
+    }
+    return hits;
   }, [traitIndex.rows, traitFilter]);
 
   // ── render ──────────────────────────────────────────────────────────────
@@ -516,9 +549,14 @@ export function AncestryEditorPage() {
           <div className="ae-picker-head">
             <input
               className="ae-input"
-              placeholder="Search all traits…"
+              placeholder="Trait, option, or trait > option"
               value={traitFilter}
-              onChange={(e) => setTraitFilter(e.target.value)}
+              onChange={(e) => {
+                setTraitFilter(e.target.value);
+                // A new query picks the matching option itself. A leftover
+                // choice from the previous query would hide that.
+                setPendingOption({});
+              }}
             />
             <p className="ae-muted ae-target-line">
               {activeSlot
@@ -539,19 +577,31 @@ export function AncestryEditorPage() {
                 </tr>
               </thead>
               <tbody>
-                {visibleTraits.map((row) => (
+                {visibleTraits.map(({ row, matchedOptions }) => {
+                  const pending = pendingOption[row.id];
+                  const selectedId = row.options.length
+                    ? (pending || matchedOptions[0]?.id || row.options[0].id)
+                    : undefined;
+                  const selectedOption = row.options.find((option) => option.id === selectedId);
+                  const shownPoints = selectedOption ? (selectedOption.points ?? 0) : (row.points ?? '—');
+                  return (
                   <tr key={row.id}>
                     <td>
-                      <span className="ae-t-name">{row.name}</span>
-                      <span className="ae-t-id">{row.id}</span>
+                      <span className="ae-t-name">
+                        {row.name}
+                        {matchedOptions.length > 0 && (
+                          <span className="ae-t-hit"> › {matchedOptions.map((option) => option.name).join(', ')}</span>
+                        )}
+                      </span>
+                      <span className="ae-t-id">{row.id}{selectedId ? `:${selectedId}` : ''}</span>
                     </td>
                     <td className="ae-t-cat">{row.categoryName}</td>
-                    <td className="ae-num">{row.points ?? '—'}</td>
+                    <td className="ae-num">{shownPoints}</td>
                     <td>
                       {row.options.length > 0 ? (
                         <select
                           className="ae-select"
-                          value={pendingOption[row.id] || row.options[0].id}
+                          value={selectedId}
                           onChange={(e) => setPendingOption(p => ({ ...p, [row.id]: e.target.value }))}
                         >
                           {row.options.map(o => (
@@ -566,15 +616,16 @@ export function AncestryEditorPage() {
                       <button
                         type="button"
                         className="ae-add"
-                        onClick={() => addTrait(row)}
+                        onClick={() => addTrait(row, selectedId)}
                         disabled={!activeSlot}
                         title={activeSlot ? 'Add to target slot' : 'Pick a target slot first'}
                       >
-                        +
+                        Add
                       </button>
                     </td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>

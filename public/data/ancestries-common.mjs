@@ -6,6 +6,7 @@ export default [
   {
     id: 'humans',
     name: 'Humans',
+    subtitle: 'Resilient, creative, and found in every land.',
     type: 'Common ancestry',
     notion: 'https://app.notion.com/p/873e5832070244358a821027a745e0e1',
     summary:
@@ -86,6 +87,7 @@ export default [
   {
     id: 'dwarves',
     name: 'Dwarves',
+    subtitle: 'Stout artisans locked in an old war with the goblins.',
     type: 'Common ancestry',
     notion: 'https://app.notion.com/p/40e0f6f8751348c8a4f0cc3a87753e5a',
     summary: 'Smaller but no less physically capable than other humanoids, and unmatched at the artisan’s bench.',
@@ -187,6 +189,7 @@ export default [
   {
     id: 'half-giants',
     name: 'Half-giants',
+    subtitle: 'Mortals built on the heavier frame of giant blood.',
     type: 'Common ancestry',
     notion: 'https://app.notion.com/p/f2f99104273e4cf98162fc08c81f4b42',
     summary: 'Mortals carrying the blood of giants, built on a heavier frame than their neighbours.',

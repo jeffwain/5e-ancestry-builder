@@ -22,7 +22,8 @@ const DATA_DIR = path.resolve(__dirname, '../public/data');
 export const SOURCE_FILES = {
   common: 'ancestries-common.mjs',
   uncommon: 'ancestries-uncommon.mjs',
-  versatile: 'ancestries-versatile.mjs',
+  planar: 'ancestries-planar.mjs',
+  awakened: 'ancestries-awakened.mjs',
 };
 
 function filePath(key) {

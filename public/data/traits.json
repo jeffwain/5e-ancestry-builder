@@ -1407,8 +1407,8 @@
               "requiresOption": true,
               "options": [
                 {"id": "adrenaline-rush", "name": "Adrenaline Rush", "points": 3, "description": "You can take the Dash action as a bonus action. You can use this trait a number of times equal to your Proficiency Bonus per long rest. Whenever you use this trait, gain a number of temporary hit points equal to your Proficiency Bonus."},
-                {"id": "charge", "name": "Charge", "points": 3, "description": "Immediately after you use the Dash action on your turn and move at least 20 feet, you can make one unarmed strike melee attack as a bonus action, or you can ram a target and attempt to knock it prone. The DC for this Strength saving throw is equal to 8 + your Strength modifier + your Proficiency Bonus."},
-                {"id": "ambush", "name": "Ambush", "points": 5, "description": "If you hit a creature with an attack roll, the creature takes an extra 2d6 damage if it hasn't taken a turn yet in the current combat."},
+                {"id": "charge", "name": "Charger", "points": 3, "description": "Immediately after you use the Dash action on your turn and move at least 20 feet, you can make one unarmed strike melee attack as a bonus action, or you can ram a target and attempt to knock it prone. The DC for this Strength saving throw is equal to 8 + your Strength modifier + your Proficiency Bonus."},
+                {"id": "ambush", "name": "Ambusher", "points": 5, "description": "If you hit a creature with an attack roll, the creature takes an extra 2d6 damage if it hasn't taken a turn yet in the current combat."},
                 {"id": "nimble-escape", "name": "Nimble Escape", "points": 7, "description": "You can take the Disengage or Hide action as a bonus action on each of your turns."}
               ]
             }

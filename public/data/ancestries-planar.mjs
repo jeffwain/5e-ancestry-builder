@@ -1,4 +1,4 @@
-// Versatile ancestries — see ./README.md for the reference format.
+// Planar ancestries — see ./README.md for the reference format.
 //
 // The genasi archetypes pasted in from external sources carry no point values at
 // all. Everything marked `priced: true` below is a pricing decision made under
@@ -18,7 +18,8 @@ export default [
   {
     id: 'undine',
     name: 'Undine',
-    type: 'Versatile ancestry',
+    subtitle: 'Waterborn of waves and the sea.',
+    type: 'Planar ancestry',
     descriptors: 'Waterborn – Marine, Aquatic, Fishlike',
     notion: 'https://app.notion.com/p/894ace4d80a24cef8ea18ef4342dd65a',
     summary: 'Waterborn godlike, marked either by marine anatomy or by the element itself.',
@@ -89,7 +90,8 @@ export default [
   {
     id: 'ifriti',
     name: 'Ifriti',
-    type: 'Versatile ancestry',
+    subtitle: 'Flameborn of fire, ash, and magma.',
+    type: 'Planar ancestry',
     descriptors: 'Flameborn – Fire, Ash, Magma',
     notion: 'https://app.notion.com/p/13fddbcc068f801a8d87e4acf0ba9733',
     summary: 'Flameborn godlike — hot tempered, impassioned, holding sway over destruction.',
@@ -133,7 +135,8 @@ export default [
   {
     id: 'talos',
     name: 'Talos',
-    type: 'Versatile ancestry',
+    subtitle: 'Stoneborn of rock, crystal, or metal.',
+    type: 'Planar ancestry',
     descriptors: 'Stoneborn – Earth, Stone, Metal',
     notion: 'https://app.notion.com/p/b688867c582242aea58fdf4df1732eca',
     summary: 'Stoneborn godlike, bodied in stone, crystal or metal, with mercurial blood.',
@@ -225,7 +228,8 @@ export default [
   {
     id: 'asir',
     name: 'Asir',
-    type: 'Versatile ancestry',
+    subtitle: 'Windborn of the skies, storms, and heavens.',
+    type: 'Planar ancestry',
     descriptors: 'Windborn – Celestial, Angelic, Avian, Air',
     notion: 'https://app.notion.com/p/c7f000aed887458682db17e59a970d1d',
     summary: 'Windborn godlike, thought to be blessed or descended from celestials.',
@@ -305,7 +309,8 @@ export default [
   {
     id: 'oread',
     name: 'Oread',
-    type: 'Versatile ancestry',
+    subtitle: 'Flora and fauna made flesh.',
+    type: 'Planar ancestry',
     descriptors: 'Natureborn – Nature, Plant, Mammalian',
     notion: 'https://app.notion.com/p/1bf758b7ea3a40a89fa2e75ea46c387d',
     summary: 'Natureborn godlike — manifestations of nature in mammalian or plantlike form.',
@@ -341,7 +346,8 @@ export default [
   {
     id: 'tiefling',
     name: 'Tiefling',
-    type: 'Versatile ancestry',
+    subtitle: 'Marked by the fiendish planes.',
+    type: 'Planar ancestry',
     descriptors: 'Hellborn – Fiendish, Abyssal, Hellish',
     notion: 'https://app.notion.com/p/763f33a2f2fa4af2b4b8536efac8bee5',
     summary: 'Mortals carrying the sinister mark of the fiendish planes on their flesh.',
@@ -374,7 +380,8 @@ export default [
   {
     id: 'fetchling',
     name: 'Fetchling',
-    type: 'Versatile ancestry',
+    subtitle: 'Shadowborn, paled by the fade.',
+    type: 'Planar ancestry',
     descriptors: 'Shadowborn – Faded, Death',
     notion: 'https://app.notion.com/p/0d37415a912b4f9c8322ac97d26c59d0',
     summary: 'Creatures bleached of pigment by the magic of the fade.',
@@ -390,7 +397,8 @@ export default [
   {
     id: 'fey',
     name: 'Fey',
-    type: 'Versatile ancestry',
+    subtitle: 'Feyborn, touched by chaos.',
+    type: 'Planar ancestry',
     descriptors: 'Feyborn – Chaos',
     notion: 'https://app.notion.com/p/7be713ac9c464b15aa6caade7b0c9211',
     summary: 'Not an ancestry — a swap-in overlay applied to another ancestry’s traits.',
@@ -400,5 +408,74 @@ export default [
     shared: [],
     archetypes: [],
     notes: ['Modelled as an overlay rather than an ancestry, because that is what the page describes. Its archived elf/gnome/wodekin variants are not converted.'],
+  },
+
+  {
+    id: 'returned',
+    name: 'Returned',
+    subtitle: 'Souls come back without memories, in borrowed bodies.',
+    type: 'Planar ancestry',
+    descriptors: 'Ghostlike',
+    notion: 'https://app.notion.com/p/7e3d434e9a604c1abecc29f1b8c19536',
+    summary: 'Souls that came back without their memories, wearing whatever matter they could find.',
+    description:
+      'Returned aren’t born, they are manifest into the prime material plane without memories but with the basic skills they had in their life. The first thing a returned does is find a form — discarded metal, a pile of gravel, a hive of insects — which their magic twists into a humanoid shape.',
+    shared: [...MEDIUM_OR_SMALL, 'constructed-form', 'vigilant-rest'],
+    archetypes: [
+      { id: 'ghost', name: 'Ghost form', traits: ['telepathy', ['artisan-cantrip', { name: 'Strange Presence', description: 'You know the thaumaturgy cantrip.' }], ['necrotic-resistance', { points: 2, name: 'Resistance, Necrotic', note: 'Notion prices necrotic resistance at 2 here but 3 on the Tiefling and Fetchling pages' }], 'traversal'] },
+      {
+        id: 'poltergeist',
+        name: 'Poltergeist form',
+        traits: [
+          [null, { name: 'Shifting Form', points: 4, description: 'When another creature grapples you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4 × your Proficiency Bonus of either piercing or poison damage.' }],
+          [null, { name: 'Strange Magic', points: 4, description: 'You know the sword burst, thunderous distortion, or spark of life cantrip. You can also cast this spell-like ability as a bonus action once per short rest using no components.' }],
+          ['streetwise-cultural-skill:improviser', { points: 1, note: 'Notion prices Improviser at 1 here; the curated option is 2. 1 is what makes the chain sum to 16.' }],
+          'traversal',
+        ],
+      },
+      {
+        id: 'wildmorph',
+        name: 'Wildmorph form',
+        traits: [
+          [null, { name: 'Hardened Form', points: 8, description: 'Due to the objects that make up your body, you are ill-suited to wearing armor. Your form provides ample protection, however; it gives you a base AC of 17 (your Dexterity modifier doesn’t affect this number). You gain no benefit from wearing armor, but if you are using a shield, you can apply the shield’s bonus as normal.' }],
+          [null, { name: 'Strange Presence', points: 4, description: 'You know the encode thoughts cantrip, which acts as the primary way that you speak as you don’t have any ability to create speech-like sound. You also know the mending cantrip, which you can use on your own form to regain 1d4 + your proficiency bonus hit points. You can use this ability a number of times per day equal to your Proficiency Bonus.' }],
+        ],
+      },
+      {
+        id: 'harrower',
+        name: 'Harrower form',
+        traits: [
+          ['survivalist-skill-proficiency', { name: 'Cantrip', points: 2, description: 'You know the stinging insects cantrip.' }],
+          ['natural-magic', { points: 4, description: 'Starting at 5th level, you can cast the summon swarm spell.' }],
+          [null, { name: 'Shifting Form', points: 4, description: 'When another creature grapples you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4 × your Proficiency Bonus of either piercing or poison damage.' }],
+          'natural-armor',
+        ],
+      },
+      {
+        id: 'plasmoid',
+        name: 'Plasmoid form',
+        traits: [
+          ['constructed-form', { description: 'You are a Construct and an Ooze. You don’t need to eat, drink, or breathe, and magic can’t put you to sleep. You are immune to disease and have advantage on saving throws against being paralyzed.' }],
+          ['shape-self', { note: 'Was inline (1). Promoted to the curated trait, which carries the full published wording — the pseudopod’s dimensions, what it can and cannot do. Same price.' }],
+          ['amorphous', { note: 'Was inline (1... 2). Promoted to the curated trait, which adds the 1-inch squeeze the inline version was missing. Same price.' }],
+          'hold-breath', 'toxin-resilience',
+          [null, { name: 'Muck Walker', points: 1, description: 'You ignore difficult terrain caused by mud, muck, or similar terrain.' }],
+          'poison-resistance',
+          [null, { name: 'Cantrip', points: 2, description: 'You know the acid burst, poison fang, or toxic spray cantrip.' }],
+        ],
+        notes: ['Notion re-lists Constructed Form inside this archetype; the duplicate is dropped and the archetype’s wording carried as an override.'],
+      },
+      {
+        id: 'mourntouched',
+        name: 'Mourntouched form',
+        priced: true,
+        traits: [
+          ['brave', { name: 'I’ve Seen Worse' }],
+          'magic-resistance',
+          [null, { name: 'Sixth Sense', points: 0, description: 'You’ve developed some sort of extrasensory perception. You have blindsight within a radius of 5 feet, allowing you to sense your immediate surroundings without relying on sight. This blindsight ignores full cover.' }],
+          [null, { name: 'Unexplained Ability', points: 2, description: 'You gain proficiency in a skill of your choice. You didn’t have this skill before the Mourning. You can’t explain where it came from.' }],
+        ],
+      },
+    ],
   },
 ];

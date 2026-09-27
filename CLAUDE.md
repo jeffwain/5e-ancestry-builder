@@ -16,7 +16,7 @@
 Hand edits are silently overwritten on the next build.
 
 - Source of truth: `public/data/ancestries-*.mjs` — one hand-maintained file per
-  ancestry type (`common`, `uncommon`, `versatile`). See
+  ancestry type (`common`, `uncommon`, `planar`, `awakened`). See
   `public/data/ancestries-README.md` for the reference format.
 - Rebuild: `npm run ancestries` — also writes `scripts/ancestry-report.md`
   and `.json`. `npm run ancestries:check` validates without writing.
