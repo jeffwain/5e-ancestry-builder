@@ -14,30 +14,25 @@
   margin-bottom: var(--space-2);
 }
 
-/* Step sections with details/summary */
+/* Step sections: the card is the chrome, the details inside only folds */
 .character-creation-page .creation-step {
   margin-bottom: var(--space-4);
-}
-
-.character-creation-page .creation-step details {
-  background: var(--color-paper);
-  border: 1px solid var(--color-ink-200);
-  border-radius: var(--radius-lg);
+  padding: 0;
   overflow: hidden;
 }
 
 .character-creation-page .creation-step summary {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-ink-800);
-  padding: var(--space-4) var(--space-5);
+  padding: var(--space-4) var(--space-6);
   cursor: pointer;
   list-style: none;
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  transition: background-color 0.15s ease;
+  transition: background-color var(--transition-fast);
 }
 
 .character-creation-page .creation-step summary::-webkit-details-marker {
@@ -60,13 +55,53 @@
   transform: rotate(45deg);
 }
 
-.character-creation-page .creation-step summary:hover {
-  background: var(--color-ink-50);
+.character-creation-page .creation-step summary:is(:hover, :focus-visible) {
+  background: var(--color-parchment-100);
+}
+
+.character-creation-page .creation-step-title {
+  flex: 1;
+}
+
+/* Sits at the right end of the step's header and its entry in the steps list */
+.creation-step-check {
+  flex-shrink: 0;
+  color: var(--color-success);
 }
 
 .character-creation-page .step-content {
-  padding: 0 var(--space-5) var(--space-5);
-  border-top: 1px solid var(--color-ink-100);
+  padding: 0 var(--space-6) var(--space-6);
+  border-top: 1px solid var(--color-parchment-300);
+}
+
+/* What the player picked for this step, above the step's guidance */
+.character-creation-page .step-selection {
+  margin-block-start: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-parchment-100);
+  border: 1px solid var(--color-parchment-300);
+  border-radius: var(--radius-md);
+}
+
+.character-creation-page .step-selection-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-block-end: var(--space-3);
+}
+
+.character-creation-page .step-content .step-selection-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  color: var(--color-ink-900);
+}
+
+.character-creation-page .step-selection-meta {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-ink-500);
 }
 
 .character-creation-page .step-content p {

@@ -93,7 +93,7 @@
   }
 
   &[aria-current] {
-    background: var(--color-red-45);
+    background: var(--color-heritage);
     color: var(--color-parchment-50);
     font-weight: 600;
   }
@@ -305,8 +305,8 @@
   gap: var(--space-3);
   padding: var(--space-4) var(--space-5);
   border-radius: var(--radius-md);
-  background: var(--color-ink-800);
-  color: var(--color-parchment-200);
+  background: var(--color-parchment-400);
+  color: var(--color-ink-900);
 }
 
 .ancestry-book-actions-text {
@@ -328,11 +328,12 @@
 
 .ancestry-book-actions .btn-secondary {
   border-color: var(--color-parchment-400);
-  background: transparent;
-  color: var(--color-parchment-100);
+  background: var(--color-heritage);
+  color: var(--color-parchment-50);
 }
 
 @media (max-width: 60rem) {
+
   .ancestry-book-traits-columns,
   .ancestry-book-archetypes {
     columns: 1;

@@ -238,10 +238,10 @@ export function AncestriesPage({ allTraits = {}, onUse, onCustomize }) {
               {ancestry.traits?.length > 0 && (
                 <footer className="ancestry-book-actions">
                   <span className="ancestry-book-actions-text">
-                    Choose an archetype above, or build your own from the shared traits.
+                    Choose an ancestry above, or build your own.
                   </span>
                   <button type="button" className="btn btn-secondary" onClick={() => emit(onCustomize, sharedOnly)}>
-                    Start from the shared traits
+                    Build an Ancestry
                   </button>
                 </footer>
               )}

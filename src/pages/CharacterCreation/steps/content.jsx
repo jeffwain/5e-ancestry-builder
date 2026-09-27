@@ -8,10 +8,10 @@ import '../../CharacterCreationPage.css';
 /**
  * Step definitions for the Character Creation page.
  *
- * Each step is { id, number, title, Content, SummaryCard? }. The shared
- * wrappers (StepCard / StepSummaryCard in StepCard.jsx) own all layout;
- * this file owns only the content. Steps that track real character state
- * provide their own SummaryCard (currently just the ancestry step).
+ * Each step is { id, number, title, Content, Selection?, isComplete? }. The
+ * shared wrapper (StepCard in StepCard.jsx) owns all layout; this file owns
+ * only the content. Steps that track real character state provide a Selection
+ * and an isComplete (currently just the ancestry step).
  */
 
 export function IdeaContent() {
@@ -108,7 +108,7 @@ export function AncestryContent() {
   );
 }
 
-export function AncestrySummaryCard({ step }) {
+export function AncestrySelection() {
   const {
     selectedTraits,
     selectedOptions,
@@ -122,22 +122,14 @@ export function AncestrySummaryCard({ step }) {
     [selectedTraits, traitTypes]
   );
 
-  if (selectedTraits.length === 0) {
-    return (
-      <div className="summary-card card">
-        <h4>{step.number}. {step.title}</h4>
-        <p className="summary-placeholder">No ancestry selected yet</p>
-      </div>
-    );
-  }
+  if (selectedTraits.length === 0) return null;
 
   return (
-    <div className="ancestry-summary">
-      <h2 className="ancestry-summary-title">
-        {ancestryName || 'Custom Ancestry'}
-      </h2>
-      <p className="ancestry-summary-desc">{pointsSpent}/16 points</p>
-
+    <div className="step-selection">
+      <div className="step-selection-header">
+        <h4 className="step-selection-title">{ancestryName || 'Custom Ancestry'}</h4>
+        <span className="step-selection-meta">{pointsSpent}/16 points</span>
+      </div>
       <TraitGroupList groups={groupsFromTraitsByType(traitsByType, selectedOptions)} />
     </div>
   );
