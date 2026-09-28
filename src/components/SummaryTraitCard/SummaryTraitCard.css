@@ -26,3 +26,25 @@
 .simple-trait-card * {
   display: inline;
 }
+
+/* The builder sidebar's row: the builder paragraph without its checkbox. The
+   sentence styles live with TraitParagraph; the cost takes its type's accent,
+   the same as the block it was picked from. */
+.summary-trait-paragraph {
+  --trait-paragraph-accent: var(--color-heritage);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-800);
+
+  &.core {
+    --trait-paragraph-accent: var(--color-blue-green-50);
+  }
+
+  &.heritage {
+    --trait-paragraph-accent: var(--color-red-45);
+  }
+
+  &.culture {
+    --trait-paragraph-accent: var(--color-culture);
+  }
+}

@@ -76,6 +76,23 @@ export function resolveDisplayCost(trait, selectedOptions = {}) {
 }
 
 /**
+ * Baseline traits ("baseline": true in traits.json — Base Speed, no darkvision)
+ * fill a required category with what every character already has. They stay
+ * selected so the category is satisfied and the export round-trips, but they
+ * say nothing about the ancestry, so written-up views leave them out.
+ *
+ * The flag is read from allTraits too: a build saved before the flag existed
+ * holds trait objects without it.
+ */
+export function isBaselineTrait(trait, allTraits = {}) {
+  return Boolean(trait.baseline || allTraits[trait.id]?.baseline);
+}
+
+export function withoutBaselineTraits(traits, allTraits = {}) {
+  return traits.filter((trait) => !isBaselineTrait(trait, allTraits));
+}
+
+/**
  * Group selected traits by their type for summary views. Returns
  * [{ name, traits }] in insertion order.
  */

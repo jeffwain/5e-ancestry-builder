@@ -21,6 +21,11 @@ export function TraitBlock({ category, categoryId, type }) {
   // accordion headers and vanished on this page's light background.
   const labelText = category.label || 'Optional';
 
+  // A trait that excludes a sibling in this block is one of a pick-one set
+  // (Medium or Small), so it draws as a radio rather than a checkbox.
+  const categoryTraitIds = new Set(category.traits?.map(trait => trait.id));
+  const isExclusive = (trait) => trait.excludes?.some(id => categoryTraitIds.has(id)) ?? false;
+
   const decorateTrait = (trait) => ({
     ...trait,
     type,
@@ -46,7 +51,7 @@ export function TraitBlock({ category, categoryId, type }) {
 
       <div className="trait-block-columns">
         {category.traits?.map(trait => (
-          <TraitParagraph key={trait.id} trait={decorateTrait(trait)} />
+          <TraitParagraph key={trait.id} trait={decorateTrait(trait)} exclusive={isExclusive(trait)} />
         ))}
       </div>
     </section>

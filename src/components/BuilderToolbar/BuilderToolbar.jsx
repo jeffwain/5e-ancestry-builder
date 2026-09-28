@@ -1,7 +1,7 @@
 import { useRef, useCallback } from 'react';
 import { useCharacter } from '../../contexts/CharacterContext';
 import { TraitTooltip } from '../TraitTooltip';
-import { POINT_BUDGET } from '../../utils/traitDisplay';
+import { POINT_BUDGET, withoutBaselineTraits } from '../../utils/traitDisplay';
 import './BuilderToolbar.css';
 
 /**
@@ -16,6 +16,7 @@ import './BuilderToolbar.css';
  */
 export function BuilderToolbar({ toolbarRef, below = null }) {
   const { pointsSpent, selectedTraits, selectedOptions, allTraits } = useCharacter();
+  const chosenTraits = withoutBaselineTraits(selectedTraits, allTraits);
 
   const fallbackRef = useRef(null);
   const ref = toolbarRef || fallbackRef;
@@ -67,11 +68,11 @@ export function BuilderToolbar({ toolbarRef, below = null }) {
 
           <div className="toolbar-chosen">
             <span className="toolbar-chosen-label">Chosen</span>
-            {selectedTraits.length === 0 && (
+            {chosenTraits.length === 0 && (
               <span className="toolbar-chosen-empty">Nothing yet</span>
             )}
             <span className="toolbar-chosen-list">
-              {selectedTraits.map((trait) => {
+              {chosenTraits.map((trait) => {
                 // Only traits from the builder's own lists have a place to scroll to.
                 const isInDatabase = !!allTraits[trait.id];
                 return (

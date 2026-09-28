@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCharacter } from '../../../contexts/CharacterContext';
 import { TraitGroupList } from '../../../components/TraitGroupList';
-import { groupTraitsByType, groupsFromTraitsByType } from '../../../utils/traitDisplay';
+import { groupTraitsByType, groupsFromTraitsByType, withoutBaselineTraits } from '../../../utils/traitDisplay';
 import '../../CharacterCreationPage.css';
 
 /**
@@ -114,15 +114,20 @@ export function AncestrySelection() {
     selectedOptions,
     pointsSpent,
     ancestryName,
-    traitTypes
+    traitTypes,
+    allTraits
   } = useCharacter();
 
+  const shownTraits = useMemo(
+    () => withoutBaselineTraits(selectedTraits, allTraits),
+    [selectedTraits, allTraits]
+  );
   const traitsByType = useMemo(
-    () => groupTraitsByType(selectedTraits, traitTypes),
-    [selectedTraits, traitTypes]
+    () => groupTraitsByType(shownTraits, traitTypes),
+    [shownTraits, traitTypes]
   );
 
-  if (selectedTraits.length === 0) return null;
+  if (shownTraits.length === 0) return null;
 
   return (
     <div className="step-selection">

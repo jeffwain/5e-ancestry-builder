@@ -30,7 +30,7 @@ export default [
       {
         id: 'elemental',
         name: 'Elemental',
-        traits: ['elemental-attunement:water', 'elemental-cantrip:water', 'elemental-magic:water', 'emissary-sea', 'amphibious', 'swim-speed'],
+        traits: ['elemental-attunement:water', 'elemental-cantrip:water', 'elemental-magic:water', 'emissary-sea'],
         notes: ['Notion re-lists Amphibious (2) and Swim Speed (2) here; both duplicates are dropped, which is exactly what brings this to 16.'],
       },
       {
@@ -63,7 +63,6 @@ export default [
         name: 'Iceborn',
         traits: [
           [null, { name: 'Ice Skate', points: 3, description: 'You can walk across the surface of water as if it were solid ground, your footsteps temporarily freezing it, with the ice melting the instant your foot moves. Walking across difficult terrain caused by ice or snow costs you no extra movement.' }],
-          'amphibious',
           ['elemental-attunement:water', { name: 'Water' }],
           'elemental-cantrip:water',
           'elemental-magic:water',
@@ -108,7 +107,12 @@ export default [
           [null, { name: 'Flamewalker', points: 2, description: 'You can walk across and through flame as if it were solid ground. You can walk through nonmagical fire without taking damage.' }],
         ],
       },
-      { id: 'ash', name: 'Ash', traits: ['elemental-cantrip:fire', 'elemental-magic:fire', 'unending-breath'] },
+      { id: 'ash', name: 'Ash', traits: [
+        'elemental-cantrip:fire',
+        'elemental-magic:fire',
+        'unending-breath',
+        [null, { name: "Extinguish", points: 3, description: "You know the Control Flames cantrip with the following changes. It affects a 15 foot cube. You can lower the light level of an area even if it has no flame within it." }],
+      ] },
       {
         id: 'magma',
         name: 'Magma',

@@ -402,7 +402,7 @@ export function CharacterProvider({ children }) {
     if (projected > POINT_BUDGET) {
       return {
         canSelect: false,
-        reason: `Would exceed ${POINT_BUDGET} points`
+        //reason: `Would exceed ${POINT_BUDGET} points`
       };
     }
 

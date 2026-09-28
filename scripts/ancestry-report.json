@@ -494,9 +494,9 @@
       "kind": "total",
       "where": "Ifriti ▸ Ash",
       "shared": 3,
-      "archetype": 10,
-      "total": 13,
-      "delta": -3,
+      "archetype": 13,
+      "total": 16,
+      "delta": 0,
       "empty": false,
       "designed": false,
       "priced": false,
@@ -1517,21 +1517,6 @@
       "kind": "dedupe",
       "where": "Elves ▸ Jungle",
       "detail": "re-lists inherited \"traversal\" (1 pts) — dropped"
-    },
-    {
-      "kind": "dedupe",
-      "where": "Undine ▸ Elemental",
-      "detail": "re-lists inherited \"amphibious\" (2 pts) — dropped"
-    },
-    {
-      "kind": "dedupe",
-      "where": "Undine ▸ Elemental",
-      "detail": "re-lists inherited \"swim-speed\" (2 pts) — dropped"
-    },
-    {
-      "kind": "dedupe",
-      "where": "Undine ▸ Iceborn",
-      "detail": "re-lists inherited \"amphibious\" (2 pts) — dropped"
     },
     {
       "kind": "dedupe",
