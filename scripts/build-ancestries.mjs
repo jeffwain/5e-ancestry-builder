@@ -22,7 +22,8 @@ import { fileURLToPath } from 'node:url';
 
 import common from '../public/data/ancestries-common.mjs';
 import uncommon from '../public/data/ancestries-uncommon.mjs';
-import versatile from '../public/data/ancestries-versatile.mjs';
+import planar from '../public/data/ancestries-planar.mjs';
+import awakened from '../public/data/ancestries-awakened.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const traitsPath = path.resolve(__dirname, '../public/data/traits.json');
@@ -31,24 +32,41 @@ const outPath = path.resolve(__dirname, '../public/data/converted-ancestries.jso
 const POINT_BUDGET = 16;
 const RECOMMENDED = 'RECOMMENDED: ';
 
+// `flat` files a lineage's sub-lineages straight into the category, alphabetised,
+// instead of under a heading of their own — Awakened lists every animal people
+// by its friendly name, so Muul and Ysoki don't get headings.
 const CATEGORIES = [
   {
     id: 'common',
-    name: 'Common Ancestries',
+    name: 'Common',
     description: 'The most populous humanoid races found throughout the world, adaptable and diverse.',
     type: 'Common ancestry',
   },
   {
     id: 'uncommon',
-    name: 'Uncommon Ancestries',
-    description: 'Rarer peoples, each shaped by a distinct heritage — beastkin, goblinoids, the returned, and more.',
+    name: 'Uncommon',
+    description: 'Rarer peoples, each shaped by a distinct heritage — elves, gnomes, and goblinoids.',
     type: 'Uncommon ancestry',
   },
   {
-    id: 'versatile',
-    name: 'Versatile Ancestries',
-    description: 'The godlike and the planetouched, whose power comes from an element, a plane, or a bloodline.',
-    type: 'Versatile ancestry',
+    id: 'planar',
+    name: 'Planar',
+    description: 'The godlike, the planetouched, and the returned, whose power comes from an element, a plane, a bloodline, or death itself.',
+    type: 'Planar ancestry',
+  },
+  {
+    id: 'awakened-common',
+    name: 'Awakened (Common)',
+    description: 'The widespread animal peoples — felines, rats, birds, and lizards.',
+    type: 'Awakened (Common) ancestry',
+    flat: true,
+  },
+  {
+    id: 'awakened-uncommon',
+    name: 'Awakened (Uncommon)',
+    description: 'Rarer animal peoples — frogs and salamanders, jackals, bulls and hippos, rabbits and squirrels, serpents, spiders, fungi, and the dragonborn.',
+    type: 'Awakened (Uncommon) ancestry',
+    flat: true,
   },
 ];
 
@@ -226,22 +244,16 @@ function buildAncestry(node, inherited, trail) {
     return out;
   });
 
+  // An ancestry with nothing to choose between still has one archetype, named
+  // for itself and carrying its traits (Porcein, Loxodon), so it can be picked.
   if (!archetypes.length && !node.overlay && !node.stub) {
-    report.push({
-      kind: 'total',
-      where,
-      shared: sharedTotal,
-      archetype: 0,
-      total: sharedTotal,
-      delta: sharedTotal - POINT_BUDGET,
-      flat: true,
-      notes: node.notes || [],
-    });
+    fail(where, 'has no archetypes — give it one of the same name holding its traits');
   }
 
   const ancestry = {
     id: node.id,
     name: node.name,
+    subtitle: node.subtitle || '',
     summary: node.summary || '',
     description: node.description || '',
     traits: shared.map((r) => r.out),
@@ -253,27 +265,39 @@ function buildAncestry(node, inherited, trail) {
   return ancestry;
 }
 
-const all = [...common, ...uncommon, ...versatile];
+const all = [...common, ...uncommon, ...planar, ...awakened];
+// A sub-lineage may carry its own `type` to file under a different category than
+// its lineage (Ysoki's ratfolk are Awakened (Common), its other folk Uncommon).
+const typeOf = (sub, lineage) => sub.type || lineage.type;
+
 const categories = CATEGORIES.map((cat) => {
-  const lineages = all.filter((l) => l.type === cat.type);
+  const lineages = all.filter((l) =>
+    l.sublineages?.length ? l.sublineages.some((sub) => typeOf(sub, l) === cat.type) : l.type === cat.type
+  );
   const out = { id: cat.id, name: cat.name, description: cat.description, ancestries: [], subcategories: [] };
 
   for (const lineage of lineages) {
     if (lineage.sublineages?.length) {
       const lineageShared = parseList(lineage.shared, `${lineage.name} shared`);
+      const ancestries = lineage.sublineages
+        .filter((sub) => typeOf(sub, lineage) === cat.type)
+        .map((sub) => buildAncestry(sub, lineageShared, [lineage.name, sub.name]));
+      if (cat.flat) {
+        out.ancestries.push(...ancestries);
+        continue;
+      }
       out.subcategories.push({
         id: lineage.id,
         name: lineage.name,
         description: lineage.description || '',
-        ancestries: lineage.sublineages.map((sub) =>
-          buildAncestry(sub, lineageShared, [lineage.name, sub.name])
-        ),
+        ancestries,
       });
     } else {
       out.ancestries.push(buildAncestry(lineage, [], [lineage.name]));
     }
   }
 
+  if (cat.flat) out.ancestries.sort((a, b) => a.name.localeCompare(b.name));
   if (!out.subcategories.length) delete out.subcategories;
   if (!out.ancestries.length) delete out.ancestries;
   return out;
@@ -313,7 +337,6 @@ const fmt = (r) => {
     r.delta > 0 ? `**+${r.delta}**` : r.delta < 0 ? `**${r.delta}**` : 'on budget',
     r.designed ? '_designed_' : null,
     r.priced ? '_priced_' : null,
-    r.flat ? '_no archetypes_' : null,
   ].filter(Boolean).join(' · ');
   return `- ${r.where} — ${r.shared} + ${r.archetype} = **${r.total}** — ${tags}`;
 };

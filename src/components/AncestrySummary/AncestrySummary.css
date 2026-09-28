@@ -1,33 +1,58 @@
-/*
- * AncestrySummary — additions only.
- *
- * The sidebar's look already comes from the .ancestry-summary* rules in
- * AncestriesPage.css. This file adds nothing but the archetype heading row and
- * its clear button, so the existing rules stay untouched.
- */
+/* AncestrySummary — the sticky sidebar panel */
+.ancestry-summary {
+  background: var(--color-parchment-50);
+  border: 1px solid var(--color-parchment-300);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
 
-/* Turn the archetype heading into a row so the clear button can sit at its end.
-   Scoped with the extra class so the plain "Shared Traits" h3 is unaffected. */
-.ancestry-summary-section h3.ancestry-summary-archetype-heading {
+.ancestry-summary.empty {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.ancestry-summary-placeholder {
+  color: var(--color-ink-400);
+  font-style: italic;
+  text-align: center;
+  line-height: var(--leading-relaxed);
+}
+
+.ancestry-summary-title {
+  font-size: var(--text-xl);
+  color: var(--color-ink-900);
+  margin-bottom: var(--space-3);
+  line-height: var(--leading-tight);
+}
+
+.ancestry-summary-desc {
+  font-size: var(--text-sm);
+  color: var(--color-ink-600);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.ancestry-summary-section {
+  margin-bottom: var(--space-4);
+}
+
+.ancestry-summary-section h3 {
+  font-size: var(--text-base);
+  color: var(--color-heritage);
+  margin-bottom: var(--space-2);
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--color-parchment-300);
+}
+
+.ancestry-summary-traits {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-2);
 }
 
-.ancestry-summary-archetype-heading-text {
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-/* Optional per-archetype description, shown when the source carries one. */
-.ancestry-summary-archetype-desc {
-  margin: 0 0 var(--space-2);
-  font-size: var(--text-sm);
-  line-height: var(--leading-relaxed);
-  color: var(--color-ink-600);
-}
-
+/* The remove (×) button pinned to a trait row. */
 .ancestry-summary-clear {
   flex: 0 0 auto;
   display: inline-flex;

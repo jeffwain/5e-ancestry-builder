@@ -4,13 +4,13 @@ import { CharacterProvider, useCharacter } from './contexts/CharacterContext';
 import { useTraitData } from './hooks/useTraitData';
 import { preloadJson } from './utils/dataCache';
 import { TabNavigation } from './components/TabNavigation';
-import { Layout } from './components/Layout';
 import {
   CharacterCreation,
   CustomAncestryPage,
   AncestriesPage,
-  AncestriesTextPage,
+  AncestryEditorPage,
   AuditPage,
+  BuilderPage,
   OverviewPage,
 } from './pages';
 
@@ -41,9 +41,6 @@ function AppContent() {
   useEffect(() => {
     preloadJson('/data/converted-ancestries.json', '/data/converted-traits.json');
   }, []);
-
-  // Determine if user has customized their ancestry (for showing Overview tab)
-  const hasCustomAncestry = selectedTraits.length > 0;
 
   // Transform sections array into a map for easy lookup by ID
   const traitTypesMap = useMemo(() => {
@@ -83,18 +80,20 @@ function AppContent() {
   }, [defaultTraits, setDefaults, selectedTraits.length]);
 
   // Handle "Use" - load ancestry+archetype traits and navigate to Overview
-  const handleUseAncestry = ({ ancestry, archetype, traits, options = {} }) => {
+  // A choice left open (Small or Medium Size) can only be made in the builder,
+  // so "Use" goes there instead until it is made.
+  const handleUseAncestry = ({ ancestry, archetype, traits, options = {}, choices = [], openCategories = [] }) => {
     const prebuiltId = `${ancestry.id}-${archetype.id}`;
     const ancestryName = `${ancestry.name} (${archetype.name})`;
-    loadPrebuilt(prebuiltId, traits, options, ancestryName);
-    navigate('/overview');
+    loadPrebuilt(prebuiltId, traits, options, ancestryName, openCategories);
+    navigate(choices.length > 0 ? '/builder' : '/overview');
   };
 
   // Handle "Customize" - load ancestry+archetype traits and navigate to Builder
-  const handleCustomizeAncestry = ({ ancestry, archetype, traits, options = {} }) => {
+  const handleCustomizeAncestry = ({ ancestry, archetype, traits, options = {}, openCategories = [] }) => {
     const prebuiltId = `${ancestry.id}-${archetype.id}`;
     const ancestryName = `${ancestry.name} (${archetype.name})`;
-    loadPrebuilt(prebuiltId, traits, options, ancestryName);
+    loadPrebuilt(prebuiltId, traits, options, ancestryName, openCategories);
     navigate('/builder');
   };
 
@@ -135,7 +134,7 @@ function AppContent() {
 
   return (
     <div className="app">
-      <TabNavigation hasCustomAncestry={hasCustomAncestry} />
+      <TabNavigation />
 
       <main className="app-content">
         <Routes>
@@ -151,24 +150,18 @@ function AppContent() {
               />
             }
           />
-          <Route
-            path="/ancestries-text"
-            element={
-              <AncestriesTextPage
-                allTraits={allTraits}
-                onUse={handleUseAncestry}
-                onCustomize={handleCustomizeAncestry}
-              />
-            }
-          />
+          <Route path="/editor" element={<AncestryEditorPage />} />
           <Route
             path="/builder"
             element={
-              <Layout
+              <BuilderPage
                 sections={sections}
               />
             }
           />
+          {/* Old URLs from while the list views ran beside the card views. */}
+          <Route path="/ancestries-text" element={<Navigate to="/ancestries" replace />} />
+          <Route path="/builder-text" element={<Navigate to="/builder" replace />} />
           <Route path="/audit" element={<AuditPage allTraits={allTraits} />} />
           <Route path="/overview" element={<OverviewPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />

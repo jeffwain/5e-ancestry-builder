@@ -12,7 +12,7 @@
   /* Min readable size */
   --text-sm: 0.875rem;
   --text-base: 1rem;
-  --text-lg: 1.125rem;
+  --text-lg: 1.25rem;
   --text-xl: 1.5rem;
   --text-2xl: 2rem;
   --text-3xl: 2.5rem;
@@ -89,6 +89,7 @@
   --max-width: 1200px;
   --sidebar-width: 320px;
   --header-height: 64px;
+  --tab-navigation-height: 3rem;
   /* ── Pill Colors ──────────────────────── */
   --pill-bg: var(--color-parchment-300);
   --pill-text: var(--color-ink-700);

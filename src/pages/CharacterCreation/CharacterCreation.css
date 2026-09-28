@@ -1,9 +1,9 @@
-/* Three-column Character Creation layout */
+/* Two-column Character Creation layout: steps list, then the step cards */
 .character-creation-layout {
   display: grid;
-  grid-template-columns: 200px 1fr 260px;
+  grid-template-columns: 200px 1fr;
   gap: var(--space-6);
-  max-width: 1400px;
+  max-width: 1100px;
   margin: 0 auto;
   align-items: start;
 }
@@ -33,7 +33,10 @@
 }
 
 .creation-toc a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
   padding: var(--space-1) var(--space-2);
   font-family: var(--font-ui);
   font-size: var(--text-sm);
@@ -53,60 +56,13 @@
   min-width: 0;
 }
 
-/* Summary sidebar */
-.creation-summary {
-  position: sticky;
-  top: var(--space-4);
-}
-
-.creation-summary h3 {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 600;
-  color: var(--color-ink-800);
-  margin-bottom: var(--space-3);
-}
-
-/* Summary cards */
-.summary-card {
-  padding: var(--space-3);
-  margin-bottom: var(--space-3);
-}
-
-.summary-card h4 {
-  font-family: var(--font-display);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--color-ink-700);
-  margin: 0 0 var(--space-1);
-  text-transform: capitalize;
-}
-
-.summary-placeholder {
-  font-family: var(--font-ui);
-  font-size: var(--text-xs);
-  color: var(--color-ink-400);
-  font-style: italic;
-  margin: 0;
-}
-
 /* Responsive: collapse to single column on narrow screens */
-@media (max-width: 1024px) {
-  .character-creation-layout {
-    grid-template-columns: 1fr 260px;
-  }
-
-  .creation-toc {
-    display: none;
-  }
-}
-
 @media (max-width: 768px) {
   .character-creation-layout {
     grid-template-columns: 1fr;
   }
 
-  .creation-summary {
-    position: static;
+  .creation-toc {
+    display: none;
   }
 }

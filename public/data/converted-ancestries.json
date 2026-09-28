@@ -5,12 +5,13 @@
   "categories": [
     {
       "id": "common",
-      "name": "Common Ancestries",
+      "name": "Common",
       "description": "The most populous humanoid races found throughout the world, adaptable and diverse.",
       "ancestries": [
         {
           "id": "humans",
           "name": "Humans",
+          "subtitle": "Resilient, creative, and found in every land.",
           "summary": "Varied and diverse, humans are the most populous humanoid creatures due to their resiliency and creativity.",
           "description": "Humans are as varied and diverse as the lands they occupy, and are the most populous humanoid creatures in the world due to their resiliency and creativity. All humans gain the following traits, and the traits from the biome in which you were raised or spent the most time.",
           "traits": [
@@ -175,6 +176,7 @@
         {
           "id": "dwarves",
           "name": "Dwarves",
+          "subtitle": "Stout artisans locked in an old war with the goblins.",
           "summary": "Smaller but no less physically capable than other humanoids, and unmatched at the artisan’s bench.",
           "description": "Dwarves are usually around 3.5 to 4.5 feet tall, weighing between 100-225 pounds. They are smaller but no less physically capable than other humanoids. Ever since the arrival of goblins on Eora, the dwarves have been locked in constant struggle with them.",
           "traits": [
@@ -451,6 +453,7 @@
         {
           "id": "half-giants",
           "name": "Half-giants",
+          "subtitle": "Mortals built on the heavier frame of giant blood.",
           "summary": "Mortals carrying the blood of giants, built on a heavier frame than their neighbours.",
           "description": "All half-giant characters must take at least one trait from the Stout ancestry and traits from their giant ancestry, plus the shared traits below.",
           "traits": [
@@ -499,614 +502,13 @@
     },
     {
       "id": "uncommon",
-      "name": "Uncommon Ancestries",
-      "description": "Rarer peoples, each shaped by a distinct heritage — beastkin, goblinoids, the returned, and more.",
+      "name": "Uncommon",
+      "description": "Rarer peoples, each shaped by a distinct heritage — elves, gnomes, and goblinoids.",
       "ancestries": [
-        {
-          "id": "grung",
-          "name": "Grung",
-          "summary": "Small, brightly coloured frogkin, at home in water and canopy alike.",
-          "description": "All grung characters are size small, have at least one trait from the Aquatic ancestry, and at least one trait from the Reptilian ancestry.",
-          "traits": [
-            {
-              "id": "size-small"
-            },
-            {
-              "id": "darkvision-60"
-            },
-            {
-              "id": "amphibious"
-            },
-            {
-              "id": "swim-speed"
-            },
-            {
-              "id": "emissary-sea"
-            },
-            {
-              "id": "leap"
-            }
-          ],
-          "archetypes": [
-            {
-              "id": "croak",
-              "name": "Croak",
-              "traits": [
-                {
-                  "name": "Thunderous Croak",
-                  "description": "When you take the Attack action, you can replace one of your attacks with an exhalation of sonic energy in a 60-foot cone. Each creature in the area must make a Dexterity saving throw of DC 8 + your Constitution modifier + your Proficiency Bonus. On a failed save, a creature takes 1d10 thunder damage and is [deafened]() for 1 minute. On a success, a creature takes half as much thunder damage and isn’t deafened. This damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10). At the end of each of its turns, a deafened creature can make another Constitution saving throw, ending the effect on a success. After you use your croak, you can’t use it again until you finish a short or long rest.",
-                  "points": 6
-                }
-              ]
-            },
-            {
-              "id": "tongue",
-              "name": "Tongue",
-              "traits": [
-                {
-                  "name": "Tongue",
-                  "description": "Your tongue can make damaging unarmed strikes as a light weapon with a reach of 10 feet. When you hit with it, the strike deals 1d6 + Strength modifier bludgeoning damage.",
-                  "points": 3
-                },
-                {
-                  "id": "prehensile-limb",
-                  "option": "trunk",
-                  "name": "Prehensile Limb, Tongue",
-                  "description": "Your tongue can perform simple tasks with a reach of 10 feet: lift, drop, hold, push, or pull an object or a creature; open or close a door or a container; grapple a creature your size or smaller; or make an unarmed strike."
-                },
-                {
-                  "id": "hold-breath"
-                }
-              ]
-            },
-            {
-              "id": "poisonous",
-              "name": "Poisonous",
-              "traits": [
-                {
-                  "id": "defensive-feature",
-                  "option": "poisonous"
-                },
-                {
-                  "name": "Hypnotic Blood",
-                  "description": "Your blood contains a natural toxin. When you take piercing or slashing damage as the result of an unarmed attack, such as from a bite or claw attack, you can use your reaction to force that creature to make a Constitution saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your Proficiency Bonus. On a failed save, a creature is poisoned until the end of your next turn. A creature that’s been poisoned in this way or succeeds on the saving throw against it is immune to this effect for 24 hours. You can use this feature a number of times equal to your Proficiency Bonus and regain all expended uses of it when you finish a long rest.",
-                  "points": 2
-                }
-              ]
-            }
-          ],
-          "descriptors": "Amphibian species"
-        },
-        {
-          "id": "atxayotl",
-          "name": "Atxayotl",
-          "summary": "Axolotlkin who regrow what they lose, and shift form with the water they live in.",
-          "description": "Atxayotl live on the Grung page in Notion as a second lineage. Lagoon atxayotl must fully immerse themselves in water for at least 1 hour per week or they transform into Landbound; Landbound transform back after 24 hours immersed.",
-          "traits": [
-            {
-              "id": "size-medium"
-            },
-            {
-              "id": "size-small"
-            },
-            {
-              "id": "swim-speed"
-            },
-            {
-              "id": "survivalist-skill-proficiency",
-              "description": "You have proficiency in one of the following skills of your choice: Nature, Persuasion, Survival."
-            },
-            {
-              "id": "regeneration"
-            },
-            {
-              "id": "regrowth",
-              "name": "Limb Regrowth",
-              "description": "You are incapable of scarring, regenerating the damaged tissue instead. Disfiguring scars fully heal themselves after you complete a long rest. Major injuries such as missing limbs or eyes heal themselves after 1 week.",
-              "points": 0
-            },
-            {
-              "name": "Environmental Adaptation",
-              "description": "Lagoon Atxayotls must fully immerse themselves in water for at least 1 hour per week, or they transform into Landbound Atxayotls. Landbound transform into Lagoon after 24 hours immersed in water.",
-              "points": 0
-            }
-          ],
-          "archetypes": [
-            {
-              "id": "lagoon",
-              "name": "Lagoon",
-              "traits": [
-                {
-                  "id": "amphibious"
-                },
-                {
-                  "id": "sea-legs",
-                  "description": "You have advantage on Dexterity (Acrobatics) checks, and checks to be knocked prone from effects other than attacks."
-                }
-              ]
-            },
-            {
-              "id": "landbound",
-              "name": "Landbound",
-              "traits": [
-                {
-                  "id": "climb-speed"
-                },
-                {
-                  "name": "Salamander Sprint",
-                  "description": "You can Dash as a bonus action.",
-                  "points": 5
-                },
-                {
-                  "id": "streetwise-cultural-skill",
-                  "option": "bamboozler"
-                }
-              ]
-            }
-          ],
-          "descriptors": "Axolotlkin"
-        },
-        {
-          "id": "iruxi",
-          "name": "Iruxi",
-          "summary": "Lizardfolk and tortlekin, each shaped by the landscape that raised them.",
-          "description": "All iruxi characters are size medium or small, and must take at least one trait from the Reptilian ancestry.",
-          "traits": [
-            {
-              "id": "size-medium"
-            },
-            {
-              "id": "size-small"
-            }
-          ],
-          "archetypes": [
-            {
-              "id": "badlands",
-              "name": "Badlands",
-              "traits": [
-                {
-                  "id": "native-environment",
-                  "option": "desert"
-                },
-                {
-                  "id": "darkvision-60"
-                },
-                {
-                  "id": "tooth-tail",
-                  "option": "bite"
-                },
-                {
-                  "id": "defensive-feature",
-                  "option": "spines"
-                },
-                {
-                  "id": "climb-speed"
-                },
-                {
-                  "id": "leap"
-                },
-                {
-                  "id": "survivalist-cultural-skill",
-                  "option": "acclimatization"
-                },
-                {
-                  "id": "hold-breath"
-                },
-                {
-                  "id": "survivalist-cultural-skill",
-                  "option": "survivalist-skill"
-                },
-                {
-                  "id": "skilled-tracker"
-                }
-              ]
-            },
-            {
-              "id": "swamp",
-              "name": "Swamp",
-              "traits": [
-                {
-                  "id": "native-environment",
-                  "option": "swamp"
-                },
-                {
-                  "id": "hold-breath"
-                },
-                {
-                  "id": "darkvision-60"
-                },
-                {
-                  "id": "tooth-tail",
-                  "option": "tail",
-                  "name": "Natural Weapons",
-                  "description": "Your toothy maw and/or strong tail allow you to make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals 1d6 + Strength modifier slashing (bite) or bludgeoning (tail) damage."
-                },
-                {
-                  "id": "hungry-jaws"
-                },
-                {
-                  "id": "natural-armor"
-                },
-                {
-                  "id": "weather-worn"
-                },
-                {
-                  "id": "swim-speed"
-                },
-                {
-                  "id": "survivalist-skill-proficiency",
-                  "description": "You have proficiency in the Intimidation skill."
-                }
-              ]
-            },
-            {
-              "id": "jungle",
-              "name": "Jungle",
-              "traits": [
-                {
-                  "id": "native-environment",
-                  "option": "forest"
-                },
-                {
-                  "id": "darkvision-60"
-                },
-                {
-                  "id": "chromatophore"
-                },
-                {
-                  "name": "Tongue",
-                  "description": "Your tongue can make damaging unarmed strikes as a light weapon with a reach of 10 feet. When you hit with it, the strike deals 1d6 + Strength modifier bludgeoning damage.",
-                  "points": 3
-                },
-                {
-                  "id": "climb-speed"
-                },
-                {
-                  "id": "survivalist-skill-proficiency",
-                  "description": "You have proficiency in the Stealth skill."
-                }
-              ]
-            },
-            {
-              "id": "desert",
-              "name": "Desert",
-              "traits": [
-                {
-                  "id": "native-environment",
-                  "option": "desert"
-                },
-                {
-                  "id": "speed-quick"
-                },
-                {
-                  "id": "darkvision-60"
-                },
-                {
-                  "id": "survivalist-cultural-skill",
-                  "option": "acclimatization"
-                },
-                {
-                  "id": "tooth-tail",
-                  "option": "bite"
-                },
-                {
-                  "id": "survivalist-skill-proficiency",
-                  "description": "You have proficiency in the Intimidation skill."
-                },
-                {
-                  "id": "natural-armor"
-                },
-                {
-                  "id": "burrow"
-                }
-              ]
-            },
-            {
-              "id": "forest-or-plains",
-              "name": "Forest or Plains",
-              "traits": [
-                {
-                  "id": "native-environment",
-                  "option": "forest"
-                },
-                {
-                  "id": "tooth-tail",
-                  "option": "fangs"
-                },
-                {
-                  "id": "regeneration"
-                },
-                {
-                  "id": "natural-armor"
-                },
-                {
-                  "id": "survivalist-cultural-skill",
-                  "option": "beast-tracker"
-                },
-                {
-                  "id": "survivalist-skill-proficiency"
-                },
-                {
-                  "id": "toxin-resilience"
-                },
-                {
-                  "id": "poison-resistance"
-                }
-              ]
-            },
-            {
-              "id": "shelled",
-              "name": "Shelled",
-              "traits": [
-                {
-                  "id": "bite-pincers",
-                  "option": "bite"
-                },
-                {
-                  "id": "carapace",
-                  "name": "Shell"
-                },
-                {
-                  "id": "swim-speed"
-                },
-                {
-                  "id": "sturdy",
-                  "option": "durable"
-                }
-              ]
-            }
-          ],
-          "descriptors": "Reptilian species"
-        },
-        {
-          "id": "khenra",
-          "name": "Khenra",
-          "summary": "Jackal-headed twins, bonded so closely that losing one remakes the other.",
-          "description": "Nearly every khenra is born a twin, and a pair forms an extremely close emotional bond. The death of one twin causes a tremendous shock to the survivor, who typically grows more aggressive and foolhardy in battle.",
-          "traits": [
-            {
-              "id": "size-medium"
-            },
-            {
-              "id": "size-small"
-            },
-            {
-              "id": "speed-quick"
-            },
-            {
-              "name": "Vigilant",
-              "description": "You have advantage on Perception checks. Instead of being unaware of your surroundings while you are unconscious from being asleep, you have disadvantage on Wisdom (Perception) checks instead.",
-              "points": 2
-            },
-            {
-              "id": "pack-tactics"
-            }
-          ],
-          "archetypes": [
-            {
-              "id": "twin-alive",
-              "name": "Twin alive",
-              "traits": [
-                {
-                  "id": "lucky"
-                }
-              ]
-            },
-            {
-              "id": "twin-dead",
-              "name": "Twin dead",
-              "traits": [
-                {
-                  "id": "brave"
-                },
-                {
-                  "id": "shadow-magic"
-                }
-              ]
-            }
-          ],
-          "descriptors": "Canine species, always born with a twin."
-        },
-        {
-          "id": "mrrshan",
-          "name": "Mrrshan",
-          "summary": "Curious, gregarious felinefolk who see themselves as guardians of wild places.",
-          "description": "Mrrshan are a species with feline-like traits and qualities. They commonly resemble large cats of the world, but their patterns and body structures vary as much as any other humanoid.",
-          "traits": [
-            {
-              "id": "size-medium"
-            },
-            {
-              "id": "size-small"
-            },
-            {
-              "id": "darkvision-60"
-            },
-            {
-              "id": "tooth-nail",
-              "option": "claws"
-            },
-            {
-              "id": "agile-fall"
-            }
-          ],
-          "archetypes": [
-            {
-              "id": "felis",
-              "name": "Felis",
-              "traits": [
-                {
-                  "id": "speed-quick"
-                },
-                {
-                  "id": "climb-speed"
-                },
-                {
-                  "id": "leap"
-                },
-                {
-                  "id": "skirmisher-cultural-skill",
-                  "option": "combat-awareness"
-                },
-                {
-                  "id": "skilled-combatant",
-                  "option": "adrenaline-rush"
-                }
-              ]
-            },
-            {
-              "id": "panthera",
-              "name": "Panthera",
-              "traits": [
-                {
-                  "id": "roar"
-                },
-                {
-                  "id": "swiftness"
-                },
-                {
-                  "id": "warrior-cultural-skill",
-                  "option": "combat-climber"
-                },
-                {
-                  "id": "brave"
-                }
-              ]
-            }
-          ],
-          "descriptors": "Feline species"
-        },
-        {
-          "id": "aven",
-          "name": "Aven",
-          "summary": "Feathered, beaked and taloned — winged or not.",
-          "description": "Aven is the collective term for humanoids with birdlike appearances. Aven may be winged or wingless, but all of them are covered in feathers, have beaks, and have talons on their feet.",
-          "traits": [
-            {
-              "id": "size-medium"
-            },
-            {
-              "id": "size-small"
-            }
-          ],
-          "archetypes": [
-            {
-              "id": "flying",
-              "name": "Flying",
-              "traits": [
-                {
-                  "id": "beak-claw",
-                  "option": "talons"
-                },
-                {
-                  "id": "flying-cantrip"
-                },
-                {
-                  "id": "flight",
-                  "option": "wings"
-                },
-                {
-                  "id": "hardy"
-                },
-                {
-                  "id": "survivalist-cultural-skill",
-                  "option": "beast-tracker"
-                },
-                {
-                  "id": "keen-senses-proficiency"
-                }
-              ]
-            },
-            {
-              "id": "flightless",
-              "name": "Flightless",
-              "traits": [
-                {
-                  "id": "beak-claw",
-                  "option": "talons"
-                },
-                {
-                  "id": "flying-cantrip"
-                },
-                {
-                  "id": "flight",
-                  "option": "limited-flight"
-                },
-                {
-                  "id": "hardy"
-                },
-                {
-                  "id": "survivalist-cultural-skill",
-                  "option": "beast-tracker"
-                },
-                {
-                  "id": "keen-senses-proficiency"
-                }
-              ]
-            },
-            {
-              "id": "arctic",
-              "name": "Arctic",
-              "traits": [
-                {
-                  "id": "native-environment",
-                  "option": "arctic"
-                },
-                {
-                  "id": "beak-claw",
-                  "option": "talons"
-                },
-                {
-                  "id": "keen-sight"
-                },
-                {
-                  "id": "swim-speed"
-                },
-                {
-                  "id": "survivalist-cultural-skill",
-                  "option": "acclimatization"
-                },
-                {
-                  "id": "aquatic-resistance",
-                  "name": "Insulation",
-                  "description": "You gain resistance to cold damage."
-                },
-                {
-                  "id": "hold-breath"
-                },
-                {
-                  "id": "flight",
-                  "option": "glide"
-                }
-              ]
-            },
-            {
-              "id": "raptor",
-              "name": "Raptor",
-              "traits": [
-                {
-                  "id": "beak-claw",
-                  "option": "talons"
-                },
-                {
-                  "id": "flight",
-                  "option": "wings"
-                },
-                {
-                  "id": "keen-sight"
-                },
-                {
-                  "id": "survivalist-cultural-skill",
-                  "option": "acclimatization"
-                }
-              ]
-            }
-          ],
-          "descriptors": "Bird-like"
-        },
         {
           "id": "elves",
           "name": "Elves",
+          "subtitle": "Long-lived and elegant, hidden in ancient forests.",
           "summary": "Elegant, long-lived and forest-bound, with a reputation they cultivate on purpose.",
           "description": "Elegant, slender and tall, elves could almost be mistaken for humans at a glance. Their fortitude and cultural tendency of keeping themselves hidden within their ancient forests allow them to live inordinately long lives. All elves have the following traits, plus one matching their forest home.",
           "traits": [
@@ -1230,7 +632,8 @@
         {
           "id": "gnomes",
           "name": "Gnomes",
-          "summary": "Fey émigrés staving off the Bleaching with novelty and obsession.",
+          "subtitle": "Fey wanderers who must keep dreaming or fade.",
+          "summary": "Fey emigrants staving off the Bleaching with novelty and obsession.",
           "description": "Long ago, early gnome ancestors emigrated from the First World, realm of the fey. Always hungry for new experiences, gnomes constantly wander both mentally and physically, attempting to stave off the Bleaching — an affliction that strikes gnomes who fail to dream, innovate, and take in new experiences.",
           "traits": [
             {
@@ -1345,6 +748,7 @@
         {
           "id": "goblin",
           "name": "Goblin",
+          "subtitle": "An alien species whose forms are stages of one life.",
           "summary": "An alien species whose several forms are life stages of one creature.",
           "description": "Goblinoids are an alien species and while not kith are similar in body plan and structure. The multiple forms of goblinoid are life stages of a single species. All goblinoid characters must take at least two traits from a heritage matching their environment, one stealth-oriented trait from Shadowborn or Stout, and one Skirmisher trait.",
           "traits": [],
@@ -1483,1038 +887,18 @@
               "designed": true
             }
           ]
-        },
-        {
-          "id": "myconid",
-          "name": "Myconid",
-          "summary": "Fungal folk who speak in spores and decompose anything organic to survive.",
-          "description": "Myconids possess a diverse variety of physical features, but they all share a few core traits. They grow quickly, reaching maturity by the age of four and living just under a quarter of a century.",
-          "traits": [
-            {
-              "name": "Decomposition",
-              "description": "You can eat any organic material to survive. Your body decomposes it into a form that is nutritious to you.",
-              "points": 0
-            },
-            {
-              "id": "darkvision-60"
-            },
-            {
-              "name": "Poisonous Form",
-              "description": "You are resistant to poison damage and you are immune to the poisoned condition.",
-              "points": 4
-            },
-            {
-              "id": "hybrid-nature"
-            },
-            {
-              "name": "Rapport Spores",
-              "description": "You are unable to verbally speak, but can communicate telepathically to creatures within a number of feet equal to 40 + ten times your level, emitting spores that transmit your messages directly to their minds. The creature doesn’t need to share a language with you to understand your telepathy, but it must be able to understand at least one language, and it can’t be an Undead, Construct, or Elemental. This telepathy doesn’t grant the creature the ability to telepathically respond.",
-              "points": 0
-            }
-          ],
-          "archetypes": [
-            {
-              "id": "sporemaster",
-              "name": "Sporemaster",
-              "traits": [
-                {
-                  "id": "size-small"
-                },
-                {
-                  "name": "Fungal Alchemy",
-                  "description": "Sporemasters have an innate understanding of alchemy, often using their spores as ingredients. You gain proficiency in Alchemists’ Supplies.",
-                  "points": 0
-                },
-                {
-                  "name": "Spores",
-                  "description": "Sporemasters control powerful spores they can use to meld both friends and enemies. As you level up, you gain access to more powerful spores: Distress and Preserve at 1st, Soothe and Control at 2nd, Hallucination at 4th, and Pacifying at 5th. If your spore’s effects require a saving throw, the DC equals 8 + your proficiency bonus + the specified ability modifier. You can use each spore option once, and must complete a long rest before you do so again.",
-                  "points": 10
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "anadi",
-          "name": "Anadi",
-          "summary": "Spiderfolk who learned to wear a humanoid shape so the world would talk to them.",
-          "description": "Anadi in their true form resemble large spiders. All anadi possess the ability to transform into a humanoid guise, a fusion of transmutation and illusion magic their scholars innovated so they could trade with neighbours who found their true appearance objectionable. Both forms are granted together.",
-          "traits": [
-            {
-              "id": "size-medium"
-            },
-            {
-              "id": "size-small"
-            },
-            {
-              "id": "darkvision-60",
-              "description": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. Your darkvision appears in shades of shifting purple."
-            },
-            {
-              "id": "skittering",
-              "name": "Skittering",
-              "description": "Your movement speed is 25 feet.",
-              "points": -1
-            },
-            {
-              "name": "Spider Climb",
-              "description": "While in spider form, you can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check. While doing so, you cannot use your extra arms for any purpose but to aid in climbing. You are not affected by the web spell or difficult terrain from webs.",
-              "points": 4
-            },
-            {
-              "name": "Extra Arms",
-              "description": "While in spider form, you have a second set of arms that can grasp and manipulate objects. You can still only wield one weapon or carry one large object per side, but you can use your extra arms to carry out simple tasks, initiate or maintain grapples, use tools, reload ranged weapons, and perform the somatic components of spells. They also allow one extra free object interaction per turn.",
-              "points": 3
-            },
-            {
-              "name": "Venomous Bite",
-              "description": "Your spider mandibles are a natural weapon, which you can use to make unarmed strikes as a light weapon, dealing 1d6 + your Strength modifier piercing damage. Additionally, when you hit an enemy with a bite attack, you may use your bonus action to latch on and inject deadly venom. They must make a Constitution saving throw (DC 8 + your Constitution modifier + your proficiency bonus), taking 4d6 poison damage on a failure or half as much on a success. This damage increases to 6d6 at level 5, 8d6 at level 11, and 10d6 at level 16. Once you use this ability, you can’t use it again until you take a short or long rest.",
-              "points": 3
-            },
-            {
-              "name": "Skill Proficiency, Stealth",
-              "description": "You have proficiency in the Stealth skill.",
-              "points": 2
-            },
-            {
-              "id": "shifter"
-            },
-            {
-              "name": "Calming Presence",
-              "description": "As a bonus action, you can end the frightened condition on a friendly creature. Once you use this ability, you can’t use it again until you take a short or long rest.",
-              "points": 1
-            }
-          ],
-          "archetypes": [],
-          "descriptors": "Spiderfolk"
-        },
-        {
-          "id": "returned",
-          "name": "Returned",
-          "summary": "Souls that came back without their memories, wearing whatever matter they could find.",
-          "description": "Returned aren’t born, they are manifest into the prime material plane without memories but with the basic skills they had in their life. The first thing a returned does is find a form — discarded metal, a pile of gravel, a hive of insects — which their magic twists into a humanoid shape.",
-          "traits": [
-            {
-              "id": "size-medium"
-            },
-            {
-              "id": "size-small"
-            },
-            {
-              "id": "constructed-form"
-            },
-            {
-              "id": "vigilant-rest"
-            }
-          ],
-          "archetypes": [
-            {
-              "id": "ghost",
-              "name": "Ghost form",
-              "traits": [
-                {
-                  "id": "telepathy"
-                },
-                {
-                  "id": "artisan-cantrip",
-                  "name": "Strange Presence",
-                  "description": "You know the thaumaturgy cantrip."
-                },
-                {
-                  "id": "necrotic-resistance",
-                  "name": "Resistance, Necrotic",
-                  "points": 2
-                },
-                {
-                  "id": "traversal"
-                }
-              ]
-            },
-            {
-              "id": "poltergeist",
-              "name": "Poltergeist form",
-              "traits": [
-                {
-                  "name": "Shifting Form",
-                  "description": "When another creature grapples you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4 × your Proficiency Bonus of either piercing or poison damage.",
-                  "points": 4
-                },
-                {
-                  "name": "Strange Magic",
-                  "description": "You know the sword burst, thunderous distortion, or spark of life cantrip. You can also cast this spell-like ability as a bonus action once per short rest using no components.",
-                  "points": 4
-                },
-                {
-                  "id": "streetwise-cultural-skill",
-                  "option": "improviser",
-                  "points": 1
-                },
-                {
-                  "id": "traversal"
-                }
-              ]
-            },
-            {
-              "id": "wildmorph",
-              "name": "Wildmorph form",
-              "traits": [
-                {
-                  "name": "Hardened Form",
-                  "description": "Due to the objects that make up your body, you are ill-suited to wearing armor. Your form provides ample protection, however; it gives you a base AC of 17 (your Dexterity modifier doesn’t affect this number). You gain no benefit from wearing armor, but if you are using a shield, you can apply the shield’s bonus as normal.",
-                  "points": 8
-                },
-                {
-                  "name": "Strange Presence",
-                  "description": "You know the encode thoughts cantrip, which acts as the primary way that you speak as you don’t have any ability to create speech-like sound. You also know the mending cantrip, which you can use on your own form to regain 1d4 + your proficiency bonus hit points. You can use this ability a number of times per day equal to your Proficiency Bonus.",
-                  "points": 4
-                }
-              ]
-            },
-            {
-              "id": "harrower",
-              "name": "Harrower form",
-              "traits": [
-                {
-                  "id": "survivalist-skill-proficiency",
-                  "name": "Cantrip",
-                  "description": "You know the stinging insects cantrip.",
-                  "points": 2
-                },
-                {
-                  "id": "natural-magic",
-                  "description": "Starting at 5th level, you can cast the summon swarm spell.",
-                  "points": 4
-                },
-                {
-                  "name": "Shifting Form",
-                  "description": "When another creature grapples you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4 × your Proficiency Bonus of either piercing or poison damage.",
-                  "points": 4
-                },
-                {
-                  "id": "natural-armor"
-                }
-              ]
-            },
-            {
-              "id": "plasmoid",
-              "name": "Plasmoid form",
-              "traits": [
-                {
-                  "id": "shape-self"
-                },
-                {
-                  "id": "amorphous"
-                },
-                {
-                  "id": "hold-breath"
-                },
-                {
-                  "id": "toxin-resilience"
-                },
-                {
-                  "name": "Muck Walker",
-                  "description": "You ignore difficult terrain caused by mud, muck, or similar terrain.",
-                  "points": 1
-                },
-                {
-                  "id": "poison-resistance"
-                },
-                {
-                  "name": "Cantrip",
-                  "description": "You know the acid burst, poison fang, or toxic spray cantrip.",
-                  "points": 2
-                }
-              ]
-            },
-            {
-              "id": "mourntouched",
-              "name": "Mourntouched form",
-              "traits": [
-                {
-                  "id": "brave",
-                  "name": "I’ve Seen Worse"
-                },
-                {
-                  "id": "magic-resistance"
-                },
-                {
-                  "name": "Sixth Sense",
-                  "description": "You’ve developed some sort of extrasensory perception. You have blindsight within a radius of 5 feet, allowing you to sense your immediate surroundings without relying on sight. This blindsight ignores full cover.",
-                  "points": 0
-                },
-                {
-                  "name": "Unexplained Ability",
-                  "description": "You gain proficiency in a skill of your choice. You didn’t have this skill before the Mourning. You can’t explain where it came from.",
-                  "points": 2
-                }
-              ]
-            }
-          ],
-          "descriptors": "Ghostlike"
-        },
-        {
-          "id": "dragonborn",
-          "name": "Dragonborn",
-          "summary": "The only species that may draw on the Draconic ancestry.",
-          "description": "All dragonborn characters are medium or small, and must take at least 2 traits from the Draconic ancestry. They are the only species that can choose from this ancestry.",
-          "traits": [
-            {
-              "id": "size-medium"
-            },
-            {
-              "id": "size-small"
-            }
-          ],
-          "archetypes": [
-            {
-              "id": "dragonborn",
-              "name": "Dragonborn",
-              "traits": [
-                {
-                  "id": "draconic-ancestry",
-                  "option": "fire",
-                  "name": "RECOMMENDED: Fire"
-                },
-                {
-                  "id": "breath-weapon",
-                  "name": "RECOMMENDED: Breath Weapon"
-                },
-                {
-                  "id": "draconic-resistance",
-                  "name": "RECOMMENDED: Draconic Resistance"
-                },
-                {
-                  "id": "draconic-cantrip",
-                  "name": "RECOMMENDED: Draconic Cantrip"
-                },
-                {
-                  "id": "draconic-presence",
-                  "name": "RECOMMENDED: Draconic Presence"
-                },
-                {
-                  "id": "powerful-build",
-                  "name": "RECOMMENDED: Powerful Build"
-                }
-              ],
-              "designed": true
-            },
-            {
-              "id": "elemental-dragonborn",
-              "name": "Elemental dragonborn",
-              "traits": [
-                {
-                  "id": "draconic-ancestry",
-                  "option": "lightning",
-                  "name": "RECOMMENDED: Lightning"
-                },
-                {
-                  "id": "breath-weapon",
-                  "name": "RECOMMENDED: Breath Weapon"
-                },
-                {
-                  "id": "draconic-resistance",
-                  "name": "RECOMMENDED: Draconic Resistance"
-                },
-                {
-                  "id": "elemental-attunement",
-                  "option": "air",
-                  "name": "RECOMMENDED: Air"
-                },
-                {
-                  "id": "elemental-cantrip",
-                  "option": "air",
-                  "name": "RECOMMENDED: Elemental Cantrip"
-                },
-                {
-                  "id": "draconic-warding",
-                  "name": "RECOMMENDED: Draconic Warding"
-                }
-              ],
-              "designed": true
-            },
-            {
-              "id": "brutal",
-              "name": "Brutal",
-              "traits": [
-                {
-                  "id": "draconic-ancestry",
-                  "option": "acid",
-                  "name": "RECOMMENDED: Acid"
-                },
-                {
-                  "id": "breath-weapon",
-                  "name": "RECOMMENDED: Breath Weapon"
-                },
-                {
-                  "id": "draconic-resistance",
-                  "name": "RECOMMENDED: Draconic Resistance"
-                },
-                {
-                  "id": "draconic-cry",
-                  "name": "RECOMMENDED: Draconic Cry"
-                },
-                {
-                  "id": "tooth-nail",
-                  "option": "bite",
-                  "name": "RECOMMENDED: Tooth and Nail"
-                },
-                {
-                  "id": "swim-speed",
-                  "name": "RECOMMENDED: Swim Speed"
-                }
-              ],
-              "designed": true
-            },
-            {
-              "id": "reserved",
-              "name": "Reserved",
-              "traits": [
-                {
-                  "id": "draconic-ancestry",
-                  "option": "radiant",
-                  "name": "RECOMMENDED: Radiant"
-                },
-                {
-                  "id": "breath-weapon",
-                  "name": "RECOMMENDED: Breath Weapon"
-                },
-                {
-                  "id": "draconic-resistance",
-                  "name": "RECOMMENDED: Draconic Resistance"
-                },
-                {
-                  "id": "draconic-cantrip",
-                  "name": "RECOMMENDED: Draconic Cantrip"
-                },
-                {
-                  "id": "draconic-warding",
-                  "name": "RECOMMENDED: Draconic Warding"
-                },
-                {
-                  "id": "friendly-cultural-skill",
-                  "option": "empathic",
-                  "name": "RECOMMENDED: Cultural Skill"
-                },
-                {
-                  "id": "powerful-build",
-                  "name": "RECOMMENDED: Powerful Build"
-                }
-              ],
-              "designed": true
-            },
-            {
-              "id": "uncanny",
-              "name": "Uncanny",
-              "traits": [
-                {
-                  "id": "draconic-ancestry",
-                  "option": "psychic",
-                  "name": "RECOMMENDED: Psychic"
-                },
-                {
-                  "id": "breath-weapon",
-                  "name": "RECOMMENDED: Breath Weapon"
-                },
-                {
-                  "id": "draconic-resistance",
-                  "name": "RECOMMENDED: Draconic Resistance"
-                },
-                {
-                  "id": "psionic-cantrip",
-                  "name": "RECOMMENDED: Psionic Cantrip"
-                },
-                {
-                  "id": "psionic-magic",
-                  "name": "RECOMMENDED: Psionic Magic"
-                },
-                {
-                  "id": "battlefield-intuition",
-                  "name": "RECOMMENDED: Battlefield Intuition"
-                },
-                {
-                  "id": "tooth-nail",
-                  "option": "bite",
-                  "name": "RECOMMENDED: Tooth and Nail"
-                }
-              ],
-              "designed": true
-            }
-          ],
-          "descriptors": "Created by dragons"
-        },
-        {
-          "id": "yuan-ti",
-          "name": "Yuan-ti",
-          "summary": "Nagaji of the deep places. Marked non-playable; defined only by an external PDF.",
-          "description": "An intensely cruel and fascistic culture, nagaji were driven to the depths of Eora millennia ago, though some still control regions of untamed jungles on the surface.",
-          "traits": [],
-          "archetypes": [],
-          "stub": true
-        }
-      ],
-      "subcategories": [
-        {
-          "id": "muul",
-          "name": "Muul",
-          "description": "Originating as a slur, Muul is the collective term for any number of humanoids that take the form of large mammals like bulls, elephants, or hippos.",
-          "ancestries": [
-            {
-              "id": "auran",
-              "name": "Auran (Minotaur)",
-              "summary": "Massive humanoids with powerful physiques and the heads of bulls.",
-              "description": "",
-              "traits": [
-                {
-                  "id": "size-medium"
-                },
-                {
-                  "id": "keen-senses-proficiency"
-                },
-                {
-                  "id": "tooth-nail",
-                  "option": "horns",
-                  "name": "Horns",
-                  "description": "Your horns allow you to make damaging unarmed strikes as natural, light weapons. When you hit, a strike deals 1d6 + Strength modifier piercing damage."
-                },
-                {
-                  "id": "powerful-build"
-                },
-                {
-                  "id": "menacing",
-                  "option": "intimidation"
-                },
-                {
-                  "name": "Goring Charge",
-                  "description": "Immediately after you take the Dash action on your turn and move 15 feet in a straight line, you can make a special attack with your horns as part of the same action. If the attack hits, the target takes bonus piercing damage based on your level: 2d6 at 1st level, 3d6 at 5th level, 4d6 at 11th level, and 5d6 at 17th level. The target takes an additional 1d6 bonus damage if you dashed at least 30 feet in a straight line before making the attack. The target must also make a Strength saving throw, with a DC equal to 8 + your Strength modifier + your Proficiency Bonus. If they fail, they are shoved up to 15 feet and knocked prone. Creatures that are at least two sizes larger than you automatically succeed on this saving throw. Once you use this ability, you can’t use it again until you finish a short or long rest.",
-                  "points": 2
-                }
-              ],
-              "archetypes": [
-                {
-                  "id": "wildhorn",
-                  "name": "Wildhorn",
-                  "traits": [
-                    {
-                      "id": "fey-creature"
-                    },
-                    {
-                      "id": "survivalist-skill-proficiency"
-                    },
-                    {
-                      "id": "skilled-tracker"
-                    },
-                    {
-                      "id": "traversal"
-                    }
-                  ]
-                },
-                {
-                  "id": "abyssal-brood",
-                  "name": "Abyssal Brood",
-                  "traits": [
-                    {
-                      "name": "Monstrous Ancestry",
-                      "description": "You can speak, read, and write Abyssal. In addition to Humanoid you are considered a Fiend.",
-                      "points": 1
-                    },
-                    {
-                      "id": "planar-cantrip"
-                    },
-                    {
-                      "id": "natural-magic"
-                    }
-                  ]
-                },
-                {
-                  "id": "seafarer",
-                  "name": "Seafarer",
-                  "traits": [
-                    {
-                      "id": "waterborne-skill-proficiency"
-                    },
-                    {
-                      "name": "Rider on the Waves",
-                      "description": "You gain proficiency with navigator’s tools and vehicles (water).",
-                      "points": 2
-                    },
-                    {
-                      "id": "swim-speed"
-                    }
-                  ]
-                },
-                {
-                  "id": "labyrinth-born",
-                  "name": "Labyrinth-Born",
-                  "traits": [
-                    {
-                      "id": "darkvision-60"
-                    },
-                    {
-                      "id": "survivalist-skill-proficiency"
-                    },
-                    {
-                      "name": "Labyrinth Sense",
-                      "description": "You always know which direction is north, and you have advantage on any Wisdom (Survival) check you make to navigate or track. Additionally, you cannot become lost on any path you have previously traveled.",
-                      "points": 1
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "bearkin",
-              "name": "Bearkin (Bear)",
-              "summary": "Broad, heavy-set bearfolk who sleep deep and hit hard.",
-              "description": "",
-              "traits": [
-                {
-                  "id": "size-medium"
-                },
-                {
-                  "id": "keen-senses-proficiency"
-                },
-                {
-                  "id": "darkvision-60"
-                },
-                {
-                  "id": "tooth-nail",
-                  "option": "claws"
-                },
-                {
-                  "name": "Deep Slumber",
-                  "description": "When you take a long rest, you can choose to enter a deep sleep to reduce your exhaustion by 2 instead of 1, but if you are awoken during this sleep, you are [dazed]() for 1d4 rounds.",
-                  "points": 1
-                },
-                {
-                  "id": "sturdy",
-                  "option": "toughness"
-                },
-                {
-                  "id": "stout-build"
-                }
-              ],
-              "archetypes": []
-            },
-            {
-              "id": "giff",
-              "name": "Giff (Hippo)",
-              "summary": "Hippo-headed and immovably strong, with famously poor hearing.",
-              "description": "",
-              "traits": [
-                {
-                  "id": "size-medium"
-                },
-                {
-                  "id": "keen-senses-proficiency"
-                },
-                {
-                  "id": "hold-breath"
-                },
-                {
-                  "name": "Giff Resilience",
-                  "description": "Giff are resilient, yet have poor hearing. They are resistant to thunder damage, and have advantage on saves against being deafened.",
-                  "points": 2
-                },
-                {
-                  "id": "tooth-nail",
-                  "option": "natural-strength",
-                  "description": "Your natural strength allows you to make damaging unarmed strikes using your head or bite as a natural, light weapon. When you hit with it, the strike deals 1d6 + Strength modifier bludgeoning damage."
-                },
-                {
-                  "id": "powerful-build"
-                },
-                {
-                  "id": "strong"
-                },
-                {
-                  "id": "sturdy",
-                  "option": "toughness"
-                }
-              ],
-              "archetypes": []
-            },
-            {
-              "id": "kashrishi",
-              "name": "Kashrishi (Rhino)",
-              "summary": "Dwarf-sized bipedal rhinoceroses with crystalline horns and inherent psychic powers.",
-              "description": "Kashrishi adapt to their environs with unusual efficiency, using a combination of rapid physical evolutions and inherent psychic powers. They are natural empaths, capable of discerning a creature’s emotional state through proximity.",
-              "traits": [
-                {
-                  "id": "size-medium"
-                },
-                {
-                  "id": "keen-senses-proficiency"
-                },
-                {
-                  "id": "psionic-cantrip"
-                },
-                {
-                  "id": "tooth-nail",
-                  "option": "horns",
-                  "description": "Your powerful neck muscles and facial horn allow you to make damaging unarmed strikes as a natural, light weapon. When you hit with it, the strike deals 1d6 + Strength modifier piercing or bludgeoning damage (choose one)."
-                },
-                {
-                  "id": "brave"
-                },
-                {
-                  "id": "psionic-magic"
-                },
-                {
-                  "id": "greater-psionic-magic"
-                }
-              ],
-              "archetypes": [
-                {
-                  "id": "athamasi",
-                  "name": "Athamasi",
-                  "traits": [
-                    {
-                      "id": "climb-speed"
-                    }
-                  ]
-                },
-                {
-                  "id": "lethoci",
-                  "name": "Lethoci",
-                  "traits": [
-                    {
-                      "id": "swim-speed"
-                    }
-                  ]
-                },
-                {
-                  "id": "trogloshi",
-                  "name": "Trogloshi",
-                  "traits": [
-                    {
-                      "name": "Crystal Luminescence",
-                      "description": "You can use a bonus action to make your horn glow with bioluminescent color, casting bright light in a 20-foot emanation (and dim light for the next 20 feet). This light can be any color. The light shuts off when you take this bonus action again or fall unconscious.",
-                      "points": 2
-                    }
-                  ]
-                },
-                {
-                  "id": "xyloshi",
-                  "name": "Xyloshi",
-                  "traits": [
-                    {
-                      "id": "finesse-training",
-                      "description": "Your physical strength and training allows you to add the finesse property to your horn. The damage it deals is increased to 1d8."
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "loxodon",
-              "name": "Loxodon (Elephant)",
-              "summary": "Elephantine, long-memoried and serene. Complete at 16 with no archetypes.",
-              "description": "",
-              "traits": [
-                {
-                  "id": "size-medium"
-                },
-                {
-                  "id": "keen-senses-proficiency"
-                },
-                {
-                  "id": "tooth-nail",
-                  "option": "natural-strength",
-                  "description": "Your trunk and tusks allow you to make damaging unarmed strikes as natural, light weapons. Tusks deal 1d6 + Strength modifier bludgeoning damage; your trunk deals 1d4 + Strength modifier bludgeoning damage."
-                },
-                {
-                  "id": "prehensile-limb",
-                  "option": "trunk"
-                },
-                {
-                  "id": "keen-smell"
-                },
-                {
-                  "id": "serenity"
-                },
-                {
-                  "name": "Perfect Memory",
-                  "description": "You have advantage on History checks and can perfectly recall any person you’ve seen, place you’ve visited, and item of note that you’ve studied for over a minute.",
-                  "points": 4
-                }
-              ],
-              "archetypes": []
-            },
-            {
-              "id": "porcein",
-              "name": "Porcein (Pig)",
-              "summary": "Boarfolk of the Muul lineage. Blank in Notion; the traits below are a proposal.",
-              "description": "",
-              "traits": [
-                {
-                  "id": "size-medium"
-                },
-                {
-                  "id": "keen-senses-proficiency"
-                }
-              ],
-              "archetypes": [
-                {
-                  "id": "porcein",
-                  "name": "Porcein",
-                  "traits": [
-                    {
-                      "id": "keen-smell",
-                      "name": "RECOMMENDED: Keen Smell"
-                    },
-                    {
-                      "id": "sturdy",
-                      "option": "toughness",
-                      "name": "RECOMMENDED: Toughness"
-                    },
-                    {
-                      "id": "stout-build",
-                      "name": "RECOMMENDED: Stout Build"
-                    },
-                    {
-                      "id": "tooth-nail",
-                      "option": "horns",
-                      "name": "RECOMMENDED: Tusks",
-                      "description": "Your tusks allow you to make damaging unarmed strikes as natural, light weapons. When you hit, a strike deals 1d6 + Strength modifier piercing damage."
-                    },
-                    {
-                      "id": "survivalist-cultural-skill",
-                      "option": "beast-tracker",
-                      "name": "RECOMMENDED: Cultural Skill"
-                    },
-                    {
-                      "id": "survivalist-skill-proficiency",
-                      "name": "RECOMMENDED: Skill Proficiency"
-                    }
-                  ],
-                  "designed": true
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "ysoki",
-          "name": "Ysoki",
-          "description": "Ysoki is the collective name for a number of rodent and marsupial-like mammalian species. They are generally small mammalian species, most commonly resembling rats, mice, hare, and squirrels.",
-          "ancestries": [
-            {
-              "id": "kangaroofolk",
-              "name": "Kangaroofolk (Osphrani)",
-              "summary": "Long-legged marsupial folk who cover ground in bounds.",
-              "description": "",
-              "traits": [
-                {
-                  "id": "size-medium"
-                },
-                {
-                  "id": "size-small"
-                },
-                {
-                  "name": "Strong Kick",
-                  "description": "Your strong legs and tail allow you to make damaging unarmed strikes as light weapons while balancing on your tail. When you hit with it, a strike deals 1d6 + Strength modifier bludgeoning damage. The target of your attack must make a Strength saving throw (DC 10 + your Strength bonus) or be pushed back 5 feet.",
-                  "points": 2
-                },
-                {
-                  "id": "leap"
-                },
-                {
-                  "id": "speed-quick"
-                },
-                {
-                  "id": "agile-fall"
-                },
-                {
-                  "name": "Pouch",
-                  "description": "All osphrani have a pouch on their belly that can either carry one item weighing up to their Strength score, or can serve as a component pouch. You cannot use this feature if your belly is covered or otherwise inaccessible. You have advantage on Dexterity (Sleight of Hand) checks you make to conceal an object in your pouch.",
-                  "points": 1
-                },
-                {
-                  "name": "Bounding",
-                  "description": "As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. Additionally, the efficiency of movement your bounding provides means you can move twice the normal time (up to 16 hours) each day before being subject to the effects of a forced march.",
-                  "points": 4
-                },
-                {
-                  "name": "Skill Proficiency, Nature",
-                  "description": "You have proficiency in the Nature skill.",
-                  "points": 2
-                }
-              ],
-              "archetypes": []
-            },
-            {
-              "id": "ratfolk",
-              "name": "Ratfolk (Ysoki)",
-              "summary": "Skilled scouts and agriculturalists, driven by constant searching.",
-              "description": "",
-              "traits": [
-                {
-                  "id": "size-medium"
-                },
-                {
-                  "id": "size-small"
-                },
-                {
-                  "id": "contortion",
-                  "name": "Squeeze",
-                  "description": "You can squeeze into any space that can be traversed by a creature one size category smaller than you.",
-                  "points": 1
-                },
-                {
-                  "id": "darkvision-60"
-                },
-                {
-                  "id": "artisan-cultural-skill",
-                  "option": "gifted-artisan"
-                },
-                {
-                  "id": "tooth-nail",
-                  "option": "bite"
-                },
-                {
-                  "name": "Gnaw",
-                  "description": "With enough time, your teeth can chew through almost anything. Your teeth deal double damage against objects like doors or ropes that are made of wood, fiber, or other natural materials.",
-                  "points": 0
-                },
-                {
-                  "id": "toxin-resilience"
-                }
-              ],
-              "archetypes": [
-                {
-                  "id": "spotter",
-                  "name": "Spotter",
-                  "traits": [
-                    {
-                      "id": "keen-smell"
-                    },
-                    {
-                      "id": "hunters-senses"
-                    }
-                  ]
-                },
-                {
-                  "id": "scavenger",
-                  "name": "Scavenger",
-                  "traits": [
-                    {
-                      "id": "keen-smell"
-                    },
-                    {
-                      "id": "skirmisher-cultural-skill",
-                      "option": "trap-master"
-                    },
-                    {
-                      "id": "poison-resistance"
-                    }
-                  ]
-                },
-                {
-                  "id": "rural",
-                  "name": "Rural",
-                  "traits": [
-                    {
-                      "id": "keen-smell"
-                    },
-                    {
-                      "id": "skilled-agriculturalist"
-                    },
-                    {
-                      "id": "cute"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rabbitfolk",
-              "name": "Rabbitfolk (Harengon)",
-              "summary": "Small, twitchy and quick off the mark.",
-              "description": "",
-              "traits": [
-                {
-                  "id": "size-small"
-                },
-                {
-                  "id": "leap"
-                },
-                {
-                  "name": "Keen Hearing",
-                  "description": "You have advantage on Wisdom (Perception) checks that rely on hearing sounds.",
-                  "points": 3
-                },
-                {
-                  "name": "Twitchy",
-                  "description": "You can add 1d4 to your initiative rolls, and while unconscious from sleeping you lose your advantage on Wisdom (Perception) checks that rely on hearing sounds within 60 feet instead of automatically failing them.",
-                  "points": 3
-                },
-                {
-                  "name": "Bounding",
-                  "description": "As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
-                  "points": 4
-                },
-                {
-                  "id": "keen-senses-proficiency"
-                }
-              ],
-              "archetypes": []
-            },
-            {
-              "id": "squirrelfolk",
-              "name": "Squirrelfolk (Kercpa)",
-              "summary": "Tiny arboreal folk for whom the canopy is level ground.",
-              "description": "",
-              "traits": [
-                {
-                  "id": "size-small"
-                },
-                {
-                  "id": "darkvision-60"
-                },
-                {
-                  "id": "nimble"
-                },
-                {
-                  "id": "small-stealth"
-                },
-                {
-                  "id": "tooth-nail",
-                  "option": "claws"
-                },
-                {
-                  "id": "climb-speed"
-                },
-                {
-                  "name": "Forager",
-                  "description": "During a long rest in an abundant environment, you can spend 1 hour gathering enough food to sustain you and 1d4 other creatures for a day.",
-                  "points": 1
-                },
-                {
-                  "id": "traversal",
-                  "description": "You can move across difficult terrain without expending extra movement if you are using your walking or climbing speed.",
-                  "points": 2
-                },
-                {
-                  "id": "keen-senses-proficiency"
-                },
-                {
-                  "id": "fury-of-small"
-                }
-              ],
-              "archetypes": []
-            }
-          ]
         }
       ]
     },
     {
-      "id": "versatile",
-      "name": "Versatile Ancestries",
-      "description": "The godlike and the planetouched, whose power comes from an element, a plane, or a bloodline.",
+      "id": "planar",
+      "name": "Planar",
+      "description": "The godlike, the planetouched, and the returned, whose power comes from an element, a plane, a bloodline, or death itself.",
       "ancestries": [
         {
           "id": "undine",
           "name": "Undine",
+          "subtitle": "Waterborn of waves and the sea.",
           "summary": "Waterborn godlike, marked either by marine anatomy or by the element itself.",
           "description": "Waterborn take two common forms. They may have the obvious physical traits of marine creatures, or some sort of elemental influence that manifests — hair magically formed out of water, ice cold skin, skin colour that swirls like the sea.",
           "traits": [
@@ -2733,6 +1117,7 @@
         {
           "id": "ifriti",
           "name": "Ifriti",
+          "subtitle": "Flameborn of fire, ash, and magma.",
           "summary": "Flameborn godlike — hot tempered, impassioned, holding sway over destruction.",
           "description": "Ifrit have physical traits of flame, smoke, or volcanic rock that allude to their fiery inheritance. Their eyes may be alight with a glow, their skin may flake with ash, their breath emanate black smoke, or their hair may actually be an everburning flame.",
           "traits": [
@@ -2787,6 +1172,11 @@
                 },
                 {
                   "id": "unending-breath"
+                },
+                {
+                  "name": "Extinguish",
+                  "description": "You know the Control Flames cantrip with the following changes. It affects a 15 foot cube. You can lower the light level of an area even if it has no flame within it.",
+                  "points": 3
                 }
               ]
             },
@@ -2847,6 +1237,7 @@
         {
           "id": "talos",
           "name": "Talos",
+          "subtitle": "Stoneborn of rock, crystal, or metal.",
           "summary": "Stoneborn godlike, bodied in stone, crystal or metal, with mercurial blood.",
           "description": "Talos are as variant as the stone, crystals, and metals that fill the planes, but they always have a physical manifestation of that form in their person. Their eyes are always a solid colour and never have pupils.",
           "traits": [
@@ -3088,6 +1479,7 @@
         {
           "id": "asir",
           "name": "Asir",
+          "subtitle": "Windborn of the skies, storms, and heavens.",
           "summary": "Windborn godlike, thought to be blessed or descended from celestials.",
           "description": "Asir godlike manifest with features of air, the heavens, or flying creatures. All asir have strange markings or symbols that adorn their skin, sometimes accompanied by symbols that float around them like halos.",
           "traits": [],
@@ -3277,6 +1669,7 @@
         {
           "id": "oread",
           "name": "Oread",
+          "subtitle": "Flora and fauna made flesh.",
           "summary": "Natureborn godlike — manifestations of nature in mammalian or plantlike form.",
           "description": "Nature godlike are manifestations of nature. Some bear mammalian features such as horns, antlers, long cervine ears, tails, fur, or hooved legs. Others have plantlike growths such as mossy or flowering vines for hair, barklike skin, or saplike blood.",
           "traits": [
@@ -3389,6 +1782,7 @@
         {
           "id": "tiefling",
           "name": "Tiefling",
+          "subtitle": "Marked by the fiendish planes.",
           "summary": "Mortals carrying the sinister mark of the fiendish planes on their flesh.",
           "description": "When the influence of a demon, devil, fiend, or shadowspawn infiltrates the bloodline of a mortal family, tieflings are the inevitable result. Their specific abilities and physical qualities vary according to their heritage.",
           "traits": [
@@ -3585,6 +1979,7 @@
         {
           "id": "fetchling",
           "name": "Fetchling",
+          "subtitle": "Shadowborn, paled by the fade.",
           "summary": "Creatures bleached of pigment by the magic of the fade.",
           "description": "The fade strips humanoid creatures of pigmentation in their skin and hair. Known as fetchlings, creatures influenced by these places are characterized by pale or greyscale hair and pale, greyish, or even semi-translucent skin.",
           "traits": [
@@ -3620,12 +2015,1703 @@
         {
           "id": "fey",
           "name": "Fey",
+          "subtitle": "Feyborn, touched by chaos.",
           "summary": "Not an ancestry — a swap-in overlay applied to another ancestry’s traits.",
           "description": "All fey characters have a connection to magic and time passes differently for them. Take another ancestry’s traits, and change out traits to take Fey, one of Trance / Fey Magic / Greater Fey Magic, and one other Fey trait — staying within the 16 point limit.",
           "traits": [],
           "archetypes": [],
           "descriptors": "Feyborn – Chaos",
           "overlay": true
+        },
+        {
+          "id": "returned",
+          "name": "Returned",
+          "subtitle": "Souls come back without memories, in borrowed bodies.",
+          "summary": "Souls that came back without their memories, wearing whatever matter they could find.",
+          "description": "Returned aren’t born, they are manifest into the prime material plane without memories but with the basic skills they had in their life. The first thing a returned does is find a form — discarded metal, a pile of gravel, a hive of insects — which their magic twists into a humanoid shape.",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "size-small"
+            },
+            {
+              "id": "constructed-form"
+            },
+            {
+              "id": "vigilant-rest"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "ghost",
+              "name": "Ghost form",
+              "traits": [
+                {
+                  "id": "telepathy"
+                },
+                {
+                  "id": "artisan-cantrip",
+                  "name": "Strange Presence",
+                  "description": "You know the thaumaturgy cantrip."
+                },
+                {
+                  "id": "necrotic-resistance",
+                  "name": "Resistance, Necrotic",
+                  "points": 2
+                },
+                {
+                  "id": "traversal"
+                }
+              ]
+            },
+            {
+              "id": "poltergeist",
+              "name": "Poltergeist form",
+              "traits": [
+                {
+                  "name": "Shifting Form",
+                  "description": "When another creature grapples you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4 × your Proficiency Bonus of either piercing or poison damage.",
+                  "points": 4
+                },
+                {
+                  "name": "Strange Magic",
+                  "description": "You know the sword burst, thunderous distortion, or spark of life cantrip. You can also cast this spell-like ability as a bonus action once per short rest using no components.",
+                  "points": 4
+                },
+                {
+                  "id": "streetwise-cultural-skill",
+                  "option": "improviser",
+                  "points": 1
+                },
+                {
+                  "id": "traversal"
+                }
+              ]
+            },
+            {
+              "id": "wildmorph",
+              "name": "Wildmorph form",
+              "traits": [
+                {
+                  "name": "Hardened Form",
+                  "description": "Due to the objects that make up your body, you are ill-suited to wearing armor. Your form provides ample protection, however; it gives you a base AC of 17 (your Dexterity modifier doesn’t affect this number). You gain no benefit from wearing armor, but if you are using a shield, you can apply the shield’s bonus as normal.",
+                  "points": 8
+                },
+                {
+                  "name": "Strange Presence",
+                  "description": "You know the encode thoughts cantrip, which acts as the primary way that you speak as you don’t have any ability to create speech-like sound. You also know the mending cantrip, which you can use on your own form to regain 1d4 + your proficiency bonus hit points. You can use this ability a number of times per day equal to your Proficiency Bonus.",
+                  "points": 4
+                }
+              ]
+            },
+            {
+              "id": "harrower",
+              "name": "Harrower form",
+              "traits": [
+                {
+                  "id": "survivalist-skill-proficiency",
+                  "name": "Cantrip",
+                  "description": "You know the stinging insects cantrip.",
+                  "points": 2
+                },
+                {
+                  "id": "natural-magic",
+                  "description": "Starting at 5th level, you can cast the summon swarm spell.",
+                  "points": 4
+                },
+                {
+                  "name": "Shifting Form",
+                  "description": "When another creature grapples you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4 × your Proficiency Bonus of either piercing or poison damage.",
+                  "points": 4
+                },
+                {
+                  "id": "natural-armor"
+                }
+              ]
+            },
+            {
+              "id": "plasmoid",
+              "name": "Plasmoid form",
+              "traits": [
+                {
+                  "id": "shape-self"
+                },
+                {
+                  "id": "amorphous"
+                },
+                {
+                  "id": "hold-breath"
+                },
+                {
+                  "id": "toxin-resilience"
+                },
+                {
+                  "name": "Muck Walker",
+                  "description": "You ignore difficult terrain caused by mud, muck, or similar terrain.",
+                  "points": 1
+                },
+                {
+                  "id": "poison-resistance"
+                },
+                {
+                  "name": "Cantrip",
+                  "description": "You know the acid burst, poison fang, or toxic spray cantrip.",
+                  "points": 2
+                }
+              ]
+            },
+            {
+              "id": "mourntouched",
+              "name": "Mourntouched form",
+              "traits": [
+                {
+                  "id": "brave",
+                  "name": "I’ve Seen Worse"
+                },
+                {
+                  "id": "magic-resistance"
+                },
+                {
+                  "name": "Sixth Sense",
+                  "description": "You’ve developed some sort of extrasensory perception. You have blindsight within a radius of 5 feet, allowing you to sense your immediate surroundings without relying on sight. This blindsight ignores full cover.",
+                  "points": 0
+                },
+                {
+                  "name": "Unexplained Ability",
+                  "description": "You gain proficiency in a skill of your choice. You didn’t have this skill before the Mourning. You can’t explain where it came from.",
+                  "points": 2
+                }
+              ]
+            }
+          ],
+          "descriptors": "Ghostlike"
+        }
+      ]
+    },
+    {
+      "id": "awakened-common",
+      "name": "Awakened (Common)",
+      "description": "The widespread animal peoples — felines, rats, birds, and lizards.",
+      "ancestries": [
+        {
+          "id": "aven",
+          "name": "Aven",
+          "subtitle": "Birdfolk",
+          "summary": "Feathered, beaked and taloned — winged or not.",
+          "description": "Aven is the collective term for humanoids with birdlike appearances. Aven may be winged or wingless, but all of them are covered in feathers, have beaks, and have talons on their feet.",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "size-small"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "flying",
+              "name": "Flying",
+              "traits": [
+                {
+                  "id": "beak-claw",
+                  "option": "talons"
+                },
+                {
+                  "id": "flying-cantrip"
+                },
+                {
+                  "id": "flight",
+                  "option": "wings"
+                },
+                {
+                  "id": "hardy"
+                },
+                {
+                  "id": "survivalist-cultural-skill",
+                  "option": "beast-tracker"
+                },
+                {
+                  "id": "keen-senses-proficiency"
+                }
+              ]
+            },
+            {
+              "id": "flightless",
+              "name": "Flightless",
+              "traits": [
+                {
+                  "id": "beak-claw",
+                  "option": "talons"
+                },
+                {
+                  "id": "flight",
+                  "option": "limited-flight"
+                },
+                {
+                  "id": "keen-senses-proficiency"
+                },
+                {
+                  "id": "sea-legs"
+                },
+                {
+                  "id": "sure-footed"
+                }
+              ]
+            },
+            {
+              "id": "arctic",
+              "name": "Arctic",
+              "traits": [
+                {
+                  "id": "native-environment",
+                  "option": "arctic"
+                },
+                {
+                  "id": "beak-claw",
+                  "option": "talons"
+                },
+                {
+                  "id": "keen-sight"
+                },
+                {
+                  "id": "swim-speed"
+                },
+                {
+                  "id": "survivalist-cultural-skill",
+                  "option": "acclimatization"
+                },
+                {
+                  "id": "aquatic-resistance",
+                  "name": "Insulation",
+                  "description": "You gain resistance to cold damage."
+                },
+                {
+                  "id": "hold-breath"
+                },
+                {
+                  "id": "flight",
+                  "option": "glide"
+                },
+                {
+                  "id": "weather-worn"
+                }
+              ]
+            },
+            {
+              "id": "raptor",
+              "name": "Raptor",
+              "traits": [
+                {
+                  "id": "beak-claw",
+                  "option": "talons"
+                },
+                {
+                  "id": "flight",
+                  "option": "wings"
+                },
+                {
+                  "id": "keen-sight"
+                },
+                {
+                  "id": "survivalist-cultural-skill",
+                  "option": "acclimatization"
+                }
+              ]
+            }
+          ],
+          "descriptors": "Bird-like"
+        },
+        {
+          "id": "iruxi",
+          "name": "Iruxi",
+          "subtitle": "Lizardfolk",
+          "summary": "Lizardfolk and tortles, each shaped by the landscape that raised them.",
+          "description": "All iruxi characters are size medium or small, and must take at least one trait from the Reptilian ancestry.",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "size-small"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "badlands",
+              "name": "Badlands",
+              "traits": [
+                {
+                  "id": "native-environment",
+                  "option": "desert"
+                },
+                {
+                  "id": "darkvision-60"
+                },
+                {
+                  "id": "tooth-tail",
+                  "option": "bite"
+                },
+                {
+                  "id": "defensive-feature",
+                  "option": "spines"
+                },
+                {
+                  "id": "climb-speed"
+                },
+                {
+                  "id": "leap"
+                },
+                {
+                  "id": "survivalist-cultural-skill",
+                  "option": "acclimatization"
+                },
+                {
+                  "id": "hold-breath"
+                },
+                {
+                  "id": "survivalist-cultural-skill",
+                  "option": "survivalist-skill"
+                },
+                {
+                  "id": "skilled-tracker"
+                }
+              ]
+            },
+            {
+              "id": "swamp",
+              "name": "Swamp",
+              "traits": [
+                {
+                  "id": "native-environment",
+                  "option": "swamp"
+                },
+                {
+                  "id": "hold-breath"
+                },
+                {
+                  "id": "darkvision-60"
+                },
+                {
+                  "id": "tooth-tail",
+                  "option": "tail",
+                  "name": "Natural Weapons",
+                  "description": "Your toothy maw and/or strong tail allow you to make damaging unarmed strikes as a light weapon. When you hit with it, the strike deals 1d6 + Strength modifier slashing (bite) or bludgeoning (tail) damage."
+                },
+                {
+                  "id": "hungry-jaws"
+                },
+                {
+                  "id": "natural-armor"
+                },
+                {
+                  "id": "weather-worn"
+                },
+                {
+                  "id": "swim-speed"
+                },
+                {
+                  "id": "survivalist-skill-proficiency",
+                  "description": "You have proficiency in the Intimidation skill."
+                }
+              ]
+            },
+            {
+              "id": "jungle",
+              "name": "Jungle",
+              "traits": [
+                {
+                  "id": "native-environment",
+                  "option": "forest"
+                },
+                {
+                  "id": "darkvision-60"
+                },
+                {
+                  "id": "chromatophore"
+                },
+                {
+                  "name": "Tongue",
+                  "description": "Your tongue can make damaging unarmed strikes as a light weapon with a reach of 10 feet. When you hit with it, the strike deals 1d6 + Strength modifier bludgeoning damage.",
+                  "points": 3
+                },
+                {
+                  "id": "climb-speed"
+                },
+                {
+                  "id": "survivalist-skill-proficiency",
+                  "description": "You have proficiency in the Stealth skill."
+                }
+              ]
+            },
+            {
+              "id": "desert",
+              "name": "Desert",
+              "traits": [
+                {
+                  "id": "native-environment",
+                  "option": "desert"
+                },
+                {
+                  "id": "speed-quick"
+                },
+                {
+                  "id": "darkvision-60"
+                },
+                {
+                  "id": "survivalist-cultural-skill",
+                  "option": "acclimatization"
+                },
+                {
+                  "id": "tooth-tail",
+                  "option": "bite"
+                },
+                {
+                  "id": "survivalist-skill-proficiency",
+                  "description": "You have proficiency in the Intimidation skill."
+                },
+                {
+                  "id": "natural-armor"
+                },
+                {
+                  "id": "burrow"
+                }
+              ]
+            },
+            {
+              "id": "forest-or-plains",
+              "name": "Forest or Plains",
+              "traits": [
+                {
+                  "id": "native-environment",
+                  "option": "forest"
+                },
+                {
+                  "id": "tooth-tail",
+                  "option": "fangs"
+                },
+                {
+                  "id": "regeneration"
+                },
+                {
+                  "id": "natural-armor"
+                },
+                {
+                  "id": "survivalist-cultural-skill",
+                  "option": "beast-tracker"
+                },
+                {
+                  "id": "survivalist-skill-proficiency"
+                },
+                {
+                  "id": "toxin-resilience"
+                },
+                {
+                  "id": "poison-resistance"
+                }
+              ]
+            },
+            {
+              "id": "shelled",
+              "name": "Shelled",
+              "traits": [
+                {
+                  "id": "bite-pincers",
+                  "option": "bite"
+                },
+                {
+                  "id": "carapace",
+                  "name": "Shell"
+                },
+                {
+                  "id": "swim-speed"
+                },
+                {
+                  "id": "sturdy",
+                  "option": "durable"
+                },
+                {
+                  "id": "shell-defense"
+                }
+              ]
+            }
+          ],
+          "descriptors": "Reptilian species"
+        },
+        {
+          "id": "mrrshan",
+          "name": "Mrrshan",
+          "subtitle": "Catfolk",
+          "summary": "Curious, gregarious felinefolk who see themselves as guardians of wild places.",
+          "description": "Mrrshan are a species with feline-like traits and qualities. They commonly resemble large cats of the world, but their patterns and body structures vary as much as any other humanoid.",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "size-small"
+            },
+            {
+              "id": "darkvision-60"
+            },
+            {
+              "id": "tooth-nail",
+              "option": "claws"
+            },
+            {
+              "id": "agile-fall"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "felis",
+              "name": "Felis",
+              "traits": [
+                {
+                  "id": "speed-quick"
+                },
+                {
+                  "id": "climb-speed"
+                },
+                {
+                  "id": "leap"
+                },
+                {
+                  "id": "skirmisher-cultural-skill",
+                  "option": "combat-awareness"
+                },
+                {
+                  "id": "skilled-combatant",
+                  "option": "adrenaline-rush"
+                }
+              ]
+            },
+            {
+              "id": "panthera",
+              "name": "Panthera",
+              "traits": [
+                {
+                  "id": "roar"
+                },
+                {
+                  "id": "swiftness"
+                },
+                {
+                  "id": "warrior-cultural-skill",
+                  "option": "combat-climber"
+                },
+                {
+                  "id": "brave"
+                }
+              ]
+            }
+          ],
+          "descriptors": "Feline species"
+        },
+        {
+          "id": "ratfolk",
+          "name": "Ysoki",
+          "subtitle": "Ratfolk",
+          "summary": "Skilled scouts and agriculturalists, driven by constant searching.",
+          "description": "",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "size-small"
+            },
+            {
+              "id": "contortion",
+              "name": "Squeeze",
+              "description": "You can squeeze into any space that can be traversed by a creature one size category smaller than you.",
+              "points": 1
+            },
+            {
+              "id": "darkvision-60"
+            },
+            {
+              "id": "artisan-cultural-skill",
+              "option": "gifted-artisan"
+            },
+            {
+              "id": "tooth-nail",
+              "option": "bite"
+            },
+            {
+              "name": "Gnaw",
+              "description": "With enough time, your teeth can chew through almost anything. Your teeth deal double damage against objects like doors or ropes that are made of wood, fiber, or other natural materials.",
+              "points": 0
+            },
+            {
+              "id": "toxin-resilience"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "spotter",
+              "name": "Spotter",
+              "traits": [
+                {
+                  "id": "keen-smell"
+                },
+                {
+                  "id": "hunters-senses"
+                }
+              ]
+            },
+            {
+              "id": "scavenger",
+              "name": "Scavenger",
+              "traits": [
+                {
+                  "id": "keen-smell"
+                },
+                {
+                  "id": "skirmisher-cultural-skill",
+                  "option": "trap-master"
+                },
+                {
+                  "id": "poison-resistance"
+                }
+              ]
+            },
+            {
+              "id": "rural",
+              "name": "Rural",
+              "traits": [
+                {
+                  "id": "keen-smell"
+                },
+                {
+                  "id": "skilled-agriculturalist"
+                },
+                {
+                  "id": "cute"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "awakened-uncommon",
+      "name": "Awakened (Uncommon)",
+      "description": "Rarer animal peoples — frogs and salamanders, jackals, bulls and hippos, rabbits and squirrels, serpents, spiders, fungi, and the dragonborn.",
+      "ancestries": [
+        {
+          "id": "anadi",
+          "name": "Anadi",
+          "subtitle": "Spiderfolk",
+          "summary": "Spiderfolk who learned to wear a humanoid shape so the world would talk to them.",
+          "description": "Anadi in their true form resemble large spiders. All anadi possess the ability to transform into a humanoid guise, a fusion of transmutation and illusion magic their scholars innovated so they could trade with neighbours who found their true appearance objectionable. Both forms are granted together.",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "size-small"
+            },
+            {
+              "id": "darkvision-60",
+              "description": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. Your darkvision appears in shades of shifting purple."
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "anadi",
+              "name": "Anadi",
+              "traits": [
+                {
+                  "name": "Spider Climb",
+                  "description": "While in spider form, you can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check. While doing so, you cannot use your extra arms for any purpose but to aid in climbing. You are not affected by the web spell or difficult terrain from webs.",
+                  "points": 4
+                },
+                {
+                  "name": "Extra Arms",
+                  "description": "While in spider form, you have a second set of arms that can grasp and manipulate objects. You can still only wield one weapon or carry one large object per side, but you can use your extra arms to carry out simple tasks, initiate or maintain grapples, use tools, reload ranged weapons, and perform the somatic components of spells. They also allow one extra free object interaction per turn.",
+                  "points": 3
+                },
+                {
+                  "name": "Venomous Bite",
+                  "description": "Your spider mandibles are a natural weapon, which you can use to make unarmed strikes as a light weapon, dealing 1d6 + your Strength modifier piercing damage. Additionally, when you hit an enemy with a bite attack, you may use your bonus action to latch on and inject deadly venom. They must make a Constitution saving throw (DC 8 + your Constitution modifier + your proficiency bonus), taking 4d6 poison damage on a failure or half as much on a success. This damage increases to 6d6 at level 5, 8d6 at level 11, and 10d6 at level 16. Once you use this ability, you can’t use it again until you take a short or long rest.",
+                  "points": 3
+                },
+                {
+                  "name": "Skill Proficiency, Stealth",
+                  "description": "You have proficiency in the Stealth skill.",
+                  "points": 2
+                },
+                {
+                  "id": "shifter"
+                },
+                {
+                  "name": "Calming Presence",
+                  "description": "As a bonus action, you can end the frightened condition on a friendly creature. Once you use this ability, you can’t use it again until you take a short or long rest.",
+                  "points": 1
+                }
+              ]
+            }
+          ],
+          "descriptors": "Spiderfolk"
+        },
+        {
+          "id": "atxayotl",
+          "name": "Atxayotl",
+          "subtitle": "Axolotlfolk",
+          "summary": "Axolotlkin regrow what they lose, and shift form with the water they live in.",
+          "description": "A shifting amphibious folk. Lagoon atxayotl must fully immerse themselves in water for at least 1 hour per week or they transform into Landbound; Landbound transform back after 24 hours immersed.",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "size-small"
+            },
+            {
+              "id": "swim-speed"
+            },
+            {
+              "id": "survivalist-skill-proficiency",
+              "description": "You have proficiency in one of the following skills of your choice: Nature, Persuasion, Survival."
+            },
+            {
+              "id": "regeneration"
+            },
+            {
+              "id": "regrowth",
+              "name": "Limb Regrowth",
+              "description": "You are incapable of scarring, regenerating the damaged tissue instead. Disfiguring scars fully heal themselves after you complete a long rest. Major injuries such as missing limbs or eyes heal themselves after 1 week.",
+              "points": 0
+            },
+            {
+              "name": "Environmental Adaptation",
+              "description": "Lagoon Atxayotls must fully immerse themselves in water for at least 1 hour per week, or they transform into Landbound Atxayotls. Landbound transform into Lagoon after 24 hours immersed in water.",
+              "points": 0
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "lagoon",
+              "name": "Lagoon",
+              "traits": [
+                {
+                  "id": "amphibious"
+                },
+                {
+                  "id": "sea-legs",
+                  "description": "You have advantage on Dexterity (Acrobatics) checks, and checks to be knocked prone from effects other than attacks."
+                }
+              ]
+            },
+            {
+              "id": "landbound",
+              "name": "Landbound",
+              "traits": [
+                {
+                  "id": "climb-speed"
+                },
+                {
+                  "name": "Salamander Sprint",
+                  "description": "You can Dash as a bonus action.",
+                  "points": 5
+                },
+                {
+                  "id": "streetwise-cultural-skill",
+                  "option": "bamboozler"
+                }
+              ]
+            }
+          ],
+          "descriptors": "Axolotlkin"
+        },
+        {
+          "id": "auran",
+          "name": "Auran",
+          "subtitle": "Bullfolk",
+          "summary": "Massive humanoids with powerful physiques and the heads of bulls.",
+          "description": "",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "keen-senses-proficiency"
+            },
+            {
+              "id": "tooth-nail",
+              "option": "horns",
+              "name": "Horns",
+              "description": "Your horns allow you to make damaging unarmed strikes as natural, light weapons. When you hit, a strike deals 1d6 + Strength modifier piercing damage."
+            },
+            {
+              "id": "powerful-build"
+            },
+            {
+              "id": "menacing",
+              "option": "intimidation"
+            },
+            {
+              "name": "Goring Charge",
+              "description": "Immediately after you take the Dash action on your turn and move 15 feet in a straight line, you can make a special attack with your horns as part of the same action. If the attack hits, the target takes bonus piercing damage based on your level: 2d6 at 1st level, 3d6 at 5th level, 4d6 at 11th level, and 5d6 at 17th level. The target takes an additional 1d6 bonus damage if you dashed at least 30 feet in a straight line before making the attack. The target must also make a Strength saving throw, with a DC equal to 8 + your Strength modifier + your Proficiency Bonus. If they fail, they are shoved up to 15 feet and knocked prone. Creatures that are at least two sizes larger than you automatically succeed on this saving throw. Once you use this ability, you can’t use it again until you finish a short or long rest.",
+              "points": 2
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "wildhorn",
+              "name": "Wildhorn",
+              "traits": [
+                {
+                  "id": "fey-creature"
+                },
+                {
+                  "id": "survivalist-skill-proficiency"
+                },
+                {
+                  "id": "skilled-tracker"
+                },
+                {
+                  "id": "traversal"
+                }
+              ]
+            },
+            {
+              "id": "abyssal-brood",
+              "name": "Abyssal Brood",
+              "traits": [
+                {
+                  "name": "Monstrous Ancestry",
+                  "description": "You can speak, read, and write Abyssal. In addition to Humanoid you are considered a Fiend.",
+                  "points": 1
+                },
+                {
+                  "id": "planar-cantrip"
+                },
+                {
+                  "id": "natural-magic"
+                }
+              ]
+            },
+            {
+              "id": "seafarer",
+              "name": "Seafarer",
+              "traits": [
+                {
+                  "id": "waterborne-skill-proficiency"
+                },
+                {
+                  "name": "Rider on the Waves",
+                  "description": "You gain proficiency with navigator’s tools and vehicles (water).",
+                  "points": 2
+                },
+                {
+                  "id": "swim-speed"
+                }
+              ]
+            },
+            {
+              "id": "labyrinth-born",
+              "name": "Labyrinth-Born",
+              "traits": [
+                {
+                  "id": "darkvision-60"
+                },
+                {
+                  "id": "survivalist-skill-proficiency"
+                },
+                {
+                  "name": "Labyrinth Sense",
+                  "description": "You always know which direction is north, and you have advantage on any Wisdom (Survival) check you make to navigate or track. Additionally, you cannot become lost on any path you have previously traveled.",
+                  "points": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bearkin",
+          "name": "Bearkin",
+          "subtitle": "Bearfolk",
+          "summary": "Broad, heavy-set bearfolk who sleep deep and hit hard.",
+          "description": "",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "keen-senses-proficiency"
+            },
+            {
+              "id": "darkvision-60"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "bearkin",
+              "name": "Bearkin",
+              "traits": [
+                {
+                  "id": "tooth-nail",
+                  "option": "claws"
+                },
+                {
+                  "name": "Deep Slumber",
+                  "description": "When you take a long rest, you can choose to enter a deep sleep to reduce your exhaustion by 2 instead of 1, but if you are awoken during this sleep, you are [dazed]() for 1d4 rounds.",
+                  "points": 1
+                },
+                {
+                  "id": "sturdy",
+                  "option": "toughness"
+                },
+                {
+                  "id": "stout-build"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dragonborn",
+          "name": "Dragonborn",
+          "subtitle": "Created by dragons",
+          "summary": "The only species that may draw on the Draconic ancestry.",
+          "description": "All dragonborn characters are medium or small, and must take at least 2 traits from the Draconic ancestry. They are the only species that can choose from this ancestry.",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "size-small"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "dragonborn",
+              "name": "Dragonborn",
+              "traits": [
+                {
+                  "id": "draconic-ancestry",
+                  "option": "fire",
+                  "name": "RECOMMENDED: Fire"
+                },
+                {
+                  "id": "breath-weapon",
+                  "name": "RECOMMENDED: Breath Weapon"
+                },
+                {
+                  "id": "draconic-resistance",
+                  "name": "RECOMMENDED: Draconic Resistance"
+                },
+                {
+                  "id": "draconic-cantrip",
+                  "name": "RECOMMENDED: Draconic Cantrip"
+                },
+                {
+                  "id": "draconic-presence",
+                  "name": "RECOMMENDED: Draconic Presence"
+                },
+                {
+                  "id": "powerful-build",
+                  "name": "RECOMMENDED: Powerful Build"
+                }
+              ],
+              "designed": true
+            },
+            {
+              "id": "elemental-dragonborn",
+              "name": "Elemental dragonborn",
+              "traits": [
+                {
+                  "id": "draconic-ancestry",
+                  "option": "lightning",
+                  "name": "RECOMMENDED: Lightning"
+                },
+                {
+                  "id": "breath-weapon",
+                  "name": "RECOMMENDED: Breath Weapon"
+                },
+                {
+                  "id": "draconic-resistance",
+                  "name": "RECOMMENDED: Draconic Resistance"
+                },
+                {
+                  "id": "elemental-attunement",
+                  "option": "air",
+                  "name": "RECOMMENDED: Air"
+                },
+                {
+                  "id": "elemental-cantrip",
+                  "option": "air",
+                  "name": "RECOMMENDED: Elemental Cantrip"
+                },
+                {
+                  "id": "draconic-warding",
+                  "name": "RECOMMENDED: Draconic Warding"
+                }
+              ],
+              "designed": true
+            },
+            {
+              "id": "brutal",
+              "name": "Brutal",
+              "traits": [
+                {
+                  "id": "draconic-ancestry",
+                  "option": "acid",
+                  "name": "RECOMMENDED: Acid"
+                },
+                {
+                  "id": "breath-weapon",
+                  "name": "RECOMMENDED: Breath Weapon"
+                },
+                {
+                  "id": "draconic-resistance",
+                  "name": "RECOMMENDED: Draconic Resistance"
+                },
+                {
+                  "id": "draconic-cry",
+                  "name": "RECOMMENDED: Draconic Cry"
+                },
+                {
+                  "id": "tooth-nail",
+                  "option": "bite",
+                  "name": "RECOMMENDED: Tooth and Nail"
+                },
+                {
+                  "id": "swim-speed",
+                  "name": "RECOMMENDED: Swim Speed"
+                }
+              ],
+              "designed": true
+            },
+            {
+              "id": "reserved",
+              "name": "Reserved",
+              "traits": [
+                {
+                  "id": "draconic-ancestry",
+                  "option": "radiant",
+                  "name": "RECOMMENDED: Radiant"
+                },
+                {
+                  "id": "breath-weapon",
+                  "name": "RECOMMENDED: Breath Weapon"
+                },
+                {
+                  "id": "draconic-resistance",
+                  "name": "RECOMMENDED: Draconic Resistance"
+                },
+                {
+                  "id": "draconic-cantrip",
+                  "name": "RECOMMENDED: Draconic Cantrip"
+                },
+                {
+                  "id": "draconic-warding",
+                  "name": "RECOMMENDED: Draconic Warding"
+                },
+                {
+                  "id": "friendly-cultural-skill",
+                  "option": "empathic",
+                  "name": "RECOMMENDED: Cultural Skill"
+                },
+                {
+                  "id": "powerful-build",
+                  "name": "RECOMMENDED: Powerful Build"
+                }
+              ],
+              "designed": true
+            },
+            {
+              "id": "uncanny",
+              "name": "Uncanny",
+              "traits": [
+                {
+                  "id": "draconic-ancestry",
+                  "option": "psychic",
+                  "name": "RECOMMENDED: Psychic"
+                },
+                {
+                  "id": "breath-weapon",
+                  "name": "RECOMMENDED: Breath Weapon"
+                },
+                {
+                  "id": "draconic-resistance",
+                  "name": "RECOMMENDED: Draconic Resistance"
+                },
+                {
+                  "id": "psionic-cantrip",
+                  "name": "RECOMMENDED: Psionic Cantrip"
+                },
+                {
+                  "id": "psionic-magic",
+                  "name": "RECOMMENDED: Psionic Magic"
+                },
+                {
+                  "id": "battlefield-intuition",
+                  "name": "RECOMMENDED: Battlefield Intuition"
+                },
+                {
+                  "id": "tooth-nail",
+                  "option": "bite",
+                  "name": "RECOMMENDED: Tooth and Nail"
+                }
+              ],
+              "designed": true
+            }
+          ],
+          "descriptors": "Created by dragons"
+        },
+        {
+          "id": "giff",
+          "name": "Giff",
+          "subtitle": "Hippofolk",
+          "summary": "Hippo-headed and immovably strong, with famously poor hearing.",
+          "description": "",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "keen-senses-proficiency"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "giff",
+              "name": "Giff",
+              "traits": [
+                {
+                  "id": "hold-breath"
+                },
+                {
+                  "name": "Giff Resilience",
+                  "description": "Giff are resilient, yet have poor hearing. They are resistant to thunder damage, and have advantage on saves against being deafened.",
+                  "points": 2
+                },
+                {
+                  "id": "tooth-nail",
+                  "option": "natural-strength",
+                  "description": "Your natural strength allows you to make damaging unarmed strikes using your head or bite as a natural, light weapon. When you hit with it, the strike deals 1d6 + Strength modifier bludgeoning damage."
+                },
+                {
+                  "id": "powerful-build"
+                },
+                {
+                  "id": "strong"
+                },
+                {
+                  "id": "sturdy",
+                  "option": "toughness"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "grung",
+          "name": "Grung",
+          "subtitle": "Frogfolk",
+          "summary": "Small, brightly coloured frogkin, at home in water and canopy alike.",
+          "description": "All grung characters are size small, have at least one trait from the Aquatic ancestry, and at least one trait from the Reptilian ancestry.",
+          "traits": [
+            {
+              "id": "size-small"
+            },
+            {
+              "id": "darkvision-60"
+            },
+            {
+              "id": "amphibious"
+            },
+            {
+              "id": "swim-speed"
+            },
+            {
+              "id": "emissary-sea"
+            },
+            {
+              "id": "leap"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "croak",
+              "name": "Croak",
+              "traits": [
+                {
+                  "name": "Thunderous Croak",
+                  "description": "When you take the Attack action, you can replace one of your attacks with an exhalation of sonic energy in a 60-foot cone. Each creature in the area must make a Dexterity saving throw of DC 8 + your Constitution modifier + your Proficiency Bonus. On a failed save, a creature takes 1d10 thunder damage and is [deafened]() for 1 minute. On a success, a creature takes half as much thunder damage and isn’t deafened. This damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10). At the end of each of its turns, a deafened creature can make another Constitution saving throw, ending the effect on a success. After you use your croak, you can’t use it again until you finish a short or long rest.",
+                  "points": 6
+                }
+              ]
+            },
+            {
+              "id": "tongue",
+              "name": "Tongue",
+              "traits": [
+                {
+                  "name": "Tongue",
+                  "description": "Your tongue can make damaging unarmed strikes as a light weapon with a reach of 10 feet. When you hit with it, the strike deals 1d6 + Strength modifier bludgeoning damage.",
+                  "points": 3
+                },
+                {
+                  "id": "prehensile-limb",
+                  "option": "trunk",
+                  "name": "Prehensile Limb, Tongue",
+                  "description": "Your tongue can perform simple tasks with a reach of 10 feet: lift, drop, hold, push, or pull an object or a creature; open or close a door or a container; grapple a creature your size or smaller; or make an unarmed strike."
+                },
+                {
+                  "id": "hold-breath"
+                }
+              ]
+            },
+            {
+              "id": "poisonous",
+              "name": "Poisonous",
+              "traits": [
+                {
+                  "id": "defensive-feature",
+                  "option": "poisonous"
+                },
+                {
+                  "name": "Hypnotic Blood",
+                  "description": "Your blood contains a natural toxin. When you take piercing or slashing damage as the result of an unarmed attack, such as from a bite or claw attack, you can use your reaction to force that creature to make a Constitution saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your Proficiency Bonus. On a failed save, a creature is poisoned until the end of your next turn. A creature that’s been poisoned in this way or succeeds on the saving throw against it is immune to this effect for 24 hours. You can use this feature a number of times equal to your Proficiency Bonus and regain all expended uses of it when you finish a long rest.",
+                  "points": 2
+                }
+              ]
+            }
+          ],
+          "descriptors": "Amphibian species"
+        },
+        {
+          "id": "rabbitfolk",
+          "name": "Harengon",
+          "subtitle": "Rabbitfolk",
+          "summary": "Small, twitchy and quick off the mark.",
+          "description": "",
+          "traits": [
+            {
+              "id": "size-small"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "rabbitfolk",
+              "name": "Harengon",
+              "traits": [
+                {
+                  "id": "leap"
+                },
+                {
+                  "name": "Keen Hearing",
+                  "description": "You have advantage on Wisdom (Perception) checks that rely on hearing sounds.",
+                  "points": 3
+                },
+                {
+                  "name": "Twitchy",
+                  "description": "You can add 1d4 to your initiative rolls, and while unconscious from sleeping you lose your advantage on Wisdom (Perception) checks that rely on hearing sounds within 60 feet instead of automatically failing them.",
+                  "points": 3
+                },
+                {
+                  "name": "Bounding",
+                  "description": "As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
+                  "points": 4
+                },
+                {
+                  "id": "keen-senses-proficiency"
+                },
+                {
+                  "id": "the-way-my-ma-taught-me"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kashrishi",
+          "name": "Kashrishi",
+          "subtitle": "Rhinofolk",
+          "summary": "Dwarf-sized bipedal rhinoceroses with crystalline horns and inherent psychic powers.",
+          "description": "Kashrishi adapt to their environs with unusual efficiency, using a combination of rapid physical evolutions and inherent psychic powers. They are natural empaths, capable of discerning a creature’s emotional state through proximity.",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "keen-senses-proficiency"
+            },
+            {
+              "id": "psionic-cantrip"
+            },
+            {
+              "id": "tooth-nail",
+              "option": "horns",
+              "description": "Your powerful neck muscles and facial horn allow you to make damaging unarmed strikes as a natural, light weapon. When you hit with it, the strike deals 1d6 + Strength modifier piercing or bludgeoning damage (choose one)."
+            },
+            {
+              "id": "brave"
+            },
+            {
+              "id": "psionic-magic"
+            },
+            {
+              "id": "greater-psionic-magic"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "athamasi",
+              "name": "Athamasi",
+              "traits": [
+                {
+                  "id": "climb-speed"
+                }
+              ]
+            },
+            {
+              "id": "lethoci",
+              "name": "Lethoci",
+              "traits": [
+                {
+                  "id": "swim-speed"
+                }
+              ]
+            },
+            {
+              "id": "trogloshi",
+              "name": "Trogloshi",
+              "traits": [
+                {
+                  "name": "Crystal Luminescence",
+                  "description": "You can use a bonus action to make your horn glow with bioluminescent color, casting bright light in a 20-foot emanation (and dim light for the next 20 feet). This light can be any color. The light shuts off when you take this bonus action again or fall unconscious.",
+                  "points": 2
+                }
+              ]
+            },
+            {
+              "id": "xyloshi",
+              "name": "Xyloshi",
+              "traits": [
+                {
+                  "id": "finesse-training",
+                  "description": "Your physical strength and training allows you to add the finesse property to your horn. The damage it deals is increased to 1d8."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "squirrelfolk",
+          "name": "Kercpa",
+          "subtitle": "Squirrelfolk",
+          "summary": "Tiny arboreal folk for whom the canopy is level ground.",
+          "description": "",
+          "traits": [
+            {
+              "id": "size-small"
+            },
+            {
+              "id": "darkvision-60"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "squirrelfolk",
+              "name": "Kercpa",
+              "traits": [
+                {
+                  "id": "nimble"
+                },
+                {
+                  "id": "small-stealth"
+                },
+                {
+                  "id": "tooth-nail",
+                  "option": "claws"
+                },
+                {
+                  "id": "climb-speed"
+                },
+                {
+                  "name": "Forager",
+                  "description": "During a long rest in an abundant environment, you can spend 1 hour gathering enough food to sustain you and 1d4 other creatures for a day.",
+                  "points": 1
+                },
+                {
+                  "id": "traversal",
+                  "description": "You can move across difficult terrain without expending extra movement if you are using your walking or climbing speed.",
+                  "points": 2
+                },
+                {
+                  "id": "keen-senses-proficiency"
+                },
+                {
+                  "id": "fury-of-small"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "khenra",
+          "name": "Khenra",
+          "subtitle": "Jackalfolk",
+          "summary": "Jackal-headed twins, bonded so closely that losing one remakes the other.",
+          "description": "Nearly every khenra is born a twin, and a pair forms an extremely close emotional bond. The death of one twin causes a tremendous shock to the survivor, who typically grows more aggressive and foolhardy in battle.",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "size-small"
+            },
+            {
+              "id": "speed-quick"
+            },
+            {
+              "name": "Vigilant",
+              "description": "You have advantage on Perception checks. Instead of being unaware of your surroundings while you are unconscious from being asleep, you have disadvantage on Wisdom (Perception) checks instead.",
+              "points": 2
+            },
+            {
+              "id": "pack-tactics"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "twin-alive",
+              "name": "Twin alive",
+              "traits": [
+                {
+                  "id": "lucky"
+                }
+              ]
+            },
+            {
+              "id": "twin-dead",
+              "name": "Twin dead",
+              "traits": [
+                {
+                  "id": "brave"
+                },
+                {
+                  "id": "shadow-magic"
+                }
+              ]
+            }
+          ],
+          "descriptors": "Canine species, always born with a twin."
+        },
+        {
+          "id": "loxodon",
+          "name": "Loxodon",
+          "subtitle": "Elephantfolk",
+          "summary": "Elephantine, long-memoried and serene.",
+          "description": "",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "keen-senses-proficiency"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "loxodon",
+              "name": "Loxodon",
+              "traits": [
+                {
+                  "id": "tooth-nail",
+                  "option": "natural-strength",
+                  "description": "Your trunk and tusks allow you to make damaging unarmed strikes as natural, light weapons. Tusks deal 1d6 + Strength modifier bludgeoning damage; your trunk deals 1d4 + Strength modifier bludgeoning damage."
+                },
+                {
+                  "id": "prehensile-limb",
+                  "option": "trunk"
+                },
+                {
+                  "id": "keen-smell"
+                },
+                {
+                  "id": "serenity"
+                },
+                {
+                  "name": "Perfect Memory",
+                  "description": "You have advantage on History checks and can perfectly recall any person you’ve seen, place you’ve visited, and item of note that you’ve studied for over a minute.",
+                  "points": 4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "myconid",
+          "name": "Myconid",
+          "subtitle": "Mushroomfolk",
+          "summary": "Fungal folk who speak in spores and decompose anything organic to survive.",
+          "description": "Myconids possess a diverse variety of physical features, but they all share a few core traits. They grow quickly, reaching maturity by the age of four and living just under a quarter of a century.",
+          "traits": [
+            {
+              "name": "Decomposition",
+              "description": "You can eat any organic material to survive. Your body decomposes it into a form that is nutritious to you.",
+              "points": 0
+            },
+            {
+              "id": "darkvision-60"
+            },
+            {
+              "name": "Poisonous Form",
+              "description": "You are resistant to poison damage and you are immune to the poisoned condition.",
+              "points": 4
+            },
+            {
+              "id": "hybrid-nature"
+            },
+            {
+              "name": "Rapport Spores",
+              "description": "You are unable to verbally speak, but can communicate telepathically to creatures within a number of feet equal to 40 + ten times your level, emitting spores that transmit your messages directly to their minds. The creature doesn’t need to share a language with you to understand your telepathy, but it must be able to understand at least one language, and it can’t be an Undead, Construct, or Elemental. This telepathy doesn’t grant the creature the ability to telepathically respond.",
+              "points": 0
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "sporemaster",
+              "name": "Sporemaster",
+              "traits": [
+                {
+                  "id": "size-small"
+                },
+                {
+                  "name": "Fungal Alchemy",
+                  "description": "Sporemasters have an innate understanding of alchemy, often using their spores as ingredients. You gain proficiency in Alchemists’ Supplies.",
+                  "points": 0
+                },
+                {
+                  "name": "Spores",
+                  "description": "Sporemasters control powerful spores they can use to meld both friends and enemies. As you level up, you gain access to more powerful spores: Distress and Preserve at 1st, Soothe and Control at 2nd, Hallucination at 4th, and Pacifying at 5th. If your spore’s effects require a saving throw, the DC equals 8 + your proficiency bonus + the specified ability modifier. You can use each spore option once, and must complete a long rest before you do so again.",
+                  "points": 10
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kangaroofolk",
+          "name": "Osphrani",
+          "subtitle": "Kangaroofolk",
+          "summary": "Long-legged marsupial folk who cover ground in bounds.",
+          "description": "",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "size-small"
+            },
+            {
+              "id": "speed-quick"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "kangaroofolk",
+              "name": "Osphrani",
+              "traits": [
+                {
+                  "name": "Strong Kick",
+                  "description": "Your strong legs and tail allow you to make damaging unarmed strikes as light weapons while balancing on your tail. When you hit with it, a strike deals 1d6 + Strength modifier bludgeoning damage. The target of your attack must make a Strength saving throw (DC 10 + your Strength bonus) or be pushed back 5 feet.",
+                  "points": 2
+                },
+                {
+                  "id": "leap"
+                },
+                {
+                  "id": "agile-fall"
+                },
+                {
+                  "name": "Pouch",
+                  "description": "All osphrani have a pouch on their belly that can either carry one item weighing up to their Strength score, or can serve as a component pouch. You cannot use this feature if your belly is covered or otherwise inaccessible. You have advantage on Dexterity (Sleight of Hand) checks you make to conceal an object in your pouch.",
+                  "points": 1
+                },
+                {
+                  "name": "Bounding",
+                  "description": "As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. Additionally, the efficiency of movement your bounding provides means you can move twice the normal time (up to 16 hours) each day before being subject to the effects of a forced march.",
+                  "points": 4
+                },
+                {
+                  "name": "Skill Proficiency, Nature",
+                  "description": "You have proficiency in the Nature skill.",
+                  "points": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "porcein",
+          "name": "Porcein",
+          "subtitle": "Boarfolk",
+          "summary": "Boarfolk of the Muul lineage. Blank in Notion; the traits below are a proposal.",
+          "description": "",
+          "traits": [
+            {
+              "id": "size-medium"
+            },
+            {
+              "id": "keen-senses-proficiency"
+            }
+          ],
+          "archetypes": [
+            {
+              "id": "porcein",
+              "name": "Porcein",
+              "traits": [
+                {
+                  "id": "keen-smell",
+                  "name": "RECOMMENDED: Keen Smell"
+                },
+                {
+                  "id": "sturdy",
+                  "option": "toughness",
+                  "name": "RECOMMENDED: Toughness"
+                },
+                {
+                  "id": "stout-build",
+                  "name": "RECOMMENDED: Stout Build"
+                },
+                {
+                  "id": "tooth-nail",
+                  "option": "horns",
+                  "name": "RECOMMENDED: Tusks",
+                  "description": "Your tusks allow you to make damaging unarmed strikes as natural, light weapons. When you hit, a strike deals 1d6 + Strength modifier piercing damage."
+                },
+                {
+                  "id": "survivalist-cultural-skill",
+                  "option": "beast-tracker",
+                  "name": "RECOMMENDED: Cultural Skill"
+                },
+                {
+                  "id": "survivalist-skill-proficiency",
+                  "name": "RECOMMENDED: Skill Proficiency"
+                }
+              ],
+              "designed": true
+            }
+          ]
+        },
+        {
+          "id": "yuan-ti",
+          "name": "Yuan-ti",
+          "subtitle": "Snakefolk",
+          "summary": "Nagaji of the deep places. Marked non-playable; defined only by an external PDF.",
+          "description": "An intensely cruel and fascistic culture, nagaji were driven to the depths of Eora millennia ago, though some still control regions of untamed jungles on the surface.",
+          "traits": [],
+          "archetypes": [],
+          "stub": true
         }
       ]
     }

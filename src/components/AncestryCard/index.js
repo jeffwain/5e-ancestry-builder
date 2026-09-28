@@ -1,1 +1,0 @@
-export { AncestryCard } from './AncestryCard';

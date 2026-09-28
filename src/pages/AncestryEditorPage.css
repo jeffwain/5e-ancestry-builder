@@ -1,0 +1,594 @@
+/*
+ * Ancestry editor — ISOLATED.
+ *
+ * Every selector here is prefixed `ae-` and nothing outside this file is
+ * touched. It borrows the shared `.pill` and `.btn` classes but never restyles
+ * them outside `.ae-page`. To remove the feature entirely, delete this file,
+ * AncestryEditorPage.jsx, scripts/ancestry-source-api.mjs, the route + tab, and
+ * the ancestryEditorApi plugin in vite.config.js. Nothing else references it.
+ */
+
+.ae-page {
+  /* Native selects and buttons stay ink-on-parchment even when the OS is dark. */
+  color-scheme: light;
+  padding: var(--space-4);
+  max-inline-size: 1800px;
+  margin-inline: auto;
+
+  & .btn:disabled {
+    border-color: var(--color-parchment-400);
+    background: var(--color-parchment-200);
+    color: var(--color-ink-400);
+    cursor: not-allowed;
+  }
+}
+
+.ae-muted { color: var(--color-ink-500); font-size: var(--text-sm); }
+.ae-error { color: var(--color-error); font-size: var(--text-sm); line-height: var(--leading-relaxed); }
+
+.ae-empty {
+  margin: 0;
+  padding: var(--space-2) 0;
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--color-ink-500);
+}
+
+/* ── header ─────────────────────────────────────────────────────────────── */
+
+.ae-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding-block-end: var(--space-3);
+  border-block-end: 1px solid var(--color-parchment-300);
+  margin-block-end: var(--space-4);
+
+  & h1 {
+    margin: 0 0 var(--space-1);
+    font-size: var(--text-xl);
+    color: var(--color-ink-900);
+  }
+
+  & p { margin: 0; max-inline-size: 70ch; }
+}
+
+.ae-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.ae-status {
+  margin-inline-end: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-ink-600);
+  max-inline-size: 38ch;
+  text-align: end;
+}
+
+/* ── three-column shell ─────────────────────────────────────────────────── */
+
+.ae-grid {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr) minmax(20rem, 28rem);
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.ae-col {
+  box-sizing: border-box;
+  border: 1px solid var(--color-parchment-300);
+  border-radius: var(--radius-md);
+  background: var(--color-parchment-50);
+  padding: var(--space-3);
+  max-block-size: calc(100dvh - 190px);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+/* Narrower: the list becomes a short strip across the top, and the editor and
+   picker stay side by side so a trait can be added without scrolling past slots. */
+@media (max-width: 1100px) {
+  .ae-grid { grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem); }
+  .ae-col-list { grid-column: 1 / -1; max-block-size: 14rem; }
+}
+
+@media (max-width: 760px) {
+  .ae-grid { grid-template-columns: minmax(0, 1fr); }
+  .ae-col { max-block-size: none; }
+  .ae-col-list { max-block-size: 18rem; }
+}
+
+/* ── form controls ──────────────────────────────────────────────────────── */
+
+.ae-input {
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: 2.25rem;
+  padding: var(--space-2);
+  border: 1px solid var(--color-parchment-400);
+  border-radius: var(--radius-sm);
+  background: var(--color-parchment-50);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-ink-800);
+
+  &::placeholder { color: var(--color-ink-400); }
+  &:hover { border-color: var(--color-ink-400); }
+}
+
+textarea.ae-input {
+  min-block-size: 4.5rem;
+  resize: vertical;
+}
+
+.ae-input-pts { inline-size: 5rem; }
+
+.ae-select {
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 16rem;
+  min-block-size: 2rem;
+  padding-block: 0;
+  padding-inline: var(--space-2);
+  border-color: var(--color-parchment-400);
+  font-family: var(--font-body);
+  color: var(--color-ink-800);
+}
+
+:where(.ae-input, .ae-select, .ae-slot-radio):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 0;
+}
+
+.ae-linkish {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--color-heritage);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  cursor: pointer;
+
+  &:where(:hover, :focus-visible) { color: var(--color-heritage-light); }
+}
+
+.ae-tag {
+  flex: none;
+  padding: 0 0.25rem;
+  border-radius: 3px;
+  background: var(--color-parchment-200);
+  color: var(--color-ink-500);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ae-tag-note { background: var(--color-heritage-bg); color: var(--color-heritage); }
+
+/* ── column 1: ancestry list ────────────────────────────────────────────── */
+
+/* Unboxed: the list sits straight on the page to give its width to the names.
+   The filter stays put while the list scrolls under it. */
+.ae-col-list {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+
+  & > .ae-input {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 1;
+  }
+}
+
+/* global.css indents every `ul li`; these lists run flush. */
+:is(.ae-ancestry-list, .ae-picker-rows) > li { margin-inline-start: 0; }
+
+.ae-ancestry-group { margin-block-start: var(--space-3); }
+
+.ae-ancestry-group-title {
+  margin: 0 0 var(--space-1);
+  padding-inline: var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-400);
+}
+
+.ae-ancestry-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ae-ancestry-btn {
+  box-sizing: border-box;
+  inline-size: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.125rem var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  text-align: start;
+  cursor: pointer;
+
+  &:where(:hover, :focus-visible) { background: var(--color-parchment-200); }
+
+  &.selected {
+    border-color: var(--color-heritage);
+    background: var(--color-card-bg-selected);
+  }
+}
+
+/* Sub-lineages hang under their lineage. */
+.ae-ancestry-btn-sub {
+  padding-inline-start: var(--space-5);
+}
+
+.ae-ancestry-name {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-ink-800);
+}
+
+.ae-ancestry-btn.selected .ae-ancestry-name { color: var(--color-heritage); }
+
+.ae-ancestry-dirty {
+  inline-size: 0.4375rem;
+  block-size: 0.4375rem;
+  border-radius: 50%;
+  background: var(--color-heritage);
+}
+
+.ae-ancestry-sub {
+  font-size: var(--text-xs);
+  color: var(--color-ink-400);
+}
+
+.ae-ancestry-warning {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  inline-size: 100%;
+}
+
+/* ── column 2: slots ────────────────────────────────────────────────────── */
+
+.ae-current { margin-block-end: var(--space-3); }
+
+.ae-current-title { margin: 0; font-size: var(--text-lg); color: var(--color-ink-900); }
+.ae-current-sum { margin: var(--space-1) 0 0; }
+
+.ae-subhead {
+  margin: var(--space-5) 0 var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-500);
+}
+
+.ae-slot {
+  border: 1px solid var(--color-parchment-300);
+  border-inline-start-width: 3px;
+  border-radius: var(--radius-sm);
+  background: var(--color-card-bg-hover);
+  padding: 0 var(--space-3) var(--space-2);
+  margin-block-end: var(--space-2);
+}
+
+.ae-slot-active {
+  border-color: var(--color-parchment-400);
+  border-inline-start-color: var(--color-heritage);
+  background: var(--color-card-bg-selected);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Read-only: the lineage traits a sub-lineage stands on. */
+.ae-slot-inherited {
+  border-style: dashed;
+  border-inline-start-style: solid;
+  background: none;
+
+  & .ae-slot-name { font-weight: 600; color: var(--color-ink-600); }
+}
+
+.ae-slot-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-block-size: 2.5rem;
+  border-block-end: 1px solid var(--color-parchment-200);
+}
+
+/* The whole label targets the slot; the radio is the real control. */
+.ae-slot-target {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  align-self: stretch;
+  cursor: pointer;
+}
+
+.ae-slot-inherited .ae-slot-target { cursor: default; }
+
+.ae-slot-radio {
+  flex: none;
+  inline-size: 1rem;
+  block-size: 1rem;
+  margin: 0;
+  accent-color: var(--color-heritage);
+  cursor: inherit;
+}
+
+.ae-slot-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-ink-800);
+}
+
+.ae-slot-target:hover .ae-slot-name,
+.ae-slot-active .ae-slot-name {
+  color: var(--color-heritage);
+}
+
+.ae-slot-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: none;
+}
+
+.ae-points {
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--color-ink-500);
+}
+
+.ae-dirty {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-heritage);
+  font-weight: 700;
+}
+
+/* ── trait rows (slots and picker share the label pieces) ───────────────── */
+
+.ae-trait-rows { list-style: none; margin: 0; padding: 0; }
+
+.ae-trait-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--space-2);
+  min-block-size: 2.25rem;
+  border-block-end: 1px solid var(--color-parchment-200);
+  font-size: var(--text-sm);
+
+  &:last-child { border-block-end: none; }
+}
+
+/* The tooltip trigger defaults to inline-flex; here it is the row's label cell.
+   Hover previews the trait, click pins the popover open. */
+.ae-row-trigger {
+  display: block;
+  min-inline-size: 0;
+  cursor: pointer;
+}
+
+.ae-row-label {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  min-inline-size: 0;
+  white-space: nowrap;
+}
+
+.ae-row-name {
+  flex: 0 1 auto;
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-ink-800);
+}
+
+/* The raw source reference, kept alongside the friendly name — this is a source
+   editor, so the id you are actually writing stays visible. It gives way first. */
+.ae-row-ref {
+  flex: 0 100 auto;
+  min-inline-size: 2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-ink-400);
+}
+
+.ae-row-pts {
+  justify-content: center;
+  min-inline-size: 1.25rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Spread entries resolve only in the build. */
+.ae-kind-spread .ae-row-name { font-style: italic; color: var(--color-ink-500); }
+
+/* A re-list of an inherited trait: the build drops it, so it reads as spent. */
+.ae-trait-row-dropped {
+  & :is(.ae-row-name, .ae-row-ref) { color: var(--color-ink-300); }
+  & .ae-row-pts { text-decoration: line-through; opacity: 0.6; }
+}
+
+.ae-row-actions {
+  display: flex;
+
+  & button {
+    display: inline-grid;
+    place-items: center;
+    inline-size: 1.75rem;
+    block-size: 1.75rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--color-ink-300);
+    cursor: pointer;
+
+    &:where(:hover, :focus-visible):not(:disabled) {
+      background: var(--color-parchment-200);
+      color: var(--color-ink-800);
+    }
+
+    &:disabled { visibility: hidden; }
+  }
+}
+
+.ae-trait-row:is(:hover, :focus-within) .ae-row-actions button { color: var(--color-ink-600); }
+
+.ae-row-actions .ae-remove:where(:hover, :focus-visible) {
+  background: var(--color-error-bg);
+  color: var(--color-error);
+}
+
+/* ── column 3: trait picker ─────────────────────────────────────────────── */
+
+.ae-col-picker { padding-block-start: 0; }
+
+.ae-picker-head {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-inline: calc(var(--space-3) * -1);
+  padding: var(--space-3);
+  border-block-end: 1px solid var(--color-parchment-300);
+  background: var(--color-parchment-50);
+}
+
+.ae-target {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-ink-700);
+
+  & strong { color: var(--color-heritage); }
+}
+
+.ae-target-none {
+  font-style: italic;
+  color: var(--color-ink-500);
+}
+
+.ae-picker-search {
+  display: flex;
+  gap: var(--space-2);
+
+  & .btn { flex: none; }
+}
+
+.ae-picker-group-title {
+  margin: var(--space-3) 0 0;
+  padding-block: var(--space-1);
+  border-block-end: 1px solid var(--color-parchment-300);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-500);
+}
+
+.ae-picker-rows { list-style: none; margin: 0; padding: 0; }
+
+.ae-picker-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+  border-block-end: 1px solid var(--color-parchment-200);
+  font-size: var(--text-sm);
+
+  &:last-child { border-block-end: none; }
+
+  & .ae-row-ref { display: block; }
+}
+
+.ae-picker-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-inline-size: 0;
+}
+
+.ae-picker-hit { font-weight: 600; color: var(--color-heritage); }
+
+/* ── inline trait form ──────────────────────────────────────────────────── */
+
+.ae-inline-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-block-start: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--color-parchment-300);
+  border-radius: var(--radius-sm);
+  background: var(--color-parchment-100);
+}
+
+.ae-inline-row {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.ae-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.ae-field-grow { flex: 1 1 auto; min-inline-size: 0; }
+
+.ae-field-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-500);
+}
+
+.ae-add-inline { align-self: flex-start; }

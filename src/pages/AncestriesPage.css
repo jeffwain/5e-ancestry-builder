@@ -1,257 +1,389 @@
-/* Ancestries Page — Two-Column Layout */
-.ancestries-page {
-  padding: var(--space-6);
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.ancestries-page .ancestries-header {
-  margin-bottom: var(--space-8);
-}
-
-.ancestries-page .ancestries-header h1 {
-  font-size: var(--text-2xl);
-  color: var(--color-ink-900);
-  margin-bottom: var(--space-2);
-}
-
-.ancestries-page .ancestries-header p {
-  color: var(--color-ink-600);
-  line-height: var(--leading-relaxed);
-  max-width: 700px;
-}
-
-/* Show details toggle */
-.show-details-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  margin-top: var(--space-3);
-  font-size: var(--text-sm);
-  color: var(--color-ink-600);
-  cursor: pointer;
-  user-select: none;
-}
-
-/* Two-column grid */
-.ancestries-two-col {
+/*
+ * Ancestries — read like a printed book.
+ *
+ * An index down the side and the chosen ancestry's entry written out in full.
+ * Trait sentences ("Name [5]. Description.") share their type with the
+ * builder's TraitParagraph — see TraitParagraph.css.
+ */
+.ancestry-book {
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: var(--space-6);
+  grid-template-columns: 15rem minmax(0, 1fr);
   align-items: start;
+  min-height: calc(100vh - var(--tab-navigation-height));
 }
 
-/* Left column — browse */
-.ancestries-browse {
-  min-width: 0;
-}
-
-/* Right column — sticky summary */
-.ancestries-summary-col {
+/* ── Index ──────────────────────────────────────────────────────────────── */
+.ancestry-book-index {
   position: sticky;
-  top: calc(var(--header-height) + var(--space-4));
-  max-height: calc(100vh - var(--header-height) - var(--space-8));
+  inset-block-start: var(--tab-navigation-height);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-block-size: calc(100vh - var(--tab-navigation-height));
   overflow-y: auto;
-}
-
-/* Category sections */
-.ancestries-page .ancestry-category {
-  margin-bottom: var(--space-10);
-}
-
-.ancestries-page .category-header {
-  margin-bottom: var(--space-4);
-  padding-bottom: var(--space-3);
-  border-bottom: 2px solid var(--color-parchment-300);
-}
-
-.ancestries-page .category-header h2 {
-  font-size: var(--text-xl);
-  color: var(--color-heritage);
-  margin-bottom: var(--space-1);
-}
-
-.ancestries-page .category-desc {
-  font-size: var(--text-base);
-  color: var(--color-ink-600);
-}
-
-/* Subcategory sections */
-.ancestries-page .ancestry-subcategory {
-  margin-top: var(--space-6);
-}
-
-.ancestries-page .subcategory-header {
-  margin-bottom: var(--space-3);
-  padding-bottom: var(--space-2);
-  border-bottom: 1px solid var(--color-parchment-300);
-}
-
-.ancestries-page .subcategory-header h3 {
-  font-size: var(--text-lg);
-  color: var(--color-heritage);
-  margin-bottom: var(--space-1);
-}
-
-.ancestries-page .subcategory-desc {
-  font-size: var(--text-sm);
-  color: var(--color-ink-600);
-}
-
-/* Ancestry grid - single column for readability */
-.ancestries-page .ancestry-grid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-/* Loading / Error states */
-.ancestries-page .loading-message,
-.ancestries-page .error-message {
-  text-align: center;
-  padding: var(--space-8);
-  color: var(--color-ink-600);
-}
-
-.ancestries-page .error-message {
-  color: var(--color-error);
-}
-
-/* ── Summary Panel ─────────────────────────── */
-.ancestry-summary {
+  padding: var(--space-6) var(--space-4);
+  border-inline-end: 1px solid var(--color-parchment-300);
   background: var(--color-parchment-50);
-  border: 1px solid var(--color-parchment-300);
-  border-radius: var(--radius-md);
-  padding: var(--space-4);
 }
 
-.ancestry-summary.empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-}
-
-.ancestry-summary-placeholder {
-  color: var(--color-ink-400);
-  font-style: italic;
-  text-align: center;
-  line-height: var(--leading-relaxed);
-}
-
-.ancestry-summary-title {
-  font-size: var(--text-xl);
-  color: var(--color-ink-900);
-  margin-bottom: var(--space-3);
-  line-height: var(--leading-tight);
-}
-
-.ancestry-summary-desc {
-  font-size: var(--text-sm);
-  color: var(--color-ink-600);
-  line-height: var(--leading-relaxed);
-  margin-bottom: var(--space-4);
-}
-
-.ancestry-summary-section {
-  margin-bottom: var(--space-4);
-}
-
-.ancestry-summary-section h3 {
-  font-size: var(--text-base);
-  color: var(--color-heritage);
-  margin-bottom: var(--space-2);
-  padding-bottom: var(--space-1);
-  border-bottom: 1px solid var(--color-parchment-300);
-}
-
-.ancestry-summary-traits {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.ancestry-summary-hint {
-  background: var(--color-parchment-100);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-parchment-300);
-  color: var(--color-ink-500);
-  font-style: italic;
-  font-size: var(--text-sm);
-  padding: var(--space-2) var(--space-3);
-}
-
-.ancestry-summary-archetype-list {
-  list-style: none;
-  padding: 0;
-  margin: var(--space-2) 0 0 0;
+.ancestry-book-index-search {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
+
+  & input {
+    box-sizing: border-box;
+    block-size: 2.25rem;
+    padding-inline: var(--space-2);
+    border: 1px solid var(--color-parchment-400);
+    border-radius: var(--radius-sm);
+    background: var(--color-parchment-100);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+  }
+
+  & input:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 0;
+  }
 }
 
-.ancestry-summary-archetype-btn {
-  width: 100%;
-  text-align: left;
-  background: var(--color-parchment-50);
-  border: 1px solid var(--color-parchment-300);
-  border-radius: var(--radius-sm);
-  padding: var(--space-1) var(--space-2);
-  font-size: var(--text-sm);
-  font-style: normal;
-  color: var(--color-ink-700);
-  cursor: pointer;
+.ancestry-book-index-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink-500);
+}
+
+.ancestry-book-index-group {
   display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  transition: background 0.15s, border-color 0.15s;
+  flex-direction: column;
+  gap: 1px;
 }
 
-.ancestry-summary-archetype-btn:hover {
-  background: var(--color-parchment-200);
-  border-color: var(--color-heritage);
+.ancestry-book-index-heading {
+  margin: 0 0 var(--space-1) var(--space-2);
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 900;
   color: var(--color-heritage);
 }
 
-/* Action buttons */
-.ancestry-summary-actions {
+.ancestry-book-index-item {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-parchment-300);
+  align-items: start;
+  gap: 1px;
+  min-block-size: 2.125rem;
+  padding-block: var(--space-1);
+  padding-inline: var(--space-2);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-ink-700);
+  text-align: start;
+  cursor: pointer;
+
+  &:where(:hover, :focus-visible) {
+    background: var(--color-parchment-200);
+    color: var(--color-ink-900);
+
+    .ancestry-book-index-count {
+      opacity: 1;
+    }
+  }
+
+  &[aria-current] {
+    background: var(--color-heritage);
+    color: var(--color-parchment-50);
+    font-weight: 600;
+  }
 }
 
-.ancestry-summary-actions .btn {
-  flex: 1;
-  justify-content: center;
-  font-size: var(--text-md);
-}
-
-.ancestry-summary-actions .btn-secondary {
+.ancestry-book-index-name {
   display: flex;
   align-items: center;
   gap: var(--space-2);
 }
 
-/* ── Responsive ────────────────────────────── */
-@media (max-width: 768px) {
-  .ancestries-page {
-    padding: var(--space-4);
+.ancestry-book-index-subtitle {
+  font-size: var(--text-xs);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  color: var(--color-ink-500);
+
+  :where([aria-current]) & {
+    color: var(--color-parchment-200);
+  }
+}
+
+.ancestry-book-index-count {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+  color: var(--color-accent);
+
+  :where([aria-current]) > & {
+    color: var(--color-parchment-200);
+  }
+}
+
+/* ── Entry ──────────────────────────────────────────────────────────────── */
+.ancestry-book-entry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  max-inline-size: 60rem;
+  padding: var(--space-10) var(--space-12) var(--space-12);
+  scroll-margin-block-start: var(--tab-navigation-height);
+}
+
+.ancestry-book-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-block-end: var(--space-5);
+  border-block-end: 2px solid var(--color-parchment-300);
+}
+
+.ancestry-book-kicker {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-heritage);
+}
+
+.ancestry-book-name {
+  margin: 0;
+  font-size: var(--text-3xl);
+}
+
+.ancestry-book-summary {
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-600);
+}
+
+.ancestry-book-description {
+  max-inline-size: 45rem;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-600);
+
+  & p {
+    margin: 0;
   }
 
-  .ancestries-page .ancestries-header h1 {
-    font-size: var(--text-xl);
+  & p + p {
+    margin-block-start: var(--space-2);
+  }
+}
+
+/* Archetype pills: All archetypes, then each one. The pressed pill is the view. */
+.ancestry-book-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-start: calc(var(--space-4) * -1);
+}
+
+.ancestry-book-pill {
+  min-block-size: 2.25rem;
+  padding-inline: var(--space-3);
+  border: 1px solid var(--color-parchment-400);
+  border-radius: 1.125rem;
+  background: var(--color-parchment-50);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-ink-700);
+  cursor: pointer;
+
+  &:where(:hover, :focus-visible) {
+    border-color: var(--color-heritage);
+    color: var(--color-heritage);
   }
 
-  /* Single column on mobile */
-  .ancestries-two-col {
-    grid-template-columns: 1fr;
+  &[aria-pressed="true"] {
+    border-color: var(--color-heritage);
+    background: var(--color-heritage);
+    color: var(--color-parchment-50);
+    font-weight: 600;
+  }
+}
+
+.ancestry-book-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.ancestry-book-section-title {
+  margin: 0;
+  padding-block-end: var(--space-1);
+  border-block-end: 1px solid var(--color-parchment-300);
+  font-size: var(--text-sm);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-500);
+}
+
+/* ── Written-out traits ─────────────────────────────────────────────────── */
+.ancestry-book-trait {
+  break-inside: avoid;
+  margin-block-end: var(--space-2);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-800);
+}
+
+.ancestry-book-traits-columns {
+  columns: 2;
+  column-gap: var(--space-8);
+}
+
+/* Archetypes flow through two columns, each kept whole. */
+.ancestry-book-archetypes {
+  columns: 2;
+  column-gap: var(--space-8);
+}
+
+.ancestry-book-archetype {
+  break-inside: avoid;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-block-end: var(--space-6);
+}
+
+.ancestry-book-archetype-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.ancestry-book-archetype-name {
+  padding: var(--space-1) 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-ink-800);
+  text-align: start;
+  cursor: pointer;
+
+  &:where(:hover, :focus-visible) {
+    color: var(--color-heritage);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+}
+
+.ancestry-book-designed {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-400);
+}
+
+.ancestry-book-available {
+  margin-inline-start: auto;
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-500);
+}
+
+.ancestry-book-archetype-description {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-600);
+}
+
+/* An archetype picked: shared traits and what it adds, side by side. */
+.ancestry-book-picked {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-8);
+  align-items: start;
+}
+
+/* ── Actions ────────────────────────────────────────────────────────────── */
+.ancestry-book-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--color-parchment-400);
+  color: var(--color-ink-900);
+}
+
+.ancestry-book-actions-text {
+  flex: 1 1 16rem;
+  font-size: var(--text-sm);
+  color: var(--color-heritage);
+
+  & strong {
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    color: var(--color-ink-900);
+  }
+}
+
+.ancestry-book-actions-choice {
+  display: block;
+  margin-block-start: var(--space-1);
+  color: var(--color-ink-500);
+}
+
+.ancestry-book-actions .btn-secondary {
+  border-color: var(--color-parchment-400);
+  background: var(--color-heritage);
+  color: var(--color-parchment-50);
+}
+
+@media (max-width: 60rem) {
+
+  .ancestry-book-traits-columns,
+  .ancestry-book-archetypes {
+    columns: 1;
   }
 
-  .ancestries-summary-col {
+  .ancestry-book-picked {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* A phone: the index becomes a short scrolling list above the entry. */
+@media (max-width: 48rem) {
+  .ancestry-book {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ancestry-book-index {
     position: static;
-    max-height: none;
-    overflow-y: visible;
+    max-block-size: 16rem;
+    border-inline-end: none;
+    border-block-end: 1px solid var(--color-parchment-300);
+  }
+
+  .ancestry-book-entry {
+    padding: var(--space-6) var(--space-4) var(--space-8);
   }
 }

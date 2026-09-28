@@ -1,1 +1,0 @@
-export { AncestryOverview } from './AncestryOverview';

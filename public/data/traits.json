@@ -89,6 +89,7 @@
               "description": "Your base walking speed is 30 feet.",
               "points": 0,
               "default": true,
+              "baseline": true,
               "excludes": ["speed-quick", "speed-speedy"]
             },
             {
@@ -110,27 +111,37 @@
         "darkvision": {
           "name": "Darkvision",
           "description": "Not all species have the ability to naturally see in the dark.",
+          "required": true,
           "traits": [
+            {
+              "id": "vision-normal",
+              "name": "Normal Vision",
+              "description": "You have disadvantage on Wisdom (Perception) checks to see something in dim light.",
+              "points": 0,
+              "default": true,
+              "baseline": true,
+              "excludes": ["low-light-vision", "darkvision-60", "darkvision-120"]
+            },
             {
               "id": "low-light-vision",
               "name": "Low-light Vision",
               "description": "You can see in dim light within 60 feet of you as if it were bright light. This grants you no ability to see in darkness.",
               "points": 1,
-              "excludes": ["darkvision-60", "darkvision-120"]
+              "excludes": ["vision-normal", "darkvision-60", "darkvision-120"]
             },
             {
               "id": "darkvision-60",
               "name": "Darkvision",
               "description": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only in a monochromatic shade, usually gray.",
               "points": 3,
-              "excludes": ["darkvision-120", "low-light-vision"]
+              "excludes": ["vision-normal", "darkvision-120", "low-light-vision"]
             },
             {
               "id": "darkvision-120",
               "name": "Superior Darkvision (120 ft.)",
               "description": "You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, in a monochromatic shade, usually gray.",
               "points": 4,
-              "excludes": ["darkvision-60", "low-light-vision"]
+              "excludes": ["vision-normal", "darkvision-60", "low-light-vision"]
             }
           ]
         },
@@ -185,7 +196,8 @@
             {
               "id": "elemental-attunement",
               "name": "Elemental Attunement",
-              "description": "If you have elemental ancestry, you must take this trait. Choose one of the following element types.",
+              "description": "If you have elemental ancestry, you must take this trait.",
+              "chooseOne": "Choose one of the following element types.",
               "points": 0,
               "required": true,
               "requiresOption": true,
@@ -302,7 +314,8 @@
             {
               "id": "fey-step-improvement",
               "name": "Fey Step Improvement",
-              "description": "Starting at 3rd level, your Fey Step gains one of the following traits, which can be changed after a long rest. The DC equals 8 + your Proficiency Bonus + your Spellcasting Ability modifier.",
+              "description": "Starting at 3rd level, your Fey Step gains an added effect, which can be changed after a long rest. The DC equals 8 + your Proficiency Bonus + your Spellcasting Ability modifier.",
+              "chooseOne": "Choose one of the following traits.",
               "options": [
                 {"id": "autumn", "name": "Autumn", "points": 2, "description": "Immediately after you teleport, up to two creatures that you can see within 10 feet of you must succeed on a Wisdom saving throw or be [charmed]() by you for 1 minute, or until you or your companions deal any damage to the creatures."},
                 {"id": "winter", "name": "Winter", "points": 2, "description": "Before you teleport, one creature of your choice you can see within 5 feet of you must succeed on a Wisdom saving throw or be [frightened]() of you until the end of your next turn."},
@@ -404,7 +417,8 @@
             {
               "id": "celestial-revelation",
               "name": "Celestial Revelation",
-              "description": "**Celestial Revelation (3).** When you reach 3rd level, you can use a reaction to unleash the celestial energy inside yourself. The benefits of that transformation last for 1 minute or until you end it as a bonus action. Once you transform you can't use it again until you finish a long rest. ***Only available for celestial planar attunements**.* Choose one:",
+              "description": "**Celestial Revelation (3).** When you reach 3rd level, you can use a reaction to unleash the celestial energy inside yourself. The benefits of that transformation last for 1 minute or until you end it as a bonus action. Once you transform you can't use it again until you finish a long rest. ***Only available for celestial planar attunements**.*",
+              "chooseOne": "Choose one:",
               "options": [
                 {"id": "necrotic-shroud", "name": "Necrotic Shroud", "points": 3, "description": "Creatures of your choice within 10 feet of you that can see you must succeed against a Charisma Saving Throw (DC 8 + your Proficiency Bonus + your Charisma modifier) or become [frightened]() of you until the end of your next turn."},
                 {"id": "radiant-consumption", "name": "Radiant Consumption", "points": 3, "description": "Searing light temporarily radiates from your eyes and mouth. For the duration, you shed bright light in a 10-foot radius and dim light an additional 10 feet, and at the end of each of your turns each creature within 10 feet of you make a Constitution saving throw of become [blinded]() until the end of your next turn."},
@@ -548,7 +562,8 @@
             {
               "id": "defensive-feature",
               "name": "Defensive Feature",
-              "description": "When another creature [grapples]() you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4&nbsp× your Proficiency Bonus of the damage type chosen.",
+              "description": "When another creature [grapples]() you or starts its turn grappling you, you can choose to use defensive features on your body to damage it. You deal damage equal to 1d4 × your Proficiency Bonus of the damage type chosen.",
+              "chooseOne": "Choose one:",
               "options": [
                 {"id": "poisonous", "name": "Poisonous", "points": 4, "description": "Poison"},
                 {"id": "spines", "name": "Spines", "points": 4, "description": "Piercing"}
@@ -600,7 +615,8 @@
             {
               "id": "flight",
               "name": "Flight",
-              "description": "You have vestigial wings. When you fall at least 10 feet and aren't incapacitated, you can use your Reaction to safely glide downward, taking no damage from the fall. In addition, when you take the Jump Action, you can flap your wings to gain Advantage on that Action's Ability Check. Choose one:",
+              "description": "You have vestigial wings. When you fall at least 10 feet and aren't incapacitated, you can use your Reaction to safely glide downward, taking no damage from the fall. In addition, when you take the Jump Action, you can flap your wings to gain Advantage on that Action's Ability Check.",
+              "chooseOne": "Choose one:",
               "points": 0,
               "requiresOption": true,
               "options": [
@@ -867,13 +883,14 @@
         "draconic": {
           "name": "Draconic",
           "label": "Other Ancestry",
-          "description": "You are descended from a dragon. Only available for dragonborn species.",
+          "description": "You are descended from a dragon. You have a breath weapon that deals damage of the type associated with your draconic ancestry.",
           "requiredTrait": "draconic-ancestry",
           "traits": [
             {
               "id": "draconic-ancestry",
               "name": "Draconic Ancestry",
-              "description": "If you have draconic ancestry, you must take this trait. Your creature type is also Dragon. Choose one of the following damage types. Each carries the temperament of the dragons it descends from.",
+              "description": "If you have draconic ancestry, you must take this trait. Your creature type is also Dragon.",
+              "chooseOne": "Choose one of the following damage types. Each carries the temperament of the dragons it descends from.",
               "points": 0,
               "required": true,
               "requiresOption": true,
@@ -882,7 +899,7 @@
                   "id": "acid",
                   "name": "Acid",
                   "points": 0,
-                  "description": "**Brutal and Cruel.** Your scales are black or dark green and your breath carries the reek of standing water. You have advantage on Charisma (Intimidation) checks made against a creature that has already taken damage from you."
+                  "description": "**Brutal and Cruel.** Your scales are black, dark green, or copper. You have advantage on Charisma (Intimidation) checks made against a creature that has already taken damage from you."
                 },
                 {
                   "id": "cold",
@@ -930,7 +947,7 @@
                   "id": "poison",
                   "name": "Poison",
                   "points": 1,
-                  "description": "**Manipulative Schemer.** Your scales are green and you would far rather arrange a thing than ask for it. You have advantage on Charisma (Deception) checks made to convince a creature that you are acting in its interest."
+                  "description": "**Manipulative Schemer.** Your scales are green and you would far rather arrange a thing than ask for it. You have advantage on Charisma (Deception) checks made to convince a creature that you are acting in its interest. Your breath is a poisonous gas."
                 },
                 {
                   "id": "psychic",
@@ -1000,7 +1017,7 @@
             {
               "id": "psionic-resistance",
               "name": "Psionic Resistance",
-              "description": "You have resistance to one of the following damage types:",
+              "chooseOne": "You have resistance to one of the following damage types:",
               "options": [
                 {"id": "force", "name": "Force", "points": 2, "description": ""},
                 {"id": "psychic", "name": "Psychic", "points": 3, "description": ""}
@@ -1101,7 +1118,8 @@
             {
               "id": "sturdy",
               "name": "Sturdy",
-              "description": "You are more resilient and able to survive physical damage. Choose one of the following abilities.",
+              "description": "You are more resilient and able to survive physical damage.",
+              "chooseOne": "Choose one of the following abilities.",
               "points": 0,
               "requiresOption": true,
               "options": [
@@ -1145,7 +1163,8 @@
             {
               "id": "artisan-cultural-skill",
               "name": "Cultural Skill",
-              "description": "You are knowledgable about the history and creation of items related to your craft. Choose one of the following skills related to your craft.",
+              "description": "You are knowledgable about the history and creation of items related to your craft.",
+              "chooseOne": "Choose one of the following skills related to your craft.",
               "points": 0,
               "required": true,
               "hasOptions": true,
@@ -1220,7 +1239,7 @@
             {
               "id": "friendly-cultural-skill",
               "name": "Cultural Skill",
-              "description": "Choose from the following abilities that represent your ability to quickly form connections with new people.",
+              "chooseOne": "Choose from the following abilities that represent your ability to quickly form connections with new people.",
               "points": 0,
               "required": true,
               "hasOptions": true,
@@ -1290,7 +1309,7 @@
             {
               "id": "mage-cultural-skill",
               "name": "Cultural Skill",
-              "description": "Choose from the following special abilities that your skill with arcane magic grants you.",
+              "chooseOne": "Choose from the following special abilities that your skill with arcane magic grants you.",
               "points": 0,
               "required": true,
               "hasOptions": true,
@@ -1346,7 +1365,7 @@
             {
               "id": "skirmisher-cultural-skill",
               "name": "Cultural Skill",
-              "description": "Choose one of the following abilities you gained from your upbringing.",
+              "chooseOne": "Choose one of the following abilities you gained from your upbringing.",
               "points": 0,
               "required": false,
               "hasOptions": true,
@@ -1394,13 +1413,13 @@
             {
               "id": "skilled-combatant",
               "name": "Skilled Combatant",
-              "description": "Choose from the following abilities you gained from your upbringing.",
+              "chooseOne": "Choose from the following abilities you gained from your upbringing.",
               "points": 0,
               "requiresOption": true,
               "options": [
                 {"id": "adrenaline-rush", "name": "Adrenaline Rush", "points": 3, "description": "You can take the Dash action as a bonus action. You can use this trait a number of times equal to your Proficiency Bonus per long rest. Whenever you use this trait, gain a number of temporary hit points equal to your Proficiency Bonus."},
-                {"id": "charge", "name": "Charge", "points": 3, "description": "Immediately after you use the Dash action on your turn and move at least 20 feet, you can make one unarmed strike melee attack as a bonus action, or you can ram a target and attempt to knock it prone. The DC for this Strength saving throw is equal to 8 + your Strength modifier + your Proficiency Bonus."},
-                {"id": "ambush", "name": "Ambush", "points": 5, "description": "If you hit a creature with an attack roll, the creature takes an extra 2d6 damage if it hasn't taken a turn yet in the current combat."},
+                {"id": "charge", "name": "Charger", "points": 3, "description": "Immediately after you use the Dash action on your turn and move at least 20 feet, you can make one unarmed strike melee attack as a bonus action, or you can ram a target and attempt to knock it prone. The DC for this Strength saving throw is equal to 8 + your Strength modifier + your Proficiency Bonus."},
+                {"id": "ambush", "name": "Ambusher", "points": 5, "description": "If you hit a creature with an attack roll, the creature takes an extra 2d6 damage if it hasn't taken a turn yet in the current combat."},
                 {"id": "nimble-escape", "name": "Nimble Escape", "points": 7, "description": "You can take the Disengage or Hide action as a bonus action on each of your turns."}
               ]
             }
@@ -1414,7 +1433,7 @@
             {
               "id": "streetwise-cultural-skill",
               "name": "Cultural Skill",
-              "description": "Choose one of the following abilities you gained from your upbringing.",
+              "chooseOne": "Choose one of the following abilities you gained from your upbringing.",
               "points": 1,
               "required": true,
               "hasOptions": true,
@@ -1476,7 +1495,7 @@
             {
               "id": "survivalist-cultural-skill",
               "name": "Cultural Skill",
-              "description": "Choose one of the following skills related to your survival skills.",
+              "chooseOne": "Choose one of the following skills related to your survival skills.",
               "points": 0,
               "required": true,
               "hasOptions": true,
@@ -1489,21 +1508,22 @@
             {
               "id": "native-environment",
               "name": "Native Environment",
-              "description": "You know one landscape better than any outsider ever will. Choose the environment you were raised in.",
+              "description": "You know one landscape better than any outsider ever will, and can navigate it with ease.",
+              "chooseOne": "Choose the environment you were raised in.",
               "points": 0,
               "required": true,
               "requiresOption": true,
               "options": [
-                {"id": "arctic", "name": "Arctic", "points": 0, "description": "Tundra, glaciers, and frozen coastlines."},
-                {"id": "coastal", "name": "Coastal", "points": 0, "description": "Shorelines, cliffs, and reefs."},
-                {"id": "desert", "name": "Desert", "points": 0, "description": "Sand, badlands, wastelands, and arid scrub."},
-                {"id": "forest", "name": "Forest", "points": 0, "description": "Woodlands, jungles, and dense undergrowth."},
-                {"id": "grassland", "name": "Grassland", "points": 0, "description": "Plains, savannas, steppes, and farmland."},
-                {"id": "hill-mountain", "name": "Hill and Mountain", "points": 0, "description": "Foothills, ravines, passes, and high peaks."},
-                {"id": "swamp", "name": "Swamp", "points": 0, "description": "Marshes, swamps, fens, and bogs."},
-                {"id": "subterranean", "name": "Subterranean", "points": 0, "description": "Caves, tunnels, and the deep underground."},
-                {"id": "underwater", "name": "Underwater", "points": 0, "description": "Rivers, lakes, and the open sea."},
-                {"id": "urban", "name": "Urban", "points": 0, "description": "Cities, towns, crowds, and populated urban areas similar to your upbringing."}
+                {"id": "arctic", "name": "Arctic", "points": 0, "description": "Tundra, glaciers, and frozen coastlines"},
+                {"id": "coastal", "name": "Coastal", "points": 0, "description": "Shorelines, cliffs, and reefs"},
+                {"id": "desert", "name": "Desert", "points": 0, "description": "Sand, badlands, wastelands, and arid scrub"},
+                {"id": "forest", "name": "Forest", "points": 0, "description": "Woodlands, jungles, and dense undergrowth"},
+                {"id": "grassland", "name": "Grassland", "points": 0, "description": "Plains, savannas, steppes, and farmland"},
+                {"id": "hill-mountain", "name": "Hill and Mountain", "points": 0, "description": "Foothills, ravines, passes, and high peaks"},
+                {"id": "swamp", "name": "Swamp", "points": 0, "description": "Marshes, swamps, fens, and bogs"},
+                {"id": "subterranean", "name": "Subterranean", "points": 0, "description": "Caves, tunnels, and the deep underground"},
+                {"id": "underwater", "name": "Underwater", "points": 0, "description": "Rivers, lakes, and the open sea"},
+                {"id": "urban", "name": "Urban", "points": 0, "description": "Cities, towns, crowds, and populated urban areas similar to your upbringing"}
               ]
             },
             {
@@ -1597,7 +1617,7 @@
             {
               "id": "theocratic-cultural-skill",
               "name": "Cultural Skill",
-              "description": "Choose one of the following abilities related to your religious training.",
+              "chooseOne": "Choose one of the following abilities related to your religious training.",
               "points": 0,
               "required": true,
               "hasOptions": true,
@@ -1660,7 +1680,7 @@
             {
               "id": "warrior-cultural-skill",
               "name": "Cultural Skill",
-              "description": "Choose one of the following abilities related to your combat training.",
+              "chooseOne": "Choose one of the following abilities related to your combat training.",
               "points": 0,
               "required": true,
               "hasOptions": true,
@@ -1673,7 +1693,8 @@
             {
               "id": "menacing",
               "name": "Menacing",
-              "description": "Your size, bearing, or bloodline makes you hard to ignore. Choose how you carry it.",
+              "description": "Your size, bearing, or bloodline makes you hard to ignore.",
+              "chooseOne": "Choose how you carry it.",
               "points": 0,
               "requiresOption": true,
               "options": [
@@ -1721,7 +1742,7 @@
             {
               "id": "weapons-expert",
               "name": "Weapons Expert",
-              "description": "Choose one:",
+              "chooseOne": "Choose one:",
               "points": 0,
               "requiresOption": true,
               "options": [
@@ -1750,7 +1771,7 @@
             {
               "id": "waterborne-cultural-skill",
               "name": "Cultural Skill",
-              "description": "Choose one of the following skills related to your maritime training.",
+              "chooseOne": "Choose one of the following skills related to your maritime training.",
               "points": 0,
               "required": true,
               "hasOptions": true,

@@ -206,454 +206,6 @@
     },
     {
       "kind": "total",
-      "where": "Grung ▸ Croak",
-      "shared": 10,
-      "archetype": 6,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Grung ▸ Tongue",
-      "shared": 10,
-      "archetype": 6,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Grung ▸ Poisonous",
-      "shared": 10,
-      "archetype": 6,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Atxayotl ▸ Lagoon",
-      "shared": 8,
-      "archetype": 8,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Atxayotl ▸ Landbound",
-      "shared": 8,
-      "archetype": 8,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Iruxi ▸ Badlands",
-      "shared": 0,
-      "archetype": 16,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": [
-        "Notion lists both Acclimatization (0) and Survivalist (1). They are two options of one Cultural Skill trait, but Notion charges for both, so both are kept — de-duplication only drops an exact id+option repeat."
-      ]
-    },
-    {
-      "kind": "total",
-      "where": "Iruxi ▸ Swamp",
-      "shared": 0,
-      "archetype": 16,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Iruxi ▸ Jungle",
-      "shared": 0,
-      "archetype": 16,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Iruxi ▸ Desert",
-      "shared": 0,
-      "archetype": 16,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Iruxi ▸ Forest or Plains",
-      "shared": 0,
-      "archetype": 16,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": [
-        "The builder previously shortened this to \"Forest\"; Notion’s name is \"Forest or Plains\"."
-      ]
-    },
-    {
-      "kind": "total",
-      "where": "Iruxi ▸ Shelled",
-      "shared": 0,
-      "archetype": 15,
-      "total": 15,
-      "delta": -1,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Khenra ▸ Twin alive",
-      "shared": 12,
-      "archetype": 4,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Khenra ▸ Twin dead",
-      "shared": 12,
-      "archetype": 4,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Mrrshan ▸ Felis",
-      "shared": 7,
-      "archetype": 9,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": [
-        "The builder called this archetype \"Tabaxi\". Notion’s name is Felis."
-      ]
-    },
-    {
-      "kind": "total",
-      "where": "Mrrshan ▸ Panthera",
-      "shared": 7,
-      "archetype": 9,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Muul ▸ Auran (Minotaur) ▸ Wildhorn",
-      "shared": 8,
-      "archetype": 6,
-      "total": 14,
-      "delta": -2,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": [
-        "Notion prices \"Skill Proficiency (4)\" for two skills; carried as two 2-point curated proficiencies."
-      ]
-    },
-    {
-      "kind": "total",
-      "where": "Muul ▸ Auran (Minotaur) ▸ Abyssal Brood",
-      "shared": 8,
-      "archetype": 6,
-      "total": 14,
-      "delta": -2,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Muul ▸ Auran (Minotaur) ▸ Seafarer",
-      "shared": 8,
-      "archetype": 6,
-      "total": 14,
-      "delta": -2,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Muul ▸ Auran (Minotaur) ▸ Labyrinth-Born",
-      "shared": 8,
-      "archetype": 6,
-      "total": 14,
-      "delta": -2,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Muul ▸ Bearkin (Bear)",
-      "shared": 14,
-      "archetype": 0,
-      "total": 14,
-      "delta": -2,
-      "flat": true,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Muul ▸ Giff (Hippo)",
-      "shared": 17,
-      "archetype": 0,
-      "total": 17,
-      "delta": 1,
-      "flat": true,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Muul ▸ Kashrishi (Rhino) ▸ Athamasi",
-      "shared": 13,
-      "archetype": 2,
-      "total": 15,
-      "delta": -1,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Muul ▸ Kashrishi (Rhino) ▸ Lethoci",
-      "shared": 13,
-      "archetype": 2,
-      "total": 15,
-      "delta": -1,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Muul ▸ Kashrishi (Rhino) ▸ Trogloshi",
-      "shared": 13,
-      "archetype": 2,
-      "total": 15,
-      "delta": -1,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Muul ▸ Kashrishi (Rhino) ▸ Xyloshi",
-      "shared": 13,
-      "archetype": 2,
-      "total": 15,
-      "delta": -1,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Muul ▸ Loxodon (Elephant)",
-      "shared": 16,
-      "archetype": 0,
-      "total": 16,
-      "delta": 0,
-      "flat": true,
-      "notes": [
-        "Windwise and Soulwise exist only in the brew file, not in Notion. Dropped."
-      ]
-    },
-    {
-      "kind": "total",
-      "where": "Muul ▸ Porcein (Pig) ▸ Porcein",
-      "shared": 2,
-      "archetype": 14,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": true,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Ysoki ▸ Kangaroofolk (Osphrani)",
-      "shared": 16,
-      "archetype": 0,
-      "total": 16,
-      "delta": 0,
-      "flat": true,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Ysoki ▸ Ratfolk (Ysoki) ▸ Spotter",
-      "shared": 9,
-      "archetype": 7,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": [
-        "Notion’s \"Hunter’s Senses (7)\" is the curated Keen Smell (3) plus Hunter’s Senses (4)."
-      ]
-    },
-    {
-      "kind": "total",
-      "where": "Ysoki ▸ Ratfolk (Ysoki) ▸ Scavenger",
-      "shared": 9,
-      "archetype": 7,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Ysoki ▸ Ratfolk (Ysoki) ▸ Rural",
-      "shared": 9,
-      "archetype": 7,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Ysoki ▸ Rabbitfolk (Harengon)",
-      "shared": 14,
-      "archetype": 0,
-      "total": 14,
-      "delta": -2,
-      "flat": true,
-      "notes": [
-        "The builder had Hare and Rabbit archetypes. Notion defines none; they are dropped."
-      ]
-    },
-    {
-      "kind": "total",
-      "where": "Ysoki ▸ Squirrelfolk (Kercpa)",
-      "shared": 16,
-      "archetype": 0,
-      "total": 16,
-      "delta": 0,
-      "flat": true,
-      "notes": [
-        "The builder spelled this \"Kcerpa\". Notion spells it Kercpa."
-      ]
-    },
-    {
-      "kind": "total",
-      "where": "Aven ▸ Flying",
-      "shared": 0,
-      "archetype": 16,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Aven ▸ Flightless",
-      "shared": 0,
-      "archetype": 12,
-      "total": 12,
-      "delta": -4,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Aven ▸ Arctic",
-      "shared": 0,
-      "archetype": 15,
-      "total": 15,
-      "delta": -1,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Aven ▸ Raptor",
-      "shared": 0,
-      "archetype": 16,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
       "where": "Elves ▸ Boreal",
       "shared": 10,
       "archetype": 5,
@@ -826,164 +378,6 @@
     },
     {
       "kind": "total",
-      "where": "Myconid ▸ Sporemaster",
-      "shared": 6,
-      "archetype": 10,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Anadi",
-      "shared": 17,
-      "archetype": 0,
-      "total": 17,
-      "delta": 1,
-      "flat": true,
-      "notes": [
-        "Notion splits these under \"In your spider form\" and \"In your humanoid form\", but both are granted together — they are not alternatives — so they are one flat trait list, not two archetypes."
-      ]
-    },
-    {
-      "kind": "total",
-      "where": "Returned ▸ Ghost form",
-      "shared": 6,
-      "archetype": 10,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Returned ▸ Poltergeist form",
-      "shared": 6,
-      "archetype": 10,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Returned ▸ Wildmorph form",
-      "shared": 6,
-      "archetype": 12,
-      "total": 18,
-      "delta": 2,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Returned ▸ Harrower form",
-      "shared": 6,
-      "archetype": 13,
-      "total": 19,
-      "delta": 3,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Returned ▸ Plasmoid form",
-      "shared": 6,
-      "archetype": 12,
-      "total": 18,
-      "delta": 2,
-      "empty": false,
-      "designed": false,
-      "priced": false,
-      "notes": [
-        "Notion re-lists Constructed Form inside this archetype; the duplicate is dropped and the archetype’s wording carried as an override."
-      ]
-    },
-    {
-      "kind": "total",
-      "where": "Returned ▸ Mourntouched form",
-      "shared": 6,
-      "archetype": 10,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": false,
-      "priced": true,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Dragonborn ▸ Dragonborn",
-      "shared": 0,
-      "archetype": 16,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": true,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Dragonborn ▸ Elemental dragonborn",
-      "shared": 0,
-      "archetype": 16,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": true,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Dragonborn ▸ Brutal",
-      "shared": 0,
-      "archetype": 16,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": true,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Dragonborn ▸ Reserved",
-      "shared": 0,
-      "archetype": 16,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": true,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
-      "where": "Dragonborn ▸ Uncanny",
-      "shared": 0,
-      "archetype": 16,
-      "total": 16,
-      "delta": 0,
-      "empty": false,
-      "designed": true,
-      "priced": false,
-      "notes": []
-    },
-    {
-      "kind": "total",
       "where": "Undine ▸ Elemental",
       "shared": 4,
       "archetype": 12,
@@ -1100,9 +494,9 @@
       "kind": "total",
       "where": "Ifriti ▸ Ash",
       "shared": 3,
-      "archetype": 10,
-      "total": 13,
-      "delta": -3,
+      "archetype": 13,
+      "total": 16,
+      "delta": 0,
       "empty": false,
       "designed": false,
       "priced": false,
@@ -1461,6 +855,626 @@
       "designed": false,
       "priced": false,
       "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Returned ▸ Ghost form",
+      "shared": 6,
+      "archetype": 10,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Returned ▸ Poltergeist form",
+      "shared": 6,
+      "archetype": 10,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Returned ▸ Wildmorph form",
+      "shared": 6,
+      "archetype": 12,
+      "total": 18,
+      "delta": 2,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Returned ▸ Harrower form",
+      "shared": 6,
+      "archetype": 13,
+      "total": 19,
+      "delta": 3,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Returned ▸ Plasmoid form",
+      "shared": 6,
+      "archetype": 12,
+      "total": 18,
+      "delta": 2,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": [
+        "Notion re-lists Constructed Form inside this archetype; the duplicate is dropped and the archetype’s wording carried as an override."
+      ]
+    },
+    {
+      "kind": "total",
+      "where": "Returned ▸ Mourntouched form",
+      "shared": 6,
+      "archetype": 10,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": true,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Mrrshan ▸ Felis",
+      "shared": 7,
+      "archetype": 9,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": [
+        "The builder called this archetype \"Tabaxi\". Notion’s name is Felis."
+      ]
+    },
+    {
+      "kind": "total",
+      "where": "Mrrshan ▸ Panthera",
+      "shared": 7,
+      "archetype": 9,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Ysoki ▸ Ysoki ▸ Spotter",
+      "shared": 9,
+      "archetype": 7,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": [
+        "Notion’s \"Hunter’s Senses (7)\" is the curated Keen Smell (3) plus Hunter’s Senses (4)."
+      ]
+    },
+    {
+      "kind": "total",
+      "where": "Ysoki ▸ Ysoki ▸ Scavenger",
+      "shared": 9,
+      "archetype": 7,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Ysoki ▸ Ysoki ▸ Rural",
+      "shared": 9,
+      "archetype": 7,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Aven ▸ Flying",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Aven ▸ Flightless",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Aven ▸ Arctic",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Aven ▸ Raptor",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Iruxi ▸ Badlands",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": [
+        "Notion lists both Acclimatization (0) and Survivalist (1). They are two options of one Cultural Skill trait, but Notion charges for both, so both are kept — de-duplication only drops an exact id+option repeat."
+      ]
+    },
+    {
+      "kind": "total",
+      "where": "Iruxi ▸ Swamp",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Iruxi ▸ Jungle",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Iruxi ▸ Desert",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Iruxi ▸ Forest or Plains",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": [
+        "The builder previously shortened this to \"Forest\"; Notion’s name is \"Forest or Plains\"."
+      ]
+    },
+    {
+      "kind": "total",
+      "where": "Iruxi ▸ Shelled",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Grung ▸ Croak",
+      "shared": 10,
+      "archetype": 6,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Grung ▸ Tongue",
+      "shared": 10,
+      "archetype": 6,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Grung ▸ Poisonous",
+      "shared": 10,
+      "archetype": 6,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Atxayotl ▸ Lagoon",
+      "shared": 8,
+      "archetype": 8,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Atxayotl ▸ Landbound",
+      "shared": 8,
+      "archetype": 8,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Khenra ▸ Twin alive",
+      "shared": 12,
+      "archetype": 4,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Khenra ▸ Twin dead",
+      "shared": 12,
+      "archetype": 4,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Muul ▸ Auran ▸ Wildhorn",
+      "shared": 8,
+      "archetype": 6,
+      "total": 14,
+      "delta": -2,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": [
+        "Notion prices \"Skill Proficiency (4)\" for two skills; carried as two 2-point curated proficiencies."
+      ]
+    },
+    {
+      "kind": "total",
+      "where": "Muul ▸ Auran ▸ Abyssal Brood",
+      "shared": 8,
+      "archetype": 6,
+      "total": 14,
+      "delta": -2,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Muul ▸ Auran ▸ Seafarer",
+      "shared": 8,
+      "archetype": 6,
+      "total": 14,
+      "delta": -2,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Muul ▸ Auran ▸ Labyrinth-Born",
+      "shared": 8,
+      "archetype": 6,
+      "total": 14,
+      "delta": -2,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Muul ▸ Bearkin ▸ Bearkin",
+      "shared": 5,
+      "archetype": 9,
+      "total": 14,
+      "delta": -2,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Muul ▸ Giff ▸ Giff",
+      "shared": 2,
+      "archetype": 15,
+      "total": 17,
+      "delta": 1,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Muul ▸ Kashrishi ▸ Athamasi",
+      "shared": 13,
+      "archetype": 2,
+      "total": 15,
+      "delta": -1,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Muul ▸ Kashrishi ▸ Lethoci",
+      "shared": 13,
+      "archetype": 2,
+      "total": 15,
+      "delta": -1,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Muul ▸ Kashrishi ▸ Trogloshi",
+      "shared": 13,
+      "archetype": 2,
+      "total": 15,
+      "delta": -1,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Muul ▸ Kashrishi ▸ Xyloshi",
+      "shared": 13,
+      "archetype": 2,
+      "total": 15,
+      "delta": -1,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Muul ▸ Loxodon ▸ Loxodon",
+      "shared": 2,
+      "archetype": 14,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": [
+        "Windwise and Soulwise exist only in the brew file, not in Notion. Dropped."
+      ]
+    },
+    {
+      "kind": "total",
+      "where": "Muul ▸ Porcein ▸ Porcein",
+      "shared": 2,
+      "archetype": 14,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": true,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Ysoki ▸ Osphrani ▸ Osphrani",
+      "shared": 2,
+      "archetype": 14,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Ysoki ▸ Harengon ▸ Harengon",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": [
+        "The builder had Hare and Rabbit archetypes. Notion defines none; they are dropped."
+      ]
+    },
+    {
+      "kind": "total",
+      "where": "Ysoki ▸ Kercpa ▸ Kercpa",
+      "shared": 3,
+      "archetype": 13,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": [
+        "The builder spelled this \"Kcerpa\". Notion spells it Kercpa."
+      ]
+    },
+    {
+      "kind": "total",
+      "where": "Myconid ▸ Sporemaster",
+      "shared": 6,
+      "archetype": 10,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Anadi ▸ Anadi",
+      "shared": 3,
+      "archetype": 15,
+      "total": 18,
+      "delta": 2,
+      "empty": false,
+      "designed": false,
+      "priced": false,
+      "notes": [
+        "Notion splits these under \"In your spider form\" and \"In your humanoid form\", but both are granted together — they are not alternatives — so they are one flat trait list, not two archetypes."
+      ]
+    },
+    {
+      "kind": "total",
+      "where": "Dragonborn ▸ Dragonborn",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": true,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Dragonborn ▸ Elemental dragonborn",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": true,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Dragonborn ▸ Brutal",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": true,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Dragonborn ▸ Reserved",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": true,
+      "priced": false,
+      "notes": []
+    },
+    {
+      "kind": "total",
+      "where": "Dragonborn ▸ Uncanny",
+      "shared": 0,
+      "archetype": 16,
+      "total": 16,
+      "delta": 0,
+      "empty": false,
+      "designed": true,
+      "priced": false,
+      "notes": []
     }
   ],
   "dedupes": [
@@ -1506,26 +1520,6 @@
     },
     {
       "kind": "dedupe",
-      "where": "Returned ▸ Plasmoid form",
-      "detail": "re-lists inherited \"constructed-form\" (4 pts) — dropped"
-    },
-    {
-      "kind": "dedupe",
-      "where": "Undine ▸ Elemental",
-      "detail": "re-lists inherited \"amphibious\" (2 pts) — dropped"
-    },
-    {
-      "kind": "dedupe",
-      "where": "Undine ▸ Elemental",
-      "detail": "re-lists inherited \"swim-speed\" (2 pts) — dropped"
-    },
-    {
-      "kind": "dedupe",
-      "where": "Undine ▸ Iceborn",
-      "detail": "re-lists inherited \"amphibious\" (2 pts) — dropped"
-    },
-    {
-      "kind": "dedupe",
       "where": "Oread ▸ Nature",
       "detail": "re-lists inherited \"speech-beast-leaf\" (2 pts) — dropped"
     },
@@ -1543,6 +1537,11 @@
       "kind": "dedupe",
       "where": "Oread ▸ Florid",
       "detail": "re-lists inherited \"speech-beast-leaf\" (2 pts) — dropped"
+    },
+    {
+      "kind": "dedupe",
+      "where": "Returned ▸ Plasmoid form",
+      "detail": "re-lists inherited \"constructed-form\" (4 pts) — dropped"
     }
   ]
 }

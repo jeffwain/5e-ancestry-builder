@@ -1,27 +1,37 @@
-import { useState, useEffect, useMemo } from 'react';
-import { AncestryCard } from '../components/AncestryCard';
-import { AncestrySummary } from '../components/AncestrySummary';
-import { getResolvedTraitsAndOptions } from '../utils/ancestryResolve';
+import { useState, useEffect, useMemo, useRef } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { TraitContent } from '../components/TraitContent';
+import {
+  getResolvedTraitsAndOptions,
+  resolveTrait,
+  sumTraitCost,
+  withoutOpenChoices,
+  RECOMMENDED_PREFIX,
+} from '../utils/ancestryResolve';
+import { POINT_BUDGET } from '../utils/traitDisplay';
 import { useConvertedTraits, combineTraitLookups } from '../hooks/useConvertedTraits';
 import { usePersistentState } from '../hooks/usePersistentState';
 import { loadJson } from '../utils/dataCache';
 import { STORAGE_KEYS } from '../utils/storage';
 import './AncestriesPage.css';
 
-export function AncestriesPage({
-  allTraits = {},
-  onUse,
-  onCustomize
-}) {
+/**
+ * The ancestries, read like a printed book: an index down the side, and the
+ * chosen ancestry's entry written out in full — every shared trait, every
+ * archetype and every archetype trait.
+ *
+ * Picking an archetype (its name, or its pill) narrows the entry to what that
+ * archetype gets and offers Use / Customize; "All archetypes" goes back.
+ */
+export function AncestriesPage({ allTraits = {}, onUse, onCustomize }) {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [expandedAncestry, setExpandedAncestry] = usePersistentState(STORAGE_KEYS.ancestriesExpanded, null);
+  const [search, setSearch] = useState('');
+  const [selectedAncestryId, setSelectedAncestryId] = usePersistentState(STORAGE_KEYS.ancestriesExpanded, null);
   const [selectedArchetypeId, setSelectedArchetypeId] = usePersistentState(STORAGE_KEYS.ancestriesArchetype, null);
-  const [showDetails, setShowDetails] = usePersistentState(STORAGE_KEYS.ancestriesShowDetails, false);
+  const entryRef = useRef(null);
 
-  // Ancestry trait IDs resolve against the imported vocabulary (converted-traits.json)
-  // plus the curated shared traits (traits.json / allTraits).
   const { convertedTraitsById } = useConvertedTraits();
   const traitLookup = useMemo(
     () => combineTraitLookups(convertedTraitsById, allTraits),
@@ -37,177 +47,299 @@ export function AncestriesPage({
     return () => { active = false; };
   }, []);
 
-  // Collect all ancestries from both direct and subcategory sources
-  const allAncestries = categories.flatMap(c => [
-    ...(c.ancestries || []),
-    ...(c.subcategories || []).flatMap(sc => sc.ancestries || [])
-  ]);
+  // Every ancestry with the category it is filed under, for the entry's kicker.
+  const allAncestries = useMemo(() => categories.flatMap((category) => [
+    ...(category.ancestries || []).map((ancestry) => ({ ancestry, categoryName: category.name })),
+    ...(category.subcategories || []).flatMap((sub) =>
+      (sub.ancestries || []).map((ancestry) => ({ ancestry, categoryName: sub.name }))
+    ),
+  ]), [categories]);
 
-  // Find the expanded ancestry object and selected archetype object
-  const expandedAncestryObj = expandedAncestry
-    ? allAncestries.find(a => a.id === expandedAncestry)
-    : null;
+  // Nothing chosen yet (or a stale id) opens on the first ancestry, so the page
+  // is never an empty frame.
+  const current = allAncestries.find((entry) => entry.ancestry.id === selectedAncestryId) || allAncestries[0];
+  const ancestry = current?.ancestry;
+  // An ancestry with a single archetype has nothing to choose between, so it
+  // opens already picked: shared traits beside the archetype's, ready to use.
+  const onlyArchetype = ancestry?.archetypes?.length === 1 ? ancestry.archetypes[0] : null;
+  const archetype = ancestry?.archetypes?.find((entry) => entry.id === selectedArchetypeId) || onlyArchetype;
 
-  const selectedArchetypeObj = expandedAncestryObj && selectedArchetypeId
-    ? expandedAncestryObj.archetypes?.find(a => a.id === selectedArchetypeId)
-    : null;
-
-  const handleToggle = (ancestryId) => {
-    if (expandedAncestry === ancestryId) {
-      setExpandedAncestry(null);
-      setSelectedArchetypeId(null);
-    } else {
-      setExpandedAncestry(ancestryId);
-      setSelectedArchetypeId(null);
-    }
-  };
-
-  const handleSelectArchetype = (archetypeId) => {
-    setSelectedArchetypeId(archetypeId);
-  };
-
-  const handleClearArchetype = () => {
+  const selectAncestry = (ancestryId) => {
+    setSelectedAncestryId(ancestryId);
     setSelectedArchetypeId(null);
+    entryRef.current?.scrollIntoView({ block: 'start' });
   };
 
-  const handleUse = () => {
-    if (onUse && expandedAncestryObj && selectedArchetypeObj) {
-      const { traits, options } = getResolvedTraitsAndOptions(
-        expandedAncestryObj, selectedArchetypeObj, traitLookup
-      );
-      onUse({
-        ancestry: expandedAncestryObj,
-        archetype: selectedArchetypeObj,
-        traits,
-        options
-      });
-    }
+  const selectArchetype = (archetypeId) => {
+    setSelectedArchetypeId(archetypeId);
+    entryRef.current?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   };
 
-  const handleCustomize = () => {
-    if (onCustomize && expandedAncestryObj && selectedArchetypeObj) {
-      const { traits, options } = getResolvedTraitsAndOptions(
-        expandedAncestryObj, selectedArchetypeObj, traitLookup
-      );
-      onCustomize({
-        ancestry: expandedAncestryObj,
-        archetype: selectedArchetypeObj,
-        traits,
-        options
-      });
-    }
+  // A choice the ancestry leaves open (Small or Medium Size) is the player's to
+  // make, so it isn't loaded — `choices` tells the app to send them to the builder.
+  const emit = (handler, chosen) => {
+    if (!handler || !ancestry || !chosen) return;
+    const resolved = getResolvedTraitsAndOptions(ancestry, chosen, traitLookup);
+    const { traits, choices, openCategories } = withoutOpenChoices(resolved.traits);
+    handler({ ancestry, archetype: chosen, traits, options: resolved.options, choices, openCategories });
   };
 
-  if (loading) {
+  // What the picked archetype leaves open, for the note beside Use / Customize.
+  const openChoices = ancestry && archetype
+    ? withoutOpenChoices(getResolvedTraitsAndOptions(ancestry, archetype, traitLookup).traits).choices
+    : [];
+
+  // Building from the shared traits alone is an archetype with nothing of its own.
+  const sharedOnly = ancestry && { id: 'custom', name: 'Custom', traits: [] };
+
+  if (loading || error) {
     return (
       <div className="ancestries-page">
-        <div className="ancestries-content">
-          <p className="loading-message">Loading ancestries...</p>
-        </div>
+        <p className={error ? 'error-message' : 'loading-message'}>
+          {error ? `Error: ${error}` : 'Loading ancestries...'}
+        </p>
       </div>
     );
   }
 
-  if (error) {
-    return (
-      <div className="ancestries-page">
-        <div className="ancestries-content">
-          <p className="error-message">Error: {error}</p>
-        </div>
-      </div>
-    );
-  }
+  const sharedCost = sumTraitCost(ancestry?.traits, traitLookup);
 
   return (
-    <div className="ancestries-page">
-      <header className="ancestries-header">
-        <h1>Prebuilt Ancestries</h1>
-        <p>
-          Browse pre-configured ancestry options. Each ancestry includes shared traits
-          and archetypes that provide additional customization.
-        </p>
-        <label className="show-details-toggle">
-          <input
-            type="checkbox"
-            checked={showDetails}
-            onChange={(e) => setShowDetails(e.target.checked)}
-          />
-          Show trait details
-        </label>
-      </header>
+    <div className="ancestry-book">
+      <AncestryIndex
+        categories={categories}
+        search={search}
+        onSearchChange={setSearch}
+        selectedId={ancestry?.id}
+        onSelect={selectAncestry}
+      />
 
-      <div className="ancestries-two-col list-view">
-        {/* Left Column — Browse */}
-        <div className="ancestries-browse">
-          {categories.map((category) => (
-            <section key={category.id} className="ancestry-category">
-              <div className="category-header">
-                <h2>{category.name}</h2>
-                {category.description && (
-                  <p className="category-desc">{category.description}</p>
+      {ancestry && (
+        <main className="ancestry-book-entry" ref={entryRef}>
+          <header className="ancestry-book-header">
+            <span className="ancestry-book-kicker">
+              {current.categoryName}
+              {ancestry.archetypes?.length > 0 && ` · ${countLabel(ancestry.archetypes.length, 'archetype')}`}
+              {/* {ancestry.traits?.length > 0 && ` · ${countLabel(ancestry.traits.length, 'shared trait')}`} */}
+            </span>
+            <h1 className="ancestry-book-name">{ancestry.name}</h1>
+            {ancestry.summary && <p className="ancestry-book-summary">{ancestry.summary}</p>}
+            {ancestry.description && (
+              <div className="ancestry-book-description">
+                <ReactMarkdown>{ancestry.description}</ReactMarkdown>
+              </div>
+            )}
+          </header>
+
+          {ancestry.archetypes?.length > 1 && (
+            <nav className="ancestry-book-pills" aria-label="Archetypes">
+              <button
+                type="button"
+                className="ancestry-book-pill"
+                aria-pressed={!archetype}
+                onClick={() => setSelectedArchetypeId(null)}
+              >
+                All archetypes
+              </button>
+              {ancestry.archetypes.map((entry) => (
+                <button
+                  key={entry.id}
+                  type="button"
+                  className="ancestry-book-pill"
+                  aria-pressed={archetype?.id === entry.id}
+                  onClick={() => selectArchetype(entry.id)}
+                >
+                  {entry.name}
+                </button>
+              ))}
+            </nav>
+          )}
+
+          {archetype ? (
+            <>
+              <div className="ancestry-book-picked">
+                {ancestry.traits?.length > 0 && (
+                  <section className="ancestry-book-section">
+                    <h4 className="ancestry-book-section-title">Shared Traits</h4>
+                    <TraitList traits={ancestry.traits} lookup={traitLookup} />
+                  </section>
                 )}
+                <section className="ancestry-book-section">
+                  <h4 className="ancestry-book-section-title">
+                    {onlyArchetype || !ancestry.traits?.length ? archetype.name : `${archetype.name} adds`}
+                  </h4>
+                  {archetype.description && (
+                    <p className="ancestry-book-archetype-description">{archetype.description}</p>
+                  )}
+                  <TraitList traits={archetype.traits} lookup={traitLookup} designed={archetype.designed} />
+                </section>
               </div>
 
-              {/* Direct ancestries */}
-              {category.ancestries && category.ancestries.length > 0 && (
-                <div className="ancestry-grid">
-                  {category.ancestries.map((ancestry) => (
-                    <AncestryCard
-                      key={ancestry.id}
-                      ancestry={ancestry}
-                      allTraits={traitLookup}
-                      isExpanded={expandedAncestry === ancestry.id}
-                      onToggle={() => handleToggle(ancestry.id)}
-                      selectedArchetype={selectedArchetypeId}
-                      onSelectArchetype={handleSelectArchetype}
-                      showDetails={showDetails}
-                    />
-                  ))}
-                </div>
+              <footer className="ancestry-book-actions">
+                <span className="ancestry-book-actions-text">
+                  <strong>{ancestry.name} ({archetype.name})</strong>
+                  {' · '}
+                  {sharedCost + sumTraitCost(archetype.traits, traitLookup)} of {POINT_BUDGET} points
+                  {openChoices.length > 0 && (
+                    <span className="ancestry-book-actions-choice">
+                      You'll choose {openChoices.join(' or ')} in the builder.
+                    </span>
+                  )}
+                </span>
+                <button type="button" className="btn btn-secondary" onClick={() => emit(onCustomize, archetype)}>
+                  Customize in the builder
+                </button>
+                <button type="button" className="btn btn-primary" onClick={() => emit(onUse, archetype)}>
+                  Use this ancestry
+                </button>
+              </footer>
+            </>
+          ) : (
+            <>
+              {ancestry.traits?.length > 0 && (
+                <section className="ancestry-book-section">
+                  <h4 className="ancestry-book-section-title">Shared Traits</h4>
+                  <TraitList traits={ancestry.traits} lookup={traitLookup} columns />
+                </section>
               )}
 
-              {/* Subcategories */}
-              {category.subcategories && category.subcategories.map((sub) => (
-                <div key={sub.id} className="ancestry-subcategory">
-                  <div className="subcategory-header">
-                    <h3>{sub.name}</h3>
-                    {sub.description && (
-                      <p className="subcategory-desc">{sub.description}</p>
-                    )}
+              {ancestry.archetypes?.length > 0 && (
+                <section className="ancestry-book-section">
+                  <h4 className="ancestry-book-section-title">Archetypes</h4>
+                  <div className="ancestry-book-archetypes">
+                    {ancestry.archetypes.map((entry) => {
+                      const available = POINT_BUDGET - sharedCost - sumTraitCost(entry.traits, traitLookup);
+                      return (
+                        <article key={entry.id} className="ancestry-book-archetype">
+                          <div className="ancestry-book-archetype-head">
+                            <button
+                              type="button"
+                              className="ancestry-book-archetype-name"
+                              onClick={() => selectArchetype(entry.id)}
+                            >
+                              {entry.name}
+                            </button>
+                            {/* A full build needs no count; leftover points are the reader's to fill. */}
+                            {available > 0 && (
+                              <span className="ancestry-book-available">
+                                {countLabel(available, 'point')} available
+                              </span>
+                            )}
+                          </div>
+                          {entry.description && (
+                            <p className="ancestry-book-archetype-description">{entry.description}</p>
+                          )}
+                          <TraitList traits={entry.traits} lookup={traitLookup} designed={entry.designed} />
+                        </article>
+                      );
+                    })}
                   </div>
-                  <div className="ancestry-grid">
-                    {(sub.ancestries || []).map((ancestry) => (
-                      <AncestryCard
-                        key={ancestry.id}
-                        ancestry={ancestry}
-                        allTraits={traitLookup}
-                        isExpanded={expandedAncestry === ancestry.id}
-                        onToggle={() => handleToggle(ancestry.id)}
-                        selectedArchetype={selectedArchetypeId}
-                        onSelectArchetype={handleSelectArchetype}
-                        showDetails={showDetails}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </section>
-          ))}
-        </div>
+                </section>
+              )}
 
-        {/* Right Column — Summary (sticky) */}
-        <div className="ancestries-summary-col">
-          <AncestrySummary
-            ancestry={expandedAncestryObj}
-            archetype={selectedArchetypeObj}
-            allTraits={traitLookup}
-            onUse={handleUse}
-            onCustomize={handleCustomize}
-            onSelectArchetype={handleSelectArchetype}
-            onClearArchetype={handleClearArchetype}
-          />
-        </div>
-      </div>
+              {ancestry.traits?.length > 0 && (
+                <footer className="ancestry-book-actions">
+                  <span className="ancestry-book-actions-text">
+                    Choose an ancestry above, or build your own.
+                  </span>
+                  <button type="button" className="btn btn-secondary" onClick={() => emit(onCustomize, sharedOnly)}>
+                    Build an Ancestry
+                  </button>
+                </footer>
+              )}
+            </>
+          )}
+        </main>
+      )}
     </div>
   );
+}
+
+/** The side index: a search box over every ancestry, filed by category. */
+function AncestryIndex({ categories, search, onSearchChange, selectedId, onSelect }) {
+  const term = search.trim().toLowerCase();
+  const matches = (ancestry) => !term ||
+    ancestry.name.toLowerCase().includes(term) ||
+    ancestry.subtitle?.toLowerCase().includes(term) ||
+    ancestry.summary?.toLowerCase().includes(term);
+
+  // Subcategories file under their own heading, same as the category they sit in.
+  const groups = categories.flatMap((category) => [
+    { id: category.id, name: category.name, ancestries: category.ancestries || [] },
+    ...(category.subcategories || []).map((sub) => ({ id: sub.id, name: sub.name, ancestries: sub.ancestries || [] })),
+  ]);
+
+  return (
+    <aside className="ancestry-book-index">
+      <label className="ancestry-book-index-search">
+        <span className="ancestry-book-index-label">Find an ancestry</span>
+        <input
+          type="search"
+          value={search}
+          onChange={(e) => onSearchChange(e.target.value)}
+          placeholder="Name or description"
+        />
+      </label>
+
+      {groups.map((group) => {
+        const shown = group.ancestries.filter(matches);
+        if (shown.length === 0) return null;
+        return (
+          <nav key={group.id} className="ancestry-book-index-group" aria-label={group.name}>
+            <h2 className="ancestry-book-index-heading">{group.name}</h2>
+            {shown.map((ancestry) => (
+              <button
+                key={ancestry.id}
+                type="button"
+                className="ancestry-book-index-item"
+                aria-current={ancestry.id === selectedId ? 'true' : undefined}
+                onClick={() => onSelect(ancestry.id)}
+              >
+                <span className="ancestry-book-index-name">
+                  <span>{ancestry.name}</span>
+                  <span className="ancestry-book-index-count">{ancestry.archetypes?.length || '—'}</span>
+                </span>
+                {ancestry.subtitle && <span className="ancestry-book-index-subtitle">{ancestry.subtitle}</span>}
+              </button>
+            ))}
+          </nav>
+        );
+      })}
+    </aside>
+  );
+}
+
+// On a designed archetype every trait is a suggestion, so the RECOMMENDED:
+// prefix on each name would only repeat itself down the list.
+/**
+ * Traits written out in full, "Name. Description." — no cost; this page is for
+ * reading. A trait with a chosen option shows the option's name alone.
+ */
+function TraitList({ traits, lookup, columns = false, designed = false }) {
+  if (!traits?.length) return null;
+  return (
+    <div className={columns ? 'ancestry-book-traits ancestry-book-traits-columns' : 'ancestry-book-traits'}>
+      {traits.filter(Boolean).map((raw, index) => {
+        const resolved = withoutRecommended(resolveTrait(raw, lookup), designed);
+        const selectedOptions = raw.option && raw.id ? { [raw.id]: raw.option } : {};
+        return (
+          <div key={`${resolved.id || 'trait'}-${index}`} className="ancestry-book-trait">
+            <TraitContent trait={resolved} selectedOptions={selectedOptions} variant="paragraph" showCost={false} />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// The prefix can come from the archetype's own name for the trait or from the
+// trait's name in traits.json — strip whichever is showing.
+function withoutRecommended(trait, designed) {
+  const shown = trait.nameOverride || trait.name;
+  if (!designed || !shown?.startsWith(RECOMMENDED_PREFIX)) return trait;
+  return { ...trait, nameOverride: shown.slice(RECOMMENDED_PREFIX.length) };
+}
+
+function countLabel(count, noun) {
+  return `${count} ${noun}${count === 1 ? '' : 's'}`;
 }

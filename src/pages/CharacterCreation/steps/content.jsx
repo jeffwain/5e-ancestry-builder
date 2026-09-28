@@ -2,16 +2,16 @@ import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCharacter } from '../../../contexts/CharacterContext';
 import { TraitGroupList } from '../../../components/TraitGroupList';
-import { groupTraitsByType, groupsFromTraitsByType } from '../../../utils/traitDisplay';
+import { groupTraitsByType, groupsFromTraitsByType, withoutBaselineTraits } from '../../../utils/traitDisplay';
 import '../../CharacterCreationPage.css';
 
 /**
  * Step definitions for the Character Creation page.
  *
- * Each step is { id, number, title, Content, SummaryCard? }. The shared
- * wrappers (StepCard / StepSummaryCard in StepCard.jsx) own all layout;
- * this file owns only the content. Steps that track real character state
- * provide their own SummaryCard (currently just the ancestry step).
+ * Each step is { id, number, title, Content, Selection?, isComplete? }. The
+ * shared wrapper (StepCard in StepCard.jsx) owns all layout; this file owns
+ * only the content. Steps that track real character state provide a Selection
+ * and an isComplete (currently just the ancestry step).
  */
 
 export function IdeaContent() {
@@ -108,36 +108,33 @@ export function AncestryContent() {
   );
 }
 
-export function AncestrySummaryCard({ step }) {
+export function AncestrySelection() {
   const {
     selectedTraits,
     selectedOptions,
     pointsSpent,
     ancestryName,
-    traitTypes
+    traitTypes,
+    allTraits
   } = useCharacter();
 
+  const shownTraits = useMemo(
+    () => withoutBaselineTraits(selectedTraits, allTraits),
+    [selectedTraits, allTraits]
+  );
   const traitsByType = useMemo(
-    () => groupTraitsByType(selectedTraits, traitTypes),
-    [selectedTraits, traitTypes]
+    () => groupTraitsByType(shownTraits, traitTypes),
+    [shownTraits, traitTypes]
   );
 
-  if (selectedTraits.length === 0) {
-    return (
-      <div className="summary-card card">
-        <h4>{step.number}. {step.title}</h4>
-        <p className="summary-placeholder">No ancestry selected yet</p>
-      </div>
-    );
-  }
+  if (shownTraits.length === 0) return null;
 
   return (
-    <div className="ancestry-summary">
-      <h2 className="ancestry-summary-title">
-        {ancestryName || 'Custom Ancestry'}
-      </h2>
-      <p className="ancestry-summary-desc">{pointsSpent}/16 points</p>
-
+    <div className="step-selection">
+      <div className="step-selection-header">
+        <h4 className="step-selection-title">{ancestryName || 'Custom Ancestry'}</h4>
+        <span className="step-selection-meta">{pointsSpent}/16 points</span>
+      </div>
       <TraitGroupList groups={groupsFromTraitsByType(traitsByType, selectedOptions)} />
     </div>
   );

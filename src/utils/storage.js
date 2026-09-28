@@ -21,12 +21,8 @@ export const SCHEMA_VERSION = 1;
 // Central registry of storage keys — keeps all persisted state discoverable.
 export const STORAGE_KEYS = {
   build: 'build',                                  // authored character build (#3)
-  builderView: 'ui:builder-view',                  // builder list/grid view (#1)
-  ancestriesShowDetails: 'ui:ancestries-show-details', // Ancestries "show details" (#1)
   ancestriesExpanded: 'ui:ancestries-expanded',    // currently expanded ancestry (#1)
   ancestriesArchetype: 'ui:ancestries-archetype',  // selected archetype (#1)
-  ancestriesTextExpanded: 'ui:ancestries-text-expanded',   // expanded ancestry, text list
-  ancestriesTextArchetype: 'ui:ancestries-text-archetype', // selected archetype, text list
 };
 
 // Detect usable storage once. typeof guard keeps this safe in non-browser envs.

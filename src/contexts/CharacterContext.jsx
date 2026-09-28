@@ -111,10 +111,14 @@ function characterReducer(state, action) {
 
     case ActionTypes.LOAD_PREBUILT: {
       let traits = [...action.payload.traits];
+      // Categories the ancestry leaves for the player to choose (Size, when it
+      // offers Small or Medium) stay empty rather than taking the default.
+      const openCategories = action.payload.openCategories || [];
 
       // Check for missing required categories and add defaults
       if (state.requiredCategories.length > 0 && Object.keys(state.allTraits).length > 0) {
         state.requiredCategories.forEach(reqCat => {
+          if (openCategories.includes(reqCat.categoryId)) return;
           // Check if any selected trait is in this category
           const hasTrait = traits.some(t => t.categoryId === reqCat.categoryId);
           
@@ -398,7 +402,7 @@ export function CharacterProvider({ children }) {
     if (projected > POINT_BUDGET) {
       return {
         canSelect: false,
-        reason: `Would exceed ${POINT_BUDGET} points`
+        //reason: `Would exceed ${POINT_BUDGET} points`
       };
     }
 
@@ -491,10 +495,10 @@ export function CharacterProvider({ children }) {
     });
   }, []);
 
-  const loadPrebuilt = useCallback((prebuiltId, traits, options = {}, name = '') => {
+  const loadPrebuilt = useCallback((prebuiltId, traits, options = {}, name = '', openCategories = []) => {
     dispatch({ 
       type: ActionTypes.LOAD_PREBUILT, 
-      payload: { id: prebuiltId, traits, options, name } 
+      payload: { id: prebuiltId, traits, options, name, openCategories } 
     });
   }, []);
 

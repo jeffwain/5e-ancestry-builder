@@ -1,0 +1,45 @@
+/*
+ * SummaryTraitCard — additions only.
+ *
+ * The inline (compact) row sets `.simple-trait-card * { display: inline }` so a
+ * trait reads as one sentence. The badge row and the hover action have to opt
+ * back out of that, which is all this file does; the base rules in
+ * SummaryTraitCard.css stay untouched.
+ */
+
+/* ── Badge row beneath the description (cost, category, requirements) ───── */
+.simple-trait-card .trait-content-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+  margin-block-start: var(--space-1);
+}
+
+.simple-trait-card .trait-content-meta .pill {
+  display: inline-flex;
+}
+
+/* ── Hover action pinned to the row's inline end (the sidebar's remove ×) ─ */
+:is(.simple-trait-card, .summary-trait-paragraph).has-actions {
+  position: relative;
+  padding-inline-end: 1.75rem;
+}
+
+:is(.simple-trait-card, .summary-trait-paragraph).has-actions .summary-trait-action {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  display: inline-flex;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+:is(.simple-trait-card, .summary-trait-paragraph).has-actions:is(:hover, :focus-within) .summary-trait-action {
+  opacity: 1;
+}
+
+/* Keyboard users never hover, so never hide it from focus. */
+:is(.simple-trait-card, .summary-trait-paragraph).has-actions .summary-trait-action:focus-visible {
+  opacity: 1;
+}

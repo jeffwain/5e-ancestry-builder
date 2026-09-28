@@ -1,0 +1,246 @@
+/*
+ * TraitParagraph — a selectable trait that reads as a paragraph.
+ *
+ * Each trait reads as a line on a printed form: a small checkbox, then the
+ * sentence. The box fills when the trait is chosen; nothing else about the
+ * paragraph moves. --trait-paragraph-accent comes from the enclosing
+ * .trait-block, so each block's boxes fill in its own colour.
+ */
+.trait-paragraph {
+  --trait-paragraph-accent: var(--color-heritage);
+  position: relative;
+  /* Inline-block, not just break-inside: avoid — Chrome's column layout still
+     fragmented paragraphs internally, tearing the option radios and uneven-ing
+     line spacing. An inline-block is monolithic, so it is never split. */
+  display: inline-block;
+  vertical-align: top;
+  inline-size: calc(100% + var(--space-2) * 2);
+  break-inside: avoid;
+  margin-block-end: var(--space-1);
+  margin-inline: calc(var(--space-2) * -1);
+  padding: var(--space-2);
+  padding-inline-start: calc(var(--space-2) + 1.375rem);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-800);
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.trait-paragraph:is(:hover, :focus-visible):not(.disabled) {
+  background: var(--color-card-bg-hover);
+}
+
+.trait-paragraph:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 0;
+}
+
+/* The checkbox, drawn rather than a real input: the whole paragraph is the control. */
+.trait-paragraph-box {
+  position: absolute;
+  inset-inline-start: var(--space-2);
+  inset-block-start: calc(var(--space-3) + 0.0625rem);
+  inline-size: 0.875rem;
+  block-size: 0.875rem;
+  box-sizing: border-box;
+  border: 1.5px solid var(--color-ink-400);
+  border-radius: 2px;
+  background: var(--color-parchment-50);
+}
+
+.trait-paragraph.selected .trait-paragraph-box {
+  border-color: var(--trait-paragraph-accent);
+  background: var(--trait-paragraph-accent);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0.25rem;
+    inset-block-start: 0.0625rem;
+    inline-size: 0.25rem;
+    block-size: 0.5rem;
+    border: solid var(--color-parchment-50);
+    border-width: 0 2px 2px 0;
+    rotate: 45deg;
+  }
+}
+
+/* One of a pick-one set (Medium or Small): a radio — accent ring, light gap,
+   accent dot. The option radios below are drawn the same way. */
+.trait-paragraph.exclusive .trait-paragraph-box {
+  border-radius: 50%;
+}
+
+.trait-paragraph.exclusive.selected .trait-paragraph-box {
+  border-width: 2px;
+  background: var(--color-parchment-50);
+
+  &::after {
+    inset: 0.125rem;
+    inline-size: auto;
+    block-size: auto;
+    border: none;
+    border-radius: 50%;
+    background: var(--trait-paragraph-accent);
+    rotate: none;
+  }
+}
+
+.trait-paragraph.disabled .trait-paragraph-box {
+  border-style: dashed;
+  border-color: var(--color-ink-300);
+  background: none;
+}
+
+/* Locked (a required category's last selection) still reads as chosen, but
+   there is nothing a click can do. */
+.trait-paragraph.locked {
+  cursor: default;
+}
+
+/* Excluded, unmet, or unaffordable — the same recede the cards use. */
+.trait-paragraph.disabled {
+  color: var(--color-ink-300);
+  cursor: default;
+}
+
+/* ── The sentence itself — shared with the Ancestries page's written-out traits
+   and the builder sidebar ── */
+:is(.trait-paragraph, .ancestry-book-trait, .summary-trait-paragraph) .trait-content-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-ink-900);
+}
+
+.trait-paragraph.disabled .trait-content-name {
+  color: var(--color-ink-300);
+}
+
+:is(.trait-paragraph, .ancestry-book-trait, .summary-trait-paragraph) .trait-content-cost {
+  font-family: var(--font-ui);
+  font-weight: 400;
+  color: var(--trait-paragraph-accent);
+}
+
+.trait-paragraph.disabled .trait-content-cost {
+  color: var(--color-ink-300);
+}
+
+/* Description and its markdown paragraphs run on from the name. */
+:is(.trait-paragraph, .ancestry-book-trait, .summary-trait-paragraph) :is(.trait-content-description, .trait-content-description p) {
+  display: inline;
+}
+
+:is(.trait-paragraph, .ancestry-book-trait, .summary-trait-paragraph) .trait-content-description::before {
+  content: ' ';
+}
+
+.trait-paragraph-note {
+  font-style: italic;
+  color: var(--color-ink-500);
+}
+
+.trait-paragraph.disabled .trait-paragraph-note {
+  color: var(--color-ink-300);
+}
+
+/* Why a trait can't be taken right now: "Requires Small Size", "Would exceed…" */
+.trait-paragraph-blocked {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  /* font-weight: 600; */
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-heritage-dark);
+}
+
+/* ── Options: the radio is the bullet ───────────────────────────────────── */
+.trait-paragraph-options {
+  list-style: none;
+  margin: var(--space-1) 0 0;
+  padding: 0;
+}
+
+.trait-paragraph-option {
+  margin: 0;
+
+  & label {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    padding: 0.125rem var(--space-1);
+    border-radius: var(--radius-sm);
+    cursor: inherit;
+  }
+
+  &:not(.selected) label:hover {
+    background: var(--color-parchment-200);
+  }
+}
+
+.trait-paragraph-option-radio {
+  flex: 0 0 auto;
+  /* Sit where a bullet would, on the text's first line. */
+  align-self: baseline;
+  translate: 0 0.125rem;
+  margin: 0;
+  /* Drawn to match .trait-paragraph-box on an exclusive trait. The inset
+     shadow is the light gap between ring and dot, since inputs get no ::after. */
+  appearance: none;
+  inline-size: 0.875rem;
+  block-size: 0.875rem;
+  box-sizing: border-box;
+  border: 1.5px solid var(--color-ink-400);
+  border-radius: 50%;
+  background: var(--color-parchment-50);
+  cursor: inherit;
+
+  &:checked {
+    border: 2px solid var(--trait-paragraph-accent);
+    background: var(--trait-paragraph-accent);
+    box-shadow: inset 0 0 0 0.125rem var(--color-parchment-50);
+  }
+
+  &:disabled {
+    border-style: dashed;
+    border-color: var(--color-ink-300);
+    background: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+  }
+}
+
+.trait-paragraph-option-text {
+  min-width: 0;
+  line-height: var(--leading-normal);
+}
+
+.trait-paragraph-option-name {
+  font-weight: 600;
+}
+
+.trait-paragraph-option :is(.trait-paragraph-option-desc, .trait-paragraph-option-desc p) {
+  display: inline;
+  color: var(--color-ink-600);
+}
+
+.trait-paragraph-option.selected .trait-paragraph-option-name {
+  color: var(--trait-paragraph-accent);
+}
+
+/* An option not taken, once one has been — and every option of a trait that
+   cannot be taken at all — recedes the same way a spent-out trait does. */
+.trait-paragraph.selected:has(.trait-paragraph-option.selected) .trait-paragraph-option:not(.selected),
+.trait-paragraph.disabled .trait-paragraph-option {
+  color: var(--color-ink-300);
+
+  & :is(.trait-paragraph-option-name, .trait-paragraph-option-desc, .trait-paragraph-option-desc p, .trait-content-cost) {
+    color: var(--color-ink-300);
+  }
+}

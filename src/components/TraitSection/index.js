@@ -1,1 +1,0 @@
-export { TraitSection } from './TraitSection';
