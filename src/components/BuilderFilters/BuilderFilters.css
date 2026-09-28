@@ -58,7 +58,7 @@
   max-inline-size: 12rem;
 }
 
-/* All traits / Chosen: two joined buttons, the pressed one inked in. */
+/* All traits / Can afford / Chosen: joined buttons, the pressed one inked in. */
 .builder-filters-toggle {
   display: flex;
   block-size: 2.25rem;

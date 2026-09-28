@@ -157,6 +157,52 @@ function inlineText({ name, points, description }) {
   return `[null, { ${parts.join(', ')} }]`;
 }
 
+/**
+ * The key the build de-duplicates on. Spreads resolve only in the build; the
+ * one in the source is the 0-point size pair, so it counts as 0 and never drops.
+ */
+function elementKey(el) {
+  if (el.kind === 'inline') return `inline:${el.nameOverride || el.label}`;
+  if (!el.id) return null;
+  return el.option ? `${el.id}:${el.option}` : el.id;
+}
+
+/**
+ * Price one slot the way the build does: an element already granted higher up
+ * the chain (or earlier in the same list) is dropped and costs nothing.
+ * Returns the rows, the slot's own total, and every key granted so far.
+ */
+function resolveSlot(elements, inheritedKeys, byId) {
+  const seen = new Set(inheritedKeys);
+  let total = 0;
+  const rows = elements.map((el) => {
+    const key = elementKey(el);
+    const dropped = key !== null && seen.has(key);
+    if (key) seen.add(key);
+    const points = pointsOf(el, byId);
+    if (!dropped) total += points;
+    return { el, points, dropped };
+  });
+  return { rows, total, keys: [...seen] };
+}
+
+const fileLabel = (file) => file.charAt(0).toUpperCase() + file.slice(1);
+
+/** Icons for the row actions, drawn so they sit on the same box as the text. */
+const ICONS = {
+  up: 'M4 10l4-4 4 4',
+  down: 'M4 6l4 4 4-4',
+  remove: 'M4.5 4.5l7 7M11.5 4.5l-7 7',
+};
+
+function RowIcon({ name }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+      <path d={ICONS[name]} fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function AncestryEditorPage() {
   const [sources, setSources] = useState(null);
   const [traitIndex, setTraitIndex] = useState({ rows: [], byId: {} });
@@ -240,10 +286,13 @@ export function AncestryEditorPage() {
             id: lineage.id,
             sublineageId: sub.id,
             name: `${lineage.name} › ${sub.name}`,
+            subName: sub.name,
             summary: lineage.summary,
             shared: sub.shared,
             archetypes: sub.archetypes,
             sublineages: [],
+            // The lineage's own shared traits sit above this one in the chain.
+            parent: { name: lineage.name, shared: lineage.shared },
           });
         }
       }
@@ -274,6 +323,33 @@ export function AncestryEditorPage() {
 
   const isDirty = (target) => Object.prototype.hasOwnProperty.call(edits, slotKey(target));
   const dirtyKeys = Object.keys(edits);
+  const hasEdits = dirtyKeys.length > 0;
+
+  // Unsaved edits live only in this page; leaving it would lose them.
+  useEffect(() => {
+    if (!hasEdits) return undefined;
+    const warn = (e) => { e.preventDefault(); };
+    window.addEventListener('beforeunload', warn);
+    return () => window.removeEventListener('beforeunload', warn);
+  }, [hasEdits]);
+
+  /** True when any slot of this list entry has unsaved edits. */
+  const entryIsDirty = (entry) =>
+    dirtyKeys.some((key) => key.startsWith(`${entry.file}|${entry.id}|${entry.sublineageId || ''}|`));
+
+  const discard = () => {
+    setEdits({});
+    setStatus('Discarded unsaved edits.');
+  };
+
+  const revertSlot = (target, label) => {
+    setEdits((prev) => {
+      const next = { ...prev };
+      delete next[slotKey(target)];
+      return next;
+    });
+    setStatus(`Reverted ${label}.`);
+  };
 
   const mutate = (target, original, fn) => {
     const key = slotKey(target);
@@ -368,6 +444,18 @@ export function AncestryEditorPage() {
     return hits;
   }, [traitIndex.rows, traitFilter]);
 
+  // traits.json is already in category order, so each run of one category is a group.
+  const traitGroups = useMemo(() => {
+    const groups = [];
+    for (const hit of visibleTraits) {
+      const key = `${hit.row.type}|${hit.row.category}`;
+      const last = groups[groups.length - 1];
+      if (last?.key === key) last.hits.push(hit);
+      else groups.push({ key, name: hit.row.categoryName, hits: [hit] });
+    }
+    return groups;
+  }, [visibleTraits]);
+
   // ── render ──────────────────────────────────────────────────────────────
   if (error) {
     return (
@@ -385,47 +473,80 @@ export function AncestryEditorPage() {
     return <div className="ae-page"><p className="ae-muted">Loading source files…</p></div>;
   }
 
-  const renderSlot = (label, target, original, extra = null) => {
-    const els = elementsFor(target, original);
-    const key = slotKey(target);
-    const active = activeSlot && slotKey(activeSlot) === key;
-    const total = els.reduce((n, e) => n + pointsOf(e, traitIndex.byId), 0);
+  const { byId } = traitIndex;
+
+  // ── the selected entry's chain, priced the way the build prices it ──────
+  let chain = null;
+  if (current) {
+    const base = { file: current.file, ancestryId: current.id };
+    const parentTarget = current.parent ? { ...base, sublineageId: null } : null;
+    const parent = parentTarget
+      ? resolveSlot(elementsFor(parentTarget, current.parent.shared), [], byId)
+      : null;
+    const sharedTarget = { ...base, sublineageId: current.sublineageId };
+    const shared = resolveSlot(elementsFor(sharedTarget, current.shared), parent?.keys || [], byId);
+    const sharedTotal = (parent?.total || 0) + shared.total;
+    const archetypes = (current.archetypes || []).map((arc) => {
+      const target = { ...sharedTarget, archetypeId: arc.id };
+      const resolved = resolveSlot(elementsFor(target, arc.traits), shared.keys, byId);
+      return { arc, target, resolved, total: sharedTotal + resolved.total };
+    });
+    chain = { parentTarget, parent, sharedTarget, shared, sharedTotal, archetypes };
+  }
+
+  // What the picker needs to know about the slot it adds to.
+  const activeKey = activeSlot ? slotKey(activeSlot) : null;
+  let activeGranted = null;
+  let activeTotal = null;
+  if (chain && activeKey) {
+    if (activeKey === slotKey(chain.sharedTarget)) {
+      activeGranted = new Set(chain.shared.keys);
+    } else {
+      const arc = chain.archetypes.find((a) => slotKey(a.target) === activeKey);
+      if (arc) {
+        activeGranted = new Set(arc.resolved.keys);
+        activeTotal = arc.total;
+      }
+    }
+  }
+
+  const selectEntry = (entry) => {
+    setSelected({ file: entry.file, ancestryId: entry.id, sublineageId: entry.sublineageId });
+    setActiveSlot(null);
+  };
+
+  const renderRows = (target, original, resolved, editable) => {
+    if (!resolved.rows.length) return <p className="ae-empty">No traits yet.</p>;
+    const last = resolved.rows.length - 1;
 
     return (
-      <section key={key} className={`ae-slot${active ? ' ae-slot-active' : ''}`}>
-        <header className="ae-slot-head">
-          <button
-            type="button"
-            className="ae-slot-target"
-            onClick={() => setActiveSlot({ ...target, original })}
-            title="Make this the target for added traits"
-          >
-            {active ? '● ' : '○ '}{label}
-          </button>
-          <span className="ae-slot-meta">
-            {extra}
-            <span className="ae-points">{total} pts</span>
-            {isDirty(target) && <span className="ae-dirty">edited</span>}
-          </span>
-        </header>
+      <ul className="ae-trait-rows">
+        {resolved.rows.map(({ el, points, dropped }, idx) => {
+          const tip = tooltipTrait(el, byId);
+          const ref = el.id ? `${el.id}${el.option ? `:${el.option}` : ''}` : null;
+          const label = (
+            <span className="ae-row-label">
+              <span className="ae-row-name">{displayName(el, byId)}</span>
+              {ref && <span className="ae-row-ref" title={ref}>{ref}</span>}
+              {el.kind === 'inline' && <span className="ae-tag">inline</span>}
+              {el.kind === 'spread' && <span className="ae-tag">spread</span>}
+              {el.hasNote && <span className="ae-tag ae-tag-note" title="Carries a provenance note">note</span>}
+              {dropped && (
+                <span
+                  className="ae-tag"
+                  title="Already granted higher up the chain. The build drops the repeat, so it costs nothing here."
+                >
+                  inherited
+                </span>
+              )}
+            </span>
+          );
 
-        {els.length === 0 && <p className="ae-muted ae-empty">No traits.</p>}
-
-        <ul className="ae-trait-rows">
-          {els.map((el, idx) => {
-            const tip = tooltipTrait(el, traitIndex.byId);
-            const label = (
-              <span className="ae-row-label">
-                <span className="ae-row-name">{displayName(el, traitIndex.byId)}</span>
-                {el.kind !== 'spread' && <span className="ae-row-ref">{el.id ? `${el.id}${el.option ? `:${el.option}` : ''}` : 'inline'}</span>}
-                {el.kind === 'inline' && <span className="ae-tag">inline</span>}
-                {el.kind === 'spread' && <span className="ae-tag">spread</span>}
-                {el.hasNote && <span className="ae-tag ae-tag-note" title="Carries a provenance note">note</span>}
-              </span>
-            );
-
-            return (
-            <li key={`${el.text}-${idx}`} className={`ae-trait-row ae-kind-${el.kind}`}>
+          return (
+            <li
+              key={`${el.text}-${idx}`}
+              className={`ae-trait-row ae-kind-${el.kind}${dropped ? ' ae-trait-row-dropped' : ''}`}
+            >
               {tip ? (
                 <TraitTooltip
                   trait={tip}
@@ -435,20 +556,69 @@ export function AncestryEditorPage() {
                 >
                   {label}
                 </TraitTooltip>
-              ) : label}
-              <span className="ae-row-pts">{pointsOf(el, traitIndex.byId)}</span>
-              <span className="ae-row-actions">
-                <button type="button" onClick={() => moveEl(target, original, idx, -1)} title="Move up">↑</button>
-                <button type="button" onClick={() => moveEl(target, original, idx, 1)} title="Move down">↓</button>
-                <button type="button" className="ae-remove" onClick={() => removeAt(target, original, idx)} title="Remove">×</button>
-              </span>
+              ) : <span className="ae-row-trigger">{label}</span>}
+              <span className={`pill cost ae-row-pts${points === 0 ? ' free' : ''}`}>{points}</span>
+              {editable && (
+                <span className="ae-row-actions">
+                  <button type="button" onClick={() => moveEl(target, original, idx, -1)} disabled={idx === 0} aria-label="Move up" title="Move up">
+                    <RowIcon name="up" />
+                  </button>
+                  <button type="button" onClick={() => moveEl(target, original, idx, 1)} disabled={idx === last} aria-label="Move down" title="Move down">
+                    <RowIcon name="down" />
+                  </button>
+                  <button type="button" className="ae-remove" onClick={() => removeAt(target, original, idx)} aria-label="Remove" title="Remove">
+                    <RowIcon name="remove" />
+                  </button>
+                </span>
+              )}
             </li>
-            );
-          })}
-        </ul>
+          );
+        })}
+      </ul>
+    );
+  };
+
+  const renderSlot = ({ label, target, original, resolved, extra = null, summary }) => {
+    const key = slotKey(target);
+    const active = activeKey === key;
+
+    return (
+      <section key={key} className={`ae-slot${active ? ' ae-slot-active' : ''}`}>
+        <header className="ae-slot-head">
+          <label className="ae-slot-target">
+            <input
+              type="radio"
+              name="ae-slot-target"
+              className="ae-slot-radio"
+              checked={active}
+              onChange={() => setActiveSlot({ ...target, original, label })}
+            />
+            <span className="ae-slot-name">{label}</span>
+            {extra}
+          </label>
+          <span className="ae-slot-meta">
+            {isDirty(target) && (
+              <>
+                <span className="ae-dirty">Edited</span>
+                <button type="button" className="ae-linkish" onClick={() => revertSlot(target, label)}>Revert</button>
+              </>
+            )}
+            {summary}
+          </span>
+        </header>
+        {renderRows(target, original, resolved, true)}
       </section>
     );
   };
+
+  // The list, grouped by source file.
+  const listGroups = [];
+  for (const entry of visibleLineages) {
+    const last = listGroups[listGroups.length - 1];
+    if (last?.file === entry.file) last.entries.push(entry);
+    else listGroups.push({ file: entry.file, entries: [entry] });
+  }
+  const filtering = Boolean(ancestryFilter.trim());
 
   return (
     <div className="ae-page">
@@ -461,210 +631,297 @@ export function AncestryEditorPage() {
           </p>
         </div>
         <div className="ae-header-actions">
-          <span className="ae-status">{status}</span>
-          <button
-            type="button"
-            className="ae-save"
-            onClick={save}
-            disabled={!dirtyKeys.length || saving}
-          >
-            {saving ? 'Saving…' : `Save${dirtyKeys.length ? ` (${dirtyKeys.length})` : ''}`}
+          <span className="ae-status" role="status">
+            {status || (hasEdits ? `${dirtyKeys.length} unsaved slot${dirtyKeys.length === 1 ? '' : 's'}` : '')}
+          </span>
+          <button type="button" className="btn btn-secondary" onClick={discard} disabled={!hasEdits || saving}>
+            Discard
+          </button>
+          <button type="button" className="btn btn-primary" onClick={save} disabled={!hasEdits || saving}>
+            {saving ? 'Saving…' : `Save${hasEdits ? ` (${dirtyKeys.length})` : ''}`}
           </button>
         </div>
       </header>
 
       <div className="ae-grid">
         {/* ── Column 1: ancestries ─────────────────────────────────────── */}
-        <aside className="ae-col ae-col-list">
+        <nav className="ae-col ae-col-list" aria-label="Ancestries">
           <input
+            type="search"
             className="ae-input"
             placeholder="Filter ancestries…"
+            aria-label="Filter ancestries"
             value={ancestryFilter}
             onChange={(e) => setAncestryFilter(e.target.value)}
           />
-          <ul className="ae-ancestry-list">
-            {visibleLineages.map((l) => {
-              const isSel = current && current.id === l.id &&
-                (current.sublineageId || null) === (l.sublineageId || null);
-              return (
-                <li key={`${l.file}-${l.id}-${l.sublineageId || ''}`}>
-                  <button
-                    type="button"
-                    className={`ae-ancestry-btn${isSel ? ' selected' : ''}`}
-                    onClick={() => {
-                      setSelected({ file: l.file, ancestryId: l.id, sublineageId: l.sublineageId });
-                      setActiveSlot(null);
-                    }}
-                  >
-                    <span className="ae-ancestry-name">{l.name}</span>
-                    <span className="ae-ancestry-sub">
-                      {l.file} · {(l.archetypes || []).length} arch
-                      <AncestryWarning issues={issuesById[l.sublineageId || l.id]} />
-                    </span>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </aside>
+          {listGroups.map((group) => (
+            <section key={group.file} className="ae-ancestry-group">
+              <h2 className="ae-ancestry-group-title">{fileLabel(group.file)}</h2>
+              <ul className="ae-ancestry-list">
+                {group.entries.map((l) => {
+                  const isSel = current && current.file === l.file && current.id === l.id &&
+                    (current.sublineageId || null) === (l.sublineageId || null);
+                  const subCount = (l.sublineages || []).length;
+                  const arcCount = (l.archetypes || []).length;
+                  return (
+                    <li key={`${l.file}-${l.id}-${l.sublineageId || ''}`}>
+                      <button
+                        type="button"
+                        className={`ae-ancestry-btn${l.sublineageId ? ' ae-ancestry-btn-sub' : ''}${isSel ? ' selected' : ''}`}
+                        aria-current={isSel ? 'true' : undefined}
+                        onClick={() => selectEntry(l)}
+                      >
+                        <span className="ae-ancestry-name">
+                          {l.sublineageId && !filtering ? l.subName : l.name}
+                          {entryIsDirty(l) && <span className="ae-ancestry-dirty" title="Unsaved edits" />}
+                        </span>
+                        <span className="ae-ancestry-sub">
+                          {subCount > 0
+                            ? `${subCount} sub-lineage${subCount === 1 ? '' : 's'}`
+                            : `${arcCount} archetype${arcCount === 1 ? '' : 's'}`}
+                        </span>
+                        <AncestryWarning issues={issuesById[l.sublineageId || l.id]} />
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          ))}
+          {!listGroups.length && <p className="ae-empty">No ancestries match.</p>}
+        </nav>
 
         {/* ── Column 2: the selected ancestry's slots ──────────────────── */}
         <main className="ae-col ae-col-edit">
           {!current && <p className="ae-muted">Select an ancestry to edit.</p>}
 
-          {current && (
+          {current && chain && (
             <>
-              <h2 className="ae-current-title">{current.name}</h2>
-              {current.summary && <p className="ae-muted ae-current-sum">{current.summary}</p>}
+              <header className="ae-current">
+                <h2 className="ae-current-title">{current.name}</h2>
+                {current.summary && <p className="ae-muted ae-current-sum">{current.summary}</p>}
+              </header>
 
-              {renderSlot(
-                'Shared traits',
-                { file: current.file, ancestryId: current.id, sublineageId: current.sublineageId },
-                current.shared
+              {chain.parent && (
+                <section className="ae-slot ae-slot-inherited">
+                  <header className="ae-slot-head">
+                    <span className="ae-slot-target">
+                      <span className="ae-slot-name">Inherited from {current.parent.name}</span>
+                    </span>
+                    <span className="ae-slot-meta">
+                      <button
+                        type="button"
+                        className="ae-linkish"
+                        onClick={() => selectEntry({ file: current.file, id: current.id, sublineageId: null })}
+                      >
+                        Edit
+                      </button>
+                      <span className="ae-points">{chain.parent.total} pts</span>
+                    </span>
+                  </header>
+                  {renderRows(chain.parentTarget, current.parent.shared, chain.parent, false)}
+                </section>
               )}
+
+              {renderSlot({
+                label: 'Shared traits',
+                target: chain.sharedTarget,
+                original: current.shared,
+                resolved: chain.shared,
+                summary: (
+                  <span className="ae-points">
+                    {chain.shared.total} pts
+                    {chain.parent && ` · ${chain.sharedTotal} with inherited`}
+                  </span>
+                ),
+              })}
 
               <h3 className="ae-subhead">Archetypes</h3>
-              {(current.archetypes || []).map((arc) =>
-                renderSlot(
-                  arc.name,
-                  {
-                    file: current.file,
-                    ancestryId: current.id,
-                    sublineageId: current.sublineageId,
-                    archetypeId: arc.id,
-                  },
-                  arc.traits,
-                  arc.designed ? <span className="ae-tag">designed</span> : null
-                )
+              {chain.archetypes.map(({ arc, target, resolved, total }) =>
+                renderSlot({
+                  label: arc.name,
+                  target,
+                  original: arc.traits,
+                  resolved,
+                  extra: arc.designed ? <span className="ae-tag">designed</span> : null,
+                  summary: (
+                    <>
+                      <span className="ae-points" title="Shared traits + this archetype's own">
+                        {chain.sharedTotal} + {resolved.total}
+                      </span>
+                      <BudgetPill total={total} />
+                    </>
+                  ),
+                })
               )}
-              {!(current.archetypes || []).length && (
-                <p className="ae-muted">No archetypes on this entry.</p>
+              {!chain.archetypes.length && (
+                <p className="ae-empty">
+                  {(current.sublineages || []).length
+                    ? 'Archetypes live on the sub-lineages.'
+                    : 'No archetypes on this entry.'}
+                </p>
               )}
             </>
           )}
         </main>
 
         {/* ── Column 3: trait picker ──────────────────────────────────── */}
-        <aside className="ae-col ae-col-picker">
+        <aside className="ae-col ae-col-picker" aria-label="Add traits">
           <div className="ae-picker-head">
-            <input
-              className="ae-input"
-              placeholder="Trait, option, or trait > option"
-              value={traitFilter}
-              onChange={(e) => {
-                setTraitFilter(e.target.value);
-                // A new query picks the matching option itself. A leftover
-                // choice from the previous query would hide that.
-                setPendingOption({});
-              }}
-            />
-            <p className="ae-muted ae-target-line">
-              {activeSlot
-                ? <>Adding to <strong>{activeSlot.archetypeId || 'shared traits'}</strong></>
-                : 'Pick a target slot on the left'}
+            <p className={`ae-target${activeSlot ? '' : ' ae-target-none'}`}>
+              {activeSlot && current ? (
+                <>
+                  <span>Adding to <strong>{current.name} › {activeSlot.label}</strong></span>
+                  {activeTotal !== null && <BudgetPill total={activeTotal} />}
+                </>
+              ) : 'Choose a slot on the left to add traits to it.'}
             </p>
+            <div className="ae-picker-search">
+              <input
+                type="search"
+                className="ae-input"
+                placeholder="Trait, option, or trait > option"
+                aria-label="Search traits"
+                value={traitFilter}
+                onChange={(e) => {
+                  setTraitFilter(e.target.value);
+                  // A new query picks the matching option itself. A leftover
+                  // choice from the previous query would hide that.
+                  setPendingOption({});
+                }}
+              />
+              <button
+                type="button"
+                className="btn btn-secondary"
+                aria-expanded={showInline}
+                onClick={() => setShowInline((v) => !v)}
+              >
+                {showInline ? 'Cancel' : 'New inline'}
+              </button>
+            </div>
           </div>
 
-          <div className="ae-table-wrap">
-            <table className="ae-table">
-              <thead>
-                <tr>
-                  <th>Trait</th>
-                  <th>Category</th>
-                  <th className="ae-num">Pts</th>
-                  <th>Option</th>
-                  <th />
-                </tr>
-              </thead>
-              <tbody>
-                {visibleTraits.map(({ row, matchedOptions }) => {
+          {showInline && (
+            <form
+              className="ae-inline-form"
+              onSubmit={(e) => { e.preventDefault(); addInline(); }}
+            >
+              <div className="ae-inline-row">
+                <label className="ae-field ae-field-grow">
+                  <span className="ae-field-label">Name</span>
+                  <input
+                    className="ae-input"
+                    value={inlineDraft.name}
+                    onChange={(e) => setInlineDraft((d) => ({ ...d, name: e.target.value }))}
+                  />
+                </label>
+                <label className="ae-field">
+                  <span className="ae-field-label">Points</span>
+                  <input
+                    className="ae-input ae-input-pts"
+                    type="number"
+                    value={inlineDraft.points}
+                    onChange={(e) => setInlineDraft((d) => ({ ...d, points: e.target.value }))}
+                  />
+                </label>
+              </div>
+              <label className="ae-field">
+                <span className="ae-field-label">Description</span>
+                <textarea
+                  className="ae-input"
+                  rows={3}
+                  value={inlineDraft.description}
+                  onChange={(e) => setInlineDraft((d) => ({ ...d, description: e.target.value }))}
+                />
+              </label>
+              <button type="submit" className="btn btn-secondary ae-add-inline" disabled={!activeSlot}>
+                Add inline trait
+              </button>
+            </form>
+          )}
+
+          {traitGroups.map((group) => (
+            <section key={group.key} className="ae-picker-group">
+              <h3 className="ae-picker-group-title">{group.name}</h3>
+              <ul className="ae-picker-rows">
+                {group.hits.map(({ row, matchedOptions }) => {
                   const pending = pendingOption[row.id];
                   const selectedId = row.options.length
                     ? (pending || matchedOptions[0]?.id || row.options[0].id)
                     : undefined;
                   const selectedOption = row.options.find((option) => option.id === selectedId);
                   const shownPoints = selectedOption ? (selectedOption.points ?? 0) : (row.points ?? '—');
+                  const granted = activeGranted?.has(selectedId ? `${row.id}:${selectedId}` : row.id);
                   return (
-                  <tr key={row.id}>
-                    <td>
-                      <span className="ae-t-name">
-                        {row.name}
-                        {matchedOptions.length > 0 && (
-                          <span className="ae-t-hit"> › {matchedOptions.map((option) => option.name).join(', ')}</span>
-                        )}
-                      </span>
-                      <span className="ae-t-id">{row.id}{selectedId ? `:${selectedId}` : ''}</span>
-                    </td>
-                    <td className="ae-t-cat">{row.categoryName}</td>
-                    <td className="ae-num">{shownPoints}</td>
-                    <td>
-                      {row.options.length > 0 ? (
-                        <select
-                          className="ae-select"
-                          value={selectedId}
-                          onChange={(e) => setPendingOption(p => ({ ...p, [row.id]: e.target.value }))}
+                    <li key={row.id} className="ae-picker-row">
+                      <div className="ae-picker-main">
+                        <TraitTooltip
+                          trait={row.raw}
+                          selectedOptions={selectedId ? { [row.id]: selectedId } : {}}
+                          className="ae-row-trigger"
+                          pinOnClick
                         >
-                          {row.options.map(o => (
-                            <option key={o.id} value={o.id}>
-                              {o.name} ({o.points ?? 0})
-                            </option>
-                          ))}
-                        </select>
-                      ) : <span className="ae-muted">—</span>}
-                    </td>
-                    <td>
+                          <span className="ae-row-label">
+                            <span className="ae-row-name">
+                              {row.name}
+                              {matchedOptions.length > 0 && (
+                                <span className="ae-picker-hit"> › {matchedOptions.map((option) => option.name).join(', ')}</span>
+                              )}
+                            </span>
+                            {granted && (
+                              <span className="ae-tag" title="Already in this slot or inherited by it">granted</span>
+                            )}
+                          </span>
+                          <span className="ae-row-ref">{row.id}{selectedId ? `:${selectedId}` : ''}</span>
+                        </TraitTooltip>
+                        {row.options.length > 0 && (
+                          <select
+                            className="ae-select"
+                            aria-label={`${row.name} option`}
+                            value={selectedId}
+                            onChange={(e) => setPendingOption((p) => ({ ...p, [row.id]: e.target.value }))}
+                          >
+                            {row.options.map((o) => (
+                              <option key={o.id} value={o.id}>
+                                {o.name} ({o.points ?? 0})
+                              </option>
+                            ))}
+                          </select>
+                        )}
+                      </div>
+                      <span className={`pill cost ae-row-pts${shownPoints === 0 ? ' free' : ''}`}>{shownPoints}</span>
                       <button
                         type="button"
-                        className="ae-add"
+                        className="btn btn-secondary btn-small"
                         onClick={() => addTrait(row, selectedId)}
                         disabled={!activeSlot}
-                        title={activeSlot ? 'Add to target slot' : 'Pick a target slot first'}
+                        title={activeSlot ? `Add to ${activeSlot.label}` : 'Choose a slot first'}
                       >
                         Add
                       </button>
-                    </td>
-                  </tr>
+                    </li>
                   );
                 })}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="ae-inline-box">
-            <button type="button" className="ae-linkish" onClick={() => setShowInline(v => !v)}>
-              {showInline ? '− Hide inline trait' : '+ New inline trait'}
-            </button>
-            {showInline && (
-              <div className="ae-inline-form">
-                <input
-                  className="ae-input"
-                  placeholder="Name"
-                  value={inlineDraft.name}
-                  onChange={(e) => setInlineDraft(d => ({ ...d, name: e.target.value }))}
-                />
-                <input
-                  className="ae-input ae-input-pts"
-                  type="number"
-                  placeholder="Points"
-                  value={inlineDraft.points}
-                  onChange={(e) => setInlineDraft(d => ({ ...d, points: e.target.value }))}
-                />
-                <textarea
-                  className="ae-input"
-                  rows={3}
-                  placeholder="Description"
-                  value={inlineDraft.description}
-                  onChange={(e) => setInlineDraft(d => ({ ...d, description: e.target.value }))}
-                />
-                <button type="button" className="ae-add-inline" onClick={addInline} disabled={!activeSlot}>
-                  Add inline trait
-                </button>
-              </div>
-            )}
-          </div>
+              </ul>
+            </section>
+          ))}
+          {!traitGroups.length && <p className="ae-empty">No traits match.</p>}
         </aside>
       </div>
     </div>
+  );
+}
+
+/** Chain total against the budget: green on it, amber off it. */
+function BudgetPill({ total }) {
+  const delta = total - POINT_BUDGET;
+  return (
+    <span
+      className={`pill ${delta === 0 ? 'free' : 'requirement'}`}
+      title={delta === 0 ? 'On budget' : `${delta > 0 ? '+' : ''}${delta} from the ${POINT_BUDGET}-point budget`}
+    >
+      {total} / {POINT_BUDGET}
+    </span>
   );
 }
 
@@ -677,23 +934,24 @@ function AncestryWarning({ issues }) {
   const { recommended, offBudget } = issues;
   if (recommended === 0 && offBudget.length === 0) return null;
 
-  const parts = [];
-  if (recommended > 0) parts.push(`${recommended} recommended`);
-  if (offBudget.length > 0) parts.push(`${offBudget.length} ≠ ${POINT_BUDGET} pts`);
-
-  const detail = [
-    recommended > 0 && `${recommended} recommended trait${recommended === 1 ? '' : 's'}`,
-    offBudget.length > 0 &&
-      `Not ${POINT_BUDGET} points: ${offBudget.map((a) => `${a.name} (${a.total})`).join(', ')}`,
-  ].filter(Boolean).join('\n');
-
   return (
-    <span className="ae-ancestry-warning" title={detail}>
-      <svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true">
-        <path d="M8 1.5 15 14H1z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-        <path d="M8 6v3.5M8 11.5v.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-      </svg>
-      {parts.join(' · ')}
+    <span className="ae-ancestry-warning">
+      {recommended > 0 && (
+        <span
+          className="pill requirement"
+          title={`${recommended} recommended trait${recommended === 1 ? '' : 's'} standing in for source text`}
+        >
+          {recommended} recommended
+        </span>
+      )}
+      {offBudget.length > 0 && (
+        <span
+          className="pill requirement"
+          title={`Not ${POINT_BUDGET} points: ${offBudget.map((a) => `${a.name} (${a.total})`).join(', ')}`}
+        >
+          {offBudget.length} ≠ {POINT_BUDGET}
+        </span>
+      )}
     </span>
   );
 }

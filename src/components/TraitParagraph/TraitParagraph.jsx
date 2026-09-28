@@ -13,7 +13,7 @@ import './TraitParagraph.css';
  * visible whether or not the trait is selected so a block still reads as a
  * complete list of what is on offer.
  */
-export function TraitParagraph({ trait }) {
+export function TraitParagraph({ trait, exclusive = false }) {
   const {
     toggleTrait,
     selectTrait,
@@ -74,6 +74,7 @@ export function TraitParagraph({ trait }) {
     disabled && 'disabled',
     locked && 'locked',
     hasOptions && 'has-options',
+    exclusive && 'exclusive',
   ].filter(Boolean).join(' ');
 
   return (
@@ -82,14 +83,16 @@ export function TraitParagraph({ trait }) {
       data-trait-id={trait.id}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      role="checkbox"
+      role={exclusive ? 'radio' : 'checkbox'}
       aria-checked={selected}
       aria-disabled={disabled}
       tabIndex={disabled ? -1 : 0}
       title={disabled ? reason : locked ? lockedReason : undefined}
     >
       <span className="trait-paragraph-box" aria-hidden="true" />
-      <TraitContent trait={trait} selectedOptions={selectedOptions} variant="paragraph">
+      {/* No selectedOptions: the options are listed below as radios, so the
+          trait's own line stays the trait rather than becoming the pick. */}
+      <TraitContent trait={trait} variant="paragraph">
         {(restrictionNote || (!blockedNote && requiresNote)) && (
           <span className="trait-paragraph-note">
             {' '}

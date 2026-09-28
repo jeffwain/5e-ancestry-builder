@@ -12,6 +12,7 @@ import './AncestrySummaryBuilder.css';
  * - sections: [{ key, title, traits: [{ key, trait, selectedOptions }] }]
  * - emptyMessage: shown when every section is empty
  * - showTraitMeta: give each trait the cost / category badge row
+ * - paragraph: write each trait as the builder's paragraph instead
  * - renderTraitMeta(trait): extra badges appended to that row
  * - renderTraitActions(trait): node pinned to the trait row (the remove button)
  */
@@ -22,6 +23,7 @@ export function AncestrySummary({
   sections = [],
   emptyMessage = 'No traits selected yet.',
   showTraitMeta = false,
+  paragraph = false,
   renderTraitMeta,
   renderTraitActions,
 }) {
@@ -33,6 +35,7 @@ export function AncestrySummary({
       showFooter={showTraitMeta}
       showDetails={false}
       compact={true}
+      paragraph={paragraph}
       metaExtra={renderTraitMeta ? renderTraitMeta(trait) : null}
       actions={renderTraitActions ? renderTraitActions(trait) : null}
     />

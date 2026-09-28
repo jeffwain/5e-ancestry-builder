@@ -2,11 +2,11 @@
 
 Built from 27 lineages.
 
-- 80 archetypes land on exactly 16
+- 81 archetypes land on exactly 16
 - 13 over budget
-- 26 under budget
+- 25 under budget
 - 0 still empty
-- 16 re-listed traits dropped
+- 13 re-listed traits dropped
 
 ## Re-listed traits dropped (item 4)
 
@@ -18,9 +18,6 @@ Built from 27 lineages.
 - **Dwarves ▸ Lightbringer** — re-lists inherited "skilled-artistry" (2 pts) — dropped
 - **Elves ▸ Boreal** — re-lists inherited "skirmisher-cultural-skill:combat-awareness" (0 pts) — dropped
 - **Elves ▸ Jungle** — re-lists inherited "traversal" (1 pts) — dropped
-- **Undine ▸ Elemental** — re-lists inherited "amphibious" (2 pts) — dropped
-- **Undine ▸ Elemental** — re-lists inherited "swim-speed" (2 pts) — dropped
-- **Undine ▸ Iceborn** — re-lists inherited "amphibious" (2 pts) — dropped
 - **Oread ▸ Nature** — re-lists inherited "speech-beast-leaf" (2 pts) — dropped
 - **Oread ▸ Forest** — re-lists inherited "speech-beast-leaf" (2 pts) — dropped
 - **Oread ▸ Florid** — re-lists inherited "elemental-attunement:nature" (2 pts) — dropped
@@ -57,7 +54,6 @@ Built from 27 lineages.
 - Gnomes ▸ Seafarer — 0 + 13 = **13** — **-3**
 - Gnomes ▸ Deep traveler — 0 + 15 = **15** — **-1**
 - Undine ▸ Crustacean — 4 + 11 = **15** — **-1**
-- Ifriti ▸ Ash — 3 + 10 = **13** — **-3**
 - Asir ▸ Psionic — 0 + 15 = **15** — **-1**
 - Oread ▸ Desert — 7 + 3 = **10** — **-6**
 - Oread ▸ Nature — 7 + 6 = **13** — **-3**
@@ -96,6 +92,7 @@ Built from 27 lineages.
 - Undine ▸ Fish — 4 + 12 = **16** — on budget
 - Undine ▸ Poisonborn — 4 + 12 = **16** — on budget · _priced_
 - Ifriti ▸ Fire — 3 + 13 = **16** — on budget
+- Ifriti ▸ Ash — 3 + 13 = **16** — on budget
 - Ifriti ▸ Magma — 3 + 13 = **16** — on budget
 - Ifriti ▸ Steam — 3 + 13 = **16** — on budget
 - Talos ▸ Stoneborn — 0 + 16 = **16** — on budget

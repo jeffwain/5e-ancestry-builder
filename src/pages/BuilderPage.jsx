@@ -15,7 +15,7 @@ export function BuilderPage({ sections = [] }) {
   const { isTraitSelected, selectedTraits, remainingPoints, pointsSpent, ancestryName } = useCharacter();
 
   const [search, setSearch] = useState('');
-  const [showChosen, setShowChosen] = useState(false);
+  const [show, setShow] = useState('all');
   const [cost, setCost] = useState('any');
   const [category, setCategory] = useState('');
   const toolbarRef = useRef(null);
@@ -51,9 +51,10 @@ export function BuilderPage({ sections = [] }) {
     const keep = (trait, categoryId) =>
       (!category || category === categoryId) &&
       (!term || traitMatches(trait, term)) &&
-      (!showChosen || isTraitSelected(trait.id)) &&
-      // What you already have stays in view under "What I can afford".
-      (costMatches(trait, cost, remainingPoints) || (cost === 'affordable' && isTraitSelected(trait.id)));
+      (show !== 'chosen' || isTraitSelected(trait.id)) &&
+      // What you already have stays in view under "Can afford".
+      (show !== 'affordable' || isTraitSelected(trait.id) || canAfford(trait, remainingPoints)) &&
+      costMatches(trait, cost);
 
     for (const section of sections) {
       const categories = [];
@@ -81,7 +82,7 @@ export function BuilderPage({ sections = [] }) {
     }
 
     return { visibleSections: visible, categoryGroups: groups, matchCount: matched, totalCount: total };
-  }, [sections, term, category, showChosen, cost, remainingPoints, isTraitSelected]);
+  }, [sections, term, category, show, cost, remainingPoints, isTraitSelected]);
 
   return (
     <div className="builder-page" ref={pageRef}>
@@ -91,8 +92,8 @@ export function BuilderPage({ sections = [] }) {
           <BuilderFilters
             search={search}
             onSearchChange={setSearch}
-            showChosen={showChosen}
-            onShowChosenChange={setShowChosen}
+            show={show}
+            onShowChange={setShow}
             chosenCount={selectedTraits.length}
             cost={cost}
             onCostChange={setCost}
@@ -168,13 +169,22 @@ function traitMatches(trait, term) {
   return parts.some((part) => part && String(part).toLowerCase().includes(term));
 }
 
-// A trait whose price depends on its option matches if any option does.
-function costMatches(trait, cost, remainingPoints) {
-  if (cost === 'any') return true;
-  const prices = trait.requiresOption && trait.options?.length
+// A trait whose price depends on its option has one price per option.
+function traitPrices(trait) {
+  return trait.requiresOption && trait.options?.length
     ? trait.options.map((option) => option.points || 0)
     : [trait.points || 0];
-  if (cost === 'affordable') return prices.some((price) => price <= remainingPoints);
+}
+
+// Affordable if any option fits what's left.
+function canAfford(trait, remainingPoints) {
+  return traitPrices(trait).some((price) => price <= remainingPoints);
+}
+
+// A trait whose price depends on its option matches if any option does.
+function costMatches(trait, cost) {
+  if (cost === 'any') return true;
+  const prices = traitPrices(trait);
   if (cost === '4+') return prices.some((price) => price >= 4);
   return prices.some((price) => price === Number(cost));
 }

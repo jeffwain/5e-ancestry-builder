@@ -1172,6 +1172,11 @@
                 },
                 {
                   "id": "unending-breath"
+                },
+                {
+                  "name": "Extinguish",
+                  "description": "You know the Control Flames cantrip with the following changes. It affects a 15 foot cube. You can lower the light level of an area even if it has no flame within it.",
+                  "points": 3
                 }
               ]
             },
@@ -1232,7 +1237,7 @@
         {
           "id": "talos",
           "name": "Talos",
-          "subtitle": "Stoneborn or rock, crystal, or metal.",
+          "subtitle": "Stoneborn of rock, crystal, or metal.",
           "summary": "Stoneborn godlike, bodied in stone, crystal or metal, with mercurial blood.",
           "description": "Talos are as variant as the stone, crystals, and metals that fill the planes, but they always have a physical manifestation of that form in their person. Their eyes are always a solid colour and never have pupils.",
           "traits": [

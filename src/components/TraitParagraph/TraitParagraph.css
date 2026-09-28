@@ -9,6 +9,12 @@
 .trait-paragraph {
   --trait-paragraph-accent: var(--color-heritage);
   position: relative;
+  /* Inline-block, not just break-inside: avoid — Chrome's column layout still
+     fragmented paragraphs internally, tearing the option radios and uneven-ing
+     line spacing. An inline-block is monolithic, so it is never split. */
+  display: inline-block;
+  vertical-align: top;
+  inline-size: calc(100% + var(--space-2) * 2);
   break-inside: avoid;
   margin-block-end: var(--space-1);
   margin-inline: calc(var(--space-2) * -1);
@@ -36,7 +42,7 @@
 .trait-paragraph-box {
   position: absolute;
   inset-inline-start: var(--space-2);
-  inset-block-start: calc(var(--space-2) + 0.2rem);
+  inset-block-start: calc(var(--space-3) + 0.0625rem);
   inline-size: 0.875rem;
   block-size: 0.875rem;
   box-sizing: border-box;
@@ -62,6 +68,27 @@
   }
 }
 
+/* One of a pick-one set (Medium or Small): a radio — accent ring, light gap,
+   accent dot. The option radios below are drawn the same way. */
+.trait-paragraph.exclusive .trait-paragraph-box {
+  border-radius: 50%;
+}
+
+.trait-paragraph.exclusive.selected .trait-paragraph-box {
+  border-width: 2px;
+  background: var(--color-parchment-50);
+
+  &::after {
+    inset: 0.125rem;
+    inline-size: auto;
+    block-size: auto;
+    border: none;
+    border-radius: 50%;
+    background: var(--trait-paragraph-accent);
+    rotate: none;
+  }
+}
+
 .trait-paragraph.disabled .trait-paragraph-box {
   border-style: dashed;
   border-color: var(--color-ink-300);
@@ -80,8 +107,9 @@
   cursor: default;
 }
 
-/* ── The sentence itself — shared with the Ancestries page's written-out traits ── */
-:is(.trait-paragraph, .ancestry-book-trait) .trait-content-name {
+/* ── The sentence itself — shared with the Ancestries page's written-out traits
+   and the builder sidebar ── */
+:is(.trait-paragraph, .ancestry-book-trait, .summary-trait-paragraph) .trait-content-name {
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--color-ink-900);
@@ -91,9 +119,9 @@
   color: var(--color-ink-300);
 }
 
-:is(.trait-paragraph, .ancestry-book-trait) .trait-content-cost {
+:is(.trait-paragraph, .ancestry-book-trait, .summary-trait-paragraph) .trait-content-cost {
   font-family: var(--font-ui);
-  font-weight: 600;
+  font-weight: 400;
   color: var(--trait-paragraph-accent);
 }
 
@@ -102,11 +130,11 @@
 }
 
 /* Description and its markdown paragraphs run on from the name. */
-:is(.trait-paragraph, .ancestry-book-trait) :is(.trait-content-description, .trait-content-description p) {
+:is(.trait-paragraph, .ancestry-book-trait, .summary-trait-paragraph) :is(.trait-content-description, .trait-content-description p) {
   display: inline;
 }
 
-:is(.trait-paragraph, .ancestry-book-trait) .trait-content-description::before {
+:is(.trait-paragraph, .ancestry-book-trait, .summary-trait-paragraph) .trait-content-description::before {
   content: ' ';
 }
 
@@ -123,7 +151,7 @@
 .trait-paragraph-blocked {
   font-family: var(--font-ui);
   font-size: var(--text-xs);
-  font-weight: 600;
+  /* font-weight: 600; */
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-heritage-dark);
@@ -159,17 +187,42 @@
   align-self: baseline;
   translate: 0 0.125rem;
   margin: 0;
-  accent-color: var(--trait-paragraph-accent);
+  /* Drawn to match .trait-paragraph-box on an exclusive trait. The inset
+     shadow is the light gap between ring and dot, since inputs get no ::after. */
+  appearance: none;
+  inline-size: 0.875rem;
+  block-size: 0.875rem;
+  box-sizing: border-box;
+  border: 1.5px solid var(--color-ink-400);
+  border-radius: 50%;
+  background: var(--color-parchment-50);
   cursor: inherit;
+
+  &:checked {
+    border: 2px solid var(--trait-paragraph-accent);
+    background: var(--trait-paragraph-accent);
+    box-shadow: inset 0 0 0 0.125rem var(--color-parchment-50);
+  }
+
+  &:disabled {
+    border-style: dashed;
+    border-color: var(--color-ink-300);
+    background: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+  }
 }
 
 .trait-paragraph-option-text {
   min-width: 0;
+  line-height: var(--leading-normal);
 }
 
 .trait-paragraph-option-name {
   font-weight: 600;
-  color: var(--color-ink-800);
 }
 
 .trait-paragraph-option :is(.trait-paragraph-option-desc, .trait-paragraph-option-desc p) {
@@ -183,8 +236,7 @@
 
 /* An option not taken, once one has been — and every option of a trait that
    cannot be taken at all — recedes the same way a spent-out trait does. */
-.trait-paragraph.selected:has(.trait-paragraph-option.selected)
-  .trait-paragraph-option:not(.selected),
+.trait-paragraph.selected:has(.trait-paragraph-option.selected) .trait-paragraph-option:not(.selected),
 .trait-paragraph.disabled .trait-paragraph-option {
   color: var(--color-ink-300);
 

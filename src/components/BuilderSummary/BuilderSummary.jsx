@@ -2,16 +2,17 @@ import { useMemo } from 'react';
 import { useCharacter } from '../../contexts/CharacterContext';
 import { AncestrySummary } from '../AncestrySummary';
 import { useAncestryActions } from '../../hooks/useAncestryActions';
-import { groupTraitsByType, POINT_BUDGET } from '../../utils/traitDisplay';
+import { groupTraitsByType, withoutBaselineTraits, POINT_BUDGET } from '../../utils/traitDisplay';
 import './BuilderSummary.css';
 
 /**
  * The build in progress: points, name, warnings, the chosen traits grouped by
  * type, and reset / copy / export. The builder's sidebar.
  *
+ * The sidebar writes traits as the builder's paragraphs, cost in the name.
  * `expanded` is the same summary as a page (the Overview): the name becomes the
- * title, the traits run as one list with their type as a tag, `intro` sits
- * above them and `actions` join the footer.
+ * title, the traits run as one list with their tags (type, cost, requirements),
+ * `intro` sits above them and `actions` join the footer.
  */
 export function BuilderSummary({ expanded = false, intro = null, actions = null }) {
   const {
@@ -33,7 +34,7 @@ export function BuilderSummary({ expanded = false, intro = null, actions = null 
   const isOverBudget = pointsSpent > POINT_BUDGET;
 
   const sections = useMemo(() => {
-    const groups = groupTraitsByType(selectedTraits, traitTypes).map((group) => ({
+    const groups = groupTraitsByType(withoutBaselineTraits(selectedTraits, allTraits), traitTypes).map((group) => ({
       key: group.name,
       title: group.name,
       traits: group.traits.map((trait) => ({
@@ -46,7 +47,7 @@ export function BuilderSummary({ expanded = false, intro = null, actions = null 
     return expanded
       ? [{ key: 'traits', title: 'Traits', traits: groups.flatMap((group) => group.traits) }]
       : groups;
-  }, [selectedTraits, traitTypes, selectedOptions, expanded]);
+  }, [selectedTraits, allTraits, traitTypes, selectedOptions, expanded]);
 
   const traitName = (id) => allTraits[id]?.name || id;
 
@@ -62,7 +63,7 @@ export function BuilderSummary({ expanded = false, intro = null, actions = null 
 
     return (
       <>
-        {expanded && typeLabel && (
+        {typeLabel && (
           <span className={`pill trait-type-tag ${trait.type}`}>{typeLabel}</span>
         )}
         {trait.requires?.length > 0 && (
@@ -178,7 +179,8 @@ export function BuilderSummary({ expanded = false, intro = null, actions = null 
       footer={footer}
       sections={sections}
       emptyMessage="No traits selected yet."
-      showTraitMeta
+      showTraitMeta={expanded}
+      paragraph={!expanded}
       renderTraitMeta={renderTraitMeta}
       renderTraitActions={renderTraitActions}
     />

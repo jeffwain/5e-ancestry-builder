@@ -14,6 +14,8 @@ import './SummaryTraitCardMeta.css';
  *                builder sidebar, which needs the cost visible per trait.
  * - metaExtra:   extra nodes for that badge row (e.g. requirement pills)
  * - actions:     node pinned to the row's top-right (e.g. a remove button)
+ * - paragraph:   the builder's paragraph sentence — "Name [2]. Description." —
+ *                in place of the card, for the builder sidebar
  */
 export function SummaryTraitCard({
   trait,
@@ -23,10 +25,11 @@ export function SummaryTraitCard({
   showDetails = true,
   metaExtra = null,
   actions = null,
+  paragraph = false,
   className = ''
 }) {
   const rootClass = [
-    compact ? 'simple-trait-card' : 'summary-trait-card',
+    paragraph ? `summary-trait-paragraph ${trait.type}` : compact ? 'simple-trait-card' : 'summary-trait-card',
     showFooter && 'has-meta',
     actions && 'has-actions',
     className
@@ -37,7 +40,7 @@ export function SummaryTraitCard({
       <TraitContent
         trait={trait}
         selectedOptions={selectedOptions}
-        variant={showDetails ? 'summary' : 'summary-compact'}
+        variant={paragraph ? 'paragraph' : showDetails ? 'summary' : 'summary-compact'}
         showFooter={showFooter}
         metaExtra={metaExtra}
       />

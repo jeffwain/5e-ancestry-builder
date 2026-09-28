@@ -277,6 +277,7 @@
   background: none;
   font-family: var(--font-heading);
   font-size: var(--text-base);
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-ink-800);
   text-align: start;
