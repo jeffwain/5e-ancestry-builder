@@ -6,7 +6,7 @@ Built from 27 lineages.
 - 13 over budget
 - 25 under budget
 - 0 still empty
-- 13 re-listed traits dropped
+- 12 re-listed traits dropped
 
 ## Re-listed traits dropped (item 4)
 
@@ -16,7 +16,6 @@ Built from 27 lineages.
 - **Dwarves ▸ Lightbringer** — re-lists inherited "artisan-tool-proficiency" (1 pts) — dropped
 - **Dwarves ▸ Lightbringer** — re-lists inherited "artisan-cultural-skill:artisans-lore" (0 pts) — dropped
 - **Dwarves ▸ Lightbringer** — re-lists inherited "skilled-artistry" (2 pts) — dropped
-- **Elves ▸ Boreal** — re-lists inherited "skirmisher-cultural-skill:combat-awareness" (0 pts) — dropped
 - **Elves ▸ Jungle** — re-lists inherited "traversal" (1 pts) — dropped
 - **Oread ▸ Nature** — re-lists inherited "speech-beast-leaf" (2 pts) — dropped
 - **Oread ▸ Forest** — re-lists inherited "speech-beast-leaf" (2 pts) — dropped

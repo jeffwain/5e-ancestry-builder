@@ -622,7 +622,9 @@
                   "name": "RECOMMENDED: Out of Sight"
                 },
                 {
-                  "id": "survival-training"
+                  "name": "RECOMMENDED: Sandswimmer",
+                  "description": "While in sand, you have a 15 ft burrowing speed, tremorsense out to 120 ft., and can breathe normally.",
+                  "points": 2
                 }
               ],
               "designed": true
@@ -2985,6 +2987,9 @@
             },
             {
               "id": "size-small"
+            },
+            {
+              "id": "draconic-ancestry"
             }
           ],
           "archetypes": [
@@ -2993,9 +2998,14 @@
               "name": "Dragonborn",
               "traits": [
                 {
-                  "id": "draconic-ancestry",
+                  "id": "draconic-element",
                   "option": "fire",
                   "name": "RECOMMENDED: Fire"
+                },
+                {
+                  "name": "RECOMMENDED: Draconic Nature",
+                  "description": "**Arrogant Tyrant.** You assume any room you enter is yours. You have advantage on Charisma (Intimidation) checks made against a creature you outmatch in size or station.",
+                  "points": 0
                 },
                 {
                   "id": "breath-weapon",
@@ -3025,9 +3035,14 @@
               "name": "Elemental dragonborn",
               "traits": [
                 {
-                  "id": "draconic-ancestry",
+                  "id": "draconic-element",
                   "option": "lightning",
                   "name": "RECOMMENDED: Lightning"
+                },
+                {
+                  "name": "RECOMMENDED: Draconic Nature",
+                  "description": "**Mocking Trickster.** Your laugh carries further than you mean it to. You have advantage on Charisma (Deception) checks made to maintain a falsehood you find funny.",
+                  "points": 0
                 },
                 {
                   "id": "breath-weapon",
@@ -3059,9 +3074,14 @@
               "name": "Brutal",
               "traits": [
                 {
-                  "id": "draconic-ancestry",
+                  "id": "draconic-element",
                   "option": "acid",
                   "name": "RECOMMENDED: Acid"
+                },
+                {
+                  "name": "RECOMMENDED: Draconic Nature",
+                  "description": "**Brutal.** You add your Constitution modifier to your breath weapon and natural weapon attacks.",
+                  "points": 0
                 },
                 {
                   "id": "breath-weapon",
@@ -3092,9 +3112,14 @@
               "name": "Reserved",
               "traits": [
                 {
-                  "id": "draconic-ancestry",
+                  "id": "draconic-element",
                   "option": "radiant",
                   "name": "RECOMMENDED: Radiant"
+                },
+                {
+                  "name": "RECOMMENDED: Draconic Nature",
+                  "description": "**Reserved Companion.** You say a good deal less than you know. You have advantage on Wisdom (Insight) checks made to determine whether a creature is lying to someone you have named a friend.",
+                  "points": 0
                 },
                 {
                   "id": "breath-weapon",
@@ -3129,9 +3154,14 @@
               "name": "Uncanny",
               "traits": [
                 {
-                  "id": "draconic-ancestry",
+                  "id": "draconic-element",
                   "option": "psychic",
                   "name": "RECOMMENDED: Psychic"
+                },
+                {
+                  "name": "RECOMMENDED: Draconic Nature",
+                  "description": "**Good Host.** You have advantage on Wisdom (Insight) checks made to work out what a creature wants from you.",
+                  "points": 0
                 },
                 {
                   "id": "breath-weapon",

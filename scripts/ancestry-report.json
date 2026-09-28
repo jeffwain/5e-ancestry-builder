@@ -1510,11 +1510,6 @@
     },
     {
       "kind": "dedupe",
-      "where": "Elves ▸ Boreal",
-      "detail": "re-lists inherited \"skirmisher-cultural-skill:combat-awareness\" (0 pts) — dropped"
-    },
-    {
-      "kind": "dedupe",
       "where": "Elves ▸ Jungle",
       "detail": "re-lists inherited \"traversal\" (1 pts) — dropped"
     },

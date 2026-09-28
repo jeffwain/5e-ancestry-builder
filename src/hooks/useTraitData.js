@@ -95,9 +95,10 @@ export function useTraitData() {
 
             // These are "required traits" that must be selected within their category
             // before other traits in the same category can be selected
-            if (category.requiredTrait) {
+            // (a single id, or an array when a category requires several)
+            for (const traitId of [].concat(category.requiredTrait || [])) {
               requiredTraits.push({
-                traitId: category.requiredTrait,
+                traitId,
                 categoryId: catId,
                 categoryName: category.name,
                 type: typeId,

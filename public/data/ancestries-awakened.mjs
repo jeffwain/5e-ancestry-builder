@@ -549,43 +549,65 @@ export default [
     summary: 'The only species that may draw on the Draconic ancestry.',
     description:
       'All dragonborn characters are medium or small, and must take at least 2 traits from the Draconic ancestry. They are the only species that can choose from this ancestry.',
-    shared: [...MEDIUM_OR_SMALL],
+    shared: [...MEDIUM_OR_SMALL, 'draconic-ancestry'],
     archetypes: [
       {
         id: 'dragonborn',
         name: 'Dragonborn',
         designed: true,
-        traits: ['draconic-ancestry:fire', 'breath-weapon', 'draconic-resistance', 'draconic-cantrip', 'draconic-presence', 'powerful-build'],
+        traits: [
+          'draconic-element:fire',
+          [null, { name: 'Draconic Nature', points: 0, description: '**Arrogant Tyrant.** You assume any room you enter is yours. You have advantage on Charisma (Intimidation) checks made against a creature you outmatch in size or station.' }],
+          'breath-weapon', 'draconic-resistance', 'draconic-cantrip', 'draconic-presence', 'powerful-build',
+        ],
       },
       {
         id: 'elemental-dragonborn',
         name: 'Elemental dragonborn',
         designed: true,
-        traits: ['draconic-ancestry:lightning', 'breath-weapon', 'draconic-resistance', 'elemental-attunement:air', 'elemental-cantrip:air', 'draconic-warding'],
+        traits: [
+          'draconic-element:lightning',
+          [null, { name: 'Draconic Nature', points: 0, description: '**Mocking Trickster.** Your laugh carries further than you mean it to. You have advantage on Charisma (Deception) checks made to maintain a falsehood you find funny.' }],
+          'breath-weapon', 'draconic-resistance', 'elemental-attunement:air', 'elemental-cantrip:air', 'draconic-warding',
+        ],
       },
       {
         id: 'brutal',
         name: 'Brutal',
         designed: true,
-        traits: ['draconic-ancestry:acid', 'breath-weapon', 'draconic-resistance', 'draconic-cry', 'tooth-nail:bite', 'swim-speed'],
+        traits: [
+          'draconic-element:acid',
+          [null, { name: 'Draconic Nature', points: 0, description: '**Brutal.** You add your Constitution modifier to your breath weapon and natural weapon attacks.' }],
+          'breath-weapon', 'draconic-resistance', 'draconic-cry', 'tooth-nail:bite', 'swim-speed',
+        ],
       },
       {
         id: 'reserved',
         name: 'Reserved',
         designed: true,
-        traits: ['draconic-ancestry:radiant', 'breath-weapon', 'draconic-resistance', 'draconic-cantrip', 'draconic-warding', 'friendly-cultural-skill:empathic', 'powerful-build'],
+        traits: [
+          'draconic-element:radiant',
+          [null, { name: 'Draconic Nature', points: 0, description: '**Reserved Companion.** You say a good deal less than you know. You have advantage on Wisdom (Insight) checks made to determine whether a creature is lying to someone you have named a friend.' }],
+          'breath-weapon', 'draconic-resistance', 'draconic-cantrip', 'draconic-warding', 'friendly-cultural-skill:empathic', 'powerful-build',
+        ],
       },
       {
         id: 'uncanny',
         name: 'Uncanny',
         designed: true,
-        traits: ['draconic-ancestry:psychic', 'breath-weapon', 'draconic-resistance', 'psionic-cantrip', 'psionic-magic', 'battlefield-intuition', 'tooth-nail:bite'],
+        traits: [
+          'draconic-element:psychic',
+          [null, { name: 'Draconic Nature', points: 0, description: '**Good Host.** You have advantage on Wisdom (Insight) checks made to work out what a creature wants from you.' }],
+          'breath-weapon', 'draconic-resistance', 'psionic-cantrip', 'psionic-magic', 'battlefield-intuition', 'tooth-nail:bite',
+        ],
       },
     ],
     notes: [
-      'Each Draconic Ancestry damage type now carries a temperament rider on its option in traits.json, drawn from the dragonborn colour traits in Races-1.pdf (p.24–26). The riders are deliberately rider-weight — one narrow conditional advantage each — so the existing 0/1 rarity pricing on the options still holds.',
-      'Brutal (acid/black), Reserved (radiant/gold) and Uncanny (psychic) are designed archetypes, not Notion pages. They exist so the riders are exercised across all three rarity bands rather than only fire and lightning. Each lands on 16.',
-      'The doc’s bronze rider, Dragon of the Coast, was not carried across: a 30 ft. swim speed is mechanically heavier than the other nine riders and would break the 0-point option band. Brutal buys swim-speed (2) outright instead.',
+      'The old Draconic Ancestry trait is split three ways. Draconic Ancestry is only the Dragon creature type (shared). Draconic Element (required, in traits.json) picks the damage type and scale colour, keeping the 0/1 rarity pricing. Draconic Nature is the temperament, written inline on each archetype rather than hung off the element.',
+      'Brutal’s nature (Constitution modifier added to breath weapon and natural weapon attacks) is new. The other four natures are the old option riders, drawn from the dragonborn colour traits in Races-1.pdf (p.24–26), and stay rider-weight at 0 points.',
+      'Natures with no archetype yet, kept here for when one is designed: Cold — Primal and Vengeful (never forgets the scent of a creature that wounded you; advantage on Survival to track it). Force — Unbroken Line (advantage on Charisma checks to prove draconic lineage; can tell whether a creature you see carries dragon blood). Thunder — Boldly Talkative (advantage on Persuasion to keep a conversation going with a creature that would rather end it). Necrotic — Hoarding History (advantage on History to recall the deeds of the dead; can tell roughly how long ago a corpse died). Poison — Manipulative Schemer (advantage on Deception to convince a creature you act in its interest).',
+      'Brutal (acid/black), Reserved (radiant/gold) and Uncanny (psychic) are designed archetypes, not Notion pages. They exist so the elements are exercised across all three rarity bands rather than only fire and lightning. Each lands on 16.',
+      'The doc’s bronze rider, Dragon of the Coast, was not carried across: a 30 ft. swim speed is mechanically heavier than the other natures and would not be a 0-point rider. Brutal buys swim-speed (2) outright instead.',
     ],
   },
 ];

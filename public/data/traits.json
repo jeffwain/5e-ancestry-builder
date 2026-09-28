@@ -883,77 +883,85 @@
         "draconic": {
           "name": "Draconic",
           "label": "Other Ancestry",
-          "description": "You are descended from a dragon. You have a breath weapon that deals damage of the type associated with your draconic ancestry.",
-          "requiredTrait": "draconic-ancestry",
+          "description": "You are descended from a dragon. You have a breath weapon that deals damage of the type associated with your draconic element.",
+          "requiredTrait": ["draconic-ancestry", "draconic-element"],
           "traits": [
             {
               "id": "draconic-ancestry",
               "name": "Draconic Ancestry",
               "description": "If you have draconic ancestry, you must take this trait. Your creature type is also Dragon.",
-              "chooseOne": "Choose one of the following damage types. Each carries the temperament of the dragons it descends from.",
+              "points": 0,
+              "required": true
+            },
+            {
+              "id": "draconic-element",
+              "name": "Draconic Element",
+              "description": "If you have draconic ancestry, you must take this trait. Your scales mark the element of the dragons you descend from.",
+              "chooseOne": "Choose one of the following damage types.",
               "points": 0,
               "required": true,
               "requiresOption": true,
+              "requires": ["draconic-ancestry"],
               "options": [
                 {
                   "id": "acid",
                   "name": "Acid",
                   "points": 0,
-                  "description": "**Brutal and Cruel.** Your scales are black, dark green, or copper. You have advantage on Charisma (Intimidation) checks made against a creature that has already taken damage from you."
+                  "description": "Your scales are black, dark green, or copper."
                 },
                 {
                   "id": "cold",
                   "name": "Cold",
                   "points": 0,
-                  "description": "**Primal and Vengeful.** Your scales are white or pale silver, and frost gathers where you sleep. You never forget the scent of a creature that has wounded you, and you have advantage on Wisdom (Survival) checks made to track it."
+                  "description": "Your scales are white or pale silver, and frost gathers where you sleep."
                 },
                 {
                   "id": "force",
                   "name": "Force",
                   "points": 0,
-                  "description": "**Unbroken Line.** Your scales hold no fixed colour and shift with the light. You have advantage on Charisma checks made to convince another creature of your draconic lineage, and you can always tell whether a creature you can see carries dragon blood."
+                  "description": "Your scales hold no fixed colour and shift with the light."
                 },
                 {
                   "id": "lightning",
                   "name": "Lightning",
                   "points": 0,
-                  "description": "**Mocking Tricksters.** Your scales are blue and your laugh carries further than you mean it to. You have advantage on Charisma (Deception) checks made to maintain a falsehood you find funny."
+                  "description": "Your scales are blue."
                 },
                 {
                   "id": "radiant",
                   "name": "Radiant",
                   "points": 0,
-                  "description": "**Reserved Companion.** Your scales are gold and you say a good deal less than you know. You have advantage on Wisdom (Insight) checks made to determine whether a creature is lying to someone you have named a friend."
+                  "description": "Your scales are gold."
                 },
                 {
                   "id": "thunder",
                   "name": "Thunder",
                   "points": 0,
-                  "description": "**Boldly Talkative.** Your scales are brass and you have never in your life let a silence stand. You have advantage on Charisma (Persuasion) checks made to keep a conversation going with a creature that would rather end it."
+                  "description": "Your scales are brass."
                 },
                 {
                   "id": "fire",
                   "name": "Fire",
                   "points": 1,
-                  "description": "**Arrogant Tyrant.** Your scales are red and you assume any room you enter is yours. You have advantage on Charisma (Intimidation) checks made against a creature you outmatch in size or station."
+                  "description": "Your scales are red."
                 },
                 {
                   "id": "necrotic",
                   "name": "Necrotic",
                   "points": 1,
-                  "description": "**Hoarding History.** Your scales are ash-grey and cold to the touch. You have advantage on Intelligence (History) checks made to recall the deeds of the dead, and you can tell at a glance roughly how long ago a corpse died."
+                  "description": "Your scales are ash-grey and cold to the touch."
                 },
                 {
                   "id": "poison",
                   "name": "Poison",
                   "points": 1,
-                  "description": "**Manipulative Schemer.** Your scales are green and you would far rather arrange a thing than ask for it. You have advantage on Charisma (Deception) checks made to convince a creature that you are acting in its interest. Your breath is a poisonous gas."
+                  "description": "Your scales are green, and your breath is a poisonous gas."
                 },
                 {
                   "id": "psychic",
                   "name": "Psychic",
                   "points": 1,
-                  "description": "**Good Host.** Your scales are burnished copper and your eyes never quite settle. You have advantage on Wisdom (Insight) checks made to work out what a creature wants from you."
+                  "description": "Your scales are burnished copper and your eyes never quite settle."
                 }
               ]
             },
@@ -968,14 +976,14 @@
             {
               "id": "draconic-resistance",
               "name": "Draconic Resistance",
-              "description": "You have resistance to the damage type associated with your draconic ancestry.",
+              "description": "You have resistance to the damage type associated with your draconic element.",
               "points": 2,
-              "requires": ["draconic-ancestry"]
+              "requires": ["draconic-element"]
             },
             {
               "id": "draconic-warding",
               "name": "Draconic Warding",
-              "description": "Starting at 5th level, as an action, you can channel your draconic energy to protect yourself. For 1 minute, you become immune to the damage type associated with your draconic ancestry. You can't use this trait again until you finish a long rest.",
+              "description": "Starting at 5th level, as an action, you can channel your draconic energy to protect yourself. For 1 minute, you become immune to the damage type associated with your draconic element. You can't use this trait again until you finish a long rest.",
               "points": 4,
               "requires": ["draconic-resistance"]
             },
@@ -996,9 +1004,9 @@
             {
               "id": "breath-weapon",
               "name": "Breath Weapon",
-              "description": "When you take the Attack action, you can replace one of your attacks with an exhalation of a magical energy in a 15-foot cone. Each creature in the area must make a Dexterity saving throw of DC 8 + your Constitution modifier + your Proficiency Bonus. A creature takes 1d10 damage of the type associated with your Draconic Ancestry on a failed save, and half as much damage on a successful one. The damage increases to 2d10 at 5th level, 3d10 at 11th level, and 4d10 at 17th level. You can use this trait a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a long rest.",
+              "description": "When you take the Attack action, you can replace one of your attacks with an exhalation of a magical energy in a 15-foot cone. Each creature in the area must make a Dexterity saving throw of DC 8 + your Constitution modifier + your Proficiency Bonus. A creature takes 1d10 damage of the type associated with your Draconic Element on a failed save, and half as much damage on a successful one. The damage increases to 2d10 at 5th level, 3d10 at 11th level, and 4d10 at 17th level. You can use this trait a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a long rest.",
               "points": 6,
-              "requires": ["draconic-ancestry"]
+              "requires": ["draconic-element"]
             }
           ]
         },
